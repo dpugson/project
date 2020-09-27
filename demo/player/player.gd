@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-export var SPEED_UP = 5000;
-export var MAX_SPEED = 500;
-export var SLOW_DOWN = 5000;
+export var SPEED_UP = 6000;
+export var MAX_SPEED = 550;
+export var SLOW_DOWN = 6000;
 
 enum {
 	WALK,

@@ -1046,6 +1046,7 @@ __meta__ = {
 
 [node name="HurtBox" parent="HurtBoxPivot" instance=ExtResource( 34 )]
 position = Vector2( 1.19479, 9.55849 )
+collision_layer = 8
 show_hit = true
 
 [node name="CollisionShape2D" parent="HurtBoxPivot/HurtBox" index="0"]
