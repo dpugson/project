@@ -1,0 +1,896 @@
+[gd_scene load_steps=72 format=2]
+
+[ext_resource path="res://player/player.gd" type="Script" id=1]
+[ext_resource path="res://sprites/dog/d0.png" type="Texture" id=2]
+[ext_resource path="res://sprites/dog/d2.png" type="Texture" id=3]
+[ext_resource path="res://sprites/dog/d1.png" type="Texture" id=4]
+[ext_resource path="res://sprites/dog/l2.png" type="Texture" id=5]
+[ext_resource path="res://sprites/dog/l0.png" type="Texture" id=6]
+[ext_resource path="res://sprites/dog/r1.png" type="Texture" id=7]
+[ext_resource path="res://sprites/dog/u2.png" type="Texture" id=8]
+[ext_resource path="res://sprites/dog/l1.png" type="Texture" id=9]
+[ext_resource path="res://sprites/dog/u1.png" type="Texture" id=10]
+[ext_resource path="res://sprites/dog/u0.png" type="Texture" id=11]
+[ext_resource path="res://sprites/dog/r0.png" type="Texture" id=12]
+[ext_resource path="res://sprites/dog/r2.png" type="Texture" id=13]
+[ext_resource path="res://sprites/dogshadow.png" type="Texture" id=14]
+[ext_resource path="res://sprites/dogshadowfront.png" type="Texture" id=15]
+[ext_resource path="res://sprites/dogbark/d1.png" type="Texture" id=16]
+[ext_resource path="res://sprites/dogbark/d2.png" type="Texture" id=17]
+[ext_resource path="res://sprites/dogbark/d3.png" type="Texture" id=18]
+[ext_resource path="res://sprites/dogbark/r1.png" type="Texture" id=19]
+[ext_resource path="res://sprites/dogbark/d0.png" type="Texture" id=20]
+[ext_resource path="res://sprites/dogbark/r0.png" type="Texture" id=21]
+[ext_resource path="res://sprites/dogbark/u1.png" type="Texture" id=22]
+[ext_resource path="res://sprites/dogbark/r3.png" type="Texture" id=23]
+[ext_resource path="res://sprites/dogbark/l2.png" type="Texture" id=24]
+[ext_resource path="res://sprites/dogbark/l3.png" type="Texture" id=25]
+[ext_resource path="res://sprites/dogbark/u3.png" type="Texture" id=26]
+[ext_resource path="res://sprites/dogbark/r2.png" type="Texture" id=27]
+[ext_resource path="res://sprites/dogbark/l0.png" type="Texture" id=28]
+[ext_resource path="res://sprites/dogbark/l1.png" type="Texture" id=29]
+[ext_resource path="res://sprites/dogbark/u0.png" type="Texture" id=30]
+[ext_resource path="res://sprites/dogbark/u2.png" type="Texture" id=31]
+[ext_resource path="res://hitnhurtboxes/hitbox.tscn" type="PackedScene" id=32]
+[ext_resource path="res://player/barkhitbox.gd" type="Script" id=33]
+
+[sub_resource type="SpriteFrames" id=38]
+animations = [ {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "updown",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "leftright",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=39]
+radius = 21.9327
+height = 31.8131
+
+[sub_resource type="SpriteFrames" id=40]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "left",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 7 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "right",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "up",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 19 ), ExtResource( 27 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "barkright",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "down",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 30 ), ExtResource( 22 ), ExtResource( 31 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "barkup",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 29 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "barkleft",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "barkdown",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=41]
+resource_name = "bark_down"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("DogAnimation:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "barkdown" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DogAnimation:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "bark_complete"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HitBoxPivot:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HitBoxPivot/BarkHitBox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.05, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=42]
+resource_name = "bark_left"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("DogAnimation:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "barkleft" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DogAnimation:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "bark_complete"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HitBoxPivot:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HitBoxPivot/BarkHitBox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.05, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=43]
+resource_name = "bark_right"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("DogAnimation:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "barkright" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DogAnimation:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "bark_complete"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HitBoxPivot/BarkHitBox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.05, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HitBoxPivot:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -90.0 ]
+}
+
+[sub_resource type="Animation" id=44]
+resource_name = "bark_up"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("DogAnimation:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "barkup" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DogAnimation:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "bark_complete"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HitBoxPivot/BarkHitBox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.05, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HitBoxPivot:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 180.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "idle_down"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("DogAnimation:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "down" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DogAnimation:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ShadowAnimation:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "updown" ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "idle_left"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("DogAnimation:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "left" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DogAnimation:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ShadowAnimation:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "leftright" ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "idle_right"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("DogAnimation:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "right" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DogAnimation:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ShadowAnimation:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "leftright" ]
+}
+
+[sub_resource type="Animation" id=11]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("DogAnimation:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "up" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DogAnimation:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ShadowAnimation:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "updown" ]
+}
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 21.9327
+height = 31.8131
+
+[sub_resource type="Animation" id=12]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D:shape")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DogAnimation:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DogAnimation:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "down" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ShadowAnimation:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "updown" ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("DogAnimation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -90.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DogAnimation:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "left" ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ShadowAnimation:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "leftright" ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("DogAnimation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:shape")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 2 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DogAnimation:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "right" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ShadowAnimation:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "leftright" ]
+}
+
+[sub_resource type="Animation" id=15]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("DogAnimation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DogAnimation:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "up" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ShadowAnimation:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "updown" ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "bark_down"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "bark_right"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "bark_up"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "bark_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=20]
+blend_point_0/node = SubResource( 16 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 17 )
+blend_point_1/pos = Vector2( 1.1, 0 )
+blend_point_2/node = SubResource( 18 )
+blend_point_2/pos = Vector2( 0, -1 )
+blend_point_3/node = SubResource( 19 )
+blend_point_3/pos = Vector2( -1.1, 0 )
+min_space = Vector2( -1.12, -1 )
+max_space = Vector2( 1.13, 1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "idle_down"
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "idle_right"
+
+[sub_resource type="AnimationNodeAnimation" id=23]
+animation = "idle_up"
+
+[sub_resource type="AnimationNodeAnimation" id=24]
+animation = "idle_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=25]
+blend_point_0/node = SubResource( 21 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 22 )
+blend_point_1/pos = Vector2( 1.1, 0 )
+blend_point_2/node = SubResource( 23 )
+blend_point_2/pos = Vector2( 0, -1 )
+blend_point_3/node = SubResource( 24 )
+blend_point_3/pos = Vector2( -1.1, 0 )
+min_space = Vector2( -1, -1.14 )
+max_space = Vector2( 1, 1.2 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=26]
+animation = "walk_down"
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "walk_right"
+
+[sub_resource type="AnimationNodeAnimation" id=28]
+animation = "walk_up"
+
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "walk_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=30]
+blend_point_0/node = SubResource( 26 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 27 )
+blend_point_1/pos = Vector2( 1.1, 0 )
+blend_point_2/node = SubResource( 28 )
+blend_point_2/pos = Vector2( 0, -1 )
+blend_point_3/node = SubResource( 29 )
+blend_point_3/pos = Vector2( -1.1, 0 )
+min_space = Vector2( -1, -1.17 )
+max_space = Vector2( 1, 1.2 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+
+[sub_resource type="AnimationNodeStateMachine" id=35]
+states/bark/node = SubResource( 20 )
+states/bark/position = Vector2( 439.898, 229.429 )
+states/idle/node = SubResource( 25 )
+states/idle/position = Vector2( 338.898, 132 )
+states/walk/node = SubResource( 30 )
+states/walk/position = Vector2( 535.898, 132 )
+transitions = [ "idle", "walk", SubResource( 31 ), "walk", "idle", SubResource( 32 ), "idle", "bark", SubResource( 33 ), "bark", "idle", SubResource( 34 ) ]
+start_node = "idle"
+graph_offset = Vector2( 101.898, 73.4293 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=36]
+resource_local_to_scene = false
+
+[sub_resource type="CapsuleShape2D" id=37]
+radius = 54.5914
+height = 93.9258
+
+[node name="player" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 1 )
+
+[node name="ShadowAnimation" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( -1.70408, 66.9613 )
+scale = Vector2( 0.842484, 0.826121 )
+frames = SubResource( 38 )
+animation = "updown"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1, 41 )
+rotation = -1.5708
+shape = SubResource( 39 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DogAnimation" type="AnimatedSprite" parent="."]
+position = Vector2( 3.11467, -16.0672 )
+frames = SubResource( 40 )
+animation = "barkdown"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/bark_down = SubResource( 41 )
+anims/bark_left = SubResource( 42 )
+anims/bark_right = SubResource( 43 )
+anims/bark_up = SubResource( 44 )
+anims/idle_down = SubResource( 8 )
+anims/idle_left = SubResource( 9 )
+anims/idle_right = SubResource( 10 )
+anims/idle_up = SubResource( 11 )
+anims/walk_down = SubResource( 12 )
+anims/walk_left = SubResource( 13 )
+anims/walk_right = SubResource( 14 )
+anims/walk_up = SubResource( 15 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 35 )
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource( 36 )
+parameters/bark/blend_position = Vector2( 0, 1 )
+parameters/idle/blend_position = Vector2( 0, 1 )
+parameters/walk/blend_position = Vector2( 0, 1 )
+
+[node name="HitBoxPivot" type="Position2D" parent="."]
+position = Vector2( 0, -31.7903 )
+
+[node name="BarkHitBox" parent="HitBoxPivot" instance=ExtResource( 32 )]
+position = Vector2( 0, 120 )
+collision_mask = 16
+script = ExtResource( 33 )
+
+[node name="CollisionShape2D" parent="HitBoxPivot/BarkHitBox" index="0"]
+rotation = 1.5708
+shape = SubResource( 37 )
+disabled = true
+
+[editable path="HitBoxPivot/BarkHitBox"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/darktree.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 31.9936
+height = 25.9683
+
+[node name="creepy_tree" type="StaticBody2D"]
+
+[node name="darktree" type="Sprite" parent="."]
+position = Vector2( 36.4805, -235.304 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.211412, 21.0312 )
+rotation = -1.5708
+shape = SubResource( 1 )

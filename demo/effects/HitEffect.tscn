@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://effects/Effect.gd" type="Script" id=1]
+[ext_resource path="res://sprites/hit/h1.png" type="Texture" id=2]
+[ext_resource path="res://sprites/hit/h0.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "animate",
+"speed": 15.0
+} ]
+
+[node name="AnimatedSprite" type="AnimatedSprite"]
+frames = SubResource( 1 )
+animation = "animate"
+script = ExtResource( 1 )

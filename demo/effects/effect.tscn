@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://effects/Effect.gd" type="Script" id=1]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "animate",
+"speed": 5.0
+} ]
+
+[node name="Effect" type="AnimatedSprite"]
+frames = SubResource( 1 )
+animation = "animate"
+script = ExtResource( 1 )
