@@ -9,16 +9,18 @@ enum {
 	BARK
 }
 
-var speed = Vector2.ZERO
+var speed = Vector2.DOWN
 var state = WALK
+var stats = PlayerStats
 
 onready var player_animation = $AnimationPlayer
 onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
 onready var bark_hitbox = $HitBoxPivot/BarkHitBox
+onready var hurtbox = $HurtBoxPivot/HurtBox
 
 func _ready():
-	speed = Vector2.DOWN
+	stats.connect("out_of_health", self, "queue_free")
 	bark_hitbox.knockback_vector = speed
 	animation_tree.active = true
 
@@ -70,4 +72,6 @@ func _physics_process(delta):
 			speed *= .8
 			move(delta, input)
 
-
+func _on_HurtBox_area_entered(area):
+	stats.health -= 1
+	hurtbox.start_invincibility(0.5)

@@ -18,6 +18,7 @@ enum {
 onready var animation = $AnimatedSprite
 onready var stats = $Stats
 onready var player_detection = $PlayerDetectionZone
+onready var hurtbox = $HurtBox
 
 var speed = Vector2.ZERO
 var knockback = Vector2.ZERO

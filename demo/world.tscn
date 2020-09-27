@@ -129,10 +129,10 @@ position = Vector2( 1457.29, 524.735 )
 position = Vector2( 1105.01, 377.981 )
 
 [node name="Whizfluff2" parent="YSortedThings" instance=ExtResource( 6 )]
-position = Vector2( 1000.61, 418.725 )
+position = Vector2( 1251.9, 504.752 )
 
 [node name="Whizfluff3" parent="YSortedThings" instance=ExtResource( 6 )]
-position = Vector2( 1018.43, 314.318 )
+position = Vector2( 1063.71, 226.026 )
 
 [node name="Whizfluff4" parent="YSortedThings" instance=ExtResource( 6 )]
-position = Vector2( 1135.57, 283.759 )
+position = Vector2( 1284.99, 229.426 )
