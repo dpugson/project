@@ -13,6 +13,7 @@ animations = [ {
 } ]
 
 [node name="AnimatedSprite" type="AnimatedSprite"]
+position = Vector2( 0, -77.6594 )
 frames = SubResource( 1 )
 animation = "animate"
 script = ExtResource( 1 )
