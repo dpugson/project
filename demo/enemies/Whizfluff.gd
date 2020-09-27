@@ -5,6 +5,7 @@ export var MAX_SPEED = 200
 export var MAX_FLEE_SPEED = 500
 export var SPEED_UP = 800
 export var KNOCK_BACK = 800
+export var BUMP_SPEED = 500
 const DestructionEffect = preload("res://effects/EnemyDeathEffect.tscn")
 const EffectHelper = preload("res://effects/EffectHelper.gd")
 
@@ -19,6 +20,7 @@ onready var animation = $AnimatedSprite
 onready var stats = $Stats
 onready var player_detection = $PlayerDetectionZone
 onready var hurtbox = $HurtBox
+onready var soft_collision = $SoftCollision
 
 var speed = Vector2.ZERO
 var knockback = Vector2.ZERO
@@ -54,7 +56,9 @@ func _physics_process(delta):
 			else:
 				state = IDLE 
 			animation.flip_h = speed.x < 0
-			
+	
+	if soft_collision.is_colliding():
+		speed += soft_collision.get_push_vector() * delta * BUMP_SPEED
 	speed = move_and_slide(speed)
 
 func seek_player():

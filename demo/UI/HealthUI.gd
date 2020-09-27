@@ -12,12 +12,12 @@ onready var heart_image_width = heart_image.get_width()
 func set_hearts(value):
 	hearts = clamp(value, 0, max_hearts)
 	if heartuifull != null:
-		heartuifull.rect_size.x = hearts * heart_image_width
+		heartuifull.rect_size.x = hearts * (heart_image_width/2)
 	
 func set_max_hearts(value):
 	max_hearts = max(value, 1)
 	if heartuiempty != null:
-		heartuiempty.rect_size.x = max_hearts * heart_image_width
+		heartuiempty.rect_size.x = max_hearts * (heart_image_width/2)
 	
 func _ready():
 	self.max_hearts = PlayerStats.max_health
