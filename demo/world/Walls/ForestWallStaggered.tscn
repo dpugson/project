@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/trees/treewalltilewithfence.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1806.26, 15.4781 )
+
+[node name="ForestWall" type="StaticBody2D"]
+
+[node name="treewalltile2" type="Sprite" parent="."]
+position = Vector2( 15.619, -166.609 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( -1882.65, 0, 3620.24, 1595.68 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 14.954, 618.817 )
+shape = SubResource( 1 )

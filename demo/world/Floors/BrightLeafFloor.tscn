@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/leafpiletile2.png" type="Texture" id=1]
+
+[node name="BrightLeafFloor" type="Sprite"]
+visible = false
+position = Vector2( -56.1151, -47.1368 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( -6.84967, 2.75346, 1253.42, 845.643 )

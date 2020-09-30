@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/leafpiletile2dark.png" type="Texture" id=1]
+
+[node name="DarkLeafFloor" type="Sprite"]
+position = Vector2( -2256.5, -780.598 )
+scale = Vector2( 0.830791, 0.839937 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( -1063.14, -923.562, 6038.81, 2398.29 )
