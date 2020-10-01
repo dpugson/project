@@ -48,7 +48,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=40]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 21.9327
 height = 31.8131
 
@@ -69,6 +69,16 @@ animations = [ {
 "name": "up",
 "speed": 7.0
 }, {
+"frames": [ ExtResource( 28 ), ExtResource( 29 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "barkleft",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "barkdown",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 21 ), ExtResource( 19 ), ExtResource( 27 ), ExtResource( 23 ) ],
 "loop": true,
 "name": "barkright",
@@ -82,16 +92,6 @@ animations = [ {
 "frames": [ ExtResource( 30 ), ExtResource( 22 ), ExtResource( 31 ), ExtResource( 26 ) ],
 "loop": true,
 "name": "barkup",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 28 ), ExtResource( 29 ), ExtResource( 24 ), ExtResource( 25 ) ],
-"loop": true,
-"name": "barkleft",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 20 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
-"loop": true,
-"name": "barkdown",
 "speed": 5.0
 } ]
 
@@ -618,7 +618,7 @@ tracks/3/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=41]
+[sub_resource type="Animation" id=12]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -631,7 +631,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ SubResource( 40 ) ]
+"values": [ SubResource( 2 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("DogAnimation:frame")
@@ -682,7 +682,7 @@ tracks/4/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=42]
+[sub_resource type="Animation" id=13]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -719,7 +719,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ SubResource( 40 ) ]
+"values": [ SubResource( 2 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("DogAnimation:animation")
@@ -758,7 +758,7 @@ tracks/5/keys = {
 "values": [ 90.0 ]
 }
 
-[sub_resource type="Animation" id=43]
+[sub_resource type="Animation" id=14]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -783,7 +783,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ SubResource( 40 ) ]
+"values": [ SubResource( 2 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("DogAnimation:animation")
@@ -822,7 +822,7 @@ tracks/4/keys = {
 "values": [ 90.0 ]
 }
 
-[sub_resource type="Animation" id=44]
+[sub_resource type="Animation" id=15]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -874,108 +874,108 @@ tracks/3/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=45]
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "bark_down"
 
-[sub_resource type="AnimationNodeAnimation" id=46]
+[sub_resource type="AnimationNodeAnimation" id=17]
 animation = "bark_right"
 
-[sub_resource type="AnimationNodeAnimation" id=47]
+[sub_resource type="AnimationNodeAnimation" id=18]
 animation = "bark_up"
 
-[sub_resource type="AnimationNodeAnimation" id=48]
+[sub_resource type="AnimationNodeAnimation" id=19]
 animation = "bark_left"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=49]
-blend_point_0/node = SubResource( 45 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=20]
+blend_point_0/node = SubResource( 16 )
 blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 46 )
+blend_point_1/node = SubResource( 17 )
 blend_point_1/pos = Vector2( 1.1, 0 )
-blend_point_2/node = SubResource( 47 )
+blend_point_2/node = SubResource( 18 )
 blend_point_2/pos = Vector2( 0, -1 )
-blend_point_3/node = SubResource( 48 )
+blend_point_3/node = SubResource( 19 )
 blend_point_3/pos = Vector2( -1.1, 0 )
 min_space = Vector2( -1.12, -1 )
 max_space = Vector2( 1.13, 1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=50]
+[sub_resource type="AnimationNodeAnimation" id=21]
 animation = "idle_down"
 
-[sub_resource type="AnimationNodeAnimation" id=51]
+[sub_resource type="AnimationNodeAnimation" id=22]
 animation = "idle_right"
 
-[sub_resource type="AnimationNodeAnimation" id=52]
+[sub_resource type="AnimationNodeAnimation" id=23]
 animation = "idle_up"
 
-[sub_resource type="AnimationNodeAnimation" id=53]
+[sub_resource type="AnimationNodeAnimation" id=24]
 animation = "idle_left"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=54]
-blend_point_0/node = SubResource( 50 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=25]
+blend_point_0/node = SubResource( 21 )
 blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 51 )
+blend_point_1/node = SubResource( 22 )
 blend_point_1/pos = Vector2( 1.1, 0 )
-blend_point_2/node = SubResource( 52 )
+blend_point_2/node = SubResource( 23 )
 blend_point_2/pos = Vector2( 0, -1 )
-blend_point_3/node = SubResource( 53 )
+blend_point_3/node = SubResource( 24 )
 blend_point_3/pos = Vector2( -1.1, 0 )
 min_space = Vector2( -1, -1.14 )
 max_space = Vector2( 1, 1.2 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=55]
+[sub_resource type="AnimationNodeAnimation" id=26]
 animation = "walk_down"
 
-[sub_resource type="AnimationNodeAnimation" id=56]
+[sub_resource type="AnimationNodeAnimation" id=27]
 animation = "walk_right"
 
-[sub_resource type="AnimationNodeAnimation" id=57]
+[sub_resource type="AnimationNodeAnimation" id=28]
 animation = "walk_up"
 
-[sub_resource type="AnimationNodeAnimation" id=58]
+[sub_resource type="AnimationNodeAnimation" id=29]
 animation = "walk_left"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=59]
-blend_point_0/node = SubResource( 55 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=30]
+blend_point_0/node = SubResource( 26 )
 blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 56 )
+blend_point_1/node = SubResource( 27 )
 blend_point_1/pos = Vector2( 1.1, 0 )
-blend_point_2/node = SubResource( 57 )
+blend_point_2/node = SubResource( 28 )
 blend_point_2/pos = Vector2( 0, -1 )
-blend_point_3/node = SubResource( 58 )
+blend_point_3/node = SubResource( 29 )
 blend_point_3/pos = Vector2( -1.1, 0 )
 min_space = Vector2( -1, -1.17 )
 max_space = Vector2( 1, 1.2 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=60]
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=61]
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=62]
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=63]
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
 
-[sub_resource type="AnimationNodeStateMachine" id=64]
-states/bark/node = SubResource( 49 )
+[sub_resource type="AnimationNodeStateMachine" id=35]
+states/bark/node = SubResource( 20 )
 states/bark/position = Vector2( 439.898, 229.429 )
-states/idle/node = SubResource( 54 )
+states/idle/node = SubResource( 25 )
 states/idle/position = Vector2( 338.898, 132 )
-states/walk/node = SubResource( 59 )
+states/walk/node = SubResource( 30 )
 states/walk/position = Vector2( 535.898, 132 )
-transitions = [ "idle", "walk", SubResource( 60 ), "walk", "idle", SubResource( 61 ), "idle", "bark", SubResource( 62 ), "bark", "idle", SubResource( 63 ) ]
+transitions = [ "idle", "walk", SubResource( 31 ), "walk", "idle", SubResource( 32 ), "idle", "bark", SubResource( 33 ), "bark", "idle", SubResource( 34 ) ]
 start_node = "idle"
 graph_offset = Vector2( 101.898, 73.4293 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=65]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=36]
 resource_local_to_scene = false
 
-[sub_resource type="CapsuleShape2D" id=38]
+[sub_resource type="CapsuleShape2D" id=37]
 radius = 54.5914
 height = 93.9258
 
-[sub_resource type="CapsuleShape2D" id=39]
+[sub_resource type="CapsuleShape2D" id=38]
 radius = 34.4694
 
 [node name="player" type="KinematicBody2D"]
@@ -992,7 +992,7 @@ animation = "updown"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1, 41 )
 rotation = -1.5708
-shape = SubResource( 40 )
+shape = SubResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1000,8 +1000,7 @@ __meta__ = {
 [node name="DogAnimation" type="AnimatedSprite" parent="."]
 position = Vector2( 3.11467, -16.0672 )
 frames = SubResource( 3 )
-animation = "barkdown"
-frame = 3
+animation = "down"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/bark_down = SubResource( 4 )
@@ -1012,15 +1011,15 @@ anims/idle_down = SubResource( 8 )
 anims/idle_left = SubResource( 9 )
 anims/idle_right = SubResource( 10 )
 anims/idle_up = SubResource( 11 )
-anims/walk_down = SubResource( 41 )
-anims/walk_left = SubResource( 42 )
-anims/walk_right = SubResource( 43 )
-anims/walk_up = SubResource( 44 )
+anims/walk_down = SubResource( 12 )
+anims/walk_left = SubResource( 13 )
+anims/walk_right = SubResource( 14 )
+anims/walk_up = SubResource( 15 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 64 )
+tree_root = SubResource( 35 )
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource( 65 )
+parameters/playback = SubResource( 36 )
 parameters/bark/blend_position = Vector2( 0, 1 )
 parameters/idle/blend_position = Vector2( 0, 1 )
 parameters/walk/blend_position = Vector2( 0, 1 )
@@ -1035,7 +1034,7 @@ script = ExtResource( 33 )
 
 [node name="CollisionShape2D" parent="HitBoxPivot/BarkHitBox" index="0"]
 rotation = 1.5708
-shape = SubResource( 38 )
+shape = SubResource( 37 )
 disabled = true
 
 [node name="HurtBoxPivot" type="Position2D" parent="."]
@@ -1051,7 +1050,7 @@ show_hit = true
 
 [node name="CollisionShape2D" parent="HurtBoxPivot/HurtBox" index="0"]
 position = Vector2( 0, -9.55849 )
-shape = SubResource( 39 )
+shape = SubResource( 38 )
 [connection signal="area_entered" from="HurtBoxPivot/HurtBox" to="." method="_on_HurtBox_area_entered"]
 
 [editable path="HitBoxPivot/BarkHitBox"]

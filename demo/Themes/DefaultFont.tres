@@ -3,4 +3,5 @@
 [ext_resource path="res://Themes/8bitoperator_jve.ttf" type="DynamicFontData" id=1]
 
 [resource]
+size = 64
 font_data = ExtResource( 1 )

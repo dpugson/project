@@ -1,0 +1,560 @@
+[gd_scene load_steps=63 format=2]
+
+[ext_resource path="res://Characters/RobotAA/Sprites/l0.png" type="Texture" id=1]
+[ext_resource path="res://Characters/RobotAA/Sprites/r1.png" type="Texture" id=2]
+[ext_resource path="res://Characters/RobotAA/Sprites/u0.png" type="Texture" id=3]
+[ext_resource path="res://Characters/RobotAA/Sprites/l2.png" type="Texture" id=4]
+[ext_resource path="res://Characters/RobotAA/Sprites/r0.png" type="Texture" id=5]
+[ext_resource path="res://Characters/RobotAA/Sprites/u1.png" type="Texture" id=6]
+[ext_resource path="res://Characters/RobotAA/Sprites/l1.png" type="Texture" id=7]
+[ext_resource path="res://Characters/RobotAA/Sprites/u2.png" type="Texture" id=8]
+[ext_resource path="res://Characters/RobotAA/Sprites/d1.png" type="Texture" id=9]
+[ext_resource path="res://Characters/RobotAA/Sprites/d2.png" type="Texture" id=10]
+[ext_resource path="res://Characters/RobotAA/Sprites/r2.png" type="Texture" id=11]
+[ext_resource path="res://Characters/RobotAA/Sprites/d0.png" type="Texture" id=12]
+[ext_resource path="res://Characters/RobotAA/Sprites/holdingdog/u0.png" type="Texture" id=13]
+[ext_resource path="res://Characters/RobotAA/Sprites/holdingdog/l2.png" type="Texture" id=14]
+[ext_resource path="res://Characters/RobotAA/Sprites/holdingdog/d1.png" type="Texture" id=15]
+[ext_resource path="res://Characters/RobotAA/Sprites/holdingdog/r2.png" type="Texture" id=16]
+[ext_resource path="res://Characters/RobotAA/Sprites/holdingdog/l0.png" type="Texture" id=17]
+[ext_resource path="res://Characters/RobotAA/Sprites/holdingdog/l1.png" type="Texture" id=18]
+[ext_resource path="res://Characters/RobotAA/Sprites/holdingdog/u1.png" type="Texture" id=19]
+[ext_resource path="res://Characters/RobotAA/Sprites/holdingdog/u2.png" type="Texture" id=20]
+[ext_resource path="res://Characters/RobotAA/Sprites/holdingdog/r0.png" type="Texture" id=21]
+[ext_resource path="res://Characters/RobotAA/Sprites/holdingdog/r1.png" type="Texture" id=22]
+[ext_resource path="res://Characters/RobotAA/Sprites/holdingdog/d2.png" type="Texture" id=23]
+[ext_resource path="res://Characters/RobotAA/Sprites/holdingdog/d0.png" type="Texture" id=24]
+[ext_resource path="res://Characters/RobotAA/RobotAA.gd" type="Script" id=25]
+[ext_resource path="res://Brains/WalkingThing.tscn" type="PackedScene" id=26]
+[ext_resource path="res://sprites/dogshadowfront.png" type="Texture" id=27]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 7 ), ExtResource( 1 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "left",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "right",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "up",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 19 ), ExtResource( 13 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "dogup",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "down",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "dogleft",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 15 ), ExtResource( 24 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "dogdown",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "dogright",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=26]
+resource_name = "dog_down"
+length = 0.8
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "dogdown" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "dog_left"
+length = 0.8
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "dogleft" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "dog_right"
+length = 0.8
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "dogright" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "dog_up"
+length = 0.8
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "dogup" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle_down"
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "down" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle_left"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "left" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle_right"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "right" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "idle_up"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "up" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "walk_down"
+length = 0.8
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "down" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "walk_left"
+length = 0.8
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "left" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "walk_right"
+length = 0.8
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "right" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "walk_up"
+length = 0.8
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "up" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=28]
+animation = "dog_down"
+
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "dog_right"
+
+[sub_resource type="AnimationNodeAnimation" id=30]
+animation = "dog_up"
+
+[sub_resource type="AnimationNodeAnimation" id=31]
+animation = "dog_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=32]
+blend_point_0/node = SubResource( 28 )
+blend_point_0/pos = Vector2( 0, 1.1 )
+blend_point_1/node = SubResource( 29 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 30 )
+blend_point_2/pos = Vector2( 0, -1.1 )
+blend_point_3/node = SubResource( 31 )
+blend_point_3/pos = Vector2( -1, 0 )
+min_space = Vector2( -1, -1.13 )
+max_space = Vector2( 1, 1.11 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "idle_down"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "idle_right"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "idle_up"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "idle_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=14]
+blend_point_0/node = SubResource( 10 )
+blend_point_0/pos = Vector2( 0, 1.1 )
+blend_point_1/node = SubResource( 11 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 12 )
+blend_point_2/pos = Vector2( 0, -1.1 )
+blend_point_3/node = SubResource( 13 )
+blend_point_3/pos = Vector2( -1, 0 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "walk_down"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "walk_left"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "walk_up"
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "walk_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=21]
+blend_point_0/node = SubResource( 17 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 18 )
+blend_point_1/pos = Vector2( -1, 0 )
+blend_point_2/node = SubResource( 19 )
+blend_point_2/pos = Vector2( 0, -1 )
+blend_point_3/node = SubResource( 20 )
+blend_point_3/pos = Vector2( 1, 0 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+
+[sub_resource type="AnimationNodeStateMachine" id=15]
+states/dog_walk/node = SubResource( 32 )
+states/dog_walk/position = Vector2( 537, 171 )
+states/idle/node = SubResource( 14 )
+states/idle/position = Vector2( 428, 61 )
+states/walk/node = SubResource( 21 )
+states/walk/position = Vector2( 675, 61 )
+transitions = [ "idle", "walk", SubResource( 22 ), "walk", "idle", SubResource( 23 ), "idle", "dog_walk", SubResource( 33 ), "dog_walk", "idle", SubResource( 34 ) ]
+start_node = "idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=16]
+
+[sub_resource type="CircleShape2D" id=35]
+radius = 60.309
+
+[node name="RobotAA" type="KinematicBody2D"]
+script = ExtResource( 25 )
+
+[node name="dogshadowfront" type="Sprite" parent="."]
+position = Vector2( 10.6897, 161.123 )
+scale = Vector2( 2.64627, 1.26168 )
+texture = ExtResource( 27 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "dogup"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/dog_down = SubResource( 26 )
+anims/dog_left = SubResource( 25 )
+anims/dog_right = SubResource( 24 )
+anims/dog_up = SubResource( 27 )
+anims/idle_down = SubResource( 2 )
+anims/idle_left = SubResource( 3 )
+anims/idle_right = SubResource( 4 )
+anims/idle_up = SubResource( 5 )
+anims/walk_down = SubResource( 6 )
+anims/walk_left = SubResource( 7 )
+anims/walk_right = SubResource( 8 )
+anims/walk_up = SubResource( 9 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 15 )
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource( 16 )
+parameters/dog_walk/blend_position = Vector2( 0, 1 )
+parameters/idle/blend_position = Vector2( 0, 1 )
+parameters/walk/blend_position = Vector2( 0, 1 )
+
+[node name="WalkInCirclesTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="WalkingThing" parent="." instance=ExtResource( 26 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1.54828, 130.055 )
+shape = SubResource( 35 )
+[connection signal="timeout" from="WalkInCirclesTimer" to="." method="_on_WalkInCirclesTimer_timeout"]

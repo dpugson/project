@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://sprites/lab_stuff/lab_tiles.png" type="Texture" id=1]
+[ext_resource path="res://sprites/lab_stuff/lab_panel.png" type="Texture" id=2]
+[ext_resource path="res://Levels/1.0 - Lab/Laboratory.gd" type="Script" id=3]
+[ext_resource path="res://Characters/RobotAA/RobotAA.tscn" type="PackedScene" id=4]
+
+[node name="Laboratory" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="LabFloor" type="Node2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="LabFloor"]
+margin_left = 1.771
+margin_top = 369.835
+margin_right = 3238.77
+margin_bottom = 2470.83
+texture = ExtResource( 1 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabWall" type="StaticBody2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="LabWall"]
+margin_left = 1.771
+margin_top = -261.165
+margin_right = 3277.77
+margin_bottom = 369.835
+texture = ExtResource( 2 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LabWall"]
+polygon = PoolVector2Array( 13.3395, 371.743, 3232.94, 367.296, 3228.5, -490.968, -22.2363, -490.968 )
+
+[node name="RobotAA" parent="." instance=ExtResource( 4 )]
+position = Vector2( 749.938, 1039.8 )
