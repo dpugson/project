@@ -31,7 +31,7 @@ var dialogue_bone_there = {
 		"Best let old bones lie.", 0.03, null
 	],
 	"takebone" : [
-		"ACTION", "YOU ACQUIRE A BONE", 0.03, null, [self, "grab_bone"]
+		"ACTION", "YOU ACQUIRE A BONE.", 0.03, null, [self, "grab_bone"]
 	]
 }
 

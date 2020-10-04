@@ -11,8 +11,11 @@ func enchild(obj):
 	obj.add_child(self)
 	
 func display_item(item_data: Dictionary):
-	var picture = load(item_data['image'])
-	item_picture.texture = picture
+	if item_data['image'] != null:
+		var picture = load(item_data['image'])
+		item_picture.texture = picture
+	else:
+		item_picture.texture = null
 	item_description.text = item_data['description']
 
 func undisplay_item():

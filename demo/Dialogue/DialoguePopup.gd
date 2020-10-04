@@ -56,13 +56,13 @@ func init(input_text):
 	dialogue = input_text
 	
 func _input(event):
-	if event.is_action_pressed("accept") or event.is_action_pressed("random_click"):
-		if !event.is_action_pressed("random_click"):
+	if event.is_action_pressed("accept") and !event.is_action_pressed("random_click"):
 			var focus = panel.get_focus_owner()
 			if focus != null and focus is Button:
 				focus.pressed = true
 				handle_button_click()
 				return
+	elif event.is_action_pressed("bark"):
 		match waiting_for_input:
 			INPUT_TYPE.NEXT:
 				pass
@@ -157,6 +157,9 @@ func wait_for_choice():
 
 func get_type():
 	return get_row()[0]
+	
+func get_eval_stuff():
+	return get_row()[1]
 
 func get_text():
 	return get_row()[1]
@@ -222,7 +225,7 @@ func start():
 	
 func stop():
 	queue_free()
-	get_tree().paused = false
+	get_tree().set_deferred("paused", false)
 
 func render_character_and_continue(character, wait_time):
 	textLabel.text += character

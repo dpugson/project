@@ -164,6 +164,9 @@ rotation = -1.5708
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="DoorSpawnPoint" parent="." instance=ExtResource( 9 )]
+position = Vector2( 921.417, 370.992 )
 [connection signal="seen" from="Scratches" to="." method="_on_Scratches_seen"]
 [connection signal="seen" from="LeafPile" to="." method="_on_LeafPile_seen"]
 [connection signal="transition_triggered" from="Door" to="." method="_on_Door_transition_triggered"]

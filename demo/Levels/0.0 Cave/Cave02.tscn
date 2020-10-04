@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Levels/0.0 Cave/stalags_02.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/cavestuff/stalags_01.png" type="Texture" id=2]
@@ -13,19 +13,32 @@
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Levels/0.0 Cave/PersistentWaterdrop.tscn" type="PackedScene" id=13]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=14]
+[ext_resource path="res://hitnhurtboxes/SeenBox.tscn" type="PackedScene" id=15]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 93.1304, 29.1536 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 333.364, 46.7454 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 313.768, 32.0096 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 249.023, 33.7595 )
 
 [node name="Cave02" type="Node2D"]
 script = ExtResource( 8 )
 
 [node name="BG" parent="." instance=ExtResource( 6 )]
-margin_left = -866.0
-margin_top = -1168.0
-margin_right = 3119.0
-margin_bottom = 1622.0
+margin_left = -861.439
+margin_top = -1158.88
+margin_right = 3123.56
+margin_bottom = 1631.12
 
 [node name="cave_02" type="Sprite" parent="."]
 position = Vector2( 964.282, 422.884 )
-scale = Vector2( 0.732686, 0.732686 )
 texture = ExtResource( 7 )
 __meta__ = {
 "_edit_lock_": true
@@ -34,7 +47,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="cave_02"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cave_02/StaticBody2D"]
-polygon = PoolVector2Array( -771.215, -24.4836, -723.982, 43.0619, -369.002, 41.143, -255.793, 0.848083, -75.4249, -2.98953, -63.666, -116.497, -41.4561, -189.473, 18.8285, -218.028, 94.9772, -208.51, 94.9772, -84.768, 93.4301, 12.3609, 289.148, 12.3609, 694.649, -18.1378, 681.957, -383.017, -739.486, -351.289 )
+polygon = PoolVector2Array( -552.186, 22.07, -380.819, 22.07, -255.793, 0.848083, -61.8123, 6.2515, -56.5394, -107.114, -32.8116, -165.116, 12.0074, -175.661, 62.0994, -167.752, 94.9772, -84.768, 93.4301, 12.3609, 289.148, 12.3609, 523.473, 6.2515, 507.654, -383.938, -554.822, -357.574 )
 
 [node name="YSort" type="YSort" parent="."]
 __meta__ = {
@@ -48,14 +61,13 @@ position = Vector2( 966.995, 723.136 )
 position = Vector2( 1038.4, 491.686 )
 
 [node name="stalags_05" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( 635.31, 621.484 )
+position = Vector2( 590.005, 624.504 )
 
 [node name="player" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 949.559, 990.169 )
+position = Vector2( 946.908, 966.313 )
 
 [node name="stalags_03" type="Sprite" parent="."]
 position = Vector2( 1213.16, 11.4083 )
-scale = Vector2( 0.603949, 0.603949 )
 texture = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
@@ -63,7 +75,6 @@ __meta__ = {
 
 [node name="stalags_01" type="Sprite" parent="."]
 position = Vector2( 800.008, -39.3778 )
-scale = Vector2( 0.642249, 0.509724 )
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
@@ -71,7 +82,6 @@ __meta__ = {
 
 [node name="cave_02_frame" type="Sprite" parent="."]
 position = Vector2( 963.305, 423.195 )
-scale = Vector2( 0.7321, 0.7321 )
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_lock_": true
@@ -79,6 +89,7 @@ __meta__ = {
 
 [node name="StaticBody2D" type="StaticBody2D" parent="cave_02_frame"]
 visible = false
+scale = Vector2( 0.7321, 0.7321 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cave_02_frame/StaticBody2D"]
 polygon = PoolVector2Array( -697.92, -20.2995, -707.439, 363.617, -704.266, 547.643, -652.532, 591.815, -478.14, 603.441, -284.371, 607.317, -179.736, 622.818, -129.356, 688.7, -137.107, 874.718, -140.982, 971.603, 99.2916, 987.104, 103.167, 797.21, 118.668, 684.824, 153.547, 630.569, 281.434, 626.694, 533.334, 618.943, 676.723, 607.317, 699.976, 510.432, 684.474, 289.535, 661.222, -8.86896, 661.222, -66.9997, 851.116, -78.6258, 878.243, 1095.61, -950.937, 1076.24, -923.809, -35.9966 )
@@ -145,8 +156,11 @@ position = Vector2( 7.54047, -518.746 )
 [node name="End" parent="Drops/PersistentWaterdrop7" index="1"]
 position = Vector2( 2.20575, 528.168 )
 
-[node name="SpawnPoint" parent="." instance=ExtResource( 10 )]
-position = Vector2( 957.114, 970.18 )
+[node name="BottomSpawnPoint" parent="." instance=ExtResource( 10 )]
+position = Vector2( 949.162, 951.625 )
+
+[node name="TopSpawnPoint" parent="." instance=ExtResource( 10 )]
+position = Vector2( 963.551, 462.393 )
 
 [node name="PuppyCamera" parent="." instance=ExtResource( 12 )]
 
@@ -155,6 +169,36 @@ position = Vector2( -686.747, -1049.5 )
 
 [node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
 position = Vector2( 2548.29, 1394.21 )
+
+[node name="BottomDoor" parent="." instance=ExtResource( 14 )]
+
+[node name="CollisionShape2D" parent="BottomDoor" index="0"]
+position = Vector2( 948.633, 1062.65 )
+shape = SubResource( 1 )
+
+[node name="StalagSeenBox1" parent="." instance=ExtResource( 15 )]
+position = Vector2( 1125.79, 749.274 )
+
+[node name="CollisionShape2D" parent="StalagSeenBox1" index="0"]
+shape = SubResource( 2 )
+
+[node name="StalagSeenBox2" parent="." instance=ExtResource( 15 )]
+position = Vector2( 1125.79, 749.274 )
+
+[node name="CollisionShape2D" parent="StalagSeenBox2" index="0"]
+position = Vector2( -367.47, -180.235 )
+shape = SubResource( 3 )
+
+[node name="StalagSeenBox3" parent="." instance=ExtResource( 15 )]
+position = Vector2( 1125.79, 749.274 )
+
+[node name="CollisionShape2D" parent="StalagSeenBox3" index="0"]
+position = Vector2( 50.7458, -283.477 )
+shape = SubResource( 4 )
+[connection signal="transition_triggered" from="BottomDoor" to="." method="_on_BottomDoor_transition_triggered"]
+[connection signal="seen" from="StalagSeenBox1" to="." method="_on_StalagSeenBox_seen"]
+[connection signal="seen" from="StalagSeenBox2" to="." method="_on_StalagSeenBox_seen"]
+[connection signal="seen" from="StalagSeenBox3" to="." method="_on_StalagSeenBox_seen"]
 
 [editable path="Drops/PersistentWaterdrop"]
 
@@ -171,3 +215,11 @@ position = Vector2( 2548.29, 1394.21 )
 [editable path="Drops/PersistentWaterdrop7"]
 
 [editable path="PuppyCamera"]
+
+[editable path="BottomDoor"]
+
+[editable path="StalagSeenBox1"]
+
+[editable path="StalagSeenBox2"]
+
+[editable path="StalagSeenBox3"]

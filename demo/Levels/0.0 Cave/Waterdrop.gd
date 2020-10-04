@@ -15,7 +15,6 @@ func play():
 	animation_tree.active = true
 	
 func start_tween():
-	print('tween')
 	animation_state.travel("falling")
 	var distance = start - end
 	var time_to_fall = speed / distance.length()

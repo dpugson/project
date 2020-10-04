@@ -14,6 +14,8 @@ var world_state : Dictionary = {}
 var curr_scene = null
 var player_position = null # [x,y]
 
+var spawn_metadata = null
+
 func player_position_save(position: Vector2):
 	if position == null:
 		player_position = null

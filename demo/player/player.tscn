@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/dog/d0.png" type="Texture" id=2]
@@ -36,7 +36,7 @@
 [ext_resource path="res://hitnhurtboxes/hurtbox.tscn" type="PackedScene" id=34]
 [ext_resource path="res://hitnhurtboxes/LookBox.tscn" type="PackedScene" id=35]
 
-[sub_resource type="SpriteFrames" id=36]
+[sub_resource type="SpriteFrames" id=53]
 animations = [ {
 "frames": [ ExtResource( 15 ) ],
 "loop": true,
@@ -49,7 +49,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=37]
+[sub_resource type="CapsuleShape2D" id=54]
 radius = 21.9327
 height = 64.3439
 
@@ -619,6 +619,10 @@ tracks/3/keys = {
 "values": [ 180.0 ]
 }
 
+[sub_resource type="CapsuleShape2D" id=37]
+radius = 21.9327
+height = 64.3439
+
 [sub_resource type="Animation" id=47]
 length = 0.4
 loop = true
@@ -985,13 +989,13 @@ script = ExtResource( 1 )
 visible = false
 position = Vector2( -1.70408, 66.9613 )
 scale = Vector2( 0.842484, 0.826121 )
-frames = SubResource( 36 )
+frames = SubResource( 53 )
 animation = "updown"
 
 [node name="DoggoCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 0.707214, 31.6103 )
 rotation = -1.5708
-shape = SubResource( 37 )
+shape = SubResource( 54 )
 
 [node name="DogAnimation" type="AnimatedSprite" parent="."]
 position = Vector2( 3.11467, -16.0672 )
