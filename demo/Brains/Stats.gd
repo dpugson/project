@@ -27,9 +27,10 @@ func player_position_get() -> Vector2:
 	p.y = player_position[1]
 	return p
 
-func spawn_player(player_parent, camera_path, position, orientation):
-	var player = Player.instance()
-	player_parent.add_child(player)
+func spawn_player(player, player_parent, camera_path, position, orientation):
+	if (player == null):
+		player = Player.instance()
+		player_parent.add_child(player)
 	player.position = position
 	if camera_path != null:
 		var transform = RemoteTransform2D.new()

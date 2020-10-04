@@ -15,18 +15,25 @@ onready var dialogue = {
 	"grab" : [
 		"ACTION", "You joyfully grab your greatest treasure", 0.01,
 		null,
-		[self, "grab_ball"]
+		[self, "grab_and_remove_ball"]
 	]
 }
 
 func _ready():
 	if stats.check_bool(TOOKBALL):
 		remove_ball()
-
+		
 func grab_ball():
 	stats.world_state[TOOKBALL] = true
 	stats.inventory_add('ball')
+
+func grab_and_remove_ball():
+	grab_ball()
 	remove_ball()
+	
+func grab_and_hide_ball():
+	grab_ball()
+	self.visible = false
 	
 func remove_ball():
 	queue_free()

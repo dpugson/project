@@ -5,6 +5,13 @@ onready var scratches = $Scratches
 onready var transition = Transition
 onready var spawnPoint = $SpawnPoint
 onready var stats = PlayerStats
+onready var player = $player
+onready var animation = $AnimationPlayer
+onready var tween = $Tween
+onready var timer = $Timer
+onready var door = $Door
+
+var in_cutscene = false
 
 func _ready():
 	var player_position = Vector2.ZERO
@@ -12,7 +19,7 @@ func _ready():
 		player_position = stats.player_position_get()
 	else:
 		player_position = spawnPoint.position
-	stats.spawn_player(self, null, player_position, Vector2.UP)
+	stats.spawn_player(player, self, null, player_position, Vector2.UP)
  
 const scratches_dialogue = {
 	"begin" : [
@@ -34,6 +41,50 @@ const leaves_dialogue = {
 func _on_LeafPile_seen():
 	DialogueHelper.showDialogue(self, leaves_dialogue)
 
+func walk_player_to_ball():
+	if in_cutscene:
+		return
+	in_cutscene = true
+	print("HI")
+	player.set_process_input(false)
+	player.cutscene_input = Vector2.ZERO
+	player.cutscene_mode = true
+	timer.connect("timeout", self, "play_tween")
+	timer.start()
+
+func play_tween():
+	player.cutscene_input = Vector2.DOWN
+	var anim_start_pos = Vector2.ZERO
+	anim_start_pos.x = 916.386
+	anim_start_pos.y = 560.484
+	tween.interpolate_property(
+		player,
+		"position",
+		player.position,
+		anim_start_pos,
+		1
+	)
+	tween.start()
+
+func _on_Tween_tween_completed(_object, _key):
+	player.cutscene_input = Vector2.RIGHT
+	animation.play("WalkToBall")
+	
+const cutscene_ball_dialogue = {
+"begin" : ["TEXT", "BALL!!!!", 0.02, null]
+}
+
+func play_cutscene_ball_dialogue():
+	DialogueHelper.showDialogue(self, cutscene_ball_dialogue)
+	
+func done_walking():
+	player.animation_state.travel("idle")
+	player.set_process_input(true)
+	player.cutscene_mode = false
+	self.set_deferred("in_cutscene", false)
 
 func _on_Door_transition_triggered():
-	transition.go_to("res://Levels/1.0 - Lab/Laboratory.tscn")
+	if !stats.check_bool("ball_took_ball"):
+		walk_player_to_ball()
+	else:
+		transition.go_to("res://Levels/Demo/ForestDemo.tscn")

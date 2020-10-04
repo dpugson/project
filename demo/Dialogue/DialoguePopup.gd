@@ -145,11 +145,11 @@ func hide_prompt():
 	nextButton.enabled_focus_mode = Control.FOCUS_NONE
 	
 func wait_for_next():
-	show_prompt("...")
+	show_prompt(">>")
 	waiting_for_input = INPUT_TYPE.NEXT
 	
 func wait_for_done():
-	show_prompt("good bye")
+	show_prompt(">>")
 	waiting_for_input = INPUT_TYPE.DONE
 	
 func wait_for_choice():

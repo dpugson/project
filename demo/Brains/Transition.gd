@@ -4,9 +4,9 @@ var target = null
 onready var animation = $AnimationPlayer
 onready var stats = PlayerStats
 
-func go_to(player, scene):
+func go_to(scene):
 	get_tree().paused = true
-	animation.play("transition")
+	animation.play("goto")
 	self.target = scene
 
 func _go_to():

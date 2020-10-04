@@ -12,6 +12,8 @@ enum {
 var speed = Vector2.DOWN
 var state = WALK
 var stats = PlayerStats
+var cutscene_mode: bool = false # for cutscenes
+export var cutscene_input: Vector2 = Vector2.DOWN
 
 onready var player_animation = $AnimationPlayer
 onready var animation_tree = $AnimationTree
@@ -38,12 +40,15 @@ func _input(event):
 func set_speed_to_zero():
 	speed = Vector2.ZERO
 
-func get_input(_delta):
-	var input = Vector2.ZERO
-	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	input = input.normalized()
-	return input
+func get_input(_delta) -> Vector2:
+	if cutscene_mode:
+		return cutscene_input
+	else:
+		var input = Vector2.ZERO
+		input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+		input.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+		input = input.normalized()
+		return input
 	
 func set_blend_positions(input):
 		animation_tree.set("parameters/idle/blend_position", input)
@@ -58,8 +63,9 @@ func move(delta, input):
 		set_blend_positions(input)
 	else:
 		speed = speed.move_toward(Vector2.ZERO, SLOW_DOWN * delta)
-		
-	speed = move_and_slide(speed)
+	
+	if not cutscene_mode:
+		speed = move_and_slide(speed)
 
 # STATES AND TRANSITIONS
 
