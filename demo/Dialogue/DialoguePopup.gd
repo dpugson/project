@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 export var SECONDS_PER_CHAR = 0.05
 
@@ -20,23 +20,30 @@ var dialogue = {
 	"2" : ["TEXT", "Well keep guessing!", 0.03, null]
 }
 
+var seen = {}
+
 var dialogue2 = {
-	"begin" : ["TEXT", "Do you like potatoes?", 0.03, [["yes", "1"], ["no", "2"]]],
-	"1" : ["TEXT", "Interesting...", 0.7, "wow"],
+	"begin" : ["TEXT", "Do you like potatoes?", 0.03, [["yes", "1"], ["no", "2", true]]],
+	"1" : ["TEXT", "Interesting...", 0.3, "wow"],
 	"wow": ["TEXT", "Truly you are a doggo of culture.", 0.03, null],
-	"2" : ["TEXT", "Weird!", 0.03, null]
+	"2" : ["TEXT", "Tell me the truth!!!", 0.03, "begin"]
 }
 
 signal print_next_character
-signal printing_done
 
 onready var timer = $Timer
 onready var nextButton = $Panel/MarginContainer/VBoxContainer/PlayerChoicesBottom/NextButton
 onready var textLabel = $Panel/MarginContainer/VBoxContainer/DialogueHBoxContainer/Text
 onready var playerChoices = $Panel/MarginContainer/VBoxContainer/PlayerChoicesBottom
+onready var panel = $Panel
+
+func enchild(thingy):
+	var main = thingy.get_tree().current_scene
+	main.add_child(self)
 
 func _ready():
 	init(dialogue2)
+	# warning-ignore:return_value_discarded
 	self.connect("print_next_character", self, "print_next_character")
 	start()
 
@@ -49,12 +56,13 @@ func init(input_text):
 	dialogue = input_text
 	
 func _input(event):
-	if event.is_action_pressed("accept"):
-		var focus = get_focus_owner()
-		if focus != null:
-			focus.pressed = true
-			handle_button_click()
-			return
+	if event.is_action_pressed("accept") or event.is_action_pressed("random_click"):
+		if !event.is_action_pressed("random_click"):
+			var focus = panel.get_focus_owner()
+			if focus != null and focus is Button:
+				focus.pressed = true
+				handle_button_click()
+				return
 		match waiting_for_input:
 			INPUT_TYPE.NEXT:
 				pass
@@ -70,9 +78,9 @@ func handle_button_click():
 		INPUT_TYPE.NEXT:
 			handle_next()
 		INPUT_TYPE.DONE:
-			queue_free()
+			stop()
 		INPUT_TYPE.CHOICE:
-			handle_next_choice()
+			handle_choice()
 		_:
 			skip_to_end()
 
@@ -82,14 +90,20 @@ func handle_next():
 	hide_prompt()
 	print_next_character()
 	
-func handle_next_choice():
+func handle_choice():
 	for button in options_container.get_children():
 		if button.pressed:
+			if button.name == "END":
+				stop()
+				return
 			dialogue_index = button.name
 	textLabel.text = ""
 	waiting_for_input = false
 	options_container.queue_free()
 	print_next_character()
+	
+func option_should_not_reappear(option):
+	return option.size() >= 3 and option[2] and seen.has(option[1])
 	
 func add_options(options):
 	options_container = HBoxContainer.new()
@@ -98,6 +112,8 @@ func add_options(options):
 	for option in options:
 		var prompt = option[0]
 		var target = option[1]
+		if option_should_not_reappear(option):
+			continue
 		var prompt_button = Button.new()
 		prompt_button.name = target
 		prompt_button.text = prompt
@@ -129,15 +145,18 @@ func hide_prompt():
 	nextButton.enabled_focus_mode = Control.FOCUS_NONE
 	
 func wait_for_next():
-	show_prompt("NEXT")
+	show_prompt("...")
 	waiting_for_input = INPUT_TYPE.NEXT
 	
 func wait_for_done():
-	show_prompt("DONE")
+	show_prompt("good bye")
 	waiting_for_input = INPUT_TYPE.DONE
 	
 func wait_for_choice():
 	waiting_for_input = INPUT_TYPE.CHOICE
+
+func get_type():
+	return get_row()[0]
 
 func get_text():
 	return get_row()[1]
@@ -147,6 +166,9 @@ func get_wait_time():
 	
 func get_next_dialogue():
 	return get_row()[3]
+	
+func get_action_info():
+	return get_row()[4]
 	
 func is_dialogue_at_end(index):
 	return index == null
@@ -167,6 +189,12 @@ func is_dialogue_a_choice(index):
 	return index is Array
 	
 func advance_dialogue_counter_and_wait():
+	if get_type() == "ACTION":
+		var action_stuff = get_action_info()
+		var obj = action_stuff[0]
+		var function = action_stuff[1]
+		obj.call(function)
+	seen[dialogue_index] = true
 	character_index = 0
 	dialogue_index = get_next_dialogue()
 	if is_dialogue_at_end(dialogue_index):
@@ -189,9 +217,12 @@ func print_next_character():
 	var character = get_text()[character_index]
 	render_character_and_continue(character, get_wait_time())
 
-
 func start():
 	print_next_character()
+	
+func stop():
+	queue_free()
+	get_tree().paused = false
 
 func render_character_and_continue(character, wait_time):
 	textLabel.text += character

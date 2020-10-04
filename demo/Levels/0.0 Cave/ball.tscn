@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://sprites/cavestuff/ball.png" type="Texture" id=1]
+[ext_resource path="res://hitnhurtboxes/SeenBox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/0.0 Cave/ball.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 63.1135
+
+[node name="ball" type="Sprite"]
+position = Vector2( 1165.26, 556.832 )
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="SeenBox" parent="." instance=ExtResource( 2 )]
+
+[node name="CollisionShape2D" parent="SeenBox" index="0"]
+shape = SubResource( 1 )
+[connection signal="seen" from="SeenBox" to="." method="_on_SeenBox_seen"]
+
+[editable path="SeenBox"]

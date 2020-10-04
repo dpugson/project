@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://sprites/cavestuff/skeleton_torso.png" type="Texture" id=1]
+[ext_resource path="res://sprites/cavestuff/bone.png" type="Texture" id=2]
+[ext_resource path="res://hitnhurtboxes/SeenBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/0.0 Cave/skeleton_torso.gd" type="Script" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 109.964
+height = 98.4587
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 34.3641
+height = 30.0218
+
+[node name="skeleton_torso" type="Sprite"]
+position = Vector2( 724.582, 472.683 )
+texture = ExtResource( 1 )
+script = ExtResource( 4 )
+
+[node name="bone" type="Sprite" parent="."]
+position = Vector2( 0, 99.6503 )
+texture = ExtResource( 2 )
+
+[node name="SeenBox" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="CollisionShape2D" parent="SeenBox" index="0"]
+position = Vector2( -1.03638, 11.4007 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -16.5825, 53.894 )
+rotation = -2.24798
+shape = SubResource( 2 )
+
+[editable path="SeenBox"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/lab_stuff/camera.png" type="Texture" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera" type="Sprite" parent="."]
+position = Vector2( 50.9239, -289.752 )
+texture = ExtResource( 1 )

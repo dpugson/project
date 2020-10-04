@@ -22,34 +22,41 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer"]
-margin_left = 811.0
-margin_top = 344.0
-margin_right = 1111.0
-margin_bottom = 740.0
+margin_left = 805.0
+margin_top = 290.0
+margin_right = 1117.0
+margin_bottom = 794.0
 
 [node name="Title" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
-margin_right = 300.0
+margin_right = 312.0
 margin_bottom = 72.0
 text = "DOGGO QUEST"
 align = 1
 
 [node name="Start" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
 margin_top = 76.0
-margin_right = 300.0
+margin_right = 312.0
 margin_bottom = 180.0
-text = "Start"
+text = "Woods Demo"
+
+[node name="Cave" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_top = 184.0
+margin_right = 312.0
+margin_bottom = 288.0
+text = "Cave"
 
 [node name="Lab" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
-margin_top = 184.0
-margin_right = 300.0
-margin_bottom = 288.0
-text = "Start"
+margin_top = 292.0
+margin_right = 312.0
+margin_bottom = 396.0
+text = "Lab"
 
 [node name="Quit" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
-margin_top = 292.0
-margin_right = 300.0
-margin_bottom = 396.0
+margin_top = 400.0
+margin_right = 312.0
+margin_bottom = 504.0
 text = "Quit"
 [connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/Cave" to="." method="_on_Cave_pressed"]
 [connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/Lab" to="." method="_on_Lab_pressed"]
 [connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

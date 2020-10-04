@@ -8,11 +8,12 @@ export(bool) var show_hit = false
 var invincible = false setget set_invincible
 
 onready var timer = $Timer
+onready var collisionShape = $CollisionShape2D
 
 signal invincibility_started
 signal invincibility_ended
 
-func _on_HurtBox_area_entered(area):
+func _on_HurtBox_area_entered(_area):
 	if show_hit:
 		EffectHelper.place_effect_global(self, Effect)
 		
@@ -32,7 +33,7 @@ func _on_Timer_timeout():
 	self.invincible = false
 
 func _on_HurtBox_invincibility_started():
-	set_deferred("monitorable", false)
+	collisionShape.set_deferred("disabled", true)
 
 func _on_HurtBox_invincibility_ended():
-	set_deferred("monitorable", true)
+	collisionShape.set_deferred("disabled", false)

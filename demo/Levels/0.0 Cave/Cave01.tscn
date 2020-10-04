@@ -1,0 +1,71 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://sprites/cavestuff/cave_01.png" type="Texture" id=1]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/0.0 Cave/ball.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/0.0 Cave/skeleton_torso.tscn" type="PackedScene" id=5]
+[ext_resource path="res://hitnhurtboxes/SeenBox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/0.0 Cave/Cave01.gd" type="Script" id=7]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=8]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 41.0784
+height = 136.531
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 152.219
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 67.7385, 120.597 )
+
+[node name="Cave01" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="BG" parent="." instance=ExtResource( 2 )]
+color = Color( 0.0352941, 0.0352941, 0.0352941, 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="cave_01" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 916.138, 499.502 )
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 874.284, 118.264, 865.085, 279.254, 846.686, 442.545, 756.991, 463.244, 649.863, 527.602, 619.134, 619.728, 613.581, 742.813, 624.686, 822.402, 662.697, 909.418, 728.337, 958.444, 817.18, 994.536, 932.862, 993.611, 1051.32, 962.145, 1170.7, 891.811, 1213.27, 794.639, 1225.3, 686.361, 1208.65, 611.399, 1152.57, 525.34, 1099.67, 481.643, 982.378, 449.444, 986.978, 274.655, 991.578, 111.364, 1032.98, 111.364, 1101.97, 95.2651, 1233.06, 228.657, 1258.36, 295.353, 1285.96, 493.142, 1281.36, 769.126, 1251.46, 888.719, 1147.97, 999.112, 996.177, 1056.61, 853.586, 1075.01, 738.592, 1049.71, 641.998, 978.414, 561.503, 870.32, 559.203, 684.031, 552.303, 454.044, 568.402, 311.452, 639.698, 194.159, 750.092, 65.3669 )
+
+[node name="skeleton_torso" parent="." instance=ExtResource( 5 )]
+
+[node name="ball" parent="." instance=ExtResource( 4 )]
+
+[node name="Scratches" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1092.49, 416.347 )
+
+[node name="CollisionShape2D" parent="Scratches" index="0"]
+position = Vector2( 9.48022, 6.32013 )
+rotation = -1.19031
+shape = SubResource( 1 )
+
+[node name="LeafPile" parent="." instance=ExtResource( 6 )]
+
+[node name="CollisionShape2D" parent="LeafPile" index="0"]
+position = Vector2( 913.816, 715.04 )
+shape = SubResource( 2 )
+
+[node name="Door" parent="." instance=ExtResource( 8 )]
+
+[node name="CollisionShape2D" parent="Door" index="0"]
+position = Vector2( 929.757, 181.015 )
+shape = SubResource( 3 )
+
+[node name="SpawnPoint" parent="." instance=ExtResource( 3 )]
+position = Vector2( 910.558, 685.661 )
+[connection signal="seen" from="Scratches" to="." method="_on_Scratches_seen"]
+[connection signal="seen" from="LeafPile" to="." method="_on_LeafPile_seen"]
+[connection signal="transition_triggered" from="Door" to="." method="_on_Door_transition_triggered"]
+
+[editable path="Scratches"]
+
+[editable path="LeafPile"]
+
+[editable path="Door"]

@@ -1,12 +1,15 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://world/Walls/ForestWallStaggered.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/trees/treetiles/treetiles_ur.png" type="Texture" id=2]
 [ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sprites/trees/treetiles/treetiles_ul.png" type="Texture" id=5]
 [ext_resource path="res://sprites/trees/mediumtree2.png" type="Texture" id=6]
 [ext_resource path="res://sprites/trees/mediumtree1.png" type="Texture" id=7]
 [ext_resource path="res://sprites/trees/treetiles/treetiles_br.png" type="Texture" id=8]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Levels/Demo/ForestDemo.gd" type="Script" id=10]
 [ext_resource path="res://sprites/trees/treetiles/treetiles_r.png" type="Texture" id=12]
 [ext_resource path="res://sprites/trees/treetiles/treetiles_l.png" type="Texture" id=13]
 [ext_resource path="res://sprites/trees/treetiles/treetiles_bl.png" type="Texture" id=14]
@@ -16,11 +19,11 @@
 [ext_resource path="res://world/Floors/DarkLeafFloor.tscn" type="PackedScene" id=18]
 [ext_resource path="res://world/Floors/BrightLeafFloor.tscn" type="PackedScene" id=19]
 [ext_resource path="res://world/leaf_pile.tscn" type="PackedScene" id=20]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=21]
 [ext_resource path="res://world/Walls/ForestFench.tscn" type="PackedScene" id=22]
 [ext_resource path="res://world/creepy_tree.tscn" type="PackedScene" id=23]
 
 [node name="ForestDemo" type="Node2D"]
+script = ExtResource( 10 )
 
 [node name="DarkLeafFloor" parent="." instance=ExtResource( 18 )]
 position = Vector2( -2853.53, -2456.37 )
@@ -108,21 +111,23 @@ position = Vector2( 650.748, 233.224 )
 [node name="LeafPile25" parent="LeafPiles" instance=ExtResource( 20 )]
 position = Vector2( 718.54, 199.328 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="PuppyCamera" parent="." instance=ExtResource( 4 )]
 position = Vector2( 253, 166 )
-current = true
-smoothing_enabled = true
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -2207.02, -773.249 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 2784.19, 1537.01 )
 
 [node name="YSortedThings" type="YSort" parent="."]
 
-[node name="player" parent="YSortedThings" instance=ExtResource( 21 )]
-position = Vector2( 253, 166 )
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSortedThings/player"]
-remote_path = NodePath("../../../Camera2D")
-
 [node name="OuterWall" type="YSort" parent="YSortedThings"]
 position = Vector2( 317.275, -1009.66 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="randomoutertrees" type="YSort" parent="YSortedThings/OuterWall"]
 position = Vector2( 0.000366211, 0.000244141 )
@@ -212,6 +217,10 @@ __meta__ = {
 polygon = PoolVector2Array( 2037.67, 2217.73, 1846.65, 2342.63, -1812.03, 2335.28, -2025.09, 2225.08, -2017.74, 711.648, -1789.99, 616.14, -1812.03, 351.657, -2429.16, 579.406, -2252.84, 2496.91, -1914.88, 2614.46, 2022.98, 2658.54, 2338.89, 2349.97, 2382.97, 498.592, 1846.65, 366.35, 1824.61, 616.14, 2030.32, 733.688 )
 
 [node name="Trees" type="YSort" parent="YSortedThings"]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="creepy_tree" parent="YSortedThings/Trees" instance=ExtResource( 23 )]
 position = Vector2( 463.246, 271.419 )
@@ -229,6 +238,10 @@ position = Vector2( 920.092, 908.313 )
 position = Vector2( 1457.29, 524.735 )
 
 [node name="enemies" type="YSort" parent="YSortedThings"]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Whizfluff" parent="YSortedThings/enemies" instance=ExtResource( 17 )]
 position = Vector2( 1105.01, 377.981 )
@@ -255,7 +268,7 @@ position = Vector2( 1171.83, 184.437 )
 position = Vector2( 1212.97, 306.192 )
 
 [node name="Whizfluff10" parent="YSortedThings/enemies" instance=ExtResource( 17 )]
-position = Vector2( 1013.88, 483.889 )
+position = Vector2( 1052.07, 459.588 )
 
 [node name="Whizfluff11" parent="YSortedThings/enemies" instance=ExtResource( 17 )]
 position = Vector2( 1275.49, 584.255 )
@@ -276,3 +289,8 @@ margin_left = 30.6773
 margin_top = 35.7902
 margin_right = 70.6773
 margin_bottom = 75.7902
+
+[node name="SpawnPoint" parent="." instance=ExtResource( 9 )]
+position = Vector2( -500.497, 422.53 )
+
+[editable path="PuppyCamera"]
