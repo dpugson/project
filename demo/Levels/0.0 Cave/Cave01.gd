@@ -84,7 +84,8 @@ func done_walking():
 	self.set_deferred("in_cutscene", false)
 
 func _on_Door_transition_triggered():
-	if !stats.check_bool("ball_took_ball"):
-		walk_player_to_ball()
-	else:
-		transition.go_to("res://Levels/Demo/ForestDemo.tscn")
+#	if !stats.check_bool("ball_took_ball"):
+#		walk_player_to_ball()
+#	else:
+#		transition.go_to("res://Levels/0.0 Cave/Cave02.tscn")
+	transition.go_to("res://Levels/0.0 Cave/Cave02.tscn")

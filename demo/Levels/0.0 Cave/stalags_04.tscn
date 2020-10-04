@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/cavestuff/stalags_04.png" type="Texture" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="stalags_04" type="Sprite" parent="."]
+position = Vector2( -784.619, -412.337 )
+scale = Vector2( 1, 0.860119 )
+texture = ExtResource( 1 )
+offset = Vector2( 764.955, 130.25 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="stalags_04"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="stalags_04/StaticBody2D"]
+polygon = PoolVector2Array( 348.689, 514.267, 404.136, 525.739, 465.318, 523.827, 595.331, 518.091, 859.18, 514.267, 1002.58, 518.091, 1142.15, 504.708, 1172.74, 498.972, 1172.74, 460.733, 669.897, 485.588, 518.853, 502.796, 442.375, 502.796, 406.048, 506.62 )

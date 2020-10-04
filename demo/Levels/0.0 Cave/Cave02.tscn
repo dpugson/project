@@ -1,0 +1,173 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Levels/0.0 Cave/stalags_02.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/cavestuff/stalags_01.png" type="Texture" id=2]
+[ext_resource path="res://Levels/0.0 Cave/stalags_04.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/cavestuff/cave_02_frame.png" type="Texture" id=4]
+[ext_resource path="res://sprites/cavestuff/stalags_03.png" type="Texture" id=5]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sprites/cavestuff/cave_02.png" type="Texture" id=7]
+[ext_resource path="res://Levels/0.0 Cave/Cave02.gd" type="Script" id=8]
+[ext_resource path="res://Levels/0.0 Cave/stalags_05.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=10]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Levels/0.0 Cave/PersistentWaterdrop.tscn" type="PackedScene" id=13]
+
+[node name="Cave02" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="BG" parent="." instance=ExtResource( 6 )]
+margin_left = -866.0
+margin_top = -1168.0
+margin_right = 3119.0
+margin_bottom = 1622.0
+
+[node name="cave_02" type="Sprite" parent="."]
+position = Vector2( 964.282, 422.884 )
+scale = Vector2( 0.732686, 0.732686 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="cave_02"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cave_02/StaticBody2D"]
+polygon = PoolVector2Array( -771.215, -24.4836, -723.982, 43.0619, -369.002, 41.143, -255.793, 0.848083, -75.4249, -2.98953, -63.666, -116.497, -41.4561, -189.473, 18.8285, -218.028, 94.9772, -208.51, 94.9772, -84.768, 93.4301, 12.3609, 289.148, 12.3609, 694.649, -18.1378, 681.957, -383.017, -739.486, -351.289 )
+
+[node name="YSort" type="YSort" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="stalags_02" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 966.995, 723.136 )
+
+[node name="stalags_04" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 1038.4, 491.686 )
+
+[node name="stalags_05" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 635.31, 621.484 )
+
+[node name="player" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 949.559, 990.169 )
+
+[node name="stalags_03" type="Sprite" parent="."]
+position = Vector2( 1213.16, 11.4083 )
+scale = Vector2( 0.603949, 0.603949 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="stalags_01" type="Sprite" parent="."]
+position = Vector2( 800.008, -39.3778 )
+scale = Vector2( 0.642249, 0.509724 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="cave_02_frame" type="Sprite" parent="."]
+position = Vector2( 963.305, 423.195 )
+scale = Vector2( 0.7321, 0.7321 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="cave_02_frame"]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cave_02_frame/StaticBody2D"]
+polygon = PoolVector2Array( -697.92, -20.2995, -707.439, 363.617, -704.266, 547.643, -652.532, 591.815, -478.14, 603.441, -284.371, 607.317, -179.736, 622.818, -129.356, 688.7, -137.107, 874.718, -140.982, 971.603, 99.2916, 987.104, 103.167, 797.21, 118.668, 684.824, 153.547, 630.569, 281.434, 626.694, 533.334, 618.943, 676.723, 607.317, 699.976, 510.432, 684.474, 289.535, 661.222, -8.86896, 661.222, -66.9997, 851.116, -78.6258, 878.243, 1095.61, -950.937, 1076.24, -923.809, -35.9966 )
+
+[node name="Drops" type="Node2D" parent="."]
+
+[node name="PersistentWaterdrop" parent="Drops" instance=ExtResource( 13 )]
+position = Vector2( 845.066, 127.813 )
+wait_time = 1.0
+
+[node name="Start" parent="Drops/PersistentWaterdrop" index="0"]
+position = Vector2( 2.77533, -90.9092 )
+
+[node name="End" parent="Drops/PersistentWaterdrop" index="1"]
+position = Vector2( 1.68677, 178.732 )
+
+[node name="PersistentWaterdrop2" parent="Drops" instance=ExtResource( 13 )]
+position = Vector2( 1275.96, 267.958 )
+wait_time = 0.9
+
+[node name="Start" parent="Drops/PersistentWaterdrop2" index="0"]
+position = Vector2( 13.2339, -419.307 )
+
+[node name="End" parent="Drops/PersistentWaterdrop2" index="1"]
+position = Vector2( 1.68677, 178.732 )
+
+[node name="PersistentWaterdrop3" parent="Drops" instance=ExtResource( 13 )]
+position = Vector2( 633.803, 452.028 )
+wait_time = 2.0
+
+[node name="Start" parent="Drops/PersistentWaterdrop3" index="0"]
+position = Vector2( 13.2339, -419.307 )
+
+[node name="End" parent="Drops/PersistentWaterdrop3" index="1"]
+position = Vector2( 21.5382, 112.56 )
+
+[node name="PersistentWaterdrop4" parent="Drops" instance=ExtResource( 13 )]
+position = Vector2( 476.632, 157.418 )
+
+[node name="End" parent="Drops/PersistentWaterdrop4" index="1"]
+position = Vector2( -8.82263, 325.243 )
+
+[node name="PersistentWaterdrop5" parent="Drops" instance=ExtResource( 13 )]
+position = Vector2( 1369.95, 111.098 )
+wait_time = 2.2
+
+[node name="End" parent="Drops/PersistentWaterdrop5" index="1"]
+position = Vector2( -15.4399, 254.66 )
+
+[node name="PersistentWaterdrop6" parent="Drops" instance=ExtResource( 13 )]
+position = Vector2( 1131.73, 86.8354 )
+wait_time = 0.5
+
+[node name="End" parent="Drops/PersistentWaterdrop6" index="1"]
+position = Vector2( -15.4399, 232.603 )
+
+[node name="PersistentWaterdrop7" parent="Drops" instance=ExtResource( 13 )]
+position = Vector2( 1116.29, 360.344 )
+wait_time = 1.9
+
+[node name="Start" parent="Drops/PersistentWaterdrop7" index="0"]
+position = Vector2( 7.54047, -518.746 )
+
+[node name="End" parent="Drops/PersistentWaterdrop7" index="1"]
+position = Vector2( 2.20575, 528.168 )
+
+[node name="SpawnPoint" parent="." instance=ExtResource( 10 )]
+position = Vector2( 957.114, 970.18 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 12 )]
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -686.747, -1049.5 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 2548.29, 1394.21 )
+
+[editable path="Drops/PersistentWaterdrop"]
+
+[editable path="Drops/PersistentWaterdrop2"]
+
+[editable path="Drops/PersistentWaterdrop3"]
+
+[editable path="Drops/PersistentWaterdrop4"]
+
+[editable path="Drops/PersistentWaterdrop5"]
+
+[editable path="Drops/PersistentWaterdrop6"]
+
+[editable path="Drops/PersistentWaterdrop7"]
+
+[editable path="PuppyCamera"]

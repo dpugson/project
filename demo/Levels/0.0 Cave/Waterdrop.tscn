@@ -1,0 +1,178 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://sprites/cavestuff/waterdrop/d6.png" type="Texture" id=1]
+[ext_resource path="res://sprites/cavestuff/waterdrop/d2.png" type="Texture" id=2]
+[ext_resource path="res://sprites/cavestuff/waterdrop/d4.png" type="Texture" id=3]
+[ext_resource path="res://sprites/cavestuff/waterdrop/d1.png" type="Texture" id=4]
+[ext_resource path="res://sprites/cavestuff/waterdrop/d3.png" type="Texture" id=5]
+[ext_resource path="res://sprites/cavestuff/waterdrop/d5.png" type="Texture" id=6]
+[ext_resource path="res://Levels/0.0 Cave/Waterdrop.gd" type="Script" id=7]
+
+[sub_resource type="Animation" id=3]
+resource_name = "falling"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "get_ready"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_tween"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "splat"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 1 ) ],
+"loop": false,
+"name": "drop",
+"speed": 5.0
+} ]
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "falling"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "get_ready"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "splat"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachine" id=11]
+states/falling/node = SubResource( 5 )
+states/falling/position = Vector2( 455, 89 )
+states/get_ready/node = SubResource( 6 )
+states/get_ready/position = Vector2( 269, 89 )
+states/splat/node = SubResource( 7 )
+states/splat/position = Vector2( 360, 174 )
+transitions = [ "get_ready", "falling", SubResource( 8 ), "falling", "splat", SubResource( 9 ), "splat", "get_ready", SubResource( 10 ) ]
+start_node = "get_ready"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=12]
+
+[node name="Waterdrop" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/falling = SubResource( 3 )
+anims/get_ready = SubResource( 2 )
+anims/splat = SubResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 1.22804, -60.9185 )
+frames = SubResource( 1 )
+animation = "drop"
+frame = 5
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 11 )
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource( 12 )
+[connection signal="tween_completed" from="Tween" to="." method="finish_animation"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Levels/0.0 Cave/PersistentWaterdrop.gd" type="Script" id=1]
+
+[node name="PersistentWaterdrop" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Start" type="Position2D" parent="."]
+position = Vector2( -6.10352e-05, -105.2 )
+
+[node name="End" type="Position2D" parent="."]
+position = Vector2( 0.000183105, 199.517 )
+
+[node name="Timer" type="Timer" parent="."]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
