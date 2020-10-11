@@ -9,6 +9,8 @@
 [ext_resource path="res://Levels/1.0 - Lab/LabDoor.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Levels/1.0 - Lab/Camera.tscn" type="PackedScene" id=9]
 
+
+
 [node name="Laboratory" type="Node2D"]
 position = Vector2( 12092.1, -8048.92 )
 script = ExtResource( 3 )

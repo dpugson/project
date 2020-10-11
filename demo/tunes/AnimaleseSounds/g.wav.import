@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/g.wav-464f83e36515b589a7cb8b347ebc1eea.sample"
+
+[deps]
+
+source_file="res://tunes/AnimaleseSounds/g.wav"
+dest_files=[ "res://.import/g.wav-464f83e36515b589a7cb8b347ebc1eea.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

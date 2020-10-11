@@ -20,3 +20,10 @@ const memoryofsalt = {
 	name = "A Memory of Salt",
 	description = "You remember what it means, to be salty."
 }
+
+const swimming_cert = {
+	type = "wall",
+	image = "res://sprites/items/swim_certification.png", 
+	name = "Swimming Certification",
+	description = "Swimming comes from the heart!!!"
+}

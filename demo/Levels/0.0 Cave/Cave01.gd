@@ -15,6 +15,7 @@ onready var doorSpawnPoint = $DoorSpawnPoint
 var in_cutscene = false
 
 func _ready():
+	Jukebox.play_song("res://tunes/cave/fallen.wav")
 	var player_position = Vector2.ZERO
 	var player_orientation = Vector2.UP
 	if stats.spawn_metadata == "door":
@@ -35,7 +36,7 @@ const scratches_dialogue = {
 	]
 }
 
-func _on_Scratches_seen():
+func _on_Scratches_seen(_obj):
 	DialogueHelper.showDialogue(self, scratches_dialogue)
 
 const leaves_dialogue = {
@@ -45,7 +46,7 @@ const leaves_dialogue = {
 	]
 }
 
-func _on_LeafPile_seen():
+func _on_LeafPile_seen(_obj):
 	DialogueHelper.showDialogue(self, leaves_dialogue)
 
 func walk_player_to_ball():

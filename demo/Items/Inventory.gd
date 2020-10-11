@@ -7,6 +7,10 @@ onready var item_description = $Description/MarginContainer/VBoxContainer/ItemDe
 onready var button_theme = preload("res://Themes/ListButtonTheme.tres")
 onready var exit_button = $List/Button
 
+func _input(event):
+	if event.is_action_pressed("menu"):
+		self.call_deferred("close_menu")
+
 func enchild(obj):
 	obj.add_child(self)
 	
@@ -52,7 +56,9 @@ func _ready():
 			label.grab_focus()
 			first = false
 
-
 func _on_Button_pressed():
+	close_menu()
+	
+func close_menu():
 	get_tree().paused = false
 	queue_free()

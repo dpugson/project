@@ -3,7 +3,7 @@ extends Node2D
 onready var cave = $ColorRect/CenterContainer/VBoxContainer/Cave
 
 func _ready():
-	cave.grab_focus()
+	_on_Cave_pressed()
 
 func _on_Start_pressed():
 	get_tree().change_scene("res://Levels/Demo/ForestDemo.tscn")

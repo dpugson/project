@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://BG.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/cavestuff/cliff.png" type="Texture" id=2]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/0.0 Cave/Cliff.gd" type="Script" id=4]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 51.2814
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="BG" parent="." instance=ExtResource( 1 )]
+margin_left = -447.864
+margin_top = -394.454
+margin_right = 2374.14
+margin_bottom = 1710.55
+
+[node name="cliff" type="Sprite" parent="."]
+position = Vector2( 390.723, 565.634 )
+texture = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 288.978, 250.687, 305.44, 372.091, 367.171, 343.283, 463.883, 361.803, 523.556, 367.976, 595.576, 363.86, 622.326, 376.207, 626.442, 394.726, 589.403, 417.361, 525.614, 439.995, 447.421, 458.515, 381.575, 466.745, 332.19, 481.149, 270.459, 491.438, 204.613, 495.553, 157.285, 507.9, 237.536, 433.822, 233.42, 283.61, 81.1505, 413.245, 35.881, 658.112, 762.25, 565.515, 809.577, 263.033 )
+
+[node name="TransitionZone" parent="." instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" parent="TransitionZone" index="0"]
+position = Vector2( 249.508, 341.718 )
+shape = SubResource( 1 )
+
+[node name="player" parent="." instance=ExtResource( 5 )]
+position = Vector2( 341.718, 383.302 )
+[connection signal="transition_triggered" from="TransitionZone" to="." method="_on_TransitionZone_transition_triggered"]
+
+[editable path="TransitionZone"]

@@ -38,5 +38,5 @@ func grab_and_hide_ball():
 func remove_ball():
 	queue_free()
 
-func _on_SeenBox_seen():
+func _on_SeenBox_seen(_obj):
 	DialogueHelper.showDialogue(self, dialogue)

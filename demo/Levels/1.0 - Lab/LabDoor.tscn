@@ -4,6 +4,8 @@
 [ext_resource path="res://sprites/lab_stuff/door.png" type="Texture" id=2]
 [ext_resource path="res://Levels/1.0 - Lab/LabDoor.gd" type="Script" id=3]
 
+
+
 [sub_resource type="Animation" id=1]
 resource_name = "Closed"
 tracks/0/type = "value"

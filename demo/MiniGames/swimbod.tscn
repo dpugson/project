@@ -1,0 +1,271 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://sprites/cavestuff/swiminigame/swim_back_leg.png" type="Texture" id=1]
+[ext_resource path="res://sprites/cavestuff/swiminigame/swim_front_leg.png" type="Texture" id=2]
+[ext_resource path="res://sprites/cavestuff/swiminigame/swimbod.png" type="Texture" id=3]
+[ext_resource path="res://MiniGames/swimbod.gd" type="Script" id=4]
+[ext_resource path="res://hitnhurtboxes/hitbox.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "SWIM_DOWN"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("swim_back_leg:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -25.6534, 106.521 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("swim_back_leg:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -65.918, 35.608 ), Vector2( -65.918, 35.608 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("swim_back_leg2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -37.8048, 46.8533 ), Vector2( -37.8048, 46.8533 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("swim_back_leg2:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -27.9567, 112.852 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("swim_front_leg:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 22.6385, 46.8533 ), Vector2( 22.6385, 46.8533 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("swim_front_leg:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 21.9961, -120.369 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("swim_front_leg2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 56.3742, 42.6363 ), Vector2( 56.3742, 42.6363 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("swim_front_leg2:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 22.5659, -112.773 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "SWIM_UP"
+length = 0.05
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("swim_back_leg:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 106.521, -25.6534 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("swim_back_leg:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -65.918, 35.608 ), Vector2( -65.918, 35.608 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("swim_back_leg2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -37.8048, 46.8533 ), Vector2( -37.8048, 46.8533 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("swim_back_leg2:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 112.852, -27.9567 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("swim_front_leg:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 22.6385, 46.8533 ), Vector2( 22.6385, 46.8533 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("swim_front_leg:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -120.369, 21.9961 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("swim_front_leg2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 56.3742, 42.6363 ), Vector2( 56.3742, 42.6363 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("swim_front_leg2:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -112.773, 22.5659 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 40.3462
+height = 66.3675
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 35.2111
+height = 115.182
+
+[node name="swimbod" type="KinematicBody2D"]
+collision_layer = 258
+collision_mask = 257
+script = ExtResource( 4 )
+
+[node name="swimbod" type="Sprite" parent="."]
+position = Vector2( -1.97147, -0.902328 )
+texture = ExtResource( 3 )
+
+[node name="swim_back_leg" type="Sprite" parent="swimbod"]
+position = Vector2( -65.918, 35.608 )
+rotation = -0.447736
+texture = ExtResource( 1 )
+offset = Vector2( -19.2533, 47.4329 )
+
+[node name="swim_back_leg2" type="Sprite" parent="swimbod"]
+show_behind_parent = true
+position = Vector2( -37.8048, 46.8533 )
+rotation = -0.487937
+texture = ExtResource( 1 )
+offset = Vector2( -19.547, 48.1356 )
+
+[node name="swim_front_leg" type="Sprite" parent="swimbod"]
+position = Vector2( 22.6385, 46.8533 )
+rotation = 0.383904
+texture = ExtResource( 2 )
+offset = Vector2( 22.1675, 42.7589 )
+
+[node name="swim_front_leg2" type="Sprite" parent="swimbod"]
+show_behind_parent = true
+position = Vector2( 56.3742, 42.6363 )
+rotation = 0.39385
+texture = ExtResource( 2 )
+offset = Vector2( 20.6921, 39.8068 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="swimbod"]
+anims/SWIM_DOWN = SubResource( 1 )
+anims/SWIM_UP = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -7.02826, 9.8396 )
+rotation = 1.5708
+shape = SubResource( 3 )
+
+[node name="HitBox" parent="." instance=ExtResource( 5 )]
+collision_layer = 258
+collision_mask = 258
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+rotation = 1.55074
+shape = SubResource( 4 )
+
+[editable path="HitBox"]

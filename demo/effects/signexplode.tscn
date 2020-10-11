@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://sprites/cavestuff/sign/sign_e0.png" type="Texture" id=1]
+[ext_resource path="res://sprites/cavestuff/sign/sign_e2.png" type="Texture" id=2]
+[ext_resource path="res://effects/signexplode.gd" type="Script" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "animate",
+"speed": 20.0
+} ]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="SignExplode" type="AnimatedSprite" parent="."]
+position = Vector2( -2.2821, -130.087 )
+frames = SubResource( 1 )
+animation = "animate"
+script = ExtResource( 3 )

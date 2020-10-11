@@ -14,7 +14,7 @@ var dialogue_bone_there = {
 		"TEXT", 
 		"It's a dry old skelebones...", 0.03,
 		[
-			["Yup, cool.", "END"],
+			["Yup, cool.", null],
 			["Hmm...", "considerbone"]
 		]
 	],
@@ -40,7 +40,7 @@ var dialogue_bone_gone = {
 		"TEXT", 
 		"It's a dry old skelebones, minus one bone...", 0.03,
 		[
-			["Thank Mr. Skeltal.", "END"],
+			["Thank Mr. Skeltal.", null],
 		]
 	],
 }
@@ -63,5 +63,5 @@ func _ready():
 			remove_bone()
 	seenBox.connect("seen", self, "showDialogue")
 
-func showDialogue():
+func showDialogue(_obj):
 	DialogueHelper.showDialogue(self, dialogue)

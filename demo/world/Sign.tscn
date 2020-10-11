@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://sprites/cavestuff/sign/sign.png" type="Texture" id=1]
+[ext_resource path="res://world/Sign.gd" type="Script" id=2]
+[ext_resource path="res://hitnhurtboxes/SeenBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://hitnhurtboxes/hurtbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Brains/Stats.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/dogshadow.png" type="Texture" id=6]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 7.39068
+height = 87.1771
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 44.6931, 46.5597 )
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 82.7817
+height = 43.554
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Sign" type="Node2D"]
+position = Vector2( -0.933899, 0 )
+script = ExtResource( 2 )
+
+[node name="dogshadow" type="Sprite" parent="."]
+position = Vector2( 5.40823, 16.0386 )
+texture = ExtResource( 6 )
+
+[node name="Stats" parent="." instance=ExtResource( 5 )]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 0.933838, 15.8757 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 1.00446, -18.0107 )
+rotation = 1.5708
+scale = Vector2( 5.46323, 1.23635 )
+shape = SubResource( 1 )
+
+[node name="SeenBox" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0.933838, 15.8757 )
+
+[node name="CollisionShape2D" parent="SeenBox" index="0"]
+position = Vector2( 0.23163, -87.4602 )
+scale = Vector2( 1.67005, 2.08205 )
+shape = SubResource( 2 )
+
+[node name="HurtBox" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0.933838, 15.8757 )
+collision_layer = 16
+show_hit = true
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2( 0.337579, -87.3447 )
+shape = SubResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0.933838, -76.6977 )
+frames = SubResource( 4 )
+[connection signal="out_of_health" from="Stats" to="." method="_on_Stats_out_of_health"]
+[connection signal="seen" from="SeenBox" to="." method="_on_SeenBox_seen"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
+
+[editable path="SeenBox"]
+
+[editable path="HurtBox"]

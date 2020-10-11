@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/s.wav-2bd886c371de6830a4cf8983b20c2d23.sample"
+
+[deps]
+
+source_file="res://tunes/AnimaleseSounds/s.wav"
+dest_files=[ "res://.import/s.wav-2bd886c371de6830a4cf8983b20c2d23.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

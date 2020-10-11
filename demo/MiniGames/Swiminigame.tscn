@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://BG.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/cavestuff/swiminigame/mmsp_o1.png" type="Texture" id=2]
+[ext_resource path="res://MiniGames/swimbod.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/cavestuff/swiminigame/mmsp_01.png" type="Texture" id=4]
+[ext_resource path="res://sprites/cavestuff/swiminigame/mmsp_o2.png" type="Texture" id=5]
+[ext_resource path="res://MiniGames/Swiminigame.gd" type="Script" id=6]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=7]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 233.195
+
+[node name="Swiminigame" type="Node2D"]
+position = Vector2( -3.51154, 0 )
+script = ExtResource( 6 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BG" parent="CanvasLayer" instance=ExtResource( 1 )]
+visible = false
+margin_left = -301.385
+margin_top = -90.8379
+margin_right = 2520.62
+margin_bottom = 2014.17
+
+[node name="mmsp_01" type="Sprite" parent="CanvasLayer"]
+visible = false
+position = Vector2( 923.122, 641.956 )
+texture = ExtResource( 4 )
+
+[node name="swimbod" parent="CanvasLayer" instance=ExtResource( 3 )]
+position = Vector2( 937.816, 482.77 )
+
+[node name="mmsp_o1" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 923.122, 641.956 )
+texture = ExtResource( 2 )
+
+[node name="mmsp_o2" type="Sprite" parent="CanvasLayer"]
+visible = false
+position = Vector2( 923.122, 641.956 )
+texture = ExtResource( 5 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CanvasLayer"]
+position = Vector2( 917.877, 496.063 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CanvasLayer/StaticBody2D"]
+polygon = PoolVector2Array( -77.0198, 559.441, 91.9571, 561.664, 119.469, -593.797, 401.231, -327.668, 394.337, 675.056, -372.729, 679.503, -383.743, -345.001, -83.8006, -588.957 )
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+autostart = true
+
+[node name="TransitionZone" parent="CanvasLayer" instance=ExtResource( 7 )]
+position = Vector2( 935.356, -201.54 )
+
+[node name="CollisionShape2D" parent="CanvasLayer/TransitionZone" index="0"]
+position = Vector2( 5.6994, -11.0988 )
+shape = SubResource( 1 )
+[connection signal="timeout" from="CanvasLayer/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="transition_triggered" from="CanvasLayer/TransitionZone" to="." method="_on_TransitionZone_transition_triggered"]
+
+[editable path="CanvasLayer/TransitionZone"]

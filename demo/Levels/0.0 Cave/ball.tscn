@@ -4,6 +4,8 @@
 [ext_resource path="res://hitnhurtboxes/SeenBox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/0.0 Cave/ball.gd" type="Script" id=3]
 
+
+
 [sub_resource type="CircleShape2D" id=1]
 radius = 63.1135
 

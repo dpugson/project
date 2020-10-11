@@ -1,0 +1,129 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://sprites/dogswim/u0.png" type="Texture" id=1]
+[ext_resource path="res://sprites/dogswim/l0.png" type="Texture" id=2]
+[ext_resource path="res://sprites/dogswim/d0.png" type="Texture" id=3]
+[ext_resource path="res://sprites/dogswim/r0.png" type="Texture" id=4]
+[ext_resource path="res://effects/Ripples.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/cavestuff/waves/wave1.png" type="Texture" id=6]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/cavestuff/waves/wave3.png" type="Texture" id=8]
+[ext_resource path="res://sprites/cavestuff/waves/wave2.png" type="Texture" id=9]
+[ext_resource path="res://Levels/0.0 Cave/Riptide.gd" type="Script" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "backnforth"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("wave1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1022.83, 428.065 ), Vector2( 925.323, 425.627 ), Vector2( 1022.83, 428.065 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("wave2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 923.139, 455.583 ), Vector2( 1010.89, 453.145 ), Vector2( 923.139, 455.583 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("wave3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1031.03, 460.682 ), Vector2( 1082.22, 477.745 ), Vector2( 1031.03, 460.682 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "GO"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1996.75, 395.438 ), Vector2( -72.7563, 397.876 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "gotobathroom"
+} ]
+}
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( -3.36328, 5.14075 )
+script = ExtResource( 10 )
+
+[node name="wave1" type="Sprite" parent="."]
+position = Vector2( 1022.83, 428.065 )
+texture = ExtResource( 6 )
+
+[node name="wave2" type="Sprite" parent="."]
+position = Vector2( 923.139, 455.583 )
+texture = ExtResource( 9 )
+
+[node name="wave3" type="Sprite" parent="."]
+position = Vector2( 1031.03, 460.682 )
+texture = ExtResource( 8 )
+
+[node name="BG" parent="." instance=ExtResource( 7 )]
+margin_left = -438.531
+margin_top = -418.328
+margin_right = 2383.47
+margin_bottom = 1686.68
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -72.7563, 397.876 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="Ripples" parent="AnimatedSprite" instance=ExtResource( 5 )]
+show_behind_parent = true
+position = Vector2( -1.11269, 53.5009 )
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "backnforth"
+anims/backnforth = SubResource( 2 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/GO = SubResource( 3 )

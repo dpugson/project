@@ -1,0 +1,273 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/0.0 Cave/WaveTexture.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/0.0 Cave/BarkSalamanderEvent.tscn" type="PackedScene" id=3]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/0.0 Cave/CrumblyWall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/0.0 Cave/Cave03.gd" type="Script" id=7]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sprites/cavestuff/stichtogetherbigcave-min.png" type="Texture" id=9]
+[ext_resource path="res://world/Sign.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/0.0 Cave/PersistentWaterdrop.tscn" type="PackedScene" id=11]
+[ext_resource path="res://sprites/cavestuff/stitchedtogether-foregound-min.png" type="Texture" id=12]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=13]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 65.585, 96.4377 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 174.319, 390.536 )
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 48.1062
+
+[node name="Cave03" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="BG" parent="." instance=ExtResource( 4 )]
+margin_left = -441.942
+margin_top = -386.105
+margin_right = 2750.06
+margin_bottom = 3361.9
+
+[node name="WaveTexture" parent="." instance=ExtResource( 2 )]
+position = Vector2( 176.176, 1723.16 )
+
+[node name="stichtogetherbigcave-min" type="Sprite" parent="."]
+position = Vector2( 1147.06, 1562.9 )
+texture = ExtResource( 9 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Sign" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1698.87, 1215.61 )
+max_health = 1
+text = "Please be gentle!
+This is a delicate ecosystem."
+unique_name = "delicateecosystem"
+
+[node name="Sign3" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 277.333, 1184.78 )
+text = "Did you know that when a cave drop falls on you, that's called a \"Cave Kiss\"?"
+
+[node name="Sign2" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1850.83, 1675 )
+text = "NO BARKING!!!"
+
+[node name="player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 444.704, 956.433 )
+
+[node name="BarkSalamanderEvent" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 1700.56, 1702.05 )
+
+[node name="HurtBox" parent="YSort/BarkSalamanderEvent" index="0"]
+position = Vector2( -603.838, -150.374 )
+scale = Vector2( 1.00697, 1.45775 )
+
+[node name="popping_zone_center" parent="YSort/BarkSalamanderEvent" index="1"]
+position = Vector2( -42.6965, 460.662 )
+
+[node name="CrumblyWall" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 1700.54, 1199.24 )
+unique_name = "crumblydelicate"
+
+[node name="UpperSpawnPoint" parent="." instance=ExtResource( 6 )]
+position = Vector2( 452.033, 845.331 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 13 )]
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -191.28, -160.996 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 2670.54, 3293.24 )
+
+[node name="stitchedtogether-foregound-min" type="Sprite" parent="."]
+position = Vector2( 1134.93, 2235.65 )
+texture = ExtResource( 12 )
+
+[node name="Drips" type="Node2D" parent="."]
+
+[node name="PersistentWaterdrop" parent="Drips" instance=ExtResource( 11 )]
+position = Vector2( 778.344, 502.839 )
+wait_time = 2.7
+
+[node name="End" parent="Drips/PersistentWaterdrop" index="1"]
+position = Vector2( -4.12048, 49.1136 )
+
+[node name="PersistentWaterdrop2" parent="Drips" instance=ExtResource( 11 )]
+position = Vector2( 1095.63, 570.83 )
+wait_time = 1.8
+
+[node name="Start" parent="Drips/PersistentWaterdrop2" index="0"]
+position = Vector2( 6.18085, -117.562 )
+
+[node name="End" parent="Drips/PersistentWaterdrop2" index="1"]
+position = Vector2( -4.12048, 49.1136 )
+
+[node name="PersistentWaterdrop5" parent="Drips" instance=ExtResource( 11 )]
+position = Vector2( 210.955, 727.232 )
+wait_time = 2.2
+
+[node name="Start" parent="Drips/PersistentWaterdrop5" index="0"]
+position = Vector2( 6.18085, -117.562 )
+
+[node name="End" parent="Drips/PersistentWaterdrop5" index="1"]
+position = Vector2( 3.21341, 14.4618 )
+
+[node name="PersistentWaterdrop6" parent="Drips" instance=ExtResource( 11 )]
+position = Vector2( 1757.02, 932.289 )
+wait_time = 2.2
+
+[node name="Start" parent="Drips/PersistentWaterdrop6" index="0"]
+position = Vector2( 6.18085, -117.562 )
+
+[node name="End" parent="Drips/PersistentWaterdrop6" index="1"]
+position = Vector2( -4.88486, 404.687 )
+
+[node name="PersistentWaterdrop3" parent="Drips" instance=ExtResource( 11 )]
+position = Vector2( 1544.78, 947.868 )
+wait_time = 2.0
+fall_speed = 20.0
+
+[node name="Start" parent="Drips/PersistentWaterdrop3" index="0"]
+position = Vector2( 6.18085, -117.562 )
+
+[node name="End" parent="Drips/PersistentWaterdrop3" index="1"]
+position = Vector2( 2.06055, -0.334198 )
+
+[node name="PersistentWaterdrop4" parent="Drips" instance=ExtResource( 11 )]
+position = Vector2( 466.659, 506.959 )
+wait_time = 4.0
+fall_speed = 130.0
+
+[node name="Start" parent="Drips/PersistentWaterdrop4" index="0"]
+position = Vector2( 6.18085, -117.562 )
+
+[node name="End" parent="Drips/PersistentWaterdrop4" index="1"]
+position = Vector2( 0.000183105, 483.841 )
+
+[node name="PersistentWaterdrop7" parent="Drips" instance=ExtResource( 11 )]
+position = Vector2( 653.87, 330.295 )
+wait_time = 2.7
+fall_speed = 200.0
+
+[node name="Start" parent="Drips/PersistentWaterdrop7" index="0"]
+position = Vector2( 6.18085, -117.562 )
+
+[node name="End" parent="Drips/PersistentWaterdrop7" index="1"]
+position = Vector2( 0.000183105, 821.349 )
+
+[node name="PersistentWaterdrop8" parent="Drips" instance=ExtResource( 11 )]
+position = Vector2( 1025.66, 240.644 )
+wait_time = 3.15
+fall_speed = 900.0
+
+[node name="Start" parent="Drips/PersistentWaterdrop8" index="0"]
+position = Vector2( 6.18085, -117.562 )
+
+[node name="End" parent="Drips/PersistentWaterdrop8" index="1"]
+position = Vector2( 0.000183105, 821.349 )
+
+[node name="Collisions" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/StaticBody2D"]
+polygon = PoolVector2Array( 385.893, 664.502, 380.286, 818.693, 293.378, 818.693, 122.366, 824.3, 119.562, 1009.33, 170.025, 1211.18, 346.644, 1289.68, 775.578, 1289.68, 1083.96, 1270.05, 1196.1, 1225.2, 1200.34, 1140.38, 1325.35, 1291.48, 1405.02, 1409.62, 24.2436, 1407.43, 21.4401, 479.472, 391.5, 490.686 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/StaticBody2D2"]
+position = Vector2( -1.76807, 0 )
+polygon = PoolVector2Array( 540.085, 507.507, 528.871, 801.873, 632.6, 846.728, 764.364, 939.243, 994.249, 978.492, 1235.35, 995.313, 1435.64, 1270.88, 1452.12, 1244.78, 1639.05, 1185.95, 1641.85, 1006.53, 1765.21, 1012.13, 1762.4, 1191.56, 1849.31, 1216.79, 1810.06, 644.877 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/StaticBody2D3"]
+polygon = PoolVector2Array( 1850.23, 1212.02, 1944.92, 1283.85, 1964.52, 1440.58, 1964.52, 1737.72, 1925.33, 1910.78, 1879.62, 1956.5, 2018.78, 2053.59, 2065.03, 2196.18, 2061.17, 2385.01, 2007.22, 2543.01, 1806.83, 2674.04, 2357.91, 2693.31, 2338.64, 993.827, 1853.07, 982.266 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/StaticBody2D4"]
+polygon = PoolVector2Array( 1805.79, 2676.2, 1796.49, 2759.83, 2.89893, 2736.6, -2.27158, 2526.12, 658.072, 2546.09 )
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/StaticBody2D5"]
+polygon = PoolVector2Array( 1415.47, 1412.31, 1387.59, 1742.22, 1434.06, 1784.04, 1513.05, 1909.5, 1155.26, 1937.38, -38.9207, 1904.86 )
+
+[node name="Water" type="Area2D" parent="."]
+visible = false
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Water"]
+polygon = PoolVector2Array( 1173.1, 1948.15, 1505.92, 1921.81, 1759.73, 1936.18, 1977.62, 1998.43, 2051.85, 2125.33, 2063.82, 2405.48, 1977.62, 2592.24, 1805.22, 2685.63, 1484.37, 2640.13, 363.788, 2546.75, -43.2622, 2532.38, -12.1348, 1902.65 )
+
+[node name="WallOfPsychicEnergy" type="StaticBody2D" parent="."]
+position = Vector2( 1662.04, 1909.85 )
+scale = Vector2( 2.40207, 0.906009 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WallOfPsychicEnergy"]
+polygon = PoolVector2Array( -101.462, -64.7129, -92.8587, 73.2329, 115.262, 111.25, 132.469, -84.2643, 87.4035, 20.0098, 40.6992, 3.7168, 16.5277, -7.14502, -38.3704, -16.9207, -77.2906, -20.1792 )
+
+[node name="UpperDoor" parent="." instance=ExtResource( 8 )]
+position = Vector2( 444.971, 731.505 )
+
+[node name="CollisionShape2D" parent="UpperDoor" index="0"]
+position = Vector2( 10.1129, -10.1129 )
+shape = SubResource( 1 )
+
+[node name="WayOut" parent="." instance=ExtResource( 8 )]
+position = Vector2( 9.86963, -34.5437 )
+
+[node name="CollisionShape2D" parent="WayOut" index="0"]
+position = Vector2( 26.9744, 2220.89 )
+shape = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="CameraAtEnd" type="Position2D" parent="."]
+position = Vector2( 1213.96, 1998.6 )
+
+[node name="CrumblySpawnPoint" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1698.43, 1249.48 )
+
+[node name="TransitionZone" parent="." instance=ExtResource( 8 )]
+
+[node name="CollisionShape2D" parent="TransitionZone" index="0"]
+position = Vector2( 1703.6, 1089.81 )
+shape = SubResource( 3 )
+[connection signal="cutscene_starting" from="YSort/BarkSalamanderEvent" to="." method="_on_BarkSalamanderEvent_cutscene_starting"]
+[connection signal="transition_triggered" from="UpperDoor" to="." method="_on_UpperDoor_transition_triggered"]
+[connection signal="transition_triggered" from="WayOut" to="." method="_on_WayOut_transition_triggered"]
+[connection signal="transition_triggered" from="TransitionZone" to="." method="_on_TransitionZone_transition_triggered"]
+
+[editable path="YSort/BarkSalamanderEvent"]
+
+[editable path="PuppyCamera"]
+
+[editable path="Drips/PersistentWaterdrop"]
+
+[editable path="Drips/PersistentWaterdrop2"]
+
+[editable path="Drips/PersistentWaterdrop5"]
+
+[editable path="Drips/PersistentWaterdrop6"]
+
+[editable path="Drips/PersistentWaterdrop3"]
+
+[editable path="Drips/PersistentWaterdrop4"]
+
+[editable path="Drips/PersistentWaterdrop7"]
+
+[editable path="Drips/PersistentWaterdrop8"]
+
+[editable path="UpperDoor"]
+
+[editable path="WayOut"]
+
+[editable path="TransitionZone"]

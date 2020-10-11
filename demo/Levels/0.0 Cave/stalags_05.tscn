@@ -5,7 +5,7 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="stalags_05" type="Sprite" parent="."]
-position = Vector2( 197.674, -249.333 )
+position = Vector2( 191.265, -228.502 )
 texture = ExtResource( 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -13,5 +13,5 @@ position = Vector2( 197.674, -132.052 )
 scale = Vector2( 1.12703, 0.682762 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2( 9.95232, -35.2035 )
+position = Vector2( 5.68702, -21.1221 )
 polygon = PoolVector2Array( -345.326, 162.447, -319.312, 232.187, -214.712, 245.218, -179.187, 251.734, -135.768, 241.961, -90.3759, 251.734, -5.51183, 254.992, 83.2995, 232.187, 126.718, 258.25, 191.847, 238.703, 325.747, 230.507, 320.06, 207.038, 310.108, 174.181, -41.0363, 189.836 )

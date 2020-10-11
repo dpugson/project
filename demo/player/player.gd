@@ -6,7 +6,8 @@ export var SLOW_DOWN = 6000;
 
 enum {
 	WALK,
-	BARK
+	BARK,
+	SWIM
 }
 
 var speed = Vector2.DOWN
@@ -22,6 +23,8 @@ onready var bark_hitbox = $HitBoxPivot/BarkHitBox
 onready var hurtbox = $DoggoPivot/HurtBox
 onready var lookbox = $DoggoPivot/LookBox
 onready var Menu = preload("res://Items/Inventory.tscn")
+onready var water_detector = $WaterDetector
+onready var ripples = $Ripples
 
 func _ready():
 	stats.connect("out_of_health", self, "queue_free")
@@ -51,9 +54,10 @@ func get_input(_delta) -> Vector2:
 		return input
 	
 func set_blend_positions(input):
-		animation_tree.set("parameters/idle/blend_position", input)
-		animation_tree.set("parameters/walk/blend_position", input)
-		animation_tree.set("parameters/bark/blend_position", input)
+	animation_tree.set("parameters/idle/blend_position", input)
+	animation_tree.set("parameters/walk/blend_position", input)
+	animation_tree.set("parameters/bark/blend_position", input)
+	animation_tree.set("parameters/swim/blend_position", input)
 	
 
 func move(delta, input):
@@ -67,20 +71,41 @@ func move(delta, input):
 	if not cutscene_mode:
 		speed = move_and_slide(speed)
 
+func in_water():
+	var areas = water_detector.get_overlapping_areas()
+	if areas.size() > 0:
+		return true
+	else:
+		return false
+
 # STATES AND TRANSITIONS
+
+func swim():
+	if !in_water():
+		ripples.visible = false
+		state = WALK
 
 func bark():
 	animation_state.travel("bark")
 
 func bark_complete():
 	state = WALK
+	
+func check_for_bark_input():
+	if cutscene_mode == true:
+		return false
+	else:
+		return Input.is_action_just_pressed("bark")
 
 func walk(_delta, input):	
 	if input != Vector2.ZERO:
 		animation_state.travel("walk")
 	else:
 		animation_state.travel("idle")
-	if Input.is_action_just_pressed("bark"):
+	if in_water():
+		ripples.visible = true
+		state = SWIM
+	elif check_for_bark_input():
 		state = BARK
 
 func _physics_process(delta):
@@ -92,6 +117,10 @@ func _physics_process(delta):
 		BARK:
 			bark()
 			speed *= .8
+			move(delta, input)
+		SWIM:
+			animation_state.travel("swim")
+			swim()
 			move(delta, input)
 
 func _on_HurtBox_area_entered(_area):

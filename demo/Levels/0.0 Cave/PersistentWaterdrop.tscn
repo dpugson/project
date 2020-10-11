@@ -2,6 +2,8 @@
 
 [ext_resource path="res://Levels/0.0 Cave/PersistentWaterdrop.gd" type="Script" id=1]
 
+
+
 [node name="PersistentWaterdrop" type="Node2D"]
 script = ExtResource( 1 )
 

@@ -3,6 +3,7 @@
 [ext_resource path="res://MainMenu/MainMenu.gd" type="Script" id=1]
 
 [node name="MainMenu" type="Node2D"]
+pause_mode = 2
 position = Vector2( 6.10352e-05, -2.36209 )
 script = ExtResource( 1 )
 
