@@ -11,23 +11,43 @@ signal max_health_changed(value)
 
 var inventory : Dictionary = {}
 var world_state : Dictionary = {}
-var curr_scene = null
-var player_position = null # [x,y]
+var save_spot_name = null
+var save_spot_tscn = null
+
+var menu_allowed = true
 
 var spawn_metadata = null
 
-func player_position_save(position: Vector2):
-	if position == null:
-		player_position = null
-		return
-	else:
-		player_position = [position.x, position.y]
-		
-func player_position_get() -> Vector2:
-	var p = Vector2.ZERO
-	p.x = player_position[0]
-	p.y = player_position[1]
-	return p
+signal save_complete
+
+const SAVE_FILE_LOCATION = "user://savegame.save"
+
+func save_game(new_save_spot_name, tscn):
+	print("SAVING")
+	var file = File.new()
+	file.open(SAVE_FILE_LOCATION, File.WRITE)
+	file.store_line(JSON.print({
+		"inventory" : inventory,
+		"world_state" : world_state,
+		"save_spot_name" : new_save_spot_name,
+		"save_spot_tscn" : tscn,
+	}, " "))
+	file.close()
+	emit_signal("save_complete")
+	
+func load_game():
+	var file = File.new()
+	if not file.file_exists(SAVE_FILE_LOCATION):
+		return # No save file!
+
+	file.open(SAVE_FILE_LOCATION, File.READ)
+	var json = parse_json(file.get_as_text())
+	print(json)
+	inventory = json.get("inventory", {})
+	world_state = json.get("world_state", {})
+	save_spot_name = json.get("save_spot_name", {})
+	save_spot_tscn = json.get("save_spot_tscn", {})
+	file.close()
 
 func spawn_player(player, player_parent, camera_path, position, orientation):
 	if (player == null):
@@ -51,9 +71,6 @@ func inventory_get(item_name: String) -> int:
 func check_bool(stat_name: String) -> bool:
 	return world_state.get(stat_name, false)
 
-func load_player_data():
-	pass
-
 func set_max_health(value):
 	max_health = value
 	self.health = clamp(health, 0, max_health)
@@ -67,5 +84,5 @@ func set_health(value):
 
 func _ready():
 	self.health = max_health
-	load_player_data()
+	load_game()
 

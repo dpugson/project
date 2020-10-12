@@ -22,10 +22,7 @@ func _ready():
 			player_position = topSpawnPoint.position
 			orientation = Vector2.DOWN
 		_:
-			if stats.player_position != null:
-				player_position = stats.player_position_get()
-			else:
-				player_position = bottomSpawnPoint.position
+			player_position = bottomSpawnPoint.position
 	stats.spawn_player(
 		player, null, 
 		"../../../PuppyCamera", player_position, orientation)

@@ -14,6 +14,7 @@ onready var wall = $WallOfPsychicEnergy
 onready var tween = $Tween
 onready var camera = $PuppyCamera
 onready var cameraPositionAtEnd = $CameraAtEnd
+onready var save_star = $YSort/SaveStar
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,20 +22,18 @@ func _ready():
 	var player_position = Vector2.ZERO
 	var player_orientation = Vector2.DOWN
 	match stats.spawn_metadata:
+		"Caves - The Big Room":
+			player_position = save_star.position
 		"upper":
 			player_position = upperSpawnPoint.position
 		"crumbly":
 			player_position = crumblySpawnPoint.position
 		_:
-			if stats.player_position != null:
-				player_position = stats.player_position_get()
-			else:
-				player_position = upperSpawnPoint.position
+			player_position = upperSpawnPoint.position
 	stats.spawn_player(
 		player, null, 
 		"../../../PuppyCamera", player_position, player_orientation)
 
-	stats.world_state["GOT_SWIMMING_CERT"]= true
 	if stats.check_bool("GOT_SWIMMING_CERT"):
 		barksalamander_detectionzone.queue_free()
 		_on_BarkSalamanderEvent_cutscene_starting()

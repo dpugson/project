@@ -23,6 +23,7 @@ onready var bark_hitbox = $HitBoxPivot/BarkHitBox
 onready var hurtbox = $DoggoPivot/HurtBox
 onready var lookbox = $DoggoPivot/LookBox
 onready var Menu = preload("res://Items/Inventory.tscn")
+onready var RealMenu = preload("res://MainMenu/RealMenu.tscn")
 onready var water_detector = $WaterDetector
 onready var ripples = $Ripples
 
@@ -33,10 +34,11 @@ func _ready():
 	animation_tree.active = true
 
 func _input(event):
-	if event.is_action_pressed("menu"):
-		get_tree().paused = true
-		var menu = Menu.instance()
-		menu.enchild(self)
+	if stats.menu_allowed:
+		if event.is_action_pressed("menu"):
+			get_tree().paused = true
+			var menu = Menu.instance()
+			menu.enchild(self)
 
 # HELPERS
 

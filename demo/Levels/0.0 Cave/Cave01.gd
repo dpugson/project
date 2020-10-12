@@ -21,9 +21,6 @@ func _ready():
 	if stats.spawn_metadata == "door":
 		player_position = doorSpawnPoint.position
 		player_orientation = Vector2.DOWN
-	elif stats.player_position != null:
-		player_position = stats.player_position_get()
-		player_orientation = Vector2.DOWN
 	else:
 		player_position = spawnPoint.position
 		player_orientation = Vector2.UP

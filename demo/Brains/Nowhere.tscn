@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=3]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Brains/Nowhere.gd" type="Script" id=5]
+
+[node name="Nowhere" type="Node2D"]
+position = Vector2( -0.956177, 0 )
+script = ExtResource( 5 )
+
+[node name="SpawnPoint" parent="." instance=ExtResource( 3 )]
+position = Vector2( 426.513, 533.141 )
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 434.518, 408.521 )
+
+[node name="BG" parent="." instance=ExtResource( 4 )]
+margin_left = -1489.15
+margin_top = -1487.32
+margin_right = 3675.85
+margin_bottom = 2512.68
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 2 )]
+position = Vector2( 531.207, 368.836 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -1234.2, -877.006 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 2323.55, 1537.04 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 31.1001
+margin_top = 115.514
+margin_right = 871.1
+margin_bottom = 187.514
+text = "Something Unusual has Happened..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[editable path="PuppyCamera"]

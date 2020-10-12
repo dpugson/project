@@ -7,4 +7,3 @@
 script = ExtResource( 20 )
 
 [node name="MainMenu" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, 0 )
