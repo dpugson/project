@@ -18,9 +18,12 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="MainMenu" type="CanvasLayer"]
+[node name="MainMenu" type="Control"]
 pause_mode = 2
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1923.0
@@ -71,7 +74,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Control"]
 position = Vector2( 960.949, 265.589 )
 frames = SubResource( 1 )
-frame = 2
 playing = true
 
 [node name="ProgressMarkers" type="Node2D" parent="Control"]
@@ -101,7 +103,7 @@ margin_top = 808.839
 margin_right = 918.886
 margin_bottom = 912.839
 theme = ExtResource( 9 )
-text = "START"
+text = "CONTINUE"
 __meta__ = {
 "_edit_use_anchors_": false
 }

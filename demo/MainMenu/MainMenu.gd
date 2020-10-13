@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 onready var stats = PlayerStats
 
@@ -7,13 +7,15 @@ onready var start = $Control/Start
 onready var current_location = $"Control/Current Location"
 onready var level_lable = $Control/Level
 
+onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
+
 func refresh_ui():
-	var level = stats.world_state.get("level")
-	if level == null:
+	if stats.save_spot_name == null:
+		reset()
+	if stats.save_spot_name == "Nowhere - You haven't started!":
 		reset_button.disabled = true
 		reset_button.visible = false
-		reset()
-	level = stats.world_state.get("level")
+	var level = stats.world_state.get("level")
 	level_lable.text = "Level " + str(level)
 	current_location.text = stats.save_spot_name
 	progress_markers()
@@ -32,10 +34,27 @@ func progress_markers():
 
 func _on_Start_pressed():
 	Transition.go_to(stats.save_spot_tscn, stats.save_spot_name)
+	
+var reset_dialogue = {
+	"begin" : [
+		"TEXT", "Are you sure you want to erase your current game?\nThis can't be undone!", 0.03,
+		[["yes", "areusure"], ["no", null]]
+	],
+	"areusure" : [
+		"TEXT", "Are you absolutely sure?", 0.03,
+		[["no", null], ["yes", "yes"]]
+	],
+	"yes" : [
+		"TEXT", "Your game has been reset.", 0.03, null,
+		[self, "reset"]
+	],
+}
+
+func reset_focus():
+	start.grab_focus()
 
 func _on_Reset_pressed():
-	reset()
-	refresh_ui()
+	DialogueHelper.showDialogue(self, reset_dialogue, false, [self, "reset_focus"])
 	
 func reset():
 	start.text = "NEW GAME"
@@ -47,3 +66,4 @@ func reset():
 	stats.save_game(
 		"Nowhere - You haven't started!", 
 		"res://Levels/0.0 Cave/prologue.tscn")
+	refresh_ui()

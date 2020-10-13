@@ -9,6 +9,8 @@ enum INPUT_TYPE {
 	CHOICE
 }
 
+export var cutscene_mode = false
+
 var dialogue_index = "begin"
 var character_index = 0
 var waiting_for_input = INPUT_TYPE.NONE
@@ -34,6 +36,7 @@ var dialogue2 = {
 }
 
 signal print_next_character
+signal done
 
 onready var timer = $Timer
 onready var nextButton = $Panel/MarginContainer/VBoxContainer/PlayerChoicesBottom/NextButton
@@ -117,6 +120,9 @@ func _input(event):
 				skip_to_end()
 
 func handle_button_click():
+	if cutscene_mode:
+		# ignore input in cutscene mode
+		return
 	match waiting_for_input:
 		INPUT_TYPE.NEXT:
 			handle_next()
@@ -128,6 +134,9 @@ func handle_button_click():
 			skip_to_end() 
 
 func handle_button_click2(next):
+	if cutscene_mode:
+		# ignore input in cutscene mode
+		return
 	if next == null:
 		stop()
 		return
@@ -311,6 +320,7 @@ func start():
 	print_next_character()
 	
 func stop():
+	emit_signal("done")
 	get_tree().set_deferred("paused", false)
 	animation.play("stop")
 	

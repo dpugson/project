@@ -45,8 +45,8 @@ func load_game():
 	print(json)
 	inventory = json.get("inventory", {})
 	world_state = json.get("world_state", {})
-	save_spot_name = json.get("save_spot_name", {})
-	save_spot_tscn = json.get("save_spot_tscn", {})
+	save_spot_name = json.get("save_spot_name", null)
+	save_spot_tscn = json.get("save_spot_tscn", null)
 	file.close()
 
 func spawn_player(player, player_parent, camera_path, position, orientation):

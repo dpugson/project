@@ -185,7 +185,7 @@ var dialogue3 = {
 		[self, "perry_turn", "left"], pink_thinking
 	],
 	"yup2": [
-		"TEXT", "We need to help him, Perry!\nIt's our amphibianly duty!", 0.03,
+		"TEXT", "We need to help him, Perry!\nIt's our Fish Person duty!", 0.03,
 		"ask",
 		[self, "gilby_turn", "right"], green_shifty, GILBY_PITCH
 	],

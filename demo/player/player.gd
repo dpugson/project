@@ -14,6 +14,7 @@ var speed = Vector2.DOWN
 var state = WALK
 var stats = PlayerStats
 var cutscene_mode: bool = false # for cutscenes
+var allow_cutscene_bark: bool = false
 export var cutscene_input: Vector2 = Vector2.DOWN
 
 onready var player_animation = $AnimationPlayer
@@ -94,7 +95,7 @@ func bark_complete():
 	state = WALK
 	
 func check_for_bark_input():
-	if cutscene_mode == true:
+	if cutscene_mode == true && not allow_cutscene_bark:
 		return false
 	else:
 		return Input.is_action_just_pressed("bark")
