@@ -22,3 +22,4 @@ func _go_to():
 
 func unpause():
 	get_tree().paused = false
+	pass
