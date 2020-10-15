@@ -104,4 +104,4 @@ func transition_to_riptide():
 	transition.go_to("res://Levels/0.0 Cave/Riptide.tscn")
 
 func _on_TransitionZone_transition_triggered():
-	transition.go_to("res://Levels/0.0 Cave/Cliff.tscn")
+	Transition.go_to("res://Levels/0.0 Cave/PuzzleCave1.tscn", "bottom")

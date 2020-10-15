@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://sprites/dog/u2.png" type="Texture" id=1]
+[ext_resource path="res://sprites/dog/u1.png" type="Texture" id=2]
+[ext_resource path="res://MiniGames/FetchGamePlayer.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 53.3978
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 22.0
+} ]
+
+[node name="FetchGamePlayer" type="KinematicBody2D"]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 2.28192, 4.31927 )
+shape = SubResource( 2 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 1.3656, -7.26849 )
+frames = SubResource( 1 )
+frame = 1
+playing = true

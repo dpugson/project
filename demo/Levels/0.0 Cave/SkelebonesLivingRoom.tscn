@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/cavestuff/skelebones_livingroom_desk_fg.png" type="Texture" id=2]
+[ext_resource path="res://Levels/0.0 Cave/skeleton_torso.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/cavestuff/skelebones_livingroom.png" type="Texture" id=4]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=5]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/0.0 Cave/SkelebonesLivingRoom.gd" type="Script" id=7]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 71.7451, 32.6176 )
+
+[node name="SkelebonesLivingRoom" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="BG" parent="." instance=ExtResource( 5 )]
+margin_left = -437.783
+margin_top = -405.141
+margin_right = 2384.22
+margin_bottom = 1699.86
+
+[node name="skelebones_livingroom" type="Sprite" parent="."]
+position = Vector2( 930.64, 542.885 )
+texture = ExtResource( 4 )
+
+[node name="skeleton_torso" parent="." instance=ExtResource( 3 )]
+position = Vector2( 741.229, 436.839 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 853.136, 834.317 )
+
+[node name="skelebones_livingroom_desk_fg" type="Sprite" parent="."]
+position = Vector2( 1170.67, 681.465 )
+texture = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 1058.23, 895.25, 1058.23, 740.727, 1124.66, 739.282, 1127.55, 645.413, 1250.3, 639.637, 1248.85, 469.228, 1047.31, 472.1, 1041.8, 574.163, 848.706, 576.921, 848.706, 524.511, 804.571, 530.028, 674.924, 607.264, 614.876, 578.983, 613.432, 736.394, 763.194, 742.427, 754.919, 877.591, 788.02, 885.866, 788.02, 946.552, 459.766, 943.794, 495.625, 105.228, 1477.63, 107.986, 1403.15, 974.136, 939.734, 954.827, 945.251, 894.142 )
+
+[node name="BottomTZ" parent="." instance=ExtResource( 6 )]
+
+[node name="CollisionShape2D" parent="BottomTZ" index="0"]
+position = Vector2( 862.514, 939.272 )
+shape = SubResource( 1 )
+
+[node name="BottomSpawnPoint" parent="." instance=ExtResource( 8 )]
+position = Vector2( 865.9, 820.208 )
+
+[node name="TopSpawnPoint" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1149.17, 519.447 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 9 )]
+position = Vector2( 964.469, 574.413 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -422.845, -389.315 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 2345.75, 1625.94 )
+[connection signal="transition_triggered" from="BottomTZ" to="." method="_on_BottomTZ_transition_triggered"]
+
+[editable path="BottomTZ"]
+
+[editable path="PuppyCamera"]

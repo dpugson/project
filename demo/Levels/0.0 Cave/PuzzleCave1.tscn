@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://sprites/cavestuff/cave_04.png" type="Texture" id=1]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/0.0 Cave/PuzzleCave1.gd" type="Script" id=3]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/cavestuff/cave_04_fg.png" type="Texture" id=6]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=7]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 45.715, 105.122 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 68.969, 23.7327 )
+
+[node name="PuzzleCave1" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="cave_04" type="Sprite" parent="."]
+position = Vector2( 424.085, 339.762 )
+texture = ExtResource( 1 )
+
+[node name="TopSpawnPoint" parent="." instance=ExtResource( 5 )]
+position = Vector2( 694.489, 241.34 )
+
+[node name="BottomSpawnPoint" parent="." instance=ExtResource( 5 )]
+position = Vector2( 556.352, 855.137 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="player" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 554.445, 864.487 )
+
+[node name="cave_04_fg" type="Sprite" parent="."]
+position = Vector2( 633.789, 248.543 )
+texture = ExtResource( 6 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 4 )]
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -742.983, -719.916 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 1865.95, 1212.98 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 648.004, 918.675, 618.147, 849.776, 613.554, 730.35, 602.071, 640.781, 574.511, 583.365, 498.722, 537.432, 482.017, 486.213, 478.984, 426.557, 487.238, 355.996, 496.425, 307.767, 528.578, 289.394, 788.099, 303.173, 813.362, 909.489 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+polygon = PoolVector2Array( 767.429, 204.418, 604.367, 195.231, 553.841, 186.044, 422.932, 227.384, 374.703, 291.69, 349.439, 457.049, 365.516, 553.508, 386.186, 617.814, 457.382, 649.967, 478.052, 723.46, 471.162, 842.886, 501.018, 946.235, 119.775, 946.235, 163.411, 68.9154, 739.87, 119.442 )
+
+[node name="UpperTZ" parent="." instance=ExtResource( 8 )]
+
+[node name="CollisionShape2D" parent="UpperTZ" index="0"]
+position = Vector2( 813.888, 195.333 )
+shape = SubResource( 1 )
+
+[node name="LowerTZ" parent="." instance=ExtResource( 8 )]
+position = Vector2( -0.956238, 3.82477 )
+
+[node name="CollisionShape2D" parent="LowerTZ" index="0"]
+position = Vector2( 573.895, 956.453 )
+shape = SubResource( 2 )
+
+[node name="BG" parent="." instance=ExtResource( 7 )]
+margin_left = -758.034
+margin_top = -660.062
+margin_right = 2063.97
+margin_bottom = 1444.94
+[connection signal="transition_triggered" from="UpperTZ" to="." method="_on_UpperTZ_transition_triggered"]
+[connection signal="transition_triggered" from="LowerTZ" to="." method="_on_LowerTZ_transition_triggered"]
+
+[editable path="PuppyCamera"]
+
+[editable path="UpperTZ"]
+
+[editable path="LowerTZ"]

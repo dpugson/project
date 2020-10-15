@@ -1,0 +1,139 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/cavestuff/cave_05.png" type="Texture" id=2]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/0.0 Cave/PuzzleCave2.gd" type="Script" id=5]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/0.0 Cave/Lever.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/cavestuff/hole.png" type="Texture" id=8]
+[ext_resource path="res://Characters/salamanders/Pericles.tscn" type="PackedScene" id=9]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sprites/cavestuff/cave_05_fg.png" type="Texture" id=11]
+[ext_resource path="res://sprites/cavestuff/door.png" type="Texture" id=12]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 57.7485, 47.0667 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 34.6282, 80.3005 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 89.6033, 29.3004 )
+
+[node name="PuzzleCave2" type="Node2D"]
+position = Vector2( -6.08337, -15.6539 )
+script = ExtResource( 5 )
+
+[node name="cave_05" type="Sprite" parent="."]
+position = Vector2( 961.726, 504.791 )
+scale = Vector2( 1.59168, 1.59168 )
+texture = ExtResource( 2 )
+
+[node name="hole" type="Sprite" parent="."]
+visible = false
+position = Vector2( 993.337, 462.937 )
+texture = ExtResource( 8 )
+
+[node name="YSort" type="YSort" parent="."]
+position = Vector2( 19.0223, -2.8559 )
+
+[node name="player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 958.006, 649.753 )
+
+[node name="Lever" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( -47.9088, 2.17767 )
+
+[node name="Lever2" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 239.544, 10.8884 )
+
+[node name="Pericles" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 741.038, 606.376 )
+
+[node name="Person" parent="YSort/Pericles" index="2"]
+position = Vector2( 0, 2.17511 )
+watchPlayer = true
+
+[node name="AnimationTree" parent="YSort/Pericles/Person" index="2"]
+parameters/playback = SubResource( 3 )
+
+[node name="TopSpawnPoint" parent="." instance=ExtResource( 4 )]
+position = Vector2( 989.622, 442.429 )
+
+[node name="SecretSpawnPoint" parent="." instance=ExtResource( 4 )]
+position = Vector2( -26.6452, 898.343 )
+
+[node name="BottomSpawnPoint" parent="." instance=ExtResource( 4 )]
+position = Vector2( 989.237, 773.109 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1020.98, 531.257 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -429.056, -197.863 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 2082.37, 1149.16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( -614.485, -311.738 )
+scale = Vector2( 1.63621, 1.63621 )
+polygon = PoolVector2Array( 942.768, 430.727, 910.05, 466.42, 902.112, 506.111, 925.926, 543.818, 927.288, 604.887, 283.82, 733.161, 292.53, 781.063, 925.602, 659.682, 971.571, 768.074, 1035.08, 732.352, 1027.14, 551.756, 1056.91, 512.065, 1052.94, 460.466, 1017.22, 428.713, 1126.37, 426.729, 1120.41, 811.735, 866.389, 803.797, 190.193, 833.32, 161.888, 728.806, 848.528, 422.759 )
+
+[node name="cave_05_fg" type="Sprite" parent="."]
+position = Vector2( 850.851, 780.733 )
+scale = Vector2( 1.59786, 1.59786 )
+texture = ExtResource( 11 )
+
+[node name="UpperTZ" parent="." instance=ExtResource( 6 )]
+position = Vector2( 990.947, 370.701 )
+
+[node name="CollisionShape2D" parent="UpperTZ" index="0"]
+position = Vector2( 0, -24.5037 )
+shape = SubResource( 1 )
+
+[node name="BG" parent="." instance=ExtResource( 10 )]
+margin_left = -484.499
+margin_top = -659.183
+margin_right = 2337.5
+margin_bottom = 1445.82
+
+[node name="door" type="Sprite" parent="."]
+position = Vector2( 992.408, 295.746 )
+scale = Vector2( 0.7641, 0.7641 )
+texture = ExtResource( 12 )
+
+[node name="BasementTZ" parent="." instance=ExtResource( 6 )]
+position = Vector2( 984.094, 867.218 )
+
+[node name="CollisionShape2D" parent="BasementTZ" index="0"]
+position = Vector2( -1125.79, 21.3759 )
+shape = SubResource( 4 )
+
+[node name="LowerTZ" parent="." instance=ExtResource( 6 )]
+position = Vector2( 990.947, 896.916 )
+
+[node name="CollisionShape2D" parent="LowerTZ" index="0"]
+position = Vector2( 0, -41.6562 )
+shape = SubResource( 2 )
+[connection signal="transition_triggered" from="BasementTZ" to="." method="_on_BasementTZ_transition_triggered"]
+[connection signal="transition_triggered" from="LowerTZ" to="." method="_on_LowerTZ_transition_triggered"]
+
+[editable path="YSort/Pericles"]
+
+[editable path="YSort/Pericles/Person"]
+
+[editable path="YSort/Pericles/Person/SeenBox"]
+
+[editable path="PuppyCamera"]
+
+[editable path="UpperTZ"]
+
+[editable path="BasementTZ"]
+
+[editable path="LowerTZ"]

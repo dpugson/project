@@ -46,6 +46,9 @@ animation = "down"
 
 [node name="Person" parent="." instance=ExtResource( 3 )]
 
+[node name="SeenBox" parent="Person" index="0"]
+visible = true
+
 [node name="AnimationTree" parent="Person" index="2"]
 parameters/playback = SubResource( 2 )
 
@@ -53,3 +56,5 @@ parameters/playback = SubResource( 2 )
 position = Vector2( -1.46695, 12.2206 )
 
 [editable path="Person"]
+
+[editable path="Person/SeenBox"]
