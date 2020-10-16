@@ -5,6 +5,7 @@ onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 onready var playerDetectionZone = $PlayerDetectionZone
+onready var seenCollisionShape = $SeenBox/CollisionShape2D
 
 export(bool) var watchPlayer = false
 
@@ -32,7 +33,7 @@ func set_dialogue(new_dialogue):
 	
 var dialogue = {
 	"begin" : [
-		"TEXT", "Howdy!", 0.03, null
+		"TEXT", "...", 0.03, null
 	]
 }
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/cavestuff/cave_05.png" type="Texture" id=2]
@@ -8,20 +8,18 @@
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/0.0 Cave/Lever.tscn" type="PackedScene" id=7]
 [ext_resource path="res://sprites/cavestuff/hole.png" type="Texture" id=8]
-[ext_resource path="res://Characters/salamanders/Pericles.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Characters/salamanders/Gilby.tscn" type="PackedScene" id=9]
 [ext_resource path="res://BG.tscn" type="PackedScene" id=10]
 [ext_resource path="res://sprites/cavestuff/cave_05_fg.png" type="Texture" id=11]
 [ext_resource path="res://sprites/cavestuff/door.png" type="Texture" id=12]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=3]
-
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 57.7485, 47.0667 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 34.6282, 80.3005 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 89.6033, 29.3004 )
 
 [node name="PuzzleCave2" type="Node2D"]
@@ -33,10 +31,15 @@ position = Vector2( 961.726, 504.791 )
 scale = Vector2( 1.59168, 1.59168 )
 texture = ExtResource( 2 )
 
-[node name="hole" type="Sprite" parent="."]
+[node name="Hole" type="Node2D" parent="."]
 visible = false
-position = Vector2( 993.337, 462.937 )
+position = Vector2( 987.169, 470.448 )
+
+[node name="hole" type="Sprite" parent="Hole"]
+position = Vector2( 3.08295, 3.28641 )
 texture = ExtResource( 8 )
+
+[node name="Tween" type="Tween" parent="Hole"]
 
 [node name="YSort" type="YSort" parent="."]
 position = Vector2( 19.0223, -2.8559 )
@@ -44,21 +47,31 @@ position = Vector2( 19.0223, -2.8559 )
 [node name="player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 958.006, 649.753 )
 
-[node name="Lever" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( -47.9088, 2.17767 )
+[node name="LeftLever" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 815.557, 518.282 )
 
-[node name="Lever2" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 239.544, 10.8884 )
+[node name="RightLever" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 1121, 528.937 )
 
-[node name="Pericles" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( 741.038, 606.376 )
+[node name="Gilby" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 735.464, 592.997 )
+splash = true
+talk_radius = 2
+watch_player = true
+appear_delay = 0.7
 
-[node name="Person" parent="YSort/Pericles" index="2"]
-position = Vector2( 0, 2.17511 )
-watchPlayer = true
+[node name="Door" type="Node2D" parent="YSort"]
+position = Vector2( 975.336, 373.018 )
 
-[node name="AnimationTree" parent="YSort/Pericles/Person" index="2"]
-parameters/playback = SubResource( 3 )
+[node name="door" type="Sprite" parent="YSort/Door"]
+position = Vector2( 4.4834, -82.4416 )
+scale = Vector2( 0.776442, 0.776442 )
+texture = ExtResource( 12 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/Door"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Door/StaticBody2D"]
+polygon = PoolVector2Array( -66.6089, -32.5418, -119.214, 31.9417, -54.7304, 18.3663, 69.1458, 20.0632, 116.66, 43.8203, 65.7519, -34.2387 )
 
 [node name="TopSpawnPoint" parent="." instance=ExtResource( 4 )]
 position = Vector2( 989.622, 442.429 )
@@ -73,10 +86,10 @@ position = Vector2( 989.237, 773.109 )
 position = Vector2( 1020.98, 531.257 )
 
 [node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
-position = Vector2( -429.056, -197.863 )
+position = Vector2( -1187.01, -609.792 )
 
 [node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
-position = Vector2( 2082.37, 1149.16 )
+position = Vector2( 2790.89, 1533.63 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -95,40 +108,34 @@ position = Vector2( 990.947, 370.701 )
 
 [node name="CollisionShape2D" parent="UpperTZ" index="0"]
 position = Vector2( 0, -24.5037 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="BG" parent="." instance=ExtResource( 10 )]
-margin_left = -484.499
-margin_top = -659.183
-margin_right = 2337.5
-margin_bottom = 1445.82
-
-[node name="door" type="Sprite" parent="."]
-position = Vector2( 992.408, 295.746 )
-scale = Vector2( 0.7641, 0.7641 )
-texture = ExtResource( 12 )
+margin_left = -1641.0
+margin_top = -827.0
+margin_right = 3515.0
+margin_bottom = 2786.0
 
 [node name="BasementTZ" parent="." instance=ExtResource( 6 )]
 position = Vector2( 984.094, 867.218 )
 
 [node name="CollisionShape2D" parent="BasementTZ" index="0"]
 position = Vector2( -1125.79, 21.3759 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="LowerTZ" parent="." instance=ExtResource( 6 )]
-position = Vector2( 990.947, 896.916 )
+position = Vector2( 990.947, 925.56 )
 
 [node name="CollisionShape2D" parent="LowerTZ" index="0"]
 position = Vector2( 0, -41.6562 )
-shape = SubResource( 2 )
+shape = SubResource( 4 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+[connection signal="pulled" from="YSort/LeftLever" to="." method="_on_LeftLever_pulled"]
+[connection signal="pulled" from="YSort/RightLever" to="." method="_on_RightLever_pulled"]
 [connection signal="transition_triggered" from="BasementTZ" to="." method="_on_BasementTZ_transition_triggered"]
 [connection signal="transition_triggered" from="LowerTZ" to="." method="_on_LowerTZ_transition_triggered"]
-
-[editable path="YSort/Pericles"]
-
-[editable path="YSort/Pericles/Person"]
-
-[editable path="YSort/Pericles/Person/SeenBox"]
 
 [editable path="PuppyCamera"]
 

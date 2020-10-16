@@ -13,6 +13,7 @@ var inventory : Dictionary = {}
 var world_state : Dictionary = {}
 var save_spot_name = null
 var save_spot_tscn = null
+var G = 0
 
 var menu_allowed = true
 
@@ -31,6 +32,7 @@ func save_game(new_save_spot_name, tscn):
 		"world_state" : world_state,
 		"save_spot_name" : new_save_spot_name,
 		"save_spot_tscn" : tscn,
+		"G" : G
 	}, " "))
 	file.close()
 	emit_signal("save_complete")
@@ -47,6 +49,7 @@ func load_game():
 	world_state = json.get("world_state", {})
 	save_spot_name = json.get("save_spot_name", null)
 	save_spot_tscn = json.get("save_spot_tscn", null)
+	G = json.get("G", 0)
 	file.close()
 
 func spawn_player(player, player_parent, camera_path, position, orientation):

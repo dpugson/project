@@ -46,9 +46,6 @@ animation = "down"
 
 [node name="Person" parent="." instance=ExtResource( 3 )]
 
-[node name="SeenBox" parent="Person" index="0"]
-visible = true
-
 [node name="AnimationTree" parent="Person" index="2"]
 parameters/playback = SubResource( 2 )
 

@@ -5,7 +5,7 @@
 [ext_resource path="res://Brains/TalkToPerson.gd" type="Script" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 50.6241
+radius = 47.2658
 
 [sub_resource type="Animation" id=2]
 resource_name = "down"
@@ -56,14 +56,13 @@ radius = 20.8074
 height = 79.291
 
 [sub_resource type="CircleShape2D" id=14]
-radius = 356.817
+radius = 743.823
 
 [node name="Person" type="Node2D"]
 pause_mode = 2
 script = ExtResource( 3 )
 
 [node name="SeenBox" parent="." instance=ExtResource( 2 )]
-visible = false
 
 [node name="CollisionShape2D" parent="SeenBox" index="0"]
 shape = SubResource( 1 )

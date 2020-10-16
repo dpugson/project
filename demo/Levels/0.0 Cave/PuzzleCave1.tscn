@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://sprites/cavestuff/cave_04.png" type="Texture" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://sprites/cavestuff/cave_04_fg.png" type="Texture" id=6]
 [ext_resource path="res://BG.tscn" type="PackedScene" id=7]
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Characters/salamanders/Gilby.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 45.715, 105.122 )
@@ -16,6 +17,7 @@ extents = Vector2( 45.715, 105.122 )
 extents = Vector2( 68.969, 23.7327 )
 
 [node name="PuzzleCave1" type="Node2D"]
+position = Vector2( 1.44403, -1.44397 )
 script = ExtResource( 3 )
 
 [node name="cave_04" type="Sprite" parent="."]
@@ -32,6 +34,13 @@ position = Vector2( 556.352, 855.137 )
 
 [node name="player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 554.445, 864.487 )
+
+[node name="Gilby" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 161.51, 424.162 )
+splash = true
+talk_radius = 4
+watch_player = true
+appear_delay = 1.0
 
 [node name="cave_04_fg" type="Sprite" parent="."]
 position = Vector2( 633.789, 248.543 )
