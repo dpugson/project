@@ -30,6 +30,7 @@ texture = ExtResource( 1 )
 
 [node name="player" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 496.058, 1296.18 )
+camera = NodePath("../../PuppyCamera")
 
 [node name="PuppyCamera" parent="." instance=ExtResource( 4 )]
 
@@ -48,5 +49,6 @@ position = Vector2( 484.948, 1327.69 )
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 424.423, 1477.96, 327.159, 1417.75, 285.475, 1339.01, 331.791, 1260.27, 290.106, 1084.27, 317.896, -495.104, 294.738, -675.736, 308.633, -759.105, 373.475, -773, 373.475, -958.263, 470.739, -958.263, 475.37, -782.263, 669.897, -768.368, 711.582, -638.683, 679.161, -379.314, 702.318, 528.479, 688.424, 732.269, 725.477, 931.428, 744.003, 1292.69, 725.477, 1380.69, 568.002, 1491.85, 1142.32, 1505.75, 1114.53, -1009.21, 2.94751, -1037, -61.895, 1505.75 )
 
 [editable path="PuppyCamera"]

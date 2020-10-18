@@ -65,6 +65,7 @@ text = "NO BARKING!!!"
 
 [node name="player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 444.704, 956.433 )
+camera = NodePath("../../PuppyCamera")
 
 [node name="BarkSalamanderEvent" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 1700.56, 1702.05 )

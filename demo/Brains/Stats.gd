@@ -41,10 +41,8 @@ func load_game():
 	var file = File.new()
 	if not file.file_exists(SAVE_FILE_LOCATION):
 		return # No save file!
-
 	file.open(SAVE_FILE_LOCATION, File.READ)
 	var json = parse_json(file.get_as_text())
-	print(json)
 	inventory = json.get("inventory", {})
 	world_state = json.get("world_state", {})
 	save_spot_name = json.get("save_spot_name", null)
@@ -52,7 +50,7 @@ func load_game():
 	G = json.get("G", 0)
 	file.close()
 
-func spawn_player(player, player_parent, camera_path, position, orientation):
+func spawn_player(player, player_parent, camera_path, position: Vector2, orientation: Vector2):
 	if (player == null):
 		player = Player.instance()
 		player_parent.add_child(player)
@@ -63,6 +61,8 @@ func spawn_player(player, player_parent, camera_path, position, orientation):
 		player.add_child(transform)
 	if orientation != null:
 		player.set_blend_positions(orientation)
+		player.turbo_input = orientation
+		player.previous_input = orientation
 
 func inventory_add(item_name):
 	var count = inventory.get(item_name, 0)

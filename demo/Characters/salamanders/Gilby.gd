@@ -8,7 +8,7 @@ onready var timer = $Timer
 export var splash = false
 export(int) var talk_radius = null
 export var watch_player = false
-export(float) var appear_delay = 2
+export(float) var appear_delay = 1
 
 const VOICE_PITCH = 1.5
 

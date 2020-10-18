@@ -249,6 +249,9 @@ var dialogue3 = {
 		"teach2",
 		[self, "perry_turn", "up"], pink_chuffed
 	],
+}
+
+var teaching  = {
 	"teach2": [
 		"TEXT", "Listen carefully, poopy, cause I'm not going to repeat\nmyself!!", 0.02,
 		"teach3",

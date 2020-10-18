@@ -3,7 +3,6 @@ extends Node2D
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 onready var stats = $Stats
 const DestructionEffect = preload("res://effects/signexplode.tscn")
-const DestructionEffect2 = preload("res://effects/EnemyDeathEffect.tscn")
 const EffectHelper = preload("res://effects/EffectHelper.gd")
 export var max_health = 4
 
@@ -31,9 +30,13 @@ func _on_SeenBox_seen(_obj):
 	DialogueHelper.showDialogue(self, dialogue)
 
 func _on_Stats_out_of_health():
-	PlayerStats.world_state[destroyed_stat_name] = true
+	if destroyed_stat_name != "":
+		PlayerStats.world_state[destroyed_stat_name] = true
 	queue_free()
 	EffectHelper.place_effect(self, DestructionEffect)
 
 func _on_HurtBox_area_entered(area):
 	stats.health -= area.damage
+
+func _on_Slammable_slammed(_power):
+	_on_Stats_out_of_health()

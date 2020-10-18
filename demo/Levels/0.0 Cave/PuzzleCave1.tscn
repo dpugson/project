@@ -34,13 +34,13 @@ position = Vector2( 556.352, 855.137 )
 
 [node name="player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 554.445, 864.487 )
+camera = NodePath("../../PuppyCamera")
 
 [node name="Gilby" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 161.51, 424.162 )
 splash = true
 talk_radius = 4
 watch_player = true
-appear_delay = 1.0
 
 [node name="cave_04_fg" type="Sprite" parent="."]
 position = Vector2( 633.789, 248.543 )

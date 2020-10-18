@@ -6,6 +6,7 @@ onready var item_picture = $Description/MarginContainer/VBoxContainer/ItemPictur
 onready var item_description = $Description/MarginContainer/VBoxContainer/ItemDescription
 onready var button_theme = preload("res://Themes/ListButtonTheme.tres")
 onready var exit_button = $List/Button
+onready var g_label = $G_panel/Label
 
 func _input(event):
 	if event.is_action_pressed("menu"):
@@ -36,6 +37,7 @@ func handle_focus_exited(_label, _item):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	exit_button.grab_focus()
+	g_label.text = str(stats.G) + " G"
 	var first = true
 	for item in stats.inventory:
 		var item_data = ItemRegistry.get(item)

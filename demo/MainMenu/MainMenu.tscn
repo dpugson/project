@@ -74,6 +74,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Control"]
 position = Vector2( 960.949, 265.589 )
 frames = SubResource( 1 )
+frame = 2
 playing = true
 
 [node name="ProgressMarkers" type="Node2D" parent="Control"]

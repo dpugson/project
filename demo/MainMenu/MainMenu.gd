@@ -63,6 +63,7 @@ func reset():
 	stats.world_state = {}
 	stats.inventory = {}
 	stats.world_state["level"] = 0
+	stats.G = 0
 	stats.save_game(
 		"Nowhere - You haven't started!", 
 		"res://Levels/0.0 Cave/prologue.tscn")

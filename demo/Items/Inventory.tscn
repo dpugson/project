@@ -93,4 +93,23 @@ margin_top = 4.0
 margin_right = 705.0
 margin_bottom = 76.0
 autowrap = true
+
+[node name="G_panel" type="Panel" parent="."]
+margin_left = 996.0
+margin_top = 715.0
+margin_right = 1305.0
+margin_bottom = 815.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="G_panel"]
+margin_left = 18.9768
+margin_top = 12.6512
+margin_right = 122.977
+margin_bottom = 84.6512
+text = "0 G"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="List/Button" to="." method="_on_Button_pressed"]

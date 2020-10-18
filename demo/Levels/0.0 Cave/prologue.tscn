@@ -11,7 +11,7 @@
 [ext_resource path="res://sprites/cavestuff/ball.png" type="Texture" id=10]
 [ext_resource path="res://Brains/SaveStar.tscn" type="PackedScene" id=12]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 resource_name = "default"
 tracks/0/type = "value"
 tracks/0/path = NodePath("DialoguePopup/AudioStreamPlayer:volume_db")
@@ -278,7 +278,7 @@ tracks/21/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "title"
 length = 80.0
 tracks/0/type = "value"
@@ -598,9 +598,9 @@ tracks/25/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="StyleBoxEmpty" id=2]
+[sub_resource type="StyleBoxEmpty" id=3]
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
@@ -613,8 +613,8 @@ script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
-anims/default = SubResource( 4 )
-anims/title = SubResource( 3 )
+anims/default = SubResource( 1 )
+anims/title = SubResource( 2 )
 
 [node name="BG" parent="." instance=ExtResource( 1 )]
 margin_left = -230.156
@@ -629,29 +629,29 @@ margin_left = 613.0
 margin_top = 1133.36
 margin_right = 1565.0
 margin_bottom = 1494.36
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 3 )
 
 [node name="VBoxContainer" parent="DialoguePopup/Panel/MarginContainer" index="0"]
 margin_right = 852.0
-margin_bottom = 260.0
+margin_bottom = 261.0
 
 [node name="DialogueHBoxContainer" parent="DialoguePopup/Panel/MarginContainer/VBoxContainer" index="0"]
 margin_right = 852.0
-margin_bottom = 256.0
+margin_bottom = 257.0
 
 [node name="Text" parent="DialoguePopup/Panel/MarginContainer/VBoxContainer/DialogueHBoxContainer" index="0"]
 margin_right = 848.0
-margin_bottom = 256.0
+margin_bottom = 257.0
 
 [node name="PlayerChoicesRight" parent="DialoguePopup/Panel/MarginContainer/VBoxContainer/DialogueHBoxContainer" index="1"]
 margin_left = 852.0
 margin_right = 852.0
-margin_bottom = 256.0
+margin_bottom = 257.0
 
 [node name="PlayerChoicesBottom" parent="DialoguePopup/Panel/MarginContainer/VBoxContainer" index="1"]
-margin_top = 260.0
+margin_top = 261.0
 margin_right = 852.0
-margin_bottom = 260.0
+margin_bottom = 261.0
 
 [node name="AudioStreamPlayer" parent="DialoguePopup" index="3"]
 volume_db = -80.0
@@ -662,7 +662,8 @@ stream = ExtResource( 9 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 966.784, 487.744 )
 rotation = 0.918689
-frames = SubResource( 5 )
+frames = SubResource( 4 )
+frame = 2
 playing = true
 
 [node name="SaveStar" parent="." instance=ExtResource( 12 )]

@@ -19,6 +19,7 @@ const pulled_right = "Ya pulled the right"
 const pulled_left_first_apologized = "pulled_left_first_apologized"
 const pulled_right_first_reprimanded = "pulled_left_first_apologized"
 const pulled_both_explained_dash = "explained_dash"
+const you_did_it = "you_defeated_the_levers"
 
 func _ready():
 	Jukebox.play_song("res://tunes/cave/fallen.wav")
@@ -58,7 +59,7 @@ func get_normal_dialogue(pitch):
 	elif left and !right:
 		return {
 			"begin" : [
-				"TEXT", "Yeah, yeah... The RIGHT switch...\n...right?", 0.03,
+				"TEXT", "Yeah, yeah... The RIGHT switch!\nIt's the... Right... Switch!!!!", 0.03,
 				null, null, null, pitch
 			],
 		}
@@ -70,12 +71,20 @@ func get_normal_dialogue(pitch):
 			]
 		}
 	elif left and right:
-		return {
-			"begin" : [
-				"TEXT", "OF COURSE, the TURBO DASH, obvious...", 0.03,
-				null, null, null, pitch
-			]
-		}
+		if !stats.check_bool(you_did_it):
+			return {
+				"begin" : [
+					"TEXT", '"J" stands for JUST DO IT!!!', 0.03,
+					null, null, null, pitch
+				]
+			}
+		else:
+			return {
+				"begin" : [
+					"TEXT", "You did it!!! You're a natural!", 0.03,
+					null, null, null, pitch
+				]
+			}
 
 func get_initial_dialogue(gilby_voice):
 	return {
@@ -120,7 +129,7 @@ func get_left_first_dialogue(gilby_voice):
 			0.02, "warning4", null, gilby.shifty, gilby_voice
 		],
 		"warning4" : [
-			"TEXT", "But yeah, it must be the right... I'm such an IDIOT.",
+			"TEXT", "But yeah, it must be the right... The right, yeah!!!",
 			0.02, null, null, gilby.angry, gilby_voice
 		],
 	}
@@ -164,10 +173,41 @@ func explain_pegasus_dash(gilby_voice):
 			0.02, "warning4", null, gilby.shifty, gilby_voice
 		],
 		"warning4" : [
-			"TEXT", "Wah- no?? Well the, I'll have to teach you!",
-			0.02, null, null, gilby.angry, gilby_voice
+			"TEXT", "Wah- no?? Well then, I'll have to teach you!",
+			0.02, "warning5", null, gilby.angry, gilby_voice
+		],
+		"warning5" : [
+			"TEXT", "Picture the essence of SPEED in your THOUGHT PALACE.",
+			0.02, "warning6", null, gilby.angry, gilby_voice
+		],
+		"warning6" : [
+			"TEXT", "THE WIND AT YOUR BACK!!! THE INCREDIBLE ROARING WIND!!!",
+			0.02, "warning7", null, gilby.angry, gilby_voice
+		],
+		"warning7" : [
+			"TEXT", "VISUALIZE!!!",
+			0.02, "warning8", null, gilby.angry, gilby_voice
+		],
+		"warning8" : [
+			"TEXT", 'And then press "J" with all your might!!!',
+			0.02, null, [self, "teach_turbo_dash"], gilby.angry, gilby_voice
 		],
 	}
+	
+func congratulate(gilby_voice):
+	return {
+		"begin" : [
+			"TEXT", "YEAHH!!!!!",
+			0.02, "warning", null, gilby.angry, gilby_voice
+		],
+		"warning" : [
+			"TEXT", "You totally DESTROYED that DOOR!!!!",
+			0.02, null, null, null, gilby_voice
+		],
+	}
+	
+func teach_turbo_dash():
+	stats.world_state["turbodash"] = true
 
 func opine():
 	var left = stats.check_bool(pulled_left)
@@ -224,8 +264,15 @@ func fall():
 func real_fall(_a, _b):
 	Transition.go_to("res://Levels/0.0 Cave/Basement.tscn", "pillow")
 
-func _on_LeftLever_pulled(side):
+func _on_LeftLever_pulled(_side):
 	_on_Lever_pulled("left")
 
-func _on_RightLever_pulled(side):
+func _on_RightLever_pulled(_side):
 	_on_Lever_pulled("right")
+
+func _on_Door_destroyed():
+	stats.world_state[you_did_it] = true
+	gilby.set_dialogue(congratulate(gilby.VOICE_PITCH))
+
+func _on_UpperTZ_transition_triggered():
+	Transition.go_to("res://Levels/0.0 Cave/PuzzleCave3.tscn", "bottom")

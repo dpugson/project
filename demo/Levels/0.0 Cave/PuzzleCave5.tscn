@@ -4,20 +4,20 @@
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/0.0 Cave/Crate.tscn" type="PackedScene" id=3]
 [ext_resource path="res://BG.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Levels/0.0 Cave/PuzzleCave3.gd" type="Script" id=5]
+[ext_resource path="res://Levels/0.0 Cave/PuzzleCave5.gd" type="Script" id=5]
 [ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Characters/salamanders/Gilby.tscn" type="PackedScene" id=7]
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=8]
-[ext_resource path="res://world/Sign.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=9]
+[ext_resource path="res://world/Sign.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 71.0704, 62.6938 )
+extents = Vector2( 58.1914, 35.948 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 101.19, 32.5745 )
+extents = Vector2( 104.094, 22.4471 )
 
-[node name="PuzzleCave3" type="Node2D"]
+[node name="PuzzleCave5" type="Node2D"]
 position = Vector2( -2.09241, -4.18497 )
 script = ExtResource( 5 )
 
@@ -25,49 +25,58 @@ script = ExtResource( 5 )
 position = Vector2( 926.557, 555.483 )
 texture = ExtResource( 1 )
 
-[node name="PuppyCamera" parent="." instance=ExtResource( 10 )]
-position = Vector2( 937.55, 830.475 )
-
 [node name="YSort" type="YSort" parent="."]
 
 [node name="player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 937.811, 839.261 )
-camera = NodePath("../../PuppyCamera")
+position = Vector2( 943.029, 825.842 )
+camera = NodePath("../../../PuzzleCave5/PuppyCamera")
 
 [node name="Gilby" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 1454.18, 955.013 )
 splash = true
 talk_radius = 3
 watch_player = true
+appear_delay = 0.1
 
 [node name="Crates" type="YSort" parent="YSort"]
 
 [node name="Crate" parent="YSort/Crates" instance=ExtResource( 3 )]
-position = Vector2( 967.528, 511.95 )
+position = Vector2( 966.942, 495.798 )
+is_special_talky_cube = true
 
 [node name="Crate3" parent="YSort/Crates" instance=ExtResource( 3 )]
-position = Vector2( 842.538, 434.183 )
+position = Vector2( 843.284, 404.364 )
+is_special_talky_cube = true
 
 [node name="Crate4" parent="YSort/Crates" instance=ExtResource( 3 )]
-position = Vector2( 838.12, 600.238 )
+position = Vector2( 840.451, 497.064 )
+is_special_talky_cube = true
 
 [node name="Crate5" parent="YSort/Crates" instance=ExtResource( 3 )]
-position = Vector2( 1092.27, 604.119 )
+position = Vector2( 966.97, 645.986 )
+is_special_talky_cube = true
 
 [node name="Crate6" parent="YSort/Crates" instance=ExtResource( 3 )]
-position = Vector2( 1210.72, 524.696 )
+position = Vector2( 1210.72, 522.65 )
+is_special_talky_cube = true
 
 [node name="Crate7" parent="YSort/Crates" instance=ExtResource( 3 )]
-position = Vector2( 713.404, 505.839 )
+position = Vector2( 711.058, 520.069 )
+is_special_talky_cube = true
 
 [node name="Crate2" parent="YSort/Crates" instance=ExtResource( 3 )]
-position = Vector2( 1091.51, 420.438 )
+position = Vector2( 1089.98, 408.666 )
+is_special_talky_cube = true
 
-[node name="Sign" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( 585.477, 831.859 )
-text = "If you get stuck, there's a BOX resetting machine that puts everything back in place whenever you leave the room."
+[node name="Sign" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 547.954, 823.098 )
+text = "Violence isn't always the answer... Sometimes you can talk through your problems!"
 
 [node name="BG" parent="." instance=ExtResource( 4 )]
+margin_left = -361.459
+margin_top = -658.188
+margin_right = 2460.54
+margin_bottom = 1446.82
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -82,20 +91,31 @@ position = Vector2( 960.133, 427.944 )
 position = Vector2( 945.058, 977.46 )
 
 [node name="UpperTZ" parent="." instance=ExtResource( 8 )]
-position = Vector2( 950.433, 287.807 )
+position = Vector2( 955.858, 310.519 )
 
 [node name="CollisionShape2D" parent="UpperTZ" index="0"]
 shape = SubResource( 1 )
 
 [node name="LowerTZ" parent="." instance=ExtResource( 8 )]
-position = Vector2( 940.394, 1080.95 )
+position = Vector2( 945.058, 1074.67 )
 
 [node name="CollisionShape2D" parent="LowerTZ" index="0"]
-position = Vector2( 10.0398, 6.69312 )
+position = Vector2( 8.10046, 0 )
 shape = SubResource( 2 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 9 )]
+position = Vector2( 975.479, 576.134 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -363.693, -517.348 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 2438.91, 1562.15 )
 [connection signal="transition_triggered" from="UpperTZ" to="." method="_on_UpperTZ_transition_triggered"]
 [connection signal="transition_triggered" from="LowerTZ" to="." method="_on_LowerTZ_transition_triggered"]
 
 [editable path="UpperTZ"]
 
 [editable path="LowerTZ"]
+
+[editable path="PuppyCamera"]

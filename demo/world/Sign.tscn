@@ -6,19 +6,16 @@
 [ext_resource path="res://hitnhurtboxes/hurtbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Brains/Stats.tscn" type="PackedScene" id=5]
 [ext_resource path="res://sprites/dogshadow.png" type="Texture" id=6]
+[ext_resource path="res://Brains/Slammable.tscn" type="PackedScene" id=7]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 7.39068
-height = 87.1771
-
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 44.6931, 46.5597 )
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 82.7817
 height = 43.554
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
@@ -36,38 +33,39 @@ texture = ExtResource( 6 )
 
 [node name="Stats" parent="." instance=ExtResource( 5 )]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 0.933838, 15.8757 )
+[node name="Slammable" parent="." instance=ExtResource( 7 )]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 1.00446, -18.0107 )
-rotation = 1.5708
-scale = Vector2( 5.46323, 1.23635 )
-shape = SubResource( 1 )
+[node name="CollisionShape2D" parent="Slammable" index="0"]
+position = Vector2( 1.8382, -4.67092 )
 
 [node name="SeenBox" parent="." instance=ExtResource( 3 )]
+visible = false
 position = Vector2( 0.933838, 15.8757 )
 
 [node name="CollisionShape2D" parent="SeenBox" index="0"]
 position = Vector2( 0.23163, -87.4602 )
 scale = Vector2( 1.67005, 2.08205 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 0.933838, 15.8757 )
 collision_layer = 16
 show_hit = true
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2( 0.337579, -87.3447 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0.933838, -76.6977 )
-frames = SubResource( 4 )
+frames = SubResource( 3 )
 [connection signal="out_of_health" from="Stats" to="." method="_on_Stats_out_of_health"]
+[connection signal="slammed" from="Slammable" to="." method="_on_Slammable_slammed"]
 [connection signal="seen" from="SeenBox" to="." method="_on_SeenBox_seen"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
+
+[editable path="Slammable"]
 
 [editable path="SeenBox"]
 
