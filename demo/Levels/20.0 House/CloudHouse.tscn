@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/house/railing.png" type="Texture" id=2]
+[ext_resource path="res://sprites/house/fish_house_base.png" type="Texture" id=3]
+[ext_resource path="res://sprites/house/fish_house_foreground.png" type="Texture" id=4]
+[ext_resource path="res://sprites/house/fish_house_house.png" type="Texture" id=5]
+
+[node name="CloudHouse" type="Node2D"]
+position = Vector2( 518.16, 153.795 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 335.291, 206.684 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -36.1373, 123.207, -296.295, 123.904, -286.934, 630.421, 239.344, 631.461, 244.544, 103.103, -29.5206, 123.462, -34.4768, 1.16382, 356.583, 25.874, 354.836, 710.97, -401.916, 707.475, -414.15, 1.40628, -41.1186, 1.99405 )
+
+[node name="fish_house_base" type="Sprite" parent="."]
+position = Vector2( 335.291, 206.684 )
+texture = ExtResource( 3 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 501.588, 751.841 )
+
+[node name="Node2D" type="Node2D" parent="YSort"]
+position = Vector2( 300.539, 671.606 )
+
+[node name="fish_house_house" type="Sprite" parent="YSort/Node2D"]
+position = Vector2( 2.58716, -95.0432 )
+texture = ExtResource( 5 )
+
+[node name="fish_house_foreground" type="Sprite" parent="."]
+position = Vector2( 335.273, 207.231 )
+texture = ExtResource( 4 )
+
+[node name="railing" type="Sprite" parent="."]
+position = Vector2( 317.919, 768.654 )
+texture = ExtResource( 2 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+polygon = PoolVector2Array( 157.789, 705.852, 254.799, 702.564, 257.265, 594.867, 349.342, 595.689, 350.987, 701.742, 457.039, 695.165, 452.929, 445.242, 158.612, 445.242 )

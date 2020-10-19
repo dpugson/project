@@ -249,7 +249,70 @@ var dialogue3 = {
 		"teach2",
 		[self, "perry_turn", "up"], pink_chuffed
 	],
+	"teach2": [
+		"TEXT", "Ok, poopy! Ready to start? Get your flippers on!", 0.02,
+		[["ummmmm....", "noflips"], ["uhhh....", "noflips"]],
+		[self, "gilby_turn", "up"], green_shifty, GILBY_PITCH
+	],
+	"noflips": [
+		"TEXT", "WHAT!!! You don't have your flippers?", 0.02,
+		"noflips2",
+		null, green_angry, GILBY_PITCH
+	],
+	"noflips2": [
+		"TEXT", "Perry! This puppy ain't got no flippers!!!", 0.02,
+		"noflips3",
+		[self, "gilby_turn", "right"], green_shifty, GILBY_PITCH
+	],
+	"noflips3": [
+		"TEXT", "What???", 0.02,
+		"noflips4",
+		[self, "perry_turn", "left"], pink_thinking
+	],
+	"noflips4": [
+		"TEXT", "Do we have some spares?", 0.02,
+		"whywouldhave", null, pink_thinking
+	],
+	"whywouldhave": [
+		"TEXT", "We're FISH PEOPLE, why would we have spares?", 0.02,
+		"though", null, green_shifty, GILBY_PITCH
+	],
+	"though" : [
+		"TEXT", "Though, you know who would...", 0.02,
+		"whowould", null, green_shifty, GILBY_PITCH
+	],
+	"whowould" : [
+		"TEXT", "That guy who lived down here!!!", 0.02,
+		"skeleton", null, green_shifty, GILBY_PITCH
+	],
+	"skeleton" : [
+		"TEXT", "Oh!! That guy!!! Oh... Now I'm sad, Gilby!", 0.02,
+		"goodrun", null, pink_chuffed
+	],
+	"goodrun" : [
+		"TEXT", "Eh, he had a good run!!\nAn skelebones don't got feelings, SO", 0.02,
+		"instructions", null, green_shifty, GILBY_PITCH
+	],
+	"instructions" : [
+		"TEXT", "Poopy!!! Before your swimming lessons, you're gonna have to do a little chore!", 0.02,
+		"quest", null, green_shifty, GILBY_PITCH
+	],
+	"quest" : [
+		"TEXT", "You are just gonna have to go rob the house\nof a weird guy who used to live down here!", 0.02,
+		"notrob", null, green_angry, GILBY_PITCH
+	],
+	"notrob" : [
+		"TEXT", "But it ain't robbing, really... More like, recycling!", 0.02,
+		"key", null, green_shifty, GILBY_PITCH
+	],
+	"key" : [
+		"TEXT", "Here's a key!", 0.02,
+		"notrob", [self, "give_key"], green_shifty, GILBY_PITCH
+	],
 }
+
+func give_key():
+	stats.inventory_add("skeleton_key")
 
 var teaching  = {
 	"teach2": [

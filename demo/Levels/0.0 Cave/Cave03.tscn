@@ -4,7 +4,6 @@
 [ext_resource path="res://Levels/0.0 Cave/WaveTexture.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/0.0 Cave/BarkSalamanderEvent.tscn" type="PackedScene" id=3]
 [ext_resource path="res://BG.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Levels/0.0 Cave/CrumblyWall.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/0.0 Cave/Cave03.gd" type="Script" id=7]
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=8]
@@ -14,6 +13,7 @@
 [ext_resource path="res://sprites/cavestuff/stitchedtogether-foregound-min.png" type="Texture" id=12]
 [ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Brains/SaveStar.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Levels/0.0 Cave/SlammableDoor.tscn" type="PackedScene" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 65.585, 96.4377 )
@@ -49,7 +49,7 @@ home = "res://Levels/0.0 Cave/Cave03.tscn"
 flavor_text = "Hello, Star Child!"
 
 [node name="Sign" parent="YSort" instance=ExtResource( 10 )]
-position = Vector2( 1698.87, 1215.61 )
+position = Vector2( 1090.3, 1053.49 )
 max_health = 1
 text = "Please be gentle!
 This is a delicate ecosystem."
@@ -77,9 +77,9 @@ scale = Vector2( 1.00697, 1.45775 )
 [node name="popping_zone_center" parent="YSort/BarkSalamanderEvent" index="1"]
 position = Vector2( -42.6965, 460.662 )
 
-[node name="CrumblyWall" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 1700.54, 1199.24 )
-unique_name = "crumblydelicate"
+[node name="SlammableDoor" parent="YSort" instance=ExtResource( 15 )]
+position = Vector2( 1699.49, 1156.42 )
+scale = Vector2( 0.835776, 0.782428 )
 
 [node name="UpperSpawnPoint" parent="." instance=ExtResource( 6 )]
 position = Vector2( 452.033, 845.331 )

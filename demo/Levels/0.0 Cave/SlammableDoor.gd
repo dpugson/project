@@ -3,7 +3,9 @@ extends Node2D
 const DestructionEffect = preload("res://effects/signexplode.tscn")
 const EffectHelper = preload("res://effects/EffectHelper.gd")
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
+onready var stats = PlayerStats
 
+export var unlock_var : String = ""
 export var unique_name : String = ""
 var destroyed_stat_name = ""
 
@@ -18,9 +20,21 @@ func _ready():
 			queue_free()
 
 func _on_SeenBox_seen(_obj):
-	var dialogue = {
-		"begin" : ["TEXT", text, 0.03, null]
-	}
+	var dialogue = null
+	if stats.check_bool(unlock_var):
+		dialogue = {
+			"begin" : ["TEXT", 
+				"The door is locked... But you have the key!\nWould you like to unlock it?", 0.03,
+				[["yes", "unlock"], ["no", null]]
+			],
+			"unlock" : [
+				"TEXT", "*click!*", 0.04, null, [self, "_on_Slammable_slammed"]
+			]
+		}
+	else:
+		dialogue = {
+			"begin" : ["TEXT", text, 0.03, null]
+		}
 	DialogueHelper.showDialogue(self, dialogue)
 
 func _on_Slammable_slammed(_power):

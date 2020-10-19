@@ -8,8 +8,6 @@
 [ext_resource path="res://Levels/0.0 Cave/CrumblyWall.gd" type="Script" id=6]
 [ext_resource path="res://Brains/Stats.tscn" type="PackedScene" id=7]
 
-
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 1 ) ],
@@ -88,7 +86,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "shake"
 length = 0.4
 tracks/0/type = "value"
@@ -104,8 +102,7 @@ tracks/0/keys = {
 "values": [ Vector2( 3.05176e-05, -89.3588 ), Vector2( 7.6282, -88.269 ), Vector2( -9.80765, -88.269 ), Vector2( -1.08969, -88.269 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "standing"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
 tracks/0/interp = 1
@@ -131,7 +128,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 67.7423
 
 [node name="CrumblyWall" type="Node2D"]
@@ -140,21 +137,19 @@ script = ExtResource( 6 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -1.08969, -88.269 )
 frames = SubResource( 1 )
-animation = "crumble"
-frame = 3
+playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "standing"
 anims/crumble = SubResource( 2 )
-anims/shake = SubResource( 5 )
-anims/standing = SubResource( 3 )
+anims/shake = SubResource( 3 )
+anims/standing = SubResource( 4 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2( 3.26923, 0 )
 polygon = PoolVector2Array( -136.039, -58.2907, -72.8344, -11.4318, -37.9626, -0.534424, 24.1526, 1.64505, 57.9346, -4.89337, 146.204, -68.0984, 132.037, -147.65, -141.488, -156.367 )
-disabled = true
 
 [node name="Stats" parent="." instance=ExtResource( 7 )]
 
@@ -163,7 +158,7 @@ collision_layer = 16
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2( 0, -70.8332 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 [connection signal="out_of_health" from="Stats" to="." method="_on_Stats_out_of_health"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 
