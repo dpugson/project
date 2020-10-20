@@ -2,8 +2,8 @@
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/0.0 Cave/WaveTexture.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/0.0 Cave/BarkSalamanderEvent.tscn" type="PackedScene" id=3]
 [ext_resource path="res://BG.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Levels/0.0 Cave/SalamanderSceneRouter.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/0.0 Cave/Cave03.gd" type="Script" id=7]
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=8]
@@ -67,16 +67,14 @@ text = "NO BARKING!!!"
 position = Vector2( 444.704, 956.433 )
 camera = NodePath("../../PuppyCamera")
 
-[node name="SalamaderSceneRouter" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 1669.75, 1771.55 )
-player_path = NodePath("../player")
-wall_path = NodePath("../../WallOfPsychicEnergy")
-
 [node name="SlammableDoor" parent="YSort" instance=ExtResource( 15 )]
 position = Vector2( 1699.49, 1156.42 )
 scale = Vector2( 0.835776, 0.782428 )
 unlock_item = "skeleton_key"
 unique_name = "skeleton_key_door"
+
+[node name="BarkSalamanderEvent" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 1115.95, 1540.98 )
 
 [node name="UpperSpawnPoint" parent="." instance=ExtResource( 6 )]
 position = Vector2( 452.033, 845.331 )
@@ -245,6 +243,9 @@ position = Vector2( 1698.43, 1249.48 )
 [node name="CollisionShape2D" parent="TransitionZone" index="0"]
 position = Vector2( 1703.6, 1089.81 )
 shape = SubResource( 3 )
+
+[node name="SalamanderPartTwoSpawnPoint" type="Position2D" parent="."]
+position = Vector2( 1670.64, 1745.25 )
 [connection signal="transition_triggered" from="UpperDoor" to="." method="_on_UpperDoor_transition_triggered"]
 [connection signal="transition_triggered" from="WayOut" to="." method="_on_WayOut_transition_triggered"]
 [connection signal="transition_triggered" from="TransitionZone" to="." method="_on_TransitionZone_transition_triggered"]

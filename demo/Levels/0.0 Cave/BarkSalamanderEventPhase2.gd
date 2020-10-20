@@ -24,7 +24,6 @@ func _ready():
 	
 	if got_cert:
 		animation.play("BackOff")
-		# we're done!
 		set_final_dialogue()
 	elif got_flippers:
 		animation.play("by_shore")

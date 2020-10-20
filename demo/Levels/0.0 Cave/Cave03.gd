@@ -1,6 +1,10 @@
 extends Node2D
 
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
+onready var EffectHelper = preload("res://effects/EffectHelper.gd")
+onready var barksalamander_cutscene = preload("res://Levels/0.0 Cave/BarkSalamanderEventPhase2.tscn")
+onready var barkslamander_event = $YSort/BarkSalamanderEvent
+onready var barksalamander_spawn_point = $SalamanderPartTwoSpawnPoint
 onready var upperSpawnPoint = $UpperSpawnPoint
 onready var crumblySpawnPoint = $CrumblySpawnPoint
 onready var stats = PlayerStats
@@ -30,7 +34,29 @@ func _ready():
 	stats.spawn_player(
 		player, null, 
 		"../../../PuppyCamera", player_position, player_orientation)
+	
+	stats.world_state["PSYCHIC_WALL_GONE"] = false
+	if stats.check_bool("PSYCHIC_WALL_GONE"):
+		wall.queue_free()
 		
+	if stats.inventory_get("skeleton_key") >= 1:
+		barkslamander_event.queue_free()
+		_on_BarkSalamanderEvent_cutscene_starting()
+		cutscene_done()
+
+func _on_BarkSalamanderEvent_cutscene_starting():
+	print("cutscene started!!")
+	player.set_blend_positions(Vector2.DOWN * 0)
+	player.cutscene_input = Vector2.ZERO
+	player.cutscene_mode = true
+	EffectHelper.call_deferred(
+		"place_effect", 
+		self, barksalamander_cutscene,
+		barksalamander_spawn_point.global_position,
+		[self, "cutscene_done"])
+		
+func cutscene_done():
+	player.cutscene_mode = false
 	if stats.check_bool("PSYCHIC_WALL_GONE"):
 		wall.queue_free()
 
