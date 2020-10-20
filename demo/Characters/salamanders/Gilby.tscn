@@ -100,7 +100,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "before_appear"
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:visible")
@@ -127,8 +127,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "default"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:visible")
 tracks/0/interp = 1
@@ -170,7 +169,6 @@ parameters/playback = SubResource( 1 )
 position = Vector2( -0.588379, 22.2394 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-visible = false
 position = Vector2( 0, 7.83781 )
 frames = SubResource( 2 )
 animation = "right"
@@ -180,8 +178,8 @@ position = Vector2( 3.65384, -3.94189 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/appear = SubResource( 3 )
-anims/before_appear = SubResource( 5 )
-anims/default = SubResource( 4 )
+anims/before_appear = SubResource( 4 )
+anims/default = SubResource( 5 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

@@ -12,7 +12,7 @@
 [ext_resource path="res://sprites/cavestuff/salamanders/green_l0.png" type="Texture" id=11]
 [ext_resource path="res://effects/SalamanderPeek.gd" type="Script" id=12]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "peek"
 length = 2.3
 tracks/0/type = "value"
@@ -128,7 +128,7 @@ tracks/8/keys = {
 } ]
 }
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 9 ) ],
 "loop": true,
@@ -136,7 +136,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 8 ), ExtResource( 11 ), ExtResource( 6 ), ExtResource( 2 ) ],
 "loop": true,
@@ -153,7 +153,7 @@ frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "peek"
-anims/peek = SubResource( 2 )
+anims/peek = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
@@ -161,13 +161,13 @@ visible = false
 [node name="pink" type="AnimatedSprite" parent="Sprite"]
 visible = false
 position = Vector2( 1.37262, -15.099 )
-frames = SubResource( 3 )
+frames = SubResource( 2 )
 frame = 2
 
 [node name="green" type="AnimatedSprite" parent="Sprite"]
 visible = false
 position = Vector2( -4.11792, -9.60844 )
-frames = SubResource( 4 )
+frames = SubResource( 3 )
 frame = 3
 
 [node name="AnimatedSprite" parent="." instance=ExtResource( 3 )]

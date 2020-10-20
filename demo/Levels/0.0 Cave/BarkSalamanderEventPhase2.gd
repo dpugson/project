@@ -2,6 +2,8 @@ extends YSort
 
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 onready var animation = $AnimationPlayer
+onready var gilby = $Node2D/Gilby
+onready var perry = $Node2D/Pericles
 onready var pericles_sprite = $Node2D/Pericles/AnimatedSprite
 onready var gilby_sprite = $Node2D/Gilby/AnimatedSprite
 onready var stats = PlayerStats
@@ -13,16 +15,50 @@ const pink_thinking = "res://sprites/cavestuff/salamanders/pict_react1.png"
 
 signal done
 
+const GOT_SWIMMING_CERT = "GOT_SWIMMING_CERT"
+
 func _ready():
-	if not stats.check_bool(GOT_SWIMMING_CERT):
-		animation.play("Appear")
-	else:
+	var waiting_for_flippers  = stats.inventory_get("skeleton_key") > 0
+	var got_flippers = stats.inventory_get("flippers") > 0
+	var got_cert = stats.check_bool(GOT_SWIMMING_CERT)
+	
+	if got_cert:
 		animation.play("BackOff")
+		# we're done!
+		set_final_dialogue()
+	elif got_flippers:
+		animation.play("by_shore")
+		set_start_swim_dialogue()
+	elif waiting_for_flippers:
+		animation.play("by_shore")
+		set_waiting_for_flippers_dialogue()
+	else:
+		animation.play("Appear")
+		# The initial state!
 
 const GILBY_PITCH = 1.5
 
+func set_final_dialogue():
+	pass
 
-var dialogue = {
+func set_waiting_for_flippers_dialogue():
+	var waiting_dialogue = {
+		"begin" : [
+			"TEXT", "Come on! Go get those flippers!", 0.01, 
+			"yeah", null, green_angry, GILBY_PITCH
+		],
+		"yeah" : [
+			"TEXT", "Yeah! I'm so excited for you! You're gonna love swimming!!!", 0.01, 
+			null, null, pink_chuffed
+		],
+	}
+	gilby.set_dialogue(waiting_dialogue)
+	perry.set_dialogue(waiting_dialogue)
+
+func set_start_swim_dialogue():
+	pass
+
+var appear_dialogue = {
 	"begin" : [
 		"TEXT", "What's with all this racket????", 0.01, "perry1", null,
 		green_angry, GILBY_PITCH
@@ -53,7 +89,7 @@ var dialogue = {
 }
 
 func start_encounter():
-	DialogueHelper.showDialogue(self, dialogue, true)
+	DialogueHelper.showDialogue(self, appear_dialogue, true)
 	
 func perry_swim_over():
 	animation.play("PerrySwimOver")
@@ -290,15 +326,15 @@ var dialogue3 = {
 		"goodrun", null, pink_chuffed
 	],
 	"goodrun" : [
-		"TEXT", "Eh, he had a good run!!\nAn skelebones don't got feelings, SO", 0.02,
+		"TEXT", "Eh, he had a good run!!\nAn skelebones don't got feelings, SO....", 0.02,
 		"instructions", null, green_shifty, GILBY_PITCH
 	],
 	"instructions" : [
-		"TEXT", "Poopy!!! Before your swimming lessons, you're gonna have to do a little chore!", 0.02,
+		"TEXT", "Poopy!!! Before your swimming lessons, you're\ngonna have to do a little chore!", 0.02,
 		"quest", null, green_shifty, GILBY_PITCH
 	],
 	"quest" : [
-		"TEXT", "You are just gonna have to go rob the house\nof a weird guy who used to live down here!", 0.02,
+		"TEXT", "You're gonna have to go rob the house\nof a weird guy who used to live down here!", 0.02,
 		"notrob", null, green_angry, GILBY_PITCH
 	],
 	"notrob" : [
@@ -307,9 +343,27 @@ var dialogue3 = {
 	],
 	"key" : [
 		"TEXT", "Here's a key!", 0.02,
-		"notrob", [self, "give_key"], green_shifty, GILBY_PITCH
+		"get_key", null, green_shifty, GILBY_PITCH
+	],
+	"get_key" : [
+		"TEXT", "YOU RECEIVED A SKELETON KEY", 0.02,
+		"door", [self, "give_key"], false
+	],
+	"door" : [
+		"TEXT", "So, just head right up by that door up there!\nIt's a straight shot to the dead guy's house!", 0.02,
+		"finish", null, green_shifty, GILBY_PITCH
+	],
+	"finish" : [
+		"TEXT", "Come back here once you've got those flippers\nand we'll get you swimming in no time!", 0.02,
+		null, [self, "finish_up"], green_angry, GILBY_PITCH
 	],
 }
+
+func finish_up():
+	set_waiting_for_flippers_dialogue()
+	gilby_turn("up")
+	perry_turn("up")
+	emit_signal("done")
 
 func give_key():
 	stats.inventory_add("skeleton_key")
@@ -402,8 +456,6 @@ func give_cert():
 
 func play_fun_sound():
 	pass
-	
-const GOT_SWIMMING_CERT = "GOT_SWIMMING_CERT"
 
 func encounter_over():
 	stats.world_state[GOT_SWIMMING_CERT] = true

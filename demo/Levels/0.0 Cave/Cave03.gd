@@ -7,9 +7,6 @@ onready var stats = PlayerStats
 onready var player = $YSort/player
 onready var transition = Transition
 
-onready var barksalamander_detectionzone = $YSort/BarkSalamanderEvent
-onready var EffectHelper = preload("res://effects/EffectHelper.gd")
-onready var barksalamander_cutscene = preload("res://Levels/0.0 Cave/BarkSalamanderEventPhase2.tscn")
 onready var wall = $WallOfPsychicEnergy
 onready var tween = $Tween
 onready var camera = $PuppyCamera
@@ -33,29 +30,12 @@ func _ready():
 	stats.spawn_player(
 		player, null, 
 		"../../../PuppyCamera", player_position, player_orientation)
-
-	if stats.check_bool("GOT_SWIMMING_CERT"):
-		barksalamander_detectionzone.queue_free()
-		_on_BarkSalamanderEvent_cutscene_starting()
-		cutscene_done()
+		
+	if stats.check_bool("PSYCHIC_WALL_GONE"):
+		wall.queue_free()
 
 func _on_UpperDoor_transition_triggered():
 	transition.go_to("res://Levels/0.0 Cave/Cave02.tscn", "top")
-
-func _on_BarkSalamanderEvent_cutscene_starting():
-	print("cutscene started!!")
-	player.set_blend_positions(Vector2.DOWN * 0)
-	player.cutscene_input = Vector2.ZERO
-	player.cutscene_mode = true
-	EffectHelper.call_deferred(
-		"place_effect", 
-		player, barksalamander_cutscene,
-		barksalamander_detectionzone.global_position,
-		[self, "cutscene_done"])
-		
-func cutscene_done():
-	player.cutscene_mode = false
-	wall.queue_free()
 	
 const HAS_ESCAPED_CAVE = "HAS_ESCAPED_CAVE"
 func _on_WayOut_transition_triggered():

@@ -10,6 +10,9 @@ var dialogue = {
 	"begin" : ["TEXT", "You're doing great!", 0.08, null]
 }
 
+func set_dialogue(new_dialogue):
+	person.set_dialogue(new_dialogue)
+
 func _ready():
 	person.init(animated_sprite)
 	person.set_dialogue(dialogue)

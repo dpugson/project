@@ -2,8 +2,8 @@
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/0.0 Cave/WaveTexture.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Levels/0.0 Cave/BarkSalamanderEvent.tscn" type="PackedScene" id=3]
 [ext_resource path="res://BG.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/0.0 Cave/SalamanderSceneRouter.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/0.0 Cave/Cave03.gd" type="Script" id=7]
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=8]
@@ -67,19 +67,16 @@ text = "NO BARKING!!!"
 position = Vector2( 444.704, 956.433 )
 camera = NodePath("../../PuppyCamera")
 
-[node name="BarkSalamanderEvent" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 1700.56, 1702.05 )
-
-[node name="HurtBox" parent="YSort/BarkSalamanderEvent" index="0"]
-position = Vector2( -603.838, -150.374 )
-scale = Vector2( 1.00697, 1.45775 )
-
-[node name="popping_zone_center" parent="YSort/BarkSalamanderEvent" index="1"]
-position = Vector2( -42.6965, 460.662 )
+[node name="SalamaderSceneRouter" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 1669.75, 1771.55 )
+player_path = NodePath("../player")
+wall_path = NodePath("../../WallOfPsychicEnergy")
 
 [node name="SlammableDoor" parent="YSort" instance=ExtResource( 15 )]
 position = Vector2( 1699.49, 1156.42 )
 scale = Vector2( 0.835776, 0.782428 )
+unlock_item = "skeleton_key"
+unique_name = "skeleton_key_door"
 
 [node name="UpperSpawnPoint" parent="." instance=ExtResource( 6 )]
 position = Vector2( 452.033, 845.331 )
@@ -208,12 +205,11 @@ polygon = PoolVector2Array( 1805.79, 2676.2, 1796.49, 2759.83, 2.89893, 2736.6, 
 polygon = PoolVector2Array( 1415.47, 1412.31, 1387.59, 1742.22, 1434.06, 1784.04, 1513.05, 1909.5, 1155.26, 1937.38, -38.9207, 1904.86 )
 
 [node name="Water" type="Area2D" parent="."]
-visible = false
 collision_layer = 1024
 collision_mask = 1024
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Water"]
-polygon = PoolVector2Array( 1173.1, 1948.15, 1505.92, 1921.81, 1759.73, 1936.18, 1977.62, 1998.43, 2051.85, 2125.33, 2063.82, 2405.48, 1977.62, 2592.24, 1805.22, 2685.63, 1484.37, 2640.13, 363.788, 2546.75, -43.2622, 2532.38, -12.1348, 1902.65 )
+polygon = PoolVector2Array( 1173.1, 1948.15, 1507.83, 1947.89, 1758.46, 1956.37, 1977.62, 1998.43, 2051.85, 2125.33, 2063.82, 2405.48, 1977.62, 2592.24, 1805.22, 2685.63, 1484.37, 2640.13, 363.788, 2546.75, -43.2622, 2532.38, -12.1348, 1902.65 )
 
 [node name="WallOfPsychicEnergy" type="StaticBody2D" parent="."]
 position = Vector2( 1662.04, 1909.85 )
@@ -249,12 +245,9 @@ position = Vector2( 1698.43, 1249.48 )
 [node name="CollisionShape2D" parent="TransitionZone" index="0"]
 position = Vector2( 1703.6, 1089.81 )
 shape = SubResource( 3 )
-[connection signal="cutscene_starting" from="YSort/BarkSalamanderEvent" to="." method="_on_BarkSalamanderEvent_cutscene_starting"]
 [connection signal="transition_triggered" from="UpperDoor" to="." method="_on_UpperDoor_transition_triggered"]
 [connection signal="transition_triggered" from="WayOut" to="." method="_on_WayOut_transition_triggered"]
 [connection signal="transition_triggered" from="TransitionZone" to="." method="_on_TransitionZone_transition_triggered"]
-
-[editable path="YSort/BarkSalamanderEvent"]
 
 [editable path="PuppyCamera"]
 

@@ -5,7 +5,7 @@ const EffectHelper = preload("res://effects/EffectHelper.gd")
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 onready var stats = PlayerStats
 
-export var unlock_var : String = ""
+export var unlock_item : String = ""
 export var unique_name : String = ""
 var destroyed_stat_name = ""
 
@@ -21,14 +21,14 @@ func _ready():
 
 func _on_SeenBox_seen(_obj):
 	var dialogue = null
-	if stats.check_bool(unlock_var):
+	if unlock_item != "" and stats.inventory_get(unlock_item) > 0:
 		dialogue = {
 			"begin" : ["TEXT", 
 				"The door is locked... But you have the key!\nWould you like to unlock it?", 0.03,
 				[["yes", "unlock"], ["no", null]]
 			],
 			"unlock" : [
-				"TEXT", "*click!*", 0.04, null, [self, "_on_Slammable_slammed"]
+				"TEXT", "*click!*", 0.04, null, [self, "unlock"]
 			]
 		}
 	else:
@@ -36,6 +36,9 @@ func _on_SeenBox_seen(_obj):
 			"begin" : ["TEXT", text, 0.03, null]
 		}
 	DialogueHelper.showDialogue(self, dialogue)
+	
+func unlock():
+	_on_Slammable_slammed(0)
 
 func _on_Slammable_slammed(_power):
 	if destroyed_stat_name != "":
