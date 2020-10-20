@@ -453,6 +453,7 @@ var teaching  = {
 
 func give_cert():
 	stats.inventory_add('swimming_cert')
+	stats.world_state["PSYCHIC_WALL_GONE"] = true
 
 func play_fun_sound():
 	pass

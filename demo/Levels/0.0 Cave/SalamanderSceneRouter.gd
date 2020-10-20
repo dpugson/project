@@ -32,5 +32,5 @@ func _on_BarkSalamanderEvent_cutscene_starting():
 func cutscene_done():
 	var player = get_node(player_path)
 	player.cutscene_mode = false
-	stats.world_state["PSYCHIC_WALL_GONE"] = true
-	get_node(wall_path).queue_free()
+	if stats.check_bool("PSYCHIC_WALL_GONE"):
+		get_node(wall_path).queue_free()
