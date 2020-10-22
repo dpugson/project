@@ -246,6 +246,7 @@ shape = SubResource( 3 )
 
 [node name="SalamanderPartTwoSpawnPoint" type="Position2D" parent="."]
 position = Vector2( 1670.64, 1745.25 )
+[connection signal="cutscene_starting" from="YSort/BarkSalamanderEvent" to="." method="_on_BarkSalamanderEvent_cutscene_starting"]
 [connection signal="transition_triggered" from="UpperDoor" to="." method="_on_UpperDoor_transition_triggered"]
 [connection signal="transition_triggered" from="WayOut" to="." method="_on_WayOut_transition_triggered"]
 [connection signal="transition_triggered" from="TransitionZone" to="." method="_on_TransitionZone_transition_triggered"]

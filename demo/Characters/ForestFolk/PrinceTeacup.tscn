@@ -1,0 +1,101 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://sprites/forest_npcs/prince_teacup/pt_d.png" type="Texture" id=1]
+[ext_resource path="res://sprites/forest_npcs/prince_teacup/pt_l.png" type="Texture" id=2]
+[ext_resource path="res://sprites/forest_npcs/prince_teacup/pt_r.png" type="Texture" id=3]
+[ext_resource path="res://sprites/forest_npcs/prince_teacup/pt_u.png" type="Texture" id=4]
+[ext_resource path="res://Brains/TalkToPerson.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Characters/ForestFolk/PrinceTeacup.gd" type="Script" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "down",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 50.3695, 67.7521 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 36.1504
+height = 47.4128
+
+[sub_resource type="Animation" id=5]
+resource_name = "resting"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.970257 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 6.62128, -143.24 ), Vector2( 7.7312, -138.8 ), Vector2( 6.62128, -143.24 ) ]
+}
+
+[node name="PrinceTeacup" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 6.62128, -143.24 )
+frames = SubResource( 1 )
+animation = "down"
+
+[node name="Person" parent="." instance=ExtResource( 5 )]
+position = Vector2( -6.10352e-05, 38.8476 )
+
+[node name="SeenBox" parent="Person" index="0"]
+position = Vector2( 0.901306, -33.3476 )
+
+[node name="CollisionShape2D" parent="Person/SeenBox" index="0"]
+position = Vector2( -1.92139, -17.7439 )
+shape = SubResource( 4 )
+
+[node name="AnimationTree" parent="Person" index="2"]
+parameters/playback = SubResource( 2 )
+
+[node name="CollisionShape2D" parent="Person/KinematicBody2D" index="0"]
+position = Vector2( 0.380432, -11.908 )
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "resting"
+anims/resting = SubResource( 5 )
+
+[editable path="Person"]
+
+[editable path="Person/SeenBox"]

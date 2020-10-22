@@ -8,6 +8,8 @@ onready var button_theme = preload("res://Themes/ListButtonTheme.tres")
 onready var exit_button = $List/Button
 onready var g_label = $G_panel/Label
 
+var item_click_handler = null
+
 func _input(event):
 	if event.is_action_pressed("menu"):
 		self.call_deferred("close_menu")
@@ -34,18 +36,36 @@ func handle_focus_entered(label, item):
 func handle_focus_exited(_label, _item):
 	undisplay_item()
 
+func remove_item_from_list(label, prev):
+	prev.grab_focus()
+	label.queue_free()
+
+func decrement_item(label, item, prev):
+	var item_name = item["name"]
+	var count = max(stats.inventory_get(item_name) - 1, 0)
+	stats.inventory[item_name] = count
+	if count == 0:
+		remove_item_from_list(label, prev)
+	elif count > 1:
+		label.text = item_name + ' x' + str(count)
+	else:
+		label.text = item_name
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	exit_button.grab_focus()
 	g_label.text = str(stats.G) + " G"
 	var first = true
+	var prev = exit_button
 	for item in stats.inventory:
 		var item_data = ItemRegistry.get(item)
 		var label = Button.new()
 		var count = stats.inventory[item]
 		label.connect("focus_entered", self, 'handle_focus_entered', [label, item_data])
+		label.connect("focus_exited", self, 'handle_focus_exited', [label, item_data])
 		label.connect("mouse_entered", self, 'handle_focus_entered', [label, item_data])
 		label.connect("mouse_exited", self, 'handle_focus_exited', [label, item_data])
+		label.connect("pressed", self, "handle_item_pressed", [label, item_data, prev])
 		label.theme = button_theme
 		label.align = Button.ALIGN_LEFT
 		items_list.add_child(label)
@@ -57,6 +77,7 @@ func _ready():
 			display_item(item_data)
 			label.grab_focus()
 			first = false
+		prev = label
 
 func _on_Button_pressed():
 	close_menu()
@@ -64,3 +85,7 @@ func _on_Button_pressed():
 func close_menu():
 	get_tree().paused = false
 	queue_free()
+
+func handle_item_pressed(label, item, prev):
+	if item_click_handler != null:
+		item_click_handler[0].call(item_click_handler[1], self, label, item, prev)

@@ -9,6 +9,10 @@ export var SPEED_UP = 9000;
 export var MAX_SPEED = 1000;
 export var SLOW_DOWN = 6000;
 
+onready var hurtbox = $HurtBox
+onready var stats = PlayerStats
+onready var animation = $AnimationPlayer
+
 func get_input(_delta) -> Vector2:
 	var input = Vector2.ZERO
 	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -22,4 +26,9 @@ func _physics_process(delta):
 		speed = speed.move_toward(input * MAX_SPEED, SPEED_UP * delta)
 	else:
 		speed = speed.move_toward(Vector2.ZERO, SLOW_DOWN * delta)
-	move_and_collide(speed * delta)
+	var _discard = move_and_collide(speed * delta)
+
+func _on_HurtBox_area_entered(_area):
+	stats.health -= 1
+	hurtbox.start_invincibility(1.6)
+	animation.play("invincible")

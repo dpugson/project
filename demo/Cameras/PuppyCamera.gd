@@ -11,11 +11,14 @@ export var max_offset = Vector2(100, 75)
 export var max_roll = 0.1
 var shakiness = 0.0
 var trauma_power = 1
-#
-#func _process(delta):
-#	if shakiness > 0:
-#		shakiness = max(shakiness - fadeaway * delta, 0)
-#		shake()
+
+func _process(delta):
+	if shakiness != null:
+		shakiness = shakiness - fadeaway * delta
+		if shakiness <= 0:
+			shakiness = null
+			return
+		shake()
 
 func shake():
 	var amount = pow(shakiness, trauma_power)

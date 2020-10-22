@@ -47,5 +47,10 @@ rect_pivot_offset = Vector2( 912.084, 96.085 )
 position = Vector2( 868.606, 537.597 )
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
+one_shot = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -48.9073, 1156.15, 834.147, 1518.33, 1692.79, 1192.78, 1102.73, 525.4, 1806.73, 557.955, 2628.74, 1758.42, -398.874, 1640.41, 52.827, 525.4, 602.193, 529.469 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

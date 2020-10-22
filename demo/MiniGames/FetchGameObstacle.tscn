@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://MiniGames/FetchGameObstacle.gd" type="Script" id=1]
-[ext_resource path="res://sprites/fetch_game/stalagmite.png" type="Texture" id=2]
 
 [node name="FetchGameObstacle" type="YSort"]
 script = ExtResource( 1 )
@@ -15,12 +14,3 @@ position = Vector2( 1420.39, 1231.41 )
 scale = Vector2( 13.108, 7.78586 )
 
 [node name="Tween" type="Tween" parent="."]
-
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2( 13.3174, 1238.53 )
-scale = Vector2( 0.775458, 0.775458 )
-
-[node name="Sprite" type="Sprite" parent="Node2D"]
-position = Vector2( 24.5707, -492.65 )
-scale = Vector2( 5.09378, 7.43024 )
-texture = ExtResource( 2 )

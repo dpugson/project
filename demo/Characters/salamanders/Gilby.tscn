@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://effects/Ripples.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/cavestuff/salamanders/green_u0.png" type="Texture" id=2]
@@ -9,9 +9,16 @@
 [ext_resource path="res://sprites/cavestuff/salamanders/green_d0.png" type="Texture" id=7]
 [ext_resource path="res://effects/splash.tscn" type="PackedScene" id=8]
 
+[sub_resource type="CircleShape2D" id=7]
+radius = 69.6992
+
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 20.5616
+height = 85.5019
+
+[sub_resource type="SpriteFrames" id=9]
 animations = [ {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
@@ -34,8 +41,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=3]
-resource_name = "appear"
+[sub_resource type="Animation" id=10]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Splash:visible")
@@ -100,8 +106,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "before_appear"
+[sub_resource type="Animation" id=11]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:visible")
 tracks/0/interp = 1
@@ -127,7 +132,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:visible")
 tracks/0/interp = 1
@@ -162,26 +167,33 @@ frame = 1
 
 [node name="Person" parent="." instance=ExtResource( 3 )]
 
+[node name="CollisionShape2D" parent="Person/SeenBox" index="0"]
+position = Vector2( 0, 13.2602 )
+shape = SubResource( 7 )
+
 [node name="AnimationTree" parent="Person" index="2"]
 parameters/playback = SubResource( 1 )
 
 [node name="CollisionShape2D" parent="Person/KinematicBody2D" index="0"]
 position = Vector2( -0.588379, 22.2394 )
+shape = SubResource( 8 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, 7.83781 )
-frames = SubResource( 2 )
+frames = SubResource( 9 )
 animation = "right"
 
 [node name="Splash" parent="." instance=ExtResource( 8 )]
 position = Vector2( 3.65384, -3.94189 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/appear = SubResource( 3 )
-anims/before_appear = SubResource( 4 )
-anims/default = SubResource( 5 )
+anims/appear = SubResource( 10 )
+anims/before_appear = SubResource( 11 )
+anims/default = SubResource( 6 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
 [editable path="Person"]
+
+[editable path="Person/SeenBox"]

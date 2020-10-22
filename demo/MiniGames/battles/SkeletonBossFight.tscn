@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://MiniGames/BattleMenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://MiniGames/battles/SkeletonBossSprite.tscn" type="PackedScene" id=2]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=3]
+[ext_resource path="res://MiniGames/battles/SkeletonBossFight.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "resting"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("SkeletonBossSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 929.538, 457.947 ), Vector2( 902.318, 435.831 ), Vector2( 930.105, 465.319 ), Vector2( 974.052, 448.023 ) ]
+}
+
+[node name="SkeletonBossFight" type="Control"]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SkeletonBossSprite" parent="." instance=ExtResource( 2 )]
+position = Vector2( 974.052, 448.023 )
+
+[node name="BG" parent="." instance=ExtResource( 3 )]
+
+[node name="SkeletonAnimator" type="AnimationPlayer" parent="."]
+autoplay = "resting"
+anims/resting = SubResource( 1 )
+
+[node name="BattleMenu" parent="." instance=ExtResource( 1 )]
+margin_left = 1.83484
+margin_top = 0.272034
+margin_right = 1.83484
+margin_bottom = 0.272034

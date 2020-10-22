@@ -48,4 +48,7 @@ func _on_SeenBox_seen(_obj):
 		}
 		DialogueHelper.showDialogue(self, dialogue)
 		return
+		
+func get_slammed(power):
+	explode()
 

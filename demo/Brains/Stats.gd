@@ -2,7 +2,7 @@ extends Node
 
 onready var Player = preload("res://player/player.tscn")
 
-export(int) var max_health = 1 setget set_max_health
+export(int) var max_health = 10 setget set_max_health
 var health = max_health setget set_health
 
 signal out_of_health
@@ -32,7 +32,9 @@ func save_game(new_save_spot_name, tscn):
 		"world_state" : world_state,
 		"save_spot_name" : new_save_spot_name,
 		"save_spot_tscn" : tscn,
-		"G" : G
+		"G" : G,
+		"max_health" : max_health,
+		"health" : health
 	}, " "))
 	file.close()
 	emit_signal("save_complete")
@@ -43,10 +45,13 @@ func load_game():
 		return # No save file!
 	file.open(SAVE_FILE_LOCATION, File.READ)
 	var json = parse_json(file.get_as_text())
+	print(json)
 	inventory = json.get("inventory", {})
 	world_state = json.get("world_state", {})
 	save_spot_name = json.get("save_spot_name", null)
 	save_spot_tscn = json.get("save_spot_tscn", null)
+	max_health = json.get("max_health", 10)
+	health = json.get("health", 10)
 	G = json.get("G", 0)
 	file.close()
 

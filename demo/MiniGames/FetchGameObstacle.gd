@@ -1,17 +1,21 @@
 extends YSort
 
 onready var tween = $Tween
-onready var obstacle = $Node2D
 onready var origin = $origin
 onready var end = $end
 
-export(Vector2) var end_scale = null;
+export(Vector2) var end_scale = Vector2(2, 2);
 export(float) var speed = 5;
+
+var obstacle = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if end_scale == null:
-		end_scale = obstacle.scale
+	pass
+
+func init(obstacle_scene):
+	obstacle = obstacle_scene.instance()
+	self.add_child(obstacle)
 	obstacle.scale = Vector2.ZERO
 	
 func set_origin(value):

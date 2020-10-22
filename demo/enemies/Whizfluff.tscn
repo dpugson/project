@@ -47,7 +47,7 @@ script = ExtResource( 11 )
 position = Vector2( -1.34305, -6.25301 )
 scale = Vector2( 0.876777, 0.876777 )
 frames = SubResource( 1 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="dogshadow" type="Sprite" parent="."]

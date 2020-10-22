@@ -1,0 +1,560 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=1]
+[ext_resource path="res://MiniGames/BattleMenu.gd" type="Script" id=2]
+[ext_resource path="res://MiniGames/FetchGameBase.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=3]
+resource_name = "act_contract"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("DecisionStuff/Panel:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 188.705, 743 ), Vector2( 188.705, 843.043 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DecisionStuff/Panel:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1576, 302 ), Vector2( 1576, 206 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DecisionStuff/Actions:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DecisionStuff/MainChoices:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DecisionStuff/ActBackButton:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "act_expand"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("DecisionStuff/Panel:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 188.705, 843.043 ), Vector2( 188.705, 743 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DecisionStuff/Panel:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1576, 206 ), Vector2( 1576, 302 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DecisionStuff/Actions:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DecisionStuff/MainChoices:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DecisionStuff/ActBackButton:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "default"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("DecisionStuff/Panel:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 188.705, 843.043 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DecisionStuff/Panel:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1576, 206 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DecisionStuff/Actions:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DecisionStuff/MainChoices:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DecisionStuff/MainChoices:rect_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("DecisionStuff/MainChoices:rect_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 40, 40 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("DecisionStuff/MainChoices:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 193.691, 830.851 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("DecisionStuff/ActBackButton:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "go_to_game"
+tracks/0/type = "value"
+tracks/0/path = NodePath("FetchGameContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerStats:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerStats:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 150.918, 990.646 ), Vector2( 24.6641, 9.61929 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DecisionStuff:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("FetchGameContainer/ColorRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("FetchGameContainer/ColorRect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "leave_game"
+tracks/0/type = "value"
+tracks/0/path = NodePath("FetchGameContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerStats:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerStats:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 24.6641, 9.61929 ), Vector2( 150.918, 990.646 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DecisionStuff:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("FetchGameContainer/ColorRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("FetchGameContainer/ColorRect:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="BattleMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+anims/act_contract = SubResource( 3 )
+anims/act_expand = SubResource( 2 )
+anims/default = SubResource( 1 )
+
+[node name="FetchGameContainer" type="PanelContainer" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 0.827881
+margin_right = 1906.83
+margin_bottom = 1089.0
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FetchGameBase" parent="FetchGameContainer" instance=ExtResource( 3 )]
+position = Vector2( 61.1312, -248.016 )
+
+[node name="ColorRect" type="ColorRect" parent="FetchGameContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 6.0
+margin_top = 4.0
+margin_right = 1900.0
+margin_bottom = 1085.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="DecisionStuff" type="Control" parent="."]
+visible = false
+margin_left = -31.2411
+margin_top = -58.8736
+margin_right = 8.75891
+margin_bottom = -18.8736
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="DecisionStuff"]
+margin_left = 188.705
+margin_top = 743.0
+margin_right = 1764.71
+margin_bottom = 1045.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainChoices" type="Control" parent="DecisionStuff"]
+visible = false
+margin_left = 193.691
+margin_top = 830.851
+margin_right = 233.691
+margin_bottom = 870.851
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Act" type="Button" parent="DecisionStuff/MainChoices"]
+margin_left = 410.201
+margin_top = 59.6138
+margin_right = 670.201
+margin_bottom = 163.614
+focus_neighbour_right = NodePath("../Item")
+text = "ACT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Item" type="Button" parent="DecisionStuff/MainChoices"]
+margin_left = 866.453
+margin_top = 59.3314
+margin_right = 1129.45
+margin_bottom = 163.331
+focus_neighbour_left = NodePath("../Act")
+text = "ITEM"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Actions" type="GridContainer" parent="DecisionStuff"]
+visible = false
+margin_left = 936.399
+margin_top = 877.8
+margin_right = 984.399
+margin_bottom = 911.8
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 30
+custom_constants/hseparation = 30
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActBackButton" type="Button" parent="DecisionStuff"]
+visible = false
+margin_left = 220.916
+margin_top = 914.258
+margin_right = 372.916
+margin_bottom = 1018.26
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogueBox" type="Control" parent="DecisionStuff"]
+visible = false
+margin_left = 86.5131
+margin_top = 2.70355
+margin_right = 126.513
+margin_bottom = 42.7036
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="DecisionStuff/DialogueBox"]
+margin_left = 1140.0
+margin_top = 99.0
+margin_right = 1440.0
+margin_bottom = 515.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialogue" type="Label" parent="DecisionStuff/DialogueBox"]
+margin_left = 1178.0
+margin_top = 132.0
+margin_right = 1586.0
+margin_bottom = 635.0
+rect_scale = Vector2( 0.6, 0.7 )
+text = "HELLO PUPPY!"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FetchGameController" type="AnimationPlayer" parent="."]
+anims/go_to_game = SubResource( 4 )
+anims/leave_game = SubResource( 5 )
+
+[node name="PlayerStats" type="Control" parent="."]
+margin_left = 24.6641
+margin_top = 9.61929
+margin_right = 64.6641
+margin_bottom = 49.6222
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthUI" parent="PlayerStats" instance=ExtResource( 1 )]
+margin_left = 437.157
+margin_top = 32.3755
+margin_right = 477.157
+margin_bottom = 72.3755
+
+[node name="StaminaLabel" type="Label" parent="PlayerStats"]
+margin_left = 21.2994
+margin_top = 24.8889
+margin_right = 421.299
+margin_bottom = 96.8889
+text = "Player Stamina:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="DecisionStuff/MainChoices/Act" to="." method="_on_Act_pressed"]
+[connection signal="pressed" from="DecisionStuff/MainChoices/Item" to="." method="_on_Item_pressed"]
+[connection signal="pressed" from="DecisionStuff/ActBackButton" to="." method="_on_ActBackButton_pressed"]
