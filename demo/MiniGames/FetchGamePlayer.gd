@@ -13,10 +13,13 @@ onready var hurtbox = $HurtBox
 onready var stats = PlayerStats
 onready var animation = $AnimationPlayer
 
+export(bool) var cutscene_mode = false
+
 func get_input(_delta) -> Vector2:
 	var input = Vector2.ZERO
-	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input = input.normalized()
+	if not cutscene_mode:
+		input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+		input = input.normalized()
 	return input
 
 # Called when the node enters the scene tree for the first time.

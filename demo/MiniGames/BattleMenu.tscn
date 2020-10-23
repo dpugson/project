@@ -4,7 +4,7 @@
 [ext_resource path="res://MiniGames/BattleMenu.gd" type="Script" id=2]
 [ext_resource path="res://MiniGames/FetchGameBase.tscn" type="PackedScene" id=3]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "act_contract"
 length = 0.2
 tracks/0/type = "value"
@@ -132,8 +132,7 @@ tracks/4/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "default"
+[sub_resource type="Animation" id=3]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("DecisionStuff/Panel:rect_position")
@@ -392,11 +391,12 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
-anims/act_contract = SubResource( 3 )
+anims/act_contract = SubResource( 1 )
 anims/act_expand = SubResource( 2 )
-anims/default = SubResource( 1 )
+anims/default = SubResource( 3 )
 
 [node name="FetchGameContainer" type="PanelContainer" parent="."]
+visible = false
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 0.827881
 margin_right = 1906.83
@@ -410,7 +410,6 @@ __meta__ = {
 position = Vector2( 61.1312, -248.016 )
 
 [node name="ColorRect" type="ColorRect" parent="FetchGameContainer"]
-modulate = Color( 1, 1, 1, 0 )
 margin_left = 6.0
 margin_top = 4.0
 margin_right = 1900.0
@@ -418,7 +417,6 @@ margin_bottom = 1085.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="DecisionStuff" type="Control" parent="."]
-visible = false
 margin_left = -31.2411
 margin_top = -58.8736
 margin_right = 8.75891
@@ -429,15 +427,14 @@ __meta__ = {
 
 [node name="Panel" type="Panel" parent="DecisionStuff"]
 margin_left = 188.705
-margin_top = 743.0
+margin_top = 843.043
 margin_right = 1764.71
-margin_bottom = 1045.0
+margin_bottom = 1049.04
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MainChoices" type="Control" parent="DecisionStuff"]
-visible = false
 margin_left = 193.691
 margin_top = 830.851
 margin_right = 233.691
@@ -532,19 +529,20 @@ anims/go_to_game = SubResource( 4 )
 anims/leave_game = SubResource( 5 )
 
 [node name="PlayerStats" type="Control" parent="."]
-margin_left = 24.6641
-margin_top = 9.61929
-margin_right = 64.6641
-margin_bottom = 49.6222
+margin_left = 150.918
+margin_top = 990.646
+margin_right = 190.918
+margin_bottom = 1030.65
+rect_scale = Vector2( 0.5, 0.5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HealthUI" parent="PlayerStats" instance=ExtResource( 1 )]
-margin_left = 437.157
-margin_top = 32.3755
-margin_right = 477.157
-margin_bottom = 72.3755
+margin_left = 459.869
+margin_top = 23.0236
+margin_right = 499.869
+margin_bottom = 63.0236
 
 [node name="StaminaLabel" type="Label" parent="PlayerStats"]
 margin_left = 21.2994
