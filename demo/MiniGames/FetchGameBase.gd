@@ -8,9 +8,13 @@ onready var player = $YSort/FetchGamePlayer
 onready var timer = $Timer
 onready var tween = $Tween
 onready var animation = $AnimationPlayer
+
+onready var horizon = $horizon
 onready var edge = $edge
 onready var left_endpoint = $left_endpoint
 onready var right_endpoint = $right_endpoint
+onready var ball = $YSort/ball
+onready var ball2 = $DogWithBallFront/ball2
 
 const RADIUS = 2500
 
@@ -21,7 +25,7 @@ var FetchObstacle = preload("res://MiniGames/FetchGameObstacle.tscn")
 var round_info = {
 	"obstacle_map": {
 		"*" : { "scene": preload("res://MiniGames/battles/StalagmiteObstacle.tscn"),
-				"end_scale" : 10 }
+				"end_scale" : 10 },
 	},
 	"rounds": [
 		["__*___", 3],
@@ -47,8 +51,18 @@ func _ready():
 	edge.points[2].x = right_endpoint.position.x
 	edge.points[2].y = right_endpoint.position.y
 	
+	horizon.points[0].x = -RADIUS
+	horizon.points[0].y = vp.position.y
+	horizon.points[1].x = RADIUS
+	horizon.points[1].y = vp.position.y
+	
 	if auto_start:
 		start()
+
+func set_ball_texture(new_texture):
+	if new_texture != null:
+		ball.texture = new_texture
+		ball2.texture = new_texture
 
 func start():
 	animation.play("intro")
@@ -85,27 +99,37 @@ func _on_Timer_timeout():
 	else:
 		var curr = rounds[round_index][0]
 		var wait_after = rounds[round_index][1]
+		if round_index == rounds.size() - 1:
+			wait_after += 2
 		var obstacle_map = round_info["obstacle_map"]
 		var length = len(curr)
 		var offset = (RADIUS * 2) / length
 		for i in range(length):
 			var c = curr[i]
-			var end_vector = Vector2(-RADIUS + ((i + 0.5) * offset), 2000)
+			var end_vector = Vector2(-RADIUS + ((i + 0.4) * offset), 2000)
 			var obstacle = obstacle_map.get(c, null)
 			if obstacle != null:
 				var scene = obstacle["scene"]
 				var end_scale = obstacle["end_scale"]
-				spawn_obstacle(scene, end_vector, end_scale)
+				spawn_obstacle(ysort, scene, end_vector, end_scale)
 		timer.wait_time = wait_after
 		timer.start()
 	round_index += 1
 	
-func spawn_obstacle(scene, end_vector, end_scale):
+func spawn_obstacle(parent, scene, end_vector, end_scale):
 	var fetch_obstacle = FetchObstacle.instance()
 	fetch_obstacle.init(scene)
-	ysort.add_child(fetch_obstacle)
+	parent.add_child(fetch_obstacle)
 	fetch_obstacle.set_origin(vp.position)
-	fetch_obstacle.end_scale = Vector2(end_scale, end_scale)
+	if end_scale == null:
+		fetch_obstacle.end_scale = null
+	else:
+		fetch_obstacle.end_scale = Vector2(end_scale, end_scale)
 	fetch_obstacle.set_end(vp.position + end_vector)
 	fetch_obstacle.play()
 
+onready var pacer_parent = $PositionSameAsYsort
+func _on_PacerTimer_timeout():
+	var scene = preload("res://MiniGames/obstacles/HorizontalLine.tscn")
+	var end_scale = null
+	spawn_obstacle(pacer_parent, scene, Vector2(0, 2000), end_scale)

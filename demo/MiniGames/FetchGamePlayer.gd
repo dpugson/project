@@ -32,6 +32,6 @@ func _physics_process(delta):
 	var _discard = move_and_collide(speed * delta)
 
 func _on_HurtBox_area_entered(_area):
-	stats.health -= 1
+	stats.health -= 2
 	hurtbox.start_invincibility(1.6)
 	animation.play("invincible")

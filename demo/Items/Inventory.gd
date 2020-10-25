@@ -88,4 +88,4 @@ func close_menu():
 
 func handle_item_pressed(label, item, prev):
 	if item_click_handler != null:
-		item_click_handler[0].call(item_click_handler[1], self, label, item, prev)
+		item_click_handler[0].call_deferred(item_click_handler[1], self, label, item, prev)

@@ -41,10 +41,10 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="Control"]
-margin_left = 814.512
-margin_top = 330.408
-margin_right = 1114.51
-margin_bottom = 402.408
+margin_left = 794.913
+margin_top = 327.958
+margin_right = 1094.91
+margin_bottom = 399.958
 text = "DOGGO QUEST"
 align = 1
 __meta__ = {
@@ -74,7 +74,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Control"]
 position = Vector2( 960.949, 265.589 )
 frames = SubResource( 1 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="ProgressMarkers" type="Node2D" parent="Control"]

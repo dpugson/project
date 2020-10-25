@@ -360,14 +360,16 @@ const animalese_sounds = {
 const PITCH_MULTIPLIER_RANGE := 0.3
 
 func render_character_and_continue(character, wait_time):
-	audio.stream = animalese_sounds.get(
-		character.to_lower(), 
-		null)
-	audio.pitch_scale = get_pitch() + (PITCH_MULTIPLIER_RANGE * randf())
-	audio.play()
+	timer.wait_time = wait_time
+	var pitch = get_pitch()
+	if pitch != null:
+		audio.stream = animalese_sounds.get(
+			character.to_lower(), 
+			null)
+		audio.pitch_scale = pitch + (PITCH_MULTIPLIER_RANGE * randf())
+		audio.play()
 	textLabel.text += character
 	character_index += 1
-	timer.wait_time = wait_time
 	timer.start()
 
 func _on_Timer_timeout():

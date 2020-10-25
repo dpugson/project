@@ -4,7 +4,7 @@ onready var tween = $Tween
 onready var origin = $origin
 onready var end = $end
 
-export(Vector2) var end_scale = Vector2(2, 2);
+export(Vector2) var end_scale = null;
 export(float) var speed = 5;
 
 var obstacle = null
@@ -16,7 +16,6 @@ func _ready():
 func init(obstacle_scene):
 	obstacle = obstacle_scene.instance()
 	self.add_child(obstacle)
-	obstacle.scale = Vector2.ZERO
 	
 func set_origin(value):
 	origin.position = value
@@ -34,15 +33,17 @@ func play():
 		Tween.TRANS_EXPO,
 		Tween.EASE_IN
 	)
-	tween.interpolate_property(
-		obstacle,
-		"scale",
-		Vector2.ZERO,
-		end_scale,
-		speed,
-		Tween.TRANS_EXPO,
-		Tween.EASE_IN
-	)
+	if end_scale != null:
+		obstacle.scale = Vector2.ZERO
+		tween.interpolate_property(
+			obstacle,
+			"scale",
+			Vector2.ZERO,
+			end_scale,
+			speed,
+			Tween.TRANS_EXPO,
+			Tween.EASE_IN
+		)
 	tween.connect("tween_completed", self, "finish_up")
 	tween.start()
 

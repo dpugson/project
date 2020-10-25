@@ -33,14 +33,14 @@ rect_clip_content = true
 
 [node name="Title" type="Label" parent="List/MarginContainer/VBoxContainer"]
 margin_right = 792.0
-margin_bottom = 72.0
+margin_bottom = 71.0
 text = "ITEMZ"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="List/MarginContainer/VBoxContainer"]
-margin_top = 76.0
+margin_top = 75.0
 margin_right = 792.0
 margin_bottom = 745.0
 size_flags_horizontal = 3
@@ -91,7 +91,7 @@ __meta__ = {
 [node name="ItemDescription" type="Label" parent="Description/MarginContainer/VBoxContainer"]
 margin_top = 4.0
 margin_right = 705.0
-margin_bottom = 76.0
+margin_bottom = 75.0
 autowrap = true
 
 [node name="G_panel" type="Panel" parent="."]
