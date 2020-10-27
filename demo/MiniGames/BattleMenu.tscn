@@ -81,7 +81,7 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("DecisionStuff/Panel:rect_position")
@@ -254,8 +254,7 @@ tracks/13/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "show_actions"
+[sub_resource type="Animation" id=3]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("DecisionStuff/Panel:rect_position")
@@ -318,7 +317,7 @@ tracks/4/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "show_text"
 tracks/0/type = "value"
 tracks/0/path = NodePath("DecisionStuff/Panel:rect_position")
@@ -431,8 +430,7 @@ tracks/8/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "go_to_game"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("FetchGameContainer:visible")
 tracks/0/interp = 1
@@ -482,8 +480,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "leave_game"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("FetchGameContainer:visible")
 tracks/0/interp = 1
@@ -544,12 +541,11 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
 anims/act_contract = SubResource( 1 )
-anims/default = SubResource( 3 )
-anims/show_actions = SubResource( 2 )
-anims/show_text = SubResource( 6 )
+anims/default = SubResource( 2 )
+anims/show_actions = SubResource( 3 )
+anims/show_text = SubResource( 4 )
 
 [node name="FetchGameContainer" type="PanelContainer" parent="."]
-visible = false
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 0.827881
 margin_right = 1906.83
@@ -560,6 +556,7 @@ __meta__ = {
 }
 
 [node name="DecisionStuff" type="Control" parent="."]
+visible = false
 margin_left = -31.2411
 margin_top = -58.8736
 margin_right = 8.75891
@@ -691,15 +688,14 @@ __meta__ = {
 }
 
 [node name="FetchGameController" type="AnimationPlayer" parent="."]
-anims/go_to_game = SubResource( 4 )
-anims/leave_game = SubResource( 5 )
+anims/go_to_game = SubResource( 5 )
+anims/leave_game = SubResource( 6 )
 
 [node name="PlayerStats" type="Control" parent="."]
-margin_left = 150.918
-margin_top = 990.646
-margin_right = 190.918
-margin_bottom = 1030.65
-rect_scale = Vector2( 0.5, 0.5 )
+margin_left = 24.6641
+margin_top = 9.61929
+margin_right = 64.6641
+margin_bottom = 49.6233
 __meta__ = {
 "_edit_use_anchors_": false
 }

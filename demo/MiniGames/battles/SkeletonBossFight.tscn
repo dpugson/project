@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://MiniGames/BattleMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MiniGames/battles/SkeletonBossSprite.tscn" type="PackedScene" id=2]
 [ext_resource path="res://BG.tscn" type="PackedScene" id=3]
 [ext_resource path="res://MiniGames/battles/SkeletonBossFight.gd" type="Script" id=4]
+[ext_resource path="res://sprites/dog/l0.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "resting"
@@ -29,7 +30,10 @@ __meta__ = {
 }
 
 [node name="SkeletonBossSprite" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1396.33, 435.401 )
+position = Vector2( 1086.61, 482.879 )
+
+[node name="AnimatedSprite" parent="SkeletonBossSprite" index="0"]
+frame = 0
 
 [node name="BG" parent="." instance=ExtResource( 3 )]
 
@@ -43,19 +47,19 @@ pause_mode = 2
 position = Vector2( 1399.93, 57.886 )
 
 [node name="NostalgiaPointsLabel" type="Label" parent="Points"]
-margin_left = -202.791
+margin_left = -80.0303
 margin_top = -39.8912
-margin_right = 447.209
+margin_right = 569.97
 margin_bottom = 31.1088
-text = "SKELETON NOSTALGIA LEVEL: "
+text = "WISTFULLNESS LEVEL: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Value" type="Label" parent="Points"]
-margin_left = 446.283
+margin_left = 421.347
 margin_top = -39.8912
-margin_right = 868.283
+margin_right = 843.347
 margin_bottom = 31.1088
 text = "0"
 __meta__ = {
@@ -67,3 +71,15 @@ margin_left = 1.83484
 margin_top = -18.5316
 margin_right = 1.83484
 margin_bottom = -18.5316
+
+[node name="Dog" type="Node2D" parent="."]
+position = Vector2( 2075.42, 222.504 )
+
+[node name="l0" type="Sprite" parent="Dog"]
+position = Vector2( 63.2595, 21.5736 )
+texture = ExtResource( 5 )
+
+[node name="DogEndPosition" type="Position2D" parent="."]
+position = Vector2( -266.621, 216.749 )
+
+[editable path="SkeletonBossSprite"]

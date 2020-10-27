@@ -506,10 +506,10 @@ anims/intro = SubResource( 3 )
 anims/running_zone = SubResource( 4 )
 
 [node name="VictoryLabel" type="Label" parent="."]
-margin_left = 659.529
-margin_top = 599.353
-margin_right = 1108.53
-margin_bottom = 670.353
+margin_left = 666.319
+margin_top = 1101.85
+margin_right = 1115.32
+margin_bottom = 1172.85
 text = "FETCH SUCCESSFUL!"
 align = 1
 __meta__ = {
