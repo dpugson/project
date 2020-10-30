@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://sprites/cavestuff/skelebones_house.png" type="Texture" id=1]
 [ext_resource path="res://BG.tscn" type="PackedScene" id=2]
@@ -7,6 +7,114 @@
 [ext_resource path="res://Levels/0.0 Cave/SkelebonesHouse.gd" type="Script" id=5]
 [ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=6]
 [ext_resource path="res://sprites/cavestuff/skeleboneshome_long.png" type="Texture" id=7]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Characters/salamanders/Gilby.tscn" type="PackedScene" id=9]
+[ext_resource path="res://MiniGames/battles/SkeletonBossSprite.tscn" type="PackedScene" id=10]
+[ext_resource path="res://tunes/cave/skeleton_encounter.wav" type="AudioStream" id=11]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 57.1701, 31.2638 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 35.9991, 68.2218 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 255.32, 66.7997 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "StartEncounter"
+length = 12.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/SkeletonBossSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.7, 9.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 11 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 12.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "skeleton_encounter_dialogue"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("YSort/SkeletonBossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/SkeletonBossSprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 12.3, 12.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 498.602, -700.603 ), Vector2( 498.602, -700.603 ), Vector2( 502.162, -581.218 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/SkeletonBossSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/SkeletonBossSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.561112, 0.561112 ) ]
+}
 
 [node name="SkelebonesHouse" type="Node2D"]
 script = ExtResource( 5 )
@@ -32,6 +140,16 @@ texture = ExtResource( 1 )
 position = Vector2( 496.058, 1296.18 )
 camera = NodePath("../../PuppyCamera")
 
+[node name="Gilby" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 208.106, 1170.63 )
+splash = true
+talk_radius = 2
+watch_player = true
+
+[node name="SkeletonBossSprite" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 502.162, -581.218 )
+scale = Vector2( 0.561112, 0.561112 )
+
 [node name="PuppyCamera" parent="." instance=ExtResource( 4 )]
 
 [node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
@@ -51,4 +169,39 @@ position = Vector2( 484.948, 1327.69 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PoolVector2Array( 424.423, 1477.96, 327.159, 1417.75, 285.475, 1339.01, 331.791, 1260.27, 290.106, 1084.27, 317.896, -495.104, 294.738, -675.736, 308.633, -759.105, 373.475, -773, 373.475, -958.263, 470.739, -958.263, 475.37, -782.263, 669.897, -768.368, 711.582, -638.683, 679.161, -379.314, 702.318, 528.479, 688.424, 732.269, 725.477, 931.428, 744.003, 1292.69, 725.477, 1380.69, 568.002, 1491.85, 1142.32, 1505.75, 1114.53, -1009.21, 2.94751, -1037, -61.895, 1505.75 )
 
+[node name="LowerTZ" parent="." instance=ExtResource( 8 )]
+
+[node name="CollisionShape2D" parent="LowerTZ" index="0"]
+position = Vector2( 492.143, 1483.42 )
+shape = SubResource( 1 )
+
+[node name="UpperTZ" parent="." instance=ExtResource( 8 )]
+
+[node name="CollisionShape2D" parent="UpperTZ" index="0"]
+position = Vector2( 423.155, -854.447 )
+shape = SubResource( 2 )
+
+[node name="SkeletonEventTrigger" parent="." instance=ExtResource( 8 )]
+position = Vector2( 503.257, -499.556 )
+
+[node name="CollisionShape2D" parent="SkeletonEventTrigger" index="0"]
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+anims/StartEncounter = SubResource( 4 )
+anims/default = SubResource( 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+[connection signal="transition_triggered" from="LowerTZ" to="." method="_on_LowerTZ_transition_triggered"]
+[connection signal="transition_triggered" from="UpperTZ" to="." method="_on_UpperTZ_transition_triggered"]
+[connection signal="transition_triggered" from="SkeletonEventTrigger" to="." method="_on_SkeletonEventTrigger_transition_triggered"]
+
 [editable path="PuppyCamera"]
+
+[editable path="LowerTZ"]
+
+[editable path="UpperTZ"]
+
+[editable path="SkeletonEventTrigger"]

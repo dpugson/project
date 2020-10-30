@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/skeleton_encounter.wav-84d7976c16aa9a7190c757b04eb8ccf2.sample"
+
+[deps]
+
+source_file="res://tunes/cave/skeleton_encounter.wav"
+dest_files=[ "res://.import/skeleton_encounter.wav-84d7976c16aa9a7190c757b04eb8ccf2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

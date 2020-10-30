@@ -21,7 +21,7 @@ var cutscene_mode: bool = false # for cutscenes
 var allow_cutscene_bark: bool = false
 var turbo_input = Vector2.DOWN
 var previous_input = Vector2.DOWN
-export var cutscene_input: Vector2 = Vector2.DOWN
+export var cutscene_input: Vector2 = Vector2.ZERO
 export(NodePath) var camera = null
 
 onready var player_animation = $AnimationPlayer
