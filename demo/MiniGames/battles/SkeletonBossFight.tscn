@@ -30,7 +30,10 @@ __meta__ = {
 }
 
 [node name="SkeletonBossSprite" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1086.61, 482.879 )
+position = Vector2( 1250.01, 447.534 )
+
+[node name="AnimatedSprite" parent="SkeletonBossSprite" index="0"]
+frame = 0
 
 [node name="BG" parent="." instance=ExtResource( 3 )]
 
@@ -48,7 +51,7 @@ margin_left = -80.0303
 margin_top = -39.8912
 margin_right = 569.97
 margin_bottom = 31.1088
-text = "WISTFULLNESS LEVEL: "
+text = "DISTRACTION LEVEL: "
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -172,8 +172,13 @@ func _physics_process(delta):
 			swim()
 			move(delta, input)
 		TURBO_WARMUP:
+			if check_for_turbo_input():
+				turbo_timer.stop()
+				state = WALK
 			pass
 		TURBO_DASHING:
+			if check_for_turbo_input():
+				state = WALK
 			turbo_move(delta)
 
 func _on_HurtBox_area_entered(_area):
@@ -181,5 +186,4 @@ func _on_HurtBox_area_entered(_area):
 	hurtbox.start_invincibility(0.5)
 
 func _on_TurboTimer_timeout():
-	print("hi!")
 	state = TURBO_DASHING

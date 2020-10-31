@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://BG.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Characters/ShakuBear.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/cavestuff/cave_01.png" type="Texture" id=3]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sprites/dogshadow.png" type="Texture" id=5]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=6]
+
+[node name="ShakubearCave" type="Node2D"]
+
+[node name="BG" parent="." instance=ExtResource( 1 )]
+margin_left = -1319.34
+margin_top = -952.974
+margin_right = 1502.66
+margin_bottom = 1152.03
+
+[node name="cave_01" type="Sprite" parent="."]
+position = Vector2( 8.14294, -154.689 )
+texture = ExtResource( 3 )
+
+[node name="dogshadow" type="Sprite" parent="."]
+position = Vector2( -1.67173, 75.7992 )
+scale = Vector2( 2.06748, 4.71079 )
+texture = ExtResource( 5 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 4 )]
+position = Vector2( 44.9158, -20.9967 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -1257.6, -926.404 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 1473.26, 1119.69 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="player" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( -8.914, 191.014 )
+
+[node name="ShakuBear" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( -3.64465, 35.5929 )
+
+[editable path="PuppyCamera"]

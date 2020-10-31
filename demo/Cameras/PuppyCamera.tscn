@@ -3,6 +3,7 @@
 [ext_resource path="res://Cameras/PuppyCamera.gd" type="Script" id=1]
 
 [node name="PuppyCamera" type="Camera2D"]
+pause_mode = 2
 position = Vector2( -0.26123, -8.78589 )
 current = true
 limit_smoothed = true

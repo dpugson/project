@@ -7,6 +7,7 @@ onready var animation = $SkeletonAnimator
 onready var dog = $Dog
 onready var skull = $SkeletonBossSprite/sk_head
 onready var dog_end_position = $DogEndPosition
+onready var stats = PlayerStats
 
 const SKELETON_VOICE_PITCH = 0.5
 const SKELETON_SPEECH_RATE = 0.06
@@ -76,63 +77,43 @@ func get_play_dead_dialogue():
 		1:
 			return {
 					"begin" : [
-						"TEXT", "HMM...",
+						"TEXT", "HAHAHAHA!!!",
 						SKELETON_SPEECH_RATE, "giveme", null, null, SKELETON_VOICE_PITCH
 					],
 					"giveme" : [
-						"TEXT", "What kind of trick is that?",
+						"TEXT", "LOL! IS THAT SUPPOSED TO BE ME??",
 						SKELETON_SPEECH_RATE, "increment", null, null, SKELETON_VOICE_PITCH
 					],
 					"increment" : [
-						"TEXT", "WISTFULNESS +1",
-						SKELETON_SPEECH_RATE, "FETCH", [self, "increment_nostalgia_points"], null, SKELETON_VOICE_PITCH
+						"TEXT", "DISTRACTION +1",
+						SKELETON_SPEECH_RATE, null, [self, "increment_nostalgia_points"], null, SKELETON_VOICE_PITCH
 					],
-					"FETCH" : [
-						"TEXT", "Hmm... Go fetch, puppy!",
-						SKELETON_SPEECH_RATE, null, null, null, SKELETON_VOICE_PITCH
-					]
 				}
 		2:
 			return {
 					"begin" : [
-						"TEXT", "Yes, yes, that's a very good trick...",
+						"TEXT", "HEHEHEH, NEVER GETS OLD",
 						SKELETON_SPEECH_RATE, "giveme", null, null, SKELETON_VOICE_PITCH
 					],
 					"giveme" : [
-						"TEXT", "Playing... dead...",
+						"TEXT", "HEH",
 						SKELETON_SPEECH_RATE, "increment", null, null, SKELETON_VOICE_PITCH
 					],
 					"increment" : [
-						"TEXT", "WISTFULNESS +1",
+						"TEXT", "DISTRACTION +1",
 						SKELETON_SPEECH_RATE, null, [self, "increment_nostalgia_points"], null, SKELETON_VOICE_PITCH
 					],
-				}
-		3:
-			return {
-					"begin" : [
-						"TEXT", "Couldn't you try a different trick?",
-						SKELETON_SPEECH_RATE, "giveme", null, null, SKELETON_VOICE_PITCH
-					],
-					"giveme" : [
-						"TEXT", "Do you know \"speak\"?",
-						SKELETON_SPEECH_RATE, "increment", null, null, SKELETON_VOICE_PITCH
-					],
-					"increment" : [
-						"TEXT", "WISTFULNESS +1",
-						SKELETON_SPEECH_RATE, null, [self, "increment_nostalgia_points"], null, SKELETON_VOICE_PITCH
-					],
-				}
+			}
 		_:
 			return {
 				"begin" : [
-						"TEXT", "...",
+						"TEXT", "HEHEH",
 						SKELETON_SPEECH_RATE, null, null, null, SKELETON_VOICE_PITCH
 				],
 			}
 
 
 func grab_skull():
-	Jukebox.stop()
 	battle_menu.queue_free()
 	animation.stop()
 	var tween = Tween.new()
@@ -165,11 +146,12 @@ func grab_skull_part2(_a, _b, old_tween):
 		dog_end_position.global_position,
 		1
 	)
-	tween.connect("tween_completed", self, "end_game", [tween])
+	tween.connect("tween_completed", self, "end_encounter", [tween])
 	tween.start()
 
-func end_game(_a, _b, _old_tween):
-	queue_free()
+func end_encounter(_a, _b, _old_tween):
+	stats.world_state["BEAT_SKELETON"] = true
+	Transition.go_to("res://Levels/0.0 Cave/SkelebonesHouse.tscn", "beat_game")
 
 func action_noop(action):
 	var text = "You " + action + "...\n"
@@ -179,7 +161,7 @@ func action_noop(action):
 		"smell":
 			dialogue = {
 					"begin" : [
-						"TEXT", "Smells like dry old dust.",
+						"TEXT", "Smells like dusty old bones!!!",
 						SKELETON_SPEECH_RATE, null, null, null
 					],
 				}
@@ -203,9 +185,13 @@ func action_noop(action):
 		"roll over":
 			dialogue = {
 					"begin" : [
-						"TEXT", "HEHEHEH... Do you want a belly rub?",
-						SKELETON_SPEECH_RATE, null, null, null, SKELETON_VOICE_PITCH
+						"TEXT", "HEHEHEH... DO YOU WANT A BELLY RUB?",
+						SKELETON_SPEECH_RATE, end_if_seen_before("increment", "belly_rub"), null, null, SKELETON_VOICE_PITCH
 					],
+					"increment" : [
+						"TEXT", "DISTRACTION +1",
+						SKELETON_SPEECH_RATE, null, [self, "increment_nostalgia_points"], null, SKELETON_VOICE_PITCH
+					]
 				}
 	battle_menu.call_deferred("show_dialogue", dialogue)
 
@@ -220,11 +206,11 @@ func get_default_item_dialogue(text):
 			SKELETON_SPEECH_RATE, "giveme", null, null, SKELETON_VOICE_PITCH
 		],
 		"giveme" : [
-			"TEXT", "HEHEHEH! Let me have that!",
+			"TEXT", "HEHEHEH! LET ME HAVE THAT!",
 			SKELETON_SPEECH_RATE, "FETCH", null, null, SKELETON_VOICE_PITCH
 		],
 		"FETCH" : [
-			"TEXT", "Go fetch, puppy!",
+			"TEXT", "GO FETCH, PUPPY!",
 			SKELETON_SPEECH_RATE, null, null, null, SKELETON_VOICE_PITCH
 		]
 	}
@@ -246,15 +232,15 @@ func item_noop(menu, _label, _item, _prev):
 		"Old Bone":
 			dialogue = {
 				"begin" : [
-					"TEXT", "HEHEH- What a shabby old bone! I wonder what sap lost that...",
+					"TEXT", "HEHEH- WHAT A SHABBY OLD BONE! WONDER WHICH SAP LOST THAT?",
 					SKELETON_SPEECH_RATE, "nostalgia_points", null, null, SKELETON_VOICE_PITCH
 				],
 				"nostalgia_points" : [
-					"TEXT", "Hmm... Or... That's my bone, isn't it?",
+					"TEXT", "HEHEHEHEHEH",
 					SKELETON_SPEECH_RATE, end_if_seen_before("increment", "bone"), null, null, SKELETON_VOICE_PITCH
 				],
 				"increment" : [
-					"TEXT", "WISTFULNESS +1",
+					"TEXT", "DISTRACTION +1",
 					SKELETON_SPEECH_RATE, null, [self, "increment_nostalgia_points"], null, SKELETON_VOICE_PITCH
 				]
 			}
@@ -268,15 +254,15 @@ func item_noop(menu, _label, _item, _prev):
 		"Skeleton Key":
 			dialogue = {
 				"begin" : [
-					"TEXT", "Hey! That's my key!",
+					"TEXT", "HEY! THAT'S MY KEY!",
 					SKELETON_SPEECH_RATE, "nostalgia_points", null, null, SKELETON_VOICE_PITCH
 				],
 				"nostalgia_points" : [
-					"TEXT", "I was really into skeletons, back in the day... Funny, yeah?",
+					"TEXT", "ISN'T IT COOL???? IT'S GOT MY FACE ON IT!",
 					SKELETON_SPEECH_RATE, end_if_seen_before("increment", "key"), null, null, SKELETON_VOICE_PITCH
 				],
 				"increment" : [
-					"TEXT", "WISTFULNESS +1",
+					"TEXT", "DISTRACTION +1",
 					SKELETON_SPEECH_RATE, null, [self, "increment_nostalgia_points"], null, SKELETON_VOICE_PITCH
 				]
 			}
@@ -301,10 +287,10 @@ var battle_impl = {
 	"item_handler" : [self, "item_noop"],
 	"action_handler" : [self, "action_noop"],
 	"options" : [
-		"smell", "steal bone", "play dead", "roll over"
+		 "steal bone", "smell", "play dead", "roll over"
 	]
 }
 
 func _ready():
-	Jukebox.play_song("res://tunes/cave/skeleton_battle_smooth.wav")
+	Jukebox.play_song("res://tunes/cave/salamanders.wav")
 	battle_menu.init(battle_impl)

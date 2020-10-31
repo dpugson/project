@@ -1287,6 +1287,7 @@ collision_layer = 8
 show_hit = true
 
 [node name="LookBox" parent="DoggoPivot" instance=ExtResource( 35 )]
+pause_mode = 1
 
 [node name="WaterDetector" type="Area2D" parent="."]
 position = Vector2( 0, 20 )
