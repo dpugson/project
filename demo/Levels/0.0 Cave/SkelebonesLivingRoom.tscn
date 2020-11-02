@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/cavestuff/skelebones_livingroom_desk_fg.png" type="Texture" id=2]
@@ -9,9 +9,30 @@
 [ext_resource path="res://Levels/0.0 Cave/SkelebonesLivingRoom.gd" type="Script" id=7]
 [ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=9]
+[ext_resource path="res://hitnhurtboxes/SeenBox.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sprites/cavestuff/skelebones_love_letter.png" type="Texture" id=11]
+[ext_resource path="res://Brains/SaveStar.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 82.1645, 69.5107 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 42.3182, 94.7791 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 27.7402, 78.2574 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 46.2056, 95.751 )
+
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 71.7451, 32.6176 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 49.1345, 30.6083 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 83.1362, 78.2574 )
 
 [node name="SkelebonesLivingRoom" type="Node2D"]
 script = ExtResource( 7 )
@@ -26,6 +47,30 @@ margin_bottom = 1699.86
 position = Vector2( 930.64, 542.885 )
 texture = ExtResource( 4 )
 
+[node name="GoSeenBox" parent="skelebones_livingroom" instance=ExtResource( 10 )]
+
+[node name="CollisionShape2D" parent="skelebones_livingroom/GoSeenBox" index="0"]
+position = Vector2( -251.712, 269.206 )
+shape = SubResource( 1 )
+
+[node name="CattailsSeenBox" parent="skelebones_livingroom" instance=ExtResource( 10 )]
+
+[node name="CollisionShape2D" parent="skelebones_livingroom/CattailsSeenBox" index="0"]
+position = Vector2( 69.0023, -69.0022 )
+shape = SubResource( 2 )
+
+[node name="ChairSeenBox" parent="skelebones_livingroom" instance=ExtResource( 10 )]
+
+[node name="CollisionShape2D" parent="skelebones_livingroom/ChairSeenBox" index="0"]
+position = Vector2( 167.16, 271.149 )
+shape = SubResource( 3 )
+
+[node name="DrawerSeenBox" parent="skelebones_livingroom" instance=ExtResource( 10 )]
+
+[node name="CollisionShape2D" parent="skelebones_livingroom/DrawerSeenBox" index="0"]
+position = Vector2( -24.2966, -61.2272 )
+shape = SubResource( 4 )
+
 [node name="skeleton_torso" parent="." instance=ExtResource( 3 )]
 position = Vector2( 741.229, 436.839 )
 
@@ -33,6 +78,13 @@ position = Vector2( 741.229, 436.839 )
 
 [node name="player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 853.136, 834.317 )
+camera = NodePath("../../PuppyCamera")
+
+[node name="SaveStar" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( 924.401, 683.682 )
+save_spot_name = "Caves - The Skeleton's House"
+home = "res://Levels/0.0 Cave/SkelebonesLivingRoom.tscn"
+flavor_text = "Hello, Fetch Star! Would you like to save?"
 
 [node name="skelebones_livingroom_desk_fg" type="Sprite" parent="."]
 position = Vector2( 1170.67, 681.465 )
@@ -41,13 +93,13 @@ texture = ExtResource( 2 )
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PoolVector2Array( 1058.23, 895.25, 1058.23, 740.727, 1124.66, 739.282, 1127.55, 645.413, 1250.3, 639.637, 1248.85, 469.228, 1047.31, 472.1, 1041.8, 574.163, 848.706, 576.921, 848.706, 524.511, 804.571, 530.028, 674.924, 607.264, 614.876, 578.983, 613.432, 736.394, 763.194, 742.427, 754.919, 877.591, 788.02, 885.866, 788.02, 946.552, 459.766, 943.794, 495.625, 105.228, 1477.63, 107.986, 1403.15, 974.136, 939.734, 954.827, 945.251, 894.142 )
+polygon = PoolVector2Array( 1058.23, 895.25, 1058.23, 740.727, 1124.66, 739.282, 1127.55, 645.413, 1250.3, 639.637, 1248.85, 469.228, 1208.53, 469.803, 1208.49, 441.109, 1109.12, 442.251, 1111.47, 471.186, 1047.31, 472.1, 1041.8, 574.163, 848.706, 576.921, 848.706, 524.511, 804.571, 530.028, 674.924, 607.264, 614.876, 578.983, 613.432, 736.394, 763.194, 742.427, 754.919, 877.591, 788.02, 885.866, 788.02, 946.552, 459.766, 943.794, 495.625, 105.228, 1403.38, 121.021, 1403.15, 974.136, 939.734, 954.827, 945.251, 894.142 )
 
 [node name="BottomTZ" parent="." instance=ExtResource( 6 )]
 
 [node name="CollisionShape2D" parent="BottomTZ" index="0"]
 position = Vector2( 862.514, 939.272 )
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 
 [node name="BottomSpawnPoint" parent="." instance=ExtResource( 8 )]
 position = Vector2( 865.9, 820.208 )
@@ -63,8 +115,44 @@ position = Vector2( -422.845, -389.315 )
 
 [node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
 position = Vector2( 2345.75, 1625.94 )
+
+[node name="TransitionZone" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1157.07, 419.175 )
+
+[node name="CollisionShape2D" parent="TransitionZone" index="0"]
+position = Vector2( 1.14221, 23.9868 )
+shape = SubResource( 6 )
+
+[node name="skelebones_love_letter" type="Sprite" parent="."]
+position = Vector2( 1180.83, 633.275 )
+texture = ExtResource( 11 )
+
+[node name="LettersSeenBox" parent="skelebones_love_letter" instance=ExtResource( 10 )]
+position = Vector2( -250.185, -90.3901 )
+
+[node name="CollisionShape2D" parent="skelebones_love_letter/LettersSeenBox" index="0"]
+position = Vector2( 276.981, 133.145 )
+shape = SubResource( 7 )
+[connection signal="seen" from="skelebones_livingroom/GoSeenBox" to="." method="_on_GoSeenBox_seen"]
+[connection signal="seen" from="skelebones_livingroom/CattailsSeenBox" to="." method="_on_CattailsSeenBox_seen"]
+[connection signal="seen" from="skelebones_livingroom/ChairSeenBox" to="." method="_on_ChairSeenBox_seen"]
+[connection signal="seen" from="skelebones_livingroom/DrawerSeenBox" to="." method="_on_DrawerSeenBox_seen"]
 [connection signal="transition_triggered" from="BottomTZ" to="." method="_on_BottomTZ_transition_triggered"]
+[connection signal="transition_triggered" from="TransitionZone" to="." method="_on_TransitionZone_transition_triggered"]
+[connection signal="seen" from="skelebones_love_letter/LettersSeenBox" to="." method="_on_LettersSeenBox_seen"]
+
+[editable path="skelebones_livingroom/GoSeenBox"]
+
+[editable path="skelebones_livingroom/CattailsSeenBox"]
+
+[editable path="skelebones_livingroom/ChairSeenBox"]
+
+[editable path="skelebones_livingroom/DrawerSeenBox"]
 
 [editable path="BottomTZ"]
 
 [editable path="PuppyCamera"]
+
+[editable path="TransitionZone"]
+
+[editable path="skelebones_love_letter/LettersSeenBox"]

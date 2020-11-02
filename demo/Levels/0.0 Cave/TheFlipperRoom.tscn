@@ -1,0 +1,138 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=2]
+[ext_resource path="res://world/Sign.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/cavestuff/flipper_room.png" type="Texture" id=4]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/items/flippers.png" type="Texture" id=6]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/cavestuff/the_baron.png" type="Texture" id=8]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sprites/cavestuff/round_hole.png" type="Texture" id=10]
+[ext_resource path="res://Levels/0.0 Cave/TheFlipperRoom.gd" type="Script" id=11]
+[ext_resource path="res://hitnhurtboxes/SeenBox.tscn" type="PackedScene" id=12]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 28.6555
+height = 85.9946
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 17.3486
+height = 68.6487
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 59.9536
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 48.1346
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 87.9003, 147.81 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 74.9264, 24.2327 )
+
+[node name="TheFlipperRoom" type="Node2D"]
+script = ExtResource( 11 )
+
+[node name="flipper_room" type="Sprite" parent="."]
+position = Vector2( 908.526, 502.106 )
+texture = ExtResource( 4 )
+
+[node name="round_hole" type="Sprite" parent="."]
+position = Vector2( 1044.93, 558.598 )
+texture = ExtResource( 10 )
+
+[node name="HoleSeenBox" parent="round_hole" instance=ExtResource( 12 )]
+
+[node name="CollisionShape2D" parent="round_hole/HoleSeenBox" index="0"]
+position = Vector2( 0, 3.76892 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="TransitionZone" parent="round_hole" instance=ExtResource( 7 )]
+
+[node name="CollisionShape2D" parent="round_hole/TransitionZone" index="0"]
+position = Vector2( 2.5127, 3.76892 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="flippers" type="Sprite" parent="."]
+position = Vector2( 905.77, 695.005 )
+texture = ExtResource( 6 )
+
+[node name="FlippersSeenBox" parent="flippers" instance=ExtResource( 12 )]
+position = Vector2( -3.72937, 6.02362 )
+
+[node name="CollisionShape2D" parent="flippers/FlippersSeenBox" index="0"]
+position = Vector2( 3.76898, -5.02533 )
+shape = SubResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="flippers"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flippers/StaticBody2D"]
+shape = SubResource( 4 )
+
+[node name="the_baron" type="Sprite" parent="."]
+position = Vector2( 898.028, 270.224 )
+texture = ExtResource( 8 )
+
+[node name="BaronSeenBox" parent="the_baron" instance=ExtResource( 12 )]
+
+[node name="CollisionShape2D" parent="the_baron/BaronSeenBox" index="0"]
+position = Vector2( 1.25635, -1.25629 )
+shape = SubResource( 5 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Sign" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 898.777, 543.292 )
+text = "Short Cut"
+
+[node name="player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 777.108, 766.085 )
+camera = NodePath("../../PuppyCamera")
+
+[node name="LowerTZ" parent="." instance=ExtResource( 7 )]
+position = Vector2( 825.332, 913.515 )
+
+[node name="CollisionShape2D" parent="LowerTZ" index="0"]
+position = Vector2( 5.51135, 9.64496 )
+shape = SubResource( 6 )
+
+[node name="BottomSpawnPoint" parent="." instance=ExtResource( 2 )]
+position = Vector2( 828.088, 833.6 )
+
+[node name="BG" parent="." instance=ExtResource( 5 )]
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 9 )]
+position = Vector2( 963.371, 537.664 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -243.348, -210.154 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 2383.76, 1502.86 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 751.243, 913.538, 648.699, 912.052, 659.102, 488.497, 1164.39, 484.039, 1145.07, 904.621, 911.748, 907.593, 913.234, 987.845, 1342.73, 971.498, 1286.26, 382.98, 520.889, 345.826, 523.861, 1014.6, 755.702, 1026.49 )
+[connection signal="seen" from="round_hole/HoleSeenBox" to="." method="_on_HoleSeenBox_seen"]
+[connection signal="transition_triggered" from="round_hole/TransitionZone" to="." method="_on_TransitionZone_transition_triggered"]
+[connection signal="seen" from="flippers/FlippersSeenBox" to="." method="_on_FlippersSeenBox_seen"]
+[connection signal="seen" from="the_baron/BaronSeenBox" to="." method="_on_BaronSeenBox_seen"]
+[connection signal="transition_triggered" from="LowerTZ" to="." method="_on_LowerTZ_transition_triggered"]
+
+[editable path="round_hole/HoleSeenBox"]
+
+[editable path="round_hole/TransitionZone"]
+
+[editable path="flippers/FlippersSeenBox"]
+
+[editable path="the_baron/BaronSeenBox"]
+
+[editable path="LowerTZ"]
+
+[editable path="PuppyCamera"]

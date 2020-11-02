@@ -32,9 +32,6 @@ __meta__ = {
 [node name="SkeletonBossSprite" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1250.01, 447.534 )
 
-[node name="AnimatedSprite" parent="SkeletonBossSprite" index="0"]
-frame = 0
-
 [node name="BG" parent="." instance=ExtResource( 3 )]
 
 [node name="SkeletonAnimator" type="AnimationPlayer" parent="."]
@@ -48,19 +45,19 @@ position = Vector2( 1399.93, 57.886 )
 
 [node name="NostalgiaPointsLabel" type="Label" parent="Points"]
 margin_left = -80.0303
-margin_top = -39.8912
+margin_top = -36.0549
 margin_right = 569.97
-margin_bottom = 31.1088
+margin_bottom = 34.9451
 text = "DISTRACTION LEVEL: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Value" type="Label" parent="Points"]
-margin_left = 421.347
-margin_top = -39.8912
-margin_right = 843.347
-margin_bottom = 31.1088
+margin_left = 385.821
+margin_top = -36.0549
+margin_right = 807.821
+margin_bottom = 34.9451
 text = "0"
 __meta__ = {
 "_edit_use_anchors_": false

@@ -41,3 +41,10 @@ const flippers = {
 	name = "Flippers",
 	description = "A gift from a friend."
 }
+
+const skeleton_letter = {
+	type = "2D",
+	image = "res://sprites/cavestuff/skelebones_love_letter.png",
+	name = "Skeleton Letter",
+	description = "A letter with a mysterious formula in it addressed to someone with a study."
+}

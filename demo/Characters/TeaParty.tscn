@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://sprites/random_npcs/tea_party3.png" type="Texture" id=1]
+[ext_resource path="res://sprites/random_npcs/tea_party2.png" type="Texture" id=2]
+[ext_resource path="res://sprites/items/tea_pot.png" type="Texture" id=3]
+[ext_resource path="res://sprites/random_npcs/tea_party1.png" type="Texture" id=4]
+[ext_resource path="res://sprites/random_npcs/tea_party0.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "drink_tea"
+length = 20.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.2, 1.9, 4.4, 5.5, 8.32778, 8.6, 12, 12.3, 15, 18.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 2, 0, 1, 0, 2, 0, 3, 0 ]
+}
+
+[node name="TeaParty" type="Node2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 5.15445, 82.97 )
+frames = SubResource( 1 )
+frame = 3
+
+[node name="tea_pot" type="Sprite" parent="."]
+position = Vector2( -3.19193, 66.489 )
+texture = ExtResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 1.22723, 28.2266 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -195.069, 75.9774, -171.747, 108.505, -123.263, 117.711, -88.8949, 141.646, 83.5611, 139.191, 117.93, 117.097, 159.049, 108.505, 172.551, 93.1616, 176.847, 68.6127, 112.406, 57.5658, 98.9042, 25.6522, 68.8318, 0.489548, -66.1871, -3.19278, -109.761, 33.6306, -128.787, 58.1795, -182.181, 56.3383 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "drink_tea"
+anims/drink_tea = SubResource( 2 )

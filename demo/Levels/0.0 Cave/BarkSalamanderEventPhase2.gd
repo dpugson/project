@@ -18,9 +18,9 @@ signal done
 const GOT_SWIMMING_CERT = "GOT_SWIMMING_CERT"
 
 func _ready():
-	var waiting_for_flippers  = stats.inventory_get("skeleton_key") > 0
 	var got_flippers = stats.inventory_get("flippers") > 0
 	var got_cert = stats.check_bool(GOT_SWIMMING_CERT)
+	var waiting_for_flippers  = stats.inventory_get("skeleton_key") > 0
 	
 	if got_cert:
 		animation.play("BackOff")
@@ -33,29 +33,47 @@ func _ready():
 		set_waiting_for_flippers_dialogue()
 	else:
 		animation.play("Appear")
+		set_final_dialogue()
 		# The initial state!
 
 const GILBY_PITCH = 1.5
+const PERRY_PITCH = 3
 
 func set_final_dialogue():
-	pass
-
-func set_waiting_for_flippers_dialogue():
-	var waiting_dialogue = {
+	var g_waiting_dialogue = {
 		"begin" : [
-			"TEXT", "Come on! Go get those flippers!", 0.01, 
-			"yeah", null, green_angry, GILBY_PITCH
-		],
-		"yeah" : [
-			"TEXT", "Yeah! I'm so excited for you! You're gonna love swimming!!!", 0.01, 
+			"TEXT", "See, what did I tell ya? The secret is LOVE!", 0.01, 
+			null, null, green_angry, GILBY_PITCH
+		]
+	}
+	var p_waiting_dialogue = {
+		"begin" : [
+			"TEXT", "Hi, puppy!!! You're doing great!", 0.01, 
 			null, null, pink_chuffed
 		],
 	}
-	gilby.set_dialogue(waiting_dialogue)
-	perry.set_dialogue(waiting_dialogue)
+	gilby.set_dialogue(g_waiting_dialogue)
+	perry.set_dialogue(p_waiting_dialogue)
+
+func set_waiting_for_flippers_dialogue():
+	var g_waiting_dialogue = {
+		"begin" : [
+			"TEXT", "Come on! Go get those flippers!", 0.01, 
+			null, null, green_angry, GILBY_PITCH
+		]
+	}
+	var p_waiting_dialogue = {
+		"begin" : [
+			"TEXT", "I'm so excited for you! You're gonna love swimming!!!", 0.01, 
+			null, null, pink_chuffed
+		],
+	}
+	gilby.set_dialogue(g_waiting_dialogue)
+	perry.set_dialogue(p_waiting_dialogue)
 
 func set_start_swim_dialogue():
-	pass
+	gilby.set_dialogue(teaching)
+	perry.set_dialogue(teaching)
 
 var appear_dialogue = {
 	"begin" : [
@@ -64,14 +82,14 @@ var appear_dialogue = {
 	],
 	"perry1" : [
 		"TEXT", "Gilby!!! You see that?? I think that's one of those poopies!!",
-		0.02, "gilby2", null, pink_chuffed
+		0.02, "gilby2", null, pink_chuffed, PERRY_PITCH
 	],
 	"gilby2" : [
 		"TEXT", "A what, now?", 0.01, "perry2", null, green_shifty, GILBY_PITCH
 	],
 	"perry2" : [
 		"TEXT", "A poopy, you know? Like on the nature channel!",
-		0.02, "gilby3", null, pink_chuffed
+		0.02, "gilby3", null, pink_chuffed, PERRY_PITCH
 	],
 	"gilby3" : [
 		"TEXT", "Uhh...", 0.01, "gilby4", null, green_shifty, GILBY_PITCH
@@ -80,7 +98,7 @@ var appear_dialogue = {
 		"TEXT", "Well, whatever it is, it's making a racket!", 0.01, "perry3", null, green_angry, GILBY_PITCH
 	],
 	"perry3" : [
-		"TEXT", "I'm gonna go talk to it.", 0.01, "gilby5", null, pink_thinking
+		"TEXT", "I'm gonna go talk to it.", 0.01, "gilby5", null, pink_thinking, PERRY_PITCH
 	],
 	"gilby5" : [
 		"ACTION", "Whhaa- don't talk to it!!!!", 0.01, null, [self, "perry_swim_over"], green_angry, GILBY_PITCH
@@ -106,7 +124,7 @@ var dialogue2 = {
 	],
 	"salutations" : [
 		"TEXT", "Hello, poopy! What's up? My name is Pericles!", 0.01, 
-		[["BARK", "barked"], ["Salutations!", "wellmet"]], null, pink_chuffed
+		[["BARK", "barked"], ["Salutations!", "wellmet"]], null, pink_chuffed, PERRY_PITCH
 	],
 	"barked" : [
 		"TEXT", "I told you not to talk it!!!\nIt's obviously a killer!!!", 0.01,
@@ -114,18 +132,18 @@ var dialogue2 = {
 	],
 	"wellmet" : [
 		"ACTION", "Salutations!!!", 0.01,
-		"cute2", null, pink_chuffed
+		"cute2", null, pink_chuffed, PERRY_PITCH
 	],
 	"cute" : [
-		"ACTION", "It's a cutie!!!", 0.03, "whatswrong0", [self, "perry_turn", "down"], pink_thinking
+		"ACTION", "It's a cutie!!!", 0.03, "whatswrong0", [self, "perry_turn", "down"], pink_thinking, PERRY_PITCH
 	],
 	"cute2" : [
 		"ACTION", "What a cutie!!!\nAnd what an impressive vocabulary!!!", 0.03,
-		"whatswrong0", [self, "perry_turn", "down"], pink_thinking
+		"whatswrong0", [self, "perry_turn", "down"], pink_thinking, PERRY_PITCH
 	],
 	"whatswrong0" : [
 		"ACTION", "I think something must be wrong...\nI'm gonna ask if he's ok.", 0.03,
-		"whatswrong", [self, "perry_turn", "down"], pink_chuffed
+		"whatswrong", [self, "perry_turn", "down"], pink_chuffed, PERRY_PITCH
 	],
 	"whatswrong" : [
 		"ACTION", "Hey, little guy! What's wrong?", 0.03, 
@@ -133,11 +151,11 @@ var dialogue2 = {
 			["Nothing...", "nothing"],
 			["Something...", "something"],
 		]
-		, [self, "perry_turn", "up"], pink_chuffed
+		, [self, "perry_turn", "up"], pink_chuffed, PERRY_PITCH
 	],
 	"something" : [
 		"ACTION", "Oh my goodness!!! That's terrible!!!!!", 0.03, null
-		, [self, "gilby_swim_over_sweet"], pink_thinking
+		, [self, "gilby_swim_over_sweet"], pink_thinking, PERRY_PITCH
 	],
 	"nothing" : [
 		"ACTION", "What? He's lying!! Something's obviously wrong!!!\nAsk again!!", 0.03, 
@@ -192,11 +210,11 @@ var dialogue3 = {
 	],
 	"calmdown": [
 		"TEXT", "Calm down, Gilby!!!\n", 0.03,
-		"help", [self, "perry_turn", "left"], pink_chuffed
+		"help", [self, "perry_turn", "left"], pink_chuffed, PERRY_PITCH
 	],
 	"help": [
 		"TEXT", "Hey, little poopy!! We're here to help!", 0.03,
-		"help2", [self, "perry_turn", "up"], pink_thinking
+		"help2", [self, "perry_turn", "up"], pink_thinking, PERRY_PITCH
 	],
 	"help2": [
 		"TEXT", "Tell us what's the matter!", 0.03,
@@ -204,7 +222,7 @@ var dialogue3 = {
 			["*sniff*", "lost"],
 			["*bark*", "lost"]
 		],
-		[self, "gilby_turn", "up"], pink_thinking
+		[self, "gilby_turn", "up"], pink_thinking, PERRY_PITCH
 	],
 	"lost": [
 		"TEXT", "You're lost, and you wanna go home?", 0.03,
@@ -212,12 +230,12 @@ var dialogue3 = {
 			["*woof*", "yup"],
 			["*wheeze*", "yup"]
 		],
-		null, pink_chuffed
+		null, pink_chuffed, PERRY_PITCH
 	],
 	"yup": [
 		"TEXT", "Wow...\nGilby, this poor poopy is lost!!!", 0.03,
 		"yup2",
-		[self, "perry_turn", "left"], pink_thinking
+		[self, "perry_turn", "left"], pink_thinking, PERRY_PITCH
 	],
 	"yup2": [
 		"TEXT", "We need to help him, Perry!\nIt's our Fish Person duty!", 0.03,
@@ -227,32 +245,32 @@ var dialogue3 = {
 	"ask": [
 		"TEXT", "Well, where's home, little buddy??", 0.03,
 		[["*point up*", "up_there"]],
-		[self, "perry_turn", "up"], pink_chuffed	
+		[self, "perry_turn", "up"], pink_chuffed, PERRY_PITCH
 	],
 	"up_there": [
 		"TEXT", "You fell, huh? I see...", 0.03,
 		"onlyway",
-		[self, "gilby_turn", "up"], pink_thinking
+		[self, "gilby_turn", "up"], pink_thinking, PERRY_PITCH
 	],
 	"onlyway": [
 		"TEXT", "Well, the best way out of these caverns is to swim!", 0.03,
 		[["...", "swim"]],
-		null, pink_thinking
+		null, pink_thinking, PERRY_PITCH
 	],
 	"swim": [
 		"TEXT", "You do know how to swim, right?", 0.02,
 		[["ummmmm....", "notknow"], ["uhhh....", "notknow"]],
-		null, pink_chuffed
+		null, pink_chuffed, PERRY_PITCH
 	],
 	"notknow": [
 		"TEXT", "W-whaa???!!!", 0.02,
 		"notknow2",
-		null, pink_chuffed
+		null, pink_chuffed, PERRY_PITCH
 	],
 	"notknow2": [
 		"TEXT", "Gilby, this poopy doesn't know how to swim!!!", 0.02,
 		"what",
-		[self, "perry_turn", "left"], pink_thinking
+		[self, "perry_turn", "left"], pink_thinking, PERRY_PITCH
 	],
 	"what": [
 		"TEXT", "What!!!", 0.02,
@@ -262,7 +280,7 @@ var dialogue3 = {
 	"isaid": [
 		"TEXT", "I said, the poopy can't swim!", 0.02,
 		"iheard",
-		null, pink_thinking
+		null, pink_thinking, PERRY_PITCH
 	],
 	"iheard": [
 		"TEXT", "I heard you the first time!", 0.02,
@@ -277,12 +295,12 @@ var dialogue3 = {
 	"greatidea": [
 		"TEXT", "That's a great idea!!!", 0.02,
 		"greatidea2",
-		null, pink_thinking
+		null, pink_thinking, PERRY_PITCH
 	],
 	"greatidea2": [
 		"TEXT", "You're one lucky poopy! Our Gilby here is a great teacher!", 0.02,
 		"teach2",
-		[self, "perry_turn", "up"], pink_chuffed
+		[self, "perry_turn", "up"], pink_chuffed, PERRY_PITCH
 	],
 	"teach2": [
 		"TEXT", "Ok, poopy! Ready to start? Get your flippers on!", 0.02,
@@ -302,11 +320,11 @@ var dialogue3 = {
 	"noflips3": [
 		"TEXT", "What???", 0.02,
 		"noflips4",
-		[self, "perry_turn", "left"], pink_thinking
+		[self, "perry_turn", "left"], pink_thinking, PERRY_PITCH
 	],
 	"noflips4": [
 		"TEXT", "Do we have some spares?", 0.02,
-		"whywouldhave", null, pink_thinking
+		"whywouldhave", null, pink_thinking, PERRY_PITCH
 	],
 	"whywouldhave": [
 		"TEXT", "We're FISH PEOPLE, why would we have spares?", 0.02,
@@ -322,7 +340,7 @@ var dialogue3 = {
 	],
 	"skeleton" : [
 		"TEXT", "Oh!! That guy!!! Oh... Now I'm sad, Gilby!", 0.02,
-		"goodrun", null, pink_chuffed
+		"goodrun", null, pink_chuffed, PERRY_PITCH
 	],
 	"goodrun" : [
 		"TEXT", "Eh, he had a good run!!\nAn skelebones don't got feelings, SO....", 0.02,
@@ -330,11 +348,11 @@ var dialogue3 = {
 	],
 	"instructions" : [
 		"TEXT", "Poopy!!! Before your swimming lessons, you're\ngonna have to do a little chore!", 0.02,
-		"quest", null, green_shifty, GILBY_PITCH
+		"quest", [self, "gilby_turn", "up"], green_shifty, GILBY_PITCH
 	],
 	"quest" : [
 		"TEXT", "You're gonna have to go rob the house\nof a weird guy who used to live down here!", 0.02,
-		"notrob", null, green_angry, GILBY_PITCH
+		"notrob", [self, "perry_turn", "up"], green_angry, GILBY_PITCH
 	],
 	"notrob" : [
 		"TEXT", "But it ain't robbing, really... More like, recycling!", 0.02,
@@ -367,7 +385,21 @@ func finish_up():
 func give_key():
 	stats.inventory_add("skeleton_key")
 
+func play_salamander_song():
+	Jukebox.play_song("res://tunes/cave/salamanders.wav")
+
 var teaching  = {
+	"begin": [
+		"TEXT", "Great! You've got them!!!", 0.02,
+		"teach1",
+		null, #[self, "play_salamander_song"],
+		pink_thinking, PERRY_PITCH
+	],
+	"teach1": [
+		"TEXT", "ALRIGHT! LET'S GET STARTED!", 0.02,
+		"teach2",
+		[self, "gilby_turn", "up"], green_shifty, GILBY_PITCH
+	],
 	"teach2": [
 		"TEXT", "Listen carefully, poopy, cause I'm not going to repeat\nmyself!!", 0.02,
 		"teach3",
@@ -421,7 +453,7 @@ var teaching  = {
 	"prodigy": [
 		"TEXT", "Yeah!!! A prodigy!\nHe had to yell at me for like 5 hours!", 0.02,
 		"knowhownow",
-		null, pink_thinking
+		null, pink_thinking, PERRY_PITCH
 	],
 	"knowhownow": [
 		"TEXT", "So now you know how to swim!", 0.02,
@@ -431,7 +463,7 @@ var teaching  = {
 	"givecertificate": [
 		"TEXT", "Give him the certificate, Gilby!", 0.02,
 		"actually_give_cert",
-		null, pink_thinking
+		null, pink_thinking, PERRY_PITCH
 	],
 	"actually_give_cert": [
 		"TEXT", "Oh yeah, that's right! Of course! Here you go!", 0.02,
@@ -446,7 +478,7 @@ var teaching  = {
 	"give_it_a_try": [
 		"TEXT", "Come on out, puppy! The water's warm!", 0.02,
 		null,
-		[self, "encounter_over"], pink_thinking
+		[self, "encounter_over"], pink_thinking, PERRY_PITCH
 	],
 }
 
@@ -460,4 +492,5 @@ func play_fun_sound():
 func encounter_over():
 	stats.world_state[GOT_SWIMMING_CERT] = true
 	animation.play("BackOff")
+	set_final_dialogue()
 	emit_signal("done")

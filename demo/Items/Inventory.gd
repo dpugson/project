@@ -11,7 +11,7 @@ onready var g_label = $G_panel/Label
 var item_click_handler = null
 
 func _input(event):
-	if event.is_action_pressed("menu"):
+	if event.is_action_pressed("menu") or event.is_action_pressed("ui_cancel"):
 		self.call_deferred("close_menu")
 
 func enchild(obj):

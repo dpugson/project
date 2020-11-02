@@ -19,6 +19,8 @@ var menu_allowed = true
 
 var spawn_metadata = null
 
+var loaded = false
+
 signal save_complete
 
 const SAVE_FILE_LOCATION = "user://savegame.save"
@@ -40,20 +42,22 @@ func save_game(new_save_spot_name, tscn):
 	emit_signal("save_complete")
 	
 func load_game():
-	var file = File.new()
-	if not file.file_exists(SAVE_FILE_LOCATION):
-		return # No save file!
-	file.open(SAVE_FILE_LOCATION, File.READ)
-	var json = parse_json(file.get_as_text())
-	print(json)
-	inventory = json.get("inventory", {})
-	world_state = json.get("world_state", {})
-	save_spot_name = json.get("save_spot_name", null)
-	save_spot_tscn = json.get("save_spot_tscn", null)
-	max_health = json.get("max_health", 10)
-	health = json.get("health", 10)
-	G = json.get("G", 0)
-	file.close()
+	if not loaded:
+		loaded = true
+		var file = File.new()
+		if not file.file_exists(SAVE_FILE_LOCATION):
+			return # No save file!
+		file.open(SAVE_FILE_LOCATION, File.READ)
+		var json = parse_json(file.get_as_text())
+		print(json)
+		inventory = json.get("inventory", {})
+		world_state = json.get("world_state", {})
+		save_spot_name = json.get("save_spot_name", null)
+		save_spot_tscn = json.get("save_spot_tscn", null)
+		max_health = json.get("max_health", 10)
+		health = json.get("health", 10)
+		G = json.get("G", 0)
+		file.close()
 
 func spawn_player(player, player_parent, camera_path, position: Vector2, orientation: Vector2):
 	if (player == null):

@@ -109,10 +109,12 @@ func _on_Item_pressed():
 
 func _on_Act_pressed():
 	animation.play("show_actions")
+
+func actions_finished_displaying():
+	var children = actions.get_children()
 	act_back_button.grab_focus()
-	for child in actions.get_children():
-		child.grab_focus()
-		break
+	if children.size() > 0:
+		children[0].grab_focus()
 
 func _on_ActBackButton_pressed():
 	animation.play("act_contract")

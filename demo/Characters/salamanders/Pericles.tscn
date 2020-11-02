@@ -31,12 +31,12 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=2]
 radius = 62.7229
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=3]
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 18.6073
 height = 80.3686
 
@@ -45,6 +45,7 @@ pause_mode = 2
 script = ExtResource( 8 )
 
 [node name="Ripples" parent="." instance=ExtResource( 1 )]
+frame = 1
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -1.31436, -9.20059 )
@@ -55,14 +56,14 @@ animation = "down"
 
 [node name="CollisionShape2D" parent="Person/SeenBox" index="0"]
 position = Vector2( -0.733459, 5.86774 )
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="AnimationTree" parent="Person" index="2"]
-parameters/playback = SubResource( 2 )
+parameters/playback = SubResource( 3 )
 
 [node name="CollisionShape2D" parent="Person/KinematicBody2D" index="0"]
 position = Vector2( -1.46695, 12.2206 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [editable path="Person"]
 

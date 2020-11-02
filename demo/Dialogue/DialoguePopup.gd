@@ -250,7 +250,7 @@ func get_picture():
 func get_pitch():
 	var row = get_row()
 	if row.size() < 7:
-		return 3
+		return null #3
 	else:
 		return row[6]
 	
@@ -317,7 +317,8 @@ func print_next_character():
 	render_character_and_continue(character, get_wait_time())
 
 func start():
-	print_next_character()
+	timer.wait_time = 0.15
+	timer.start()
 	
 func stop():
 	emit_signal("done")

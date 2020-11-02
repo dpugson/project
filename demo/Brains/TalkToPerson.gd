@@ -45,6 +45,7 @@ func _physics_process(_delta):
 
 
 func _on_SeenBox_seen(_obj):
-	var direction = (playerDetectionZone.player.global_position - global_position).normalized()
-	animation_tree.set("parameters/idle/blend_position", direction)
-	DialogueHelper.call_deferred("showDialogue", self, dialogue)
+	if (playerDetectionZone.player != null):
+		var direction = (playerDetectionZone.player.global_position - global_position).normalized()
+		animation_tree.set("parameters/idle/blend_position", direction)
+		DialogueHelper.call_deferred("showDialogue", self, dialogue)

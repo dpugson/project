@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://sprites/cavestuff/skelebones_house.png" type="Texture" id=1]
 [ext_resource path="res://BG.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://MiniGames/battles/SkeletonBossSprite.tscn" type="PackedScene" id=10]
 [ext_resource path="res://tunes/cave/skeleton_encounter.wav" type="AudioStream" id=11]
 [ext_resource path="res://sprites/bosses/skeleton_boss/sk_head.png" type="Texture" id=12]
+[ext_resource path="res://Brains/SaveStar.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 57.1701, 31.2638 )
@@ -372,8 +373,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( -534, -0.25, 0, 0.25, 0, -666.416, -0.136593, -5.8681, 0.120105, 5.15979, -572.898, -0.0703714, -0.641357, 0.241132, 2.19765, -769.611, -0.25, 0, 0.25, 0, -718.808, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.2, 0.6, 1.2, 2 )
+"points": PoolRealArray( -534, -0.0768167, 27.4824, 0.0754975, -27.0104, -653.886, -0.0483418, -5.15979, 0.0941169, 10.0456, -572.898, -0.0683461, -2.03967, 0.225439, 6.72784, -849.958, -0.404157, 22.7777, 0.183106, -10.3196, -718.808, -0.349122, -162.109, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.6, 1.3, 2 )
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath(".")
@@ -466,6 +467,12 @@ watch_player = true
 position = Vector2( 506.935, -718.808 )
 scale = Vector2( 0.561, 0.561 )
 texture = ExtResource( 12 )
+
+[node name="SaveStar" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 646.492, 1270.6 )
+save_spot_name = "Cave - Outside the Skeleton's House"
+home = "res://Levels/0.0 Cave/SkelebonesHouse.tscn"
+flavor_text = "Greetings, Puzzle Star!"
 
 [node name="PuppyCamera" parent="." instance=ExtResource( 4 )]
 

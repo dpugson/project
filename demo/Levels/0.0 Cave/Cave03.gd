@@ -10,12 +10,14 @@ onready var crumblySpawnPoint = $CrumblySpawnPoint
 onready var stats = PlayerStats
 onready var player = $YSort/player
 onready var transition = Transition
+onready var animation = $AnimationPlayer
 
 onready var wall = $WallOfPsychicEnergy
 onready var tween = $Tween
 onready var camera = $PuppyCamera
 onready var cameraPositionAtEnd = $CameraAtEnd
 onready var save_star = $YSort/SaveStar
+onready var fallSavePoint = $FallingSpawnPoint
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,6 +31,9 @@ func _ready():
 			player_position = upperSpawnPoint.position
 		"crumbly":
 			player_position = crumblySpawnPoint.position
+		"falling":
+			player_position = fallSavePoint.position
+			animation.play("fall")
 		_:
 			player_position = upperSpawnPoint.position
 	stats.spawn_player(

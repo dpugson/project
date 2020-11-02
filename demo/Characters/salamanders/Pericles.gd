@@ -6,8 +6,10 @@ onready var animated_sprite = $AnimatedSprite
 const chuffed = "res://sprites/cavestuff/salamanders/pink_react0.png"
 const thinking = "res://sprites/cavestuff/salamanders/pict_react1.png"
 
+const VOICE_PITCH = 3
+
 var dialogue = {
-	"begin" : ["TEXT", "You're doing great!", 0.08, null]
+	"begin" : ["TEXT", "You're doing great!", 0.08, null, null, VOICE_PITCH]
 }
 
 func set_dialogue(new_dialogue):

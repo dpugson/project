@@ -551,5 +551,6 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="game_over" from="YSort/FetchGamePlayer" to="." method="_on_FetchGamePlayer_game_over"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="PacerTimer" to="." method="_on_PacerTimer_timeout"]

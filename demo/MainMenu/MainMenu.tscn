@@ -19,7 +19,7 @@ animations = [ {
 } ]
 
 [node name="MainMenu" type="Control"]
-pause_mode = 2
+pause_mode = 1
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -62,6 +62,7 @@ __meta__ = {
 }
 
 [node name="Level" type="Label" parent="Control"]
+visible = false
 margin_left = 1244.43
 margin_top = 465.171
 margin_right = 1628.43
@@ -72,9 +73,10 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Control"]
+pause_mode = 2
 position = Vector2( 960.949, 265.589 )
 frames = SubResource( 1 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="ProgressMarkers" type="Node2D" parent="Control"]

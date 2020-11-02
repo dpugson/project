@@ -96,7 +96,6 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 1.3656, -7.26849 )
 frames = SubResource( 2 )
-frame = 1
 playing = true
 
 [node name="HurtBox" parent="." instance=ExtResource( 4 )]

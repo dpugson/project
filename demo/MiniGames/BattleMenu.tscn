@@ -316,6 +316,20 @@ tracks/4/keys = {
 "update": 1,
 "values": [ false, true ]
 }
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "actions_finished_displaying"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "show_text"
@@ -546,6 +560,7 @@ anims/show_actions = SubResource( 3 )
 anims/show_text = SubResource( 4 )
 
 [node name="FetchGameContainer" type="PanelContainer" parent="."]
+visible = false
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 0.827881
 margin_right = 1906.83
@@ -556,7 +571,6 @@ __meta__ = {
 }
 
 [node name="DecisionStuff" type="Control" parent="."]
-visible = false
 margin_left = -31.2411
 margin_top = -58.8736
 margin_right = 8.75891
@@ -567,14 +581,15 @@ __meta__ = {
 
 [node name="Panel" type="Panel" parent="DecisionStuff"]
 margin_left = 188.705
-margin_top = 843.043
+margin_top = 743.0
 margin_right = 1764.7
-margin_bottom = 1049.04
+margin_bottom = 1045.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MainChoices" type="Control" parent="DecisionStuff"]
+visible = false
 margin_left = 193.691
 margin_top = 830.851
 margin_right = 233.691
@@ -606,7 +621,6 @@ __meta__ = {
 }
 
 [node name="Actions" type="GridContainer" parent="DecisionStuff"]
-visible = false
 margin_left = 936.399
 margin_top = 877.8
 margin_right = 984.399
@@ -623,7 +637,6 @@ __meta__ = {
 }
 
 [node name="ActBackButton" type="Button" parent="DecisionStuff"]
-visible = false
 margin_left = 220.916
 margin_top = 914.258
 margin_right = 372.916
@@ -692,19 +705,20 @@ anims/go_to_game = SubResource( 5 )
 anims/leave_game = SubResource( 6 )
 
 [node name="PlayerStats" type="Control" parent="."]
-margin_left = 24.6641
-margin_top = 9.61929
-margin_right = 64.6641
-margin_bottom = 49.6233
+margin_left = 150.918
+margin_top = 990.646
+margin_right = 190.918
+margin_bottom = 1030.65
+rect_scale = Vector2( 0.5, 0.5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HealthUI" parent="PlayerStats" instance=ExtResource( 1 )]
-margin_left = 459.869
-margin_top = 23.0236
-margin_right = 499.869
-margin_bottom = 63.0236
+margin_left = 428.739
+margin_top = 35.1299
+margin_right = 468.739
+margin_bottom = 75.1299
 
 [node name="StaminaLabel" type="Label" parent="PlayerStats"]
 margin_left = 21.2994

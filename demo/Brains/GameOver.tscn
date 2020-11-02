@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Brains/SaveStar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Brains/GameOver.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "load"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "accept_input"
+} ]
+}
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="BG" parent="." instance=ExtResource( 2 )]
+margin_left = -376.025
+margin_top = -479.314
+margin_right = 2445.98
+margin_bottom = 1625.69
+
+[node name="Label" type="Label" parent="."]
+margin_left = 460.975
+margin_top = 451.892
+margin_right = 1260.97
+margin_bottom = 588.892
+text = "STAR CHILD, YOU CANNOT GIVE UP!!!
+GET UP AND TRY AGAIN!!!
+WE BELIEVE IN YOU!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveStar" parent="Label" instance=ExtResource( 1 )]
+position = Vector2( -108.532, 68.3903 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "load"
+anims/load = SubResource( 1 )

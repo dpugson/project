@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/0.0 Cave/WaveTexture.tscn" type="PackedScene" id=2]
@@ -23,6 +23,21 @@ extents = Vector2( 174.319, 390.536 )
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 48.1062
+
+[sub_resource type="Animation" id=4]
+resource_name = "fall"
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1522.16, -93.083 ), Vector2( 1522.16, 1330.57 ) ]
+}
 
 [node name="Cave03" type="Node2D"]
 script = ExtResource( 7 )
@@ -64,7 +79,7 @@ position = Vector2( 1850.83, 1675 )
 text = "NO BARKING!!!"
 
 [node name="player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 444.704, 956.433 )
+position = Vector2( 1522.16, 1330.57 )
 camera = NodePath("../../PuppyCamera")
 
 [node name="SlammableDoor" parent="YSort" instance=ExtResource( 15 )]
@@ -246,6 +261,12 @@ shape = SubResource( 3 )
 
 [node name="SalamanderPartTwoSpawnPoint" type="Position2D" parent="."]
 position = Vector2( 1670.64, 1745.25 )
+
+[node name="FallingSpawnPoint" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1639.89, 1359.82 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/fall = SubResource( 4 )
 [connection signal="cutscene_starting" from="YSort/BarkSalamanderEvent" to="." method="_on_BarkSalamanderEvent_cutscene_starting"]
 [connection signal="transition_triggered" from="UpperDoor" to="." method="_on_UpperDoor_transition_triggered"]
 [connection signal="transition_triggered" from="WayOut" to="." method="_on_WayOut_transition_triggered"]

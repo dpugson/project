@@ -8,6 +8,7 @@ onready var player = $YSort/FetchGamePlayer
 onready var timer = $Timer
 onready var tween = $Tween
 onready var animation = $AnimationPlayer
+onready var pacer_timer = $PacerTimer
 
 onready var horizon = $horizon
 onready var edge = $edge
@@ -133,3 +134,17 @@ func _on_PacerTimer_timeout():
 	var scene = preload("res://MiniGames/obstacles/HorizontalLine.tscn")
 	var end_scale = null
 	spawn_obstacle(pacer_parent, scene, Vector2(0, 2000), end_scale)
+
+func _on_FetchGamePlayer_game_over():
+	Jukebox.stop()
+	timer.stop()
+	pacer_timer.stop()
+	player.cutscene_mode = true
+	var game_over_timer = Timer.new()
+	add_child(game_over_timer)
+	game_over_timer.wait_time = 1
+	game_over_timer.connect("timeout", self, "game_over")
+	game_over_timer.start()
+
+func game_over():
+	Transition.go_to("res://Brains/GameOver.tscn")

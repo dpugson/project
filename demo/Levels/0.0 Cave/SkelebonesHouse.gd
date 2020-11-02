@@ -10,6 +10,7 @@ onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 onready var animation = $AnimationPlayer
 onready var beatSkeletonSpawnPoint = $BeatSkeletonSpawnPoint
 onready var skeleton_event_trigger = $SkeletonEventTrigger
+onready var save_star = $YSort/SaveStar
 
 const already_been_in_here = "ALREADY_BEEN_IN_SKELTON_HOUSE"
 const beat_skeleton = "BEAT_SKELETON"
@@ -22,12 +23,10 @@ func _ready():
 	var player_position = Vector2.ZERO
 	var orientation = Vector2.DOWN
 	
-	# TODO Delete this
-	stats.spawn_metadata = "beat_game"
-	stats.world_state[already_been_in_here] = true
-	stats.world_state[beat_skeleton] = true
-	
 	match stats.spawn_metadata:
+		"Cave - Outside the Skeleton's House":
+			player_position = save_star.position
+			orientation = Vector2.UP
 		"bottom":
 			player_position = bottomSpawnPoint.position
 			orientation = Vector2.UP
@@ -50,7 +49,8 @@ func _ready():
 	
 	if stats.check_bool(beat_skeleton):
 		skeleton_event_trigger.queue_free()
-		if !stats.check_bool(skeleton_inside):
+		Jukebox.play_song("res://tunes/cave/fallen.wav")
+		if !stats.check_bool(skeleton_inside) && stats.spawn_metadata == "beat_game":
 			player.cutscene_mode = true
 			player.set_blend_positions(Vector2.UP)
 			animation.play("FinishedBattle")
@@ -60,19 +60,19 @@ func play_post_battle_dialogue():
 
 var post_battle_dialogue = {
 	"begin" : [
-		"TEXT", "......",
+		"TEXT", "...",
 		SKELETON_SPEECH_RATE, "2", null, null, SKELETON_VOICE_PITCH
 	],
 	"2" : [
-		"TEXT", "!!!!!!!!!!!!!!!",
+		"TEXT", "HEHEHEHEH!!!",
 		SKELETON_SPEECH_RATE, "3", null, null, SKELETON_VOICE_PITCH
 	],
 	"3" : [
-		"TEXT", "SILLY DOGGY!!!!!!!",
-		SKELETON_SPEECH_RATE, "4", null, null, SKELETON_VOICE_PITCH
+		"TEXT", "SILLY PUPPY!",
+		SKELETON_SPEECH_RATE, "32", null, null, SKELETON_VOICE_PITCH
 	],
-	"4" : [
-		"TEXT", "WELL, THEY ALWAYS SAY, QUIT WHILE YOU'RE A HEAD...",
+	"32" : [
+		"TEXT", "YOU'RE SPUNKY!",
 		SKELETON_SPEECH_RATE, null, null, null, SKELETON_VOICE_PITCH
 	],
 }
@@ -81,24 +81,36 @@ func bounce_away():
 	animation.play("bounce_away")
 
 func bounce_completed():
-	DialogueHelper.showDialogue(self, post_bounce_dialogue)
+	DialogueHelper.showDialogue(self, post_bounce_dialogue, false, [self, "go_inside"])
 
 var post_bounce_dialogue = {
 	"begin" : [
-		"TEXT", "HEHEH!!!!",
+		"TEXT", "THEY ALWAYS SAY, QUIT WHILE YOU'RE A HEAD...",
+		SKELETON_SPEECH_RATE, "1", null, null, SKELETON_VOICE_PITCH
+	],
+	"1" : [
+		"TEXT", "...AND NOW I KNOW WHAT THEY'RE TALKING ABOUT!",
 		SKELETON_SPEECH_RATE, "2", null, null, SKELETON_VOICE_PITCH
 	],
 	"2" : [
-		"TEXT", "WHAT A CLEVER PUPPY!!!!",
+		"TEXT", "WELL, I FEEL LIKE AFTER ALL THIS FUN, I NEED A LOOOONG NAP.",
 		SKELETON_SPEECH_RATE, "3", null, null, SKELETON_VOICE_PITCH
 	],
 	"3" : [
-		"TEXT", "FEEL FREE TO COME IN AND HELP YOURSELF TO WHATEVER YOU NEED!!!!!!!",
+		"TEXT", "FEEL FREE TO COME IN AND TAKE A BREATHER!",
 		SKELETON_SPEECH_RATE, "4", null, null, SKELETON_VOICE_PITCH
 	],
 	"4" : [
-		"TEXT", "",
-		SKELETON_SPEECH_RATE, null, [self, "go_inside"], null, SKELETON_VOICE_PITCH
+		"TEXT", "OH! AND... BY THE WAY",
+		SKELETON_SPEECH_RATE, "52", null, null, SKELETON_VOICE_PITCH
+	],
+	"52" : [
+		"TEXT", "THE FLIPPERS ARE IN THE BACK ROOM! CONSIDER THEM A GIFT FROM A FRIEND!",
+		SKELETON_SPEECH_RATE, "5", null, null, SKELETON_VOICE_PITCH
+	],
+	"5" : [
+		"TEXT", "SEE YOU ON THE FLIP SIDE",
+		SKELETON_SPEECH_RATE, null, null, null, SKELETON_VOICE_PITCH
 	],
 }
 
@@ -110,12 +122,20 @@ func go_inside_done():
 	stats.world_state[skeleton_inside] = true
 
 func get_normal_dialogue(pitch):
-	return {
-		"begin" : [
-			"TEXT", "GO GET EM!", 0.03,
-			null, null, null, pitch
-		]
-	}
+	if not stats.check_bool(beat_skeleton):
+		return {
+			"begin" : [
+				"TEXT", "GO GET EM!", 0.03,
+				null, null, null, pitch
+			]
+		}
+	else:
+		return {
+			"begin" : [
+				"TEXT", "You did it! Way to go!!!\nI'll meet you back in the big room!", 0.03,
+				null, null, null, pitch
+			]
+		}
 	
 func get_dialogue(gilby_voice):
 	return {
@@ -156,7 +176,7 @@ func get_dialogue(gilby_voice):
 			0.02, "warning7", null, gilby.angry, gilby_voice
 		],
 		"warning7" : [
-			"TEXT", "GO GET EM!",
+			"TEXT", "GO GET EM! (though I might save first if I were you.....)",
 			0.02, null, null, gilby.angry, gilby_voice
 		],
 	}
@@ -164,7 +184,6 @@ func get_dialogue(gilby_voice):
 func opine():
 	stats.world_state[already_been_in_here] = true
 	DialogueHelper.showDialogue(self, get_dialogue(gilby.VOICE_PITCH))
-
 
 func _on_UpperTZ_transition_triggered():
 	Transition.go_to("res://Levels/0.0 Cave/SkelebonesLivingRoom.tscn", "bottom")

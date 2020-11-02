@@ -81,12 +81,12 @@ func get_play_dead_dialogue():
 						SKELETON_SPEECH_RATE, "giveme", null, null, SKELETON_VOICE_PITCH
 					],
 					"giveme" : [
-						"TEXT", "LOL! IS THAT SUPPOSED TO BE ME??",
+						"TEXT", "HEHEH! IS THAT SUPPOSED TO BE ME??",
 						SKELETON_SPEECH_RATE, "increment", null, null, SKELETON_VOICE_PITCH
 					],
 					"increment" : [
 						"TEXT", "DISTRACTION +1",
-						SKELETON_SPEECH_RATE, null, [self, "increment_nostalgia_points"], null, SKELETON_VOICE_PITCH
+						SKELETON_SPEECH_RATE, null, [self, "increment_nostalgia_points"], null, null
 					],
 				}
 		2:
@@ -101,14 +101,18 @@ func get_play_dead_dialogue():
 					],
 					"increment" : [
 						"TEXT", "DISTRACTION +1",
-						SKELETON_SPEECH_RATE, null, [self, "increment_nostalgia_points"], null, SKELETON_VOICE_PITCH
+						SKELETON_SPEECH_RATE, null, [self, "increment_nostalgia_points"], null, null
 					],
 			}
 		_:
 			return {
 				"begin" : [
-						"TEXT", "HEHEH",
-						SKELETON_SPEECH_RATE, null, null, null, SKELETON_VOICE_PITCH
+						"TEXT", "HMMM I WAS WRONG IT DID GET OLD",
+						SKELETON_SPEECH_RATE, "increment", null, null, SKELETON_VOICE_PITCH
+				],
+				"increment" : [
+						"TEXT", "JUST KIDDING!!! DISTRACTION +1",
+						SKELETON_SPEECH_RATE, null, [self, "increment_nostalgia_points"], null, null
 				],
 			}
 
@@ -162,7 +166,11 @@ func action_noop(action):
 			dialogue = {
 					"begin" : [
 						"TEXT", "Smells like dusty old bones!!!",
-						SKELETON_SPEECH_RATE, null, null, null
+						SKELETON_SPEECH_RATE, "increment", null, null
+					],
+					"increment" : [
+						"TEXT", "DISTRACTION +1",
+						SKELETON_SPEECH_RATE, null, [self, "increment_nostalgia_points"], null, null
 					],
 				}
 		"steal bone":
@@ -186,11 +194,11 @@ func action_noop(action):
 			dialogue = {
 					"begin" : [
 						"TEXT", "HEHEHEH... DO YOU WANT A BELLY RUB?",
-						SKELETON_SPEECH_RATE, end_if_seen_before("increment", "belly_rub"), null, null, SKELETON_VOICE_PITCH
+						SKELETON_SPEECH_RATE, "increment", null, null, null
 					],
 					"increment" : [
 						"TEXT", "DISTRACTION +1",
-						SKELETON_SPEECH_RATE, null, [self, "increment_nostalgia_points"], null, SKELETON_VOICE_PITCH
+						SKELETON_SPEECH_RATE, null, [self, "increment_nostalgia_points"], null, null
 					]
 				}
 	battle_menu.call_deferred("show_dialogue", dialogue)
@@ -206,13 +214,17 @@ func get_default_item_dialogue(text):
 			SKELETON_SPEECH_RATE, "giveme", null, null, SKELETON_VOICE_PITCH
 		],
 		"giveme" : [
-			"TEXT", "HEHEHEH! LET ME HAVE THAT!",
+			"TEXT", "HEE HEE! LET ME HAVE THAT!",
 			SKELETON_SPEECH_RATE, "FETCH", null, null, SKELETON_VOICE_PITCH
 		],
 		"FETCH" : [
 			"TEXT", "GO FETCH, PUPPY!",
-			SKELETON_SPEECH_RATE, null, null, null, SKELETON_VOICE_PITCH
-		]
+			SKELETON_SPEECH_RATE, "increment", null, null, SKELETON_VOICE_PITCH
+		],
+		"increment" : [
+						"TEXT", "DISTRACTION +1",
+						SKELETON_SPEECH_RATE, null, [self, "increment_nostalgia_points"], null, null
+		],
 	}
 
 var nostalgia_bank = {}
@@ -237,11 +249,11 @@ func item_noop(menu, _label, _item, _prev):
 				],
 				"nostalgia_points" : [
 					"TEXT", "HEHEHEHEHEH",
-					SKELETON_SPEECH_RATE, end_if_seen_before("increment", "bone"), null, null, SKELETON_VOICE_PITCH
+					SKELETON_SPEECH_RATE, "increment", null, null, SKELETON_VOICE_PITCH
 				],
 				"increment" : [
 					"TEXT", "DISTRACTION +1",
-					SKELETON_SPEECH_RATE, null, [self, "increment_nostalgia_points"], null, SKELETON_VOICE_PITCH
+					SKELETON_SPEECH_RATE, null, [self, "increment_nostalgia_points"], null, null
 				]
 			}
 			change_fetch_item(_item)
@@ -259,11 +271,11 @@ func item_noop(menu, _label, _item, _prev):
 				],
 				"nostalgia_points" : [
 					"TEXT", "ISN'T IT COOL???? IT'S GOT MY FACE ON IT!",
-					SKELETON_SPEECH_RATE, end_if_seen_before("increment", "key"), null, null, SKELETON_VOICE_PITCH
+					SKELETON_SPEECH_RATE, "increment", null, null, SKELETON_VOICE_PITCH
 				],
 				"increment" : [
 					"TEXT", "DISTRACTION +1",
-					SKELETON_SPEECH_RATE, null, [self, "increment_nostalgia_points"], null, SKELETON_VOICE_PITCH
+					SKELETON_SPEECH_RATE, null, [self, "increment_nostalgia_points"], null, null
 				]
 			}
 			change_fetch_item(_item)
@@ -292,5 +304,5 @@ var battle_impl = {
 }
 
 func _ready():
-	Jukebox.play_song("res://tunes/cave/salamanders.wav")
+	Jukebox.play_song("res://tunes/cave/skeleton_battle_smooth.wav")
 	battle_menu.init(battle_impl)

@@ -96,7 +96,15 @@ onready var special_dialogue  = {
 		"TEXT", "!!!!!", 0.03, "WHOAH", [self, "explode"]
 	],
 	"WHOAH" : [
-		"TEXT", "WHOAH!!!", 0.03, null, null, gilby.shifty, gilby.VOICE_PITCH
+		"TEXT", "WHOAH!!!", 0.03, "wha", null, gilby.shifty, gilby.VOICE_PITCH
+	],
+	"wha" : [
+		"TEXT", "Wha- they blew themselves to smithereens!!!",
+		0.02, "next", null, gilby.shifty, gilby.VOICE_PITCH
+	],
+	"next" : [
+		"TEXT", "That's messed up!!!", 0.03,
+		null, null, null, gilby.VOICE_PITCH
 	]
 }
 

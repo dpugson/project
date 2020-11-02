@@ -6,10 +6,10 @@
 [ext_resource path="res://hitnhurtboxes/SeenBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/0.0 Cave/Lever.gd" type="Script" id=5]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 76.5896
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 49.5768, 35.8842 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "flip_lr"
 tracks/0/type = "value"
 tracks/0/path = NodePath("lever:rotation_degrees")
@@ -38,7 +38,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "flip_rl"
 tracks/0/type = "value"
 tracks/0/path = NodePath("lever:rotation_degrees")
@@ -67,8 +67,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "left"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("lever:rotation_degrees")
 tracks/0/interp = 1
@@ -118,14 +117,14 @@ texture = ExtResource( 2 )
 [node name="SeenBox" parent="." instance=ExtResource( 4 )]
 
 [node name="CollisionShape2D" parent="SeenBox" index="0"]
-position = Vector2( 1.34729, -45.8081 )
+position = Vector2( -6.10352e-05, -63.323 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "left"
-anims/flip_lr = SubResource( 3 )
-anims/flip_rl = SubResource( 4 )
-anims/left = SubResource( 2 )
+anims/flip_lr = SubResource( 2 )
+anims/flip_rl = SubResource( 3 )
+anims/left = SubResource( 4 )
 anims/right = SubResource( 5 )
 [connection signal="seen" from="SeenBox" to="." method="_on_SeenBox_seen"]
 

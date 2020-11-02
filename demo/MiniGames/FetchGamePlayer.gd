@@ -15,6 +15,8 @@ onready var animation = $AnimationPlayer
 
 export(bool) var cutscene_mode = false
 
+signal game_over
+
 func get_input(_delta) -> Vector2:
 	var input = Vector2.ZERO
 	if not cutscene_mode:
@@ -33,5 +35,9 @@ func _physics_process(delta):
 
 func _on_HurtBox_area_entered(_area):
 	stats.health -= 2
-	hurtbox.start_invincibility(1.6)
-	animation.play("invincible")
+	if stats.health == 0:
+		emit_signal("game_over")
+		queue_free()
+	else:
+		hurtbox.start_invincibility(1.6)
+		animation.play("invincible")

@@ -63,6 +63,7 @@ func reset():
 	stats.world_state = {}
 	stats.inventory = {}
 	stats.world_state["level"] = 0
+	stats.health = stats.max_health
 	stats.G = 0
 	stats.save_game(
 		"Nowhere - You haven't started!", 

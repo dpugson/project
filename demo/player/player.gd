@@ -17,7 +17,7 @@ var speed = Vector2.DOWN
 var dash_power = 1
 var state = WALK
 var stats = PlayerStats
-var cutscene_mode: bool = false # for cutscenes
+var cutscene_mode: bool = false setget cutscene_mode_set # for cutscenes
 var allow_cutscene_bark: bool = false
 var turbo_input = Vector2.DOWN
 var previous_input = Vector2.DOWN
@@ -41,6 +41,13 @@ func _ready():
 	lookbox.connect("saw_something", self, "set_speed_to_zero")
 	bark_hitbox.knockback_vector = speed
 	animation_tree.active = true
+
+func cutscene_mode_set(value):
+	cutscene_mode = value
+	if (value):
+		lookbox.collisionShape.disabled = true
+	else:
+		lookbox.collisionShape.disabled = false
 
 func _input(event):
 	if stats.menu_allowed:
