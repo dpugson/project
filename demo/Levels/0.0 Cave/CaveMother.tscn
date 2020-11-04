@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://BG.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/cavestuff/the_mother_of_the_cave-min.png" type="Texture" id=2]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/0.0 Cave/CaveMother.gd" type="Script" id=6]
+
+[node name="CaveMother" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="BG" parent="." instance=ExtResource( 1 )]
+margin_left = -1299.0
+margin_top = -895.0
+margin_right = 3256.0
+margin_bottom = 1897.0
+
+[node name="the_mother_of_the_cave-min" type="Sprite" parent="."]
+position = Vector2( 750.215, 349.368 )
+texture = ExtResource( 2 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="player" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -519.709, 969.85 )
+camera = NodePath("../../PuppyCamera")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -613.356, 879.203, -525.495, 860.206, -435.26, 867.329, -416.263, 910.073, -368.77, 931.444, -311.78, 931.444, -235.792, 867.329, -24.4508, 888.701, 467.095, 826.961, 490.841, 902.949, 761.547, 981.311, 1020.38, 907.698, 1034.63, 817.463, 1381.32, 855.456, 2024.84, 838.834, 2031.97, 734.351, -608.607, 791.342 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+polygon = PoolVector2Array( -670.732, 1113.5, -481.325, 1271.34, -432.22, 1288.87, -270.873, 1267.83, 146.524, 1250.29, 220.182, 1260.81, 416.604, 1204.69, 637.579, 1288.87, 911.167, 1330.96, 1216.32, 1278.35, 1458.34, 1211.71, 1858.2, 1173.13, 2208.95, 1187.16, 2082.68, 990.733, 2089.7, 864.462, 2394.85, 934.613, 2363.29, 1387.08, -1074.1, 1425.67, -1014.47, 997.749, -667.225, 1004.76 )
+
+[node name="BottomSpawnPoint" parent="." instance=ExtResource( 4 )]
+position = Vector2( -554.191, 982.11 )
+
+[node name="TopSpawnPoint" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1988.77, 915.467 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 5 )]
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -1263.41, -853.66 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 3205.14, 1825.76 )
+
+[editable path="PuppyCamera"]

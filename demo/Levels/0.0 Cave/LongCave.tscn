@@ -1,0 +1,179 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://BG.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/cavestuff/long_cave-min.png" type="Texture" id=2]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/0.0 Cave/LongCave.gd" type="Script" id=4]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sprites/cavestuff/big_stalactite.png" type="Texture" id=7]
+[ext_resource path="res://Levels/0.0 Cave/SecretListener.tscn" type="PackedScene" id=8]
+
+[node name="LongCave" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="SecretListener" parent="." instance=ExtResource( 8 )]
+position = Vector2( -262.712, 1071.78 )
+unique_name = "firstsecretlistener"
+
+[node name="SecretListener2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 141.347, 544.494 )
+unique_name = "secondsecretlistener"
+secret_text = "You whisper an extremely secret secret..."
+
+[node name="SecretListener3" parent="." instance=ExtResource( 8 )]
+position = Vector2( -65.2477, -1482.74 )
+unique_name = "thirdsecretlistener"
+secret_text = "You whisper a very truly extremely  secret secret..."
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="BG" parent="ParallaxBackground" instance=ExtResource( 1 )]
+margin_left = -793.152
+margin_top = -2300.4
+margin_right = 3018.85
+margin_bottom = 3951.6
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.8, 0.8 )
+
+[node name="big_stalactite8" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2( 285.669, 2681.21 )
+texture = ExtResource( 7 )
+flip_v = true
+
+[node name="big_stalactite10" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2( 844.438, 2902.39 )
+texture = ExtResource( 7 )
+flip_v = true
+
+[node name="big_stalactite11" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2( -75.2024, 2343.62 )
+texture = ExtResource( 7 )
+flip_v = true
+
+[node name="big_stalactite12" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2( 2020.18, 2331.98 )
+texture = ExtResource( 7 )
+flip_v = true
+
+[node name="big_stalactite9" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2( 697.395, -1949.42 )
+texture = ExtResource( 7 )
+
+[node name="big_stalactite13" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2( 103.752, -828.247 )
+texture = ExtResource( 7 )
+
+[node name="big_stalactite14" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2( 1815.78, -1480.09 )
+texture = ExtResource( 7 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.85, 0.85 )
+
+[node name="big_stalactite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1411.7, 3899.14 )
+texture = ExtResource( 7 )
+flip_v = true
+
+[node name="big_stalactite5" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 2077.2, -1039.61 )
+texture = ExtResource( 7 )
+
+[node name="big_stalactite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 171.783, 5413.27 )
+texture = ExtResource( 7 )
+flip_v = true
+
+[node name="big_stalactite7" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 536.511, -1140.92 )
+texture = ExtResource( 7 )
+
+[node name="big_stalactite8" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( -139.803, -1245.84 )
+texture = ExtResource( 7 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.9, 0.9 )
+
+[node name="big_stalactite4" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( -404.371, -496.576 )
+texture = ExtResource( 7 )
+
+[node name="big_stalactite6" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( -867.771, -260.52 )
+texture = ExtResource( 7 )
+
+[node name="big_stalactite7" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 1493.46, -1248 )
+texture = ExtResource( 7 )
+
+[node name="big_stalactite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 465.955, 3275.7 )
+texture = ExtResource( 7 )
+flip_v = true
+
+[node name="big_stalactite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 1121.21, 3255.84 )
+texture = ExtResource( 7 )
+flip_v = true
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="big_stalactite8" type="Sprite" parent="ParallaxBackground/ParallaxLayer5"]
+position = Vector2( 927.939, -2586.03 )
+texture = ExtResource( 7 )
+
+[node name="long_cave-min" type="Sprite" parent="."]
+position = Vector2( 880.331, 759.696 )
+texture = ExtResource( 2 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="player" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 219.742, 2933.3 )
+camera = NodePath("../../PuppyCamera")
+
+[node name="BottomSpawnPoint" parent="." instance=ExtResource( 5 )]
+position = Vector2( 223.634, 2946.63 )
+
+[node name="TopSpawnPoint" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1395.35, -1449.18 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 6 )]
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -688.937, -2176.56 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 2920.45, 3721.35 )
+
+[node name="Walls" type="Node2D" parent="."]
+visible = false
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/StaticBody2D"]
+polygon = PoolVector2Array( 132.264, 2900.37, 222.1, 2900.37, 396.158, 2866.68, 1246.79, 2282.75, 1266.45, 2223.79, 1199.07, 2145.19, 519.682, 1931.82, 415.809, 1853.22, 590.646, 1684.4, 675.737, 1588.21, 919.913, 1488.32, 1182.59, 1266.34, -201.075, 1210.84, -193.676, 2864.58 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/StaticBody2D2"]
+polygon = PoolVector2Array( 1180.18, 1265.94, 1170.87, 1200.77, 1056.04, 1138.7, 506.723, 995.937, 258.443, 853.176, 520.573, 573.451, 1194.74, 248.345, 1454.82, 70.3927, 1275.37, 0.378174, 842.028, -140.27, 686.175, -242.904, 735.592, -322.731, 1282.98, -607.828, 1085.31, -687.655, 727.989, -828.303, 726.719, -902.386, 944.358, -1032.97, 1238.17, -1386.63, 1298.99, -1461.8, 1423.17, -1495.45, 1439.49, -1587.95, 13.9507, -1582.51, -83.9868, 1290.33 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/StaticBody2D3"]
+polygon = PoolVector2Array( 75.6289, 3009.2, 393.848, 3004.31, 1382.78, 2372.76, 1470.9, 2196.52, 1436.63, 2103.5, 648.424, 1814.66, 785.503, 1677.58, 1157.57, 1560.08, 1470.9, 1173.32, 1196.74, 1016.66, 496.658, 815.936, 623.945, 683.753, 1475.79, 252.932, 2660.55, 492.821, 2215.04, 3273.57, 325.309, 3322.53 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/StaticBody2D4"]
+polygon = PoolVector2Array( 1573.71, -1572.72, 1549.35, -1442.26, 1422.34, -1390.97, 1265.28, -1141.9, 932.374, -877.533, 1446.42, -657.227, 1431.73, -574, 942.165, -290.051, 1691.2, 37.9602, 1412.15, 341.493, 1950.68, 620.547, 2303.17, -1602.09 )
+
+[editable path="PuppyCamera"]

@@ -49,7 +49,7 @@ func load_game():
 			return # No save file!
 		file.open(SAVE_FILE_LOCATION, File.READ)
 		var json = parse_json(file.get_as_text())
-		print(json)
+		print("CURRENT STATE: ", json)
 		inventory = json.get("inventory", {})
 		world_state = json.get("world_state", {})
 		save_spot_name = json.get("save_spot_name", null)

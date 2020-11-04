@@ -66,31 +66,31 @@ func _on_LettersSeenBox_seen(_obj):
 			"TEXT", "To my Dearest Friend,", SKELETON_SPEECH_RATE, "l2", null, null, SKELETON_VOICE_PITCH
 		],
 		"l2" : [
-			"TEXT", "Hello!!! How are you doing?", SKELETON_SPEECH_RATE, "l33", null, null, SKELETON_VOICE_PITCH
+			"TEXT", "HELLO!!! How are you doing?", SKELETON_SPEECH_RATE, "l33", null, null, SKELETON_VOICE_PITCH
 		],
 		"l33" : [
-			"TEXT", "I hope you are doing well! The picture of you tucked away in your\nstudy reading this letter already fills me with joy.", SKELETON_SPEECH_RATE, "l3", null, null, SKELETON_VOICE_PITCH
+			"TEXT", "I hope you are doing well! The picture of you tucked away in your\nstudy reading this letter make me happy already.", SKELETON_SPEECH_RATE, "l3", null, null, SKELETON_VOICE_PITCH
 		],
 		"l3" : [
 			"TEXT", "Thanks for having the patience to write letters to a skeletal\nspirit that only appears for 20 minutes during the full moon!", SKELETON_SPEECH_RATE, "l4", null, null, SKELETON_VOICE_PITCH
 		],
 		"l4" : [
-			"TEXT", "I wish it were more often, but the paperwork involved is not insubstantial. But! I blabber.", SKELETON_SPEECH_RATE, "l5", null, null, SKELETON_VOICE_PITCH
+			"TEXT", "I wish it were more often, but thems the SKELETON RULES.", SKELETON_SPEECH_RATE, "l5", null, null, SKELETON_VOICE_PITCH
 		],
 		"l5" : [
-			"TEXT", "I very much enjoyed the copy of \"Deadly Avenger II\" you send in your last letter!", SKELETON_SPEECH_RATE, "l7", null, null, SKELETON_VOICE_PITCH
+			"TEXT", "I very much enjoyed the copy of \"DEADLY AVENGER II\" you send in your last letter.", SKELETON_SPEECH_RATE, "l7", null, null, SKELETON_VOICE_PITCH
 		],
 		"l7" : [
-			"TEXT", "The scene with the bathtub breaking through the roof of the dining car on the train!!!", SKELETON_SPEECH_RATE, "l9", null, null, SKELETON_VOICE_PITCH
+			"TEXT", "The scene with the bathtub breaking through the roof of the dining car on the train! Unforgettable", SKELETON_SPEECH_RATE, "l9", null, null, SKELETON_VOICE_PITCH
 		],
 		"l9" : [
-			"TEXT", "As for me, whilst in the unwordly realms, I think I made an important breakthrough! I've written it here:", SKELETON_SPEECH_RATE, "l10", null, null, SKELETON_VOICE_PITCH
+			"TEXT", "As for me, whilst in the SKELETAL REALMS, I think I made an important breakthrough! I've written it here:", SKELETON_SPEECH_RATE, "l10", null, null, SKELETON_VOICE_PITCH
 		],
 		"l10" : [
 			"TEXT", "*COMPLEX AND INSCRUTABLE FORMULA*", 0.03, "l11", null, null
 		],
 		"l11" : [
-			"TEXT", "Please check my calculations! I feel almost certain they are in\nerror. But if I am right, then perhaps we are close!!",
+			"TEXT", "Please check my calculations! I feel almost certain they are in\nerror. But if I am right, then... YOU KNOW WHAT!",
 			SKELETON_SPEECH_RATE, "l12", null, null, SKELETON_VOICE_PITCH
 		],
 		"l12" : [
@@ -139,17 +139,27 @@ const GOT_SKELE_DRAWER_G = "got_skeledrawerG"
 func _on_DrawerSeenBox_seen(_obj):
 	var dialogue = {
 		"begin" : [
+			"TEXT", "Water sausages! Your old friend. The noblest of flowers!", 0.03, "next", null, null
+		],
+		"next" : [
 			"TEXT", "You rummage around in the drawers.", 0.03, null, null, null
 		]
 	}
 	if not stats.check_bool(GOT_SKELE_DRAWER_G):
 		stats.world_state[GOT_SKELE_DRAWER_G] = true
 		dialogue["findg"] = [
-			"TEXT", "You find 10 G in the pillows!",
+			"TEXT", "You find 10 G!",
 			0.03, null
 		]
 		dialogue["begin"][3] = "findg"
 		stats.G += 10
+	else:
+		dialogue["findg"] = [
+			"TEXT", "You find nothing...",
+			0.03, null
+		]
+		dialogue["begin"][3] = "findg"
+		
 	DialogueHelper.showDialogue(self, dialogue)
 
 func _on_CattailsSeenBox_seen(_obj):

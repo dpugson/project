@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://sprites/random_npcs/mrleaves/mr_leaves_u0.png" type="Texture" id=1]
+[ext_resource path="res://sprites/random_npcs/mrleaves/mr_leaves_d1.png" type="Texture" id=2]
+[ext_resource path="res://sprites/random_npcs/mrleaves/mr_leaves_u1.png" type="Texture" id=3]
+[ext_resource path="res://sprites/random_npcs/mrleaves/mr_leaves_u2.png" type="Texture" id=4]
+[ext_resource path="res://sprites/random_npcs/mrleaves/mr_leaves_d2.png" type="Texture" id=5]
+[ext_resource path="res://sprites/random_npcs/mrleaves/mr_leaves_d0.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "down",
+"speed": 5.0
+} ]
+
+[node name="MrLeaves" type="Node2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 4.53552, -90.7106 )
+frames = SubResource( 1 )
+animation = "down"
+frame = 3
+playing = true

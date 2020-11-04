@@ -9,5 +9,5 @@ func _ready():
 	animation.play("GO")
 
 func gotobathroom():
-	pass
+	animation.play("THANK YOU")
 	#transition.go_to("res://Levels/0.1 Lab/Bathroom.tscn", "top")

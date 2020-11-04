@@ -72,11 +72,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Controls" type="Label" parent="Control"]
+margin_left = 1502.9
+margin_top = 176.345
+margin_right = 2414.9
+margin_bottom = 511.345
+text = "CONTROLS 
+
+WASD: move
+L: look
+K: bark"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Control"]
 pause_mode = 2
 position = Vector2( 960.949, 265.589 )
 frames = SubResource( 1 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="ProgressMarkers" type="Node2D" parent="Control"]

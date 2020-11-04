@@ -6,10 +6,24 @@ onready var reset_button = $Control/Reset
 onready var start = $Control/Start
 onready var current_location = $"Control/Current Location"
 onready var level_lable = $Control/Level
+onready var controls = $Control/Controls
 
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 
 func refresh_ui():
+	
+	var control_items = [
+		"WASD: move",
+		"L: look",
+		"K: bark"
+	]
+	if stats.check_bool("turbodash"):
+		control_items.append("J: turbo dash")
+	var control_string = "CONTROLS\n\n"
+	for item in control_items:
+		control_string += item + "\n"
+	controls.text = control_string
+		
 	if stats.save_spot_name == null:
 		reset()
 	if stats.save_spot_name == "Nowhere - You haven't started!":

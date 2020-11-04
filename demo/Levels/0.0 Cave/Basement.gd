@@ -47,7 +47,7 @@ func _on_Letter_seen(_obj):
 
 const GOT_PILLOW_G = "got_basement_pillow_g"
 
-func _on_Pillows_seen(obj):
+func _on_Pillows_seen(_obj):
 	var pillow_dialogue = {
 		"begin" : [
 			"TEXT", "Nice and soft and dusty.",

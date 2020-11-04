@@ -169,7 +169,7 @@ func explain_pegasus_dash(gilby_voice):
 			0.02, "warning3", null, gilby.shifty, gilby_voice
 		],
 		"warning3" : [
-			"TEXT", "You do know how to turbo dash, right???",
+			"TEXT", "You do know how to Turbo Dash, right???",
 			0.02, "warning4", null, gilby.shifty, gilby_voice
 		],
 		"warning4" : [

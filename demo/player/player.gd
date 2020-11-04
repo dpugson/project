@@ -44,10 +44,7 @@ func _ready():
 
 func cutscene_mode_set(value):
 	cutscene_mode = value
-	if (value):
-		lookbox.collisionShape.disabled = true
-	else:
-		lookbox.collisionShape.disabled = false
+	lookbox.disabled = value
 
 func _input(event):
 	if stats.menu_allowed:

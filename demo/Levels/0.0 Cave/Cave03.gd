@@ -56,7 +56,7 @@ func _on_BarkSalamanderEvent_cutscene_starting():
 	player.cutscene_mode = true
 	EffectHelper.call_deferred(
 		"place_effect", 
-		self, barksalamander_cutscene,
+		player, barksalamander_cutscene,
 		barksalamander_spawn_point.global_position,
 		[self, "cutscene_done"])
 		
@@ -92,11 +92,11 @@ const pink_thinking = "res://sprites/cavestuff/salamanders/pict_react1.png"
 var riptide_dialogue = {
 	"begin" : [
 		"TEXT", "Hmm....", 0.03,
-		"tell", null, pink_chuffed
+		"tell", null, pink_chuffed, 3
 	],
 	"tell" : [
 		"TEXT", "We did tell him about the dangerous currents, right?", 0.02,
-		"ummm", null, pink_thinking
+		"ummm", null, pink_thinking, 3
 	],
 	"ummm" : [
 		"TEXT", "Ummmm.....", 0.03,

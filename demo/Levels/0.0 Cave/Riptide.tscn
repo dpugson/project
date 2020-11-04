@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://sprites/dogswim/u0.png" type="Texture" id=1]
 [ext_resource path="res://sprites/dogswim/l0.png" type="Texture" id=2]
@@ -89,6 +89,21 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "THANK YOU"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="Node2D" type="Node2D"]
 position = Vector2( -3.36328, 5.14075 )
 script = ExtResource( 10 )
@@ -127,3 +142,19 @@ anims/backnforth = SubResource( 2 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 anims/GO = SubResource( 3 )
+"anims/THANK YOU" = SubResource( 4 )
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 524.081
+margin_top = 599.646
+margin_right = 1383.08
+margin_bottom = 1000.65
+text = "THANK YOU FOR PLAYING THE
+DOGGO QUEST DEMO!
+
+WE HOPE YOU WILL JOIN US AGAIN FOR
+THE REST OF THE ADVENTURE!"
+__meta__ = {
+"_edit_use_anchors_": false
+}

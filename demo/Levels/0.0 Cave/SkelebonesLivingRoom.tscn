@@ -84,7 +84,7 @@ camera = NodePath("../../PuppyCamera")
 position = Vector2( 924.401, 683.682 )
 save_spot_name = "Caves - The Skeleton's House"
 home = "res://Levels/0.0 Cave/SkelebonesLivingRoom.tscn"
-flavor_text = "Hello, Fetch Star! Would you like to save?"
+flavor_text = "Hello, Fetch Star!"
 
 [node name="skelebones_livingroom_desk_fg" type="Sprite" parent="."]
 position = Vector2( 1170.67, 681.465 )

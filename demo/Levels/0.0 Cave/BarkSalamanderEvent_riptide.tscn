@@ -306,16 +306,15 @@ position = Vector2( -1.56415, 0.782074 )
 
 [node name="Ripples2" parent="Node2D" instance=ExtResource( 1 )]
 position = Vector2( 124.436, 346.557 )
+frame = 1
 
 [node name="Ripples" parent="Node2D" instance=ExtResource( 1 )]
 position = Vector2( -114.097, 348.904 )
+frame = 1
 
 [node name="Gilby" parent="Node2D" instance=ExtResource( 3 )]
 visible = false
 position = Vector2( -115.63, 325.476 )
-
-[node name="Ripples" parent="Node2D/Gilby" index="0"]
-frame = 0
 
 [node name="AnimatedSprite" parent="Node2D/Gilby" index="2"]
 animation = "up"
@@ -325,7 +324,7 @@ visible = false
 position = Vector2( 121.344, 336.608 )
 
 [node name="Ripples" parent="Node2D/Pericles" index="0"]
-frame = 1
+frame = 0
 
 [node name="AnimatedSprite" parent="Node2D/Pericles" index="1"]
 animation = "up"
