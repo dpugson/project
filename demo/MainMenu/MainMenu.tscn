@@ -34,8 +34,10 @@ __meta__ = {
 }
 
 [node name="Control" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = -233.124
+margin_top = -20.6305
+margin_right = -193.124
+margin_bottom = 19.3695
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -62,7 +64,6 @@ __meta__ = {
 }
 
 [node name="Level" type="Label" parent="Control"]
-visible = false
 margin_left = 1244.43
 margin_top = 465.171
 margin_right = 1628.43
@@ -72,15 +73,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Controls" type="Label" parent="Control"]
-margin_left = 1502.9
-margin_top = 176.345
-margin_right = 2414.9
-margin_bottom = 511.345
+[node name="Panel" type="Panel" parent="Control"]
+margin_left = 1547.57
+margin_top = 95.3153
+margin_right = 2088.57
+margin_bottom = 977.315
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controls" type="Label" parent="Control/Panel"]
+margin_left = 38.1324
+margin_top = 38.1205
+margin_right = 950.133
+margin_bottom = 373.121
 text = "CONTROLS 
 
 WASD: move
-L: look
+L: look/confirm
 K: bark"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -90,7 +100,7 @@ __meta__ = {
 pause_mode = 2
 position = Vector2( 960.949, 265.589 )
 frames = SubResource( 1 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="ProgressMarkers" type="Node2D" parent="Control"]

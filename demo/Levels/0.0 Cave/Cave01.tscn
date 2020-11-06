@@ -143,20 +143,20 @@ anims/WalkToBall = SubResource( 5 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 908.523, 692.956 )
-cutscene_input = Vector2( 0, 0 )
 
 [node name="ShadowAnimation" parent="player" index="1"]
 animation = "leftright"
 
 [node name="DogAnimation" parent="player" index="3"]
 animation = "right"
+frame = 0
 
-[node name="AnimationTree" parent="player" index="5"]
+[node name="AnimationTree" parent="player" index="6"]
 parameters/bark/blend_position = Vector2( 1, 0 )
 parameters/idle/blend_position = Vector2( 1, 0 )
 parameters/walk/blend_position = Vector2( 1, 0 )
 
-[node name="DoggoPivot" parent="player" index="7"]
+[node name="DoggoPivot" parent="player" index="8"]
 rotation = -1.5708
 
 [node name="Tween" type="Tween" parent="player"]

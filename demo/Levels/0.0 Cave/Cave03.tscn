@@ -70,6 +70,14 @@ text = "Please be gentle!
 This is a delicate ecosystem."
 unique_name = "delicateecosystem"
 
+[node name="Sign4" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 317.982, 932.126 )
+max_health = 1
+text = "And this marks the conclusion of our Cave Tour.
+Feel free to enjoy it as many times as you like!
+Enjoy the rest of your life!"
+unique_name = "delicateecosystem"
+
 [node name="Sign3" parent="YSort" instance=ExtResource( 10 )]
 position = Vector2( 277.333, 1184.78 )
 text = "Did you know that when a cave drop falls on you, that's called a \"Cave Kiss\"?"

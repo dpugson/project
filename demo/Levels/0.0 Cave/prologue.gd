@@ -65,8 +65,8 @@ var cutscene_dialogue = {
 }
 
 func title_card():
-	#Transition.go_to("res://Levels/0.0 Cave/Cave01.tscn")
-	animation.play("title")
+	Transition.go_to("res://Levels/0.0 Cave/Cave01.tscn")
+	#animation.play("title")
 	
 func silence():
 	Jukebox.stop()

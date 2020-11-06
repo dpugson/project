@@ -16,7 +16,8 @@ _global_script_class_icons={
 [application]
 
 config/name="doggo_quest"
-run/main_scene="res://world.tscn"
+run/main_scene="res://MainMenu/MainMenu.tscn"
+boot_splash/fullsize=false
 
 [autoload]
 

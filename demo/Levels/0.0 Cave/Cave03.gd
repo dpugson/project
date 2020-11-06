@@ -40,7 +40,6 @@ func _ready():
 		player, null, 
 		"../../../PuppyCamera", player_position, player_orientation)
 	
-	stats.world_state["PSYCHIC_WALL_GONE"] = false
 	if stats.check_bool("PSYCHIC_WALL_GONE"):
 		wall.queue_free()
 		
@@ -66,7 +65,7 @@ func cutscene_done():
 		wall.queue_free()
 
 func _on_UpperDoor_transition_triggered():
-	transition.go_to("res://Levels/0.0 Cave/Cave02.tscn", "top")
+	transition.go_to("res://Levels/0.0 Cave/LongCave.tscn", "top")
 	
 const HAS_ESCAPED_CAVE = "HAS_ESCAPED_CAVE"
 func _on_WayOut_transition_triggered():

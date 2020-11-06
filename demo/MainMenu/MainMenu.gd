@@ -6,7 +6,7 @@ onready var reset_button = $Control/Reset
 onready var start = $Control/Start
 onready var current_location = $"Control/Current Location"
 onready var level_lable = $Control/Level
-onready var controls = $Control/Controls
+onready var controls = $Control/Panel/Controls
 
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 
@@ -14,8 +14,9 @@ func refresh_ui():
 	
 	var control_items = [
 		"WASD: move",
-		"L: look",
-		"K: bark"
+		"L: look / confirm",
+		"K: bark",
+		"I: view inventory"
 	]
 	if stats.check_bool("turbodash"):
 		control_items.append("J: turbo dash")

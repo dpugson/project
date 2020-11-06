@@ -11,6 +11,8 @@ onready var gold = $green_friend_long_arm/OneG
 export(String) var unique_name = ""
 export(String, MULTILINE) var secret_text = "You whisper a very secret secret..."
 
+signal done
+
 func get_stats_name():
 	return "got_g_from_" + unique_name
 
@@ -30,7 +32,7 @@ func _on_ListenSeenBox_seen(_obj):
 			0.02, null, [self, "secret_told"], null, null
 		],
 		"nosecret" : [
-			"nosecret", "Better to not. Loose lips sink ships!",
+			"nosecret", "Better not. Loose lips sink ships!",
 			0.02, null, null, null, null
 		],
 	}
@@ -61,3 +63,4 @@ func get_one_g():
 	stats.G += 1
 	gold.queue_free()
 	animation.play("lower_arm")
+	emit_signal("done")

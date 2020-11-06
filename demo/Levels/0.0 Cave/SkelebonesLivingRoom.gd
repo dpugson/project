@@ -72,7 +72,7 @@ func _on_LettersSeenBox_seen(_obj):
 			"TEXT", "I hope you are doing well! The picture of you tucked away in your\nstudy reading this letter make me happy already.", SKELETON_SPEECH_RATE, "l3", null, null, SKELETON_VOICE_PITCH
 		],
 		"l3" : [
-			"TEXT", "Thanks for having the patience to write letters to a skeletal\nspirit that only appears for 20 minutes during the full moon!", SKELETON_SPEECH_RATE, "l4", null, null, SKELETON_VOICE_PITCH
+			"TEXT", "Thanks for having the patience to write letters even though now I'm a skeletal\nspirit that only appears for 20 minutes during the full moon!", SKELETON_SPEECH_RATE, "l4", null, null, SKELETON_VOICE_PITCH
 		],
 		"l4" : [
 			"TEXT", "I wish it were more often, but thems the SKELETON RULES.", SKELETON_SPEECH_RATE, "l5", null, null, SKELETON_VOICE_PITCH

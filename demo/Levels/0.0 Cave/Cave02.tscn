@@ -61,33 +61,38 @@ position = Vector2( 590.005, 624.504 )
 position = Vector2( 946.908, 966.313 )
 
 [node name="Sign" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 954.411, 879.429 )
-max_health = 2
-text = "Did you know you can bark by pressing \"K\"?"
-unique_name = "barksign"
+position = Vector2( 1108.14, 827.518 )
+max_health = 3
+text = "Hello, Friend, and Welcome to the Caves!"
 revive_text = "SHAME!!!"
 
 [node name="Sign2" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 687.808, 820.651 )
-max_health = 3
-text = "Pressing \"K\" can speed up conversations, too!"
-unique_name = "speedupsign"
+position = Vector2( 546.321, 840.167 )
+max_health = 5
+text = "Did you know you can bark by pressing \"K\"?
+Pressing \"K\" can speed up conversations, too!"
 revive_text = "IS IT YOU, READING THIS?
 THE SIGN DESTROYER?"
 
 [node name="Sign3" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 830.085, 671.279 )
+position = Vector2( 825.206, 633.468 )
 rotation = 0.0173886
-max_health = 3
-text = "I was trapped in here for a long time, so I amused myself by making all these signs..."
-unique_name = "trappedsign"
+max_health = 5
+text = "I was trapped in here for a long time, so I amused myself by making all these signs."
 
 [node name="Sign4" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 1193.72, 530.956 )
-max_health = 3
+position = Vector2( 1236.41, 504.122 )
+max_health = 5
 text = "I like to think of these signs as my legacy... My form of immortality in this world..."
-unique_name = "emotionalsign"
 revive_text = "WHO KEEPS DESTROYING MY SIGNS???"
+
+[node name="Sign5" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( -832.644, 1226.18 )
+max_health = 5
+text = "Beyond this sign starts the Marvelous Cave Tour!
+I hope you (assuming anyone ever reads this) enjoy it!
+This cave truly is filled with marvelous wonders."
+unique_name = "final_cave2_sign"
 
 [node name="stalags_03" type="Sprite" parent="."]
 position = Vector2( 1213.16, 11.4083 )

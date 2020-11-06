@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://sprites/cavestuff/cave_bridge.png" type="Texture" id=1]
 [ext_resource path="res://BG.tscn" type="PackedScene" id=2]
@@ -6,48 +6,316 @@
 [ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/0.0 Cave/CaveBridge.gd" type="Script" id=6]
+[ext_resource path="res://world/Sign.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Brains/SaveStar.tscn" type="PackedScene" id=8]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 22.6264, 65.8154 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32.1936, 66.6548 )
 
 [node name="CaveBridge" type="Node2D"]
 position = Vector2( -29.251, 17.0631 )
 script = ExtResource( 6 )
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -1133.71
+margin_top = -817.107
+margin_right = -219.707
+margin_bottom = 1436.89
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = 2142.6
+margin_top = -813.341
+margin_right = 3056.6
+margin_bottom = 1440.66
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
 [node name="cave_bridge" type="Sprite" parent="."]
 position = Vector2( 1035.05, 534.151 )
 texture = ExtResource( 1 )
 
-[node name="BG" parent="." instance=ExtResource( 2 )]
-margin_left = -785.719
-margin_top = -809.471
-margin_right = 3000.28
-margin_bottom = 1851.53
-
 [node name="BottomSpawnPoint" parent="." instance=ExtResource( 5 )]
-position = Vector2( -202.027, 444.459 )
+position = Vector2( -207.711, 464.354 )
 
 [node name="TopSpawnPoint" parent="." instance=ExtResource( 5 )]
-position = Vector2( 2139.36, 397.674 )
+position = Vector2( 2144.22, 405.999 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="BG" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource( 2 )]
+margin_left = -1677.0
+margin_top = -1270.0
+margin_right = 4185.0
+margin_bottom = 2444.0
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0.1 )
+
+[node name="Node2D" type="Node2D" parent="ParallaxBackground/ParallaxLayer5"]
+position = Vector2( 906.192, 249.411 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="SaveStar7" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -1955.92, -920.944 )
+
+[node name="SaveStar8" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -3799.71, -1054.04 )
+
+[node name="SaveStar9" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -4361.46, -81.2572 )
+
+[node name="SaveStar10" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -2016.6, 194.723 )
+
+[node name="SaveStar11" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -3527.65, 396.326 )
+
+[node name="SaveStar12" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -2627.28, -539.268 )
+
+[node name="SaveStar13" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -2482.44, -20.5806 )
+
+[node name="SaveStar14" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -550.58, -691.939 )
+
+[node name="SaveStar15" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -3423.91, -20.5806 )
+
+[node name="SaveStar18" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -3484.58, 1095.09 )
+
+[node name="SaveStar20" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -4095.27, 361.095 )
+
+[node name="SaveStar21" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -3950.42, 879.782 )
+
+[node name="SaveStar22" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -1773, 345.554 )
+
+[node name="SaveStar23" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -3560.92, -1198.88 )
+
+[node name="SaveStar47" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -3021.74, -1582.72 )
+
+[node name="SaveStar26" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -387.345, 805.842 )
+
+[node name="SaveStar27" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -2231.13, 672.752 )
+
+[node name="SaveStar28" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( 443.07, -229.852 )
+
+[node name="SaveStar29" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -448.025, 1921.51 )
+
+[node name="SaveStar30" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -1959.06, 2123.11 )
+
+[node name="SaveStar31" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -1058.7, 1187.52 )
+
+[node name="SaveStar32" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -913.865, 1706.21 )
+
+[node name="SaveStar34" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -1855.32, 1706.21 )
+
+[node name="SaveStar35" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -463.16, -302.272 )
+
+[node name="SaveStar36" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -1024.91, 670.511 )
+
+[node name="SaveStar37" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -1916, 2821.88 )
+
+[node name="SaveStar38" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -191.1, 1148.1 )
+
+[node name="SaveStar39" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -2526.68, 2087.88 )
+
+[node name="SaveStar40" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -2381.84, 2606.57 )
+
+[node name="SaveStar41" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -204.425, 2072.34 )
+
+[node name="SaveStar42" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -1992.34, 527.913 )
+
+[node name="SaveStar43" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -600.17, -1480.57 )
+
+[node name="SaveStar44" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -1161.92, -507.79 )
+
+[node name="SaveStar50" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -1453.16, 144.062 )
+
+[node name="SaveStar51" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -61, -1864.42 )
+
+[node name="SaveStar52" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 8 )]
+position = Vector2( -622.75, -891.635 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.3, 0.3 )
+
+[node name="SaveStar7" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 366.891, -266.095 )
+
+[node name="SaveStar8" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 836.645, -62.5343 )
+
+[node name="SaveStar9" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 141.8, 17.7154 )
+
+[node name="SaveStar11" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 1527.58, -21.4308 )
+
+[node name="SaveStar13" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 2020.82, 78.3921 )
+
+[node name="SaveStar19" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 69.0416, 135.307 )
+
+[node name="SaveStar20" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 617.089, -263.984 )
+
+[node name="SaveStar21" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 562.284, 235.13 )
+
+[node name="SaveStar23" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 1181.06, 1105.36 )
+
+[node name="SaveStar24" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 1650.81, 1308.92 )
+
+[node name="SaveStar26" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 1958.11, 886.144 )
+
+[node name="SaveStar27" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 2341.74, 1350.03 )
+
+[node name="SaveStar28" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 1271.81, 1888.43 )
+
+[node name="SaveStar30" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 1877.86, 938.992 )
+
+[node name="SaveStar31" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 1677.39, -22.2799 )
+
+[node name="SaveStar32" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 529.172, 1118.97 )
+
+[node name="SaveStar33" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 1452.3, 261.53 )
+
+[node name="SaveStar40" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 122.616, 1295.86 )
+
+[node name="SaveStar42" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 429.914, 873.083 )
+
+[node name="SaveStar43" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 813.547, 1336.97 )
+
+[node name="SaveStar44" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 1361.59, 937.674 )
+
+[node name="SaveStar45" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 1306.79, 1436.79 )
+
+[node name="SaveStar46" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 8 )]
+position = Vector2( 349.664, 925.93 )
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="player" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( -189.937, 433.446 )
+camera = NodePath("../../PuppyCamera")
+
+[node name="Sign" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 901.125, 359.189 )
+text = "No. 1 Rated Scenic Overlook
+\"Though my soul may set in darkness, it will rise in perfect light;
+I have loved the stars too fondly to be fearful of the night.\""
+
+[node name="Sign2" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( -73.6157, 394.42 )
+text = "I call this the \"STAR VIEW\" room."
+
+[node name="SaveStar" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( -897.222, 1846.68 )
+save_spot_name = "Caves - The Star Room"
+home = "res://Levels/0.0 Cave/CaveBridge.tscn"
+flavor_text = "Hello, new friend! I'm a save star!
+I can help you save your game!"
 
 [node name="PuppyCamera" parent="." instance=ExtResource( 4 )]
 
 [node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
-position = Vector2( -778.113, -760.057 )
+position = Vector2( -1615.27, -1161.5 )
 
 [node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
-position = Vector2( 2865.92, 1773.34 )
+position = Vector2( 3913.59, 2282.49 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PoolVector2Array( -262.751, 381.007, 36.7648, 393.182, 628.491, 381.007, 845.214, 339.61, 988.884, 222.726, 1110.64, 225.161, 1322.49, 346.916, 2126.07, 327.435, 2186.95, 354.221, 2255.13, 354.221, 2267.3, 120.453, -284.667, 149.674 )
+polygon = PoolVector2Array( -357.159, 394.536, 36.7648, 393.182, 628.491, 381.007, 845.214, 339.61, 988.884, 222.726, 1110.64, 225.161, 1322.49, 346.916, 2126.07, 327.435, 2186.95, 354.221, 2255.13, 354.221, 2267.3, 120.453, -284.667, 149.674 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
 polygon = PoolVector2Array( -301.712, 502.761, -24.1124, 507.631, 134.168, 558.768, 251.052, 519.807, 440.989, 519.807, 521.347, 507.631, 854.954, 512.502, 964.533, 575.814, 1127.68, 587.989, 1290.83, 505.196, 1539.21, 495.456, 2245.39, 466.235, 2303.83, 446.754, 2313.57, 578.249, -557.397, 748.705, -503.825, 490.586 )
 
+[node name="TransitionZone" parent="." instance=ExtResource( 9 )]
+position = Vector2( -309.656, 438.038 )
+
+[node name="CollisionShape2D" parent="TransitionZone" index="0"]
+position = Vector2( -14.3445, -1.59384 )
+shape = SubResource( 1 )
+
+[node name="TransitionZone2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 640.843, 1346.98 )
+
+[node name="CollisionShape2D" parent="TransitionZone2" index="0"]
+position = Vector2( 1592.46, -951.925 )
+shape = SubResource( 2 )
+[connection signal="transition_triggered" from="TransitionZone" to="." method="_on_TransitionZone_transition_triggered"]
+[connection signal="transition_triggered" from="TransitionZone2" to="." method="_on_TransitionZone2_transition_triggered"]
+
 [editable path="PuppyCamera"]
+
+[editable path="TransitionZone"]
+
+[editable path="TransitionZone2"]

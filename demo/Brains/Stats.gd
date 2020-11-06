@@ -68,6 +68,7 @@ func spawn_player(player, player_parent, camera_path, position: Vector2, orienta
 		var transform = RemoteTransform2D.new()
 		transform.remote_path = camera_path
 		player.add_child(transform)
+		player.remote_transform = transform
 	if orientation != null:
 		player.set_blend_positions(orientation)
 		player.turbo_input = orientation

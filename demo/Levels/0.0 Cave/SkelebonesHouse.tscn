@@ -470,7 +470,7 @@ texture = ExtResource( 12 )
 
 [node name="SaveStar" parent="YSort" instance=ExtResource( 13 )]
 position = Vector2( 646.492, 1270.6 )
-save_spot_name = "Cave - Outside the Skeleton's House"
+save_spot_name = "Caves - Outside the Skeleton's House"
 home = "res://Levels/0.0 Cave/SkelebonesHouse.tscn"
 flavor_text = "Greetings, Puzzle Star!"
 

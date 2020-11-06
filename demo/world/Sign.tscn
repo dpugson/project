@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://sprites/cavestuff/sign/sign.png" type="Texture" id=1]
 [ext_resource path="res://world/Sign.gd" type="Script" id=2]
 [ext_resource path="res://hitnhurtboxes/SeenBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://hitnhurtboxes/hurtbox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Brains/Stats.tscn" type="PackedScene" id=5]
 [ext_resource path="res://sprites/dogshadow.png" type="Texture" id=6]
 [ext_resource path="res://Brains/Slammable.tscn" type="PackedScene" id=7]
 
@@ -34,8 +33,6 @@ script = ExtResource( 2 )
 position = Vector2( 5.40823, 16.0386 )
 texture = ExtResource( 6 )
 
-[node name="Stats" parent="." instance=ExtResource( 5 )]
-
 [node name="Slammable" parent="." instance=ExtResource( 7 )]
 
 [node name="CollisionShape2D" parent="Slammable" index="0"]
@@ -64,7 +61,6 @@ shape = SubResource( 3 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0.933838, -76.6977 )
 frames = SubResource( 4 )
-[connection signal="out_of_health" from="Stats" to="." method="_on_Stats_out_of_health"]
 [connection signal="slammed" from="Slammable" to="." method="_on_Slammable_slammed"]
 [connection signal="seen" from="SeenBox" to="." method="_on_SeenBox_seen"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]

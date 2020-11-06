@@ -74,4 +74,4 @@ func _on_BottomDoor_transition_triggered():
 	transition.go_to("res://Levels/0.0 Cave/Cave01.tscn", "door")
 
 func _on_TopDoor_transition_triggered():
-	transition.go_to("res://Levels/0.0 Cave/Cave03.tscn", "upper")
+	transition.go_to("res://Levels/0.0 Cave/CaveBridge.tscn", "left")

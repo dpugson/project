@@ -24,7 +24,7 @@ func _ready():
 	var orientation = Vector2.DOWN
 	
 	match stats.spawn_metadata:
-		"Cave - Outside the Skeleton's House":
+		"Caves - Outside the Skeleton's House":
 			player_position = save_star.position
 			orientation = Vector2.UP
 		"bottom":
