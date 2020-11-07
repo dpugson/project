@@ -40,7 +40,7 @@ func _ready():
 		player, null, 
 		"../../../PuppyCamera", player_position, player_orientation)
 	
-	if stats.check_bool("PSYCHIC_WALL_GONE"):
+	if stats.check_bool("GOT_SWIMMING_CERT"):
 		wall.queue_free()
 		
 	if stats.inventory_get("skeleton_key") >= 1:
@@ -49,7 +49,6 @@ func _ready():
 		cutscene_done()
 
 func _on_BarkSalamanderEvent_cutscene_starting():
-	print("cutscene started!!")
 	player.set_blend_positions(Vector2.DOWN * 0)
 	player.cutscene_input = Vector2.ZERO
 	player.cutscene_mode = true
@@ -61,7 +60,7 @@ func _on_BarkSalamanderEvent_cutscene_starting():
 		
 func cutscene_done():
 	player.cutscene_mode = false
-	if stats.check_bool("PSYCHIC_WALL_GONE"):
+	if stats.check_bool("GOT_SWIMMING_CERT"):
 		wall.queue_free()
 
 func _on_UpperDoor_transition_triggered():

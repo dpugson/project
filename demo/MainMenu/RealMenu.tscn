@@ -1,37 +1,594 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://MainMenu/RealMenu.gd" type="Script" id=1]
+[ext_resource path="res://tunes/player/singlebark.wav" type="AudioStream" id=2]
+[ext_resource path="res://tunes/starsong.wav" type="AudioStream" id=3]
+[ext_resource path="res://Brains/ControlsInfo.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "ShowSettings"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Settings:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MainControls:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("Settings/Panel/MainVolume")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "grab_focus"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BarkAudioStreamPlayer:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Settings:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MainControls:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("MainControls/Cancel")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "grab_focus"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BarkAudioStreamPlayer:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -80.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "bark"
+length = 61.395
+loop = true
+tracks/0/type = "audio"
+tracks/0/path = NodePath("BarkAudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+} ],
+"times": PoolRealArray( 0.5, 1.45, 2.4077, 3.3577, 4.33386, 5.28386, 6.24156, 7.19156, 8.15472, 9.10472, 10.0624, 11.0124, 11.9886, 12.9386, 13.8963, 14.8463, 15.82, 16.77, 17.7277, 18.6777, 19.6539, 20.6039, 21.5616, 22.5116, 23.481, 24.431, 25.3887, 26.3386, 27.3148, 28.2648, 29.2225, 30.1725, 31.136, 32.086, 33.0437, 33.9937, 34.9698, 35.9198, 36.8775, 37.8275, 38.8146, 39.7723, 40.7223, 41.696, 42.646, 43.6037, 44.5537, 45.5299, 46.4799, 47.4376, 48.3876, 49.357, 50.307, 51.2647, 52.2147, 53.1908, 54.1408, 55.0985, 56.0485, 57.012, 57.962, 58.9197, 59.8697, 60.8458, 61.7958, 62.7535, 63.7035 )
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("MusicAudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [node name="CanvasLayer" type="CanvasLayer"]
 pause_mode = 2
 script = ExtResource( 1 )
 
-[node name="Quit" type="Button" parent="."]
-anchor_left = -0.25817
-anchor_top = -0.241459
-anchor_right = -0.25817
-anchor_bottom = -0.241459
-margin_left = 1341.19
-margin_top = 621.429
-margin_right = 1713.19
-margin_bottom = 725.429
+[node name="Settings" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Settings"]
+visible = false
+margin_left = 407.566
+margin_top = 183.958
+margin_right = 1568.57
+margin_bottom = 862.958
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Settings/Panel"]
+margin_left = 373.79
+margin_top = 103.242
+margin_right = 744.791
+margin_bottom = 174.242
+text = "SOUND SETTINGS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainVolume" type="HSlider" parent="Settings/Panel"]
+margin_left = 485.0
+margin_top = 276.0
+margin_right = 870.0
+margin_bottom = 347.0
+max_value = 1.0
+step = 0.01
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicVolume" type="HSlider" parent="Settings/Panel"]
+margin_left = 485.0
+margin_top = 388.0
+margin_right = 870.0
+margin_bottom = 462.0
+max_value = 1.0
+step = 0.01
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EffectsVolume" type="HSlider" parent="Settings/Panel"]
+margin_left = 485.137
+margin_top = 493.882
+margin_right = 870.0
+margin_bottom = 564.882
+max_value = 1.0
+step = 0.01
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Settings/Panel"]
+margin_left = 120.41
+margin_top = 272.057
+margin_right = 418.41
+margin_bottom = 343.057
+text = "Main Volume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Settings/Panel"]
+margin_left = 120.229
+margin_top = 491.976
+margin_right = 317.229
+margin_bottom = 562.976
+text = "Effects"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Settings/Panel"]
+margin_left = 120.197
+margin_top = 376.536
+margin_right = 317.197
+margin_bottom = 447.536
+text = "Music"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SettingsBackButton" type="Button" parent="Settings/Panel"]
+margin_left = 2.08405
+margin_top = 721.074
+margin_right = 289.084
+margin_bottom = 824.074
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainControls" type="Control" parent="."]
+margin_left = -28.1414
+margin_top = -156.341
+margin_right = 11.8586
+margin_bottom = -116.341
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlsInfo" parent="MainControls" instance=ExtResource( 4 )]
+margin_left = 1298.58
+margin_top = 275.204
+margin_right = 1839.58
+margin_bottom = 1157.2
+
+[node name="Quit" type="Button" parent="MainControls"]
+anchor_left = -0.279187
+anchor_top = 10.0856
+anchor_right = -0.279187
+anchor_bottom = 10.0856
+margin_left = 816.318
+margin_top = 368.757
+margin_right = 1188.32
+margin_bottom = 472.757
 text = "QUIT"
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Cancel" type="Button" parent="."]
-anchor_left = -0.25817
-anchor_top = -0.115647
-anchor_right = -0.25817
-anchor_bottom = -0.115647
-margin_left = 1341.19
-margin_top = 621.429
-margin_right = 1713.19
-margin_bottom = 725.429
-text = "Cancel"
+[node name="Cancel" type="Button" parent="MainControls"]
+anchor_left = -0.279187
+anchor_top = -0.117142
+anchor_right = -0.279187
+anchor_bottom = -0.117142
+margin_left = 816.318
+margin_top = 499.602
+margin_right = 1188.32
+margin_bottom = 603.602
+text = "BACK"
 __meta__ = {
 "_edit_use_anchors_": true
 }
-[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
-[connection signal="pressed" from="Cancel" to="." method="_on_Cancel_pressed"]
+
+[node name="Sound" type="Button" parent="MainControls"]
+anchor_left = -0.279187
+anchor_top = 0.00917929
+anchor_right = -0.279187
+anchor_bottom = 0.00917929
+margin_left = 816.318
+margin_top = 630.975
+margin_right = 1188.32
+margin_bottom = 734.975
+text = "SETTINGS"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+anims/ShowSettings = SubResource( 1 )
+anims/default = SubResource( 2 )
+
+[node name="BarkAnimation" type="AnimationPlayer" parent="."]
+anims/bark = SubResource( 3 )
+
+[node name="BarkAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -80.0
+bus = "Effects"
+
+[node name="MusicAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "Music"
+[connection signal="value_changed" from="Settings/Panel/MainVolume" to="." method="_on_MainVolume_value_changed"]
+[connection signal="value_changed" from="Settings/Panel/MusicVolume" to="." method="_on_MusicVolume_value_changed"]
+[connection signal="value_changed" from="Settings/Panel/EffectsVolume" to="." method="_on_EffectsVolume_value_changed"]
+[connection signal="pressed" from="Settings/Panel/SettingsBackButton" to="." method="_on_SettingsBackButton_pressed"]
+[connection signal="pressed" from="MainControls/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="MainControls/Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="pressed" from="MainControls/Sound" to="." method="_on_Sound_pressed"]

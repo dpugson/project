@@ -32,6 +32,7 @@ onready var bark_hitbox = $HitBoxPivot/BarkHitBox
 onready var hurtbox = $DoggoPivot/HurtBox
 onready var lookbox = $DoggoPivot/LookBox
 onready var Menu = preload("res://Items/Inventory.tscn")
+onready var RealMenu = preload("res://MainMenu/RealMenu.tscn")
 onready var water_detector = $WaterDetector
 onready var ripples = $Ripples
 onready var turbo_timer = $TurboTimer
@@ -52,6 +53,10 @@ func _input(event):
 		if event.is_action_pressed("menu"):
 			get_tree().paused = true
 			var menu = Menu.instance()
+			menu.enchild(self)
+		elif event.is_action_pressed("realmenu"):
+			get_tree().paused = true
+			var menu = RealMenu.instance()
 			menu.enchild(self)
 
 # HELPERS
@@ -137,7 +142,7 @@ func check_for_turbo_input():
 	if cutscene_mode == true:
 		return false
 	else:
-		if stats.check_bool("turbodash"):
+		if stats.check_bool("turbodash") or true:
 			return Input.is_action_just_pressed("turbo")
 		else:
 			return false
@@ -177,13 +182,13 @@ func _physics_process(delta):
 			swim()
 			move(delta, input)
 		TURBO_WARMUP:
-			if check_for_turbo_input():
-				turbo_timer.stop()
-				state = WALK
+#			if check_for_turbo_input():
+#				turbo_timer.stop()
+#				state = WALK
 			pass
 		TURBO_DASHING:
-			if check_for_turbo_input():
-				state = WALK
+#			if check_for_turbo_input():
+#				state = WALK
 			turbo_move(delta)
 
 func _on_HurtBox_area_entered(_area):

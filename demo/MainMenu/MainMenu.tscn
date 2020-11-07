@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://MainMenu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://sprites/dog/r1.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://sprites/cavestuff/ball.png" type="Texture" id=7]
 [ext_resource path="res://sprites/items/swim_certification.png" type="Texture" id=8]
 [ext_resource path="res://Themes/DefaultTheme.tres" type="Theme" id=9]
+[ext_resource path="res://Brains/ControlsInfo.tscn" type="PackedScene" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -73,34 +74,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="Control"]
-margin_left = 1547.57
-margin_top = 95.3153
-margin_right = 2088.57
-margin_bottom = 977.315
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Controls" type="Label" parent="Control/Panel"]
-margin_left = 38.1324
-margin_top = 38.1205
-margin_right = 950.133
-margin_bottom = 373.121
-text = "CONTROLS 
-
-WASD: move
-L: look/confirm
-K: bark"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ControlsInfo" parent="Control" instance=ExtResource( 10 )]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Control"]
 pause_mode = 2
 position = Vector2( 960.949, 265.589 )
 frames = SubResource( 1 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="ProgressMarkers" type="Node2D" parent="Control"]

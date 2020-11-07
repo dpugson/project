@@ -47,12 +47,12 @@ func gen_random_round():
 		["___***", 2],
 		["**__**", 2],
 	]
-	var num_rows = rand_range(6 - times_generated, 15 - times_generated)
+	var num_rows = rand_range(5 - times_generated, 14 - times_generated)
 	var rounds = []
 	for _i in range(num_rows):
 		rounds.append(rows[rand_range(0, len(rows))])
-	times_generated += 1
-	times_generated = min(4, times_generated)
+	#times_generated += 1
+	#times_generated = min(4, times_generated)
 	return rounds
 
 var battle_data = {

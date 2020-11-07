@@ -649,11 +649,13 @@ volume_db = -80.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+bus = "Music"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 966.784, 487.744 )
 rotation = 0.918689
 frames = SubResource( 4 )
+frame = 1
 playing = true
 
 [node name="SaveStar" parent="." instance=ExtResource( 12 )]

@@ -48,8 +48,8 @@ func set_final_dialogue():
 	}
 	var p_waiting_dialogue = {
 		"begin" : [
-			"TEXT", "Hi, puppy!!! You're doing great!", 0.01, 
-			null, null, pink_chuffed
+			"TEXT", "Hi, poopy!!! You're doing great!", 0.01, 
+			null, null, pink_chuffed, PERRY_PITCH
 		],
 	}
 	gilby.set_dialogue(g_waiting_dialogue)
@@ -65,7 +65,7 @@ func set_waiting_for_flippers_dialogue():
 	var p_waiting_dialogue = {
 		"begin" : [
 			"TEXT", "I'm so excited for you! You're gonna love swimming!!!", 0.01, 
-			null, null, pink_chuffed
+			null, null, pink_chuffed, PERRY_PITCH
 		],
 	}
 	gilby.set_dialogue(g_waiting_dialogue)
@@ -313,7 +313,7 @@ var dialogue3 = {
 		null, green_angry, GILBY_PITCH
 	],
 	"noflips2": [
-		"TEXT", "Perry! This puppy ain't got no flippers!!!", 0.02,
+		"TEXT", "Perry! This poopy ain't got no flippers!!!", 0.02,
 		"noflips3",
 		[self, "gilby_turn", "right"], green_shifty, GILBY_PITCH
 	],
@@ -476,7 +476,7 @@ var teaching  = {
 		[self, "play_fun_sound"], false
 	],
 	"give_it_a_try": [
-		"TEXT", "Come on out, puppy! The water's warm!", 0.02,
+		"TEXT", "Come on out, poopy! The water's warm!", 0.02,
 		null,
 		[self, "encounter_over"], pink_thinking, PERRY_PITCH
 	],

@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Brains/ControlsInfo.gd" type="Script" id=1]
+
+[node name="ControlsInfo" type="Panel"]
+margin_left = 1547.57
+margin_top = 95.3153
+margin_right = 2088.57
+margin_bottom = 977.315
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controls" type="Label" parent="."]
+margin_left = 38.1324
+margin_top = 38.1205
+margin_right = 950.133
+margin_bottom = 373.121
+text = "CONTROLS 
+
+WASD: move
+L: look/confirm
+K: bark"
+__meta__ = {
+"_edit_use_anchors_": false
+}
