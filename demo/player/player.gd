@@ -49,7 +49,7 @@ func cutscene_mode_set(value):
 	lookbox.disabled = value
 
 func _input(event):
-	if stats.menu_allowed:
+	if stats.menu_allowed and not cutscene_mode:
 		if event.is_action_pressed("menu"):
 			get_tree().paused = true
 			var menu = Menu.instance()
@@ -142,7 +142,7 @@ func check_for_turbo_input():
 	if cutscene_mode == true:
 		return false
 	else:
-		if stats.check_bool("turbodash") or true:
+		if stats.check_bool("turbodash"):
 			return Input.is_action_just_pressed("turbo")
 		else:
 			return false

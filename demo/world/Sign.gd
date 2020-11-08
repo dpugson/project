@@ -48,4 +48,5 @@ func _on_HurtBox_area_entered(_area):
 #		_on_Stats_out_of_health()
 
 func _on_Slammable_slammed(_power):
-	_on_Stats_out_of_health()
+	#_on_Stats_out_of_health()
+	pass

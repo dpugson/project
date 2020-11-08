@@ -20,6 +20,10 @@ func _ready():
 	main_volume.value = stats.main_volume
 	effects_volume.value = stats.effects_volume
 	music_volume.value = stats.music_volume	
+
+func _input(event):
+	if event.is_action_pressed("realmenu") or event.is_action_pressed("ui_cancel"):
+		self.call_deferred("close")
 	
 func _on_Quit_pressed():
 	Transition.go_to("res://MainMenu/MainMenu.tscn")

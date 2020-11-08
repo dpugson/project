@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/cavestuff/skelebones_livingroom_desk_fg.png" type="Texture" id=2]
@@ -16,14 +16,11 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 82.1645, 69.5107 )
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 42.3182, 94.7791 )
-
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 27.7402, 78.2574 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 46.2056, 95.751 )
+extents = Vector2( 93.5566, 97.4779 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 71.7451, 32.6176 )
@@ -53,12 +50,6 @@ texture = ExtResource( 4 )
 position = Vector2( -251.712, 269.206 )
 shape = SubResource( 1 )
 
-[node name="CattailsSeenBox" parent="skelebones_livingroom" instance=ExtResource( 10 )]
-
-[node name="CollisionShape2D" parent="skelebones_livingroom/CattailsSeenBox" index="0"]
-position = Vector2( 69.0023, -69.0022 )
-shape = SubResource( 2 )
-
 [node name="ChairSeenBox" parent="skelebones_livingroom" instance=ExtResource( 10 )]
 
 [node name="CollisionShape2D" parent="skelebones_livingroom/ChairSeenBox" index="0"]
@@ -66,6 +57,7 @@ position = Vector2( 167.16, 271.149 )
 shape = SubResource( 3 )
 
 [node name="DrawerSeenBox" parent="skelebones_livingroom" instance=ExtResource( 10 )]
+position = Vector2( 47.3546, 0 )
 
 [node name="CollisionShape2D" parent="skelebones_livingroom/DrawerSeenBox" index="0"]
 position = Vector2( -24.2966, -61.2272 )
@@ -134,7 +126,6 @@ position = Vector2( -250.185, -90.3901 )
 position = Vector2( 276.981, 133.145 )
 shape = SubResource( 7 )
 [connection signal="seen" from="skelebones_livingroom/GoSeenBox" to="." method="_on_GoSeenBox_seen"]
-[connection signal="seen" from="skelebones_livingroom/CattailsSeenBox" to="." method="_on_CattailsSeenBox_seen"]
 [connection signal="seen" from="skelebones_livingroom/ChairSeenBox" to="." method="_on_ChairSeenBox_seen"]
 [connection signal="seen" from="skelebones_livingroom/DrawerSeenBox" to="." method="_on_DrawerSeenBox_seen"]
 [connection signal="transition_triggered" from="BottomTZ" to="." method="_on_BottomTZ_transition_triggered"]
@@ -142,8 +133,6 @@ shape = SubResource( 7 )
 [connection signal="seen" from="skelebones_love_letter/LettersSeenBox" to="." method="_on_LettersSeenBox_seen"]
 
 [editable path="skelebones_livingroom/GoSeenBox"]
-
-[editable path="skelebones_livingroom/CattailsSeenBox"]
 
 [editable path="skelebones_livingroom/ChairSeenBox"]
 

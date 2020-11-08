@@ -127,7 +127,7 @@ var dialogue2 = {
 		[["BARK", "barked"], ["Salutations!", "wellmet"]], null, pink_chuffed, PERRY_PITCH
 	],
 	"barked" : [
-		"TEXT", "I told you not to talk it!!!\nIt's obviously a killer!!!", 0.01,
+		"TEXT", "I told you not to talk to it!!!\nIt's obviously a killer!!!", 0.01,
 		"cute", null, green_angry, GILBY_PITCH
 	],
 	"wellmet" : [
