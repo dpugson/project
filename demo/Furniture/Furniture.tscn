@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://sprites/items/hotplate/hot_plate_d1.png" type="Texture" id=1]
 [ext_resource path="res://sprites/items/hotplate/hot_plate_u0.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://sprites/items/hotplate/hot_plate_r0.png" type="Texture" id=7]
 [ext_resource path="res://sprites/items/hotplate/hot_plate_d0.png" type="Texture" id=8]
 [ext_resource path="res://Furniture/Furniture.gd" type="Script" id=9]
+[ext_resource path="res://hitnhurtboxes/SeenBox.tscn" type="PackedScene" id=10]
+[ext_resource path="res://hitnhurtboxes/FurnitureGrabbedBox.tscn" type="PackedScene" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -33,10 +35,31 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 41.8305, 32.1878 )
+
 [node name="Furniture" type="Node2D"]
+position = Vector2( 0.815277, -13.4523 )
 script = ExtResource( 9 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0.695908, 4.17542 )
 frames = SubResource( 1 )
 animation = "down"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+
+[node name="SeenBox" parent="." instance=ExtResource( 10 )]
+
+[node name="FurnitureGrabbedBox" parent="." instance=ExtResource( 11 )]
+
+[node name="CollisionShape2D" parent="FurnitureGrabbedBox" index="0"]
+position = Vector2( -0.815308, 45.6561 )
+shape = SubResource( 2 )
+[connection signal="rotate" from="FurnitureGrabbedBox" to="." method="_on_FurnitureGrabbedBox_rotate"]
+
+[editable path="SeenBox"]
+
+[editable path="FurnitureGrabbedBox"]

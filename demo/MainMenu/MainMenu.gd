@@ -2,16 +2,18 @@ extends Control
 
 onready var stats = PlayerStats
 
-onready var reset_button = $Control/Reset
-onready var start = $Control/Start
+onready var reset_button = $HBoxContainer/Reset
+onready var start = $HBoxContainer/Start
 onready var current_location = $"Control/Current Location"
 onready var level_lable = $Control/Level
 
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 
 func refresh_ui():
+	stats.load_game()
 	if stats.save_spot_name == null:
 		reset()
+		return
 	if stats.save_spot_name == "Nowhere - You haven't started!":
 		reset_button.disabled = true
 		reset_button.visible = false
@@ -58,8 +60,6 @@ func _on_Reset_pressed():
 	
 func reset():
 	start.text = "NEW GAME"
-	stats.save_spot_name = "Nowhere - You haven't started!"
-	stats.save_spot_tscn = "res://Levels/0.0 Cave/prologue.tscn"
 	stats.world_state = {}
 	stats.inventory = {}
 	stats.world_state["level"] = 0
@@ -69,3 +69,8 @@ func reset():
 		"Nowhere - You haven't started!", 
 		"res://Levels/0.0 Cave/prologue.tscn")
 	refresh_ui()
+
+
+func _on_Quit_pressed():
+	get_tree().quit()
+

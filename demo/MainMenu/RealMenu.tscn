@@ -413,6 +413,7 @@ pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="Settings" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -512,7 +513,6 @@ __meta__ = {
 }
 
 [node name="MainControls" type="Control" parent="."]
-visible = false
 margin_left = -28.1414
 margin_top = -156.341
 margin_right = 11.8586
@@ -536,7 +536,7 @@ margin_left = 816.318
 margin_top = 368.757
 margin_right = 1188.32
 margin_bottom = 472.757
-text = "QUIT"
+text = "QUIT TO MENU"
 __meta__ = {
 "_edit_use_anchors_": true
 }

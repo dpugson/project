@@ -44,8 +44,7 @@ I believe that this formation is over 2 million years old!"
 [node name="Sign2" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( -346.048, 943.836 )
 max_health = 10
-text = "This is the first stop on the Cave Tour!
-This cavern system is rich in elaborate rock formations
+text = "This cavern system is rich in elaborate rock formations
 formed by the precipitation of minerals over millions of years!"
 
 [node name="Pillar" type="Node2D" parent="YSort"]

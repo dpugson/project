@@ -1214,6 +1214,7 @@ script = ExtResource( 1 )
 [node name="Ripples" parent="." instance=ExtResource( 40 )]
 visible = false
 position = Vector2( 1.57927, 32.351 )
+frame = 1
 
 [node name="ShadowAnimation" type="AnimatedSprite" parent="."]
 visible = false
@@ -1302,8 +1303,17 @@ shape = SubResource( 52 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 41 )
 bus = "Effects"
+
+[node name="MoveFurnitureRotationTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
 [connection signal="timeout" from="TurboTimer" to="." method="_on_TurboTimer_timeout"]
 [connection signal="area_entered" from="DoggoPivot/HurtBox" to="." method="_on_HurtBox_area_entered"]
+[connection signal="moving_furniture" from="DoggoPivot/LookBox" to="." method="_on_LookBox_moving_furniture"]
+[connection signal="not_moving_furniture" from="DoggoPivot/LookBox" to="." method="_on_LookBox_not_moving_furniture"]
+[connection signal="rotated_furniture_clockwise" from="DoggoPivot/LookBox" to="." method="_on_LookBox_rotated_furniture_clockwise"]
+[connection signal="rotated_furniture_counterclockwise" from="DoggoPivot/LookBox" to="." method="_on_LookBox_rotated_furniture_counterclockwise"]
+[connection signal="timeout" from="MoveFurnitureRotationTimer" to="." method="_on_MoveFurnitureRotationTimer_timeout"]
 
 [editable path="HitBoxPivot/BarkHitBox"]
 

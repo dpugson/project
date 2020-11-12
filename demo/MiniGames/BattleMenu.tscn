@@ -571,6 +571,7 @@ __meta__ = {
 }
 
 [node name="DecisionStuff" type="Control" parent="."]
+visible = false
 margin_left = -31.2411
 margin_top = -58.8736
 margin_right = 8.75891

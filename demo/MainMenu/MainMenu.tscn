@@ -103,26 +103,46 @@ texture = ExtResource( 5 )
 position = Vector2( 817.166, 658.021 )
 texture = ExtResource( 8 )
 
-[node name="Start" type="Button" parent="Control"]
-margin_left = 658.886
-margin_top = 808.839
-margin_right = 918.886
-margin_bottom = 912.839
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 314.73
+margin_top = 782.0
+margin_right = 1084.73
+margin_bottom = 889.0
+custom_constants/separation = 19
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Button" parent="HBoxContainer"]
+margin_left = 76.0
+margin_right = 332.0
+margin_bottom = 107.0
 theme = ExtResource( 9 )
 text = "CONTINUE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Reset" type="Button" parent="Control"]
-margin_left = 972.662
-margin_top = 808.77
-margin_right = 1232.66
-margin_bottom = 912.77
+[node name="Reset" type="Button" parent="HBoxContainer"]
+margin_left = 351.0
+margin_right = 526.0
+margin_bottom = 107.0
 theme = ExtResource( 9 )
 text = "RESET"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Control/Start" to="." method="_on_Start_pressed"]
-[connection signal="pressed" from="Control/Reset" to="." method="_on_Reset_pressed"]
+
+[node name="Quit" type="Button" parent="HBoxContainer"]
+margin_left = 545.0
+margin_right = 693.0
+margin_bottom = 107.0
+theme = ExtResource( 9 )
+text = "QUIT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="HBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="HBoxContainer/Reset" to="." method="_on_Reset_pressed"]
+[connection signal="pressed" from="HBoxContainer/Quit" to="." method="_on_Quit_pressed"]

@@ -144,6 +144,9 @@ anims/WalkToBall = SubResource( 5 )
 [node name="player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 908.523, 692.956 )
 
+[node name="Ripples" parent="player" index="0"]
+frame = 0
+
 [node name="ShadowAnimation" parent="player" index="1"]
 animation = "leftright"
 

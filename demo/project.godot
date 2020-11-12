@@ -32,6 +32,7 @@ SceneRegistry="*res://Brains/SceneRegistry.tscn"
 
 window/size/width=1920
 window/size/height=1080
+window/size/fullscreen=true
 window/dpi/allow_hidpi=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
@@ -151,6 +152,7 @@ turbo={
 2d_physics/layer_7="cameras"
 2d_physics/layer_8="lookbox"
 2d_physics/layer_9="transition"
+2d_physics/layer_10="furniture"
 2d_physics/layer_11="terrain"
 
 [rendering]

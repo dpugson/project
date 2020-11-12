@@ -13,11 +13,11 @@ var directions = [
 func _ready():
 	pass # Replace with function body.
 
-func _input(event):
-	if event.is_action_pressed("ui_left"):
-		turn_clockwise()
-	elif event.is_action_pressed("ui_right"):
-		turn_counterclockwise()
+#func _input(event):
+#	if event.is_action_pressed("ui_left"):
+#		turn_clockwise()
+#	elif event.is_action_pressed("ui_right"):
+#		turn_counterclockwise()
 
 func turn_clockwise():
 	var current_direction = animated_sprite.animation
@@ -33,3 +33,10 @@ func turn_counterclockwise():
 
 func interact():
 	pass
+
+func _on_FurnitureGrabbedBox_rotate(direction):
+	match direction:
+		"clockwise":
+			turn_clockwise()
+		"counterclockwise":
+			turn_counterclockwise()

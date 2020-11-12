@@ -10,7 +10,8 @@ enum {
 	BARK,
 	SWIM,
 	TURBO_WARMUP,
-	TURBO_DASHING
+	TURBO_DASHING,
+	MOVING_FURNITURE
 }
 
 var speed = Vector2.DOWN
@@ -37,6 +38,8 @@ onready var water_detector = $WaterDetector
 onready var ripples = $Ripples
 onready var turbo_timer = $TurboTimer
 onready var EffectHelper = preload("res://effects/EffectHelper.gd")
+onready var dog_animation_sprite = $DogAnimation
+onready var furniture_turn_timer = $MoveFurnitureRotationTimer
 
 func _ready():
 	stats.connect("out_of_health", self, "queue_free")
@@ -197,3 +200,25 @@ func _on_HurtBox_area_entered(_area):
 
 func _on_TurboTimer_timeout():
 	state = TURBO_DASHING
+
+func _on_LookBox_moving_furniture():
+	dog_animation_sprite.scale = Vector2(1, .9)
+	dog_animation_sprite.position += Vector2(0, 10)
+	cutscene_mode = true
+	
+func _on_LookBox_not_moving_furniture():
+	dog_animation_sprite.scale = Vector2(1, 1)
+	dog_animation_sprite.position += Vector2(0, -10)
+	cutscene_mode = false
+
+func _on_LookBox_rotated_furniture_clockwise():
+	dog_animation_sprite.rotation_degrees -= 20
+	furniture_turn_timer.start()
+
+func _on_LookBox_rotated_furniture_counterclockwise():
+	dog_animation_sprite.rotation_degrees += 20
+	furniture_turn_timer.start()
+
+func _on_MoveFurnitureRotationTimer_timeout():
+	dog_animation_sprite.rotation = 0
+

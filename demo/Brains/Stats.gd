@@ -50,6 +50,8 @@ func update_volumes():
 			AudioServer.set_bus_volume_db(index, decibels)
 
 func save_game(new_save_spot_name, tscn):
+	save_spot_name = new_save_spot_name
+	save_spot_tscn = tscn
 	print("SAVING")
 	var file = File.new()
 	file.open(SAVE_FILE_LOCATION, File.WRITE)
