@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://sprites/L2_lab/safety_poster.png" type="Texture" id=1]
 [ext_resource path="res://Levels/1.0 - Lab/potted_palm.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Levels/1.0 - Lab/labhallway.gd" type="Script" id=11]
 [ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=12]
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Levels/1.0 - Lab/RobotSprite.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 67.2606, 49.3467 )
@@ -22,6 +23,123 @@ extents = Vector2( 132.01, 47.258 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 67.9907, 49.7416 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Robot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 519.083, 630.15 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Robot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "walk_across"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Robot/AnimatedSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Robot/AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 5.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ "dogdown", "dogright", "dogup" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Robot/AnimatedSprite:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Robot/AnimatedSprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "continue_cutscene_in_breakroom"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Robot:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.4, 5.4, 5.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 519.083, 630.15 ), Vector2( 519.083, 725.853 ), Vector2( 1786.25, 725.853 ), Vector2( 1786.25, 584.072 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Robot:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="labhallway" type="Node2D"]
 position = Vector2( 21.4873, 12.8923 )
@@ -66,7 +184,7 @@ position = Vector2( 903.141, 574.479 )
 polygon = PoolVector2Array( 454.973, 566.193, 308.943, 561.898, 308.943, 890.465, 628.92, 894.76, 843.669, 905.497, 1148.61, 899.055, 2022.64, 905.497, 2033.38, 566.193, 1842.25, 568.341, 1837.96, 469.556, 1721.99, 467.409, 1726.29, 561.898, 1253.84, 566.193, 1260.28, 469.556, 1026.21, 465.261, 1028.35, 574.783, 592.412, 566.193, 601.002, 379.362, 2278.19, 379.362, 2248.13, 1075.15, 87.7514, 1060.12, 98.4889, 329.969, 457.12, 377.214 )
 
 [node name="PuppyCamera" parent="." instance=ExtResource( 10 )]
-position = Vector2( 939.128, 518.896 )
+position = Vector2( 1018.28, 551.972 )
 
 [node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
 position = Vector2( -106.177, -193.164 )
@@ -103,6 +221,20 @@ position = Vector2( 1783.75, 513.821 )
 [node name="CollisionShape2D" parent="BreakRoomTZ" index="0"]
 position = Vector2( 0, -15.3073 )
 shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/default = SubResource( 4 )
+anims/walk_across = SubResource( 5 )
+
+[node name="Robot" type="Node2D" parent="."]
+visible = false
+position = Vector2( 519.083, 630.15 )
+
+[node name="AnimatedSprite" parent="Robot" instance=ExtResource( 14 )]
+position = Vector2( -1.60675, -118.341 )
+animation = "dogdown"
+frame = 3
+playing = true
 [connection signal="transition_triggered" from="BathroomTZ" to="." method="_on_BathroomTZ_transition_triggered"]
 [connection signal="transition_triggered" from="LabTZ" to="." method="_on_LabTZ_transition_triggered"]
 [connection signal="transition_triggered" from="BreakRoomTZ" to="." method="_on_BreakRoomTZ_transition_triggered"]

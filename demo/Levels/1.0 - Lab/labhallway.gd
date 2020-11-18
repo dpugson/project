@@ -5,10 +5,14 @@ onready var player = $YSort/player
 onready var bathroomSP = $BathroomDoorSP
 onready var labSP = $LabDoorSP
 onready var breakRoomSP = $BreakRoomDoorSP
+onready var animation = $AnimationPlayer
+onready var camera = $PuppyCamera
+onready var robot = $Robot
 
 func _ready():
 	var player_position = Vector2.ZERO
 	var orientation = Vector2.DOWN
+	stats.spawn_metadata = "emerge_cutscene"
 	match stats.spawn_metadata:
 		"bathroom":
 			Jukebox.play_song("res://tunes/lab/background_science.wav")
@@ -23,13 +27,18 @@ func _ready():
 			player_position = breakRoomSP.position
 			orientation = Vector2.DOWN
 		"emerge_cutscene":
-			# TODO
-			player.visible = false
-			player.cutscene_mode = true
+			Jukebox.play_song("res://tunes/lab/sleepypuppy.wav")
+			player.queue_free()
+			animation.play("walk_across")
+			var transform = RemoteTransform2D.new()
+			transform.remote_path = "../../PuppyCamera"
+			robot.add_child(transform)
+			return
 		_:
 			Jukebox.play_song("res://tunes/lab/background_science.wav")
 			player_position = bathroomSP.position
 			orientation = Vector2.DOWN
+			
 	stats.spawn_player(
 		player, null, 
 		"../../../PuppyCamera", player_position, orientation)
@@ -42,3 +51,6 @@ func _on_BreakRoomTZ_transition_triggered():
 
 func _on_LabTZ_transition_triggered():
 	pass # Replace with function body.
+
+func continue_cutscene_in_breakroom():
+	Transition.go_to("res://Levels/1.0 - Lab/BreakRoom.tscn", "emerge_cutscene")

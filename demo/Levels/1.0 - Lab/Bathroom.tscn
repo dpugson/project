@@ -28,7 +28,7 @@ animations = [ {
 "speed": 20.0
 } ]
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 19 ), ExtResource( 12 ) ],
 "loop": true,
@@ -36,8 +36,7 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[sub_resource type="Animation" id=2]
-resource_name = "cutscene"
+[sub_resource type="Animation" id=3]
 length = 4.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/Toilet/lid:frame")
@@ -198,8 +197,7 @@ tracks/12/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "default"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/player:visible")
 tracks/0/interp = 1
@@ -285,7 +283,7 @@ tracks/6/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=5]
 resource_name = "grab_puppy"
 length = 1.8
 tracks/0/type = "value"
@@ -363,7 +361,7 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=6]
 resource_name = "leave_room"
 length = 2.0
 tracks/0/type = "value"
@@ -429,7 +427,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 resource_name = "more_water"
 length = 1.5
 tracks/0/type = "value"
@@ -495,7 +493,7 @@ tracks/4/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 resource_name = "panic"
 length = 3.0
 tracks/0/type = "value"
@@ -525,7 +523,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 resource_name = "puppy_emerges"
 length = 4.0
 tracks/0/type = "value"
@@ -651,8 +649,7 @@ tracks/9/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "toilet_open"
+[sub_resource type="Animation" id=10]
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/Toilet/lid:frame")
 tracks/0/interp = 1
@@ -728,8 +725,7 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "water_effects"
+[sub_resource type="Animation" id=11]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/Toilet/splashes/splash:playing")
@@ -830,7 +826,7 @@ tracks/7/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 72.9563, 23.4223 )
 
 [node name="Bathroom" type="Node2D"]
@@ -858,7 +854,6 @@ texture = ExtResource( 2 )
 [node name="lid" type="AnimatedSprite" parent="YSort/Toilet"]
 position = Vector2( 1.84534, -48.9007 )
 frames = SubResource( 1 )
-frame = 2
 
 [node name="r0" type="Sprite" parent="YSort/Toilet"]
 visible = false
@@ -867,27 +862,25 @@ texture = ExtResource( 11 )
 
 [node name="splashes" type="Node2D" parent="YSort/Toilet"]
 modulate = Color( 1, 1, 1, 0 )
-scale = Vector2( 2.59212, 2.59093 )
 
 [node name="splash2" type="AnimatedSprite" parent="YSort/Toilet/splashes"]
 pause_mode = 2
+visible = false
 modulate = Color( 0.894118, 0.972549, 1, 1 )
 position = Vector2( 13.2344, -81.91 )
 scale = Vector2( 1.29079, 1.71053 )
-frames = SubResource( 7 )
-frame = 1
+frames = SubResource( 2 )
 playing = true
 flip_h = true
 
 [node name="splash" type="AnimatedSprite" parent="YSort/Toilet/splashes"]
 pause_mode = 2
+visible = false
 modulate = Color( 0.894118, 0.972549, 1, 1 )
 position = Vector2( 20.8105, -56.3406 )
-frames = SubResource( 7 )
-playing = true
+frames = SubResource( 2 )
 
 [node name="player" parent="YSort" instance=ExtResource( 7 )]
-visible = false
 position = Vector2( 918.078, 781.995 )
 camera = NodePath("../../PuppyCamera")
 
@@ -897,24 +890,23 @@ texture = ExtResource( 10 )
 
 [node name="Robot" parent="." instance=ExtResource( 13 )]
 visible = false
-position = Vector2( 927.777, 776.45 )
-frame = 1
-playing = true
+position = Vector2( 915.304, 778.484 )
+animation = "up"
 
 [node name="sinktop" type="Sprite" parent="."]
 position = Vector2( 1076.29, 641.875 )
 texture = ExtResource( 9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/cutscene = SubResource( 2 )
-anims/default = SubResource( 3 )
-anims/grab_puppy = SubResource( 11 )
-anims/leave_room = SubResource( 12 )
-anims/more_water = SubResource( 8 )
-anims/panic = SubResource( 9 )
-anims/puppy_emerges = SubResource( 10 )
-anims/toilet_open = SubResource( 4 )
-anims/water_effects = SubResource( 6 )
+anims/cutscene = SubResource( 3 )
+anims/default = SubResource( 4 )
+anims/grab_puppy = SubResource( 5 )
+anims/leave_room = SubResource( 6 )
+anims/more_water = SubResource( 7 )
+anims/panic = SubResource( 8 )
+anims/puppy_emerges = SubResource( 9 )
+anims/toilet_open = SubResource( 10 )
+anims/water_effects = SubResource( 11 )
 
 [node name="surprised" type="Sprite" parent="."]
 visible = false
@@ -944,7 +936,7 @@ position = Vector2( 921.398, 951.549 )
 
 [node name="CollisionShape2D" parent="DoorTZ" index="0"]
 position = Vector2( -2.41205, 14.4722 )
-shape = SubResource( 5 )
+shape = SubResource( 12 )
 [connection signal="transition_triggered" from="DoorTZ" to="." method="_on_DoorTZ_transition_triggered"]
 
 [editable path="PuppyCamera"]
