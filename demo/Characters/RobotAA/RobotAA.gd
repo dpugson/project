@@ -3,7 +3,7 @@ extends KinematicBody2D
 const MAX_SPEED = 500
 
 var direction_index = 0
-var input = Vector2.UP
+var input = Vector2.RIGHT
 
 onready var walking_thing = $WalkingThing
 onready var animation_tree = $AnimationTree
@@ -23,20 +23,21 @@ const DIRECTIONS = [
 ]
 
 func _ready():
-	animation_state.travel("dog_walk")
+	pass
+	animation_state.travel("idle")
 	animation_tree.active = true
-	start_walk_in_circles()
+	#start_walk_in_circles()
 
 func _physics_process(delta):
 	walking_thing.move(self, delta, input, animation_tree, BLENDS)
 
-func start_walk_in_circles():
-	$WalkInCirclesTimer.wait_time = 0.8
-	$WalkInCirclesTimer.start()
-	pass
-
-func _on_WalkInCirclesTimer_timeout():
-	if (direction_index >= 4):
-		direction_index = 0
-	input = DIRECTIONS[direction_index]
-	direction_index += 1
+#func start_walk_in_circles():
+#	$WalkInCirclesTimer.wait_time = 0.8
+#	$WalkInCirclesTimer.start()
+#	pass
+#
+#func _on_WalkInCirclesTimer_timeout():
+#	if (direction_index >= 4):
+#		direction_index = 0
+#	input = DIRECTIONS[direction_index]
+#	direction_index += 1

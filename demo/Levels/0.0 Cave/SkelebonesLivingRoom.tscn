@@ -16,19 +16,19 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 82.1645, 69.5107 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 27.7402, 78.2574 )
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 93.5566, 97.4779 )
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 93.5566, 59.0023 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 71.7451, 32.6176 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 49.1345, 30.6083 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 83.1362, 78.2574 )
 
 [node name="SkelebonesLivingRoom" type="Node2D"]
@@ -54,14 +54,14 @@ shape = SubResource( 1 )
 
 [node name="CollisionShape2D" parent="skelebones_livingroom/ChairSeenBox" index="0"]
 position = Vector2( 167.16, 271.149 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="DrawerSeenBox" parent="skelebones_livingroom" instance=ExtResource( 10 )]
 position = Vector2( 47.3546, 0 )
 
 [node name="CollisionShape2D" parent="skelebones_livingroom/DrawerSeenBox" index="0"]
-position = Vector2( -24.2966, -61.2272 )
-shape = SubResource( 4 )
+position = Vector2( -28.2429, -108.582 )
+shape = SubResource( 3 )
 
 [node name="skeleton_torso" parent="." instance=ExtResource( 3 )]
 position = Vector2( 741.229, 436.839 )
@@ -73,10 +73,13 @@ position = Vector2( 853.136, 834.317 )
 camera = NodePath("../../PuppyCamera")
 
 [node name="SaveStar" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( 924.401, 683.682 )
+position = Vector2( 902.697, 693.547 )
 save_spot_name = "Caves - The Skeleton's House"
 home = "res://Levels/0.0 Cave/SkelebonesLivingRoom.tscn"
 flavor_text = "Hello, Fetch Star!"
+
+[node name="AnimatedSprite" parent="YSort/SaveStar" index="1"]
+frame = 1
 
 [node name="skelebones_livingroom_desk_fg" type="Sprite" parent="."]
 position = Vector2( 1170.67, 681.465 )
@@ -91,7 +94,7 @@ polygon = PoolVector2Array( 1058.23, 895.25, 1058.23, 740.727, 1124.66, 739.282,
 
 [node name="CollisionShape2D" parent="BottomTZ" index="0"]
 position = Vector2( 862.514, 939.272 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="BottomSpawnPoint" parent="." instance=ExtResource( 8 )]
 position = Vector2( 865.9, 820.208 )
@@ -113,7 +116,7 @@ position = Vector2( 1157.07, 419.175 )
 
 [node name="CollisionShape2D" parent="TransitionZone" index="0"]
 position = Vector2( 1.14221, 23.9868 )
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="skelebones_love_letter" type="Sprite" parent="."]
 position = Vector2( 1180.83, 633.275 )
@@ -124,7 +127,7 @@ position = Vector2( -250.185, -90.3901 )
 
 [node name="CollisionShape2D" parent="skelebones_love_letter/LettersSeenBox" index="0"]
 position = Vector2( 276.981, 133.145 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 [connection signal="seen" from="skelebones_livingroom/GoSeenBox" to="." method="_on_GoSeenBox_seen"]
 [connection signal="seen" from="skelebones_livingroom/ChairSeenBox" to="." method="_on_ChairSeenBox_seen"]
 [connection signal="seen" from="skelebones_livingroom/DrawerSeenBox" to="." method="_on_DrawerSeenBox_seen"]
@@ -137,6 +140,8 @@ shape = SubResource( 7 )
 [editable path="skelebones_livingroom/ChairSeenBox"]
 
 [editable path="skelebones_livingroom/DrawerSeenBox"]
+
+[editable path="YSort/SaveStar"]
 
 [editable path="BottomTZ"]
 

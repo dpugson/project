@@ -26,7 +26,7 @@ margin_bottom = 2444.0
 motion_scale = Vector2( 0.1, 0.1 )
 
 [node name="Node2D" type="Node2D" parent="ParallaxBackground/ParallaxLayer5"]
-position = Vector2( 906.192, 249.411 )
+position = Vector2( 1096.91, 155.668 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="SaveStar7" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 3 )]
@@ -65,20 +65,11 @@ position = Vector2( -4095.27, 361.095 )
 [node name="SaveStar21" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 3 )]
 position = Vector2( -3950.42, 879.782 )
 
-[node name="SaveStar22" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 3 )]
-position = Vector2( -1773, 345.554 )
-
 [node name="SaveStar23" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 3 )]
 position = Vector2( -3560.92, -1198.88 )
 
 [node name="SaveStar47" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 3 )]
 position = Vector2( -3021.74, -1582.72 )
-
-[node name="SaveStar26" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 3 )]
-position = Vector2( -387.345, 805.842 )
-
-[node name="SaveStar27" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 3 )]
-position = Vector2( -2231.13, 672.752 )
 
 [node name="SaveStar28" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 3 )]
 position = Vector2( 443.07, -229.852 )
@@ -101,9 +92,6 @@ position = Vector2( -1855.32, 1706.21 )
 [node name="SaveStar35" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 3 )]
 position = Vector2( -463.16, -302.272 )
 
-[node name="SaveStar36" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 3 )]
-position = Vector2( -1024.91, 670.511 )
-
 [node name="SaveStar37" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 3 )]
 position = Vector2( -1916, 2821.88 )
 
@@ -118,9 +106,6 @@ position = Vector2( -2381.84, 2606.57 )
 
 [node name="SaveStar41" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 3 )]
 position = Vector2( -204.425, 2072.34 )
-
-[node name="SaveStar42" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 3 )]
-position = Vector2( -1992.34, 527.913 )
 
 [node name="SaveStar43" parent="ParallaxBackground/ParallaxLayer5/Node2D" instance=ExtResource( 3 )]
 position = Vector2( -600.17, -1480.57 )

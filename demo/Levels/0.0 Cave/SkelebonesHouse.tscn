@@ -477,6 +477,9 @@ save_spot_name = "Caves - Outside the Skeleton's House"
 home = "res://Levels/0.0 Cave/SkelebonesHouse.tscn"
 flavor_text = "Greetings, Puzzle Star!"
 
+[node name="AnimatedSprite" parent="YSort/SaveStar" index="1"]
+frame = 1
+
 [node name="PuppyCamera" parent="." instance=ExtResource( 4 )]
 
 [node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
@@ -532,6 +535,8 @@ position = Vector2( 504.397, -469.928 )
 [connection signal="transition_triggered" from="LowerTZ" to="." method="_on_LowerTZ_transition_triggered"]
 [connection signal="transition_triggered" from="UpperTZ" to="." method="_on_UpperTZ_transition_triggered"]
 [connection signal="transition_triggered" from="SkeletonEventTrigger" to="." method="_on_SkeletonEventTrigger_transition_triggered"]
+
+[editable path="YSort/SaveStar"]
 
 [editable path="PuppyCamera"]
 

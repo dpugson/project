@@ -1,0 +1,952 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://sprites/L2_lab/bathroom.png" type="Texture" id=1]
+[ext_resource path="res://sprites/L2_lab/toilet.png" type="Texture" id=2]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/L2_lab/toiletlid0.png" type="Texture" id=4]
+[ext_resource path="res://sprites/L2_lab/toiletlid2.png" type="Texture" id=5]
+[ext_resource path="res://sprites/L2_lab/toiletlid1.png" type="Texture" id=6]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/L2_lab/camera.png" type="Texture" id=8]
+[ext_resource path="res://sprites/L2_lab/sinktop.png" type="Texture" id=9]
+[ext_resource path="res://sprites/L2_lab/science_poster.png" type="Texture" id=10]
+[ext_resource path="res://sprites/dogswim/r0.png" type="Texture" id=11]
+[ext_resource path="res://sprites/cavestuff/salamanders/splash_01.png" type="Texture" id=12]
+[ext_resource path="res://Levels/1.0 - Lab/RobotSprite.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Levels/1.0 - Lab/Bathroom.gd" type="Script" id=14]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=16]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=17]
+[ext_resource path="res://sprites/effects/surprised.png" type="Texture" id=18]
+[ext_resource path="res://sprites/cavestuff/salamanders/splash_00.png" type="Texture" id=19]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": false,
+"name": "default",
+"speed": 20.0
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 19 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "cutscene"
+length = 4.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/Toilet/lid:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 4.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_cutscene"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Robot:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Robot:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Robot:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "up", "right" ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Robot:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 2.2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 915.304, 778.484 ), Vector2( 915.304, 778.484 ), Vector2( 919.446, 608.794 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Robot:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 3.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("YSort/Toilet/lid:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("YSort/Toilet/splashes/splash:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("YSort/Toilet/splashes/splash:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("YSort/Toilet/splashes/splash2:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("YSort/Toilet/splashes:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("YSort/Toilet/r0:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/player:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/Toilet/lid:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Robot:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("YSort/Toilet/lid:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/Toilet/splashes/splash:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("YSort/Toilet/splashes/splash:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("YSort/Toilet/splashes/splash2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "grab_puppy"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Robot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 920.487, 669.192 ), Vector2( 864.255, 667.109 ), Vector2( 864.255, 451.552 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Robot:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Robot:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("YSort/Toilet/r0:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.6 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Robot:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ "left", "up", "dogdown" ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "say_soggy_puppy_need_help"
+} ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "leave_room"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Robot:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "dogright", "dogdown" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Robot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 882.999, 466.13 ), Vector2( 935.066, 466.13 ), Vector2( 927.777, 776.45 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Robot:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Robot:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finish_cutscene"
+} ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "more_water"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/Toilet/splashes/splash:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/Toilet/splashes/splash:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "say_oh_no"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Robot:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "up" ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/Toilet/splashes/splash2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "panic"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Robot:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1.2, 1.8, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "up", "left", "right", "left", "up" ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "say_oh_no_many_times"
+} ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "puppy_emerges"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/Toilet/r0:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/Toilet/splashes/splash2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/Toilet/splashes/splash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("YSort/Toilet/splashes/splash2:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/Toilet/splashes/splash:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Robot:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.4, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 919.446, 608.794 ), Vector2( 919.446, 640.034 ), Vector2( 919.446, 640.034 ), Vector2( 920.487, 669.192 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("YSort/Toilet/splashes:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 2.9, 3.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 2.59212, 2.59093 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("YSort/Toilet/splashes:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 2.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("YSort/Toilet/splashes:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 2.8, 2.9, 3.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 3.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "hello_puppy"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "toilet_open"
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/Toilet/lid:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/Toilet/lid:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("surprised:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("surprised:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.7, 3.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Robot:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "right", "up" ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "respond_to_open_toilet"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "water_effects"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/Toilet/splashes/splash:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/Toilet/splashes/splash:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "respond_to_water"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Robot:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "right", "up" ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/Toilet/splashes:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("YSort/Toilet/splashes:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("YSort/Toilet/splashes/splash2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("YSort/Toilet/splashes:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 72.9563, 23.4223 )
+
+[node name="Bathroom" type="Node2D"]
+script = ExtResource( 14 )
+
+[node name="bathroom" type="Sprite" parent="."]
+position = Vector2( 956.353, 542.702 )
+texture = ExtResource( 1 )
+
+[node name="BG" parent="." instance=ExtResource( 3 )]
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="camera" type="Sprite" parent="YSort"]
+position = Vector2( 830.782, 228.204 )
+texture = ExtResource( 8 )
+
+[node name="Toilet" type="Node2D" parent="YSort"]
+position = Vector2( 858.998, 490.393 )
+
+[node name="toilet" type="Sprite" parent="YSort/Toilet"]
+position = Vector2( 0.826569, -41.8088 )
+texture = ExtResource( 2 )
+
+[node name="lid" type="AnimatedSprite" parent="YSort/Toilet"]
+position = Vector2( 1.84534, -48.9007 )
+frames = SubResource( 1 )
+frame = 2
+
+[node name="r0" type="Sprite" parent="YSort/Toilet"]
+visible = false
+position = Vector2( 16.1387, -85.9843 )
+texture = ExtResource( 11 )
+
+[node name="splashes" type="Node2D" parent="YSort/Toilet"]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 2.59212, 2.59093 )
+
+[node name="splash2" type="AnimatedSprite" parent="YSort/Toilet/splashes"]
+pause_mode = 2
+modulate = Color( 0.894118, 0.972549, 1, 1 )
+position = Vector2( 13.2344, -81.91 )
+scale = Vector2( 1.29079, 1.71053 )
+frames = SubResource( 7 )
+frame = 1
+playing = true
+flip_h = true
+
+[node name="splash" type="AnimatedSprite" parent="YSort/Toilet/splashes"]
+pause_mode = 2
+modulate = Color( 0.894118, 0.972549, 1, 1 )
+position = Vector2( 20.8105, -56.3406 )
+frames = SubResource( 7 )
+playing = true
+
+[node name="player" parent="YSort" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( 918.078, 781.995 )
+camera = NodePath("../../PuppyCamera")
+
+[node name="science_poster" type="Sprite" parent="YSort"]
+position = Vector2( 1032.29, 296.977 )
+texture = ExtResource( 10 )
+
+[node name="Robot" parent="." instance=ExtResource( 13 )]
+visible = false
+position = Vector2( 927.777, 776.45 )
+frame = 1
+playing = true
+
+[node name="sinktop" type="Sprite" parent="."]
+position = Vector2( 1076.29, 641.875 )
+texture = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/cutscene = SubResource( 2 )
+anims/default = SubResource( 3 )
+anims/grab_puppy = SubResource( 11 )
+anims/leave_room = SubResource( 12 )
+anims/more_water = SubResource( 8 )
+anims/panic = SubResource( 9 )
+anims/puppy_emerges = SubResource( 10 )
+anims/toilet_open = SubResource( 4 )
+anims/water_effects = SubResource( 6 )
+
+[node name="surprised" type="Sprite" parent="."]
+visible = false
+position = Vector2( 922.878, 353.764 )
+texture = ExtResource( 18 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 15 )]
+position = Vector2( 954.791, 681.56 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -214.534, -148.637 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 2218.06, 1270.97 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 858.76, 990.179, 858.76, 926.206, 782.278, 926.161, 786.032, 548.237, 942.961, 547.608, 944.6, 474.67, 1119.98, 471.392, 1119.98, 621.366, 1021.16, 624.381, 1024.44, 932.767, 986.708, 931.127, 986.708, 990.179, 1257.37, 993.46, 1252.44, 276.627, 634.032, 278.267, 630.752, 973.776 )
+
+[node name="DoorSP" parent="." instance=ExtResource( 16 )]
+position = Vector2( 922.215, 876.378 )
+
+[node name="DoorTZ" parent="." instance=ExtResource( 17 )]
+position = Vector2( 921.398, 951.549 )
+
+[node name="CollisionShape2D" parent="DoorTZ" index="0"]
+position = Vector2( -2.41205, 14.4722 )
+shape = SubResource( 5 )
+[connection signal="transition_triggered" from="DoorTZ" to="." method="_on_DoorTZ_transition_triggered"]
+
+[editable path="PuppyCamera"]
+
+[editable path="DoorTZ"]

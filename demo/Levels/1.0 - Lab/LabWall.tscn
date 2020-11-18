@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://sprites/lab_stuff/lab_panel.png" type="Texture" id=2]
+[ext_resource path="res://sprites/L2_lab/lab_panel.png" type="Texture" id=2]
+
 
 [node name="LabWall" type="TextureRect"]
 margin_left = -435.0

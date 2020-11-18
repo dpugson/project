@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sleepypuppy.wav-d42c29cb39ba8404c965ee721b3d5fca.sample"
+
+[deps]
+
+source_file="res://tunes/lab/sleepypuppy.wav"
+dest_files=[ "res://.import/sleepypuppy.wav-d42c29cb39ba8404c965ee721b3d5fca.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=true
+compress/mode=0

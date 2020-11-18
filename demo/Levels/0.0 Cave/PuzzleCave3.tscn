@@ -74,6 +74,10 @@ position = Vector2( 585.477, 831.859 )
 text = "If you get stuck, there's a BOX resetting machine that puts everything back in place whenever you leave the room."
 
 [node name="BG" parent="." instance=ExtResource( 4 )]
+margin_left = -916.616
+margin_top = -892.328
+margin_right = 3046.38
+margin_bottom = 2157.67
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

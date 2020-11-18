@@ -60,6 +60,10 @@ position = Vector2( 713.404, 540.007 )
 position = Vector2( 1090.73, 424.321 )
 
 [node name="BG" parent="." instance=ExtResource( 4 )]
+margin_left = -1424.0
+margin_top = -957.0
+margin_right = 3800.0
+margin_bottom = 2366.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

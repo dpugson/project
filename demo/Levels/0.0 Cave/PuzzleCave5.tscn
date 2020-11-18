@@ -73,10 +73,10 @@ position = Vector2( 547.954, 823.098 )
 text = "Violence isn't always the answer... Sometimes you can talk through your problems!"
 
 [node name="BG" parent="." instance=ExtResource( 4 )]
-margin_left = -361.459
-margin_top = -658.188
-margin_right = 2460.54
-margin_bottom = 1446.82
+margin_left = -737.285
+margin_top = -817.368
+margin_right = 2779.71
+margin_bottom = 1969.63
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

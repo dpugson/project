@@ -1,0 +1,104 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://BG.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/L2_lab/break_room_fire_fence_thingy.png" type="Texture" id=2]
+[ext_resource path="res://sprites/L2_lab/break_room.png" type="Texture" id=3]
+[ext_resource path="res://sprites/L2_lab/break_room_fire1.png" type="Texture" id=4]
+[ext_resource path="res://sprites/L2_lab/break_room_fire0.png" type="Texture" id=5]
+[ext_resource path="res://sprites/L2_lab/break_room_fire2.png" type="Texture" id=6]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/L2_lab/break_room_dark.png" type="Texture" id=8]
+[ext_resource path="res://Levels/1.0 - Lab/BreakRoom.gd" type="Script" id=9]
+[ext_resource path="res://sprites/L2_lab/break_room_fg.png" type="Texture" id=10]
+[ext_resource path="res://sprites/L2_lab/break_room_bear.png" type="Texture" id=11]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=12]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=14]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 83.0743, 28.1744 )
+
+[node name="BreakRoom" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="break_room" type="Sprite" parent="."]
+visible = false
+position = Vector2( 919.218, 526.198 )
+texture = ExtResource( 3 )
+
+[node name="break_room_dark" type="Sprite" parent="."]
+position = Vector2( 921.291, 529.565 )
+texture = ExtResource( 8 )
+
+[node name="fire" type="AnimatedSprite" parent="."]
+position = Vector2( 929.088, 445.618 )
+frames = SubResource( 1 )
+frame = 2
+playing = true
+
+[node name="break_room_fire_fence_thingy" type="Sprite" parent="."]
+position = Vector2( 930.185, 481.506 )
+texture = ExtResource( 2 )
+
+[node name="BG" parent="." instance=ExtResource( 1 )]
+margin_left = -193.096
+margin_top = -370.532
+margin_right = 2628.91
+margin_bottom = 1734.47
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="player" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 938.617, 670.092 )
+camera = NodePath("../../PuppyCamera")
+
+[node name="teatable" type="Node2D" parent="YSort"]
+position = Vector2( 730.488, 701.76 )
+
+[node name="break_room_fg" type="Sprite" parent="YSort/teatable"]
+position = Vector2( 5.65167, -17.854 )
+texture = ExtResource( 10 )
+
+[node name="Node2D" type="Node2D" parent="YSort"]
+position = Vector2( 1095.98, 821.672 )
+
+[node name="break_room_bear" type="Sprite" parent="YSort/Node2D"]
+position = Vector2( -5.42365, 43.6035 )
+texture = ExtResource( 11 )
+
+[node name="DoorTZ" parent="." instance=ExtResource( 13 )]
+position = Vector2( 932.987, 973.315 )
+
+[node name="CollisionShape2D" parent="DoorTZ" index="0"]
+position = Vector2( -1.08997, 11.9893 )
+shape = SubResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 870.71, 546.069, 988.423, 546.069, 1017.06, 507.892, 1059.52, 507.929, 1102.03, 487.059, 1166.62, 504.724, 1163.86, 841.193, 1102.78, 831.13, 1043.54, 835.457, 1034.56, 891.999, 1014.43, 937.631, 1008.72, 1039.61, 1264.85, 1044.82, 1264.85, 345.329, 509.456, 350.53, 548.461, 999.31, 857.899, 1011.01, 864.885, 927.631, 777.203, 924.684, 738.284, 847.191, 691.479, 831.589, 670.676, 789.984, 712.281, 756.18, 774.689, 763.981, 791.94, 713.954, 680.262, 714.338, 685.231, 508.976, 820.284, 512.096 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 14 )]
+position = Vector2( 930.47, 627.251 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -154.759, -274.366 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 2224.97, 1267 )
+
+[node name="DoorSP" parent="." instance=ExtResource( 12 )]
+position = Vector2( 935.546, 868.151 )
+[connection signal="transition_triggered" from="DoorTZ" to="." method="_on_DoorTZ_transition_triggered"]
+
+[editable path="DoorTZ"]
+
+[editable path="PuppyCamera"]

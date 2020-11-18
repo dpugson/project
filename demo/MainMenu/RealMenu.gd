@@ -15,7 +15,7 @@ var stopped_music = false
 func _ready():
 	if Jukebox.playing:
 		stopped_music = true
-		Jukebox.stop()
+		Jukebox.stream_paused = true
 	bark_animation.play("bark")
 	main_volume.value = stats.main_volume
 	effects_volume.value = stats.effects_volume
@@ -34,7 +34,7 @@ func _on_Cancel_pressed():
 func close():
 	get_tree().paused = false
 	if stopped_music:
-		Jukebox.play()
+		Jukebox.stream_paused = false
 	queue_free()
 	
 func enchild(obj):

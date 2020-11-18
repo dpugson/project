@@ -517,7 +517,7 @@ texture = ExtResource( 27 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "dogup"
+animation = "right"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/dog_down = SubResource( 2 )
@@ -545,6 +545,8 @@ parameters/walk/blend_position = Vector2( 0, 1 )
 wait_time = 0.5
 
 [node name="WalkingThing" parent="." instance=ExtResource( 26 )]
+SPEED_UP = 0
+MAX_SPEED = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1.54828, 130.055 )

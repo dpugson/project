@@ -144,5 +144,6 @@ func handle_furniture_move_action(event):
 		self.call(action_map[direction])
 
 func _on_Timer_timeout():
-	state = MOVE_FURNITURE_MODE
-	emit_signal("moving_furniture")
+	pass
+	#state = MOVE_FURNITURE_MODE
+	#emit_signal("moving_furniture")

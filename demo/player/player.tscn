@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=2]
+[gd_scene load_steps=99 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/dog/d0.png" type="Texture" id=2]
@@ -41,6 +41,10 @@
 [ext_resource path="res://sprites/dogswim/r0.png" type="Texture" id=39]
 [ext_resource path="res://effects/Ripples.tscn" type="PackedScene" id=40]
 [ext_resource path="res://tunes/player/singlebark.wav" type="AudioStream" id=41]
+[ext_resource path="res://sprites/costumes/blanket/blanket_d.png" type="Texture" id=42]
+[ext_resource path="res://sprites/costumes/blanket/blanket_r.png" type="Texture" id=43]
+[ext_resource path="res://sprites/costumes/blanket/blanket_u.png" type="Texture" id=44]
+[ext_resource path="res://sprites/costumes/blanket/blanket_l.png" type="Texture" id=45]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -76,16 +80,6 @@ animations = [ {
 "name": "up",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 38 ) ],
-"loop": true,
-"name": "swimleft",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 36 ) ],
-"loop": true,
-"name": "swimdown",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 37 ) ],
 "loop": true,
 "name": "swimup",
@@ -99,6 +93,11 @@ animations = [ {
 "frames": [ ExtResource( 28 ), ExtResource( 29 ), ExtResource( 24 ), ExtResource( 25 ) ],
 "loop": true,
 "name": "barkleft",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 39 ) ],
+"loop": true,
+"name": "swimright",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 21 ), ExtResource( 19 ), ExtResource( 27 ), ExtResource( 23 ) ],
@@ -116,9 +115,14 @@ animations = [ {
 "name": "barkdown",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 39 ) ],
+"frames": [ ExtResource( 36 ) ],
 "loop": true,
-"name": "swimright",
+"name": "swimdown",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 38 ) ],
+"loop": true,
+"name": "swimleft",
 "speed": 5.0
 } ]
 
@@ -1206,6 +1210,29 @@ height = 45.4561
 [sub_resource type="CircleShape2D" id=52]
 radius = 50.8548
 
+[sub_resource type="SpriteFrames" id=53]
+animations = [ {
+"frames": [ ExtResource( 45 ) ],
+"loop": true,
+"name": "left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 43 ) ],
+"loop": true,
+"name": "right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 44 ) ],
+"loop": true,
+"name": "up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 42 ) ],
+"loop": true,
+"name": "down",
+"speed": 5.0
+} ]
+
 [node name="player" type="KinematicBody2D"]
 collision_layer = 258
 collision_mask = 257
@@ -1221,7 +1248,7 @@ visible = false
 position = Vector2( -1.70408, 66.9613 )
 scale = Vector2( 0.842484, 0.826121 )
 frames = SubResource( 1 )
-animation = "updown"
+animation = "leftright"
 
 [node name="DoggoCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 0.707214, 31.6103 )
@@ -1231,8 +1258,7 @@ shape = SubResource( 2 )
 [node name="DogAnimation" type="AnimatedSprite" parent="."]
 position = Vector2( 3.11467, -16.0672 )
 frames = SubResource( 3 )
-animation = "barkdown"
-frame = 3
+animation = "right"
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1281,6 +1307,7 @@ shape = SubResource( 51 )
 disabled = true
 
 [node name="DoggoPivot" type="Position2D" parent="."]
+rotation = -1.5708
 
 [node name="HurtBox" parent="DoggoPivot" instance=ExtResource( 34 )]
 position = Vector2( 1.19479, 9.55849 )
@@ -1289,6 +1316,10 @@ show_hit = true
 
 [node name="LookBox" parent="DoggoPivot" instance=ExtResource( 35 )]
 pause_mode = 1
+position = Vector2( -0.499725, -2.18437e-08 )
+
+[node name="CollisionShape2D" parent="DoggoPivot/LookBox" index="0"]
+position = Vector2( 0.499756, 43.269 )
 
 [node name="WaterDetector" type="Area2D" parent="."]
 position = Vector2( 0, 20 )
@@ -1307,10 +1338,18 @@ bus = "Effects"
 [node name="MoveFurnitureRotationTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="Costumes" type="Node2D" parent="."]
+visible = false
+
+[node name="CostumeSprites" type="Node2D" parent="Costumes"]
+
+[node name="Blanket" type="AnimatedSprite" parent="Costumes/CostumeSprites"]
+position = Vector2( 6.30924, -16.981 )
+frames = SubResource( 53 )
+animation = "down"
 [connection signal="timeout" from="TurboTimer" to="." method="_on_TurboTimer_timeout"]
 [connection signal="area_entered" from="DoggoPivot/HurtBox" to="." method="_on_HurtBox_area_entered"]
-[connection signal="moving_furniture" from="DoggoPivot/LookBox" to="." method="_on_LookBox_moving_furniture"]
-[connection signal="not_moving_furniture" from="DoggoPivot/LookBox" to="." method="_on_LookBox_not_moving_furniture"]
 [connection signal="rotated_furniture_clockwise" from="DoggoPivot/LookBox" to="." method="_on_LookBox_rotated_furniture_clockwise"]
 [connection signal="rotated_furniture_counterclockwise" from="DoggoPivot/LookBox" to="." method="_on_LookBox_rotated_furniture_counterclockwise"]
 [connection signal="timeout" from="MoveFurnitureRotationTimer" to="." method="_on_MoveFurnitureRotationTimer_timeout"]

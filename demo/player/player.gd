@@ -40,6 +40,7 @@ onready var turbo_timer = $TurboTimer
 onready var EffectHelper = preload("res://effects/EffectHelper.gd")
 onready var dog_animation_sprite = $DogAnimation
 onready var furniture_turn_timer = $MoveFurnitureRotationTimer
+onready var costume_sprites = $Costumes/CostumeSprites
 
 func _ready():
 	stats.connect("out_of_health", self, "queue_free")
@@ -63,6 +64,26 @@ func _input(event):
 			menu.enchild(self)
 
 # HELPERS
+#
+#func calculate_direction(input):
+#	var direction = input.rotated(-0.785398)
+#	if direction.x > 0:
+#		if direction.y > 0:
+#			return "down"
+#		else:
+#			return "right"
+#	else:
+#		if direction.y <= 0:
+#			return "up"
+#		else: 
+#			return "left"
+#
+#func update_costume(input):
+#	if input == Vector2.ZERO:
+#		return
+#	var direction = calculate_direction(input)
+#	for animated_costume_sprite in costume_sprites.get_children():
+#		animated_costume_sprite.animation = direction
 
 func set_speed_to_zero():
 	speed = Vector2.ZERO
@@ -168,10 +189,10 @@ func walk(_delta, input):
 	elif check_for_turbo_input():
 		state = TURBO_WARMUP
 		start_turbo_warmup()
-		
 
 func _physics_process(delta):
 	var input = get_input(delta)
+	#update_costume(input)
 	match state:
 		WALK:
 			walk(delta, input)

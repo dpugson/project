@@ -1,8 +1,9 @@
 [gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://sprites/lab_stuff/doorframe.png" type="Texture" id=1]
-[ext_resource path="res://sprites/lab_stuff/door.png" type="Texture" id=2]
+[ext_resource path="res://sprites/L2_lab/doorframe.png" type="Texture" id=1]
+[ext_resource path="res://sprites/L2_lab/door.png" type="Texture" id=2]
 [ext_resource path="res://Levels/1.0 - Lab/LabDoor.gd" type="Script" id=3]
+
 
 
 
