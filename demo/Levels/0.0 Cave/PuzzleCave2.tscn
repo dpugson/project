@@ -57,7 +57,7 @@ position = Vector2( 1121, 528.937 )
 [node name="Gilby" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 735.464, 592.997 )
 splash = true
-talk_radius = 2
+talk_radius = 1
 watch_player = true
 appear_delay = 0.7
 
@@ -66,7 +66,7 @@ position = Vector2( 976.703, 374.452 )
 unique_name = "pz2door"
 
 [node name="TopSpawnPoint" parent="." instance=ExtResource( 4 )]
-position = Vector2( 989.622, 442.429 )
+position = Vector2( 992.269, 440.841 )
 
 [node name="SecretSpawnPoint" parent="." instance=ExtResource( 4 )]
 position = Vector2( -34.8138, 739.053 )

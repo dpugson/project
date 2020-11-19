@@ -189,7 +189,7 @@ func _on_UpperTZ_transition_triggered():
 	Transition.go_to("res://Levels/0.0 Cave/SkelebonesLivingRoom.tscn", "bottom")
 
 func _on_LowerTZ_transition_triggered():
-	Transition.go_to("res://Levels/0.0 Cave/PuzzleCave5.tscn", "top")
+	Transition.go_to("res://Levels/0.0 Cave/PuzzleCave2.tscn", "top")
 	
 var skeleton_dialogue = {
 	"begin" : [

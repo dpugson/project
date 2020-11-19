@@ -196,7 +196,6 @@ position = Vector2( 875.965, 3945.88 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/GreenFriend"]
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="YSort/GreenFriend"]

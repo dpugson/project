@@ -219,7 +219,7 @@ polygon = PoolVector2Array( 380.286, 818.693, 122.366, 824.3, 185.189, 1330.54, 
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/UM"]
 position = Vector2( -1.76807, 0 )
-polygon = PoolVector2Array( 1235.35, 995.313, 1435.64, 1270.88, 1639.05, 1185.95, 1707.22, 1046.12, 1762.4, 1191.56, 1849.31, 1216.79, 1810.06, 644.877 )
+polygon = PoolVector2Array( 1235.35, 995.313, 1435.64, 1270.88, 1639.05, 1185.95, 1696.87, 1062.62, 1762.4, 1191.56, 1849.31, 1216.79, 1810.06, 644.877 )
 
 [node name="UM2" type="StaticBody2D" parent="Collisions"]
 
@@ -287,7 +287,7 @@ position = Vector2( 1698.43, 1249.48 )
 [node name="TransitionZone" parent="." instance=ExtResource( 8 )]
 
 [node name="CollisionShape2D" parent="TransitionZone" index="0"]
-position = Vector2( 1703.6, 1089.81 )
+position = Vector2( 1698.95, 1121.2 )
 shape = SubResource( 3 )
 
 [node name="SalamanderPartTwoSpawnPoint" type="Position2D" parent="."]

@@ -34,7 +34,7 @@ func _ready():
 			orientation = Vector2.UP
 		"top":
 			player_position = topSpawnPoint.position
-			orientation = Vector2.LEFT
+			orientation = Vector2.DOWN
 		_:
 			player_position = bottomSpawnPoint.position
 			orientation = Vector2.UP
