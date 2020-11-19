@@ -890,7 +890,7 @@ texture = ExtResource( 10 )
 
 [node name="Robot" parent="." instance=ExtResource( 13 )]
 visible = false
-position = Vector2( 915.304, 778.484 )
+position = Vector2( 919.446, 608.794 )
 animation = "up"
 
 [node name="sinktop" type="Sprite" parent="."]

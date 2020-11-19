@@ -27,9 +27,9 @@ script = ExtResource( 6 )
 
 [node name="BG" parent="." instance=ExtResource( 3 )]
 margin_left = -861.439
-margin_top = -1160.98
+margin_top = -1191.69
 margin_right = 3123.56
-margin_bottom = 1629.02
+margin_bottom = 1598.31
 
 [node name="cave_02" type="Sprite" parent="."]
 position = Vector2( 964.282, 422.884 )
@@ -41,7 +41,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="cave_02"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cave_02/StaticBody2D"]
-polygon = PoolVector2Array( -552.186, 22.07, -380.819, 22.07, -255.793, 0.848083, -61.8123, 6.2515, -56.5394, -107.114, -32.8116, -165.116, 12.0074, -175.661, 62.0994, -167.752, 94.9772, -84.768, 92.2538, -3.00394, 282.757, -4.75168, 488.99, -15.2381, 507.654, -383.938, -554.822, -357.574 )
+polygon = PoolVector2Array( -552.186, 22.07, -61.8123, 6.2515, -56.5394, -107.114, 94.9772, -84.768, 92.2538, -3.00394, 488.99, -15.2381, 507.654, -383.938, -554.822, -357.574 )
 
 [node name="YSort" type="YSort" parent="."]
 __meta__ = {
@@ -116,11 +116,10 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="cave_02_frame"]
-visible = false
 scale = Vector2( 0.7321, 0.7321 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cave_02_frame/StaticBody2D"]
-polygon = PoolVector2Array( -697.92, -20.2995, -707.439, 363.617, -704.266, 547.643, -652.532, 591.815, -478.14, 603.441, -284.371, 607.317, -179.736, 622.818, -129.356, 688.7, -137.107, 874.718, -140.982, 971.603, 99.2916, 987.104, 103.167, 797.21, 118.668, 684.824, 153.547, 630.569, 281.434, 626.694, 533.334, 618.943, 676.723, 607.317, 699.976, 510.432, 684.474, 289.535, 661.222, -8.86896, 661.222, -66.9997, 851.116, -78.6258, 878.243, 1095.61, -950.937, 1076.24, -923.809, -35.9966 )
+polygon = PoolVector2Array( -697.92, -20.2995, -692.771, 586.051, -134.63, 627.993, -140.982, 971.603, 129.923, 973.201, 125.084, 634.445, 679.999, 618.314, 661.222, -66.9997, 1401.42, 517.429, 1.12085, 1322.6, -1376.9, 488.787 )
 
 [node name="Drops" type="Node2D" parent="."]
 
@@ -134,16 +133,6 @@ position = Vector2( 2.77533, -90.9092 )
 [node name="End" parent="Drops/PersistentWaterdrop" index="1"]
 position = Vector2( 1.68677, 178.732 )
 
-[node name="PersistentWaterdrop2" parent="Drops" instance=ExtResource( 12 )]
-position = Vector2( 1275.96, 267.958 )
-wait_time = 0.9
-
-[node name="Start" parent="Drops/PersistentWaterdrop2" index="0"]
-position = Vector2( 13.2339, -419.307 )
-
-[node name="End" parent="Drops/PersistentWaterdrop2" index="1"]
-position = Vector2( 1.68677, 178.732 )
-
 [node name="PersistentWaterdrop3" parent="Drops" instance=ExtResource( 12 )]
 position = Vector2( 633.803, 452.028 )
 wait_time = 2.0
@@ -153,12 +142,6 @@ position = Vector2( 13.2339, -419.307 )
 
 [node name="End" parent="Drops/PersistentWaterdrop3" index="1"]
 position = Vector2( 21.5382, 112.56 )
-
-[node name="PersistentWaterdrop4" parent="Drops" instance=ExtResource( 12 )]
-position = Vector2( 476.632, 157.418 )
-
-[node name="End" parent="Drops/PersistentWaterdrop4" index="1"]
-position = Vector2( -8.82263, 325.243 )
 
 [node name="PersistentWaterdrop5" parent="Drops" instance=ExtResource( 12 )]
 position = Vector2( 1369.95, 111.098 )
@@ -215,11 +198,7 @@ shape = SubResource( 2 )
 
 [editable path="Drops/PersistentWaterdrop"]
 
-[editable path="Drops/PersistentWaterdrop2"]
-
 [editable path="Drops/PersistentWaterdrop3"]
-
-[editable path="Drops/PersistentWaterdrop4"]
 
 [editable path="Drops/PersistentWaterdrop5"]
 

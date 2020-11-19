@@ -188,7 +188,7 @@ texture = ExtResource( 2 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="player" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 219.742, 2933.3 )
+position = Vector2( 200.853, 2946.79 )
 camera = NodePath("../../PuppyCamera")
 
 [node name="GreenFriend" type="Node2D" parent="YSort"]
@@ -196,6 +196,7 @@ position = Vector2( 875.965, 3945.88 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/GreenFriend"]
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="YSort/GreenFriend"]
@@ -239,25 +240,56 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
+[node name="LL" type="StaticBody2D" parent="Walls"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/StaticBody2D"]
-polygon = PoolVector2Array( 132.264, 2900.37, 222.1, 2900.37, 396.158, 2866.68, 1246.79, 2282.75, 1266.45, 2223.79, 1199.07, 2145.19, 519.682, 1931.82, 415.809, 1853.22, 590.646, 1684.4, 675.737, 1588.21, 919.913, 1488.32, 1182.59, 1266.34, -201.075, 1210.84, -193.676, 2864.58 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/LL"]
+polygon = PoolVector2Array( 233.862, 2900.46, 395.562, 2870.61, 1266.41, 2263.65, 1251.25, 2171.16, 765.25, 2020.6, 417.15, 1858.69, -1.10974, 2892.2 )
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Walls"]
+[node name="ML" type="StaticBody2D" parent="Walls"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/StaticBody2D2"]
-polygon = PoolVector2Array( 1180.18, 1265.94, 1170.87, 1200.77, 1056.04, 1138.7, 506.723, 995.937, 258.443, 853.176, 520.573, 573.451, 1194.74, 248.345, 1454.82, 70.3927, 1275.37, 0.378174, 842.028, -140.27, 686.175, -242.904, 735.592, -322.731, 1282.98, -607.828, 1085.31, -687.655, 727.989, -828.303, 726.719, -902.386, 944.358, -1032.97, 1238.17, -1386.63, 1298.99, -1461.8, 1494.4, -1513.6, 1496.97, -1594.6, 13.9507, -1582.51, -83.9868, 1290.33 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/ML"]
+position = Vector2( -111.674, -987.43 )
+polygon = PoolVector2Array( 526.416, 2844.72, 778.578, 2573, 1067.69, 2446.92, 1280.73, 2275.19, 1251.25, 2171.16, 372.076, 1853.47 )
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="Walls"]
+[node name="MUL" type="StaticBody2D" parent="Walls"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/StaticBody2D3"]
-polygon = PoolVector2Array( 75.6289, 3009.2, 393.848, 3004.31, 1382.78, 2372.76, 1470.9, 2196.52, 1436.63, 2103.5, 648.424, 1814.66, 785.503, 1677.58, 1157.57, 1560.08, 1411.99, 1225.93, 1398.84, 1142.59, 879.682, 921.198, 496.658, 815.936, 623.945, 683.753, 1475.79, 252.932, 2660.55, 492.821, 2215.04, 3273.57, 325.309, 3322.53 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/MUL"]
+polygon = PoolVector2Array( 266.229, 914.655, 288.252, 792.68, 520.573, 573.451, 1194.74, 248.345, 1454.82, 70.3927, 1275.37, 0.378174, 842.028, -140.27, 686.175, -242.904, 156.517, -192.409 )
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="Walls"]
+[node name="UL3" type="StaticBody2D" parent="Walls"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/StaticBody2D4"]
-polygon = PoolVector2Array( 1573.71, -1572.72, 1549.35, -1442.26, 1422.34, -1390.97, 1265.28, -1141.9, 932.374, -877.533, 1446.42, -657.227, 1431.73, -574, 942.165, -290.051, 1691.2, 37.9602, 1412.15, 341.493, 1950.68, 620.547, 2303.17, -1602.09 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/UL3"]
+polygon = PoolVector2Array( 669.819, -203.973, 735.592, -322.731, 1282.98, -607.828, 1085.31, -687.655, 727.989, -828.303, 730.105, -952.097, 657.641, -931.659 )
+
+[node name="UUL" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/UUL"]
+polygon = PoolVector2Array( 727.989, -828.303, 726.719, -902.386, 944.358, -1032.97, 1238.17, -1386.63, 1298.99, -1461.8, 1494.4, -1513.6, 1496.97, -1594.6, 656.607, -1567.74 )
+
+[node name="BR" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/BR"]
+polygon = PoolVector2Array( 75.6289, 3009.2, 393.848, 3004.31, 1382.78, 2372.76, 1470.9, 2196.52, 1436.63, 2103.5, 1670.16, 2081.4, 2215.04, 3273.57, 325.309, 3322.53 )
+
+[node name="BR2" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/BR2"]
+polygon = PoolVector2Array( 1470.9, 2196.52, 1436.63, 2103.5, 648.424, 1814.66, 785.503, 1677.58, 1097.44, 1556.04, 1404.89, 1292.51, 1382.46, 1041.65, 1826.62, 1162.78 )
+
+[node name="BR3" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/BR3"]
+polygon = PoolVector2Array( 1398.84, 1142.59, 879.682, 921.198, 496.658, 815.936, 623.945, 683.753, 1475.79, 252.932 )
+
+[node name="UR" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/UR"]
+polygon = PoolVector2Array( 1444.17, -767.345, 1431.73, -574, 942.165, -290.051, 1691.2, 37.9602, 1412.15, 341.493, 1950.68, 620.547 )
+
+[node name="UR2" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/UR2"]
+polygon = PoolVector2Array( 1639.27, -1497.74, 1422.34, -1390.97, 1265.28, -1141.9, 932.374, -877.533, 1446.42, -657.227 )
 
 [node name="GreenFriendAnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Default"

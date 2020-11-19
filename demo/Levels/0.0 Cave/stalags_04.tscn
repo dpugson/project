@@ -14,4 +14,4 @@ position = Vector2( -784.619, -412.337 )
 scale = Vector2( 1, 0.860119 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PoolVector2Array( 624.547, 492.729, 859.406, 499.388, 1001.47, 492.728, 1137.8, 490.064, 1179.04, 480.74, 1173.32, 444.777, 664.644, 467.42, 624.547, 471.417 )
+polygon = PoolVector2Array( 624.547, 492.729, 1137.8, 490.064, 1179.04, 480.74, 1173.32, 444.777, 624.547, 471.417 )

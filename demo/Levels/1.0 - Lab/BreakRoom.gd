@@ -81,8 +81,24 @@ var talk_lots_log = {
 		[["*sniffle*", "3"], ["*snuffle*", "3"],], null, null, ROBOT_PITCH
 	],
 	"3" : [
-		"TEXT", "You what!? Come again?", ROBOT_SPEECH_SPEED, 
-		null, null, null, ROBOT_PITCH
+		"TEXT", "You what!?", ROBOT_SPEECH_SPEED, 
+		[["*Lay it all out there*", "4"]], null, null, ROBOT_PITCH
+	],
+	"4" : [
+		"TEXT", "Wow!!! A big adventure for a little puppy... You've been through a lot, already!", ROBOT_SPEECH_SPEED, 
+		[["*nod*", "4"]], null, null, ROBOT_PITCH
+	],
+	"5" : [
+		"TEXT", "Hmm... We need to get you home!!! But it sounds like that isn't going to be easy...", ROBOT_SPEECH_SPEED, 
+		[["huh???", "6"]], null, null, ROBOT_PITCH
+	],
+	"6" : [
+		"TEXT", "You said you fell, right? And, from what you've described about your\nhome, I think you must've fallen a very long ways", ROBOT_SPEECH_SPEED, 
+		"7", null, null, ROBOT_PITCH
+	],
+	"7" : [
+		"TEXT", "In fact, I think it's likely you fell over 1000 miles, from the very highest level\nin the map all the way down here, to the very lowest.", ROBOT_SPEECH_SPEED, 
+		"8", null, null, ROBOT_PITCH
 	],
 }
 

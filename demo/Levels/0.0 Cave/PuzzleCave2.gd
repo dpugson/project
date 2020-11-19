@@ -230,7 +230,7 @@ func opine():
 		return
 
 func _on_LowerTZ_transition_triggered():
-	Transition.go_to("res://Levels/0.0 Cave/PuzzleCave1.tscn", "top")
+	Transition.go_to("res://Levels/0.0 Cave/PuzzleCave5.tscn", "top")
 
 
 func _on_BasementTZ_transition_triggered():
@@ -275,4 +275,4 @@ func _on_Door_destroyed():
 	gilby.set_dialogue(congratulate(gilby.VOICE_PITCH))
 
 func _on_UpperTZ_transition_triggered():
-	Transition.go_to("res://Levels/0.0 Cave/PuzzleCave3.tscn", "bottom")
+	Transition.go_to("res://Levels/0.0 Cave/SkelebonesHouse.tscn", "bottom")
