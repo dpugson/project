@@ -77,7 +77,7 @@ script = ExtResource( 4 )
 
 [node name="SecretListener" parent="." instance=ExtResource( 8 )]
 position = Vector2( -262.712, 1071.78 )
-unique_name = "firstsecretlistener"
+unique_name = "firstsecretlistener2"
 
 [node name="SecretListener2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 141.347, 544.494 )
@@ -196,6 +196,7 @@ position = Vector2( 875.965, 3945.88 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/GreenFriend"]
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="YSort/GreenFriend"]

@@ -1,0 +1,259 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://BG.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/L2_lab/giftshop_tile_counter.png" type="Texture" id=2]
+[ext_resource path="res://sprites/L2_lab/giftshop_left_counter.png" type="Texture" id=3]
+[ext_resource path="res://sprites/L2_lab/giftshop-min.png" type="Texture" id=4]
+[ext_resource path="res://sprites/L2_lab/giftshop_right_counter.png" type="Texture" id=5]
+[ext_resource path="res://sprites/L2_lab/giftshop_doll_counter.png" type="Texture" id=6]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/L2_lab/giftshop_counterdoorthing.png" type="Texture" id=8]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Levels/1.0 - Lab/GiftShop.gd" type="Script" id=10]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sprites/L2_lab/giftshop_topofshelf.png" type="Texture" id=13]
+[ext_resource path="res://sprites/trees/talltree2.png" type="Texture" id=14]
+[ext_resource path="res://sprites/trees/mediumtree1.png" type="Texture" id=15]
+[ext_resource path="res://sprites/trees/mediumtree2.png" type="Texture" id=16]
+[ext_resource path="res://sprites/trees/talltree1.png" type="Texture" id=17]
+[ext_resource path="res://world/Floors/DarkLeafFloor.tscn" type="PackedScene" id=18]
+[ext_resource path="res://world/Floors/BrightLeafFloor.tscn" type="PackedScene" id=19]
+[ext_resource path="res://sprites/L2_lab/giftshop_sidewalk_dark.png" type="Texture" id=20]
+[ext_resource path="res://sprites/L2_lab/giftshop_sidewalk.png" type="Texture" id=21]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 160.414, 56.2237 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 289.07, 64.4921 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 73.7007, 62.707 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 44.5999, 410.616 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 194.783, 48.7523 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 58.2828, 34.8185 )
+
+[node name="GiftShop" type="Node2D"]
+script = ExtResource( 10 )
+
+[node name="BG" parent="." instance=ExtResource( 1 )]
+margin_left = -2701.18
+margin_top = -4335.2
+margin_right = 5158.82
+margin_bottom = 4791.8
+
+[node name="Forest" type="Node2D" parent="."]
+position = Vector2( -12.7515, -6.37573 )
+
+[node name="DarkLeafFloor" parent="Forest" instance=ExtResource( 18 )]
+position = Vector2( -857.451, -909.776 )
+region_rect = Rect2( -1063.14, -923.562, 6038.81, 4784.63 )
+
+[node name="BrightLeafFloor" parent="Forest" instance=ExtResource( 19 )]
+modulate = Color( 1, 1, 1, 0.643137 )
+position = Vector2( 343.326, -480.241 )
+
+[node name="giftshop_sidewalk_dark" type="Sprite" parent="Forest"]
+visible = false
+position = Vector2( 1471.61, 165.75 )
+texture = ExtResource( 20 )
+
+[node name="giftshop_sidewalk" type="Sprite" parent="Forest"]
+position = Vector2( 1465.01, 146.913 )
+texture = ExtResource( 21 )
+
+[node name="ColorRect" type="ColorRect" parent="Forest"]
+margin_left = -1811.85
+margin_top = -1648.76
+margin_right = 476.154
+margin_bottom = 2610.24
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="Forest"]
+margin_left = 1369.19
+margin_top = -1864.31
+margin_right = 3657.19
+margin_bottom = 2394.69
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="Forest"]
+margin_left = -1299.27
+margin_top = 1970.61
+margin_right = 988.73
+margin_bottom = 6229.61
+rect_rotation = -44.3623
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mediumtree1" type="Sprite" parent="Forest"]
+position = Vector2( 631.264, -485.547 )
+texture = ExtResource( 15 )
+
+[node name="talltree1" type="Sprite" parent="Forest"]
+position = Vector2( 816.504, -787.609 )
+texture = ExtResource( 17 )
+
+[node name="talltree1" type="Sprite" parent="Forest/talltree1"]
+position = Vector2( -228.847, 83.2172 )
+texture = ExtResource( 17 )
+
+[node name="mediumtree3" type="Sprite" parent="Forest/talltree1"]
+position = Vector2( 75.4158, 556.515 )
+texture = ExtResource( 16 )
+
+[node name="talltree7" type="Sprite" parent="Forest/talltree1"]
+position = Vector2( 343.271, 130.027 )
+texture = ExtResource( 14 )
+
+[node name="talltree2" type="Sprite" parent="Forest/talltree1"]
+position = Vector2( -200.241, 309.464 )
+texture = ExtResource( 14 )
+
+[node name="talltree3" type="Sprite" parent="Forest/talltree1"]
+position = Vector2( 548.714, 18.2037 )
+texture = ExtResource( 17 )
+
+[node name="mediumtree1" type="Sprite" parent="Forest/talltree1"]
+position = Vector2( 208.043, 377.078 )
+texture = ExtResource( 15 )
+
+[node name="talltree4" type="Sprite" parent="Forest/talltree1"]
+position = Vector2( 296.461, 163.834 )
+texture = ExtResource( 17 )
+
+[node name="talltree5" type="Sprite" parent="Forest/talltree1"]
+position = Vector2( 436.891, 288.66 )
+texture = ExtResource( 14 )
+
+[node name="talltree6" type="Sprite" parent="Forest/talltree1"]
+position = Vector2( 70.2146, 312.065 )
+texture = ExtResource( 17 )
+
+[node name="mediumtree2" type="Sprite" parent="Forest/talltree1"]
+position = Vector2( -111.823, 769.759 )
+texture = ExtResource( 16 )
+
+[node name="giftshop-min" type="Sprite" parent="."]
+position = Vector2( 911.987, 428.518 )
+texture = ExtResource( 4 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="tilecounter" type="Node2D" parent="YSort"]
+position = Vector2( 1053.18, 477.524 )
+
+[node name="giftshop_tile_counter" type="Sprite" parent="YSort/tilecounter"]
+position = Vector2( -10.255, -2.49524 )
+texture = ExtResource( 2 )
+
+[node name="rightcounter" type="Node2D" parent="YSort"]
+position = Vector2( 1062.8, 1018.37 )
+
+[node name="giftshop_right_counter" type="Sprite" parent="YSort/rightcounter"]
+position = Vector2( -7.43866, -69.9592 )
+texture = ExtResource( 5 )
+
+[node name="leftcounter" type="Node2D" parent="YSort"]
+position = Vector2( 541.864, 1030.24 )
+
+[node name="giftshop_left_counter" type="Sprite" parent="YSort/leftcounter"]
+position = Vector2( 12.3939, -57.2858 )
+texture = ExtResource( 3 )
+
+[node name="dollcounter" type="Node2D" parent="YSort"]
+position = Vector2( 618.145, 719.086 )
+
+[node name="giftshop_doll_counter" type="Sprite" parent="YSort/dollcounter"]
+position = Vector2( 10.3854, -61.322 )
+texture = ExtResource( 6 )
+
+[node name="player" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 693.298, 827.896 )
+
+[node name="topofshelf" type="Node2D" parent="YSort"]
+position = Vector2( 526.191, 711.005 )
+
+[node name="giftshop_topofshelf" type="Sprite" parent="YSort/topofshelf"]
+position = Vector2( 4.16736, -319.52 )
+texture = ExtResource( 13 )
+
+[node name="giftshop_counterdoorthing" type="Sprite" parent="."]
+position = Vector2( 700.462, 924.355 )
+scale = Vector2( 1.02425, 1 )
+texture = ExtResource( 8 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 9 )]
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -475.324, -1184.1 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 2461.58, 2054.79 )
+
+[node name="TransitionZone" parent="." instance=ExtResource( 11 )]
+
+[node name="TransitionZone2" parent="." instance=ExtResource( 11 )]
+
+[node name="BottomSP" parent="." instance=ExtResource( 12 )]
+position = Vector2( 696.004, 1314.95 )
+
+[node name="TopSP" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1133.49, 313.202 )
+
+[node name="collisions" type="Node2D" parent="."]
+
+[node name="buttoncounter" type="StaticBody2D" parent="collisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/buttoncounter"]
+position = Vector2( 1037.37, 532.515 )
+shape = SubResource( 1 )
+
+[node name="rightcounter" type="StaticBody2D" parent="collisions"]
+position = Vector2( 1047.74, 1042.55 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/rightcounter"]
+position = Vector2( 13.1394, -16.0452 )
+shape = SubResource( 2 )
+
+[node name="leftcounter" type="StaticBody2D" parent="collisions"]
+position = Vector2( 545.26, 1027.61 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/leftcounter"]
+position = Vector2( 9.466, 0 )
+shape = SubResource( 3 )
+
+[node name="bookshelf1" type="StaticBody2D" parent="collisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/bookshelf1"]
+position = Vector2( 525.159, 368.22 )
+shape = SubResource( 4 )
+
+[node name="bookshelf2" type="StaticBody2D" parent="collisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/bookshelf2"]
+position = Vector2( 710.23, 279.643 )
+shape = SubResource( 5 )
+
+[node name="dollshelf" type="StaticBody2D" parent="collisions"]
+position = Vector2( 610.13, 757.896 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/dollshelf"]
+position = Vector2( 3.21429, -10.7144 )
+shape = SubResource( 6 )
+
+[editable path="PuppyCamera"]

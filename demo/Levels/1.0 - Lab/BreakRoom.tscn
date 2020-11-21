@@ -303,7 +303,7 @@ texture = ExtResource( 8 )
 pause_mode = 2
 position = Vector2( 929.088, 445.618 )
 frames = SubResource( 1 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="break_room_fire_fence_thingy" type="Sprite" parent="."]
