@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Levels/1.0 - Lab/blanket_dog.gd" type="Script" id=1]
+[ext_resource path="res://sprites/L2_lab/blanket_dog.png" type="Texture" id=2]
+
+[node name="blanket_dog" type="Sprite"]
+position = Vector2( -0.145447, -30.4169 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )

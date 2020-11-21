@@ -12,7 +12,6 @@ onready var robot = $Robot
 func _ready():
 	var player_position = Vector2.ZERO
 	var orientation = Vector2.DOWN
-	stats.spawn_metadata = "emerge_cutscene"
 	match stats.spawn_metadata:
 		"bathroom":
 			Jukebox.play_song("res://tunes/lab/background_science.wav")

@@ -233,6 +233,7 @@ position = Vector2( 519.083, 630.15 )
 [node name="AnimatedSprite" parent="Robot" instance=ExtResource( 14 )]
 position = Vector2( -1.60675, -118.341 )
 animation = "dogdown"
+frame = 2
 playing = true
 [connection signal="transition_triggered" from="BathroomTZ" to="." method="_on_BathroomTZ_transition_triggered"]
 [connection signal="transition_triggered" from="LabTZ" to="." method="_on_LabTZ_transition_triggered"]

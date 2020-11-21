@@ -4,6 +4,11 @@ onready var stats = PlayerStats
 onready var player = $YSort/player
 onready var doorSP = $DoorSP
 onready var animation = $AnimationPlayer
+onready var audio = $AudioStreamPlayer2D
+onready var timer = $Timer
+onready var blanket_dog = $YSort/blanket_dog
+onready var blanket = $blanket
+onready var ysort = $YSort
 
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 
@@ -81,30 +86,90 @@ var talk_lots_log = {
 		[["*sniffle*", "3"], ["*snuffle*", "3"],], null, null, ROBOT_PITCH
 	],
 	"3" : [
-		"TEXT", "You what!?", ROBOT_SPEECH_SPEED, 
+		"TEXT", "You what?", ROBOT_SPEECH_SPEED, 
 		[["*Lay it all out there*", "4"]], null, null, ROBOT_PITCH
 	],
 	"4" : [
-		"TEXT", "Wow!!! A big adventure for a little puppy... You've been through a lot, already!", ROBOT_SPEECH_SPEED, 
-		[["*nod*", "4"]], null, null, ROBOT_PITCH
+		"TEXT", "Wow!!! A big adventure for a little puppy.\nYou've been through a lot, already.", ROBOT_SPEECH_SPEED, 
+		[["*nod*", "5"]], null, null, ROBOT_PITCH
 	],
 	"5" : [
-		"TEXT", "Hmm... We need to get you home!!! But it sounds like that isn't going to be easy...", ROBOT_SPEECH_SPEED, 
+		"TEXT", "Hmm... We need to get you home!\nBut it sounds like that isn't going to be easy...", ROBOT_SPEECH_SPEED, 
 		[["huh???", "6"]], null, null, ROBOT_PITCH
 	],
 	"6" : [
-		"TEXT", "You said you fell, right? And, from what you've described about your\nhome, I think you must've fallen a very long ways", ROBOT_SPEECH_SPEED, 
+		"TEXT", "You said you fell, right?", ROBOT_SPEECH_SPEED, 
+		"66", null, null, ROBOT_PITCH
+	],
+	"66" : [
+		"TEXT", "From what you've described about\nyour home, I think you must've fallen a very long ways.", ROBOT_SPEECH_SPEED, 
 		"7", null, null, ROBOT_PITCH
 	],
 	"7" : [
-		"TEXT", "In fact, I think it's likely you fell over 1000 miles, from the very highest level\nin the map all the way down here, to the very lowest.", ROBOT_SPEECH_SPEED, 
-		"8", null, null, ROBOT_PITCH
+		"TEXT", "In fact, I think it's likely you fell over 1000 miles.\nYou are very lucky to have survived!", ROBOT_SPEECH_SPEED, 
+		"9", null, null, ROBOT_PITCH
+	],
+	"9" : [
+		"TEXT", "But do not worry!!!\nI have an idea of who could help.", ROBOT_SPEECH_SPEED, 
+		null, [self, "play_beep"], null, ROBOT_PITCH
 	],
 }
 
 func talk_lots():
-	DialogueHelper.showDialogue(self, talk_lots_log, false, [self, "leave_room"])
+	DialogueHelper.showDialogue(self, talk_lots_log, false)
+
+func play_beep():
+	audio.play()
+	timer.start()
+
+func _on_Timer_timeout():
+	DialogueHelper.showDialogue(self, oh_no_log, false, [self, "leave_room"])
+	audio.stop()
+
+var oh_no_log = {
+	"begin" : [
+		"TEXT", "OH NO!!! I have to get back to work!!!", ROBOT_SPEECH_SPEED, 
+		"3", null, null, ROBOT_PITCH
+	],
+	"3" : [
+		"TEXT", "Puppy! I'm so sorry, but I am going to have to\nleave you alone for a little while.", ROBOT_SPEECH_SPEED, 
+		"4", null, null, ROBOT_PITCH
+	],
+	"4" : [
+		"TEXT", "My five minute break is over,\nso now I am required to return to work!", ROBOT_SPEECH_SPEED, 
+		"44", null, null, ROBOT_PITCH
+	],
+	"44" : [
+		"TEXT", "Just stay cozy right here, ok?", ROBOT_SPEECH_SPEED, 
+		"6", null, null, ROBOT_PITCH
+	],
+	"6" : [
+		"TEXT", "I will be back in 23 hours and 55 minutes.", ROBOT_SPEECH_SPEED, 
+		null, null, null, ROBOT_PITCH
+	],
+}
 
 func leave_room():
-	pass
+	animation.play("leave")
 
+func bye_bye():
+	DialogueHelper.showDialogue(self, bye_log, true, [self, "leave_room4real"])
+
+var bye_log = {
+	"begin" : [
+		"TEXT", "Stay cozy! I'll be right back.", ROBOT_SPEECH_SPEED, 
+		null, null, null, ROBOT_PITCH
+	]
+}
+
+func leave_room4real():
+	animation.play("really_leave")
+
+func cutscene_over():
+	blanket_dog.paralyzed = false
+
+func _on_blanket_dog_unwrapped():
+	blanket.visible = true
+	stats.spawn_player(
+		null, ysort, "../../../PuppyCamera",
+		blanket.position, Vector2.DOWN)

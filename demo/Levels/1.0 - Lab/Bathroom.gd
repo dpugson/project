@@ -9,6 +9,37 @@ onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 var ROBOT_PITCH = 2
 var ROBOT_SPEECH_SPEED = 0.05
 
+func _ready():
+	var player_position = player.position
+	var orientation = Vector2.DOWN
+	var spawn_player = true
+	match stats.spawn_metadata:
+		"door":
+			Jukebox.play_song("res://tunes/lab/background_science.wav")
+			player_position = doorSpawnPoint.position
+			orientation = Vector2.UP
+			animation.play("default")
+		"toilet":
+			# TODO
+#			player_position = toiletSpawnPoint.position
+#			orientation = Vector2.DOWN
+			pass
+		"emerge_cutscene":
+			Jukebox.play_song("res://tunes/lab/sleepypuppy.wav")
+			player.queue_free()
+			spawn_player = false
+			animation.play("cutscene")
+		_:
+			Jukebox.play_song("res://tunes/lab/background_science.wav")
+			player_position = doorSpawnPoint.position
+			orientation = Vector2.UP
+			animation.play("default")
+	if spawn_player:
+		stats.spawn_player(
+			player, null, 
+			"../../../PuppyCamera", player_position, orientation)
+
+
 var cutscene_dialogue_1 = {
 	"begin" : [
 		"TEXT", "Sigh...", ROBOT_SPEECH_SPEED, 
@@ -150,38 +181,6 @@ func leave_room():
 
 func finish_cutscene():
 	Transition.go_to("res://Levels/1.0 - Lab/labhallway.tscn", "emerge_cutscene")
-
-func _ready():
-	var player_position = player.position
-	var orientation = Vector2.DOWN
-	stats.spawn_metadata = "emerge_cutscene"
-	var spawn_player = true
-	match stats.spawn_metadata:
-		"door":
-			Jukebox.play_song("res://tunes/lab/background_science.wav")
-			player_position = doorSpawnPoint.position
-			orientation = Vector2.UP
-			animation.play("default")
-		"toilet":
-			# TODO
-#			player_position = toiletSpawnPoint.position
-#			orientation = Vector2.DOWN
-			pass
-		"emerge_cutscene":
-			Jukebox.play_song("res://tunes/lab/sleepypuppy.wav")
-			player.queue_free()
-			spawn_player = false
-			animation.play("cutscene")
-		_:
-			Jukebox.play_song("res://tunes/lab/background_science.wav")
-			player_position = doorSpawnPoint.position
-			orientation = Vector2.UP
-			animation.play("default")
-	if spawn_player:
-		stats.spawn_player(
-			player, null, 
-			"../../../PuppyCamera", player_position, orientation)
-
 
 func _on_DoorTZ_transition_triggered():
 	Transition.go_to("res://Levels/1.0 - Lab/labhallway.tscn", "bathroom")
