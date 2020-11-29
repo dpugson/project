@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sprites/effects/arrow.png" type="Texture" id=1]
+[ext_resource path="res://effects/SmellArrow.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "default"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("arrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.71048, 5.18112 ), Vector2( 0.0687561, -14.4466 ) ]
+}
+
+[node name="SmellArrow" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+anims/default = SubResource( 1 )
+
+[node name="arrow" type="Sprite" parent="."]
+position = Vector2( 0.534701, -0.195251 )
+texture = ExtResource( 1 )

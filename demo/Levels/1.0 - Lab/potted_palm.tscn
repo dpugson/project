@@ -3,8 +3,8 @@
 [ext_resource path="res://sprites/L2_lab/potted_palm.png" type="Texture" id=1]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 19.8256
-height = 27.5604
+radius = 11.0774
+height = 43.3042
 
 [node name="potted_palm" type="Node2D"]
 
@@ -16,6 +16,6 @@ texture = ExtResource( 1 )
 position = Vector2( -1.74939, 7.87219 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 2.0127, 10.4725 )
+position = Vector2( 1.13801, 18.3447 )
 rotation = 1.5708
 shape = SubResource( 1 )

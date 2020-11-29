@@ -11,7 +11,7 @@
 extents = Vector2( 64.0326, 15.9854 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 44.6931, 46.5597 )
+extents = Vector2( 52.3833, 37.4585 )
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 82.7817
@@ -40,13 +40,15 @@ position = Vector2( 0, -2.50119 )
 shape = SubResource( 1 )
 
 [node name="SeenBox" parent="." instance=ExtResource( 3 )]
-visible = false
 position = Vector2( 0.933838, 15.8757 )
 
 [node name="CollisionShape2D" parent="SeenBox" index="0"]
-position = Vector2( 0.23163, -87.4602 )
-scale = Vector2( 1.67005, 2.08205 )
+position = Vector2( 1.06537, -49.9421 )
+scale = Vector2( 1.5, 1.5 )
 shape = SubResource( 2 )
+
+[node name="SmellArrow" parent="SeenBox/CollisionShape2D" index="0"]
+position = Vector2( -1.19751, -149.664 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 4 )]
 visible = false

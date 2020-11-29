@@ -28,6 +28,12 @@ signal save_complete
 
 const SAVE_FILE_LOCATION = "user://savegame.save"
 
+func _input(event):
+	if event.is_action_pressed("smell"):
+		start_smell_mode()
+	if event.is_action_released("smell"):
+		end_smell_mode()
+
 func update_volumes():
 	for volume_pair in [
 		["Master", main_volume],
@@ -113,6 +119,11 @@ func inventory_add(item_name):
 	
 func inventory_get(item_name: String) -> int:
 	return inventory.get(item_name, 0)
+
+func inventory_remove(item_name):
+	var count = inventory.get(item_name, 1) - 1
+	inventory[item_name] = count
+	
 	
 func check_bool(stat_name: String) -> bool:
 	return world_state.get(stat_name, false)
@@ -131,4 +142,11 @@ func set_health(value):
 func _ready():
 	self.health = max_health
 	load_game()
+
+signal smell_mode_started
+signal smell_mode_ended
+func start_smell_mode():
+	emit_signal("smell_mode_started")
+func end_smell_mode():
+	emit_signal("smell_mode_ended")
 

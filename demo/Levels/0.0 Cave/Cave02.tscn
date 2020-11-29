@@ -41,7 +41,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="cave_02"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cave_02/StaticBody2D"]
-polygon = PoolVector2Array( -552.186, 22.07, -61.8123, 6.2515, -56.5394, -107.114, 94.9772, -84.768, 92.2538, -3.00394, 488.99, -15.2381, 507.654, -383.938, -554.822, -357.574 )
+polygon = PoolVector2Array( -552.186, 22.07, -73.0518, 3.53561, 6.95923, -222.837, 92.2538, -3.00394, 533.861, -4.27036, 1.10474, -449.21 )
 
 [node name="YSort" type="YSort" parent="."]
 __meta__ = {
@@ -61,7 +61,7 @@ position = Vector2( 590.005, 624.504 )
 position = Vector2( 946.908, 966.313 )
 
 [node name="Sign" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 1108.14, 827.518 )
+position = Vector2( 1098.82, 787.91 )
 max_health = 3
 text = "Hello, Friend, and Welcome to the Caves!"
 revive_text = "SHAME!!!"
@@ -87,11 +87,10 @@ text = "I like to think of these signs as my legacy... My form of immortality in
 revive_text = "WHO KEEPS DESTROYING MY SIGNS???"
 
 [node name="Sign5" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( -832.644, 1226.18 )
+position = Vector2( 537.34, 653.023 )
 max_health = 5
-text = "Beyond this sign starts the Marvelous Cave Tour!
-I hope you (assuming anyone ever reads this) enjoy it!
-This cave truly is filled with marvelous wonders."
+text = "And did you know that \"SHIFT\" lets you
+see things you can interact with using \"L\"?"
 unique_name = "final_cave2_sign"
 
 [node name="stalags_03" type="Sprite" parent="."]
@@ -119,7 +118,13 @@ __meta__ = {
 scale = Vector2( 0.7321, 0.7321 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cave_02_frame/StaticBody2D"]
-polygon = PoolVector2Array( -697.92, -20.2995, -692.771, 586.051, -134.63, 627.993, -140.982, 971.603, 129.923, 973.201, 125.084, 634.445, 679.999, 618.314, 661.222, -66.9997, 1401.42, 517.429, 1.12085, 1322.6, -1376.9, 488.787 )
+polygon = PoolVector2Array( -697.92, -20.2995, -692.771, 586.051, -134.63, 627.993, -140.982, 971.603, -1036.99, 1109.33 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="cave_02_frame"]
+scale = Vector2( 0.7321, 0.7321 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cave_02_frame/StaticBody2D2"]
+polygon = PoolVector2Array( 129.923, 973.201, 125.084, 634.445, 679.999, 618.314, 661.222, -66.9997, 1212.02, 1138.58 )
 
 [node name="Drops" type="Node2D" parent="."]
 

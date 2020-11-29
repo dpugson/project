@@ -2,6 +2,8 @@ extends Node2D
 
 onready var stats = PlayerStats
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
+onready var seen_box = $SeenBox
+onready var collision_shape = $SeenBox/CollisionShape2D
 
 export var save_spot_name = "DefaultSaveSpot"
 export(String) var home = null
@@ -11,6 +13,10 @@ func _ready():
 	save_dialogue["begin"] = [
 		"TEXT", flavor_text, 0.03, "query"
 	]
+	if home == null:
+		collision_shape.disabled = true
+		seen_box.visible = false
+		
 
 var save_dialogue = {
 	"query" : [

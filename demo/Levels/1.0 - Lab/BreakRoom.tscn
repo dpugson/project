@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://BG.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/L2_lab/break_room_fire_fence_thingy.png" type="Texture" id=2]
@@ -135,7 +135,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 resource_name = "leave"
 length = 2.4
 tracks/0/type = "value"
@@ -201,7 +201,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 resource_name = "really_leave"
 length = 0.5
 tracks/0/type = "value"
@@ -267,8 +267,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "sit_down"
+[sub_resource type="Animation" id=7]
 length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/ROBOT/robot:animation")
@@ -333,7 +332,7 @@ tracks/4/keys = {
 "values": [ Vector2( 937.248, 869 ), Vector2( 937.248, 770.155 ), Vector2( 843.234, 770.155 ), Vector2( 843.234, 651.255 ), Vector2( 754.75, 651.255 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=8]
 length = 1.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/ROBOT/robot:visible")
@@ -443,6 +442,15 @@ extents = Vector2( 57.8392, 62.1025 )
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 82.4779, 78.1178 )
 
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 53.0645, 135.414 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 76.4616, 77.2741 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 61.9308, 63.8613 )
+
 [node name="BreakRoom" type="Node2D"]
 script = ExtResource( 9 )
 
@@ -459,7 +467,7 @@ texture = ExtResource( 8 )
 pause_mode = 2
 position = Vector2( 929.088, 445.618 )
 frames = SubResource( 1 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="break_room_fire_fence_thingy" type="Sprite" parent="."]
@@ -478,10 +486,6 @@ margin_right = 2628.91
 margin_bottom = 1734.47
 
 [node name="YSort" type="YSort" parent="."]
-
-[node name="player" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 942.517, 625.243 )
-camera = NodePath("../../PuppyCamera")
 
 [node name="teatable" type="Node2D" parent="YSort"]
 position = Vector2( 730.488, 701.76 )
@@ -506,6 +510,10 @@ position = Vector2( 941.291, 892.97 )
 [node name="robot" parent="YSort/ROBOT" instance=ExtResource( 15 )]
 position = Vector2( -7.36664, -113.317 )
 animation = "up"
+
+[node name="player" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 934.822, 674.19 )
+camera = NodePath("../../PuppyCamera")
 
 [node name="DoorTZ" parent="." instance=ExtResource( 13 )]
 position = Vector2( 932.987, 973.315 )
@@ -536,10 +544,10 @@ position = Vector2( 935.546, 868.151 )
 autoplay = "default"
 anims/back_off = SubResource( 3 )
 anims/default = SubResource( 4 )
-anims/leave = SubResource( 7 )
-anims/really_leave = SubResource( 8 )
-anims/sit_down = SubResource( 5 )
-anims/walk_in = SubResource( 6 )
+anims/leave = SubResource( 5 )
+anims/really_leave = SubResource( 6 )
+anims/sit_down = SubResource( 7 )
+anims/walk_in = SubResource( 8 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 17 )
@@ -573,13 +581,33 @@ position = Vector2( -20.943, 1.23193 )
 shape = SubResource( 11 )
 
 [node name="pillows1" parent="SeenZones" instance=ExtResource( 19 )]
-position = Vector2( 928.903, 465.229 )
+position = Vector2( 1113.26, 640.733 )
+
+[node name="CollisionShape2D" parent="SeenZones/pillows1" index="0"]
+shape = SubResource( 12 )
 
 [node name="pillows2" parent="SeenZones" instance=ExtResource( 19 )]
 position = Vector2( 928.903, 465.229 )
+
+[node name="CollisionShape2D" parent="SeenZones/pillows2" index="0"]
+position = Vector2( -176.604, 380.033 )
+shape = SubResource( 13 )
+
+[node name="pillows3" parent="SeenZones" instance=ExtResource( 19 )]
+position = Vector2( 928.903, 465.229 )
+
+[node name="CollisionShape2D" parent="SeenZones/pillows3" index="0"]
+position = Vector2( -187.781, 58.1227 )
+shape = SubResource( 14 )
 [connection signal="unwrapped" from="YSort/blanket_dog" to="." method="_on_blanket_dog_unwrapped"]
 [connection signal="transition_triggered" from="DoorTZ" to="." method="_on_DoorTZ_transition_triggered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="seen" from="SeenZones/fire" to="." method="_on_fire_seen"]
+[connection signal="seen" from="SeenZones/teaset" to="." method="_on_teaset_seen"]
+[connection signal="seen" from="SeenZones/bear" to="." method="_on_bear_seen"]
+[connection signal="seen" from="SeenZones/pillows1" to="." method="_on_pillows1_seen"]
+[connection signal="seen" from="SeenZones/pillows2" to="." method="_on_pillows2_seen"]
+[connection signal="seen" from="SeenZones/pillows3" to="." method="_on_pillows3_seen"]
 
 [editable path="DoorTZ"]
 
@@ -594,3 +622,5 @@ position = Vector2( 928.903, 465.229 )
 [editable path="SeenZones/pillows1"]
 
 [editable path="SeenZones/pillows2"]
+
+[editable path="SeenZones/pillows3"]

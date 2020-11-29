@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://sprites/L2_lab/safety_poster.png" type="Texture" id=1]
 [ext_resource path="res://Levels/1.0 - Lab/potted_palm.tscn" type="PackedScene" id=2]
@@ -14,18 +14,25 @@
 [ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=12]
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Levels/1.0 - Lab/RobotSprite.tscn" type="PackedScene" id=14]
+[ext_resource path="res://hitnhurtboxes/SeenBox.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Brains/SaveStar.tscn" type="PackedScene" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 67.2606, 49.3467 )
+extents = Vector2( 52.5469, 67.2289 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 132.01, 47.258 )
+extents = Vector2( 69.4406, 112.285 )
 
 [sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 67.2606, 49.3467 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 132.01, 47.258 )
+
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 67.9907, 49.7416 )
 
-[sub_resource type="Animation" id=4]
-resource_name = "default"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Robot:position")
 tracks/0/interp = 1
@@ -51,8 +58,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "walk_across"
+[sub_resource type="Animation" id=7]
 length = 6.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Robot/AnimatedSprite:visible")
@@ -141,6 +147,12 @@ tracks/6/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 120.157, 73.1631 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 181.693, 34.2334 )
+
 [node name="labhallway" type="Node2D"]
 position = Vector2( 21.4873, 12.8923 )
 script = ExtResource( 11 )
@@ -148,6 +160,28 @@ script = ExtResource( 11 )
 [node name="lab_hallway" type="Sprite" parent="."]
 position = Vector2( 1176.84, 534.761 )
 texture = ExtResource( 8 )
+
+[node name="RoomWalls" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RoomWalls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomWalls/StaticBody2D"]
+polygon = PoolVector2Array( 2033.38, 566.193, 1842.25, 568.341, 1783.23, 408.01, 1726.29, 561.898, 1262.14, 567.122, 1263.16, 384.143, 2278.19, 379.362 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="RoomWalls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomWalls/StaticBody2D2"]
+polygon = PoolVector2Array( 308.943, 890.465, 2022.64, 905.497, 2033.38, 566.193, 2278.19, 379.362, 2248.13, 1075.15, 87.7514, 1060.12 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="RoomWalls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomWalls/StaticBody2D3"]
+polygon = PoolVector2Array( 454.973, 566.193, 308.943, 561.898, 308.943, 890.465, 87.7514, 1060.12, 98.4889, 329.969, 457.12, 377.214 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="RoomWalls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomWalls/StaticBody2D4"]
+polygon = PoolVector2Array( 1032.45, 386.795, 1028.35, 574.783, 592.412, 566.193, 601.002, 379.362 )
 
 [node name="BG" parent="." instance=ExtResource( 4 )]
 
@@ -167,21 +201,37 @@ position = Vector2( 1575.31, 563.85 )
 [node name="glasses_box" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 1391.36, 572.721 )
 
+[node name="glassesbox" parent="YSort/glasses_box" instance=ExtResource( 15 )]
+position = Vector2( 0.751587, 5.90717 )
+
 [node name="potted_palm" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 1612.96, 650.276 )
+position = Vector2( 1617.91, 640.965 )
 
 [node name="waste_bin" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 662.948, 594.549 )
 
+[node name="wastebin" parent="YSort/waste_bin" instance=ExtResource( 15 )]
+position = Vector2( -0.941162, 4.58569 )
+
+[node name="CollisionShape2D" parent="YSort/waste_bin/wastebin" index="0"]
+position = Vector2( 3.69836, -18.4918 )
+shape = SubResource( 1 )
+
 [node name="vending_machine" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 903.141, 574.479 )
 
-[node name="Node2D2" type="Node2D" parent="."]
+[node name="sodamachine" parent="YSort/vending_machine" instance=ExtResource( 15 )]
+position = Vector2( -0.740601, -30.8197 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="CollisionShape2D" parent="YSort/vending_machine/sodamachine" index="0"]
+position = Vector2( -3.52374, 10.5712 )
+shape = SubResource( 2 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PoolVector2Array( 454.973, 566.193, 308.943, 561.898, 308.943, 890.465, 628.92, 894.76, 843.669, 905.497, 1148.61, 899.055, 2022.64, 905.497, 2033.38, 566.193, 1842.25, 568.341, 1837.96, 469.556, 1721.99, 467.409, 1726.29, 561.898, 1253.84, 566.193, 1260.28, 469.556, 1026.21, 465.261, 1028.35, 574.783, 592.412, 566.193, 601.002, 379.362, 2278.19, 379.362, 2248.13, 1075.15, 87.7514, 1060.12, 98.4889, 329.969, 457.12, 377.214 )
+[node name="SaveStar" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 1125.83, 754.078 )
+save_spot_name = "The Lab - Back Hallway"
+home = "res://Levels/1.0 - Lab/labhallway.tscn"
+flavor_text = "Greetings, Soggy Star!"
 
 [node name="PuppyCamera" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1018.28, 551.972 )
@@ -206,25 +256,25 @@ position = Vector2( 515.91, 501.289 )
 
 [node name="CollisionShape2D" parent="BathroomTZ" index="0"]
 position = Vector2( 0, -4.17743 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="LabTZ" parent="." instance=ExtResource( 13 )]
 position = Vector2( 1136.26, 465.781 )
 
 [node name="CollisionShape2D" parent="LabTZ" index="0"]
 position = Vector2( 6.26599, 20.887 )
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="BreakRoomTZ" parent="." instance=ExtResource( 13 )]
 position = Vector2( 1783.75, 513.821 )
 
 [node name="CollisionShape2D" parent="BreakRoomTZ" index="0"]
 position = Vector2( 0, -15.3073 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/default = SubResource( 4 )
-anims/walk_across = SubResource( 5 )
+anims/default = SubResource( 6 )
+anims/walk_across = SubResource( 7 )
 
 [node name="Robot" type="Node2D" parent="."]
 visible = false
@@ -233,11 +283,32 @@ position = Vector2( 519.083, 630.15 )
 [node name="AnimatedSprite" parent="Robot" instance=ExtResource( 14 )]
 position = Vector2( -1.60675, -118.341 )
 animation = "dogdown"
-frame = 2
 playing = true
+
+[node name="labdoor" type="Node2D" parent="."]
+position = Vector2( 1138.87, 541.536 )
+
+[node name="laboratorydoor" parent="labdoor" instance=ExtResource( 15 )]
+
+[node name="CollisionShape2D" parent="labdoor/laboratorydoor" index="0"]
+position = Vector2( 0, -44.0466 )
+shape = SubResource( 8 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="labdoor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="labdoor/StaticBody2D"]
+shape = SubResource( 9 )
+[connection signal="seen" from="YSort/glasses_box/glassesbox" to="." method="_on_glassesbox_seen"]
+[connection signal="seen" from="YSort/waste_bin/wastebin" to="." method="_on_wastebin_seen"]
+[connection signal="seen" from="YSort/vending_machine/sodamachine" to="." method="_on_sodamachine_seen"]
 [connection signal="transition_triggered" from="BathroomTZ" to="." method="_on_BathroomTZ_transition_triggered"]
 [connection signal="transition_triggered" from="LabTZ" to="." method="_on_LabTZ_transition_triggered"]
 [connection signal="transition_triggered" from="BreakRoomTZ" to="." method="_on_BreakRoomTZ_transition_triggered"]
+[connection signal="seen" from="labdoor/laboratorydoor" to="." method="_on_laboratorydoor_seen"]
+
+[editable path="YSort/waste_bin/wastebin"]
+
+[editable path="YSort/vending_machine/sodamachine"]
 
 [editable path="PuppyCamera"]
 
@@ -246,3 +317,5 @@ playing = true
 [editable path="LabTZ"]
 
 [editable path="BreakRoomTZ"]
+
+[editable path="labdoor/laboratorydoor"]

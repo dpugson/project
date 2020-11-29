@@ -560,7 +560,6 @@ anims/show_actions = SubResource( 3 )
 anims/show_text = SubResource( 4 )
 
 [node name="FetchGameContainer" type="PanelContainer" parent="."]
-visible = false
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 0.827881
 margin_right = 1906.83
@@ -582,15 +581,14 @@ __meta__ = {
 
 [node name="Panel" type="Panel" parent="DecisionStuff"]
 margin_left = 188.705
-margin_top = 743.0
+margin_top = 843.043
 margin_right = 1764.7
-margin_bottom = 1045.0
+margin_bottom = 1049.04
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MainChoices" type="Control" parent="DecisionStuff"]
-visible = false
 margin_left = 193.691
 margin_top = 830.851
 margin_right = 233.691
@@ -622,6 +620,7 @@ __meta__ = {
 }
 
 [node name="Actions" type="GridContainer" parent="DecisionStuff"]
+visible = false
 margin_left = 936.399
 margin_top = 877.8
 margin_right = 984.399
@@ -638,6 +637,7 @@ __meta__ = {
 }
 
 [node name="ActBackButton" type="Button" parent="DecisionStuff"]
+visible = false
 margin_left = 220.916
 margin_top = 914.258
 margin_right = 372.916
@@ -706,11 +706,10 @@ anims/go_to_game = SubResource( 5 )
 anims/leave_game = SubResource( 6 )
 
 [node name="PlayerStats" type="Control" parent="."]
-margin_left = 150.918
-margin_top = 990.646
-margin_right = 190.918
-margin_bottom = 1030.65
-rect_scale = Vector2( 0.5, 0.5 )
+margin_left = 24.6641
+margin_top = 9.61929
+margin_right = 64.6641
+margin_bottom = 49.6233
 __meta__ = {
 "_edit_use_anchors_": false
 }

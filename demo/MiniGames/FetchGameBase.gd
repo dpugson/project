@@ -17,6 +17,8 @@ onready var right_endpoint = $right_endpoint
 onready var ball = $YSort/ball
 onready var ball2 = $DogWithBallFront/ball2
 
+onready var start_label = $Label
+
 const RADIUS = 2500
 
 const win_position = Vector2(856.628, 972.276)
@@ -37,7 +39,7 @@ var round_info = {
 		["____**", 4],
 		["_****_", 3],
 		["**__**", 5],
-	]
+	],
 }
 
 var round_index = 0
@@ -60,12 +62,20 @@ func _ready():
 	if auto_start:
 		start()
 
-func set_ball_texture(new_texture):
-	if new_texture != null:
+func set_ball_texture(new_texture, is_obj=false):
+	if new_texture == null:
+		return
+	if is_obj:
+		ball.texture = null
+		ball2.texture = null
+		ball.add_child(new_texture.instance())
+		ball2.add_child((new_texture.instance()))
+	else:
 		ball.texture = new_texture
 		ball2.texture = new_texture
 
 func start():
+	start_label.text = round_info.get("start_text", "GO FETCH!")
 	animation.play("intro")
 
 func intro_complete():

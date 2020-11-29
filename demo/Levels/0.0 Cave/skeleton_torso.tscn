@@ -5,11 +5,9 @@
 [ext_resource path="res://hitnhurtboxes/SeenBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/0.0 Cave/skeleton_torso.gd" type="Script" id=4]
 
-
-
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 109.964
-height = 98.4587
+radius = 66.4334
+height = 71.5116
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 34.3641
@@ -25,10 +23,10 @@ position = Vector2( 0, 99.6503 )
 texture = ExtResource( 2 )
 
 [node name="SeenBox" parent="." instance=ExtResource( 3 )]
-visible = false
+position = Vector2( -33.1655, -68.4039 )
 
 [node name="CollisionShape2D" parent="SeenBox" index="0"]
-position = Vector2( -1.03638, 11.4007 )
+position = Vector2( 7.255, 34.202 )
 shape = SubResource( 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

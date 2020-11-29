@@ -15,6 +15,9 @@ var dialogue_index = "begin"
 var character_index = 0
 var waiting_for_input = INPUT_TYPE.NONE
 var options_container = null
+func set_dialogue_index(value):
+	dialogue_index = value
+	action_text = null
 
 var dialogue = {
 	"begin" : ["TEXT", "I bet you are wondering what I am going to say, huh?", 0.03, "1", null],
@@ -97,7 +100,7 @@ func top_mode():
 # of two element array pairs [tag, content].
 func init(input_text):
 	textLabel.text = ""
-	dialogue_index = "begin"
+	set_dialogue_index("begin")
 	character_index = 0
 	dialogue = input_text
 	
@@ -140,7 +143,7 @@ func handle_button_click2(next):
 	if next == null:
 		stop()
 		return
-	dialogue_index = next
+	set_dialogue_index(next)
 	textLabel.text = ""
 	waiting_for_input = false
 	options_container.queue_free()
@@ -158,7 +161,7 @@ func handle_next():
 #			if button.name == "END":
 #				stop()
 #				return
-#			dialogue_index = button.name
+#			set_dialogue_index(button.name)
 #	textLabel.text = ""
 #	waiting_for_input = false
 #	options_container.queue_free()
@@ -224,8 +227,18 @@ func get_type():
 func get_eval_stuff():
 	return get_row()[1]
 
+var action_text = null
 func get_text():
-	return get_row()[1]
+	var text_obj = get_row()[1]
+	match typeof(text_obj):
+		TYPE_STRING:
+			return text_obj
+		TYPE_ARRAY:
+			if action_text == null:
+				action_text = get_row()[1][0].call(get_row()[1][1])
+			return action_text
+		_:
+			return text_obj
 	
 func get_wait_time():
 	return get_row()[2]
@@ -278,7 +291,7 @@ func advance_dialogue_counter_and_wait():
 	debugprint("advance_dialogue_counter_and_wait")
 	seen[dialogue_index] = true
 	character_index = 0
-	dialogue_index = get_next_dialogue()
+	set_dialogue_index(get_next_dialogue())
 	if is_dialogue_at_end(dialogue_index):
 		wait_for_done()
 		return

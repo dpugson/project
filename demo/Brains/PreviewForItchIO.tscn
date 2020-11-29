@@ -49,18 +49,6 @@ position = Vector2( 731.379, -160.913 )
 [node name="SaveStar13" parent="ParallaxBackground/ParallaxBackground/ParallaxLayer5/Node2D" index="6"]
 position = Vector2( -2256.01, 365.798 )
 
-[node name="SaveStar26" parent="ParallaxBackground/ParallaxBackground/ParallaxLayer5/Node2D" index="15"]
-position = Vector2( -912.903, 936.712 )
-
-[node name="SaveStar27" parent="ParallaxBackground/ParallaxBackground/ParallaxLayer5/Node2D" index="16"]
-position = Vector2( -1936.15, 612.51 )
-
-[node name="SaveStar36" parent="ParallaxBackground/ParallaxBackground/ParallaxLayer5/Node2D" index="24"]
-position = Vector2( -1203.56, 664.279 )
-
-[node name="SaveStar42" parent="ParallaxBackground/ParallaxBackground/ParallaxLayer5/Node2D" index="30"]
-position = Vector2( -1830.31, 926.756 )
-
 [node name="ParallaxLayer3" parent="ParallaxBackground/ParallaxBackground" index="2"]
 position = Vector2( -92.2796, 132.961 )
 
@@ -100,11 +88,21 @@ position = Vector2( 875.929, 533.402 )
 texture = ExtResource( 7 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 733.651
-margin_top = 304.42
-margin_right = 1023.65
-margin_bottom = 375.42
+margin_left = 734.69
+margin_top = 238.985
+margin_right = 1024.69
+margin_bottom = 309.985
 text = "DOGGO QUEST"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 641.211
+margin_top = 316.884
+margin_right = 1137.21
+margin_bottom = 387.884
+text = "DEMO AVAILABLE NOW!"
 __meta__ = {
 "_edit_use_anchors_": false
 }

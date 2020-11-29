@@ -49,7 +49,7 @@ margin_right = 2750.06
 margin_bottom = 3361.9
 
 [node name="WaveTexture" parent="." instance=ExtResource( 2 )]
-position = Vector2( 176.176, 1723.16 )
+position = Vector2( 338.984, 3625.44 )
 
 [node name="stichtogetherbigcave-min" type="Sprite" parent="."]
 position = Vector2( 1147.06, 1562.9 )
@@ -115,9 +115,9 @@ position = Vector2( 1134.93, 2235.65 )
 texture = ExtResource( 12 )
 
 [node name="Drips" type="Node2D" parent="."]
-visible = false
 
 [node name="PersistentWaterdrop" parent="Drips" instance=ExtResource( 11 )]
+visible = false
 position = Vector2( 778.344, 502.839 )
 wait_time = 2.7
 
@@ -125,6 +125,7 @@ wait_time = 2.7
 position = Vector2( -4.12048, 49.1136 )
 
 [node name="PersistentWaterdrop2" parent="Drips" instance=ExtResource( 11 )]
+visible = false
 position = Vector2( 1095.63, 570.83 )
 wait_time = 1.8
 
@@ -135,6 +136,7 @@ position = Vector2( 6.18085, -117.562 )
 position = Vector2( -4.12048, 49.1136 )
 
 [node name="PersistentWaterdrop5" parent="Drips" instance=ExtResource( 11 )]
+visible = false
 position = Vector2( 210.955, 727.232 )
 wait_time = 2.2
 
@@ -145,6 +147,7 @@ position = Vector2( 6.18085, -117.562 )
 position = Vector2( 3.21341, 14.4618 )
 
 [node name="PersistentWaterdrop6" parent="Drips" instance=ExtResource( 11 )]
+visible = false
 position = Vector2( 1757.02, 932.289 )
 wait_time = 2.2
 
@@ -155,6 +158,7 @@ position = Vector2( 6.18085, -117.562 )
 position = Vector2( -4.88486, 404.687 )
 
 [node name="PersistentWaterdrop3" parent="Drips" instance=ExtResource( 11 )]
+visible = false
 position = Vector2( 1544.78, 947.868 )
 wait_time = 2.0
 fall_speed = 20.0
@@ -166,6 +170,7 @@ position = Vector2( 6.18085, -117.562 )
 position = Vector2( 2.06055, -0.334198 )
 
 [node name="PersistentWaterdrop4" parent="Drips" instance=ExtResource( 11 )]
+visible = false
 position = Vector2( 466.659, 506.959 )
 wait_time = 4.0
 fall_speed = 130.0
@@ -188,6 +193,7 @@ position = Vector2( 6.18085, -117.562 )
 position = Vector2( 0.000183105, 821.349 )
 
 [node name="PersistentWaterdrop8" parent="Drips" instance=ExtResource( 11 )]
+visible = false
 position = Vector2( 1025.66, 240.644 )
 wait_time = 3.15
 fall_speed = 900.0

@@ -86,6 +86,7 @@ func init(input_battle_impl):
 	
 	for option in battle_impl["options"]:
 		var button = Button.new()
+		button.rect_min_size.x = 300
 		button.text = option
 		button.connect("pressed", action_handler[0], action_handler[1], [option])
 		actions.add_child(button)
@@ -120,12 +121,12 @@ func _on_ActBackButton_pressed():
 	animation.play("act_contract")
 	act_button.grab_focus()
 
-func launch_fetch_game(data, callback, item=null):
+func launch_fetch_game(data, callback, item=null, is_item_obj=false):
 	var fetch_game = FetchGame.instance()
 	fetch_game.auto_start = false
 	fetch_game.round_info = data
 	fetch_game_container.add_child(fetch_game)
-	fetch_game.set_ball_texture(item)
+	fetch_game.set_ball_texture(item, is_item_obj)
 	fetch_game_controller.play("go_to_game")
 	fetch_game.connect("round_over", self, "fetch_game_complete_handler", [fetch_game, callback])
 	fetch_game.start()

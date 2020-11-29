@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://hitnhurtboxes/hitbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/L2_lab/waste_bin.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 23.7613
+
+[node name="VendingMachineObstacle" type="Node2D"]
+
+[node name="HitBox" parent="." instance=ExtResource( 1 )]
+collision_mask = 8
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2( -3.27695, 14.2002 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="waste_bin" type="Sprite" parent="."]
+position = Vector2( -1.36218, -19.0754 )
+texture = ExtResource( 2 )
+
+[editable path="HitBox"]

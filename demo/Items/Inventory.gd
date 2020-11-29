@@ -7,6 +7,7 @@ onready var item_description = $Description/MarginContainer/VBoxContainer/ItemDe
 onready var button_theme = preload("res://Themes/ListButtonTheme.tres")
 onready var exit_button = $List/Button
 onready var g_label = $G_panel/Label
+onready var scroll_container = $List/MarginContainer/VBoxContainer/ScrollContainer
 
 var item_click_handler = null
 
@@ -51,6 +52,13 @@ func decrement_item(label, item, prev):
 	else:
 		label.text = item_name
 
+func _on_focus_change(label):
+	var focus_offset = label.rect_position.y
+	var scrolled_top = scroll_container.get_v_scroll()
+	var scrolled_bottom = scrolled_top + scroll_container.rect_size.y - label.rect_size.y
+	if focus_offset < scrolled_top or focus_offset >= scrolled_bottom:
+		scroll_container.scroll_vertical = focus_offset
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	exit_button.grab_focus()
@@ -59,8 +67,10 @@ func _ready():
 	var prev = exit_button
 	for item in stats.inventory:
 		var item_data = ItemRegistry.get(item)
-		var label = Button.new()
 		var count = stats.inventory[item]
+		if count == 0:
+			continue
+		var label = Button.new()
 		label.connect("focus_entered", self, 'handle_focus_entered', [label, item_data])
 		label.connect("focus_exited", self, 'handle_focus_exited', [label, item_data])
 		label.connect("mouse_entered", self, 'handle_focus_entered', [label, item_data])
@@ -69,6 +79,7 @@ func _ready():
 		label.theme = button_theme
 		label.align = Button.ALIGN_LEFT
 		items_list.add_child(label)
+		label.connect('focus_entered', self, '_on_focus_change', [label])
 		if count > 1:
 			label.text = item_data['name'] + ' x' + str(count)
 		else:

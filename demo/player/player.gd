@@ -136,7 +136,7 @@ func turbo_move(delta):
 
 func in_water():
 	var areas = water_detector.get_overlapping_areas()
-	if areas.size() > 0:
+	if not areas.empty():
 		return true
 	else:
 		return false

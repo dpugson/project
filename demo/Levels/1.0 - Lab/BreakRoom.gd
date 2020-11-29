@@ -9,6 +9,7 @@ onready var timer = $Timer
 onready var blanket_dog = $YSort/blanket_dog
 onready var blanket = $blanket
 onready var ysort = $YSort
+onready var camera = $PuppyCamera
 
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 
@@ -18,7 +19,7 @@ var ROBOT_SPEECH_SPEED = 0.05
 func _ready():
 	var player_position = Vector2.ZERO
 	var orientation = Vector2.UP
-	stats.spawn_metadata = "emerge_cutscene"
+	#stats.spawn_metadata = "emerge_cutscene"
 	match stats.spawn_metadata:
 		"door":
 			Jukebox.play_song("res://tunes/lab/background_science.wav")
@@ -173,3 +174,133 @@ func _on_blanket_dog_unwrapped():
 	stats.spawn_player(
 		null, ysort, "../../../PuppyCamera",
 		blanket.position, Vector2.DOWN)
+
+func _on_fire_seen(obj):
+	var dialogue = {
+		"begin" : [
+			"TEXT", "A warm crackly fire! It makes you feel warm and toasty.", 0.03, null, null, null
+		],
+		"bone" : [
+			"TEXT", "Throw your bone into the flames?", 0.03,
+			[["yes", "yes"], ["no", "no"]], null, null
+		],
+		"no" : [
+			"TEXT", "Whoah... You almost threw your bone into the fire...\nWhat were you thinking??", 0.03,
+			null, null, null
+		],
+		"yes" : [
+			"TEXT", "You throw your bone into the flames.", 0.03,
+			"2", null, null
+		],
+		"2" : [
+			"TEXT", "...", 0.03,
+			"22", null, null
+		],
+		"22" : [
+			"TEXT", "...", 0.03,
+			"222", null, null
+		],
+		"222" : [
+			"TEXT", "...", 0.03,
+			"3", null, null
+		],
+		"3" : [
+			"TEXT", "CRACK!!!!!!", 0.03,
+			"4", [self, "shake"], null
+		],
+		"4" : [
+			"TEXT", "The BONE has transformed into an ORACLE BONE.", 0.03,
+			null, [self, "get_oracle_bone"], null
+		],
+	}
+	if stats.inventory_get("bone"):
+		dialogue["begin"][3] = "bone"
+	DialogueHelper.showDialogue(self, dialogue)
+
+func shake():
+	camera.shakiness = 1
+
+func get_oracle_bone():
+	stats.inventory["bone"] = 0
+	stats.inventory_add("oracle_bone")
+
+func _on_teaset_seen(_obj):
+	var dialogue = {
+		"begin" : [
+			"TEXT", "Some tea! It seems like it is still warm.", 0.03, [["Taste of it", "taste"], ["Nope", null], ], null, null
+		],
+		"taste" : [
+			"TEXT", "BLEGH!", 0.03, "gross", null, null
+		],
+		"gross" : [
+			"TEXT", "Tea is gross!!!", 0.03, null, null, null
+		]
+	}
+	DialogueHelper.showDialogue(self, dialogue)
+
+func _on_bear_seen(_obj):
+	var dialogue = {
+		"begin" : [
+			"TEXT", "A portly stuffed bear. You look at the label...", 0.03, "closer", null, null
+		],
+		"closer" : [
+			"TEXT", "OFFICE BEARS LTD.\nJUMBO STRESS RELIEF BEARS FOR ALL YOUR CORPORATE NEEDS.", 0.03, null, null, null
+		]
+	}
+	DialogueHelper.showDialogue(self, dialogue)
+
+func _on_pillows1_seen(_obj):
+	var GOT_PILLOW_G = "got_breakroom_pillow_g1"
+	var pillow_dialogue = {
+		"begin" : [
+			"TEXT", "What a tasteful and cozy pillow selection!",
+			0.03, null
+		]
+	}
+	if not stats.check_bool(GOT_PILLOW_G):
+		stats.world_state[GOT_PILLOW_G] = true
+		pillow_dialogue["findg"] = [
+			"TEXT", "You find 1 G amongst the cushions.",
+			0.03, null
+		]
+		pillow_dialogue["begin"][3] = "findg"
+		stats.G += 1
+	DialogueHelper.showDialogue(self, pillow_dialogue)
+
+func _on_pillows2_seen(_obj):
+	var GOT_PILLOW_G = "got_breakroom_pillow_g2"
+	var pillow_dialogue = {
+		"begin" : [
+			"TEXT", "So soft, so cozy... Truly, a fantasy spectacular in pillow form.",
+			0.03, null
+		]
+	}
+	if not stats.check_bool(GOT_PILLOW_G):
+		stats.world_state[GOT_PILLOW_G] = true
+		pillow_dialogue["findg"] = [
+			"TEXT", "You find 3 G amongst the cushions.",
+			0.03, null
+		]
+		pillow_dialogue["begin"][3] = "findg"
+		stats.G += 3
+	DialogueHelper.showDialogue(self, pillow_dialogue)
+	
+
+
+func _on_pillows3_seen(_obj):
+	var GOT_PILLOW_G = "got_breakroom_pillow_g3"
+	var pillow_dialogue = {
+		"begin" : [
+			"TEXT", "A cozy corner in a cozy room....",
+			0.03, null
+		]
+	}
+	if not stats.check_bool(GOT_PILLOW_G):
+		stats.world_state[GOT_PILLOW_G] = true
+		pillow_dialogue["findg"] = [
+			"TEXT", "You find 2 G amongst the cushions.",
+			0.03, null
+		]
+		pillow_dialogue["begin"][3] = "findg"
+		stats.G += 2
+	DialogueHelper.showDialogue(self, pillow_dialogue)

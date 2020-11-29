@@ -1,0 +1,216 @@
+    ________________________________________________________ 
+   '   __     _     __    __    _                           ' 
+  |   |  '   ' '   '  \  '  \  ' '                           |
+  |   | | | | | | ||    ||    | | |                          |
+  |   | | | | | | || =| || =| | | |                          |
+  |   | | | | | | ||  | ||  | | | |     ,''''''._     __     |
+  |   |__,   ._,   ._,   ._,   ._,     /  O  O   '___/  \    |
+  |                                    |   T             '   |
+  |    _    _   _   ___   ___  _____    ;                '   |
+  |   ' '  | | | | '     -'  '   |      ;;               '   |
+  |  | | | | | | | ||    ||.     |       |     ----- \  /    |
+  |  | | | | | | | ||==    '=|   |        | || |   | || |    |
+  |  | | | | | | | ||        |   |       mm mmm   mmm mm     |
+  |   ._\\  .___,  .___  |_,//   |                           |
+  |                                      By AnonymousPup     |
+   '________________________________________________________'
+
+[001]
+
+   Name                                       Code
+
+1. Table of contents (you're reading it!)     [010]
+2. Introduction & controls                    [020]
+   2.1 Introduction                           [021]
+   2.2 Controls                               [022]
+   2.3 Saving                                 [023]
+   2.4 Overall Tips and Hints                 [024]
+3. Level 1 - The Caves                        [030]
+   3.1 Intro                                  [031]
+   3.2 Cave Tour                              [032]
+   3.3 Getting the Flippers                   [033]
+   3.4 Mr. Skelebones                         [034]
+   3.5 Swimming!                              [035]
+
+
+NOTE: DOGGO QUEST is still very much in-development!
+This GUIDE covers the DEMO version of DOGGO QUEST, and will
+be expanded as more content is released, and ultimately will
+be updated with the entire game once it is complete!
+
+[020]
+
+================================================================
+                        INTRODUCTION                       [021]
+================================================================
+
+Doggo Quest is an adventure RPG in the tradition of UNDERTALE,
+where you control a lost puppy attempting to finds its way home.
+On your journey, you encounter a zany cast of characters, bark,
+look at things, collect items, and many other things besides.
+
+If the reader hasn't played any     .==========================.
+other RPG games, then a quick       | SIDEBAR: HISTORY         |
+introduction to how these games     |                          |
+work in general couldn't go amiss!  | LEGEND HAS IT that       |
+If you are an old hand with video   | Doggo Quest originated   |
+games, then feel free to skip this  | as a response to a brief |
+section and continue your speed run | note in a development    |
+of this FAQ!                        | update for DELTARUNE,    |
+                                    | the sequel to the quirky |
+In this sort of game, the CORE      | and utterly unexpected   |
+MECHANIC is walking around and      | hit UNDERTALE.           |
+looking at stuff. EXCITING          |                          |
+SOUNDING, I know! But those things  | In the update, Toby Fox  |
+you look at will often have         | said that he was         |
+AMUSING DESCRIPTIONS or even        | considering expanding    |
+provide you with CRITICAL CHOICES   | the DELTARUNE team, and  |
+needed to progress the GAME STORY.  | mentioned what kind of   |
+                                    | people he was looking    |
+In DOGGO QUEST there is very little | for. At the end of it,   |
+fighting of the HACK AND SLASH      | he had this short note:  |
+variety- instead, you must use your |                          |
+PUPPY BRAIN and CHARISMA to over-   | "The only other kind of  | 
+come the obstacles in your way!     |  person I might hire     |
+Often this will involve solving     |  would be a single       |
+PUZZLES, or HELPING STRANGERS in    |  JACK-OF-ALL-TRADES type |
+order to create webs of MUTUAL      |  that can do any sort of |
+OBLIGATION such that they will      |  things such as          |
+assist you in achieving your GOALS. |  cutscenes, bullets, or  |
+                                    |  even system programming,|
+Along the way, you will likely      |  with a good degree of   |
+accumulate many ITEMS, which, much  |  visual flair. (But if   |
+like in REAL LIFE, range from       |  you can do those sorts  |
+completely useless trickets purely  |  of things, aren't you   |
+for your amusement to CRITICAL      |  busy making your own    |
+IMPLEMENTS needed to progress.      |  game already!?)"        |
+                                    |                          |
+                                    | The developer of DOGGO   |
+ .--------.                         | QUEST is said to have    |
+| BARK!!!! |                        | read this job posting    |
+ '----  --'                         | and said to themself,    |
+      |/                            | WHY "aren't [I] busy     |
+  -.         /                      | making [my] game         |
+ '   \'''''/- .   __                | already!?". And thus,    |
+  k/ o T o   '___/  \               | DOGGO QUEST was born.    |
+   |   W             '              |                          |
+    ;                '              | The astute historian of  |
+    ;;               '              | internet culture will    |
+     |     ----- \  /               | note that this makes     |
+      | || |   | || |               | DOGGO QUEST ultimately   |
+     mm mmm   mmm mm                | a grandchild of the      |
+                                    | now infamous internet    |
+Ah! Yes, doggo, I think you're      | sensation HOMESTUCK,     |
+right- that is quite enough         | which birthed not only   |
+introduction! Let's get on to       | UNDERTALE, but also      |
+talking about the game!             | KILL SIX BILLION DEMONS, |
+                                    | amongst other works.     |
+                                    |                          |
+                                    '=========================='
+
+================================================================
+                          CONTROLS                         [022]
+================================================================
+
+Starting controls:
+
+.-----------------------------------------------.
+| Buttons              | Action                 |
+.-----------------------------------------------.
+| WASD / arrow keys    | Move                   |
+| K                    | Bark / Speed up Text   |
+| L / enter            | Look / Choose Option   |
+| I                    | View inventory         |
+| M / esc              | View menu / settings   |
+'-----------------------------------------------'
+
+Unlockable actions [MILD SPOILERS!]:
+
+.-------------------------------------------------------.
+| Buttons              | Action           |  Unlocked   |
+.-------------------------------------------------------.
+| J                    | Turbo Dash       |             |
+'-------------------------------------------------------'
+
+================================================================
+                           SAVING                          [023]
+================================================================
+
+In Doggo Quest, you are going to want to save your progress
+from time to time! In order to do so, you're going to need
+to find one of these:
+
+           .
+          / \
+         /   \          A save star!
+      -'      '-
+   '.            ,'
+      '        '
+         \   /
+          \ /
+           ' 
+
+To use one of these, you're going to want to stand in front
+of it and press "L"- then you'll be presented with some dialogue
+where you can decide whether to save or not!
+
+================================================================
+                 OVERALL TIPS AND HINTS                    [023]
+================================================================
+
+* LOOK AT STUFF!
+
+  This is a game that has a lot of its "rewards" stashed away
+  in dialogue and item descriptions- so, if you're into that
+  kind of thing, don't feel afraid to weild the "L" (look) button
+  freely! But also don't worry if you don't like hunting around
+  for stuff like that- the most important and critical story
+  interactions should be fairly obvious without too much tedious
+  searching (and if you ever get stuck, there's always this
+  guide!)
+
+* Get used to the controls!
+
+  The controls (WASD for moving, JKL for doing actions) may
+  take a little getting used to- so feel free to putz about in
+  the first couple of rooms getting used to them!
+
+* Remember you can speed up text using "K"!
+
+
+================================================================
+  |             | V  \  /               /    /        / \  [030]
+ / \   '\    ' / V V  \/ \  / \    /\  / \  / \   /'''    ' \
+/   | /  \   ',     V     .    \  /  \/   \/  \\ /           | /
+               .                                              '
+     '    ' /        LEVEL 1 - THE CAVES        '
+
+\         / |         '            .           / \            |
+\       ./  |  .      '           .  .        /   \        . /
+ -0 /|r---       .--/  >   . .  .      . .. -/     ------/
+================================================================
+
+Items acquirable this level:
+   Bone
+   Ball
+   Skeleton Key
+   Flippers
+   Swimming Certification
+   13 G
+
+
+================================================================
+                        INTRO                              [031]
+================================================================
+
+The game starts with a quick intro that describes your life
+before this whole adventure begins. You're a happy puppy, living
+a happy puppy life, until the unthinkable happens- A MYSTERIOUS
+FORCE steals your FAVORITE BALL. You give pursuit, running until
+you follow the ball into a GIGANTIC SINKHOLE and JUMP IN.
+
+================================================================
+                      CAVE TOUR                            [032]
+================================================================
+
+After you fall, you find yourself

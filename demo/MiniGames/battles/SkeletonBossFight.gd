@@ -55,14 +55,6 @@ func gen_random_round():
 	#times_generated = min(4, times_generated)
 	return rounds
 
-var battle_data = {
-	"handler" : [self, "noop"],
-	"options" : [
-		"Smell", "Bark",  "Roll Over", "Play Dead",
-	]
-}
-
-
 func get_round_info():	
 	var round_info = {
 		"obstacle_map": obstacle_map,

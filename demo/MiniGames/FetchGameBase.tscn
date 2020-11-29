@@ -352,7 +352,7 @@ tracks/7/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ true, false, true, false, true, false ]
+"values": [ true, true, true, true, true, false ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("YSort:visible")
@@ -469,11 +469,11 @@ default_color = Color( 0.0784314, 0.937255, 0.109804, 1 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="FetchGamePlayer" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 864.005, 776.979 )
+position = Vector2( 856.718, 1551.55 )
 
 [node name="ball" type="Sprite" parent="YSort"]
-position = Vector2( 866.233, 708.207 )
-scale = Vector2( 0.483667, 0.483667 )
+position = Vector2( 1172.17, 771.749 )
+scale = Vector2( 2.68526, 2.68526 )
 texture = ExtResource( 5 )
 
 [node name="mask" type="Sprite" parent="."]
@@ -506,6 +506,7 @@ anims/intro = SubResource( 3 )
 anims/running_zone = SubResource( 4 )
 
 [node name="VictoryLabel" type="Label" parent="."]
+visible = false
 margin_left = 666.319
 margin_top = 1101.85
 margin_right = 1115.32
@@ -541,11 +542,11 @@ wait_time = 0.6
 autostart = true
 
 [node name="Label" type="Label" parent="."]
-visible = false
-margin_left = 746.911
-margin_top = 779.646
-margin_right = 978.911
-margin_bottom = 835.646
+margin_left = 380.226
+margin_top = 844.155
+margin_right = 1380.23
+margin_bottom = 915.155
+rect_min_size = Vector2( 1000, 0 )
 text = "GO FETCH!"
 align = 1
 __meta__ = {
