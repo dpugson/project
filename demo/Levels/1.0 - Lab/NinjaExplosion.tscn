@@ -1,0 +1,28 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://sprites/L2_lab/ninja_explosion2.png" type="Texture" id=3]
+[ext_resource path="res://sprites/L2_lab/ninja_explosion0.png" type="Texture" id=4]
+[ext_resource path="res://sprites/L2_lab/ninja_explosion5.png" type="Texture" id=5]
+[ext_resource path="res://sprites/L2_lab/ninja_explosion6.png" type="Texture" id=6]
+[ext_resource path="res://sprites/L2_lab/ninja_explosion1.png" type="Texture" id=7]
+[ext_resource path="res://sprites/L2_lab/ninja_explosion7.png" type="Texture" id=8]
+[ext_resource path="res://sprites/L2_lab/ninja_explosion8.png" type="Texture" id=9]
+[ext_resource path="res://Levels/1.0 - Lab/NinjaExplosion.gd" type="Script" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 7 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "default",
+"speed": 20.0
+} ]
+
+[node name="NinjaExplosion" type="Node2D"]
+script = ExtResource( 10 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -36.1107, -187.775 )
+frames = SubResource( 1 )
+frame = 6
+playing = true
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

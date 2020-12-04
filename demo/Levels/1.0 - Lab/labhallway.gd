@@ -9,12 +9,22 @@ onready var animation = $AnimationPlayer
 onready var camera = $PuppyCamera
 onready var robot = $Robot
 onready var save_star = $YSort/SaveStar
+onready var postBattleSP = $PostBattleSP
+onready var ninja = $ninja
+onready var throwup = $throwup2
 
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 
+const NINJA_GONE = "NINJA_GONE_FROM_HALLWAY"
+
 func _ready():
+	throwup.visible = false
+	if stats.check_bool(NINJA_GONE):
+		throwup.visible = true
+		ninja.queue_free()
 	var player_position = Vector2.ZERO
 	var orientation = Vector2.DOWN
+	stats.spawn_metadata = "post_battle"
 	match stats.spawn_metadata:
 		"The Lab - Back Hallway":
 			Jukebox.play_song("res://tunes/lab/background_science.wav")
@@ -32,6 +42,13 @@ func _ready():
 			Jukebox.play_song("res://tunes/lab/background_science.wav")
 			player_position = breakRoomSP.position
 			orientation = Vector2.DOWN
+		"post_battle":
+			#Jukebox.play_song("res://tunes/lab/background_science.wav")
+			player.cutscene_mode = true
+			Jukebox.stream_paused = true
+			player_position = postBattleSP.position
+			orientation = Vector2.UP
+			animation.play("ninja_battle_finished")
 		"emerge_cutscene":
 			Jukebox.play_song("res://tunes/lab/sleepypuppy.wav")
 			player.queue_free()
@@ -207,6 +224,27 @@ func _on_sodamachine_seen(_obj):
 	}
 	DialogueHelper.showDialogue(self, pillow_dialogue)
 
+var NINJA_SPEECH_SPEED = 0.04
+var NINJA_PITCH = .98
+func not_paid_enough_for_this():
+	var dialogue = {
+		"begin" : [
+			"TEXT", "...", NINJA_SPEECH_SPEED, 
+			"2", null, null, NINJA_PITCH
+		],
+		"2" : [
+			"TEXT", "Ok, I'm out.", NINJA_SPEECH_SPEED, 
+			null, null, null, NINJA_PITCH
+		],
+	}
+	DialogueHelper.showDialogue(self, dialogue, false, [self, "disappear_ninja"])
+
+func disappear_ninja():
+	stats.world_state[NINJA_GONE] = true
+	ninja.disappear([self, "drop_wallet"])
+
+func drop_wallet(_ignore):
+	animation.play("drop_wallet")
 
 func _on_glassesbox_seen(_obj):
 	pass # Replace with function body.

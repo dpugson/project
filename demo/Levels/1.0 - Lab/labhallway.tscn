@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://sprites/L2_lab/safety_poster.png" type="Texture" id=1]
 [ext_resource path="res://Levels/1.0 - Lab/potted_palm.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Levels/1.0 - Lab/RobotSprite.tscn" type="PackedScene" id=14]
 [ext_resource path="res://hitnhurtboxes/SeenBox.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Brains/SaveStar.tscn" type="PackedScene" id=16]
+[ext_resource path="res://sprites/L2_lab/throwup2.png" type="Texture" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 52.5469, 67.2289 )
@@ -56,6 +57,62 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("throwup2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "ninja_battle_finished"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/path = NodePath("ninja")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "face_outwards"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "not_paid_enough_for_this"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("throwup2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -185,6 +242,14 @@ polygon = PoolVector2Array( 1032.45, 386.795, 1028.35, 574.783, 592.412, 566.193
 
 [node name="BG" parent="." instance=ExtResource( 4 )]
 
+[node name="ninja" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1575.31, 563.85 )
+
+[node name="throwup2" type="Sprite" parent="."]
+position = Vector2( 1656.74, 607.557 )
+scale = Vector2( 0.7841, 0.7748 )
+texture = ExtResource( 17 )
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="safety_poster" type="Sprite" parent="YSort"]
@@ -195,9 +260,6 @@ texture = ExtResource( 1 )
 position = Vector2( 997.009, 795.029 )
 camera = NodePath("../../PuppyCamera")
 
-[node name="ninja" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 1575.31, 563.85 )
-
 [node name="glasses_box" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 1391.36, 572.721 )
 
@@ -205,7 +267,7 @@ position = Vector2( 1391.36, 572.721 )
 position = Vector2( 0.751587, 5.90717 )
 
 [node name="potted_palm" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 1617.91, 640.965 )
+position = Vector2( 1515.9, 614.831 )
 
 [node name="waste_bin" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 662.948, 594.549 )
@@ -274,6 +336,7 @@ shape = SubResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/default = SubResource( 6 )
+anims/ninja_battle_finished = SubResource( 10 )
 anims/walk_across = SubResource( 7 )
 
 [node name="Robot" type="Node2D" parent="."]
@@ -283,6 +346,7 @@ position = Vector2( 519.083, 630.15 )
 [node name="AnimatedSprite" parent="Robot" instance=ExtResource( 14 )]
 position = Vector2( -1.60675, -118.341 )
 animation = "dogdown"
+frame = 2
 playing = true
 
 [node name="labdoor" type="Node2D" parent="."]
@@ -298,6 +362,9 @@ shape = SubResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="labdoor/StaticBody2D"]
 shape = SubResource( 9 )
+
+[node name="PostBattleSP" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1650.76, 690.725 )
 [connection signal="seen" from="YSort/glasses_box/glassesbox" to="." method="_on_glassesbox_seen"]
 [connection signal="seen" from="YSort/waste_bin/wastebin" to="." method="_on_wastebin_seen"]
 [connection signal="seen" from="YSort/vending_machine/sodamachine" to="." method="_on_sodamachine_seen"]

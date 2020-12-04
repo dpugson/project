@@ -3,6 +3,7 @@ extends Node2D
 onready var animated_sprite = $AnimatedSprite
 onready var stats = PlayerStats
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
+onready var animation = $AnimationPlayer
 
 var NINJA_SPEECH_SPEED = 0.04
 var NINJA_PITCH = .98
@@ -11,14 +12,18 @@ var NINJA_STATE_KEY = "NINJA_STATE_KEY"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#if not stats.world_state.has("NINJA_STATE"):
-	stats.world_state[NINJA_STATE_KEY] = "INIT"
+	back_to_wall()
+	if not stats.world_state.has("NINJA_STATE"):
+		stats.world_state[NINJA_STATE_KEY] = "INIT"
 
 func look_at_you():
 	animated_sprite.animation = "LookingAtYou"
 
 func back_to_wall():
 	animated_sprite.animation = "FacingWall"
+
+func face_outwards():
+	animated_sprite.animation = "FacingYou"
 
 var num_bothers = 0
 
@@ -167,11 +172,17 @@ func handle_got_drink():
 		]
 	}
 
+func pause_music():
+	Jukebox.stream_paused = true
+
+func restart_music():
+	Jukebox.stream_paused = false
+
 func garbage_confrontation(confrontation_option_text):
 	return {
 		"begin" : [
 			"TEXT", "...", NINJA_SPEECH_SPEED, 
-			[["Confront", "c"], ["Ignore", null]], null, null, NINJA_PITCH
+			[["Confront", "c"], ["Ignore", null]], [self, "pause_music"], null, NINJA_PITCH
 		],
 		"c": [
 			"TEXT", "(Have you saved? I might save now, if I were you...)", NINJA_SPEECH_SPEED, 
@@ -195,9 +206,16 @@ func garbage_confrontation(confrontation_option_text):
 		],
 		"9" : [
 			"TEXT", "Prepare... TO DIE!!!!", NINJA_SPEECH_SPEED, 
-			null, null, null, NINJA_PITCH
+			"10", null, null, NINJA_PITCH
+		],
+		"10" : [
+			"TEXT", "!!!!", NINJA_SPEECH_SPEED, 
+			null, [self, "gotobattle"], null, NINJA_PITCH
 		],
 	}
+
+func gotobattle():
+	Transition.go_to("res://MiniGames/battles/ninja/NinjaBossFight.tscn")
 
 func garbage_righteous():
 	return garbage_confrontation("You've besmirched my puppy honor!!!")
@@ -224,3 +242,7 @@ func get_ninja_dialogue():
 
 func _on_SeenBox_seen(_obj):
 	DialogueHelper.showDialogue(self, get_ninja_dialogue(), false, [self, "back_to_wall"])
+
+func disappear(cb):
+	animation.connect("animation_finished", cb[0], cb[1])
+	animation.play("disappear")

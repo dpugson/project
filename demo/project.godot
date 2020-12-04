@@ -17,6 +17,8 @@ _global_script_class_icons={
 
 config/name="doggo_quest"
 run/main_scene="res://MainMenu/MainMenu.tscn"
+run/disable_stdout=true
+run/disable_stderr=true
 boot_splash/fullsize=false
 config/icon="res://sprites/cavestuff/ball.png"
 
@@ -180,4 +182,6 @@ smell={
 
 [rendering]
 
+quality/intended_usage/framebuffer_allocation=1
+quality/intended_usage/framebuffer_allocation.mobile=1
 environment/default_environment="res://default_env.tres"

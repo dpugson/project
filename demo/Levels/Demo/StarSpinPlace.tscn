@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Levels/1.0 - Lab/RollyChairDog.tscn" type="PackedScene" id=1]
+[ext_resource path="res://StarBG.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="RollyChairDog" parent="." instance=ExtResource( 1 )]
+position = Vector2( 381.002, 541.697 )
+
+[node name="Node2D" parent="." instance=ExtResource( 2 )]
+margin_left = 442.762
+margin_top = 716.478
+margin_right = 442.762
+margin_bottom = 716.478

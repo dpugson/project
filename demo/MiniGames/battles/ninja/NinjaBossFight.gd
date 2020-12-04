@@ -97,8 +97,6 @@ func get_ninja_attack_dialogue(dialogue):
 	]
 	
 func action_noop(action):
-	var text = "You " + action + "...\n"
-	battle_menu.show_text(text)
 	var dialogue = null
 	match action.to_lower():
 		"smell":
@@ -174,21 +172,19 @@ func action_noop(action):
 					]
 				}
 		"throw up":
+			battle_menu.set_decision_stuff_visible(false)
+			smelled = true
 			if smelled:
-				dialogue = {
-						"begin" : [
-							"TEXT", "YOU VOMIT COPIOUSLY!",
-							SKELETON_SPEECH_RATE, "next", null, null
-						],
-						"next" : [
-							"TEXT", "Wha- do I smell that bad???",
-							SKELETON_SPEECH_RATE, "2", null, null, SKELETON_VOICE_PITCH
-						],
-						"2" : [
-							"TEXT", "This can't be!!!!",
-							SKELETON_SPEECH_RATE, null, null, null, SKELETON_VOICE_PITCH
-						],
-					}
+				done = true
+				vom()
+#				dialogue = {
+#						"begin" : [
+#							"TEXT", "YOU VOMIT COPIOUSLY!",
+#							SKELETON_SPEECH_RATE, null, null, null
+#						]
+#					}
+#				battle_menu.call_deferred("show_dialogue", dialogue)
+				return
 			else:
 				dialogue = {
 						"begin" : [
@@ -201,6 +197,22 @@ func action_noop(action):
 						],
 					}
 	get_ninja_attack_dialogue(dialogue)
+	battle_menu.call_deferred("show_dialogue", dialogue)
+
+func vom():
+	animation.play("vom2")
+
+func pause_music():
+	Jukebox.stop_it()
+
+func vom_finished():
+	really_done = true
+	var dialogue = {
+		"begin" : [
+			"TEXT", "...",
+			SKELETON_SPEECH_RATE, null, null, null
+		]
+	}
 	battle_menu.call_deferred("show_dialogue", dialogue)
 
 func get_default_item_dialogue(text, item_name):
@@ -260,11 +272,18 @@ func item_noop(menu, _label, _item, _prev):
 	get_ninja_attack_dialogue(dialogue)
 	battle_menu.call_deferred("show_dialogue", dialogue)
 
+var done = false
+var really_done = false
 func text_done():
-	battle_menu.fetch_game_controller.play("go_to_game")
-	battle_menu.launch_fetch_game(get_round_info(), [self, "game_done"], fetch_item, used_default)
-	fetch_item = default_fetch_item
-	used_default = true
+	if really_done:
+		Transition.go_to("res://Levels/1.0 - Lab/labhallway.tscn", "post_battle")
+	elif done:
+		vom()
+	else:
+		battle_menu.fetch_game_controller.play("go_to_game")
+		battle_menu.launch_fetch_game(get_round_info(), [self, "game_done"], fetch_item, used_default)
+		fetch_item = default_fetch_item
+		used_default = true
 
 func game_done():
 	battle_menu.fetch_game_controller.play("leave_game")

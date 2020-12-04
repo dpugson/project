@@ -1,12 +1,69 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://MiniGames/BattleMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BG.tscn" type="PackedScene" id=2]
 [ext_resource path="res://MiniGames/battles/ninja/NinjaBossFight.gd" type="Script" id=3]
 [ext_resource path="res://sprites/L2_lab/ninja_boss.png" type="Texture" id=4]
+[ext_resource path="res://sprites/L2_lab/throwup1.png" type="Texture" id=5]
+[ext_resource path="res://sprites/L2_lab/throwup0.png" type="Texture" id=6]
+[ext_resource path="res://sprites/L2_lab/throwup2.png" type="Texture" id=7]
+[ext_resource path="res://sprites/dog/u0.png" type="Texture" id=8]
+[ext_resource path="res://sprites/dog/u2.png" type="Texture" id=9]
+[ext_resource path="res://sprites/dog/u1.png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=1]
-resource_name = "resting"
+resource_name = "get_vommed"
+length = 4.0
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("vom:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 954.974, -0.25, 0, 0.25, 0, 1082.28, -0.38, -85.0378, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("vom:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1153.07, -0.25, 0, 0.25, 0, 588.952, -0.54, -377.464, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("vom:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 1.05 )
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.05, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "pause_music"
+}, {
+"args": [  ],
+"method": "vom_finished"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -33,6 +90,151 @@ tracks/1/keys = {
 "update": 1,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 0.967973 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("vom:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 954.974, 1153.07 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("dog:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1083.15, 1206.6 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "vom2"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("dog:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1083.15, 1206.6 ), Vector2( 1083.15, 707.617 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("dog:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("dog:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("vom:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2, 2.3, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1080.61, 1193.86 ), Vector2( 1080.61, 691.316 ), Vector2( 1080.61, 691.316 ), Vector2( 1080.61, 590.155 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("vom:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.8, 2.85, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 1, 2 ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 2.9, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "pause_music"
+}, {
+"args": [  ],
+"method": "vom_finished"
+} ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("ninja_boss:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 959.82, 392.513 ), Vector2( 959.82, 400.316 ), Vector2( 959.82, 392.513 ), Vector2( 959.82, 400.316 ), Vector2( 959.82, 392.513 ), Vector2( 959.82, 400.316 ), Vector2( 959.82, 392.513 ), Vector2( 959.82, 400.316 ), Vector2( 959.82, 392.513 ), Vector2( 959.82, 400.316 ), Vector2( 959.82, 392.513 ), Vector2( 959.82, 400.316 ), Vector2( 959.82, 392.513 ), Vector2( 959.82, 400.316 ), Vector2( 959.82, 392.513 ), Vector2( 959.82, 400.316 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("ninja_boss:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.965398 ), Vector2( 1, 1 ), Vector2( 1, 0.965398 ), Vector2( 1, 1 ), Vector2( 1, 0.965398 ), Vector2( 1, 1 ), Vector2( 1, 0.965398 ), Vector2( 1, 1 ), Vector2( 1, 0.965398 ), Vector2( 1, 1 ), Vector2( 1, 0.965398 ), Vector2( 1, 1 ), Vector2( 1, 0.965398 ), Vector2( 1, 1 ), Vector2( 1, 0.965398 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="NinjaBossFight" type="Control"]
 script = ExtResource( 3 )
@@ -43,17 +245,29 @@ __meta__ = {
 [node name="BG" parent="." instance=ExtResource( 2 )]
 
 [node name="ninja_boss" type="Sprite" parent="."]
-position = Vector2( 959.82, 399.735 )
-scale = Vector2( 1, 0.967973 )
+position = Vector2( 959.82, 400.316 )
+scale = Vector2( 1, 0.965398 )
 texture = ExtResource( 4 )
 
 [node name="BossSpriteAnimator" type="AnimationPlayer" parent="."]
 pause_mode = 2
 autoplay = "resting"
-anims/resting = SubResource( 1 )
+anims/get_vommed = SubResource( 1 )
+anims/resting = SubResource( 2 )
+anims/vom2 = SubResource( 3 )
 
 [node name="BattleMenu" parent="." instance=ExtResource( 1 )]
 margin_left = 1.83484
 margin_top = -18.5316
 margin_right = 1.83484
 margin_bottom = -18.5316
+
+[node name="vom" type="AnimatedSprite" parent="."]
+position = Vector2( 1080.61, 590.155 )
+frames = SubResource( 4 )
+frame = 2
+
+[node name="dog" type="AnimatedSprite" parent="."]
+position = Vector2( 1083.15, 707.617 )
+scale = Vector2( 1.43797, 1.43797 )
+frames = SubResource( 5 )

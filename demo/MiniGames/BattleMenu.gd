@@ -21,6 +21,8 @@ onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 onready var text_label = $DecisionStuff/Text
 onready var next_button = $DecisionStuff/NextButton
 
+onready var decision_stuff = $DecisionStuff
+
 #==================
 # EXAMPLE MINIGAME
 #==================
@@ -149,3 +151,6 @@ func show_text(text_to_show):
 func _on_NextButton_pressed():
 	var text_done_handler = battle_impl["text_done_handler"]
 	text_done_handler[0].call(text_done_handler[1])
+
+func set_decision_stuff_visible(value=false):
+	decision_stuff.visible = value

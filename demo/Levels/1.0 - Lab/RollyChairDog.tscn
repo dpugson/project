@@ -1,0 +1,30 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://sprites/L2_lab/rollychair1.png" type="Texture" id=1]
+[ext_resource path="res://sprites/L2_lab/rollychair3.png" type="Texture" id=2]
+[ext_resource path="res://sprites/L2_lab/rollychair6.png" type="Texture" id=3]
+[ext_resource path="res://sprites/L2_lab/rollychair5.png" type="Texture" id=4]
+[ext_resource path="res://sprites/L2_lab/rollychair4.png" type="Texture" id=5]
+[ext_resource path="res://sprites/L2_lab/rollychair2.png" type="Texture" id=6]
+[ext_resource path="res://Levels/1.0 - Lab/RollyChairDog.gd" type="Script" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[node name="RollyChairDog" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -10.0384, -58.4052 )
+frames = SubResource( 1 )
+frame = 4
+playing = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

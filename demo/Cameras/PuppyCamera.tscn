@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Cameras/PuppyCamera.gd" type="Script" id=1]
+[ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=2]
 
 [node name="PuppyCamera" type="Camera2D"]
 pause_mode = 2
@@ -17,3 +18,12 @@ position = Vector2( -993.328, -583.58 )
 
 [node name="BottomRight" type="Position2D" parent="Limits"]
 position = Vector2( 976.329, 546.617 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 2 )]
+visible = false
+margin_left = 24.8333
+margin_top = 27.9374
+margin_right = 64.8333
+margin_bottom = 67.9374

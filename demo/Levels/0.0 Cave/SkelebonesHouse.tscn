@@ -477,9 +477,6 @@ save_spot_name = "Caves - Outside the Skeleton's House"
 home = "res://Levels/0.0 Cave/SkelebonesHouse.tscn"
 flavor_text = "Greetings, Puzzle Star!"
 
-[node name="AnimatedSprite" parent="YSort/SaveStar" index="1"]
-frame = 1
-
 [node name="PuppyCamera" parent="." instance=ExtResource( 4 )]
 
 [node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]

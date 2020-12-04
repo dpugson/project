@@ -26,7 +26,7 @@ autoplay = "spin"
 anims/spin = SubResource( 1 )
 
 [node name="Node2D" type="Node2D" parent="."]
-rotation = 1.4834
+rotation = 0.314124
 
 [node name="ninja_throw_star" type="Sprite" parent="Node2D"]
 position = Vector2( 5.83566, -3.54122 )
