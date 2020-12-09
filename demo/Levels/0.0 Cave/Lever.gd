@@ -3,8 +3,8 @@ extends Node2D
 onready var animation = $AnimationPlayer
 
 enum SIDE {
-	LEFT,
-	RIGHT
+	LEFT = 0,
+	RIGHT = 1
 }
 
 var pulled = false

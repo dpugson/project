@@ -91,3 +91,10 @@ const ninja_star = {
 	name = "Ninja Star",
 	description = "Elegant and deadly..."
 }
+
+const ninja_wallet = {
+	type = "2D",
+	image = "res://sprites/L2_lab/wallet.png",
+	name = "Wallet",
+	description = "Inside it is some sort of fancy government ID!"
+}

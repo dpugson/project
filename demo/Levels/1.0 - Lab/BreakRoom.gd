@@ -175,7 +175,7 @@ func _on_blanket_dog_unwrapped():
 		null, ysort, "../../../PuppyCamera",
 		blanket.position, Vector2.DOWN)
 
-func _on_fire_seen(obj):
+func _on_fire_seen(_obj):
 	var dialogue = {
 		"begin" : [
 			"TEXT", "A warm crackly fire! It makes you feel warm and toasty.", 0.03, null, null, null

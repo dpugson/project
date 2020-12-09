@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://sprites/L2_lab/zoom_panel1.png" type="Texture" id=1]
+[ext_resource path="res://sprites/L2_lab/zoom_panel2.png" type="Texture" id=2]
+[ext_resource path="res://sprites/L2_lab/zoom_panel.png" type="Texture" id=3]
+[ext_resource path="res://sprites/L2_lab/zoom_panel3.png" type="Texture" id=4]
+[ext_resource path="res://hitnhurtboxes/PlayerDetectionZone.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/1.0 - Lab/ZoomPanel.gd" type="Script" id=6]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "ready",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "activated",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 22.0488, 18.1033 )
+
+[node name="ZoomPanel" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 7 )
+playing = true
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource( 5 )]
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+position = Vector2( -0.438263, -4.38255 )
+shape = SubResource( 2 )
+[connection signal="body_entered" from="PlayerDetectionZone" to="." method="_on_PlayerDetectionZone_body_entered"]
+[connection signal="body_exited" from="PlayerDetectionZone" to="." method="_on_PlayerDetectionZone_body_exited"]
+
+[editable path="PlayerDetectionZone"]

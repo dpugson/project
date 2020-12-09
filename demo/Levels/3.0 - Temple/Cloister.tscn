@@ -1,0 +1,144 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://sprites/L4_AncientTemple/cloister_fg-min.png" type="Texture" id=1]
+[ext_resource path="res://sprites/L4_AncientTemple/cloister_bg-min.png" type="Texture" id=2]
+[ext_resource path="res://sprites/L4_AncientTemple/cloister_fountain-min.png" type="Texture" id=3]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sprites/L4_AncientTemple/cloister_curb_ul.png" type="Texture" id=5]
+[ext_resource path="res://sprites/L4_AncientTemple/cloister_curb_ur.png" type="Texture" id=6]
+[ext_resource path="res://sprites/L4_AncientTemple/cloister_curb_ll.png" type="Texture" id=7]
+[ext_resource path="res://sprites/L4_AncientTemple/cloister_curb_lr.png" type="Texture" id=8]
+[ext_resource path="res://Cameras/PuppyCamera.gd" type="Script" id=9]
+[ext_resource path="res://Levels/3.0 - Temple/Cloister.gd" type="Script" id=10]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=11]
+[ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=12]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 184.264
+
+[node name="Cloister" type="Node2D"]
+script = ExtResource( 10 )
+
+[node name="cloister_bg-min" type="Sprite" parent="."]
+position = Vector2( 961.244, 545.255 )
+texture = ExtResource( 2 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="fountain" type="Node2D" parent="YSort"]
+position = Vector2( 1005.93, 1065.22 )
+
+[node name="cloister_fountain-min" type="Sprite" parent="YSort/fountain"]
+position = Vector2( -2.78583, -21.5126 )
+texture = ExtResource( 3 )
+
+[node name="player" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 798.187, 1264.65 )
+camera = NodePath("../../PuppyCamera")
+
+[node name="c_ll" type="Node2D" parent="YSort"]
+position = Vector2( 816.862, 1418.36 )
+
+[node name="cloister_curb_ll" type="Sprite" parent="YSort/c_ll"]
+position = Vector2( 0.560669, -0.575928 )
+texture = ExtResource( 7 )
+
+[node name="c_lr" type="Node2D" parent="YSort"]
+position = Vector2( 1196.94, 1419.15 )
+
+[node name="cloister_curb_lr" type="Sprite" parent="YSort/c_lr"]
+position = Vector2( -8.24097, -7.60681 )
+texture = ExtResource( 8 )
+
+[node name="c_ul" type="Node2D" parent="YSort"]
+position = Vector2( 508.726, 1217.96 )
+
+[node name="cloister_curb_ul" type="Sprite" parent="YSort/c_ul"]
+position = Vector2( -17.3383, 4.77197 )
+texture = ExtResource( 5 )
+
+[node name="c_ur" type="Node2D" parent="YSort"]
+position = Vector2( 1438.07, 1195.83 )
+
+[node name="cloister_curb_ur" type="Sprite" parent="YSort/c_ur"]
+position = Vector2( -1.44678, -3.32849 )
+texture = ExtResource( 6 )
+
+[node name="cloister_fg-min" type="Sprite" parent="."]
+position = Vector2( 961.783, 545.273 )
+texture = ExtResource( 1 )
+
+[node name="collisions" type="Node2D" parent="."]
+
+[node name="top" type="StaticBody2D" parent="collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions/top"]
+position = Vector2( 4.17078, 16.6831 )
+polygon = PoolVector2Array( 93.4519, 285.205, 1836.83, 278.949, 963.056, -77.6516 )
+
+[node name="ul" type="StaticBody2D" parent="collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions/ul"]
+polygon = PoolVector2Array( 913.737, 424.631, 912.516, 828.836, 734.107, 828.836, 728.935, 1022.76, 229.905, 1040.86, 229.386, 425.942 )
+
+[node name="ur" type="StaticBody2D" parent="collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions/ur"]
+polygon = PoolVector2Array( 1068.44, 422.009, 1751.48, 391.855, 1743.61, 1036.88, 1276.77, 1028.51, 1272.57, 829.474, 1076.3, 833.668 )
+
+[node name="br" type="StaticBody2D" parent="collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions/br"]
+polygon = PoolVector2Array( 1278.2, 1211.59, 1802.61, 1203.73, 1819.65, 1739.93, 1094.66, 1705.85, 1101.21, 1430.53, 1284.75, 1422.67 )
+
+[node name="bl" type="StaticBody2D" parent="collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions/bl"]
+polygon = PoolVector2Array( 913.737, 1434.47, 723.639, 1433.16, 726.261, 1233.88, 208.41, 1239.13, 208.41, 1697.98, 899.315, 1707.16 )
+
+[node name="fountain" type="StaticBody2D" parent="collisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/fountain"]
+position = Vector2( 1000.23, 1128.33 )
+shape = SubResource( 1 )
+
+[node name="PuppyCamera" type="Camera2D" parent="."]
+pause_mode = 2
+position = Vector2( -0.26123, -8.78589 )
+current = true
+limit_smoothed = true
+smoothing_enabled = true
+smoothing_speed = 3.0
+script = ExtResource( 9 )
+
+[node name="Limits" type="Node" parent="PuppyCamera"]
+
+[node name="UpperLeft" type="Position2D" parent="PuppyCamera/Limits"]
+position = Vector2( -71.0109, -753.653 )
+
+[node name="BottomRight" type="Position2D" parent="PuppyCamera/Limits"]
+position = Vector2( 1993.49, 1841.79 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="PuppyCamera"]
+
+[node name="HealthUI" parent="PuppyCamera/CanvasLayer" instance=ExtResource( 12 )]
+visible = false
+margin_left = 24.8333
+margin_top = 27.9374
+margin_right = 64.8333
+margin_bottom = 67.9374
+
+[node name="ul_SP" parent="." instance=ExtResource( 11 )]
+position = Vector2( 313.98, 356.498 )
+
+[node name="ur_SP" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1654.63, 321.547 )
+
+[node name="b_SP" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1005.53, 1472.46 )
+
+[node name="lr_SP" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1659.63, 1075.51 )
+
+[node name="ll_SP" parent="." instance=ExtResource( 11 )]
+position = Vector2( 318.974, 1112.96 )

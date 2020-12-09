@@ -12,16 +12,23 @@ onready var save_star = $YSort/SaveStar
 onready var postBattleSP = $PostBattleSP
 onready var ninja = $ninja
 onready var throwup = $throwup2
+onready var wallet_animation = $wallet/wallet_animation
+onready var door = $labdoor
 
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 
 const NINJA_GONE = "NINJA_GONE_FROM_HALLWAY"
+const WALLET_DROPPED = "WALLET_DROPPED"
+const DOOR_UNLOCKED = "DOOR_UNLOCKED"
 
 func _ready():
 	throwup.visible = false
 	if stats.check_bool(NINJA_GONE):
-		throwup.visible = true
 		ninja.queue_free()
+	if stats.check_bool(WALLET_DROPPED):
+		wallet_animation.play("dropped")
+	if stats.check_bool(DOOR_UNLOCKED):
+		door.queue_free()
 	var player_position = Vector2.ZERO
 	var orientation = Vector2.DOWN
 	stats.spawn_metadata = "post_battle"
@@ -43,7 +50,6 @@ func _ready():
 			player_position = breakRoomSP.position
 			orientation = Vector2.DOWN
 		"post_battle":
-			#Jukebox.play_song("res://tunes/lab/background_science.wav")
 			player.cutscene_mode = true
 			Jukebox.stream_paused = true
 			player_position = postBattleSP.position
@@ -79,12 +85,23 @@ func continue_cutscene_in_breakroom():
 	Transition.go_to("res://Levels/1.0 - Lab/BreakRoom.tscn", "emerge_cutscene")
 
 func _on_laboratorydoor_seen(_obj):
-	var dialogue = {
-		"begin" : [
-			"TEXT", "ERROR: ACCESS DENIED. VALID LAB IDENTIFICATION REQUIRED.",
-			0.03, null
-		]
-	}
+	var dialogue
+	if stats.inventory_get("ninja_wallet") >= 1:
+		dialogue = {
+			"begin" : [
+				"TEXT", "LAB IDENTIFICATION VERIFIED! GRANTING ACCESS.",
+				0.03, null
+			]
+		}
+		stats.world_state[DOOR_UNLOCKED] = true
+		door.queue_free()
+	else:
+		dialogue = {
+			"begin" : [
+				"TEXT", "ERROR: ACCESS DENIED. VALID LAB IDENTIFICATION REQUIRED.",
+				0.03, null
+			]
+		}
 	DialogueHelper.showDialogue(self, dialogue)
 
 func go_to_righteous_garbage_state():
@@ -233,7 +250,7 @@ func not_paid_enough_for_this():
 			"2", null, null, NINJA_PITCH
 		],
 		"2" : [
-			"TEXT", "Ok, I'm out.", NINJA_SPEECH_SPEED, 
+			"TEXT", "Ok, I'm am NOT being payed enough for this.", NINJA_SPEECH_SPEED, 
 			null, null, null, NINJA_PITCH
 		],
 	}
@@ -242,9 +259,47 @@ func not_paid_enough_for_this():
 func disappear_ninja():
 	stats.world_state[NINJA_GONE] = true
 	ninja.disappear([self, "drop_wallet"])
+	throwup.visible = true
 
 func drop_wallet(_ignore):
-	animation.play("drop_wallet")
+	wallet_animation.play("drop")
+	stats.world_state[WALLET_DROPPED] = true
+
+func wallet_dropped():
+	player.cutscene_mode = false
+	Jukebox.play_song("res://tunes/lab/background_science.wav")
 
 func _on_glassesbox_seen(_obj):
 	pass # Replace with function body.
+
+func _on_WalletSeenBox_seen(_obj):
+	var dialogue = {
+		"begin" : [
+			"TEXT", "He dropped his wallet!", 0.03, 
+			"2", null, null
+		],
+		"2" : [
+			"TEXT", "Take?", NINJA_SPEECH_SPEED, 
+			[["yes", "yes"], ["no", null]], null, null
+		],
+		"yes" : [
+			"TEXT", "FINDERS KEEPERS!", NINJA_SPEECH_SPEED, 
+			"gain", [self, "get_wallet"], null
+		],
+		"gain" : [
+			"TEXT", "You gain 1 WALLET.", NINJA_SPEECH_SPEED, 
+			"rummage", null, null
+		],
+		"rummage" : [
+			"TEXT", "You rummage around inside... It's almost empty!", NINJA_SPEECH_SPEED, 
+			"keycard", null, null
+		],
+		"keycard" : [
+			"TEXT", "The only thing in it is a TOP-LEVEL SECURITY CLEARANCE CARD.", NINJA_SPEECH_SPEED, 
+			null, null, null
+		],
+	}
+	DialogueHelper.showDialogue(self, dialogue, false, [self, "disappear_ninja"])
+
+func get_wallet():
+	stats.inventory_add("ninja_wallet")

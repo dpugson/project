@@ -14,7 +14,7 @@ dest_files=[ "res://.import/cave_02.png-eda473acf762fa9c742ce7ed8fe4a40b.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

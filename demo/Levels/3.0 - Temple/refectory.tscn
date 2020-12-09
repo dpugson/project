@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/L4_AncientTemple/refectory_bg-min.png" type="Texture" id=2]
+[ext_resource path="res://sprites/L4_AncientTemple/refectory_fg-min.png" type="Texture" id=3]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/3.0 - Temple/refectory.gd" type="Script" id=6]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=7]
+
+[node name="Refectory" type="Node2D"]
+position = Vector2( 33.6338, -169.695 )
+script = ExtResource( 6 )
+
+[node name="refectory_bg-min" type="Sprite" parent="."]
+position = Vector2( 900.163, 115.475 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 2 )
+
+[node name="YSort" type="YSort" parent="."]
+position = Vector2( 120.486, -102.764 )
+scale = Vector2( 0.9, 0.9 )
+
+[node name="player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 843.32, 1314.39 )
+camera = NodePath("../../../../Refectory/PuppyCamera")
+
+[node name="refectory_fg-min" type="Sprite" parent="."]
+position = Vector2( 900.264, 115.614 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 3 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 5 )]
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -357.9, -1699.65 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 2434.56, 1947.82 )
+
+[node name="leftSP" parent="." instance=ExtResource( 4 )]
+position = Vector2( 516.781, 998.136 )
+
+[node name="rightSP" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1112.48, 385.832 )
+
+[node name="BG" parent="." instance=ExtResource( 7 )]
+margin_left = -510.0
+margin_top = -1674.0
+margin_right = 2547.0
+margin_bottom = 2283.0
+
+[editable path="PuppyCamera"]

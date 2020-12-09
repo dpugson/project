@@ -173,7 +173,7 @@ func action_noop(action):
 				}
 		"throw up":
 			battle_menu.set_decision_stuff_visible(false)
-			smelled = true
+			#smelled = true
 			if smelled:
 				done = true
 				vom()

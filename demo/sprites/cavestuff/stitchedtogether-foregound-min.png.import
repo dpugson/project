@@ -14,7 +14,7 @@ dest_files=[ "res://.import/stitchedtogether-foregound-min.png-67fbd327735e1c38a
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
