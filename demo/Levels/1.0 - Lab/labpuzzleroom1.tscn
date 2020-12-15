@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://sprites/L2_lab/safety_poster.png" type="Texture" id=1]
 [ext_resource path="res://Levels/1.0 - Lab/RobotSprite.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sprites/L2_lab/pillow_pile.png" type="Texture" id=3]
 [ext_resource path="res://Levels/1.0 - Lab/waste_bin.tscn" type="PackedScene" id=4]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/1.0 - Lab/potted_palm.tscn" type="PackedScene" id=7]
 [ext_resource path="res://sprites/L2_lab/lab_room.png" type="Texture" id=9]
 [ext_resource path="res://sprites/L2_lab/camera.png" type="Texture" id=10]
@@ -205,7 +206,7 @@ tracks/4/keys = {
 "values": [ -41.28 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 resource_name = "default"
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/player:position")
@@ -219,9 +220,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 349.323, 95.1058 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/player:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
-[sub_resource type="Animation" id=4]
-resource_name = "doggo_default_run"
+[sub_resource type="Animation" id=5]
 length = 3.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/player:position")
@@ -236,8 +248,7 @@ tracks/0/keys = {
 "values": [ Vector2( 168.882, -77.5046 ), Vector2( 561.169, -72.4537 ), Vector2( 556.118, -446.22 ), Vector2( 167.199, -447.904 ), Vector2( 175.617, -287.959 ), Vector2( 389.438, -304.795 ), Vector2( 130.159, -631.42 ), Vector2( 130.159, -631.42 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "out_of_control"
+[sub_resource type="Animation" id=6]
 length = 6.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/player:position")
@@ -266,8 +277,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "really_out_of_control"
+[sub_resource type="Animation" id=7]
 length = 0.7
 loop = true
 tracks/0/type = "value"
@@ -281,6 +291,21 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 556.118, -441.169 ), Vector2( 170.566, -441.169 ), Vector2( 173.933, -77.5045 ), Vector2( 556.118, -75.8209 ), Vector2( 556.118, -439.486 ), Vector2( 170.566, -441.169 ), Vector2( 173.933, -77.5045 ), Vector2( 556.118, -75.8209 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "stopped"
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 349.323, 95.1058 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -345,89 +370,152 @@ tracks/4/keys = {
 "update": 1,
 "values": [ "down" ]
 }
-
-[sub_resource type="Animation" id=10]
-resource_name = "intervene"
-length = 10.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("YSort/robot:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 1.5, 4.7, 5.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+tracks/5/type = "value"
+tracks/5/path = NodePath("YSort/robot:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 353.096, -752.485 ), Vector2( 353.096, -752.485 ), Vector2( 353.096, -702.438 ), Vector2( 353.096, -702.438 ), Vector2( 353.096, -641.269 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("YSort/robot:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 1.5, 4.7, 5.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false, true, false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("YSort/robot:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 5.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 0 ]
-}
-
-[sub_resource type="Animation" id=11]
-resource_name = "intervene2"
-length = 10.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("YSort/robot:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 1.5, 4.7, 5.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 353.096, -752.485 ), Vector2( 353.096, -752.485 ), Vector2( 353.096, -702.438 ), Vector2( 353.096, -702.438 ), Vector2( 353.096, -641.269 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("YSort/robot:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 1.5, 4.7, 5.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false, true, false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("YSort/robot:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 5.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 0 ]
+"values": [ Vector2( 353.096, -752.485 ) ]
 }
 
 [sub_resource type="Animation" id=9]
-resource_name = "robot_appear"
+resource_name = "intervene"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/robot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 353.096, -752.485 ), Vector2( 353.096, -577.312 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/robot:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/robot:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 0 ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "ok_ok_ok"
+} ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "intervene2"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/robot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/robot:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/robot:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("YSort/robot:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "down", "dogdown" ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/player:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1.7 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "intervention_over"
+} ]
+}
+
+[sub_resource type="Animation" id=11]
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:visible")
 tracks/0/interp = 1
@@ -491,6 +579,9 @@ tracks/4/keys = {
 "values": [ Vector2( 366.056, -231.518 ), Vector2( 366.056, -578.214 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 105.925, 49.1887 )
+
 [node name="labpuzzleroom1" type="Node2D"]
 script = ExtResource( 17 )
 
@@ -523,6 +614,7 @@ rotation = 1.58149
 
 [node name="AnimatedSprite" parent="ZoomPanels/ZoomPanel_BL" index="0"]
 animation = "ready"
+frame = 1
 
 [node name="ZoomPanel_BR" parent="ZoomPanels" instance=ExtResource( 20 )]
 position = Vector2( 1190.49, 957.297 )
@@ -553,7 +645,8 @@ texture = ExtResource( 3 )
 position = Vector2( -10.0858, 1.34656 )
 
 [node name="player" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( 377.458, -440.266 )
+visible = false
+position = Vector2( 349.323, 95.1058 )
 camera = NodePath("../../PuppyCamera")
 
 [node name="potted_palm" parent="YSort" instance=ExtResource( 7 )]
@@ -563,11 +656,11 @@ position = Vector2( 756.237, -610.597 )
 position = Vector2( 639.701, -615.664 )
 
 [node name="robot" parent="YSort" instance=ExtResource( 2 )]
-visible = false
-position = Vector2( 353.096, -752.485 )
+position = Vector2( 353.096, -577.312 )
+animation = "dogdown"
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort"]
-position = Vector2( 366.056, -231.518 )
+position = Vector2( 366.056, -578.214 )
 
 [node name="camera" type="Sprite" parent="."]
 position = Vector2( -37.6627, -975.474 )
@@ -594,18 +687,38 @@ position = Vector2( 1916.22, 1179.44 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
 autoplay = "default"
-anims/default = SubResource( 7 )
-anims/doggo_default_run = SubResource( 4 )
-anims/out_of_control = SubResource( 5 )
-anims/really_out_of_control = SubResource( 6 )
+anims/default = SubResource( 4 )
+anims/doggo_default_run = SubResource( 5 )
+anims/out_of_control = SubResource( 6 )
+anims/really_out_of_control = SubResource( 7 )
+anims/stopped = SubResource( 12 )
 
 [node name="CutsceneAnimation" type="AnimationPlayer" parent="."]
 pause_mode = 2
 autoplay = "default"
 anims/default = SubResource( 8 )
-anims/intervene = SubResource( 10 )
-anims/intervene2 = SubResource( 11 )
-anims/robot_appear = SubResource( 9 )
+anims/intervene = SubResource( 9 )
+anims/intervene2 = SubResource( 10 )
+anims/robot_appear = SubResource( 11 )
+
+[node name="Collisions" type="Node2D" parent="."]
+
+[node name="left" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/left"]
+polygon = PoolVector2Array( 249.419, -668.826, -96.173, -668.826, -96.173, 82.0277, 55.4896, 77.0552, 50.5171, 188.937, 234.501, 191.424, -461.655, 514.639, -476.573, -934.858 )
+
+[node name="right" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/right"]
+polygon = PoolVector2Array( 139.806, -666.418, 826.234, -663.854, 808.83, 193.91, 450.807, 191.424, 1074.86, 502.208, 1069.89, -1004.47 )
+
+[node name="bottomTZ" parent="." instance=ExtResource( 5 )]
+position = Vector2( 340.725, 295.695 )
+
+[node name="CollisionShape2D" parent="bottomTZ" index="0"]
+position = Vector2( 2.94629, -11.7848 )
+shape = SubResource( 13 )
 [connection signal="activated" from="ZoomPanels/ZoomPanel_BL" to="." method="_on_ZoomPanel_BL_activated"]
 [connection signal="activated" from="ZoomPanels/ZoomPanel_BR" to="." method="_on_ZoomPanel_BR_activated"]
 [connection signal="activated" from="ZoomPanels/ZoomPanel_UR" to="." method="_on_ZoomPanel_UR_activated"]
@@ -613,7 +726,10 @@ anims/robot_appear = SubResource( 9 )
 [connection signal="activated" from="ZoomPanels/ZoomPanel_ML" to="." method="_on_ZoomPanel_ML_activated"]
 [connection signal="activated" from="ZoomPanels/ZoomPanel_M" to="." method="_on_ZoomPanel_M_activated"]
 [connection signal="pulled" from="YSort/Lever" to="." method="_on_Lever_pulled"]
+[connection signal="transition_triggered" from="bottomTZ" to="." method="_on_bottomTZ_transition_triggered"]
 
 [editable path="ZoomPanels/ZoomPanel_BL"]
 
 [editable path="PuppyCamera"]
+
+[editable path="bottomTZ"]

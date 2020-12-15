@@ -11,8 +11,11 @@ onready var robot = $Robot
 onready var save_star = $YSort/SaveStar
 onready var postBattleSP = $PostBattleSP
 onready var ninja = $ninja
+onready var ninja_talk_box = $ninja/SeenBox/CollisionShape2D
+onready var ninja_collision = $ninja/StaticBody2D/CollisionShape2D
 onready var throwup = $throwup2
-onready var wallet_animation = $wallet/wallet_animation
+onready var wallet_animation = $YSort/wallet/wallet_animation
+onready var wallet = $YSort/wallet
 onready var door = $labdoor
 
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
@@ -24,7 +27,9 @@ const DOOR_UNLOCKED = "DOOR_UNLOCKED"
 func _ready():
 	throwup.visible = false
 	if stats.check_bool(NINJA_GONE):
-		ninja.queue_free()
+		ninja.visible = false
+		ninja_talk_box.disabled = true
+		ninja_collision.disabled = true
 	if stats.check_bool(WALLET_DROPPED):
 		wallet_animation.play("dropped")
 	if stats.check_bool(DOOR_UNLOCKED):
@@ -51,7 +56,7 @@ func _ready():
 			orientation = Vector2.DOWN
 		"post_battle":
 			player.cutscene_mode = true
-			Jukebox.stream_paused = true
+			Jukebox.stop()
 			player_position = postBattleSP.position
 			orientation = Vector2.UP
 			animation.play("ninja_battle_finished")
@@ -79,7 +84,7 @@ func _on_BreakRoomTZ_transition_triggered():
 	Transition.go_to("res://Levels/1.0 - Lab/BreakRoom.tscn", "door")
 
 func _on_LabTZ_transition_triggered():
-	pass # Replace with function body.
+	Transition.go_to("res://Levels/1.0 - Lab/labpuzzleroom1.tscn", "bottom")
 
 func continue_cutscene_in_breakroom():
 	Transition.go_to("res://Levels/1.0 - Lab/BreakRoom.tscn", "emerge_cutscene")
@@ -280,7 +285,7 @@ func _on_WalletSeenBox_seen(_obj):
 		],
 		"2" : [
 			"TEXT", "Take?", NINJA_SPEECH_SPEED, 
-			[["yes", "yes"], ["no", null]], null, null
+			[["YES", "yes"], ["NO", null]], null, null
 		],
 		"yes" : [
 			"TEXT", "FINDERS KEEPERS!", NINJA_SPEECH_SPEED, 
@@ -288,18 +293,15 @@ func _on_WalletSeenBox_seen(_obj):
 		],
 		"gain" : [
 			"TEXT", "You gain 1 WALLET.", NINJA_SPEECH_SPEED, 
-			"rummage", null, null
-		],
-		"rummage" : [
-			"TEXT", "You rummage around inside... It's almost empty!", NINJA_SPEECH_SPEED, 
 			"keycard", null, null
 		],
 		"keycard" : [
-			"TEXT", "The only thing in it is a TOP-LEVEL SECURITY CLEARANCE CARD.", NINJA_SPEECH_SPEED, 
+			"TEXT", "The only thing in it is a SECURITY CLEARANCE CARD.", NINJA_SPEECH_SPEED, 
 			null, null, null
 		],
 	}
-	DialogueHelper.showDialogue(self, dialogue, false, [self, "disappear_ninja"])
+	DialogueHelper.showDialogue(self, dialogue, false)
 
 func get_wallet():
 	stats.inventory_add("ninja_wallet")
+	wallet.queue_free()

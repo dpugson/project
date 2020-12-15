@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://sprites/L2_lab/safety_poster.png" type="Texture" id=1]
 [ext_resource path="res://Levels/1.0 - Lab/potted_palm.tscn" type="PackedScene" id=2]
@@ -19,6 +19,12 @@
 [ext_resource path="res://sprites/L2_lab/throwup2.png" type="Texture" id=17]
 [ext_resource path="res://sprites/L2_lab/wallet.png" type="Texture" id=18]
 
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 52.5469, 67.2289 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 69.4406, 112.285 )
+
 [sub_resource type="Animation" id=1]
 resource_name = "default"
 tracks/0/type = "value"
@@ -36,7 +42,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "drop"
-length = 1.2
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -50,13 +56,13 @@ tracks/0/keys = {
 "values": [ Vector2( 1589.13, -337.559 ), Vector2( 1589.13, 747.809 ), Vector2( 1572.08, 732.656 ), Vector2( 1553.14, 745.915 ) ]
 }
 tracks/1/type = "method"
-tracks/1/path = NodePath("..")
+tracks/1/path = NodePath("../..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1.2 ),
+"times": PoolRealArray( 2 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -79,11 +85,8 @@ tracks/0/keys = {
 "values": [ Vector2( 1606.18, 742.303 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 52.5469, 67.2289 )
-
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 69.4406, 112.285 )
+[sub_resource type="CircleShape2D" id=14]
+radius = 29.881
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 67.2606, 49.3467 )
@@ -311,18 +314,6 @@ position = Vector2( 1656.74, 607.557 )
 scale = Vector2( 0.7841, 0.7748 )
 texture = ExtResource( 17 )
 
-[node name="wallet" type="Sprite" parent="."]
-position = Vector2( 1553.14, 745.915 )
-texture = ExtResource( 18 )
-
-[node name="wallet_animation" type="AnimationPlayer" parent="wallet"]
-autoplay = "default"
-anims/default = SubResource( 1 )
-anims/drop = SubResource( 2 )
-anims/dropped = SubResource( 3 )
-
-[node name="WalletSeenBox" parent="wallet" instance=ExtResource( 15 )]
-
 [node name="YSort" type="YSort" parent="."]
 
 [node name="safety_poster" type="Sprite" parent="YSort"]
@@ -340,7 +331,7 @@ position = Vector2( 1391.36, 572.721 )
 position = Vector2( 0.751587, 5.90717 )
 
 [node name="potted_palm" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 1515.9, 614.831 )
+position = Vector2( 1509.86, 605.359 )
 
 [node name="waste_bin" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 662.948, 594.549 )
@@ -367,6 +358,27 @@ position = Vector2( 1125.83, 754.078 )
 save_spot_name = "The Lab - Back Hallway"
 home = "res://Levels/1.0 - Lab/labhallway.tscn"
 flavor_text = "Greetings, Soggy Star!"
+
+[node name="wallet" type="Sprite" parent="YSort"]
+show_behind_parent = true
+position = Vector2( 1553.14, 745.915 )
+texture = ExtResource( 18 )
+
+[node name="wallet_animation" type="AnimationPlayer" parent="YSort/wallet"]
+autoplay = "default"
+anims/default = SubResource( 1 )
+anims/drop = SubResource( 2 )
+anims/dropped = SubResource( 3 )
+
+[node name="WalletSeenBox" parent="YSort/wallet" instance=ExtResource( 15 )]
+position = Vector2( 1.35547, 0 )
+
+[node name="CollisionShape2D" parent="YSort/wallet/WalletSeenBox" index="0"]
+position = Vector2( 0, -6.10352e-05 )
+shape = SubResource( 14 )
+
+[node name="SmellArrow" parent="YSort/wallet/WalletSeenBox/CollisionShape2D" index="0"]
+position = Vector2( 3.42505, -88.7548 )
 
 [node name="PuppyCamera" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1018.28, 551.972 )
@@ -419,7 +431,6 @@ position = Vector2( 519.083, 630.15 )
 [node name="AnimatedSprite" parent="Robot" instance=ExtResource( 14 )]
 position = Vector2( -1.60675, -118.341 )
 animation = "dogdown"
-frame = 2
 playing = true
 
 [node name="labdoor" type="Node2D" parent="."]
@@ -438,10 +449,10 @@ shape = SubResource( 13 )
 
 [node name="PostBattleSP" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1650.76, 690.725 )
-[connection signal="seen" from="wallet/WalletSeenBox" to="." method="_on_WalletSeenBox_seen"]
 [connection signal="seen" from="YSort/glasses_box/glassesbox" to="." method="_on_glassesbox_seen"]
 [connection signal="seen" from="YSort/waste_bin/wastebin" to="." method="_on_wastebin_seen"]
 [connection signal="seen" from="YSort/vending_machine/sodamachine" to="." method="_on_sodamachine_seen"]
+[connection signal="seen" from="YSort/wallet/WalletSeenBox" to="." method="_on_WalletSeenBox_seen"]
 [connection signal="transition_triggered" from="BathroomTZ" to="." method="_on_BathroomTZ_transition_triggered"]
 [connection signal="transition_triggered" from="LabTZ" to="." method="_on_LabTZ_transition_triggered"]
 [connection signal="transition_triggered" from="BreakRoomTZ" to="." method="_on_BreakRoomTZ_transition_triggered"]
@@ -450,6 +461,8 @@ position = Vector2( 1650.76, 690.725 )
 [editable path="YSort/waste_bin/wastebin"]
 
 [editable path="YSort/vending_machine/sodamachine"]
+
+[editable path="YSort/wallet/WalletSeenBox"]
 
 [editable path="PuppyCamera"]
 

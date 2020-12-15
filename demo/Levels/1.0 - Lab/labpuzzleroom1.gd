@@ -123,15 +123,41 @@ func OHMYGOD(timer):
 			"2", null, null, ROBOT_PITCH
 		],
 		"2" : [
-			"TEXT", "PUPPY!!!????", ROBOT_SPEECH_SPEED, 
+			"TEXT", "PUPPY!?!?!?", ROBOT_SPEECH_SPEED, 
+			"3", null, null, ROBOT_PITCH
+		],
+		"3" : [
+			"TEXT", "THIS IS NOT SAFE!!!", ROBOT_SPEECH_SPEED, 
+			"4", null, null, ROBOT_PITCH
+		],
+		"4" : [
+			"TEXT", "OH DEAR OH DEAR...", ROBOT_SPEECH_SPEED, 
 			null, null, null, ROBOT_PITCH
 		],
 	}
-	DialogueHelper.showDialogue(self, dialogue, false, [self, "time_for_intervention"])
+	DialogueHelper.showDialogue(self, dialogue, false, [self, "intervene"])
 
-func timer_for_intervention():
-	create_and_start_timer(2, "intervene")
+func intervene():
+	cutscene_animation.play("intervene")
 
-func intervene(timer):
-	timer.queue_free()
-	
+func ok_ok_ok():
+	var dialogue = {
+		"begin" : [
+			"TEXT", "OK OK OK, I can do this...", ROBOT_SPEECH_SPEED, 
+			"2", null, null, ROBOT_PITCH
+		],
+		"2" : [
+			"TEXT", "Just gotta take a deep breath and...", ROBOT_SPEECH_SPEED, 
+			null, null, null, ROBOT_PITCH
+		],
+	}
+	DialogueHelper.showDialogue(self, dialogue, false, [self, "intervene2"])
+
+func intervene2():
+	cutscene_animation.play("intervene2")
+
+func intervention_over():
+	doggo_animation.play("stopped")
+
+func _on_bottomTZ_transition_triggered():
+	Transition.go_to("res://Levels/1.0 - Lab/labhallway.tscn", "lab")

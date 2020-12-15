@@ -49,10 +49,10 @@ position = Vector2( 958.006, 649.753 )
 camera = NodePath("../../PuppyCamera")
 
 [node name="LeftLever" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 815.557, 518.282 )
+position = Vector2( 817.844, 469.114 )
 
 [node name="RightLever" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 1121, 528.937 )
+position = Vector2( 1123.29, 479.769 )
 
 [node name="Gilby" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 735.464, 592.997 )

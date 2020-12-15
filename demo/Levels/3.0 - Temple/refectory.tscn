@@ -1,12 +1,18 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/L4_AncientTemple/refectory_bg-min.png" type="Texture" id=2]
-[ext_resource path="res://sprites/L4_AncientTemple/refectory_fg-min.png" type="Texture" id=3]
+[ext_resource path="res://sprites/L4_AncientTemple/refectory_left_wall-min.png" type="Texture" id=3]
 [ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/3.0 - Temple/refectory.gd" type="Script" id=6]
 [ext_resource path="res://BG.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/L4_AncientTemple/refectory_light_beams.png" type="Texture" id=8]
+[ext_resource path="res://sprites/L4_AncientTemple/refectory_right_wall-min.png" type="Texture" id=9]
+[ext_resource path="res://sprites/L4_AncientTemple/refectory_table-min.png" type="Texture" id=10]
+[ext_resource path="res://sprites/L4_AncientTemple/refectory_table_legs.png" type="Texture" id=11]
+
+[sub_resource type="CircleShape2D" id=1]
 
 [node name="Refectory" type="Node2D"]
 position = Vector2( 33.6338, -169.695 )
@@ -22,13 +28,40 @@ position = Vector2( 120.486, -102.764 )
 scale = Vector2( 0.9, 0.9 )
 
 [node name="player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 843.32, 1314.39 )
-camera = NodePath("../../../../Refectory/PuppyCamera")
+position = Vector2( 996.978, 1296.83 )
+camera = NodePath("../../PuppyCamera")
 
-[node name="refectory_fg-min" type="Sprite" parent="."]
-position = Vector2( 900.264, 115.614 )
-scale = Vector2( 0.9, 0.9 )
+[node name="rightwall" type="Node2D" parent="YSort"]
+position = Vector2( 1171.83, 603.58 )
+
+[node name="refectory_right_wall-min" type="Sprite" parent="YSort/rightwall"]
+position = Vector2( -305.614, -360.594 )
+texture = ExtResource( 9 )
+
+[node name="leftwall" type="Node2D" parent="YSort"]
+position = Vector2( 344.482, 1277.82 )
+
+[node name="refectory_left_wall-min" type="Sprite" parent="YSort/leftwall"]
+position = Vector2( 521.614, -1035.96 )
 texture = ExtResource( 3 )
+
+[node name="table" type="Node2D" parent="YSort"]
+position = Vector2( 707.664, 1174.13 )
+
+[node name="refectory_table_legs" type="Sprite" parent="YSort/table"]
+position = Vector2( 158.817, -930.843 )
+texture = ExtResource( 11 )
+
+[node name="refectory_table-min" type="Sprite" parent="."]
+position = Vector2( 899.925, 117.125 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 10 )
+
+[node name="refectory_light_beams" type="Sprite" parent="."]
+modulate = Color( 1, 0.894118, 0.623529, 0.0862745 )
+position = Vector2( 904.055, 116.794 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 8 )
 
 [node name="PuppyCamera" parent="." instance=ExtResource( 5 )]
 
@@ -49,5 +82,51 @@ margin_left = -510.0
 margin_top = -1674.0
 margin_right = 2547.0
 margin_bottom = 2283.0
+
+[node name="Collisions" type="Node2D" parent="."]
+
+[node name="top" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/top"]
+polygon = PoolVector2Array( 435.22, 1059.83, 383.581, 1259.93, 1388.4, 1253.47, 1171.08, 453.065, 2048.95, 463.823, 860.334, 2188.64, -194.508, 1061.22 )
+
+[node name="bottom" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/bottom"]
+polygon = PoolVector2Array( 281.369, 933.174, 468.077, 930.651, 647.216, 258.275, 1124.08, 258.275, 1144.26, 339.013, 1573.19, 344.06, 155.214, -501.175 )
+
+[node name="chairleg" type="StaticBody2D" parent="Collisions"]
+position = Vector2( 767.195, 962.279 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/chairleg"]
+shape = SubResource( 1 )
+
+[node name="chairleg2" type="StaticBody2D" parent="Collisions"]
+position = Vector2( 993.614, 960.257 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/chairleg2"]
+shape = SubResource( 1 )
+
+[node name="chairleg3" type="StaticBody2D" parent="Collisions"]
+position = Vector2( 796.508, 459.913 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/chairleg3"]
+shape = SubResource( 1 )
+
+[node name="chairleg4" type="StaticBody2D" parent="Collisions"]
+position = Vector2( 951.16, 455.869 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/chairleg4"]
+shape = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 292.754
+margin_top = 1258.97
+margin_right = 1522.75
+margin_bottom = 1451.97
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [editable path="PuppyCamera"]
