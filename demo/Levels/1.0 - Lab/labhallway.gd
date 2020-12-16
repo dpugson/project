@@ -255,7 +255,7 @@ func not_paid_enough_for_this():
 			"2", null, null, NINJA_PITCH
 		],
 		"2" : [
-			"TEXT", "Ok, I'm am NOT being payed enough for this.", NINJA_SPEECH_SPEED, 
+			"TEXT", "Ok, I am NOT being payed enough for this.", NINJA_SPEECH_SPEED, 
 			null, null, null, NINJA_PITCH
 		],
 	}

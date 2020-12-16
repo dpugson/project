@@ -7,7 +7,7 @@
 [ext_resource path="res://hitnhurtboxes/PlayerDetectionZone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/1.0 - Lab/ZoomPanel.gd" type="Script" id=6]
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
 "loop": true,
@@ -32,7 +32,7 @@ extents = Vector2( 22.0488, 18.1033 )
 script = ExtResource( 6 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 7 )
+frames = SubResource( 1 )
 playing = true
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 5 )]

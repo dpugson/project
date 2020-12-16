@@ -1,9 +1,10 @@
 extends KinematicBody2D
 
 export var SPEED_UP = 6000;
-export var MAX_SPEED = 550;
+export var MAX_SPEED = 600;
 export var SLOW_DOWN = 6000;
 export var TURBO_MAX_SPEED = 1500
+export var TURBO_SPEED_UP = 60000;
 
 enum {
 	WALK,
@@ -117,8 +118,12 @@ func move(delta, input):
 	if not cutscene_mode:
 		speed = move_and_slide(speed)
 
-func turbo_move(delta):
-	speed = speed.move_toward(turbo_input * TURBO_MAX_SPEED, SPEED_UP * delta)
+func turbo_move(delta, input):
+	if stats.check_bool("CYBERNETICALLY_ENHANCED_TURBO"):
+		if input != Vector2.ZERO:
+			turbo_input = input
+			set_blend_positions(turbo_input)
+	speed = speed.move_toward(turbo_input * TURBO_MAX_SPEED, TURBO_SPEED_UP * delta)
 	speed = move_and_slide(speed)
 	var slide_count = get_slide_count()
 	if slide_count > 0:
@@ -213,7 +218,7 @@ func _physics_process(delta):
 		TURBO_DASHING:
 #			if check_for_turbo_input():
 #				state = WALK
-			turbo_move(delta)
+			turbo_move(delta, input)
 
 func _on_HurtBox_area_entered(_area):
 	stats.health -= 1
