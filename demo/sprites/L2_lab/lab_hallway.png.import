@@ -14,7 +14,7 @@ dest_files=[ "res://.import/lab_hallway.png-d41a1a7f1d0a4ed823c31191b17c583c.ste
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

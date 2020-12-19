@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://StarBG.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Characters/ForestFolk/Motorcycle.tscn" type="PackedScene" id=3]
+
+[node name="RootChamber" type="Node2D"]
+
+[node name="Node2D" parent="." instance=ExtResource( 2 )]
+margin_left = -281.459
+margin_top = -174.885
+margin_right = -281.459
+margin_bottom = -174.885
+rect_scale = Vector2( 0.6, 0.6 )
+
+[node name="Motorcycle" parent="." instance=ExtResource( 3 )]
+position = Vector2( 825.379, 476.226 )
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 807.114, 661.403 )

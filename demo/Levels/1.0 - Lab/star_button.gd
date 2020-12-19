@@ -3,15 +3,18 @@ extends Node2D
 onready var animated_sprite = $AnimatedSprite
 onready var timer = $Timer
 
-signal activated
+signal activated(obj)
+signal deactivated
 
-func _on_PlayerDetectionZone_body_entered(body):
-	animated_sprite.frame = 1
+func _on_PlayerDetectionZone_body_entered(_body):
 	timer.stop()
-	emit_signal("activated")
+	if animated_sprite.frame != 1:
+		animated_sprite.frame = 1
+		emit_signal("activated", self)
 
-func _on_PlayerDetectionZone_body_exited(body):
+func _on_PlayerDetectionZone_body_exited(_body):
 	timer.start()
 
 func _on_Timer_timeout():
 	animated_sprite.frame = 0
+	emit_signal("deactivated")

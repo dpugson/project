@@ -76,8 +76,8 @@ func save_game(new_save_spot_name, tscn):
 	file.close()
 	emit_signal("save_complete")
 	
-func load_game():
-	if not loaded:
+func load_game(force_load=false):
+	if (not loaded) or force_load:
 		update_volumes()
 		loaded = true
 		var file = File.new()

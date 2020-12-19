@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/forest_theme_lofi.wav-1c0289b67e0a5de57d37e4e9738a9d71.sample"
+
+[deps]
+
+source_file="res://tunes/forest/forest_theme_lofi.wav"
+dest_files=[ "res://.import/forest_theme_lofi.wav-1c0289b67e0a5de57d37e4e9738a9d71.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=true
+compress/mode=0

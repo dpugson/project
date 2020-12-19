@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://sprites/forest_npcs/motorcycle_dog/moto_l.png" type="Texture" id=1]
 [ext_resource path="res://sprites/forest_npcs/motorcycle_dog/wheel.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://sprites/forest_npcs/motorcycle_dog/alter_ego_l.png" type="Texture" id=10]
 [ext_resource path="res://sprites/forest_npcs/motorcycle_dog/alter_ego_u.png" type="Texture" id=11]
 [ext_resource path="res://sprites/forest_npcs/motorcycle_dog/alter_ego_f.png" type="Texture" id=12]
+[ext_resource path="res://sprites/forest_npcs/motorcycle_dog/md_r1.png" type="Texture" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Go"
@@ -72,20 +73,19 @@ resource_name = "stop"
 position = Vector2( 6.33586, -57.9278 )
 
 [node name="moto_l" type="Sprite" parent="."]
-position = Vector2( -6.93127, -58.0904 )
+visible = false
+position = Vector2( 1.43274, -52.8629 )
 texture = ExtResource( 1 )
 
 [node name="wheel2" type="Sprite" parent="moto_l"]
 show_behind_parent = true
 position = Vector2( 80.2289, 86.4693 )
-rotation = -3.62803
 texture = ExtResource( 2 )
 offset = Vector2( -0.90509, -7.24097 )
 
 [node name="wheel" type="Sprite" parent="moto_l"]
 show_behind_parent = true
 position = Vector2( -90.8391, 73.7976 )
-rotation = -3.62803
 texture = ExtResource( 2 )
 offset = Vector2( -1.81023, -5.43073 )
 
@@ -94,13 +94,14 @@ position = Vector2( 30.7266, -37.9971 )
 texture = ExtResource( 9 )
 
 [node name="alter_ego_l2" type="Sprite" parent="moto_l"]
+visible = false
 position = Vector2( 13.3087, -91.4041 )
 scale = Vector2( 0.971429, 0.727273 )
 texture = ExtResource( 10 )
 
 [node name="moto_u" type="Sprite" parent="."]
 visible = false
-position = Vector2( -10.2167, -136.31 )
+position = Vector2( -11.2621, -79.8527 )
 texture = ExtResource( 4 )
 
 [node name="md_u" type="Sprite" parent="moto_u"]
@@ -108,25 +109,23 @@ position = Vector2( 5.6925, -33.7225 )
 texture = ExtResource( 8 )
 
 [node name="alter_ego_u" type="Sprite" parent="moto_u"]
+visible = false
 position = Vector2( 6.71416, -82.3656 )
 texture = ExtResource( 11 )
 
 [node name="moto_r" type="Sprite" parent="."]
-visible = false
-position = Vector2( -12.8469, -67.3397 )
+position = Vector2( -4.48283, -45.3841 )
 texture = ExtResource( 3 )
 
 [node name="wheel3" type="Sprite" parent="moto_r"]
 show_behind_parent = true
 position = Vector2( 89.3569, 78.0508 )
-rotation = 3.62803
 texture = ExtResource( 2 )
 offset = Vector2( -0.90509, -7.24097 )
 
 [node name="wheel4" type="Sprite" parent="moto_r"]
 show_behind_parent = true
 position = Vector2( -82.8754, 76.903 )
-rotation = 3.62803
 texture = ExtResource( 2 )
 offset = Vector2( -1.81023, -5.43073 )
 
@@ -135,21 +134,33 @@ position = Vector2( -31.7966, -38.1877 )
 texture = ExtResource( 6 )
 
 [node name="alter_ego_l" type="Sprite" parent="moto_r"]
+visible = false
 position = Vector2( -18.3359, -92.5722 )
 scale = Vector2( 0.971429, 0.727273 )
 texture = ExtResource( 10 )
 flip_h = true
 
+[node name="md_r1" type="Sprite" parent="moto_r"]
+position = Vector2( -31.5975, -38.1965 )
+texture = ExtResource( 13 )
+
+[node name="alter_ego_f2" type="Sprite" parent="moto_r"]
+visible = false
+position = Vector2( -28.6185, -79.1237 )
+scale = Vector2( 0.704227, 0.737026 )
+texture = ExtResource( 12 )
+
 [node name="moto_d" type="Sprite" parent="."]
 visible = false
-position = Vector2( -10.2714, -143.114 )
+position = Vector2( -15.4989, -58.428 )
 texture = ExtResource( 7 )
 
 [node name="md_d" type="Sprite" parent="moto_d"]
-position = Vector2( 4.29626, -71.6045 )
+position = Vector2( 8.27722, -68.4197 )
 texture = ExtResource( 5 )
 
 [node name="alter_ego_f" type="Sprite" parent="moto_d"]
+visible = false
 position = Vector2( 5.66414, -60.0722 )
 texture = ExtResource( 12 )
 

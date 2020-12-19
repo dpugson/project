@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://sprites/L2_lab/safety_poster.png" type="Texture" id=1]
 [ext_resource path="res://Levels/1.0 - Lab/RobotSprite.tscn" type="PackedScene" id=2]
@@ -293,7 +293,7 @@ tracks/0/keys = {
 "values": [ Vector2( 556.118, -441.169 ), Vector2( 170.566, -441.169 ), Vector2( 173.933, -77.5045 ), Vector2( 556.118, -75.8209 ), Vector2( 556.118, -439.486 ), Vector2( 170.566, -441.169 ), Vector2( 173.933, -77.5045 ), Vector2( 556.118, -75.8209 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=8]
 resource_name = "stopped"
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/player:position")
@@ -308,8 +308,7 @@ tracks/0/keys = {
 "values": [ Vector2( 349.323, 95.1058 ) ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "default"
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:visible")
 tracks/0/interp = 1
@@ -383,8 +382,7 @@ tracks/5/keys = {
 "values": [ Vector2( 353.096, -752.485 ) ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "intervene"
+[sub_resource type="Animation" id=10]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:position")
@@ -437,9 +435,8 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "intervene2"
-length = 1.7
+[sub_resource type="Animation" id=11]
+length = 2.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:position")
 tracks/0/interp = 1
@@ -507,15 +504,96 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 1.7 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 1.7, 2.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "intervention_over"
+}, {
+"args": [  ],
+"method": "gotcha"
 } ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
+resource_name = "on_to_next_room"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/robot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.4, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 353.096, -577.312 ), Vector2( 353.096, -577.312 ), Vector2( 353.096, -774.627 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/robot:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.4, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/robot:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "dogdown", "dogup" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("YSort/robot:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/robot:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 3.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "go_to_next_room"
+} ]
+}
+
+[sub_resource type="Animation" id=13]
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:visible")
 tracks/0/interp = 1
@@ -579,7 +657,7 @@ tracks/4/keys = {
 "values": [ Vector2( 366.056, -231.518 ), Vector2( 366.056, -578.214 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 105.925, 49.1887 )
 
 [node name="labpuzzleroom1" type="Node2D"]
@@ -656,8 +734,9 @@ position = Vector2( 756.237, -610.597 )
 position = Vector2( 639.701, -615.664 )
 
 [node name="robot" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 353.096, -577.312 )
-animation = "dogdown"
+visible = false
+position = Vector2( 353.096, -774.627 )
+animation = "dogup"
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort"]
 position = Vector2( 366.056, -578.214 )
@@ -672,17 +751,17 @@ texture = ExtResource( 13 )
 
 [node name="BG" parent="." instance=ExtResource( 16 )]
 margin_left = -1760.59
-margin_top = -1738.03
+margin_top = -1772.21
 margin_right = 1988.41
-margin_bottom = 1245.97
+margin_bottom = 1211.79
 
 [node name="PuppyCamera" parent="." instance=ExtResource( 15 )]
 
 [node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
-position = Vector2( -1699.3, -1655.57 )
+position = Vector2( -594.139, -1448.29 )
 
 [node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
-position = Vector2( 1916.22, 1179.44 )
+position = Vector2( 1353.68, 654.404 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
@@ -691,15 +770,16 @@ anims/default = SubResource( 4 )
 anims/doggo_default_run = SubResource( 5 )
 anims/out_of_control = SubResource( 6 )
 anims/really_out_of_control = SubResource( 7 )
-anims/stopped = SubResource( 12 )
+anims/stopped = SubResource( 8 )
 
 [node name="CutsceneAnimation" type="AnimationPlayer" parent="."]
 pause_mode = 2
 autoplay = "default"
-anims/default = SubResource( 8 )
-anims/intervene = SubResource( 9 )
-anims/intervene2 = SubResource( 10 )
-anims/robot_appear = SubResource( 11 )
+anims/default = SubResource( 9 )
+anims/intervene = SubResource( 10 )
+anims/intervene2 = SubResource( 11 )
+anims/on_to_next_room = SubResource( 12 )
+anims/robot_appear = SubResource( 13 )
 
 [node name="Collisions" type="Node2D" parent="."]
 
@@ -718,7 +798,7 @@ position = Vector2( 340.725, 295.695 )
 
 [node name="CollisionShape2D" parent="bottomTZ" index="0"]
 position = Vector2( 2.94629, -11.7848 )
-shape = SubResource( 13 )
+shape = SubResource( 14 )
 [connection signal="activated" from="ZoomPanels/ZoomPanel_BL" to="." method="_on_ZoomPanel_BL_activated"]
 [connection signal="activated" from="ZoomPanels/ZoomPanel_BR" to="." method="_on_ZoomPanel_BR_activated"]
 [connection signal="activated" from="ZoomPanels/ZoomPanel_UR" to="." method="_on_ZoomPanel_UR_activated"]

@@ -87,9 +87,9 @@ text = "I like to think of these signs as my legacy... My form of immortality in
 revive_text = "WHO KEEPS DESTROYING MY SIGNS???"
 
 [node name="Sign5" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 537.34, 653.023 )
+position = Vector2( 2809.39, 1158.57 )
 max_health = 5
-text = "And did you know that \"SHIFT\" lets you
+text = "And did you know that \"CTRL\" lets you
 see things you can interact with using \"L\"?"
 unique_name = "final_cave2_sign"
 

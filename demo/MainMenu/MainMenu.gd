@@ -10,7 +10,7 @@ onready var level_lable = $Control/Level
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 
 func refresh_ui():
-	stats.load_game()
+	stats.load_game(true) # force reload
 	if stats.save_spot_name == null:
 		reset()
 		return
