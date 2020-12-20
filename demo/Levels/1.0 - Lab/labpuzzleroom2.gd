@@ -8,6 +8,8 @@ onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 onready var cutscene_animation = $CutsceneAnimation
 onready var robot_remote_transform = $YSort/RemoteTransform2D
 onready var camera = $PuppyCamera
+onready var stars = $stars
+onready var starbuttons = $starbuttons
 
 const EffectHelper = preload("res://effects/EffectHelper.gd")
 const StarEffect  = preload("res://Levels/1.0 - Lab/StarEffect.tscn")
@@ -91,13 +93,21 @@ func _on_bottomTZ_transition_triggered():
 	Transition.go_to("res://Levels/1.0 - Lab/labhallway.tscn", "lab")
 
 var num_stars_active = 0
-func _on_StarButton_activated(star):
+func _on_StarButton_activated(_star):
 	print(num_stars_active, "++")
 	num_stars_active += 1
 	if num_stars_active >= 9:
-		EffectHelper.place_effect(star, StarEffect)
+		cutscene_animation.play("star_win")
 
 func _on_StarButton_deactivated():
 	num_stars_active -= 1
 	print(num_stars_active, "--")
+
+func launch_effects():
+	for child in stars.get_children():
+		child.start()
+
+func deactivate_buttons():
+	for child in starbuttons.get_children():
+		child.deactivate()
 

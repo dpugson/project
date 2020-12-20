@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://sprites/L2_lab/safety_poster.png" type="Texture" id=1]
 [ext_resource path="res://Levels/1.0 - Lab/RobotSprite.tscn" type="PackedScene" id=2]
@@ -7,8 +7,10 @@
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/1.0 - Lab/labpuzzleroom2.gd" type="Script" id=6]
 [ext_resource path="res://Levels/1.0 - Lab/potted_palm.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/1.0 - Lab/StarEffect.tscn" type="PackedScene" id=8]
 [ext_resource path="res://sprites/L2_lab/lab_room.png" type="Texture" id=9]
 [ext_resource path="res://sprites/L2_lab/camera.png" type="Texture" id=10]
+[ext_resource path="res://tunes/lab/youdidit.wav" type="AudioStream" id=11]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=12]
 [ext_resource path="res://sprites/L2_lab/science_desk.png" type="Texture" id=13]
 [ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=15]
@@ -358,7 +360,42 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="Animation" id=5]
+resource_name = "star_win"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "launch_effects"
+}, {
+"args": [  ],
+"method": "deactivate_buttons"
+} ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("CutsceneAnimation/AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 11 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 105.925, 49.1887 )
 
 [node name="labpuzzleroom2" type="Node2D"]
@@ -449,6 +486,32 @@ position = Vector2( -557.169, -1179.36 )
 [node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
 position = Vector2( 1413.32, 316.681 )
 
+[node name="stars" type="Node2D" parent="."]
+
+[node name="StarEffect" parent="stars" instance=ExtResource( 8 )]
+position = Vector2( 147.644, -459.752 )
+
+[node name="StarEffect2" parent="stars" instance=ExtResource( 8 )]
+position = Vector2( 349.156, -469.424 )
+
+[node name="StarEffect3" parent="stars" instance=ExtResource( 8 )]
+position = Vector2( 557.116, -471.036 )
+
+[node name="StarEffect4" parent="stars" instance=ExtResource( 8 )]
+position = Vector2( 144.42, -277.585 )
+
+[node name="StarEffect5" parent="stars" instance=ExtResource( 8 )]
+position = Vector2( 350.768, -277.585 )
+
+[node name="StarEffect6" parent="stars" instance=ExtResource( 8 )]
+position = Vector2( 560.34, -284.034 )
+
+[node name="StarEffect7" parent="stars" instance=ExtResource( 8 )]
+position = Vector2( 352.38, -98.6429 )
+
+[node name="StarEffect8" parent="stars" instance=ExtResource( 8 )]
+position = Vector2( 561.952, -93.8066 )
+
 [node name="CutsceneAnimation" type="AnimationPlayer" parent="."]
 pause_mode = 2
 autoplay = "default"
@@ -456,6 +519,11 @@ anims/default = SubResource( 1 )
 anims/dropoff = SubResource( 2 )
 anims/robot_appear = SubResource( 3 )
 anims/robot_leave = SubResource( 4 )
+anims/star_win = SubResource( 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CutsceneAnimation"]
+stream = ExtResource( 11 )
+bus = "Effects"
 
 [node name="Collisions" type="Node2D" parent="."]
 
@@ -474,7 +542,7 @@ position = Vector2( 340.725, 295.695 )
 
 [node name="CollisionShape2D" parent="bottomTZ" index="0"]
 position = Vector2( 5.72461, 100.737 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 [connection signal="activated" from="starbuttons/StarButton" to="." method="_on_StarButton_activated"]
 [connection signal="deactivated" from="starbuttons/StarButton" to="." method="_on_StarButton_deactivated"]
 [connection signal="activated" from="starbuttons/StarButton2" to="." method="_on_StarButton_activated"]

@@ -13,8 +13,12 @@ func _on_PlayerDetectionZone_body_entered(_body):
 		emit_signal("activated", self)
 
 func _on_PlayerDetectionZone_body_exited(_body):
-	timer.start()
+	#timer.start()
+	pass
 
 func _on_Timer_timeout():
 	animated_sprite.frame = 0
 	emit_signal("deactivated")
+
+func deactivate():
+	animated_sprite.frame = 0
