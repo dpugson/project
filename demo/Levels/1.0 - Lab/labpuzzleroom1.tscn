@@ -692,7 +692,6 @@ rotation = 1.58149
 
 [node name="AnimatedSprite" parent="ZoomPanels/ZoomPanel_BL" index="0"]
 animation = "ready"
-frame = 1
 
 [node name="ZoomPanel_BR" parent="ZoomPanels" instance=ExtResource( 20 )]
 position = Vector2( 1190.49, 957.297 )
@@ -723,7 +722,6 @@ texture = ExtResource( 3 )
 position = Vector2( -10.0858, 1.34656 )
 
 [node name="player" parent="YSort" instance=ExtResource( 12 )]
-visible = false
 position = Vector2( 349.323, 95.1058 )
 camera = NodePath("../../PuppyCamera")
 
@@ -735,11 +733,10 @@ position = Vector2( 639.701, -615.664 )
 
 [node name="robot" parent="YSort" instance=ExtResource( 2 )]
 visible = false
-position = Vector2( 353.096, -774.627 )
-animation = "dogup"
+position = Vector2( 353.096, -752.485 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort"]
-position = Vector2( 366.056, -578.214 )
+position = Vector2( 366.056, -231.518 )
 
 [node name="camera" type="Sprite" parent="."]
 position = Vector2( -37.6627, -975.474 )

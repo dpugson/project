@@ -1,0 +1,39 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://sprites/LC_Crimbus/crimmas_tree9.png" type="Texture" id=1]
+[ext_resource path="res://sprites/LC_Crimbus/crimmas_tree8.png" type="Texture" id=2]
+[ext_resource path="res://sprites/LC_Crimbus/crimmas_tree4.png" type="Texture" id=3]
+[ext_resource path="res://sprites/LC_Crimbus/crimmas_tree1.png" type="Texture" id=4]
+[ext_resource path="res://sprites/LC_Crimbus/crimmas_tree5.png" type="Texture" id=5]
+[ext_resource path="res://sprites/LC_Crimbus/crimmas_tree6.png" type="Texture" id=6]
+[ext_resource path="res://sprites/LC_Crimbus/crimmas_tree2.png" type="Texture" id=7]
+[ext_resource path="res://sprites/LC_Crimbus/crimmas_tree3.png" type="Texture" id=8]
+[ext_resource path="res://sprites/LC_Crimbus/crimmas_tree7.png" type="Texture" id=9]
+[ext_resource path="res://sprites/LC_Crimbus/crimmas_tree0.png" type="Texture" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 32.6688
+height = 129.154
+
+[node name="CrimmasTree" type="Node2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -14.0215, -255.893 )
+frames = SubResource( 1 )
+frame = 8
+playing = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 2.0603, 24.7244 )
+rotation = 1.5708
+shape = SubResource( 2 )

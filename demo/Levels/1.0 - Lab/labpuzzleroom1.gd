@@ -119,7 +119,7 @@ func OHMYGOD(timer):
 	timer.queue_free()
 	var dialogue = {
 		"begin" : [
-			"TEXT", "OH MY GOD", ROBOT_SPEECH_SPEED, 
+			"TEXT", "OH MY GOSH", ROBOT_SPEECH_SPEED, 
 			"2", null, null, ROBOT_PITCH
 		],
 		"2" : [
@@ -167,7 +167,7 @@ func gotcha():
 			"2", null, null, ROBOT_PITCH
 		],
 		"2" : [
-			"TEXT", "I'll just take the puppy with me, yes, yes...", ROBOT_SPEECH_SPEED, 
+			"TEXT", "I'll just move the puppy to a safer room...\nyes, yes...", ROBOT_SPEECH_SPEED, 
 			null, null, null, ROBOT_PITCH
 		],
 	}

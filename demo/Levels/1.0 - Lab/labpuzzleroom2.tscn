@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://sprites/L2_lab/safety_poster.png" type="Texture" id=1]
 [ext_resource path="res://Levels/1.0 - Lab/RobotSprite.tscn" type="PackedScene" id=2]
@@ -10,12 +10,37 @@
 [ext_resource path="res://Levels/1.0 - Lab/StarEffect.tscn" type="PackedScene" id=8]
 [ext_resource path="res://sprites/L2_lab/lab_room.png" type="Texture" id=9]
 [ext_resource path="res://sprites/L2_lab/camera.png" type="Texture" id=10]
-[ext_resource path="res://tunes/lab/youdidit.wav" type="AudioStream" id=11]
+[ext_resource path="res://tunes/lab/youdidit2.wav" type="AudioStream" id=11]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=12]
 [ext_resource path="res://sprites/L2_lab/science_desk.png" type="Texture" id=13]
+[ext_resource path="res://sprites/L2_lab/little_stars.png" type="Texture" id=14]
 [ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=15]
 [ext_resource path="res://BG.tscn" type="PackedScene" id=16]
+[ext_resource path="res://sprites/L2_lab/break_room_fire1.png" type="Texture" id=17]
 [ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=18]
+[ext_resource path="res://sprites/L2_lab/break_room_fire0.png" type="Texture" id=19]
+[ext_resource path="res://sprites/L2_lab/break_room_fire2.png" type="Texture" id=20]
+[ext_resource path="res://sprites/L2_lab/fire_extinguisher_spray1.png" type="Texture" id=21]
+[ext_resource path="res://sprites/L2_lab/fire_extinguisher_r.png" type="Texture" id=22]
+[ext_resource path="res://sprites/L2_lab/fire_extinguisher_spray0.png" type="Texture" id=23]
+[ext_resource path="res://sprites/L2_lab/fire_extinguisher_d.png" type="Texture" id=24]
+[ext_resource path="res://tunes/lab/youdidit1.wav" type="AudioStream" id=25]
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 19 ), ExtResource( 17 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ ExtResource( 23 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -32,7 +57,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("YSort/RemoteTransform2D:position")
+tracks/1/path = NodePath("YSort/robot:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -40,11 +65,11 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 366.056, -231.518 ) ]
+"update": 1,
+"values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("YSort/robot:playing")
+tracks/2/path = NodePath("YSort/robot:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -53,10 +78,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ 0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("YSort/robot:frame")
+tracks/3/path = NodePath("YSort/robot:animation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -65,10 +90,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ "down" ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("YSort/robot:animation")
+tracks/4/path = NodePath("YSort/robot:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -76,11 +101,11 @@ tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "down" ]
+"update": 0,
+"values": [ Vector2( 353.096, -752.485 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("YSort/robot:position")
+tracks/5/path = NodePath("YSort/player:cutscene_mode")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -88,11 +113,11 @@ tracks/5/enabled = true
 tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 353.096, -752.485 ) ]
+"update": 1,
+"values": [ false ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("YSort/player:cutscene_mode")
+tracks/6/path = NodePath("YSort/player:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -101,10 +126,10 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("YSort/player:visible")
+tracks/7/path = NodePath("malfunctioning_button:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -113,7 +138,31 @@ tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("fireextinguishstuff:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("YSort/robot/fire_extinguisher_d:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -218,6 +267,132 @@ tracks/7/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=11]
+resource_name = "leave_n_comeback"
+length = 7.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/robot:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.4, 2.6, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/robot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 353.096, -752.485 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/robot:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 1.3, 2.6, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "left", "down", "right", "up", "left", "down", "up", "down", "right" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("fireextinguishstuff:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3, 6.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/robot/fire_extinguisher_d:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.6, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("fireextinguishstuff/spray:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 3, 3.6, 5.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("malfunctioning_button/fire:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 4.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("malfunctioning_button:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 633.733, -662.261 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("malfunctioning_button:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 5.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 7.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "go_to_grab_puppy"
+} ]
+}
+
 [sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:visible")
@@ -270,7 +445,7 @@ tracks/3/keys = {
 } ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("YSort/RemoteTransform2D:position")
+tracks/4/path = NodePath("YSort/robot/RemoteTransform2D:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -360,8 +535,7 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "star_win"
+[sub_resource type="Animation" id=6]
 length = 2.0
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -390,12 +564,151 @@ tracks/1/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 11 )
+"stream": ExtResource( 25 )
 } ],
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="Animation" id=7]
+resource_name = "star_win2"
+length = 4.5
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.5, 4.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "launch_effects"
+}, {
+"args": [  ],
+"method": "OMIGOD"
+} ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("CutsceneAnimation/AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 11 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("malfunctioning_button:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true ]
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("malfunctioning_button:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 144.745, -0.25, 0, 0.25, 0, 633.733, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 1.5, 3 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("malfunctioning_button:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( -105.625, -0.25, 0, 0.219173, -757.422, -662.261, -0.387399, -533.578, 0.25, 0 ),
+"times": PoolRealArray( 1.5, 3 )
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("malfunctioning_button/fire:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("YSort/robot:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("YSort/robot:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 353.096, -752.485 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("YSort/robot:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("YSort/robot:animation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "down" ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("malfunctioning_button/little_stars:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 105.925, 49.1887 )
 
 [node name="labpuzzleroom2" type="Node2D"]
@@ -458,11 +771,45 @@ position = Vector2( 756.237, -610.597 )
 position = Vector2( 639.701, -615.664 )
 
 [node name="robot" parent="YSort" instance=ExtResource( 2 )]
-visible = false
 position = Vector2( 353.096, -752.485 )
+animation = "right"
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort"]
-position = Vector2( 366.056, -231.518 )
+[node name="fire_extinguisher_d" type="Sprite" parent="YSort/robot"]
+visible = false
+position = Vector2( -0.983154, 104.912 )
+texture = ExtResource( 24 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/robot"]
+position = Vector2( 2.9519, 48.7076 )
+
+[node name="malfunctioning_button" type="Node2D" parent="."]
+visible = false
+position = Vector2( 633.733, -662.261 )
+
+[node name="little_stars" type="Sprite" parent="malfunctioning_button"]
+visible = false
+texture = ExtResource( 14 )
+
+[node name="fire" type="AnimatedSprite" parent="malfunctioning_button"]
+pause_mode = 2
+visible = false
+position = Vector2( 12.2263, -32.6036 )
+frames = SubResource( 9 )
+playing = true
+
+[node name="fireextinguishstuff" type="Node2D" parent="."]
+visible = false
+
+[node name="spray" type="AnimatedSprite" parent="fireextinguishstuff"]
+visible = false
+position = Vector2( 595.385, -674.439 )
+frames = SubResource( 10 )
+frame = 1
+playing = true
+
+[node name="fire_extinguisher_r" type="Sprite" parent="fireextinguishstuff"]
+position = Vector2( 446.098, -680.837 )
+texture = ExtResource( 22 )
 
 [node name="camera" type="Sprite" parent="."]
 position = Vector2( -37.6627, -975.474 )
@@ -512,14 +859,19 @@ position = Vector2( 352.38, -98.6429 )
 [node name="StarEffect8" parent="stars" instance=ExtResource( 8 )]
 position = Vector2( 561.952, -93.8066 )
 
+[node name="StarEffect9" parent="stars" instance=ExtResource( 8 )]
+position = Vector2( 153.264, -82.8456 )
+
 [node name="CutsceneAnimation" type="AnimationPlayer" parent="."]
 pause_mode = 2
 autoplay = "default"
 anims/default = SubResource( 1 )
 anims/dropoff = SubResource( 2 )
+anims/leave_n_comeback = SubResource( 11 )
 anims/robot_appear = SubResource( 3 )
 anims/robot_leave = SubResource( 4 )
-anims/star_win = SubResource( 5 )
+anims/star_win = SubResource( 6 )
+anims/star_win2 = SubResource( 7 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CutsceneAnimation"]
 stream = ExtResource( 11 )
@@ -542,7 +894,13 @@ position = Vector2( 340.725, 295.695 )
 
 [node name="CollisionShape2D" parent="bottomTZ" index="0"]
 position = Vector2( 5.72461, 100.737 )
-shape = SubResource( 6 )
+shape = SubResource( 8 )
+
+[node name="CutscenePuppySpot" type="Position2D" parent="."]
+position = Vector2( 49.6564, -596.464 )
+
+[node name="LeaveSpot" type="Position2D" parent="."]
+position = Vector2( 356.15, -749.475 )
 [connection signal="activated" from="starbuttons/StarButton" to="." method="_on_StarButton_activated"]
 [connection signal="deactivated" from="starbuttons/StarButton" to="." method="_on_StarButton_deactivated"]
 [connection signal="activated" from="starbuttons/StarButton2" to="." method="_on_StarButton_activated"]

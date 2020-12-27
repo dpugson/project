@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/youdidit.wav-7a4ad6b313d54fe76c31e7e12dc52510.sample"
+path="res://.import/youdidit1.wav-fa8878949a06da02dd0e94132d7744df.sample"
 
 [deps]
 
-source_file="res://tunes/lab/youdidit.wav"
-dest_files=[ "res://.import/youdidit.wav-7a4ad6b313d54fe76c31e7e12dc52510.sample" ]
+source_file="res://tunes/lab/youdidit1.wav"
+dest_files=[ "res://.import/youdidit1.wav-fa8878949a06da02dd0e94132d7744df.sample" ]
 
 [params]
 

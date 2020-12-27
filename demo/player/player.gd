@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 export var SPEED_UP = 6000;
-export var MAX_SPEED = 600;
+export var MAX_SPEED = 550;
 export var SLOW_DOWN = 6000;
 export var TURBO_MAX_SPEED = 1500
 export var TURBO_SPEED_UP = 60000;
@@ -42,6 +42,7 @@ onready var EffectHelper = preload("res://effects/EffectHelper.gd")
 onready var dog_animation_sprite = $DogAnimation
 onready var furniture_turn_timer = $MoveFurnitureRotationTimer
 onready var costume_sprites = $Costumes/CostumeSprites
+onready var cameraOffset = $CameraOffset
 
 func _ready():
 	stats.connect("out_of_health", self, "queue_free")

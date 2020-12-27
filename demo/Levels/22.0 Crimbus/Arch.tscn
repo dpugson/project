@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/LC_Crimbus/archway.png" type="Texture" id=1]
+
+[node name="Arch" type="Node2D"]
+
+[node name="archway" type="Sprite" parent="."]
+position = Vector2( -4.65503, -120.508 )
+texture = ExtResource( 1 )
