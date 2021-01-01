@@ -1,6 +1,35 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Items/Inventory.gd" type="Script" id=1]
+[ext_resource path="res://sprites/dog/l0.png" type="Texture" id=2]
+[ext_resource path="res://sprites/dog/l2.png" type="Texture" id=3]
+[ext_resource path="res://sprites/dog/l1.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "bounce_item"
+length = 0.4
+loop = true
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("hatsprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.1, 0.14, 0.22, 0.32 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 183.301, 76.3755 ), Vector2( 183.301, 76.3755 ), Vector2( 183.301, 80.673 ), Vector2( 183.301, 76.3755 ), Vector2( 183.301, 70.4666 ), Vector2( 183.301, 76.3755 ) ]
+}
 
 [node name="Inventory" type="CanvasLayer"]
 pause_mode = 2
@@ -113,4 +142,26 @@ text = "0 G"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 1383.57
+margin_top = 720.549
+margin_right = 1779.57
+margin_bottom = 971.549
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Panel"]
+position = Vector2( 187.217, 136.761 )
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[node name="hatsprite" type="Sprite" parent="Panel"]
+position = Vector2( 183.301, 80.673 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel"]
+autoplay = "bounce_item"
+anims/bounce_item = SubResource( 2 )
 [connection signal="pressed" from="List/Button" to="." method="_on_Button_pressed"]

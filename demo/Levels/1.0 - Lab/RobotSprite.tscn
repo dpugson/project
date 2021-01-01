@@ -75,5 +75,6 @@ animations = [ {
 } ]
 
 [node name="AnimatedSprite" type="AnimatedSprite"]
+position = Vector2( 1.04358, -91.8352 )
 frames = SubResource( 1 )
 animation = "down"

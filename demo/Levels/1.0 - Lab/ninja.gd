@@ -194,11 +194,7 @@ func garbage_confrontation(confrontation_option_text):
 		],
 		"6" : [
 			"TEXT", "(This puppy is relentless... If this continues,\nmy mission is in danger...)", NINJA_SPEECH_SPEED, 
-			"7", [self, "back_to_wall"], null, NINJA_PITCH
-		],
-		"7" : [
-			"TEXT", "(I have no choice...)", NINJA_SPEECH_SPEED, 
-			"8", null, null, NINJA_PITCH
+			"8", [self, "back_to_wall"], null, NINJA_PITCH
 		],
 		"8" : [
 			"TEXT", "Puppy... You leave me no choice...", NINJA_SPEECH_SPEED, 

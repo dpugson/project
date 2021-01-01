@@ -1,19 +1,26 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://sprites/L2_lab/safety_poster.png" type="Texture" id=1]
 [ext_resource path="res://Levels/1.0 - Lab/RobotSprite.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/L2_lab/science_poster.png" type="Texture" id=3]
 [ext_resource path="res://Levels/1.0 - Lab/waste_bin.tscn" type="PackedScene" id=4]
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/L2_lab/sinktop.png" type="Texture" id=6]
 [ext_resource path="res://Levels/1.0 - Lab/potted_palm.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/L2_lab/chemistry_stuff.png" type="Texture" id=8]
 [ext_resource path="res://sprites/L2_lab/lab_room.png" type="Texture" id=9]
 [ext_resource path="res://sprites/L2_lab/camera.png" type="Texture" id=10]
 [ext_resource path="res://tunes/lab/youdidit2.wav" type="AudioStream" id=11]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=12]
 [ext_resource path="res://sprites/L2_lab/science_desk.png" type="Texture" id=13]
+[ext_resource path="res://sprites/L2_lab/lab_counter.png" type="Texture" id=14]
 [ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=15]
 [ext_resource path="res://BG.tscn" type="PackedScene" id=16]
+[ext_resource path="res://sprites/L2_lab/computer_console.png" type="Texture" id=17]
 [ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=18]
-[ext_resource path="res://tunes/lab/youdidit1.wav" type="AudioStream" id=25]
+[ext_resource path="res://sprites/L2_lab/thick_book.png" type="Texture" id=19]
+[ext_resource path="res://sprites/L2_lab/medium_book.png" type="Texture" id=20]
+[ext_resource path="res://Levels/1.0 - Lab/labpuzzleroom3.gd" type="Script" id=21]
 
 [sub_resource type="Animation" id=3]
 tracks/0/type = "value"
@@ -102,7 +109,7 @@ tracks/6/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-length = 7.2
+length = 4.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:visible")
 tracks/0/interp = 1
@@ -122,10 +129,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 1.5, 2.7, 4.9, 5.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 342.504, 33.2312 ), Vector2( 342.504, 33.2312 ), Vector2( 342.504, -117.399 ), Vector2( 33.0563, -117.399 ), Vector2( 33.0563, -716.647 ), Vector2( 182.05, -716.647 ) ]
+"values": [ Vector2( 342.504, 33.2312 ), Vector2( 342.504, 33.2312 ), Vector2( 342.504, -443.719 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("YSort/robot:animation")
@@ -134,10 +141,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1.5, 2.7, 4.9, 5.8, 6.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 3, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ "dogup", "dogleft", "dogup", "dogright", "dogleft", "left" ]
+"values": [ "dogup", "dogdown", "down" ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("YSort/robot:playing")
@@ -146,7 +153,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.3, 0.5, 5.7 ),
+"times": PoolRealArray( 0.3, 0.5, 2.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -158,10 +165,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 5.6 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 2.4 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0, 0 ]
+"values": [ 0 ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("YSort/player:position")
@@ -170,10 +177,10 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.6, 1.2, 2.7, 4.9, 6.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.6, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 346.784, 120.153 ), Vector2( 346.784, 120.153 ), Vector2( 350.422, 20.7075 ), Vector2( 34.3311, -10.3073 ), Vector2( 35.6889, -602.843 ), Vector2( 49.6992, -599.104 ) ]
+"values": [ Vector2( 346.784, 120.153 ), Vector2( 346.784, 120.153 ), Vector2( 346.784, -227.859 ) ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("YSort/player:visible")
@@ -182,7 +189,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 6.7 ),
+"times": PoolRealArray( 0, 3.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -194,7 +201,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 7.2 ),
+"times": PoolRealArray( 4.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -343,44 +350,11 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=8]
-length = 2.0
-tracks/0/type = "method"
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 1.5, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "launch_effects"
-}, {
-"args": [  ],
-"method": "deactivate_buttons"
-} ]
-}
-tracks/1/type = "audio"
-tracks/1/path = NodePath("CutsceneAnimation/AudioStreamPlayer")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 25 )
-} ],
-"times": PoolRealArray( 0 )
-}
-
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 105.925, 49.1887 )
 
 [node name="labpuzzleroom3" type="Node2D"]
+script = ExtResource( 21 )
 
 [node name="bottomSP" parent="." instance=ExtResource( 18 )]
 position = Vector2( 348.715, 131.839 )
@@ -393,27 +367,65 @@ position = Vector2( 364.749, -433.062 )
 texture = ExtResource( 9 )
 
 [node name="safety_poster" type="Sprite" parent="."]
-position = Vector2( 637.714, -824.868 )
+position = Vector2( 759.787, -822.961 )
 texture = ExtResource( 1 )
+
+[node name="science_poster" type="Sprite" parent="."]
+position = Vector2( 639.356, -828.518 )
+texture = ExtResource( 3 )
 
 [node name="YSort" type="YSort" parent="."]
 
+[node name="computer_console" type="Sprite" parent="YSort"]
+position = Vector2( 698.66, -495.172 )
+rotation = 0.0162452
+scale = Vector2( 1.19791, 1.20259 )
+texture = ExtResource( 17 )
+
+[node name="thick_book" type="Sprite" parent="YSort/computer_console"]
+position = Vector2( -55.2729, -116.71 )
+rotation = -0.016182
+scale = Vector2( 0.834784, 0.831542 )
+texture = ExtResource( 19 )
+
 [node name="player" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( 49.6992, -599.104 )
+position = Vector2( 346.784, -227.859 )
 camera = NodePath("../../../labpuzzleroom2/PuppyCamera")
 
 [node name="potted_palm" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 736.869, 127.793 )
+position = Vector2( 754.036, -623.717 )
 
 [node name="waste_bin" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 622.754, 137.252 )
+position = Vector2( -33.387, -36.3206 )
 
 [node name="robot" parent="YSort" instance=ExtResource( 2 )]
 visible = false
 position = Vector2( 353.096, -752.485 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/robot"]
-position = Vector2( 2.9519, 48.7076 )
+position = Vector2( 366.056, -231.518 )
+
+[node name="sink" type="Node2D" parent="YSort"]
+position = Vector2( 755.326, -24.796 )
+
+[node name="sinktop" type="Sprite" parent="YSort/sink"]
+position = Vector2( -5.34149, 71.769 )
+texture = ExtResource( 6 )
+
+[node name="counter" type="Node2D" parent="YSort"]
+position = Vector2( 46.9702, -624.529 )
+
+[node name="lab_counter" type="Sprite" parent="YSort/counter"]
+position = Vector2( 22.0765, 91.6563 )
+texture = ExtResource( 14 )
+
+[node name="chemistry_stuff" type="Sprite" parent="YSort/counter/lab_counter"]
+position = Vector2( 55.3142, -211.72 )
+texture = ExtResource( 8 )
+
+[node name="medium_book" type="Sprite" parent="YSort/counter/lab_counter"]
+position = Vector2( -112.159, 30.6903 )
+texture = ExtResource( 20 )
 
 [node name="camera" type="Sprite" parent="."]
 position = Vector2( -37.6627, -975.474 )
@@ -424,10 +436,10 @@ position = Vector2( -21.5583, 102.415 )
 texture = ExtResource( 13 )
 
 [node name="BG" parent="." instance=ExtResource( 16 )]
-margin_left = -1760.59
-margin_top = -1738.03
-margin_right = 1988.41
-margin_bottom = 1245.97
+margin_left = -1591.17
+margin_top = -1690.99
+margin_right = 2157.83
+margin_bottom = 1293.01
 
 [node name="PuppyCamera" parent="." instance=ExtResource( 15 )]
 
@@ -444,7 +456,6 @@ anims/default = SubResource( 3 )
 anims/dropoff = SubResource( 4 )
 anims/robot_appear = SubResource( 6 )
 anims/robot_leave = SubResource( 7 )
-anims/star_win = SubResource( 8 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CutsceneAnimation"]
 stream = ExtResource( 11 )

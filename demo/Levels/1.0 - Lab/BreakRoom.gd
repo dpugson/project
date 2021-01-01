@@ -145,7 +145,7 @@ var oh_no_log = {
 		"6", null, null, ROBOT_PITCH
 	],
 	"6" : [
-		"TEXT", "I will be back in 23 hours and 55 minutes.", ROBOT_SPEECH_SPEED, 
+		"TEXT", "I will be back in 217 years.", ROBOT_SPEECH_SPEED, 
 		null, null, null, ROBOT_PITCH
 	],
 }

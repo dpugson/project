@@ -12,7 +12,7 @@ onready var scroll_container = $List/MarginContainer/VBoxContainer/ScrollContain
 var item_click_handler = null
 
 func _input(event):
-	if event.is_action_pressed("menu") or event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("menu") or event.is_action_pressed("ui_cancel") or event.is_action_pressed("realmenu"):
 		self.call_deferred("close_menu")
 
 func enchild(obj):
@@ -24,7 +24,7 @@ func display_item(item_data: Dictionary):
 		item_picture.texture = picture
 	else:
 		item_picture.texture = null
-	item_description.text = item_data['description']
+	item_description.text = item_data['description'] + "\n\nClick to Equip!"
 
 func undisplay_item():
 	item_picture.texture = null
@@ -58,6 +58,10 @@ func _on_focus_change(label):
 	var scrolled_bottom = scrolled_top + scroll_container.rect_size.y - label.rect_size.y
 	if focus_offset < scrolled_top or focus_offset >= scrolled_bottom:
 		scroll_container.scroll_vertical = focus_offset
+
+var g_overworld_mode = false
+func make_overworld_mode():
+	g_overworld_mode = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -100,3 +104,14 @@ func close_menu():
 func handle_item_pressed(label, item, prev):
 	if item_click_handler != null:
 		item_click_handler[0].call_deferred(item_click_handler[1], self, label, item, prev)
+	else:
+		toggle_equip(item)
+
+onready var hatsprite = $Panel/hatsprite
+func toggle_equip(item):
+	stats.put_on_hat(item["image"])
+	var hat_image = stats.world_state.get("HAT", null)
+	if hat_image != null:
+		hatsprite.texture = load(hat_image)
+	else:
+		hatsprite.texture = null

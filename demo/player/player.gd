@@ -43,12 +43,25 @@ onready var dog_animation_sprite = $DogAnimation
 onready var furniture_turn_timer = $MoveFurnitureRotationTimer
 onready var costume_sprites = $Costumes/CostumeSprites
 onready var cameraOffset = $CameraOffset
+onready var hatanimator = $DogAnimation/hat/hatanimator
+onready var hat_sprite = $DogAnimation/hat/Sprite
+onready var hat_node = $DogAnimation/hat
 
 func _ready():
 	stats.connect("out_of_health", self, "queue_free")
 	lookbox.connect("saw_something", self, "set_speed_to_zero")
 	bark_hitbox.knockback_vector = speed
 	animation_tree.active = true
+	stats.connect("put_on_hat", self, "set_hat")
+	set_hat()
+
+func set_hat():
+	var hat = stats.world_state.get("HAT", null)
+	if hat != null:
+		hat_sprite.texture = load(hat)
+		hat_node.visible = true
+	else:
+		hat_node.visible = false
 
 func cutscene_mode_set(value):
 	cutscene_mode = value
@@ -185,8 +198,10 @@ func start_turbo_warmup():
 
 func walk(_delta, input):	
 	if input != Vector2.ZERO:
+		hatanimator.play("bounce")
 		animation_state.travel("walk")
 	else:
+		hatanimator.play("default")
 		animation_state.travel("idle")
 	if in_water():
 		state = SWIM
@@ -248,4 +263,7 @@ func _on_LookBox_rotated_furniture_counterclockwise():
 
 func _on_MoveFurnitureRotationTimer_timeout():
 	dog_animation_sprite.rotation = 0
+
+func _exit_tree():
+	stats.disconnect("put_on_hat", self, "set_hat")
 

@@ -622,7 +622,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( 144.745, -0.25, 0, 0.25, 0, 633.733, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 144.745, -0.25, 0, 0.25, 0, 631.83, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 1.5, 3 )
 }
 tracks/4/type = "bezier"
@@ -632,7 +632,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"points": PoolRealArray( -105.625, -0.25, 0, 0.219173, -757.422, -662.261, -0.387399, -533.578, 0.25, 0 ),
+"points": PoolRealArray( -105.625, -0.25, 0, 0.219173, -757.422, -711.724, -0.238494, -419.406, 0.25, 0 ),
 "times": PoolRealArray( 1.5, 3 )
 }
 tracks/5/type = "value"
@@ -758,21 +758,20 @@ position = Vector2( -222.057, -13.7883 )
 [node name="StarButton9" parent="starbuttons" instance=ExtResource( 3 )]
 position = Vector2( -13.6133, -11.5227 )
 
+[node name="potted_palm" parent="." instance=ExtResource( 7 )]
+position = Vector2( 746.725, -661.962 )
+
+[node name="waste_bin" parent="." instance=ExtResource( 4 )]
+position = Vector2( 635.896, -657.517 )
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="player" parent="YSort" instance=ExtResource( 12 )]
 position = Vector2( 49.6992, -599.104 )
 camera = NodePath("../../../labpuzzleroom2/PuppyCamera")
 
-[node name="potted_palm" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 756.237, -610.597 )
-
-[node name="waste_bin" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 639.701, -615.664 )
-
 [node name="robot" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 353.096, -752.485 )
-animation = "right"
 
 [node name="fire_extinguisher_d" type="Sprite" parent="YSort/robot"]
 visible = false
@@ -783,8 +782,7 @@ texture = ExtResource( 24 )
 position = Vector2( 2.9519, 48.7076 )
 
 [node name="malfunctioning_button" type="Node2D" parent="."]
-visible = false
-position = Vector2( 633.733, -662.261 )
+position = Vector2( 631.83, -711.724 )
 
 [node name="little_stars" type="Sprite" parent="malfunctioning_button"]
 visible = false
@@ -792,9 +790,9 @@ texture = ExtResource( 14 )
 
 [node name="fire" type="AnimatedSprite" parent="malfunctioning_button"]
 pause_mode = 2
-visible = false
 position = Vector2( 12.2263, -32.6036 )
 frames = SubResource( 9 )
+frame = 2
 playing = true
 
 [node name="fireextinguishstuff" type="Node2D" parent="."]
@@ -804,7 +802,6 @@ visible = false
 visible = false
 position = Vector2( 595.385, -674.439 )
 frames = SubResource( 10 )
-frame = 1
 playing = true
 
 [node name="fire_extinguisher_r" type="Sprite" parent="fireextinguishstuff"]

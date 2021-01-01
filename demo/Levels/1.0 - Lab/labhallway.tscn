@@ -19,14 +19,13 @@
 [ext_resource path="res://sprites/L2_lab/throwup2.png" type="Texture" id=17]
 [ext_resource path="res://sprites/L2_lab/wallet.png" type="Texture" id=18]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 52.5469, 67.2289 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 69.4406, 112.285 )
 
-[sub_resource type="Animation" id=1]
-resource_name = "default"
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -40,8 +39,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1606.18, -337.559 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "drop"
+[sub_resource type="Animation" id=4]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -70,8 +68,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "dropped"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -85,19 +82,19 @@ tracks/0/keys = {
 "values": [ Vector2( 1606.18, 742.303 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=14]
+[sub_resource type="CircleShape2D" id=6]
 radius = 29.881
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 67.2606, 49.3467 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 132.01, 47.258 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 67.9907, 49.7416 )
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Robot:position")
 tracks/0/interp = 1
@@ -135,7 +132,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 0.5
 tracks/0/type = "method"
 tracks/0/path = NodePath("ninja")
@@ -178,7 +175,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 length = 6.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Robot/AnimatedSprite:visible")
@@ -267,10 +264,10 @@ tracks/6/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 120.157, 73.1631 )
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 181.693, 34.2334 )
 
 [node name="labhallway" type="Node2D"]
@@ -341,7 +338,7 @@ position = Vector2( -0.941162, 4.58569 )
 
 [node name="CollisionShape2D" parent="YSort/waste_bin/wastebin" index="0"]
 position = Vector2( 3.69836, -18.4918 )
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="vending_machine" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 903.141, 574.479 )
@@ -351,7 +348,7 @@ position = Vector2( -0.740601, -30.8197 )
 
 [node name="CollisionShape2D" parent="YSort/vending_machine/sodamachine" index="0"]
 position = Vector2( -3.52374, 10.5712 )
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 
 [node name="SaveStar" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 1125.83, 754.078 )
@@ -366,16 +363,16 @@ texture = ExtResource( 18 )
 
 [node name="wallet_animation" type="AnimationPlayer" parent="YSort/wallet"]
 autoplay = "default"
-anims/default = SubResource( 1 )
-anims/drop = SubResource( 2 )
-anims/dropped = SubResource( 3 )
+anims/default = SubResource( 3 )
+anims/drop = SubResource( 4 )
+anims/dropped = SubResource( 5 )
 
 [node name="WalletSeenBox" parent="YSort/wallet" instance=ExtResource( 15 )]
 position = Vector2( 1.35547, 0 )
 
 [node name="CollisionShape2D" parent="YSort/wallet/WalletSeenBox" index="0"]
 position = Vector2( 0, -6.10352e-05 )
-shape = SubResource( 14 )
+shape = SubResource( 6 )
 
 [node name="SmellArrow" parent="YSort/wallet/WalletSeenBox/CollisionShape2D" index="0"]
 position = Vector2( 3.42505, -88.7548 )
@@ -403,26 +400,26 @@ position = Vector2( 515.91, 501.289 )
 
 [node name="CollisionShape2D" parent="BathroomTZ" index="0"]
 position = Vector2( 0, -4.17743 )
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="LabTZ" parent="." instance=ExtResource( 13 )]
 position = Vector2( 1136.26, 465.781 )
 
 [node name="CollisionShape2D" parent="LabTZ" index="0"]
 position = Vector2( 6.26599, 20.887 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="BreakRoomTZ" parent="." instance=ExtResource( 13 )]
 position = Vector2( 1783.75, 513.821 )
 
 [node name="CollisionShape2D" parent="BreakRoomTZ" index="0"]
 position = Vector2( 0, -15.3073 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/default = SubResource( 9 )
-anims/ninja_battle_finished = SubResource( 10 )
-anims/walk_across = SubResource( 11 )
+anims/default = SubResource( 10 )
+anims/ninja_battle_finished = SubResource( 11 )
+anims/walk_across = SubResource( 12 )
 
 [node name="Robot" type="Node2D" parent="."]
 visible = false
@@ -431,7 +428,7 @@ position = Vector2( 519.083, 630.15 )
 [node name="AnimatedSprite" parent="Robot" instance=ExtResource( 14 )]
 position = Vector2( -1.60675, -118.341 )
 animation = "dogdown"
-frame = 1
+frame = 2
 playing = true
 
 [node name="labdoor" type="Node2D" parent="."]
@@ -441,12 +438,12 @@ position = Vector2( 1138.87, 541.536 )
 
 [node name="CollisionShape2D" parent="labdoor/laboratorydoor" index="0"]
 position = Vector2( 0, -44.0466 )
-shape = SubResource( 12 )
+shape = SubResource( 13 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="labdoor"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="labdoor/StaticBody2D"]
-shape = SubResource( 13 )
+shape = SubResource( 14 )
 
 [node name="PostBattleSP" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1650.76, 690.725 )

@@ -53,10 +53,15 @@ func get_round_info():
 var smelled = false
 var bit = false
 
+var counter = 0
 func get_ninja_attack_dialogue(dialogue):
 	var options = [
 		[
 			"TEXT", "DEADLY NINJA TECHNIQUE- THROWING STAR!!!!!!",
+			SKELETON_SPEECH_RATE, "ninja_attack_dialogue2", null, null, SKELETON_VOICE_PITCH
+		],
+		[
+			"TEXT", "MEET YOUR DOOM!!!!!!",
 			SKELETON_SPEECH_RATE, "ninja_attack_dialogue2", null, null, SKELETON_VOICE_PITCH
 		],
 		[
@@ -72,29 +77,25 @@ func get_ninja_attack_dialogue(dialogue):
 			SKELETON_SPEECH_RATE, "ninja_attack_dialogue2", null, null, SKELETON_VOICE_PITCH
 		],
 		[
-			"TEXT", "MEET YOUR DOOM!!!!!!",
-			SKELETON_SPEECH_RATE, "ninja_attack_dialogue2", null, null, SKELETON_VOICE_PITCH
-		],
-		[
 			"TEXT", "STOP BEING SO DIFFICULT TO HIT!!!!!!",
 			SKELETON_SPEECH_RATE, "ninja_attack_dialogue2", null, null, SKELETON_VOICE_PITCH
 		],
 	]
-	dialogue["ninja_attack_dialogue"] = options[rand_range(0, len(options))]
+	dialogue["ninja_attack_dialogue"] = options[counter % len(options)]
 	var options2 = [
-		"The ninja THROWS a deadly projectile at you with killing intent.",
-		"The ninja releases his LIFE ENERGY\nand launches a deadly ninjitsu attack!!",
-		"The ninja LAUNCHES a projectile directly at your HEART.",
-		"The Ninja THROWS A THINGY intending to KILL!!!!!!",
+		"The ninja THROWS a deadly projectile at you with KILLING INTENT!",
+		"The ninja releases his LIFE ENERGY\nand launches a deadly ninjitsu attack!",
+		"The ninja LAUNCHES a projectile directly at your HEART!",
 	]
 	dialogue["ninja_attack_dialogue2"] = [
-			"TEXT", options2[rand_range(0, len(options2))],
+			"TEXT", options2[counter % len(options2)],
 			SKELETON_SPEECH_RATE, "ninja_attack_dialogue3", null, null
 	]
 	dialogue["ninja_attack_dialogue3"] = [
-			"TEXT", "...and misses by over " + str(rand_range(1, 3)) + " feet!!",
+			"TEXT", "...and misses by " + str(floor(rand_range(1, 4))) + " feet!!",
 			SKELETON_SPEECH_RATE, null, null, null
 	]
+	counter += 1
 	
 func action_noop(action):
 	var dialogue = null
@@ -226,7 +227,7 @@ func get_default_item_dialogue(text, item_name):
 			SKELETON_SPEECH_RATE, "FETCH", null, null, SKELETON_VOICE_PITCH
 		],
 		"FETCH" : [
-			"TEXT", "I will slay you with this " + item_name + "!",
+			"TEXT", item_name + " will be your downfall!",
 			SKELETON_SPEECH_RATE, "ninja_attack_dialogue", null, null, SKELETON_VOICE_PITCH
 		]
 	}
@@ -247,23 +248,10 @@ func item_noop(menu, _label, _item, _prev):
 			dialogue = get_default_item_dialogue("Your credentials won't save you, fool!!!", _item.name)
 			change_fetch_item(_item)
 		"Flippers":
-			dialogue = get_default_item_dialogue("HEHEHEH... So you've already gotten past me?\nAnd we've done this before?", _item.name)
+			dialogue = get_default_item_dialogue("Wh-where did you get these???", _item.name)
 			change_fetch_item(_item)
 		"Skeleton Key":
-			dialogue = {
-				"begin" : [
-					"TEXT", "HEY! THAT'S MY KEY!",
-					SKELETON_SPEECH_RATE, "nostalgia_points", null, null, SKELETON_VOICE_PITCH
-				],
-				"nostalgia_points" : [
-					"TEXT", "ISN'T IT COOL???? IT'S GOT MY FACE ON IT!",
-					SKELETON_SPEECH_RATE, "increment", null, null, SKELETON_VOICE_PITCH
-				],
-				"increment" : [
-					"TEXT", "DISTRACTION +1",
-					SKELETON_SPEECH_RATE, null, [self, "increment_nostalgia_points"], null, null
-				]
-			}
+			dialogue = get_default_item_dialogue("A key symbolizing death... How fitting!", _item.name)
 			change_fetch_item(_item)
 		_:
 			dialogue = get_default_item_dialogue("What is this???", _item.name)

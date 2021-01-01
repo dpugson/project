@@ -34,6 +34,14 @@ func _input(event):
 	if event.is_action_released("smell"):
 		end_smell_mode()
 
+signal put_on_hat
+func put_on_hat(item_image):
+	if world_state.get("HAT", null) == item_image:
+		world_state["HAT"] = null
+	else:
+		world_state["HAT"] = item_image
+	emit_signal("put_on_hat")
+
 func update_volumes():
 	for volume_pair in [
 		["Master", main_volume],

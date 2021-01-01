@@ -17,15 +17,9 @@ onready var leave_spot = $LeaveSpot
 const EffectHelper = preload("res://effects/EffectHelper.gd")
 const StarEffect  = preload("res://Levels/1.0 - Lab/StarEffect.tscn")
 
-enum {
-	PILLOW_MODE,
-	CRAZY_MODE
-}
-
 var ROBOT_PITCH = 2
 var ROBOT_SPEECH_SPEED = 0.05
 
-var mode = PILLOW_MODE
 func _ready():
 	# TODO delete
 	#stats.spawn_metadata = "cutscene"
@@ -103,7 +97,7 @@ func _on_StarButton_activated(_star):
 	if num_stars_active >= 9:
 		num_stars_active = 0
 		num_times_activated += 1
-		if num_times_activated == 1:
+		if num_times_activated == 2:
 			give_robot_focus()
 			cutscene_animation.play("star_win2")
 		else:
@@ -131,11 +125,15 @@ func OMIGOD():
 	var dialogue = {
 		"begin" : [
 			"TEXT", "What was that-", ROBOT_SPEECH_SPEED, 
-			"begin2", null, null, ROBOT_PITCH
+			"begin22", null, null, ROBOT_PITCH
+		],
+		"begin22" : [
+			"TEXT", "...", ROBOT_SPEECH_SPEED, 
+			"begin2", [self, "turn_robot_right"], null, ROBOT_PITCH
 		],
 		"begin2" : [
 			"TEXT", "WHAT THE-", ROBOT_SPEECH_SPEED, 
-			"2",  [self, "turn_robot_right"], null, ROBOT_PITCH
+			"2",  null, null, ROBOT_PITCH
 		],
 		"2" : [
 			"TEXT", "FIRE!!!!!", ROBOT_SPEECH_SPEED, 
@@ -174,7 +172,7 @@ func grab_puppy(_a, _b, tween):
 			"begin2", null, null, ROBOT_PITCH
 		],
 		"begin2" : [
-			"TEXT", "I am not going to leave you alone this time.", ROBOT_SPEECH_SPEED, 
+			"TEXT", "I am not going to leave you alone any longer.", ROBOT_SPEECH_SPEED, 
 			null, null, null, ROBOT_PITCH
 		],
 	}
@@ -197,4 +195,4 @@ func head_out():
 	tween.start()
 
 func leave(_a, _b, tween):
-	tween.queue_free()
+	Transition.go_to("res://Levels/1.0 - Lab/labpuzzleroom3.tscn", "cutscene")

@@ -36,7 +36,6 @@ func _ready():
 		door.queue_free()
 	var player_position = Vector2.ZERO
 	var orientation = Vector2.DOWN
-	stats.spawn_metadata = "post_battle"
 	match stats.spawn_metadata:
 		"The Lab - Back Hallway":
 			Jukebox.play_song("res://tunes/lab/background_science.wav")
