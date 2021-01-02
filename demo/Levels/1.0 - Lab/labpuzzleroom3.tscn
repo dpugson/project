@@ -22,7 +22,7 @@
 [ext_resource path="res://sprites/L2_lab/medium_book.png" type="Texture" id=20]
 [ext_resource path="res://Levels/1.0 - Lab/labpuzzleroom3.gd" type="Script" id=21]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:visible")
 tracks/0/interp = 1
@@ -108,7 +108,7 @@ tracks/6/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 length = 4.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:visible")
@@ -209,7 +209,7 @@ tracks/7/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:visible")
 tracks/0/interp = 1
@@ -273,7 +273,7 @@ tracks/4/keys = {
 "values": [ Vector2( 366.056, -231.518 ), Vector2( 366.056, -578.214 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 length = 2.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:position")
@@ -350,7 +350,7 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 105.925, 49.1887 )
 
 [node name="labpuzzleroom3" type="Node2D"]
@@ -452,10 +452,10 @@ position = Vector2( 1413.32, 316.681 )
 [node name="CutsceneAnimation" type="AnimationPlayer" parent="."]
 pause_mode = 2
 autoplay = "default"
-anims/default = SubResource( 3 )
-anims/dropoff = SubResource( 4 )
-anims/robot_appear = SubResource( 6 )
-anims/robot_leave = SubResource( 7 )
+anims/default = SubResource( 1 )
+anims/dropoff = SubResource( 2 )
+anims/robot_appear = SubResource( 3 )
+anims/robot_leave = SubResource( 4 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CutsceneAnimation"]
 stream = ExtResource( 11 )
@@ -478,7 +478,7 @@ position = Vector2( 340.725, 295.695 )
 
 [node name="CollisionShape2D" parent="bottomTZ" index="0"]
 position = Vector2( 5.72461, 100.737 )
-shape = SubResource( 10 )
+shape = SubResource( 5 )
 
 [node name="CutscenePuppySpot" type="Position2D" parent="."]
 position = Vector2( 49.6564, -596.464 )

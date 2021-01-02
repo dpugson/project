@@ -12,6 +12,7 @@ const EffectHelper = preload("res://effects/EffectHelper.gd")
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 onready var Player = preload("res://player/player.gd")
 var Gilby = preload("res://Characters/salamanders/Gilby.gd")
+onready var seen_box = $SeenBox
 
 export(String, MULTILINE) var text = ""
 signal destroyed
@@ -31,6 +32,8 @@ func _ready():
 		if PlayerStats.check_bool(destroyed_stat_name):
 			print("hmmm")
 			queue_free()
+	if !is_special_talky_cube:
+		seen_box.visible = false
 
 func explode():
 	if destroyed_stat_name != "":
