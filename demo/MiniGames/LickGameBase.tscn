@@ -1,0 +1,99 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://BG.tscn" type="PackedScene" id=1]
+[ext_resource path="res://MiniGames/LickGameBase.gd" type="Script" id=2]
+[ext_resource path="res://MiniGames/LickGamePlayer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/L2_lab/lick_dog_robot0.png" type="Texture" id=4]
+[ext_resource path="res://sprites/L2_lab/lick_dog_robot1.png" type="Texture" id=5]
+[ext_resource path="res://hitnhurtboxes/hurtbox.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "basic"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("boss:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 326.26, 464.849 ), Vector2( 1597.86, 464.849 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "fancy"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("boss:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.2, 1.5, 2.5, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 326.26, 464.849 ), Vector2( 1197.89, 464.849 ), Vector2( 1104.14, 464.849 ), Vector2( 1564.9, 464.849 ), Vector2( 645.763, 464.849 ), Vector2( 648.595, 464.849 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 103.772, 185.672 )
+
+[node name="LickGameBase" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="BG" parent="." instance=ExtResource( 1 )]
+margin_left = -414.683
+margin_top = -466.021
+margin_right = 2407.32
+margin_bottom = 1638.98
+
+[node name="BossAnimator" type="AnimationPlayer" parent="."]
+autoplay = "basic"
+anims/basic = SubResource( 1 )
+anims/fancy = SubResource( 3 )
+
+[node name="boss" type="Node2D" parent="."]
+position = Vector2( 648.595, 464.849 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="boss"]
+position = Vector2( 6.10352e-05, 2.88733 )
+frames = SubResource( 2 )
+playing = true
+
+[node name="HurtBox" parent="boss" instance=ExtResource( 6 )]
+collision_layer = 8
+
+[node name="CollisionShape2D" parent="boss/HurtBox" index="0"]
+position = Vector2( -6.59546, 10.9924 )
+shape = SubResource( 4 )
+
+[node name="LickGamePlayer" parent="." instance=ExtResource( 3 )]
+position = Vector2( 940.364, 1066 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 883.502
+margin_top = 115.49
+margin_right = 1023.5
+margin_bottom = 186.49
+text = "LICK!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="area_entered" from="boss/HurtBox" to="." method="_on_HurtBox_area_entered"]
+[connection signal="area_exited" from="boss/HurtBox" to="." method="_on_HurtBox_area_exited"]
+
+[editable path="boss/HurtBox"]

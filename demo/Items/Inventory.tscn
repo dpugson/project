@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Items/Inventory.gd" type="Script" id=1]
 [ext_resource path="res://sprites/dog/l0.png" type="Texture" id=2]
 [ext_resource path="res://sprites/dog/l2.png" type="Texture" id=3]
 [ext_resource path="res://sprites/dog/l1.png" type="Texture" id=4]
+[ext_resource path="res://sprites/cavestuff/ball.png" type="Texture" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -63,7 +64,7 @@ rect_clip_content = true
 [node name="Title" type="Label" parent="List/MarginContainer/VBoxContainer"]
 margin_right = 789.0
 margin_bottom = 71.0
-text = "ITEMZ"
+text = "ITEMS"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -155,13 +156,17 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Panel"]
 position = Vector2( 187.217, 136.761 )
 frames = SubResource( 1 )
-frame = 1
+frame = 2
 playing = true
 
-[node name="hatsprite" type="Sprite" parent="Panel"]
-position = Vector2( 183.301, 80.673 )
+[node name="Node2D" type="Node2D" parent="Panel"]
+position = Vector2( -46.311, -2.3548 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel"]
+[node name="hatsprite" type="Sprite" parent="Panel/Node2D"]
+position = Vector2( 183.301, 74.9659 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/Node2D"]
 autoplay = "bounce_item"
 anims/bounce_item = SubResource( 2 )
 [connection signal="pressed" from="List/Button" to="." method="_on_Button_pressed"]

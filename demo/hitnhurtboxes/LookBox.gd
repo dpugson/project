@@ -4,8 +4,8 @@ onready var collisionShape = $CollisionShape2D
 onready var timer = $Timer
 
 signal saw_something
-signal moving_furniture
-signal not_moving_furniture
+#signal moving_furniture
+#signal not_moving_furniture
 signal rotated_furniture_clockwise
 signal rotated_furniture_counterclockwise
 

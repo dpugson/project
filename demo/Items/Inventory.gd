@@ -8,6 +8,7 @@ onready var button_theme = preload("res://Themes/ListButtonTheme.tres")
 onready var exit_button = $List/Button
 onready var g_label = $G_panel/Label
 onready var scroll_container = $List/MarginContainer/VBoxContainer/ScrollContainer
+onready var hatsprite = $Panel/Node2D/hatsprite
 
 var item_click_handler = null
 
@@ -109,7 +110,6 @@ func handle_item_pressed(label, item, prev):
 		toggle_equip(item)
 
 
-onready var hatsprite = $Panel/hatsprite
 func update_hat_sprite():
 	var hat_image = stats.world_state.get("HAT", null)
 	if hat_image != null:
