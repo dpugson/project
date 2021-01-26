@@ -692,7 +692,6 @@ rotation = 1.58149
 
 [node name="AnimatedSprite" parent="ZoomPanels/ZoomPanel_BL" index="0"]
 animation = "ready"
-frame = 1
 
 [node name="ZoomPanel_BR" parent="ZoomPanels" instance=ExtResource( 20 )]
 position = Vector2( 1190.49, 957.297 )

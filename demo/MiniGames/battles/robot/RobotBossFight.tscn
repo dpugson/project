@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://MiniGames/BattleMenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=2]
+[ext_resource path="res://MiniGames/battles/robot/RobotBossFight.gd" type="Script" id=3]
+[ext_resource path="res://sprites/L2_lab/robot_boss_sprite1.png" type="Texture" id=4]
+[ext_resource path="res://sprites/L2_lab/spotlight.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 955.077, 433.999 ), Vector2( 954.1, 443.761 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.829269, 0.819649 ), Vector2( 0.823423, 0.790682 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": false,
+"name": "default",
+"speed": 0.5
+} ]
+
+[node name="RobotBossFight" type="Control"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" parent="." instance=ExtResource( 2 )]
+
+[node name="BossSpriteAnimator" type="AnimationPlayer" parent="."]
+pause_mode = 2
+autoplay = "resting"
+anims/resting = SubResource( 1 )
+
+[node name="spotlight" type="Sprite" parent="."]
+modulate = Color( 0.937255, 1, 0.662745, 0.533333 )
+position = Vector2( 960.236, 7.1554 )
+scale = Vector2( 0.733422, 0.977649 )
+texture = ExtResource( 6 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 955.077, 433.999 )
+scale = Vector2( 0.829269, 0.819649 )
+frames = SubResource( 2 )
+playing = true
+
+[node name="BattleMenu" parent="." instance=ExtResource( 1 )]
+margin_left = 1.83484
+margin_top = -18.5316
+margin_right = 1.83484
+margin_bottom = -18.5316

@@ -282,7 +282,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.6, 2.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 3, 3 ), Vector2( 3, 3 ), Vector2( 0.01, 0.01 ) ]
+"values": [ Vector2( 3, 3 ), Vector2( 3, 3 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "bezier"
 tracks/2/path = NodePath("YSort/ball:position:x")
@@ -469,11 +469,11 @@ default_color = Color( 0.0784314, 0.937255, 0.109804, 1 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="FetchGamePlayer" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 856.718, 1551.55 )
+position = Vector2( 856.718, 1523.32 )
 
 [node name="ball" type="Sprite" parent="YSort"]
-position = Vector2( 1172.17, 771.749 )
-scale = Vector2( 2.68526, 2.68526 )
+position = Vector2( 1203.06, 1518.72 )
+scale = Vector2( 3, 3 )
 texture = ExtResource( 5 )
 
 [node name="mask" type="Sprite" parent="."]

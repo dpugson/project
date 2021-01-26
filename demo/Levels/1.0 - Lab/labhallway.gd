@@ -134,10 +134,6 @@ func _on_wastebin_seen(_obj):
 			0.03, null, [self, "looked_in_garbage"]
 		],
 		"no" : [
-			"TEXT", "You refrain from digging in the garbage.\nYou are filled with a feeling of righteousness!",
-			0.03, "no2"
-		],
-		"no2" : [
 			"TEXT", "Never shall this Good Boy Snoot\nDescend in nasty garbage to root!",
 			0.03, null
 		],
@@ -254,8 +250,8 @@ func not_paid_enough_for_this():
 			"2", null, null, NINJA_PITCH
 		],
 		"2" : [
-			"TEXT", "Ok, I am NOT being payed enough for this.", NINJA_SPEECH_SPEED, 
-			null, null, null, NINJA_PITCH
+			"TEXT", "Ok... I am definitely too old for this...", NINJA_SPEECH_SPEED, 
+			null, null, null, NINJA_PITCH 
 		],
 	}
 	DialogueHelper.showDialogue(self, dialogue, false, [self, "disappear_ninja"])

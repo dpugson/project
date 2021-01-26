@@ -2,6 +2,7 @@ extends Control
 
 onready var Menu = preload("res://Items/Inventory.tscn")
 onready var FetchGame = preload("res://MiniGames/FetchGameBase.tscn")
+onready var LickGame = preload("res://MiniGames/LickGameBase.tscn")
 
 onready var panel = $DecisionStuff/Panel
 onready var fetch_game_container = $FetchGameContainer
@@ -139,6 +140,22 @@ func fetch_game_complete_handler(fetch_game, callback):
 	act_button.grab_focus()
 	if callback != null:
 		callback[0].call(callback[1])
+
+func launch_lick_game(callback):
+	var lick_game = LickGame.instance()
+	fetch_game_container.add_child(lick_game)
+	fetch_game_controller.play("go_to_game")
+	player_stats.visible = false
+	lick_game.connect("round_over", self, "lick_game_complete_handler", [lick_game, callback])
+	lick_game.start(2)
+
+func lick_game_complete_handler(won, lick_game, callback):
+	lick_game.queue_free()
+	fetch_game_controller.play("leave_game")
+	act_button.grab_focus()
+	player_stats.visible = true
+	if callback != null:
+		callback[0].call(callback[1], won)
 
 func show_dialogue(dialogue):
 	DialogueHelper.showDialogue(self, dialogue, false, [self, "_on_NextButton_pressed"])

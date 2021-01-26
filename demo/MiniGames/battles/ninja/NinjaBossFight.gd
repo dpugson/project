@@ -248,7 +248,7 @@ func item_noop(menu, _label, _item, _prev):
 			dialogue = get_default_item_dialogue("Your credentials won't save you, fool!!!", _item.name)
 			change_fetch_item(_item)
 		"Flippers":
-			dialogue = get_default_item_dialogue("Wh-where did you get these???", _item.name)
+			dialogue = get_default_item_dialogue("Wh-where did you get these??? Those belonged to an old rival...", _item.name)
 			change_fetch_item(_item)
 		"Skeleton Key":
 			dialogue = get_default_item_dialogue("A key symbolizing death... How fitting!", _item.name)

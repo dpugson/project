@@ -25,6 +25,9 @@ enum {
 
 var state = NORMAL
 
+func _ready():
+	turn_off_spit()
+
 func get_input(_delta) -> Vector2:
 	var input = Vector2.ZERO
 	if not cutscene_mode:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://BG.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MiniGames/LickGameBase.gd" type="Script" id=2]
@@ -6,26 +6,57 @@
 [ext_resource path="res://sprites/L2_lab/lick_dog_robot0.png" type="Texture" id=4]
 [ext_resource path="res://sprites/L2_lab/lick_dog_robot1.png" type="Texture" id=5]
 [ext_resource path="res://hitnhurtboxes/hurtbox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://MiniGames/cheer_bar.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=1]
-resource_name = "basic"
-length = 3.0
+resource_name = "damage"
+length = 0.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("boss:position")
-tracks/0/interp = 2
+tracks/0/path = NodePath("boss:modulate")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.5 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 326.26, 464.849 ), Vector2( 1597.86, 464.849 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0.72549, 0.721569, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath("boss:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=3]
-resource_name = "fancy"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("boss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.7, 1, 2.1, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 671.349, 464.849 ), Vector2( 671.349, 464.849 ), Vector2( 1235.61, 464.849 ), Vector2( 1235.61, 464.849 ) ]
+}
+
+[sub_resource type="Animation" id=4]
 length = 3.0
 loop = true
 tracks/0/type = "value"
@@ -41,7 +72,7 @@ tracks/0/keys = {
 "values": [ Vector2( 326.26, 464.849 ), Vector2( 1197.89, 464.849 ), Vector2( 1104.14, 464.849 ), Vector2( 1564.9, 464.849 ), Vector2( 645.763, 464.849 ), Vector2( 648.595, 464.849 ) ]
 }
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
@@ -49,8 +80,150 @@ animations = [ {
 "speed": 4.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 103.772, 185.672 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "intro"
+length = 2.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("LickGamePlayer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 977.972, 1358.15 ), Vector2( 977.972, 1034.66 ), Vector2( 977.972, 1034.66 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("boss:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("boss:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Node2D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("ColorRect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.3, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("ColorRect:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.3, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 2.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "real_start"
+} ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath(".:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("LickGamePlayer:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "default"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="LickGameBase" type="Node2D"]
 script = ExtResource( 2 )
@@ -61,17 +234,33 @@ margin_top = -466.021
 margin_right = 2407.32
 margin_bottom = 1638.98
 
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+margin_left = -115.38
+margin_top = -112.262
+margin_right = 2151.62
+margin_bottom = 1284.74
+color = Color( 0.529412, 0.305882, 0.4, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BossStatusAnimator" type="AnimationPlayer" parent="."]
+autoplay = "default"
+anims/damage = SubResource( 1 )
+anims/default = SubResource( 2 )
+
 [node name="BossAnimator" type="AnimationPlayer" parent="."]
-autoplay = "basic"
-anims/basic = SubResource( 1 )
-anims/fancy = SubResource( 3 )
+anims/basic = SubResource( 3 )
+anims/fancy = SubResource( 4 )
 
 [node name="boss" type="Node2D" parent="."]
-position = Vector2( 648.595, 464.849 )
+position = Vector2( 975.182, 464.849 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="boss"]
 position = Vector2( 6.10352e-05, 2.88733 )
-frames = SubResource( 2 )
+frames = SubResource( 5 )
+frame = 1
 playing = true
 
 [node name="HurtBox" parent="boss" instance=ExtResource( 6 )]
@@ -79,21 +268,75 @@ collision_layer = 8
 
 [node name="CollisionShape2D" parent="boss/HurtBox" index="0"]
 position = Vector2( -6.59546, 10.9924 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="LickGamePlayer" parent="." instance=ExtResource( 3 )]
-position = Vector2( 940.364, 1066 )
+position = Vector2( 977.972, 1034.66 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 883.502
-margin_top = 115.49
-margin_right = 1023.5
-margin_bottom = 186.49
+margin_left = 899.575
+margin_top = 117.247
+margin_right = 1039.57
+margin_bottom = 188.247
 text = "LICK!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 340.163, 186.316 )
+
+[node name="cheer_up" parent="Node2D" instance=ExtResource( 7 )]
+rotation = 1.5708
+
+[node name="Label" type="Label" parent="Node2D"]
+margin_left = -279.299
+margin_top = -133.879
+margin_right = 211.701
+margin_bottom = -62.879
+text = "Cheer Up:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Percent" type="Label" parent="Node2D"]
+margin_left = -24.0
+margin_top = -132.0
+margin_right = 114.0
+margin_bottom = -61.0
+text = "0%"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheerUpTimer" type="Timer" parent="."]
+wait_time = 0.01
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "intro"
+anims/intro = SubResource( 7 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -61.1318
+margin_top = -112.075
+margin_right = 2000.87
+margin_bottom = 1224.92
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelAnimator" type="AnimationPlayer" parent="."]
+anims/default = SubResource( 8 )
 [connection signal="area_entered" from="boss/HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="area_exited" from="boss/HurtBox" to="." method="_on_HurtBox_area_exited"]
+[connection signal="timeout" from="CheerUpTimer" to="." method="_on_CheerUpTimer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 [editable path="boss/HurtBox"]
