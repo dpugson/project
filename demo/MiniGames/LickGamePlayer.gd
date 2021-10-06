@@ -13,10 +13,11 @@ onready var stats = PlayerStats
 onready var animation = $AnimationPlayer
 onready var leapAnimationPlayer = $LeapAnimationPlayer
 onready var slobber = $dog2/slobber
+onready var player = $dog2
 
 export(bool) var cutscene_mode = false
 
-signal game_over
+var stopped = false
 
 enum {
 	NORMAL,
@@ -37,6 +38,8 @@ func get_input(_delta) -> Vector2:
 
 # Called when the node enters the scene tree for the first time.
 func _physics_process(delta):
+	if stopped:
+		return
 	match state:
 		NORMAL:
 			if (Input.is_action_just_pressed("ui_up")
@@ -65,3 +68,21 @@ func turn_on_spit():
 
 func turn_off_spit():
 	slobber.visible = false
+
+func stop():
+	var tween = Tween.new()
+	tween.interpolate_property(
+		player,
+		"position",
+		player.position,
+		Vector2(0, 0),
+		0.5
+	)
+	tween.connect("tween_completed", self, "delete_tween", [tween])
+	self.add_child(tween)
+	tween.start()
+	stopped = true
+	cutscene_mode = true
+
+func delete_tween(_a, _b, tween):
+	tween.queue_free()

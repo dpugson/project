@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://BG.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MiniGames/LickGameBase.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://sprites/L2_lab/lick_dog_robot1.png" type="Texture" id=5]
 [ext_resource path="res://hitnhurtboxes/hurtbox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://MiniGames/cheer_bar.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/cavestuff/salamanders/splash_00.png" type="Texture" id=8]
+[ext_resource path="res://sprites/cavestuff/salamanders/splash_01.png" type="Texture" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "damage"
@@ -84,7 +86,46 @@ animations = [ {
 extents = Vector2( 103.772, 185.672 )
 
 [sub_resource type="Animation" id=7]
-resource_name = "intro"
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath("boss/AnimatedSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.504768, 2.88733 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "shake"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("boss/AnimatedSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 6.10352e-05, 2.88733 ), Vector2( 30.7944, 2.88733 ), Vector2( -32.994, 2.88733 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="Animation" id=10]
 length = 2.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("LickGamePlayer:position")
@@ -93,7 +134,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2.2 ),
+"times": PoolRealArray( 0, 0.2, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 977.972, 1358.15 ), Vector2( 977.972, 1034.66 ), Vector2( 977.972, 1034.66 ) ]
@@ -117,7 +158,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1.3 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -129,7 +170,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 2.2 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -141,7 +182,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 2.2 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -153,10 +194,10 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 1.3, 1.9 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true, true, false ]
+"values": [ true, false ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("ColorRect:modulate")
@@ -165,10 +206,10 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 1.3, 1.9 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/7/type = "method"
 tracks/7/path = NodePath(".")
@@ -177,7 +218,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 2.2 ),
+"times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -191,7 +232,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 1.3 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -203,14 +244,107 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 1.3 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("LickGamePlayer/spittle:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "ultimate_attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("LickGamePlayer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 977.972, 1375.72 ), Vector2( 977.972, 733.438 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("boss:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 975.182, 464.849 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_damage"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LickGamePlayer/spittle:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "default"
+[sub_resource type="Animation" id=12]
+resource_name = "ultimate_attack_phase-2"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("LickGamePlayer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.6, 2, 3.6, 4, 4.7, 5.1, 5.3, 5.6, 5.8, 6.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 977.972, 733.438 ), Vector2( 1177.9, 525.614 ), Vector2( 1177.9, 525.614 ), Vector2( 714.904, 507.199 ), Vector2( 714.904, 507.199 ), Vector2( 977.972, 250.708 ), Vector2( 977.972, 250.708 ), Vector2( 1177.9, 525.614 ), Vector2( 1177.9, 525.614 ), Vector2( 714.904, 507.199 ), Vector2( 714.904, 507.199 ), Vector2( 962.188, 715.023 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LickGamePlayer:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1.6, 2, 3.6, 4, 4.7, 5.1, 5.3, 5.6, 5.8, 6.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -88.3537, -88.3537, 90.6191, 90.6191, 179.79, 179.79, -88.3537, -88.3537, 90.6191, 90.6191, 0.0 ]
+}
+
+[sub_resource type="Animation" id=13]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label:visible")
@@ -258,7 +392,7 @@ anims/fancy = SubResource( 4 )
 position = Vector2( 975.182, 464.849 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="boss"]
-position = Vector2( 6.10352e-05, 2.88733 )
+position = Vector2( 0.504768, 2.88733 )
 frames = SubResource( 5 )
 frame = 1
 playing = true
@@ -270,8 +404,36 @@ collision_layer = 8
 position = Vector2( -6.59546, 10.9924 )
 shape = SubResource( 6 )
 
+[node name="BossShaker" type="AnimationPlayer" parent="."]
+autoplay = "default"
+anims/default = SubResource( 7 )
+anims/shake = SubResource( 8 )
+
 [node name="LickGamePlayer" parent="." instance=ExtResource( 3 )]
-position = Vector2( 977.972, 1034.66 )
+position = Vector2( 977.972, 733.438 )
+
+[node name="spittle" type="Node2D" parent="LickGamePlayer"]
+show_behind_parent = true
+position = Vector2( -57.19, -217.76 )
+rotation = -0.836542
+scale = Vector2( 2.10854, 2.57644 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="LickGamePlayer/spittle"]
+modulate = Color( 0.490196, 0.807843, 1, 1 )
+show_behind_parent = true
+rotation = -2.98023e-08
+frames = SubResource( 9 )
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="LickGamePlayer/spittle"]
+modulate = Color( 0.490196, 0.807843, 1, 1 )
+show_behind_parent = true
+position = Vector2( 36.3665, 44.4409 )
+rotation = 2.25595
+scale = Vector2( 0.878537, 1.15787 )
+frames = SubResource( 9 )
+frame = 1
+playing = true
 
 [node name="Label" type="Label" parent="."]
 margin_left = 899.575
@@ -318,7 +480,9 @@ one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "intro"
-anims/intro = SubResource( 7 )
+anims/intro = SubResource( 10 )
+anims/ultimate_attack = SubResource( 11 )
+anims/ultimate_attack_phase-2 = SubResource( 12 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -333,7 +497,7 @@ __meta__ = {
 }
 
 [node name="LabelAnimator" type="AnimationPlayer" parent="."]
-anims/default = SubResource( 8 )
+anims/default = SubResource( 13 )
 [connection signal="area_entered" from="boss/HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="area_exited" from="boss/HurtBox" to="." method="_on_HurtBox_area_exited"]
 [connection signal="timeout" from="CheerUpTimer" to="." method="_on_CheerUpTimer_timeout"]

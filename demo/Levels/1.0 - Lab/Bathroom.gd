@@ -66,7 +66,7 @@ var cutscene_dialogue_1 = {
 		"6", null, null, ROBOT_PITCH
 	],
 	"6" : [
-		"TEXT", "Change my name. Grow a mustache. Make a fresh start.", ROBOT_SPEECH_SPEED, 
+		"TEXT", "Change my name. Grow my hair out. Make a fresh start.", ROBOT_SPEECH_SPEED, 
 		"7", null, null, ROBOT_PITCH
 	],
 	"7" : [

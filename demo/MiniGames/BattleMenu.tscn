@@ -571,7 +571,6 @@ __meta__ = {
 }
 
 [node name="DecisionStuff" type="Control" parent="."]
-visible = false
 margin_left = -31.2411
 margin_top = -58.8736
 margin_right = 8.75891
@@ -582,15 +581,14 @@ __meta__ = {
 
 [node name="Panel" type="Panel" parent="DecisionStuff"]
 margin_left = 188.705
-margin_top = 743.0
+margin_top = 843.043
 margin_right = 1764.7
-margin_bottom = 1045.0
+margin_bottom = 1049.04
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MainChoices" type="Control" parent="DecisionStuff"]
-visible = false
 margin_left = 193.691
 margin_top = 830.851
 margin_right = 233.691
@@ -698,7 +696,7 @@ margin_top = 781.333
 margin_right = 1511.56
 margin_bottom = 1000.33
 text = "It didn't appear to have much of an effect..."
-percent_visible = 0.25
+percent_visible = 0.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

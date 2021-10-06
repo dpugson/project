@@ -206,6 +206,10 @@ smell={
 2d_physics/layer_10="furniture"
 2d_physics/layer_11="terrain"
 
+[logging]
+
+file_logging/enable_file_logging=true
+
 [rendering]
 
 quality/intended_usage/framebuffer_allocation=0

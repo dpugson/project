@@ -131,7 +131,9 @@ func inventory_get(item_name: String) -> int:
 func inventory_remove(item_name):
 	var count = inventory.get(item_name, 1) - 1
 	inventory[item_name] = count
-	
+
+func set_bool(stat_name: String, value: bool = true):
+	world_state[stat_name] = value
 	
 func check_bool(stat_name: String) -> bool:
 	return world_state.get(stat_name, false)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://sprites/L2_lab/bathroom.png" type="Texture" id=1]
 [ext_resource path="res://sprites/L2_lab/toilet.png" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=17]
 [ext_resource path="res://sprites/effects/surprised.png" type="Texture" id=18]
 [ext_resource path="res://sprites/cavestuff/salamanders/splash_00.png" type="Texture" id=19]
+[ext_resource path="res://Brains/DescriptionBox.tscn" type="PackedScene" id=20]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -829,6 +830,15 @@ tracks/7/keys = {
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 72.9563, 23.4223 )
 
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 59.3533, 62.2717 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 34.0857, 56.4924 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 61.0764, 112.401 )
+
 [node name="Bathroom" type="Node2D"]
 script = ExtResource( 14 )
 
@@ -938,8 +948,49 @@ position = Vector2( 921.398, 951.549 )
 [node name="CollisionShape2D" parent="DoorTZ" index="0"]
 position = Vector2( -2.41205, 14.4722 )
 shape = SubResource( 12 )
+
+[node name="toilet_description" parent="." instance=ExtResource( 20 )]
+position = Vector2( 862.908, 471.298 )
+description = [ "Stinky! Yet appealing.", "The discerning doggo's
+watering hole of choice." ]
+
+[node name="CollisionShape2D" parent="toilet_description/SeenBox" index="0"]
+shape = SubResource( 13 )
+
+[node name="poster" parent="." instance=ExtResource( 20 )]
+position = Vector2( 1029.5, 418.353 )
+description = [ "There's a button behind this poster...", "CLICK" ]
+
+[node name="CollisionShape2D" parent="poster/SeenBox" index="0"]
+shape = SubResource( 14 )
+
+[node name="SmellArrow" parent="poster/SeenBox/CollisionShape2D" index="0"]
+position = Vector2( 1.28613, -238.258 )
+
+[node name="sink" parent="." instance=ExtResource( 20 )]
+position = Vector2( 1069.98, 701.753 )
+description = [ "Drip drip drip..." ]
+
+[node name="CollisionShape2D" parent="sink/SeenBox" index="0"]
+position = Vector2( 5.78369, 5.78369 )
+shape = SubResource( 15 )
+
+[node name="SmellArrow" parent="sink/SeenBox/CollisionShape2D" index="0"]
+position = Vector2( -4.49756, -149.575 )
 [connection signal="transition_triggered" from="DoorTZ" to="." method="_on_DoorTZ_transition_triggered"]
 
 [editable path="PuppyCamera"]
 
 [editable path="DoorTZ"]
+
+[editable path="toilet_description"]
+
+[editable path="toilet_description/SeenBox"]
+
+[editable path="poster"]
+
+[editable path="poster/SeenBox"]
+
+[editable path="sink"]
+
+[editable path="sink/SeenBox"]

@@ -8,6 +8,7 @@ enum SIDE {
 }
 
 var pulled = false
+var disabled = false
 export(SIDE) var side = SIDE.LEFT
 
 signal pulled(side)
@@ -22,6 +23,9 @@ func _ready():
 			side = SIDE.RIGHT
 
 func _on_SeenBox_seen(_seen):
+	if disabled:
+		emit_signal("pulled", side)
+		return
 	match side:
 		SIDE.LEFT:
 			animation.stop()

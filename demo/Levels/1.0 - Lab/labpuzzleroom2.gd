@@ -88,23 +88,27 @@ func cutscene_over():
 	player.cutscene_mode = false
 
 func _on_bottomTZ_transition_triggered():
-	Transition.go_to("res://Levels/1.0 - Lab/labhallway.tscn", "lab")
+	Transition.go_to("res://Levels/1.0 - Lab/labpuzzleroom1.tscn", "top")
 
 var num_times_activated = 0
-var num_stars_active = 0
 func _on_StarButton_activated(_star):
-	num_stars_active += 1
-	if num_stars_active >= 9:
-		num_stars_active = 0
+	if check_all_star_buttons():
+		freeze_buttons()
 		num_times_activated += 1
-		if num_times_activated == 2:
+		if (num_times_activated == 2) and (not stats.check_bool("LABPUZZLEROOM2DONE")) and (not stats.check_bool("alllabpuzzlesdone")):
 			give_robot_focus()
 			cutscene_animation.play("star_win2")
 		else:
 			cutscene_animation.play("star_win")
 
+func check_all_star_buttons():
+	for child in starbuttons.get_children():
+		if not child.is_active():
+			return false
+	return true
+
 func _on_StarButton_deactivated():
-	num_stars_active -= 1
+	pass
 
 func launch_effects():
 	for child in stars.get_children():
@@ -114,6 +118,10 @@ func deactivate_buttons():
 	for child in starbuttons.get_children():
 		child.deactivate()
 
+func freeze_buttons():
+	for child in starbuttons.get_children():
+		child.freeze()
+
 func turn_robot_right():
 	robot.animation = "right"
 
@@ -121,6 +129,7 @@ func free_me(_a, _b, tween):
 	tween.queue_free()
 
 func OMIGOD():
+	stats.world_state["LABPUZZLEROOM2DONE"] = true
 	player.cutscene_mode = true
 	var dialogue = {
 		"begin" : [
@@ -194,5 +203,9 @@ func head_out():
 	tween.connect("tween_completed", self, "leave", [tween])
 	tween.start()
 
-func leave(_a, _b, tween):
+func leave(_a, _b, _tween):
 	Transition.go_to("res://Levels/1.0 - Lab/labpuzzleroom3.tscn", "cutscene")
+
+
+func _on_topTZ_transition_triggered():
+	Transition.go_to("res://Levels/1.0 - Lab/labpuzzleroom3.tscn", "bottom")

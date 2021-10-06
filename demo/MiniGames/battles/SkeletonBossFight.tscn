@@ -32,9 +32,6 @@ __meta__ = {
 [node name="SkeletonBossSprite" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1250.01, 447.534 )
 
-[node name="AnimatedSprite" parent="SkeletonBossSprite" index="0"]
-frame = 0
-
 [node name="BG" parent="." instance=ExtResource( 3 )]
 
 [node name="SkeletonAnimator" type="AnimationPlayer" parent="."]

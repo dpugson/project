@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/dog/d0.png" type="Texture" id=1]
+
+[node name="Puppet" type="Node2D"]
+
+[node name="polygons" type="Node2D" parent="."]
+
+[node name="leftleg" type="Polygon2D" parent="polygons"]
+position = Vector2( 32.8933, 36.6672 )
+texture = ExtResource( 1 )
+skeleton = NodePath("../../Skeleton2D")
+polygon = PoolVector2Array( 68.4524, 132.143, 86.9048, 136.607, 82.1429, 161.905, 74.7024, 172.917, 57.7381, 156.548 )
+uv = PoolVector2Array( 68.4524, 132.143, 86.9048, 136.607, 82.1429, 161.905, 74.7024, 172.917, 57.7381, 156.548 )
+
+[node name="rightleg" type="Polygon2D" parent="polygons"]
+position = Vector2( 35.6047, 38.3948 )
+texture = ExtResource( 1 )
+skeleton = NodePath("../../Skeleton2D")
+polygon = PoolVector2Array( 105.71, 151.484, 106.25, 152.976, 107.738, 162.202, 108.333, 162.798, 124.702, 166.071, 129.167, 144.94, 124.405, 134.226, 108.929, 134.226, 105.655, 148.214, 105.655, 148.214 )
+uv = PoolVector2Array( 101.488, 154.167, 106.25, 152.976, 107.738, 162.202, 108.333, 162.798, 124.702, 166.071, 129.167, 144.94, 124.405, 134.226, 108.929, 134.226, 105.655, 148.214, 105.655, 148.214 )
+
+[node name="body" type="Polygon2D" parent="polygons"]
+position = Vector2( 33.2652, 47.4525 )
+texture = ExtResource( 1 )
+skeleton = NodePath("../../Skeleton2D")
+polygon = PoolVector2Array( 59.8326, 70.7113, 78.2427, 64.0167, 89.5397, 60.251, 115.063, 65.6904, 136.82, 75.3138, 143.096, 91.6318, 136.82, 113.389, 130.126, 125.523, 105.439, 133.054, 63.5983, 131.381, 44.3515, 104.603, 41.4226, 79.9163 )
+uv = PoolVector2Array( 59.8326, 70.7113, 78.2427, 64.0167, 89.5397, 60.251, 115.063, 65.6904, 136.82, 75.3138, 143.096, 91.6318, 136.82, 113.389, 130.126, 125.523, 105.439, 133.054, 63.5983, 131.381, 44.3515, 104.603, 41.4226, 79.9163 )
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+position = Vector2( 0.74382, 4.46288 )

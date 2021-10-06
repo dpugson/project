@@ -72,3 +72,9 @@ margin_left = 1.83484
 margin_top = -18.5316
 margin_right = 1.83484
 margin_bottom = -18.5316
+
+[node name="Item" parent="BattleMenu/DecisionStuff/MainChoices" index="1"]
+visible = false
+disabled = true
+
+[editable path="BattleMenu"]

@@ -7,7 +7,7 @@ onready var bottomSP = $bottomSP
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 onready var zoom_animation = $ZoomPanels/zoomanimation
 onready var doggo_animation = $AnimationPlayer
-onready var lever = $YSort/Lever/lever
+onready var lever = $YSort/Lever
 onready var cutscene_animation = $CutsceneAnimation
 onready var robot_remote_transform = $YSort/RemoteTransform2D
 onready var camera = $PuppyCamera
@@ -32,6 +32,8 @@ func _ready():
 		"top":
 			player_position = topSP.global_position
 			orientation = Vector2.DOWN
+	if (stats.check_bool("LABPUZZLEROOM1DONE")) or (stats.check_bool("alllabpuzzlesdone")):
+		lever.disabled = true
 	stats.spawn_player(
 		player, null, 
 		"../../../PuppyCamera", player_position, orientation)
@@ -72,13 +74,18 @@ func _on_ZoomPanel_BL_activated():
 	handle_zoom(0.0, 0.0)
 
 func _on_Lever_pulled(side):
-	match side:
-		0:
-			mode = PILLOW_MODE
-			zoom_animation.play("go_back")
-		1:
-			mode = CRAZY_MODE
-			zoom_animation.play("go_to_alternate")
+	if (not stats.check_bool("LABPUZZLEROOM1DONE")) and (not stats.check_bool("alllabpuzzlesdone")):
+		match side:
+			0:
+				mode = PILLOW_MODE
+				zoom_animation.play("go_back")
+			1:
+				mode = CRAZY_MODE
+				zoom_animation.play("go_to_alternate")
+	else:
+		DialogueHelper.showDialogueSimple(self, [
+		"Hmm... The lever is stuck..."
+	], 0.05)
 
 func create_and_start_timer(time, func_name):
 	var timer = Timer.new()
@@ -181,3 +188,6 @@ func go_to_next_room():
 
 func _on_bottomTZ_transition_triggered():
 	Transition.go_to("res://Levels/1.0 - Lab/labhallway.tscn", "lab")
+
+func _on_topTZ_transition_triggered():
+	Transition.go_to("res://Levels/1.0 - Lab/labpuzzleroom2.tscn", "bottom")

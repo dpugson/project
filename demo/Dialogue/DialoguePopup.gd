@@ -221,6 +221,9 @@ func wait_for_done():
 func wait_for_choice():
 	waiting_for_input = INPUT_TYPE.CHOICE
 
+# DOCUMENTATION OF STRUCTURE
+# type, text, wait time, next (options), action, picture, pitch
+
 func get_type():
 	return get_row()[0]
 	

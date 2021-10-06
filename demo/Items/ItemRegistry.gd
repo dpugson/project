@@ -98,3 +98,10 @@ const ninja_wallet = {
 	name = "Wallet",
 	description = "Inside it is some sort of fancy government ID!"
 }
+
+const thesis = {
+	type = "2D",
+	image = "res://sprites/L2_lab/thesis.png",
+	name = "Thesis",
+	description = "Well written, carefully reasoned... A revolution in puzzleology!"
+}

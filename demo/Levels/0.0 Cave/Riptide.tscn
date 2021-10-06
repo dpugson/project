@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://sprites/dogswim/u0.png" type="Texture" id=1]
 [ext_resource path="res://sprites/dogswim/l0.png" type="Texture" id=2]
@@ -62,7 +62,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "GO"
-length = 2.0
+length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:position")
 tracks/0/interp = 1
@@ -70,7 +70,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
+"times": PoolRealArray( 0, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1996.75, 395.438 ), Vector2( -72.7563, 397.876 ) ]
@@ -82,16 +82,53 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 2 ),
+"times": PoolRealArray( 4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "gotobathroom"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Label2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BG2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
 
-[sub_resource type="Animation" id=4]
-resource_name = "THANK YOU"
+[sub_resource type="Animation" id=6]
+resource_name = "GO_AWAY"
+length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label:modulate")
 tracks/0/interp = 1
@@ -99,10 +136,103 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BG2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "transition_away"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "THANK YOU"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5.9, 6.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "flash"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ true, false ]
 }
 
 [node name="Node2D" type="Node2D"]
@@ -143,22 +273,41 @@ anims/backnforth = SubResource( 2 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 anims/GO = SubResource( 3 )
+anims/GO_AWAY = SubResource( 6 )
 "anims/THANK YOU" = SubResource( 4 )
 
-[node name="Label" type="Label" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 524.081
-margin_top = 599.646
-margin_right = 1383.08
-margin_bottom = 1000.65
-text = "THANK YOU FOR PLAYING THE
-DOGGO QUEST DEMO!
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="."]
+anims/flash = SubResource( 5 )
 
-WE HOPE YOU WILL JOIN US AGAIN FOR
-THE REST OF THE ADVENTURE!"
+[node name="Label" type="Label" parent="."]
+margin_left = 530.491
+margin_top = 155.329
+margin_right = 1389.49
+margin_bottom = 231.329
+text = "DOGGO QUEST"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 533.432
+margin_top = 739.101
+margin_right = 1392.43
+margin_bottom = 837.101
+text = "PRESS L TO CONTINUE"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG2" parent="." instance=ExtResource( 7 )]
+modulate = Color( 1, 1, 1, 0 )
+show_behind_parent = false
+margin_left = -438.531
+margin_top = -418.328
+margin_right = 2383.47
+margin_bottom = 1686.68
 
 [node name="player" parent="." instance=ExtResource( 11 )]
 visible = false

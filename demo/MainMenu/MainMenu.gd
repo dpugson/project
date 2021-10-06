@@ -74,3 +74,7 @@ func reset():
 func _on_Quit_pressed():
 	get_tree().quit()
 
+
+
+func _on_LEVEL_2_DEMO_pressed():
+	Transition.go_to("res://Levels/1.0 - Lab/Bathroom.tscn", "emerge_cutscene")

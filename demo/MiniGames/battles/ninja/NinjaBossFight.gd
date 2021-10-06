@@ -92,7 +92,7 @@ func get_ninja_attack_dialogue(dialogue):
 			SKELETON_SPEECH_RATE, "ninja_attack_dialogue3", null, null
 	]
 	dialogue["ninja_attack_dialogue3"] = [
-			"TEXT", "...and misses by " + str(floor(rand_range(1, 4))) + " feet!!",
+			"TEXT", "...and misses by " + str(rand_range(5, 30)) + " feet!!",
 			SKELETON_SPEECH_RATE, null, null, null
 	]
 	counter += 1
@@ -105,6 +105,10 @@ func action_noop(action):
 				dialogue = {
 						"begin" : [
 							"TEXT", "You attempt to smell the Ninja, but he dodges!",
+							SKELETON_SPEECH_RATE, "2", null, null
+						],
+						"2" : [
+							"TEXT", "Curse those juicy and biteable ninja ankles!",
 							SKELETON_SPEECH_RATE, "ninja_attack_dialogue", null, null
 						],
 					}
@@ -223,7 +227,7 @@ func get_default_item_dialogue(text, item_name):
 			SKELETON_SPEECH_RATE, "giveme", null, null, SKELETON_VOICE_PITCH
 		],
 		"giveme" : [
-			"TEXT", "Don't you know ninjas can use anything as weapon?",
+			"TEXT", "Don't you know ninjas can use anything as weapon?\nHINT: Items won't help you here!",
 			SKELETON_SPEECH_RATE, "FETCH", null, null, SKELETON_VOICE_PITCH
 		],
 		"FETCH" : [

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://sprites/L2_lab/safety_poster.png" type="Texture" id=1]
 [ext_resource path="res://Levels/1.0 - Lab/RobotSprite.tscn" type="PackedScene" id=2]
@@ -25,6 +25,14 @@
 [ext_resource path="res://sprites/L2_lab/fire_extinguisher_spray0.png" type="Texture" id=23]
 [ext_resource path="res://sprites/L2_lab/fire_extinguisher_d.png" type="Texture" id=24]
 [ext_resource path="res://tunes/lab/youdidit1.wav" type="AudioStream" id=25]
+[ext_resource path="res://Brains/UnlockableBarrier.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Brains/DescriptionBox.tscn" type="PackedScene" id=27]
+
+[sub_resource type="CircleShape2D" id=12]
+radius = 42.9273
+
+[sub_resource type="CircleShape2D" id=13]
+radius = 40.6904
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -41,6 +49,9 @@ animations = [ {
 "name": "default",
 "speed": 12.0
 } ]
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 67.0022, 79.3875 )
 
 [sub_resource type="Animation" id=3]
 tracks/0/type = "value"
@@ -705,7 +716,10 @@ tracks/10/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 105.925, 49.1887 )
+extents = Vector2( 594.993, 49.1887 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 156.298, 47.7947 )
 
 [node name="labpuzzleroom2" type="Node2D"]
 script = ExtResource( 6 )
@@ -757,8 +771,22 @@ position = Vector2( -13.6133, -11.5227 )
 [node name="potted_palm" parent="." instance=ExtResource( 7 )]
 position = Vector2( 746.725, -661.962 )
 
+[node name="description_box" parent="potted_palm" instance=ExtResource( 27 )]
+description = [ "A handsome palm...
+Delightfully leafy." ]
+
+[node name="CollisionShape2D" parent="potted_palm/description_box/SeenBox" index="0"]
+shape = SubResource( 12 )
+
 [node name="waste_bin" parent="." instance=ExtResource( 4 )]
 position = Vector2( 635.896, -657.517 )
+
+[node name="description_box" parent="waste_bin" instance=ExtResource( 27 )]
+description = [ "This trash gives off extremely
+flammable vibes." ]
+
+[node name="CollisionShape2D" parent="waste_bin/description_box/SeenBox" index="0"]
+shape = SubResource( 13 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -788,7 +816,6 @@ texture = ExtResource( 14 )
 pause_mode = 2
 position = Vector2( 12.2263, -32.6036 )
 frames = SubResource( 1 )
-frame = 2
 playing = true
 
 [node name="fireextinguishstuff" type="Node2D" parent="."]
@@ -811,6 +838,15 @@ texture = ExtResource( 10 )
 [node name="science_desk" type="Sprite" parent="."]
 position = Vector2( -21.5583, 102.415 )
 texture = ExtResource( 13 )
+
+[node name="description_box" parent="science_desk" instance=ExtResource( 27 )]
+position = Vector2( 0, -6.73682 )
+description = [ "Some carefully written scientific 
+observations!", "Observation: Pressing buttons is fun." ]
+
+[node name="CollisionShape2D" parent="science_desk/description_box/SeenBox" index="0"]
+position = Vector2( 0, 11.7272 )
+shape = SubResource( 11 )
 
 [node name="BG" parent="." instance=ExtResource( 16 )]
 margin_left = -1760.59
@@ -880,13 +916,13 @@ polygon = PoolVector2Array( 249.419, -668.826, -96.173, -668.826, -96.173, 82.02
 [node name="right" type="StaticBody2D" parent="Collisions"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/right"]
-polygon = PoolVector2Array( 139.806, -666.418, 826.234, -663.854, 808.83, 193.91, 81.1377, 191.509, 1074.86, 502.208, 1069.89, -1004.47 )
+polygon = PoolVector2Array( 454.451, -666.418, 826.234, -663.854, 808.83, 193.91, 452.983, 193.918, 1074.86, 502.208, 1069.89, -1004.47 )
 
 [node name="bottomTZ" parent="." instance=ExtResource( 5 )]
 position = Vector2( 340.725, 295.695 )
 
 [node name="CollisionShape2D" parent="bottomTZ" index="0"]
-position = Vector2( 5.72461, 100.737 )
+position = Vector2( 5.72461, 33.438 )
 shape = SubResource( 10 )
 
 [node name="CutscenePuppySpot" type="Position2D" parent="."]
@@ -894,6 +930,23 @@ position = Vector2( 49.6564, -596.464 )
 
 [node name="LeaveSpot" type="Position2D" parent="."]
 position = Vector2( 356.15, -749.475 )
+
+[node name="UnlockableBarrier" parent="." instance=ExtResource( 26 )]
+position = Vector2( 346.02, 254.426 )
+unlock_var_name = "alllabpuzzlesdone"
+locked_description = [ "BEEP BOOP! ACCESS DENIED." ]
+
+[node name="UnlockableBarrier2" parent="." instance=ExtResource( 26 )]
+position = Vector2( 356.51, -741.645 )
+unlock_var_name = "alllabpuzzlesdone"
+locked_description = [ "BEEP BOOP! ACCESS DENIED." ]
+
+[node name="topTZ" parent="." instance=ExtResource( 5 )]
+position = Vector2( 341.443, -731.171 )
+
+[node name="CollisionShape2D" parent="topTZ" index="0"]
+position = Vector2( -7.91565, -7.91577 )
+shape = SubResource( 14 )
 [connection signal="activated" from="starbuttons/StarButton" to="." method="_on_StarButton_activated"]
 [connection signal="deactivated" from="starbuttons/StarButton" to="." method="_on_StarButton_deactivated"]
 [connection signal="activated" from="starbuttons/StarButton2" to="." method="_on_StarButton_activated"]
@@ -913,7 +966,22 @@ position = Vector2( 356.15, -749.475 )
 [connection signal="activated" from="starbuttons/StarButton9" to="." method="_on_StarButton_activated"]
 [connection signal="deactivated" from="starbuttons/StarButton9" to="." method="_on_StarButton_deactivated"]
 [connection signal="transition_triggered" from="bottomTZ" to="." method="_on_bottomTZ_transition_triggered"]
+[connection signal="transition_triggered" from="topTZ" to="." method="_on_topTZ_transition_triggered"]
+
+[editable path="potted_palm/description_box"]
+
+[editable path="potted_palm/description_box/SeenBox"]
+
+[editable path="waste_bin/description_box"]
+
+[editable path="waste_bin/description_box/SeenBox"]
+
+[editable path="science_desk/description_box"]
+
+[editable path="science_desk/description_box/SeenBox"]
 
 [editable path="PuppyCamera"]
 
 [editable path="bottomTZ"]
+
+[editable path="topTZ"]

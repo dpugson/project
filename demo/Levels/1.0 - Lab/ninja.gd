@@ -13,7 +13,7 @@ var NINJA_STATE_KEY = "NINJA_STATE_KEY"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	back_to_wall()
-	if not stats.world_state.has("NINJA_STATE"):
+	if not stats.world_state.has(NINJA_STATE_KEY):
 		stats.world_state[NINJA_STATE_KEY] = "INIT"
 
 func look_at_you():

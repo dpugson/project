@@ -8,15 +8,16 @@ onready var item_registry = ItemRegistry
 const SKELETON_VOICE_PITCH = 2
 const SKELETON_SPEECH_RATE = 0.05
 
+var in_final_stage = false
+
 enum {
 	LICK_GAME,
 	FETCH_GAME
 }
-
 var next = null
 
 var obstacle_map = {
-	"*" : { "scene": preload("res://MiniGames/battles/ninja/TrashCanObstacle.tscn"), "end_scale" : 3 },
+	"*" : { "scene": preload("res://MiniGames/battles/ninja/PageObstacle.tscn"), "end_scale" : 5 },
 }
 
 var battle_impl = {
@@ -37,6 +38,7 @@ func _ready():
 	Jukebox.play_song("res://tunes/lab/labrat_lofi.wav")
 	battle_menu.init(battle_impl)
 	set_battle_stage("one")
+	#set_battle_stage("four")
 
 func set_battle_stage(stage):
 	curr_battle_stage = stage
@@ -79,11 +81,11 @@ func battle_stuff():
 						"I'm never going to finish my thesis...",
 						"I've been working in this Puzzle Studies lab\nfor so long they've made me the mascot...",
 						"...but I feel like I haven't gotten any closer\nto really getting anything done.",
-						"UGHH!! IT'S SO BAD!!!!",
+						"UGHH!! MY PAPER IS SO BAD!!!!",
 						"Better throw this piece of garbage away..."
 					],
 					"next" : "two",
-					"game" : LICK_GAME,
+					"game" : FETCH_GAME,
 					"pitch" : SKELETON_VOICE_PITCH
 				}
 			},
@@ -95,11 +97,11 @@ func battle_stuff():
 					"dialogue" : [
 						"Ummm!!!! Well!!! LOTS!!!!",
 						"Like, uh...",
-						"I haven't found the right font...",
-						"And I've only triple checked my figures!!!\nQuadruple would be better... Quintuple, maybe...",
+						"I haven't found the right font!",
+						"And I've only triple checked my figures!!!\nQuadruple would be better! Quintuple!",
 						"I just need to rewrite the whole thing!!!",
-						"The first 15 drafts were terrible!!!",
-						"So this one probably is too!!!"
+						"IT'S GARBAGE",
+						"I'M GARBAGE",
 					],
 					"next" : "three",
 					"game" : FETCH_GAME,
@@ -108,14 +110,20 @@ func battle_stuff():
 			}
 		},
 		"three" : {
-			"options" : [ "HMM Sounds like you're actually done to me!" ],
+			"options" : [ "...sounds like you're done to me!" ],
 			"results" : {
-				 "Well, what do you have left to do?" : {
+				 "...sounds like you're done to me!" : {
 					"dialogue" : [
 						"Whh-",
 						"But it's so terrible!!!!", "It's rubbish!!!!!",
-						"I'M RUBBISH",
-						"I SUCK"
+						"I SUCK",
+						"AAAAAAAAAAAAHHHH",
+						"AAAGHHHHH",
+						"AAAAAHHHHH",
+						"AAAAGHGHGHHHHHH",
+						"AAAAGAAAAAAAAAAAAAAAAAAAAAAAAHGHGHHHHHH",
+						"AAAH",
+						"A"
 					],
 					"next" : "four",
 					"game" : FETCH_GAME,
@@ -124,11 +132,14 @@ func battle_stuff():
 			}
 		},
 		"four" : {
-			"options" : [ "Lick this clown"],
+			"options" : [ "Lick!!!!"],
 			"results" : {
-				"Lick this clown" : {
+				"Lick!!!!" : {
 					"dialogue" : [
-						"LICK MODE ACTIVATED!"
+						"You decide this robot needs to be CHEERED UP.",
+						"Your doggo instincts kick in.",
+						"LICK MODE ACTIVATED!",
+						"DOGGO KISSES"
 					],
 					"next" : "four",
 					"game" : LICK_GAME
@@ -183,27 +194,6 @@ func get_round_info():
 	}
 	return round_info
 
-#func action_noop(action):
-#	var dialogue = null
-#	match action.to_lower():
-#		"lick to cheer up":
-#			dialogue = {
-#					"begin" : [
-#						"TEXT", "YOU ATTEMPT TO LICK!",
-#						SKELETON_SPEECH_RATE, null, null, null
-#					],
-#				}
-#			next = LICK_GAME
-#		_:
-#			dialogue = {
-#				"begin" : [
-#						"TEXT", "...",
-#						SKELETON_SPEECH_RATE, null, null, null, SKELETON_VOICE_PITCH
-#					],
-#				}	
-#			next = FETCH_GAME
-#	battle_menu.call_deferred("show_dialogue", dialogue)
-
 func get_default_item_dialogue(text, _item_name):
 	return {
 		"begin" : [
@@ -212,6 +202,10 @@ func get_default_item_dialogue(text, _item_name):
 		],
 		"giveme" : [
 			"TEXT", "No response...",
+			SKELETON_SPEECH_RATE, "null", null, null, null
+		],
+		"null" : [
+			"TEXT", "I don't think any of your items are going\nto be much help...",
 			SKELETON_SPEECH_RATE, null, null, null, null
 		],
 	}
@@ -228,25 +222,36 @@ func item_noop(menu, _label, _item, _prev):
 	next = FETCH_GAME
 	battle_menu.call_deferred("show_dialogue", dialogue)
 
+
 func game_done():
+	if in_final_stage:
+		battle_menu.fetch_game_controller.play("go_to_game")
+		battle_menu.launch_lick_game([self, "lick_game_done"])
+		return
 	battle_menu.fetch_game_controller.play("leave_game")
 	battle_menu.animation.play("default")
 
 func lick_game_done(_won):
-	print(_won)
-	battle_menu.fetch_game_controller.play("leave_game")
-	battle_menu.animation.play("default")
-	battle_menu.launch_fetch_game(get_round_info(), [self, "game_done"], fetch_item)
+	in_final_stage = true
+	if _won:
+		stats.set_bool("alllabpuzzlesdone")
+		queue_free()
+		end_game()
+	else:
+#		battle_menu.fetch_game_controller.play("leave_game")
+#		battle_menu.animation.play("default")
+#		battle_menu.fetch_game_controller.play("go_to_game")
+		battle_menu.launch_fetch_game(get_round_info(), [self, "game_done"], fetch_item)
 
 func end_game():
-	#TODO
-	self.queue_free()
+	stats.world_state["BEAT_ROBOT"] = true
+	Transition.go_to("res://Levels/1.0 - Lab/labpuzzleroom3.tscn", "beat_game")
 
 func text_done():
 	match next:
 		LICK_GAME:
 			battle_menu.fetch_game_controller.play("go_to_game")
-			battle_menu.launch_lick_game([self, "lick_game_done"])
+			battle_menu.launch_lick_game([self, "lick_game_done"], -1) #infinite length
 		FETCH_GAME:
 			battle_menu.fetch_game_controller.play("go_to_game")
 			battle_menu.launch_fetch_game(get_round_info(), [self, "game_done"], fetch_item)

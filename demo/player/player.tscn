@@ -88,15 +88,15 @@ animations = [ {
 "name": "up",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "down",
-"speed": 7.0
-}, {
 "frames": [ ExtResource( 36 ) ],
 "loop": true,
 "name": "swimdown",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "down",
+"speed": 7.0
 }, {
 "frames": [ ExtResource( 38 ) ],
 "loop": true,
@@ -169,11 +169,6 @@ tracks/0/keys = {
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ) ],
-"loop": true,
-"name": "barkdown",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "none",
@@ -182,6 +177,11 @@ animations = [ {
 "frames": [ ExtResource( 49 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 47 ) ],
 "loop": true,
 "name": "idledown",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ) ],
+"loop": true,
+"name": "barkdown",
 "speed": 5.0
 } ]
 

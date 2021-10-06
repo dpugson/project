@@ -59,6 +59,7 @@ func text_done():
 	launch_fetch_game(round_info, [self, "game_done"])
 
 func game_done():
+	print("game done")
 	fetch_game_controller.play("leave_game")
 	animation.play("default")
 
@@ -112,6 +113,7 @@ func _on_Item_pressed():
 	player_stats.hide()
 
 func _on_Act_pressed():
+	print('act pressed')
 	animation.play("show_actions")
 
 func actions_finished_displaying():
@@ -141,13 +143,13 @@ func fetch_game_complete_handler(fetch_game, callback):
 	if callback != null:
 		callback[0].call(callback[1])
 
-func launch_lick_game(callback):
+func launch_lick_game(callback, length=10):
 	var lick_game = LickGame.instance()
 	fetch_game_container.add_child(lick_game)
 	fetch_game_controller.play("go_to_game")
 	player_stats.visible = false
 	lick_game.connect("round_over", self, "lick_game_complete_handler", [lick_game, callback])
-	lick_game.start(2)
+	lick_game.start(length)
 
 func lick_game_complete_handler(won, lick_game, callback):
 	lick_game.queue_free()
@@ -158,6 +160,8 @@ func lick_game_complete_handler(won, lick_game, callback):
 		callback[0].call(callback[1], won)
 
 func show_dialogue(dialogue):
+	print('showing dialogue')
+	animation.play("act_contract")
 	DialogueHelper.showDialogue(self, dialogue, false, [self, "_on_NextButton_pressed"])
 
 func show_text(text_to_show):
