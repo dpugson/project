@@ -28,13 +28,13 @@
 [ext_resource path="res://Brains/UnlockableBarrier.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Brains/DescriptionBox.tscn" type="PackedScene" id=27]
 
-[sub_resource type="CircleShape2D" id=12]
+[sub_resource type="CircleShape2D" id=1]
 radius = 42.9273
 
-[sub_resource type="CircleShape2D" id=13]
+[sub_resource type="CircleShape2D" id=2]
 radius = 40.6904
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 19 ), ExtResource( 17 ), ExtResource( 20 ) ],
 "loop": true,
@@ -42,7 +42,7 @@ animations = [ {
 "speed": 12.0
 } ]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 23 ), ExtResource( 21 ) ],
 "loop": true,
@@ -50,10 +50,10 @@ animations = [ {
 "speed": 12.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 67.0022, 79.3875 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:visible")
 tracks/0/interp = 1
@@ -175,7 +175,7 @@ tracks/9/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=7]
 length = 7.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:visible")
@@ -276,8 +276,7 @@ tracks/7/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "leave_n_comeback"
+[sub_resource type="Animation" id=8]
 length = 7.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:visible")
@@ -402,7 +401,7 @@ tracks/9/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:visible")
 tracks/0/interp = 1
@@ -466,7 +465,7 @@ tracks/4/keys = {
 "values": [ Vector2( 366.056, -231.518 ), Vector2( 366.056, -578.214 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=10]
 length = 2.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:position")
@@ -543,7 +542,7 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=11]
 length = 2.0
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -577,7 +576,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=12]
 length = 4.5
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -715,7 +714,7 @@ tracks/10/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 594.993, 49.1887 )
 
 [sub_resource type="RectangleShape2D" id=14]
@@ -776,7 +775,7 @@ description = [ "A handsome palm...
 Delightfully leafy." ]
 
 [node name="CollisionShape2D" parent="potted_palm/description_box/SeenBox" index="0"]
-shape = SubResource( 12 )
+shape = SubResource( 1 )
 
 [node name="waste_bin" parent="." instance=ExtResource( 4 )]
 position = Vector2( 635.896, -657.517 )
@@ -786,7 +785,7 @@ description = [ "This trash gives off extremely
 flammable vibes." ]
 
 [node name="CollisionShape2D" parent="waste_bin/description_box/SeenBox" index="0"]
-shape = SubResource( 13 )
+shape = SubResource( 2 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -815,7 +814,8 @@ texture = ExtResource( 14 )
 [node name="fire" type="AnimatedSprite" parent="malfunctioning_button"]
 pause_mode = 2
 position = Vector2( 12.2263, -32.6036 )
-frames = SubResource( 1 )
+frames = SubResource( 3 )
+frame = 2
 playing = true
 
 [node name="fireextinguishstuff" type="Node2D" parent="."]
@@ -824,7 +824,8 @@ visible = false
 [node name="spray" type="AnimatedSprite" parent="fireextinguishstuff"]
 visible = false
 position = Vector2( 595.385, -674.439 )
-frames = SubResource( 2 )
+frames = SubResource( 4 )
+frame = 1
 playing = true
 
 [node name="fire_extinguisher_r" type="Sprite" parent="fireextinguishstuff"]
@@ -846,7 +847,7 @@ observations!", "Observation: Pressing buttons is fun." ]
 
 [node name="CollisionShape2D" parent="science_desk/description_box/SeenBox" index="0"]
 position = Vector2( 0, 11.7272 )
-shape = SubResource( 11 )
+shape = SubResource( 5 )
 
 [node name="BG" parent="." instance=ExtResource( 16 )]
 margin_left = -1760.59
@@ -894,13 +895,13 @@ position = Vector2( 153.264, -82.8456 )
 [node name="CutsceneAnimation" type="AnimationPlayer" parent="."]
 pause_mode = 2
 autoplay = "default"
-anims/default = SubResource( 3 )
-anims/dropoff = SubResource( 4 )
-anims/leave_n_comeback = SubResource( 5 )
-anims/robot_appear = SubResource( 6 )
-anims/robot_leave = SubResource( 7 )
-anims/star_win = SubResource( 8 )
-anims/star_win2 = SubResource( 9 )
+anims/default = SubResource( 6 )
+anims/dropoff = SubResource( 7 )
+anims/leave_n_comeback = SubResource( 8 )
+anims/robot_appear = SubResource( 9 )
+anims/robot_leave = SubResource( 10 )
+anims/star_win = SubResource( 11 )
+anims/star_win2 = SubResource( 12 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CutsceneAnimation"]
 stream = ExtResource( 11 )
@@ -923,7 +924,7 @@ position = Vector2( 340.725, 295.695 )
 
 [node name="CollisionShape2D" parent="bottomTZ" index="0"]
 position = Vector2( 5.72461, 33.438 )
-shape = SubResource( 10 )
+shape = SubResource( 13 )
 
 [node name="CutscenePuppySpot" type="Position2D" parent="."]
 position = Vector2( 49.6564, -596.464 )

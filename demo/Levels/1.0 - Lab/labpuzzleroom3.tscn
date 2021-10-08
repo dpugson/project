@@ -29,31 +29,31 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 59.6811
 
-[sub_resource type="CircleShape2D" id=15]
+[sub_resource type="CircleShape2D" id=2]
 radius = 45.4611
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 57.0117, 85.7148 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 49.6624, 41.1819 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 60.5188, 46.61 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 65.2657, 138.404 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 96.9267, 62.2935 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 43.1316, 87.2837 )
 
-[sub_resource type="CircleShape2D" id=16]
+[sub_resource type="CircleShape2D" id=9]
 radius = 64.3004
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=10]
 resource_name = "beat game"
 length = 0.5
 tracks/0/type = "value"
@@ -131,7 +131,7 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=11]
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:visible")
 tracks/0/interp = 1
@@ -229,7 +229,7 @@ tracks/7/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=12]
 length = 4.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:visible")
@@ -330,7 +330,7 @@ tracks/7/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=13]
 resource_name = "move_on_out"
 length = 3.0
 tracks/0/type = "value"
@@ -408,7 +408,7 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=14]
 length = 7.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:animation")
@@ -473,7 +473,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=15]
 resource_name = "pouting"
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:animation")
@@ -536,7 +536,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=16]
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:visible")
 tracks/0/interp = 1
@@ -600,7 +600,7 @@ tracks/4/keys = {
 "values": [ Vector2( 366.056, -231.518 ), Vector2( 366.056, -578.214 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=17]
 length = 2.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:position")
@@ -677,7 +677,7 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=18]
 length = 7.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:position")
@@ -774,7 +774,7 @@ tracks/7/keys = {
 } ]
 }
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 342.981, 49.1887 )
 
 [sub_resource type="RectangleShape2D" id=20]
@@ -839,7 +839,7 @@ texture = ExtResource( 19 )
 
 [node name="CollisionShape2D" parent="YSort/computer_console/thick_book/BlueBookSeenBox" index="0"]
 position = Vector2( -5.51288, 110.536 )
-shape = SubResource( 15 )
+shape = SubResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="YSort/computer_console"]
 
@@ -850,7 +850,7 @@ polygon = PoolVector2Array( -93.0464, -44.3825, -93.0755, 24.2913, -11.4414, 27.
 
 [node name="CollisionShape2D" parent="YSort/computer_console/ComputerSeenBox" index="0"]
 position = Vector2( 40.5021, 45.0515 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="player" parent="YSort" instance=ExtResource( 12 )]
 position = Vector2( 346.784, -227.859 )
@@ -873,13 +873,13 @@ position = Vector2( 366.056, -231.518 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/robot/StaticBody2D"]
 position = Vector2( 1.80933, 137.514 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="RobotSeenBox" parent="YSort/robot" instance=ExtResource( 23 )]
 
 [node name="CollisionShape2D" parent="YSort/robot/RobotSeenBox" index="0"]
 position = Vector2( 0, 132.086 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="sink" type="Node2D" parent="YSort"]
 position = Vector2( 755.326, -24.796 )
@@ -892,7 +892,7 @@ texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" parent="YSort/sink/SinkSeenBox" index="0"]
 position = Vector2( -3.75781, 69.5181 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="counter" type="Node2D" parent="YSort"]
 position = Vector2( 46.9702, -624.529 )
@@ -909,7 +909,7 @@ texture = ExtResource( 8 )
 
 [node name="CollisionShape2D" parent="YSort/counter/lab_counter/chemistry_stuff/ChemistrySeenBox" index="0"]
 position = Vector2( 1.92407, 34.6333 )
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="medium_book" type="Sprite" parent="YSort/counter/lab_counter"]
 position = Vector2( -112.159, 30.6903 )
@@ -919,7 +919,7 @@ texture = ExtResource( 20 )
 
 [node name="CollisionShape2D" parent="YSort/counter/lab_counter/medium_book/RedBookSeenBox" index="0"]
 position = Vector2( 0, 63.4944 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="YSort/counter/lab_counter"]
 
@@ -937,7 +937,7 @@ texture = ExtResource( 13 )
 [node name="DeskSeenBox" parent="science_desk" instance=ExtResource( 23 )]
 
 [node name="CollisionShape2D" parent="science_desk/DeskSeenBox" index="0"]
-shape = SubResource( 16 )
+shape = SubResource( 9 )
 
 [node name="BG" parent="." instance=ExtResource( 16 )]
 margin_left = -1591.17
@@ -956,15 +956,15 @@ position = Vector2( 1413.32, 316.681 )
 [node name="CutsceneAnimation" type="AnimationPlayer" parent="."]
 pause_mode = 2
 autoplay = "default"
-"anims/beat game" = SubResource( 18 )
-anims/default = SubResource( 8 )
-anims/dropoff = SubResource( 9 )
-anims/move_on_out = SubResource( 19 )
-anims/pout = SubResource( 10 )
-anims/pouting = SubResource( 17 )
-anims/robot_appear = SubResource( 11 )
-anims/robot_leave = SubResource( 12 )
-anims/throw_away_thesis = SubResource( 13 )
+"anims/beat game" = SubResource( 10 )
+anims/default = SubResource( 11 )
+anims/dropoff = SubResource( 12 )
+anims/move_on_out = SubResource( 13 )
+anims/pout = SubResource( 14 )
+anims/pouting = SubResource( 15 )
+anims/robot_appear = SubResource( 16 )
+anims/robot_leave = SubResource( 17 )
+anims/throw_away_thesis = SubResource( 18 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CutsceneAnimation"]
 stream = ExtResource( 11 )
@@ -988,7 +988,7 @@ position = Vector2( 340.725, 295.695 )
 
 [node name="CollisionShape2D" parent="bottomTZ" index="0"]
 position = Vector2( 7.74408, 1.78381 )
-shape = SubResource( 14 )
+shape = SubResource( 19 )
 
 [node name="CutscenePuppySpot" type="Position2D" parent="."]
 position = Vector2( 49.6564, -596.464 )

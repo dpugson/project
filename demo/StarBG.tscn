@@ -3,7 +3,7 @@
 [ext_resource path="res://BG.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Brains/SaveStar.tscn" type="PackedScene" id=3]
 
-[node name="Node2D" type="Control"]
+[node name="StarBG" type="Control"]
 __meta__ = {
 "_edit_use_anchors_": false
 }

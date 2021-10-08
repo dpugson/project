@@ -813,6 +813,7 @@ position = Vector2( 0, -63.7308 )
 
 [node name="SeenBox" parent="UnlockableBarrier" index="1"]
 position = Vector2( 3.12292, -46.9408 )
+scale = Vector2( 0.864874, 1 )
 
 [node name="topTZ" parent="." instance=ExtResource( 5 )]
 position = Vector2( 351.378, -743.017 )
