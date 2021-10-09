@@ -33,13 +33,13 @@
 radius = 54.5379
 height = 62.868
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 61.4875, 336.522 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 37.8086, 121.57 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 136.339, 39.2026 )
 
 [node name="OutsideLab01" type="Node2D"]
@@ -476,8 +476,8 @@ texture = ExtResource( 18 )
 [node name="LabSP" parent="." instance=ExtResource( 14 )]
 position = Vector2( 167.67, 854.077 )
 
-[node name="TangleSP" parent="." instance=ExtResource( 14 )]
-position = Vector2( 2098.56, -1063.9 )
+[node name="RightSP" parent="." instance=ExtResource( 14 )]
+position = Vector2( 3025.84, 815.503 )
 
 [node name="collisions" type="Node2D" parent="."]
 
@@ -497,7 +497,7 @@ polygon = PoolVector2Array( 2805.95, 2088.29, 420.883, 2058.16, 209.431, 1697.93
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
 position = Vector2( 464.083, -893.036 )
-polygon = PoolVector2Array( -105.255, 1191.94, 1168.12, 1148.39, 1230.93, 1405.62, 1036.51, 1483.39, 24.6879, 1500.46, -116.528, 1378.63, -479.801, 1380.32 )
+polygon = PoolVector2Array( -105.255, 1191.94, 1185.68, 888.92, 1222.11, 1398.9, 1036.51, 1483.39, 24.6879, 1500.46, -116.528, 1378.63, -479.801, 1380.32 )
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
 position = Vector2( 597.564, -730.288 )
@@ -509,11 +509,11 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="RightTZ" parent="." instance=ExtResource( 26 )]
-position = Vector2( 3085.6, 721.698 )
+position = Vector2( 2940.71, 758.955 )
 
 [node name="CollisionShape2D" parent="RightTZ" index="0"]
 position = Vector2( 342.259, -36.0981 )
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="TopTZ" parent="." instance=ExtResource( 26 )]
 position = Vector2( 369.457, 201.342 )
@@ -528,15 +528,16 @@ position = Vector2( 44.2282, 836.701 )
 [node name="CollisionShape2D" parent="PuzzleHouseTZ" index="0"]
 position = Vector2( -19.3949, 2.9873 )
 rotation = 2.35619
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="ball" type="Sprite" parent="."]
 position = Vector2( 2029.34, 204.547 )
 texture = ExtResource( 27 )
 
 [node name="bone" type="Sprite" parent="."]
-position = Vector2( 2208.23, 116.348 )
+position = Vector2( 2168.03, 125.626 )
 texture = ExtResource( 28 )
+[connection signal="transition_triggered" from="RightTZ" to="." method="_on_RightTZ_transition_triggered"]
 [connection signal="transition_triggered" from="PuzzleHouseTZ" to="." method="_on_PuzzleHouseTZ_transition_triggered"]
 
 [editable path="PuppyCamera"]
