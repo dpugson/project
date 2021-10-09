@@ -31,6 +31,7 @@ onready var player_animation = $AnimationPlayer
 onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
 onready var bark_hitbox = $HitBoxPivot/BarkHitBox
+onready var bark_hitbox_collision = $HitBoxPivot/BarkHitBox/CollisionShape2D
 onready var hurtbox = $DoggoPivot/HurtBox
 onready var lookbox = $DoggoPivot/LookBox
 onready var Menu = preload("res://Items/Inventory.tscn")
@@ -51,6 +52,7 @@ func _ready():
 	stats.connect("out_of_health", self, "queue_free")
 	lookbox.connect("saw_something", self, "set_speed_to_zero")
 	bark_hitbox.knockback_vector = speed
+	bark_hitbox_collision.disabled = true
 	animation_tree.active = true
 	stats.connect("put_on_hat", self, "set_hat")
 	set_hat()

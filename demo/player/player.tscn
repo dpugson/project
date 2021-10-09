@@ -88,15 +88,15 @@ animations = [ {
 "name": "up",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 36 ) ],
-"loop": true,
-"name": "swimdown",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "down",
 "speed": 7.0
+}, {
+"frames": [ ExtResource( 36 ) ],
+"loop": true,
+"name": "swimdown",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 38 ) ],
 "loop": true,
@@ -169,14 +169,14 @@ tracks/0/keys = {
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "none",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 49 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 47 ) ],
 "loop": true,
 "name": "idledown",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "none",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ) ],
@@ -1716,7 +1716,7 @@ visible = false
 position = Vector2( -1.70408, 66.9613 )
 scale = Vector2( 0.842484, 0.826121 )
 frames = SubResource( 1 )
-animation = "leftright"
+animation = "updown"
 
 [node name="DoggoCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 0.707214, 31.6103 )
@@ -1726,13 +1726,13 @@ shape = SubResource( 2 )
 [node name="DogAnimation" type="AnimatedSprite" parent="."]
 position = Vector2( 3.11467, -16.0672 )
 frames = SubResource( 3 )
-animation = "right"
+animation = "barkright"
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="hat" type="Node2D" parent="DogAnimation"]
-position = Vector2( 34.7188, -0.671059 )
+position = Vector2( 36.7426, -7.88833 )
 
 [node name="Sprite" type="Sprite" parent="DogAnimation/hat"]
 position = Vector2( 1.4436, -56.3144 )
@@ -1780,7 +1780,7 @@ parameters/walk/blend_position = Vector2( 0, 1 )
 
 [node name="HitBoxPivot" type="Position2D" parent="."]
 position = Vector2( 0, -31.7903 )
-rotation = 3.14159
+rotation = -1.5708
 
 [node name="BarkHitBox" parent="HitBoxPivot" instance=ExtResource( 32 )]
 position = Vector2( 0, 120 )
@@ -1790,6 +1790,7 @@ script = ExtResource( 33 )
 [node name="CollisionShape2D" parent="HitBoxPivot/BarkHitBox" index="0"]
 rotation = 1.5708
 shape = SubResource( 53 )
+disabled = true
 
 [node name="DoggoPivot" type="Position2D" parent="."]
 rotation = -1.5708

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Cameras/PuppyCamera.gd" type="Script" id=1]
 [ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/L3_forest/vignette.png" type="Texture" id=3]
 
 [node name="PuppyCamera" type="Camera2D"]
 pause_mode = 2
@@ -27,3 +28,12 @@ margin_left = 24.8333
 margin_top = 27.9374
 margin_right = 64.8333
 margin_bottom = 67.9374
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

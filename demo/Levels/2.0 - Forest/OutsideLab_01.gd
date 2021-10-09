@@ -21,3 +21,7 @@ func _ready():
 	stats.spawn_player(
 		player, null, 
 		"../../../PuppyCamera", player_position, orientation)
+
+
+func _on_PuzzleHouseTZ_transition_triggered():
+	Transition.go_to("res://Levels/1.0 - Lab/GiftShop.tscn", "top")

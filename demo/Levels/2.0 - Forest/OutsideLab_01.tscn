@@ -1,0 +1,548 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://Levels/2.0 - Forest/pines.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/L3_forest/forest_01-min.png" type="Texture" id=2]
+[ext_resource path="res://sprites/L3_forest/lab_exterior_upper_front_tree-min.png" type="Texture" id=3]
+[ext_resource path="res://sprites/L3_forest/lab_exterior_fallen_tree-min.png" type="Texture" id=4]
+[ext_resource path="res://sprites/L3_forest/lab_exterior_big_Fg-min.png" type="Texture" id=5]
+[ext_resource path="res://sprites/leafpiletile2dark.png" type="Texture" id=6]
+[ext_resource path="res://sprites/L3_forest/bigpine.png" type="Texture" id=7]
+[ext_resource path="res://sprites/L3_forest/lab_exterior_right_upper_tree-min.png" type="Texture" id=8]
+[ext_resource path="res://sprites/L3_forest/lab_only.png" type="Texture" id=9]
+[ext_resource path="res://sprites/L3_forest/lab_exterior_upper_middle_tree-min.png" type="Texture" id=10]
+[ext_resource path="res://Levels/2.0 - Forest/shadowed_pines.tscn" type="PackedScene" id=11]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Levels/2.0 - Forest/OutsideLab_01.gd" type="Script" id=15]
+[ext_resource path="res://sprites/L3_forest/tall_creepy_tree_inside.png" type="Texture" id=16]
+[ext_resource path="res://sprites/L3_forest/lab_exterior_left_twig-min.png" type="Texture" id=17]
+[ext_resource path="res://sprites/L3_forest/vignette_fade.png" type="Texture" id=18]
+[ext_resource path="res://sprites/L3_forest/tall_creepy_tree_edge.png" type="Texture" id=19]
+[ext_resource path="res://sprites/leafpile/leaf0.png" type="Texture" id=20]
+[ext_resource path="res://sprites/leafpile/leaf4.png" type="Texture" id=21]
+[ext_resource path="res://sprites/leafpile/leaf2.png" type="Texture" id=22]
+[ext_resource path="res://sprites/leafpile/leaf3.png" type="Texture" id=23]
+[ext_resource path="res://sprites/L3_forest/lab_exterior_upper_left_tree_back-min.png" type="Texture" id=24]
+[ext_resource path="res://world/leaf_pile.tscn" type="PackedScene" id=25]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=26]
+[ext_resource path="res://sprites/cavestuff/ball.png" type="Texture" id=27]
+[ext_resource path="res://sprites/cavestuff/bone.png" type="Texture" id=28]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 54.5379
+height = 62.868
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 61.4875, 336.522 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 37.8086, 121.57 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 136.339, 39.2026 )
+
+[node name="OutsideLab01" type="Node2D"]
+script = ExtResource( 15 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -1315.0
+margin_top = -2341.0
+margin_right = 7990.0
+margin_bottom = 2776.0
+texture = ExtResource( 6 )
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 13 )]
+position = Vector2( -1592.55, 1314.22 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -1277.02, -2251.29 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 7990, 1801.69 )
+
+[node name="BGStuff" type="Node2D" parent="."]
+
+[node name="PineCurve" type="Node2D" parent="BGStuff"]
+position = Vector2( -110.142, 270.348 )
+
+[node name="shadowed_pines5" parent="BGStuff/PineCurve" instance=ExtResource( 11 )]
+modulate = Color( 0.313726, 0.392157, 0.643137, 1 )
+margin_left = -432.535
+margin_top = -1366.78
+margin_right = 3301.46
+margin_bottom = -817.779
+
+[node name="shadowed_pines3" parent="BGStuff/PineCurve" instance=ExtResource( 11 )]
+modulate = Color( 0.313726, 0.392157, 0.643137, 1 )
+margin_left = -413.572
+margin_top = -1093.71
+margin_right = 3320.43
+margin_bottom = -544.707
+
+[node name="shadowed_pines" parent="BGStuff/PineCurve" instance=ExtResource( 11 )]
+margin_left = -296.0
+margin_top = -942.0
+margin_right = 3438.0
+margin_bottom = -393.0
+
+[node name="pines2" parent="BGStuff/PineCurve" instance=ExtResource( 1 )]
+modulate = Color( 0.839216, 0.862745, 1, 1 )
+margin_left = 52.0
+margin_top = -804.0
+margin_right = 3538.0
+margin_bottom = -255.0
+
+[node name="pines3" parent="BGStuff/PineCurve" instance=ExtResource( 1 )]
+margin_left = -89.0
+margin_top = -703.0
+margin_right = 1943.0
+margin_bottom = -154.0
+
+[node name="shadowed_pines2" parent="BGStuff/PineCurve" instance=ExtResource( 11 )]
+margin_left = 2448.63
+margin_top = -608.278
+margin_right = 4502.63
+margin_bottom = -59.2781
+
+[node name="pines" parent="BGStuff/PineCurve" instance=ExtResource( 1 )]
+margin_left = 2541.98
+margin_top = -435.174
+margin_right = 4595.98
+margin_bottom = 113.826
+
+[node name="pines7" parent="BGStuff/PineCurve" instance=ExtResource( 1 )]
+margin_left = 2638.73
+margin_top = -261.764
+margin_right = 4817.73
+margin_bottom = 281.236
+
+[node name="trees_by_puzzlezone" type="Node2D" parent="BGStuff"]
+position = Vector2( 644.2, 716.689 )
+
+[node name="lab_exterior_upper_left_tree_back-min" type="Sprite" parent="BGStuff/trees_by_puzzlezone"]
+position = Vector2( -900.112, -283.429 )
+texture = ExtResource( 24 )
+
+[node name="bigpine6" type="Sprite" parent="BGStuff/trees_by_puzzlezone"]
+position = Vector2( -826.633, -175.39 )
+scale = Vector2( 1.49686, 1.62515 )
+texture = ExtResource( 7 )
+
+[node name="bigpine9" type="Sprite" parent="BGStuff/trees_by_puzzlezone"]
+position = Vector2( -1021.7, -188.615 )
+scale = Vector2( 1.49686, 1.62515 )
+texture = ExtResource( 7 )
+
+[node name="bigpine7" type="Sprite" parent="BGStuff/trees_by_puzzlezone"]
+position = Vector2( -994.994, -109.098 )
+texture = ExtResource( 7 )
+
+[node name="lab_exterior_upper_middle_tree-min" type="Sprite" parent="BGStuff/trees_by_puzzlezone"]
+position = Vector2( -1100.99, -313.908 )
+texture = ExtResource( 10 )
+
+[node name="bigpine2" type="Sprite" parent="BGStuff/trees_by_puzzlezone"]
+position = Vector2( -792.492, -75.1328 )
+texture = ExtResource( 7 )
+
+[node name="CreepyTrees2" type="Node2D" parent="BGStuff/trees_by_puzzlezone"]
+position = Vector2( -1287.52, 190.873 )
+
+[node name="Trees3" type="TextureRect" parent="BGStuff/trees_by_puzzlezone/CreepyTrees2"]
+modulate = Color( 0.588235, 0.564706, 0.592157, 1 )
+margin_left = -1547.0
+margin_top = -1062.0
+margin_right = 233.0
+margin_bottom = 60.0
+texture = ExtResource( 16 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Trees" type="TextureRect" parent="BGStuff/trees_by_puzzlezone/CreepyTrees2"]
+modulate = Color( 0.588235, 0.564706, 0.592157, 1 )
+margin_left = -1498.0
+margin_top = -943.0
+margin_right = 258.0
+margin_bottom = 179.0
+texture = ExtResource( 16 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tall_creepy_tree_edge" type="Sprite" parent="BGStuff/trees_by_puzzlezone/CreepyTrees2"]
+position = Vector2( 234.537, -354.779 )
+texture = ExtResource( 19 )
+
+[node name="Trees2" type="TextureRect" parent="BGStuff/trees_by_puzzlezone/CreepyTrees2"]
+margin_left = -1584.0
+margin_top = -860.0
+margin_right = 184.0
+margin_bottom = 262.0
+texture = ExtResource( 16 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bigpine" type="Sprite" parent="BGStuff/trees_by_puzzlezone"]
+position = Vector2( -685.122, 10.3339 )
+texture = ExtResource( 7 )
+
+[node name="bigpine3" type="Sprite" parent="BGStuff/trees_by_puzzlezone"]
+position = Vector2( -926.706, 5.45343 )
+texture = ExtResource( 7 )
+
+[node name="bigpine5" type="Sprite" parent="BGStuff/trees_by_puzzlezone"]
+position = Vector2( -782.732, 110.384 )
+texture = ExtResource( 7 )
+
+[node name="LeafPile" parent="BGStuff" instance=ExtResource( 25 )]
+position = Vector2( 721.467, 787.641 )
+
+[node name="LeafPile2" parent="BGStuff" instance=ExtResource( 25 )]
+position = Vector2( 1185.76, 736.682 )
+
+[node name="LeafPile3" parent="BGStuff" instance=ExtResource( 25 )]
+position = Vector2( 1442.38, 778.477 )
+
+[node name="LeafPile4" parent="BGStuff" instance=ExtResource( 25 )]
+position = Vector2( 1512.04, 844.651 )
+
+[node name="LeafPile5" parent="BGStuff" instance=ExtResource( 25 )]
+position = Vector2( 1574.73, 736.682 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="player" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( 404.439, 906.347 )
+
+[node name="fade" type="Node2D" parent="YSort"]
+position = Vector2( 1153.69, 292.666 )
+
+[node name="vignette_fade" type="Sprite" parent="YSort/fade"]
+position = Vector2( -7.51978, -983.638 )
+texture = ExtResource( 18 )
+
+[node name="CreepyTrees" type="Node2D" parent="YSort"]
+position = Vector2( 1394.76, 299.01 )
+
+[node name="Trees3" type="TextureRect" parent="YSort/CreepyTrees"]
+modulate = Color( 0.588235, 0.564706, 0.592157, 1 )
+margin_left = -1547.0
+margin_top = -1062.0
+margin_right = 233.0
+margin_bottom = 60.0
+texture = ExtResource( 16 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Trees" type="TextureRect" parent="YSort/CreepyTrees"]
+modulate = Color( 0.588235, 0.564706, 0.592157, 1 )
+margin_left = -1498.0
+margin_top = -943.0
+margin_right = 258.0
+margin_bottom = 179.0
+texture = ExtResource( 16 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tall_creepy_tree_edge" type="Sprite" parent="YSort/CreepyTrees"]
+position = Vector2( 234.537, -354.779 )
+texture = ExtResource( 19 )
+
+[node name="Trees2" type="TextureRect" parent="YSort/CreepyTrees"]
+margin_left = -1584.0
+margin_top = -860.0
+margin_right = 184.0
+margin_bottom = 262.0
+texture = ExtResource( 16 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shrine_hill" type="Node2D" parent="YSort"]
+position = Vector2( 757.848, 441.691 )
+
+[node name="forest_01-min" type="Sprite" parent="YSort/shrine_hill"]
+position = Vector2( 100.321, -94.4018 )
+texture = ExtResource( 2 )
+
+[node name="lab_exterior_big_Fg-min" type="Sprite" parent="YSort/shrine_hill"]
+position = Vector2( 51.9191, -678.138 )
+scale = Vector2( 0.547349, 0.547349 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="puzzle_house" type="Node2D" parent="YSort"]
+position = Vector2( 141.321, 685.6 )
+
+[node name="lab_only" type="Sprite" parent="YSort/puzzle_house"]
+position = Vector2( 39.5596, -356.36 )
+texture = ExtResource( 9 )
+
+[node name="lab_exterior_upper_front_tree-min2" type="Sprite" parent="YSort/puzzle_house"]
+position = Vector2( -241.093, -203.696 )
+texture = ExtResource( 3 )
+
+[node name="FGStuff" type="Node2D" parent="."]
+position = Vector2( 644.2, 716.689 )
+
+[node name="vignette_fade2" type="Sprite" parent="FGStuff"]
+position = Vector2( 2209.99, -772.849 )
+rotation = 3.14159
+scale = Vector2( 1.18679, -2.06398 )
+texture = ExtResource( 18 )
+
+[node name="ColorRect" type="ColorRect" parent="FGStuff"]
+margin_left = 4224.87
+margin_top = -2967.98
+margin_right = 6941.87
+margin_bottom = 1495.02
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lab_exterior_upper_front_tree-min" type="Sprite" parent="FGStuff"]
+position = Vector2( -380.545, -729.207 )
+scale = Vector2( 0.547349, 0.547349 )
+texture = ExtResource( 3 )
+
+[node name="lab_exterior_fallen_tree-min" type="Sprite" parent="FGStuff"]
+position = Vector2( -662.875, 356.479 )
+texture = ExtResource( 4 )
+
+[node name="bigpine8" type="Sprite" parent="FGStuff"]
+position = Vector2( -1014.82, 140.607 )
+texture = ExtResource( 7 )
+
+[node name="bigpine4" type="Sprite" parent="FGStuff"]
+position = Vector2( -947.834, 300.113 )
+texture = ExtResource( 7 )
+
+[node name="Trees4" type="TextureRect" parent="FGStuff"]
+modulate = Color( 0.588235, 0.564706, 0.592157, 1 )
+margin_left = 1833.0
+margin_top = -802.0
+margin_right = 6744.0
+margin_bottom = 320.0
+texture = ExtResource( 16 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Trees5" type="TextureRect" parent="FGStuff"]
+modulate = Color( 0.996078, 0.905882, 0.772549, 1 )
+margin_left = 1885.0
+margin_top = -576.0
+margin_right = 6626.0
+margin_bottom = 546.0
+texture = ExtResource( 16 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lab_exterior_right_upper_tree-min" type="Sprite" parent="FGStuff"]
+visible = false
+modulate = Color( 0.529412, 0.435294, 0.384314, 1 )
+position = Vector2( 798.062, -121.755 )
+texture = ExtResource( 8 )
+
+[node name="lab_exterior_left_twig-min" type="Sprite" parent="FGStuff"]
+position = Vector2( -781.061, 119.314 )
+texture = ExtResource( 17 )
+
+[node name="pines7" parent="FGStuff" instance=ExtResource( 11 )]
+margin_left = 1673.0
+margin_top = 123.0
+margin_right = 6932.0
+margin_bottom = 672.0
+
+[node name="pines" parent="FGStuff" instance=ExtResource( 1 )]
+margin_left = -1381.0
+margin_top = 196.0
+margin_right = 6843.0
+margin_bottom = 745.0
+
+[node name="pines2" parent="FGStuff" instance=ExtResource( 11 )]
+margin_left = -1497.0
+margin_top = 282.0
+margin_right = 6932.0
+margin_bottom = 831.0
+
+[node name="pines3" parent="FGStuff" instance=ExtResource( 11 )]
+margin_left = -933.0
+margin_top = 400.0
+margin_right = 6843.0
+margin_bottom = 949.0
+
+[node name="pines4" parent="FGStuff" instance=ExtResource( 11 )]
+margin_left = -1280.0
+margin_top = 536.0
+margin_right = 3092.0
+margin_bottom = 1085.0
+
+[node name="pines5" parent="FGStuff" instance=ExtResource( 11 )]
+modulate = Color( 0.239216, 0.360784, 0.423529, 1 )
+margin_left = -927.553
+margin_top = 638.321
+margin_right = 2979.45
+margin_bottom = 1187.32
+
+[node name="pines6" parent="FGStuff" instance=ExtResource( 11 )]
+modulate = Color( 0.223529, 0.239216, 0.298039, 1 )
+margin_left = -1060.57
+margin_top = 786.687
+margin_right = 2846.43
+margin_bottom = 1335.69
+
+[node name="vignette_fade3" type="Sprite" parent="FGStuff"]
+position = Vector2( -1381, -1250.34 )
+scale = Vector2( 0.476542, 2.56567 )
+texture = ExtResource( 18 )
+
+[node name="vignette_fade4" type="Sprite" parent="FGStuff"]
+position = Vector2( 1274.54, 939.899 )
+rotation = -1.5708
+scale = Vector2( 0.476542, 3.10033 )
+texture = ExtResource( 18 )
+
+[node name="vignette_fade5" type="Sprite" parent="FGStuff"]
+position = Vector2( 2251.03, -1159.18 )
+rotation = 1.5708
+scale = Vector2( 0.476542, 3.81348 )
+texture = ExtResource( 18 )
+
+[node name="leaf2" type="Sprite" parent="FGStuff"]
+position = Vector2( -648.348, -979.426 )
+texture = ExtResource( 22 )
+
+[node name="leaf3" type="Sprite" parent="FGStuff"]
+position = Vector2( -497.751, -1048.93 )
+texture = ExtResource( 23 )
+
+[node name="leaf4" type="Sprite" parent="FGStuff"]
+position = Vector2( -608.961, -1097.59 )
+texture = ExtResource( 22 )
+
+[node name="leaf0" type="Sprite" parent="FGStuff"]
+position = Vector2( -388.857, -1097.59 )
+texture = ExtResource( 20 )
+
+[node name="leaf5" type="Sprite" parent="FGStuff"]
+position = Vector2( -328.618, -1065.15 )
+texture = ExtResource( 21 )
+
+[node name="leaf6" type="Sprite" parent="FGStuff"]
+position = Vector2( -495.434, -1153.19 )
+texture = ExtResource( 23 )
+
+[node name="leaf7" type="Sprite" parent="FGStuff"]
+position = Vector2( -481.533, -914.553 )
+texture = ExtResource( 23 )
+
+[node name="leaf8" type="Sprite" parent="FGStuff"]
+position = Vector2( -664.566, -872.849 )
+texture = ExtResource( 21 )
+
+[node name="leaf9" type="Sprite" parent="FGStuff"]
+position = Vector2( -729.439, -838.096 )
+texture = ExtResource( 23 )
+
+[node name="vignette_fade6" type="Sprite" parent="FGStuff"]
+position = Vector2( 2547.12, -836.285 )
+rotation = 3.14159
+scale = Vector2( 2.18711, -2.06398 )
+texture = ExtResource( 18 )
+
+[node name="LabSP" parent="." instance=ExtResource( 14 )]
+position = Vector2( 167.67, 854.077 )
+
+[node name="TangleSP" parent="." instance=ExtResource( 14 )]
+position = Vector2( 2098.56, -1063.9 )
+
+[node name="collisions" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
+position = Vector2( -128.161, 104.428 )
+polygon = PoolVector2Array( 191.869, 793.359, -105.255, 1191.94, 2502.41, 1215.86, 2633.9, 891.742, 4919.28, 944.091, 4146.94, 1355.88, -479.801, 1380.32 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
+position = Vector2( 542.681, -1224.99 )
+polygon = PoolVector2Array( 1499.71, 867.307, 1667.44, 1211.55, 1396.51, 1210.32, 1259.99, 1314.1, -479.453, 1311.89 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
+position = Vector2( 2137.84, -1535.33 )
+polygon = PoolVector2Array( 2805.95, 2088.29, 420.883, 2058.16, 209.431, 1697.93, 227.449, 1544.06, 39.0332, 1515.74, 410.399, 993.082 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
+position = Vector2( 464.083, -893.036 )
+polygon = PoolVector2Array( -105.255, 1191.94, 1168.12, 1148.39, 1230.93, 1405.62, 1036.51, 1483.39, 24.6879, 1500.46, -116.528, 1378.63, -479.801, 1380.32 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
+position = Vector2( 597.564, -730.288 )
+polygon = PoolVector2Array( -420.096, 1136.03, -415.998, 1433.11, -362.231, 1433.45, -474.309, 1539.63 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/StaticBody2D"]
+position = Vector2( 1003.93, 600.306 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="RightTZ" parent="." instance=ExtResource( 26 )]
+position = Vector2( 3085.6, 721.698 )
+
+[node name="CollisionShape2D" parent="RightTZ" index="0"]
+position = Vector2( 342.259, -36.0981 )
+shape = SubResource( 4 )
+
+[node name="TopTZ" parent="." instance=ExtResource( 26 )]
+position = Vector2( 369.457, 201.342 )
+
+[node name="CollisionShape2D" parent="TopTZ" index="0"]
+position = Vector2( 100.868, 0 )
+shape = SubResource( 3 )
+
+[node name="PuzzleHouseTZ" parent="." instance=ExtResource( 26 )]
+position = Vector2( 44.2282, 836.701 )
+
+[node name="CollisionShape2D" parent="PuzzleHouseTZ" index="0"]
+position = Vector2( -19.3949, 2.9873 )
+rotation = 2.35619
+shape = SubResource( 2 )
+
+[node name="ball" type="Sprite" parent="."]
+position = Vector2( 2029.34, 204.547 )
+texture = ExtResource( 27 )
+
+[node name="bone" type="Sprite" parent="."]
+position = Vector2( 2208.23, 116.348 )
+texture = ExtResource( 28 )
+[connection signal="transition_triggered" from="PuzzleHouseTZ" to="." method="_on_PuzzleHouseTZ_transition_triggered"]
+
+[editable path="PuppyCamera"]
+
+[editable path="RightTZ"]
+
+[editable path="TopTZ"]
+
+[editable path="PuzzleHouseTZ"]

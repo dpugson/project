@@ -37,7 +37,7 @@ func _ready():
 		"top":
 			Jukebox.play_song("res://tunes/lab/background_science.wav")
 			player_position = topSP.position
-			orientation = Vector2.UP
+			orientation = Vector2.DOWN
 		_:
 			Jukebox.play_song("res://tunes/lab/background_science.wav")
 			player_position = bottomSP.position
@@ -93,3 +93,5 @@ func _on_RobotSeenBox_seen(obj):
 func _on_BottomTZ_transition_triggered():
 	Transition.go_to("res://Levels/1.0 - Lab/labpuzzleroom3.tscn", "top")
 	
+func _on_topTZ_transition_triggered():
+	Transition.go_to("res://Levels/2.0 - Forest/OutsideLab_01.tscn", "lab")

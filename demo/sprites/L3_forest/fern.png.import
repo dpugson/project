@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lab_exterior_lab.png-fa89f97c3a2057842c580a6005ff3c8b.stex"
+path="res://.import/fern.png-0d6ca95dc658a5ebe3c940797948dfb7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/L3_forest/lab_exterior_lab.png"
-dest_files=[ "res://.import/lab_exterior_lab.png-fa89f97c3a2057842c580a6005ff3c8b.stex" ]
+source_file="res://sprites/L3_forest/fern.png"
+dest_files=[ "res://.import/fern.png-0d6ca95dc658a5ebe3c940797948dfb7.stex" ]
 
 [params]
 
