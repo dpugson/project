@@ -27,6 +27,7 @@ var loaded = false
 signal save_complete
 
 const SAVE_FILE_LOCATION = "user://savegame.save"
+const PREFERENCES_FILE_LOCATION = "user://preferences.save"
 
 func _input(event):
 	if event.is_action_pressed("smell"):
@@ -62,11 +63,12 @@ func update_volumes():
 			print("setting ", buffer_name, " to ", decibels)
 			AudioServer.set_bus_mute(index, false)
 			AudioServer.set_bus_volume_db(index, decibels)
+	save_preferences()
 
 func save_game(new_save_spot_name, tscn):
 	save_spot_name = new_save_spot_name
 	save_spot_tscn = tscn
-	print("SAVING")
+	print("SAVING GAME")
 	var file = File.new()
 	file.open(SAVE_FILE_LOCATION, File.WRITE)
 	file.store_line(JSON.print({
@@ -77,16 +79,12 @@ func save_game(new_save_spot_name, tscn):
 		"G" : G,
 		"max_health" : max_health,
 		"health" : health,
-		"main_volume" : main_volume,
-		"effects_volume" : effects_volume,
-		"music_volume" : music_volume
 	}, " "))
 	file.close()
 	emit_signal("save_complete")
 	
 func load_game(force_load=false):
 	if (not loaded) or force_load:
-		update_volumes()
 		loaded = true
 		var file = File.new()
 		if not file.file_exists(SAVE_FILE_LOCATION):
@@ -100,11 +98,33 @@ func load_game(force_load=false):
 		save_spot_tscn = json.get("save_spot_tscn", null)
 		max_health = json.get("max_health", 10)
 		health = json.get("health", 10)
-		main_volume = json.get("main_volume", .75)
-		effects_volume = json.get("effects_volume", .75)
-		music_volume = json.get("music_volume", .75)
 		G = json.get("G", 0)
 		file.close()
+		load_preferences()
+
+func load_preferences():
+	var file = File.new()
+	if not file.file_exists(PREFERENCES_FILE_LOCATION):
+		return # No save file!
+	file.open(PREFERENCES_FILE_LOCATION, File.READ)
+	var json = parse_json(file.get_as_text())
+	print("CURRENT PREFERENCES: ", json)
+	main_volume = json.get("main_volume", .75)
+	effects_volume = json.get("effects_volume", .75)
+	music_volume = json.get("music_volume", .75)
+	file.close()
+	update_volumes()
+
+func save_preferences():
+	print("SAVING PREFERENCES")
+	var file = File.new()
+	file.open(PREFERENCES_FILE_LOCATION, File.WRITE)
+	file.store_line(JSON.print({
+		"main_volume" : main_volume,
+		"effects_volume" : effects_volume,
+		"music_volume" : music_volume
+	}, " "))
+	file.close()
 
 func spawn_player(player, player_parent, camera_path, position: Vector2, orientation: Vector2):
 	if (player == null):
