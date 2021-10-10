@@ -22,10 +22,11 @@ func _ready():
 		player, null, 
 		"../../../PuppyCamera", player_position, orientation)
 
-
 func _on_PuzzleHouseTZ_transition_triggered():
 	Transition.go_to("res://Levels/1.0 - Lab/GiftShop.tscn", "top")
 
-
 func _on_RightTZ_transition_triggered():
 	Transition.go_to("res://Levels/2.0 - Forest/OutsideLab_02.tscn", "left")
+
+func _on_TopTZ_transition_triggered():
+	pass # Replace with function body.

@@ -220,6 +220,14 @@ position = Vector2( 1512.04, 844.651 )
 [node name="LeafPile5" parent="BGStuff" instance=ExtResource( 25 )]
 position = Vector2( 1574.73, 736.682 )
 
+[node name="ball" type="Sprite" parent="BGStuff"]
+position = Vector2( 2029.34, 204.547 )
+texture = ExtResource( 27 )
+
+[node name="bone" type="Sprite" parent="BGStuff"]
+position = Vector2( 2168.03, 125.626 )
+texture = ExtResource( 28 )
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="player" parent="YSort" instance=ExtResource( 12 )]
@@ -497,7 +505,7 @@ polygon = PoolVector2Array( 2805.95, 2088.29, 420.883, 2058.16, 209.431, 1697.93
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
 position = Vector2( 464.083, -893.036 )
-polygon = PoolVector2Array( -105.255, 1191.94, 1185.68, 888.92, 1222.11, 1398.9, 1036.51, 1483.39, 24.6879, 1500.46, -116.528, 1378.63, -479.801, 1380.32 )
+polygon = PoolVector2Array( -105.255, 1191.94, 1178.75, 1189.81, 1191.44, 1386.39, 1036.51, 1483.39, 24.6879, 1500.46, -116.528, 1378.63, -479.801, 1380.32 )
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
 position = Vector2( 597.564, -730.288 )
@@ -516,7 +524,7 @@ position = Vector2( 342.259, -36.0981 )
 shape = SubResource( 2 )
 
 [node name="TopTZ" parent="." instance=ExtResource( 26 )]
-position = Vector2( 369.457, 201.342 )
+position = Vector2( 776.083, 198.115 )
 
 [node name="CollisionShape2D" parent="TopTZ" index="0"]
 position = Vector2( 100.868, 0 )
@@ -529,15 +537,8 @@ position = Vector2( 44.2282, 836.701 )
 position = Vector2( -19.3949, 2.9873 )
 rotation = 2.35619
 shape = SubResource( 4 )
-
-[node name="ball" type="Sprite" parent="."]
-position = Vector2( 2029.34, 204.547 )
-texture = ExtResource( 27 )
-
-[node name="bone" type="Sprite" parent="."]
-position = Vector2( 2168.03, 125.626 )
-texture = ExtResource( 28 )
 [connection signal="transition_triggered" from="RightTZ" to="." method="_on_RightTZ_transition_triggered"]
+[connection signal="transition_triggered" from="TopTZ" to="." method="_on_TopTZ_transition_triggered"]
 [connection signal="transition_triggered" from="PuzzleHouseTZ" to="." method="_on_PuzzleHouseTZ_transition_triggered"]
 
 [editable path="PuppyCamera"]

@@ -88,7 +88,7 @@ func _on_RobotSeenBox_seen(obj):
 	]
 	var dialogue = choices[robot_talk_index % len(choices)]
 	robot_talk_index += 1
-	DialogueHelper.showDialogueSimple(self, [dialogue], ROBOT_SPEECH_SPEED, ROBOT_PITCH, true)
+	DialogueHelper.showDialogueSimple(self, [dialogue], ROBOT_SPEECH_SPEED, ROBOT_PITCH, false)
 
 func _on_BottomTZ_transition_triggered():
 	Transition.go_to("res://Levels/1.0 - Lab/labpuzzleroom3.tscn", "top")

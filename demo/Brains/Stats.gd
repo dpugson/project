@@ -37,7 +37,7 @@ func _input(event):
 
 signal put_on_hat
 func put_on_hat(item_image):
-	if world_state.get("HAT", null) == item_image:
+	if world_state.get("HAT", null) == item_image and item_image != null:
 		world_state["HAT"] = null
 	else:
 		world_state["HAT"] = item_image
@@ -150,7 +150,14 @@ func inventory_get(item_name: String) -> int:
 
 func inventory_remove(item_name):
 	var count = inventory.get(item_name, 1) - 1
-	inventory[item_name] = count
+	if (count <= 0):
+		inventory.erase(item_name)
+	else:
+		inventory[item_name] = count
+	var item_data = ItemRegistry.get(item_name)
+	if world_state.get("HAT", null) == item_data["image"]:
+		world_state["HAT"] = null
+		put_on_hat(null)
 
 func set_bool(stat_name: String, value: bool = true):
 	world_state[stat_name] = value

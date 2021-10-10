@@ -49,7 +49,7 @@ func _ready():
 			player.visible = false
 			cutscene_animation.play("beat game")
 			give_robot_focus()
-			Jukebox.play_song("res://tunes/lab/background_science.wav")
+			#Jukebox.play_song("res://tunes/lab/background_science.wav")
 			return
 	if stats.check_bool("ROBOT_POUTING"):
 		cutscene_animation.play("pouting")
@@ -91,7 +91,7 @@ func dropoff():
 			"5", null, null, ROBOT_PITCH
 		],
 		"5" : [
-			"TEXT", "I've been working on it for 500 years.", ROBOT_SPEECH_SPEED, 
+			"TEXT", "I've been working on it for 1342 years.", ROBOT_SPEECH_SPEED, 
 			"6", null, null, ROBOT_PITCH
 		],
 		"6" : [
@@ -107,7 +107,11 @@ func dropoff():
 			"9", null, null, ROBOT_PITCH
 		],
 		"9" : [
-			"TEXT", "I really am just a worthless hack.", ROBOT_SPEECH_SPEED, 
+			"TEXT", "I really am just a worthless hack\naren't I...", ROBOT_SPEECH_SPEED, 
+			"10", null, null, ROBOT_PITCH
+		],
+		"10" : [
+			"TEXT", "...", ROBOT_SPEECH_SPEED, 
 			null, null, null, ROBOT_PITCH
 		]
 	}
@@ -155,6 +159,9 @@ func take_thesis():
 	stats.inventory_add('thesis')
 	stats.world_state["THESIS_GRABBED"] = true
 	thesis.queue_free()
+
+func lose_thesis():
+	stats.inventory_remove('thesis')
 
 func _on_ThesisSeenBox_seen(obj):
 	if stats.check_bool("THESIS_GRABBED"):
@@ -210,6 +217,7 @@ func _on_RobotSeenBox_seen(obj):
 		], 0.05)
 
 func go_to_boss_fight():
+	lose_thesis()
 	Transition.go_to("res://MiniGames/battles/robot/RobotBossFight.tscn", "cutscene")
 
 
@@ -222,11 +230,19 @@ func laughing():
 	stats.set_bool("ROBOT_POUTING", false)
 	var dialogue = {
 		"begin" : [
-			"TEXT", "Ha... ha...", ROBOT_SPEECH_SPEED, 
+			"TEXT", "..........", ROBOT_SPEECH_SPEED, 
 			"c", null, null, ROBOT_PITCH
 		],
 		"c" : [
 			"TEXT", "hahahaha!!!!", ROBOT_SPEECH_SPEED, 
+			"ca", null, null, ROBOT_PITCH
+		],
+		"ca" : [
+			"TEXT", "ha ha ha!!!", ROBOT_SPEECH_SPEED, 
+			"cb", null, null, ROBOT_PITCH
+		],
+		"cb" : [
+			"TEXT", "HEE HEE!!!", ROBOT_SPEECH_SPEED, 
 			"c2", null, null, ROBOT_PITCH
 		],
 		"c2" : [
@@ -264,3 +280,4 @@ func _on_bottomTZ_transition_triggered():
 
 func _on_topTZ_transition_triggered():
 	Transition.go_to("res://Levels/1.0 - Lab/GiftShop.tscn", "bottom")
+
