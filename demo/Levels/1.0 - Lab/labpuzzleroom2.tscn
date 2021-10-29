@@ -815,7 +815,6 @@ texture = ExtResource( 14 )
 pause_mode = 2
 position = Vector2( 12.2263, -32.6036 )
 frames = SubResource( 3 )
-frame = 2
 playing = true
 
 [node name="fireextinguishstuff" type="Node2D" parent="."]
@@ -825,7 +824,6 @@ visible = false
 visible = false
 position = Vector2( 595.385, -674.439 )
 frames = SubResource( 4 )
-frame = 1
 playing = true
 
 [node name="fire_extinguisher_r" type="Sprite" parent="fireextinguishstuff"]
@@ -948,6 +946,7 @@ position = Vector2( 341.443, -731.171 )
 [node name="CollisionShape2D" parent="topTZ" index="0"]
 position = Vector2( -7.91565, -7.91577 )
 shape = SubResource( 14 )
+
 [connection signal="activated" from="starbuttons/StarButton" to="." method="_on_StarButton_activated"]
 [connection signal="deactivated" from="starbuttons/StarButton" to="." method="_on_StarButton_deactivated"]
 [connection signal="activated" from="starbuttons/StarButton2" to="." method="_on_StarButton_activated"]
@@ -970,19 +969,11 @@ shape = SubResource( 14 )
 [connection signal="transition_triggered" from="topTZ" to="." method="_on_topTZ_transition_triggered"]
 
 [editable path="potted_palm/description_box"]
-
 [editable path="potted_palm/description_box/SeenBox"]
-
 [editable path="waste_bin/description_box"]
-
 [editable path="waste_bin/description_box/SeenBox"]
-
 [editable path="science_desk/description_box"]
-
 [editable path="science_desk/description_box/SeenBox"]
-
 [editable path="PuppyCamera"]
-
 [editable path="bottomTZ"]
-
 [editable path="topTZ"]

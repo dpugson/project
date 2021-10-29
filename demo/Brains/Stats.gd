@@ -126,7 +126,9 @@ func save_preferences():
 	}, " "))
 	file.close()
 
-func spawn_player(player, player_parent, camera_path, position: Vector2, orientation: Vector2):
+func spawn_player(player, player_parent, camera_path,
+				position: Vector2, orientation: Vector2,
+				camera_offset = null):
 	if (player == null):
 		player = Player.instance()
 		player_parent.add_child(player)
@@ -136,6 +138,8 @@ func spawn_player(player, player_parent, camera_path, position: Vector2, orienta
 		transform.remote_path = camera_path
 		player.add_child(transform)
 		player.remote_transform = transform
+		if camera_offset != null:
+			transform.position.y += camera_offset
 	if orientation != null:
 		player.set_blend_positions(orientation)
 		player.turbo_input = orientation
@@ -151,7 +155,7 @@ func inventory_get(item_name: String) -> int:
 func inventory_remove(item_name):
 	var count = inventory.get(item_name, 1) - 1
 	if (count <= 0):
-		inventory.erase(item_name)
+		var _discard = inventory.erase(item_name)
 	else:
 		inventory[item_name] = count
 	var item_data = ItemRegistry.get(item_name)

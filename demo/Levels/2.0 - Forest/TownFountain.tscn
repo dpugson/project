@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://sprites/L3_forest/fountain_water_01.png" type="Texture" id=1]
+[ext_resource path="res://sprites/L3_forest/fountain_water_02.png" type="Texture" id=2]
+[ext_resource path="res://sprites/L3_forest/fountain.png" type="Texture" id=3]
+[ext_resource path="res://sprites/L3_forest/fountain_spout_02.png" type="Texture" id=4]
+[ext_resource path="res://effects/Ripples.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/L3_forest/fountain_spout_03.png" type="Texture" id=6]
+[ext_resource path="res://sprites/L3_forest/fountain_spout_01.png" type="Texture" id=7]
+[ext_resource path="res://sprites/cavestuff/salamanders/splash_00.png" type="Texture" id=8]
+[ext_resource path="res://sprites/cavestuff/salamanders/splash_01.png" type="Texture" id=9]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.3
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 4 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="TownFountain" type="Node2D"]
+
+[node name="water" type="AnimatedSprite" parent="."]
+modulate = Color( 0.192157, 0.121569, 0.027451, 1 )
+position = Vector2( 12.8346, 95.3843 )
+frames = SubResource( 1 )
+frame = 1
+
+[node name="Water" type="Node2D" parent="."]
+
+[node name="water2" type="AnimatedSprite" parent="Water"]
+modulate = Color( 0.643137, 0.580392, 0.611765, 1 )
+position = Vector2( 12.8346, 95.3843 )
+frames = SubResource( 1 )
+frame = 1
+
+[node name="Ripples" parent="Water" instance=ExtResource( 5 )]
+modulate = Color( 0.866667, 0.85098, 0.847059, 1 )
+position = Vector2( -106.712, 106.082 )
+scale = Vector2( 0.697167, 1 )
+
+[node name="Ripples2" parent="Water" instance=ExtResource( 5 )]
+modulate = Color( 0.866667, 0.85098, 0.847059, 1 )
+position = Vector2( 127.369, 107.026 )
+scale = Vector2( 0.697167, 1 )
+frame = 1
+
+[node name="spout" type="AnimatedSprite" parent="Water"]
+modulate = Color( 0.698039, 0.690196, 0.768627, 1 )
+position = Vector2( 117.984, 84.9487 )
+frames = SubResource( 2 )
+frame = 2
+playing = true
+
+[node name="spout2" type="AnimatedSprite" parent="Water"]
+modulate = Color( 0.698039, 0.690196, 0.768627, 1 )
+position = Vector2( -94.3874, 80.2293 )
+frames = SubResource( 2 )
+frame = 2
+playing = true
+flip_h = true
+
+[node name="fountain" type="Sprite" parent="."]
+position = Vector2( 11.3778, -0.967773 )
+texture = ExtResource( 3 )
+
+[node name="splash" type="AnimatedSprite" parent="."]
+position = Vector2( 8.02292, -275.611 )
+scale = Vector2( 0.562764, 1 )
+frames = SubResource( 3 )
+frame = 1
+playing = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -137.337, 40.1279, -188.306, 94.8726, -184.531, 165.663, -126.954, 220.408, 5.18799, 248.724, 118.453, 216.632, 210.009, 148.673, 210.953, 79.7706, 169.422, 33.5208, 88.249, 4.26068, -56.1638, -2.34644 )

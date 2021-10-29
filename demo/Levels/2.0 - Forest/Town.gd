@@ -3,20 +3,21 @@ extends Node2D
 onready var stats = PlayerStats
 onready var player = $YSort/player
 onready var teaShopSpawnPoint = $TeaShopSpawnPoint
+onready var bottomSP = $BottomSP
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
-
-var ROBOT_PITCH = 2
-var ROBOT_SPEECH_SPEED = 0.05
 
 func _ready():
 	var player_position = player.position
 	var orientation = Vector2.DOWN
 	var spawn_player = true
+	Jukebox.play_song("res://tunes/forest/starswaltz_slow.wav")
 	match stats.spawn_metadata:
-		_:
-			#Jukebox.play_song("res://tunes/lab/background_science.wav")
+		"tea":
 			player_position = teaShopSpawnPoint.position
 			orientation = Vector2.RIGHT
+		_:
+			player_position = bottomSP.position
+			orientation = Vector2.UP
 	if spawn_player:
 		stats.spawn_player(
 			player, null, 

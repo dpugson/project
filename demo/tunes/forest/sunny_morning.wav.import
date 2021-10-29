@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sunny_morning.wav-719c11393b91533ce0b1ee70de9be76a.sample"
+
+[deps]
+
+source_file="res://tunes/forest/sunny_morning.wav"
+dest_files=[ "res://.import/sunny_morning.wav-719c11393b91533ce0b1ee70de9be76a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

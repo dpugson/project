@@ -856,6 +856,7 @@ description = [ "Soft as a dream..." ]
 [node name="CollisionShape2D" parent="Node2D/pillows/SeenBox" index="0"]
 position = Vector2( 5.01062, 3.34033 )
 shape = SubResource( 19 )
+
 [connection signal="activated" from="ZoomPanels/ZoomPanel_BL" to="." method="_on_ZoomPanel_BL_activated"]
 [connection signal="activated" from="ZoomPanels/ZoomPanel_BR" to="." method="_on_ZoomPanel_BR_activated"]
 [connection signal="activated" from="ZoomPanels/ZoomPanel_UR" to="." method="_on_ZoomPanel_UR_activated"]
@@ -867,29 +868,17 @@ shape = SubResource( 19 )
 [connection signal="transition_triggered" from="topTZ" to="." method="_on_topTZ_transition_triggered"]
 
 [editable path="ZoomPanels/ZoomPanel_BL"]
-
+[editable path="ZoomPanels/ZoomPanel_BL/PlayerDetectionZone"]
 [editable path="PuppyCamera"]
-
 [editable path="bottomTZ"]
-
 [editable path="UnlockableBarrier"]
-
 [editable path="UnlockableBarrier/SeenBox"]
-
 [editable path="topTZ"]
-
 [editable path="Node2D/notes"]
-
 [editable path="Node2D/notes/SeenBox"]
-
 [editable path="Node2D/tree"]
-
 [editable path="Node2D/tree/SeenBox"]
-
 [editable path="Node2D/trash"]
-
 [editable path="Node2D/trash/SeenBox"]
-
 [editable path="Node2D/pillows"]
-
 [editable path="Node2D/pillows/SeenBox"]

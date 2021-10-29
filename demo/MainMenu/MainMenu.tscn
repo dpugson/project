@@ -81,7 +81,7 @@ __meta__ = {
 pause_mode = 2
 position = Vector2( 960.949, 265.589 )
 frames = SubResource( 1 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="ProgressMarkers" type="Node2D" parent="Control"]
@@ -155,6 +155,7 @@ text = "LEVEL 2 DEMO"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="HBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="HBoxContainer/Reset" to="." method="_on_Reset_pressed"]
 [connection signal="pressed" from="HBoxContainer/Quit" to="." method="_on_Quit_pressed"]

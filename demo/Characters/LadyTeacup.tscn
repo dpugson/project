@@ -11,28 +11,38 @@
 [ext_resource path="res://sprites/L3_forest/lady_teacup/lady_teacup_down_03.png" type="Texture" id=9]
 [ext_resource path="res://sprites/L3_forest/lady_teacup/lady_teacup_down_01.png" type="Texture" id=10]
 
-[sub_resource type="StreamTexture" id=2]
+[sub_resource type="StreamTexture" id=1]
 flags = 4
 load_path = "res://.import/lady_teacup_smooth_lunge_left_01.png-8e65d107207f835b1e012fc977a64fa6.stex"
 
-[sub_resource type="StreamTexture" id=3]
+[sub_resource type="StreamTexture" id=2]
 flags = 4
 load_path = "res://.import/lady_teacup_smooth_lunge_left_02.png-8bee1aca31a46d130d5bf9f74160ad36.stex"
 
-[sub_resource type="StreamTexture" id=4]
+[sub_resource type="StreamTexture" id=3]
 flags = 4
 load_path = "res://.import/lady_teacup_smooth_lunge_left_03.png-efdc00b0eb29dd200fadec454ab99ca6.stex"
 
-[sub_resource type="StreamTexture" id=5]
+[sub_resource type="StreamTexture" id=4]
 flags = 4
 load_path = "res://.import/lady_teacup_smooth_lunge_left_04.png-8f04eea9bbe15c92707f2fa9f94ce415.stex"
 
-[sub_resource type="StreamTexture" id=6]
+[sub_resource type="StreamTexture" id=5]
 flags = 4
 load_path = "res://.import/lady_teacup_smooth_lunge_left_05.png-d83a543f5ad0d083cedfc429308014f2.stex"
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "left_creep",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 3 ) ],
+"loop": true,
+"name": "smooth_left_creep",
+"speed": 9.0
+}, {
 "frames": [ ExtResource( 8 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "left",
@@ -42,22 +52,13 @@ animations = [ {
 "loop": true,
 "name": "down",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 1 ) ],
-"loop": true,
-"name": "left_creep",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 4 ) ],
-"loop": true,
-"name": "smooth_left_creep",
-"speed": 9.0
 } ]
 
 [node name="LadyTeacup" type="Node2D"]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
+position = Vector2( 1.6615, -149.535 )
+frames = SubResource( 6 )
 animation = "left_creep"
-frame = 3
+frame = 1
 playing = true

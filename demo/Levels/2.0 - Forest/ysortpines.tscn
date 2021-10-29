@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Levels/2.0 - Forest/pines.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/L3_forest/bigpine.png" type="Texture" id=2]
+
+[node name="ysortpines" type="Node2D"]
+position = Vector2( 67.5964, 473.176 )
+
+[node name="pines" type="TextureRect" parent="." instance=ExtResource( 1 )]
+margin_left = -1012.34
+margin_top = -434.8
+margin_right = 1016.67
+margin_bottom = 114.199
+texture = ExtResource( 2 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
