@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://sprites/L3_forest/lady_teacup/lady_teacup_left_creep_middle.png" type="Texture" id=1]
 [ext_resource path="res://sprites/L3_forest/lady_teacup/lady_teacup_left_creep_2.png" type="Texture" id=2]
@@ -10,6 +10,12 @@
 [ext_resource path="res://sprites/L3_forest/lady_teacup/lady_teacup_left_01.png" type="Texture" id=8]
 [ext_resource path="res://sprites/L3_forest/lady_teacup/lady_teacup_down_03.png" type="Texture" id=9]
 [ext_resource path="res://sprites/L3_forest/lady_teacup/lady_teacup_down_01.png" type="Texture" id=10]
+[ext_resource path="res://sprites/L3_forest/lady_teacup/lady_teacup_gc_down_03.png" type="Texture" id=11]
+[ext_resource path="res://sprites/L3_forest/lady_teacup/lady_teacup_gc_down_01.png" type="Texture" id=12]
+[ext_resource path="res://sprites/L3_forest/lady_teacup/lady_teacup_gotcha.png" type="Texture" id=13]
+[ext_resource path="res://sprites/L3_forest/lady_teacup/lady_teacup_gotcha_02.png" type="Texture" id=14]
+[ext_resource path="res://sprites/L3_forest/lady_teacup/lady_teacup_gc_down_02.png" type="Texture" id=15]
+[ext_resource path="res://sprites/L3_forest/lady_teacup/lady_teacup_gotcha_03.png" type="Texture" id=16]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
@@ -33,15 +39,20 @@ load_path = "res://.import/lady_teacup_smooth_lunge_left_05.png-d83a543f5ad0d083
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 1 ) ],
+"frames": [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 11 ) ],
 "loop": true,
-"name": "left_creep",
-"speed": 12.0
+"name": "gotcha_down",
+"speed": 8.0
 }, {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 3 ) ],
-"loop": true,
-"name": "smooth_left_creep",
-"speed": 9.0
+"frames": [ ExtResource( 14 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 16 ), ExtResource( 12 ) ],
+"loop": false,
+"name": "gotcha_grab",
+"speed": 18.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 16 ), ExtResource( 12 ) ],
+"loop": false,
+"name": "gotcha_pickup",
+"speed": 8.0
 }, {
 "frames": [ ExtResource( 8 ), ExtResource( 7 ) ],
 "loop": true,
@@ -52,13 +63,23 @@ animations = [ {
 "loop": true,
 "name": "down",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 3 ) ],
+"loop": true,
+"name": "smooth_left_creep",
+"speed": 9.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "left_creep",
+"speed": 12.0
 } ]
 
 [node name="LadyTeacup" type="Node2D"]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 1.6615, -149.535 )
+position = Vector2( 3.323, -182.765 )
 frames = SubResource( 6 )
-animation = "left_creep"
-frame = 1
+animation = "gotcha_pickup"
+frame = 2
 playing = true

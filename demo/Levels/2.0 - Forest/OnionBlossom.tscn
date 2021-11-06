@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/L3_forest/garden/blossoms_onion.png" type="Texture" id=1]
+
+[node name="OnionBlossom" type="Node2D"]
+
+[node name="blossoms_onion" type="Sprite" parent="."]
+position = Vector2( -0.266968, -83.6904 )
+texture = ExtResource( 1 )

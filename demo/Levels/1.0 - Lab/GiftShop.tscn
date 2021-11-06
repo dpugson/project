@@ -827,7 +827,7 @@ shape = SubResource( 23 )
 
 [node name="books" parent="flavor" instance=ExtResource( 27 )]
 position = Vector2( 524.362, 391.234 )
-description = [ "Books on puzzling! You see one by a certain M.. Skelebones...
+description = [ "Books on puzzling! You see one by a certain M. Skelebones...
 BOX PUZZLES AND YOU: MORE THAN YOU WANT OR NEED TO KNOW!" ]
 
 [node name="CollisionShape2D" parent="flavor/books/SeenBox" index="0"]
@@ -871,50 +871,30 @@ position = Vector2( 1216.03, 738.304 )
 save_spot_name = "The Lab - The Gift Shop"
 home = "res://Levels/1.0 - Lab/GiftShop.tscn"
 flavor_text = "Greetings, lick star!"
+
 [connection signal="seen" from="YSort/Robot/RobotSeenBox" to="." method="_on_RobotSeenBox_seen"]
 [connection signal="transition_triggered" from="BottomTZ" to="." method="_on_BottomTZ_transition_triggered"]
 [connection signal="transition_triggered" from="topTZ" to="." method="_on_topTZ_transition_triggered"]
 
 [editable path="YSort/Robot/RobotSeenBox"]
-
 [editable path="PuppyCamera"]
-
 [editable path="BottomTZ"]
-
 [editable path="topTZ"]
-
 [editable path="flavor/cash_register_description"]
-
 [editable path="flavor/cash_register_description/SeenBox"]
-
 [editable path="flavor/mugs"]
-
 [editable path="flavor/mugs/SeenBox"]
-
 [editable path="flavor/zoompanel"]
-
 [editable path="flavor/zoompanel/SeenBox"]
-
 [editable path="flavor/starbutton"]
-
 [editable path="flavor/starbutton/SeenBox"]
-
 [editable path="flavor/crates"]
-
 [editable path="flavor/crates/SeenBox"]
-
 [editable path="flavor/pillows"]
-
 [editable path="flavor/pillows/SeenBox"]
-
 [editable path="flavor/books"]
-
 [editable path="flavor/books/SeenBox"]
-
 [editable path="flavor/doll"]
-
 [editable path="flavor/doll/SeenBox"]
-
 [editable path="flavor/behind_counter"]
-
 [editable path="flavor/behind_counter/SeenBox"]

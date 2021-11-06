@@ -126,7 +126,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "GO_AWAY"
 length = 3.0
 tracks/0/type = "value"
@@ -180,8 +180,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "THANK YOU"
+[sub_resource type="Animation" id=5]
 length = 10.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label:modulate")
@@ -219,8 +218,7 @@ tracks/2/keys = {
 "values": [  ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "flash"
+[sub_resource type="Animation" id=6]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label2:visible")
@@ -260,12 +258,12 @@ margin_bottom = 1686.68
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -72.7563, 397.876 )
 frames = SubResource( 1 )
+frame = 3
 playing = true
 
 [node name="Ripples" parent="AnimatedSprite" instance=ExtResource( 5 )]
 show_behind_parent = true
 position = Vector2( -1.11269, 53.5009 )
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "backnforth"
@@ -273,11 +271,11 @@ anims/backnforth = SubResource( 2 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 anims/GO = SubResource( 3 )
-anims/GO_AWAY = SubResource( 6 )
-"anims/THANK YOU" = SubResource( 4 )
+anims/GO_AWAY = SubResource( 4 )
+"anims/THANK YOU" = SubResource( 5 )
 
 [node name="AnimationPlayer3" type="AnimationPlayer" parent="."]
-anims/flash = SubResource( 5 )
+anims/flash = SubResource( 6 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 530.491

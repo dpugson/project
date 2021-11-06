@@ -1,0 +1,393 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Levels/2.0 - Forest/Garden_House.gd" type="Script" id=1]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/2.0 - Forest/Lamp.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/L3_forest/garden/grasstile.png" type="Texture" id=4]
+[ext_resource path="res://Levels/2.0 - Forest/SinglePine.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sprites/L3_forest/garden/bigdoor-min.png" type="Texture" id=7]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sprites/L3_forest/garden/wall-min.png" type="Texture" id=9]
+[ext_resource path="res://Levels/2.0 - Forest/window.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sprites/L3_forest/vignette_fade.png" type="Texture" id=11]
+[ext_resource path="res://Levels/2.0 - Forest/TopiaryGiraffe.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Levels/2.0 - Forest/BirdBath.tscn" type="PackedScene" id=13]
+[ext_resource path="res://sprites/leafpiletile2dark.png" type="Texture" id=14]
+[ext_resource path="res://Levels/2.0 - Forest/round_bush.tscn" type="PackedScene" id=16]
+[ext_resource path="res://world/creepy_tree.tscn" type="PackedScene" id=17]
+
+[node name="GardenHouse" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -7992.0
+margin_top = -6512.0
+margin_right = 14852.0
+margin_bottom = 10220.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dark_grass" type="TextureRect" parent="."]
+margin_left = -2359.0
+margin_top = -2671.0
+margin_right = 5965.0
+margin_bottom = 4636.0
+texture = ExtResource( 4 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="leaves" type="TextureRect" parent="."]
+visible = false
+margin_left = -748.0
+margin_top = 460.0
+margin_right = 113.0
+margin_bottom = 1024.0
+texture = ExtResource( 14 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="leaves2" type="TextureRect" parent="."]
+visible = false
+margin_left = 513.647
+margin_top = 481.327
+margin_right = 1374.65
+margin_bottom = 1045.33
+texture = ExtResource( 14 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="player" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 184.132, 1274.51 )
+camera = NodePath("../../PuppyCamera")
+
+[node name="house" type="Node2D" parent="YSort"]
+position = Vector2( 500.551, 692.887 )
+
+[node name="walls" type="Node2D" parent="YSort/house"]
+
+[node name="Right2" type="Node2D" parent="YSort/house/walls"]
+position = Vector2( 2.24487, -399.597 )
+
+[node name="wall-min" type="Sprite" parent="YSort/house/walls/Right2"]
+position = Vector2( 668.975, -140.024 )
+texture = ExtResource( 9 )
+
+[node name="wall-min2" type="Sprite" parent="YSort/house/walls/Right2"]
+position = Vector2( 300.808, -135.534 )
+texture = ExtResource( 9 )
+
+[node name="wall-min3" type="Sprite" parent="YSort/house/walls/Right2"]
+position = Vector2( -96.5437, -135.534 )
+texture = ExtResource( 9 )
+
+[node name="Left2" type="Node2D" parent="YSort/house/walls"]
+position = Vector2( -949.603, -399.596 )
+
+[node name="wall-min3" type="Sprite" parent="YSort/house/walls/Left2"]
+position = Vector2( -96.5437, -135.534 )
+texture = ExtResource( 9 )
+flip_h = true
+
+[node name="wall-min2" type="Sprite" parent="YSort/house/walls/Left2"]
+position = Vector2( 300.808, -135.534 )
+texture = ExtResource( 9 )
+flip_h = true
+
+[node name="wall-min" type="Sprite" parent="YSort/house/walls/Left2"]
+position = Vector2( 668.975, -140.024 )
+texture = ExtResource( 9 )
+flip_h = true
+
+[node name="Right" type="Node2D" parent="YSort/house/walls"]
+
+[node name="wall-min" type="Sprite" parent="YSort/house/walls/Right"]
+position = Vector2( 668.975, -140.024 )
+texture = ExtResource( 9 )
+
+[node name="wall-min2" type="Sprite" parent="YSort/house/walls/Right"]
+position = Vector2( 300.808, -135.534 )
+texture = ExtResource( 9 )
+
+[node name="wall-min3" type="Sprite" parent="YSort/house/walls/Right"]
+position = Vector2( -96.5437, -135.534 )
+texture = ExtResource( 9 )
+
+[node name="Left" type="Node2D" parent="YSort/house/walls"]
+position = Vector2( -951.848, 6.10352e-05 )
+
+[node name="wall-min3" type="Sprite" parent="YSort/house/walls/Left"]
+position = Vector2( -96.5437, -135.534 )
+texture = ExtResource( 9 )
+flip_h = true
+
+[node name="wall-min2" type="Sprite" parent="YSort/house/walls/Left"]
+position = Vector2( 300.808, -135.534 )
+texture = ExtResource( 9 )
+flip_h = true
+
+[node name="wall-min" type="Sprite" parent="YSort/house/walls/Left"]
+position = Vector2( 668.975, -140.024 )
+texture = ExtResource( 9 )
+flip_h = true
+
+[node name="bigdoor-min" type="Sprite" parent="YSort/house"]
+position = Vector2( -183.524, -194.697 )
+texture = ExtResource( 7 )
+
+[node name="upper_windows" type="Node2D" parent="YSort/house"]
+
+[node name="window_frame5" parent="YSort/house/upper_windows" instance=ExtResource( 10 )]
+position = Vector2( -665.307, -488.561 )
+
+[node name="window_frame6" parent="YSort/house/upper_windows" instance=ExtResource( 10 )]
+position = Vector2( -1046.61, -488.561 )
+
+[node name="window_frame7" parent="YSort/house/upper_windows" instance=ExtResource( 10 )]
+position = Vector2( 298.646, -488.561 )
+
+[node name="window_frame8" parent="YSort/house/upper_windows" instance=ExtResource( 10 )]
+position = Vector2( 678.168, -488.561 )
+
+[node name="bottom_windows" type="Node2D" parent="YSort/house"]
+
+[node name="window_frame" parent="YSort/house/bottom_windows" instance=ExtResource( 10 )]
+position = Vector2( -665.307, -150.019 )
+
+[node name="window_frame2" parent="YSort/house/bottom_windows" instance=ExtResource( 10 )]
+position = Vector2( -1046.61, -150.019 )
+
+[node name="window_frame3" parent="YSort/house/bottom_windows" instance=ExtResource( 10 )]
+position = Vector2( 298.646, -150.019 )
+
+[node name="window_frame4" parent="YSort/house/bottom_windows" instance=ExtResource( 10 )]
+position = Vector2( 678.168, -150.019 )
+
+[node name="TopiaryGiraffe" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( 849.584, 1402.22 )
+
+[node name="BirdBath" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( -241.542, 1131.34 )
+
+[node name="bushes" type="YSort" parent="YSort"]
+visible = false
+
+[node name="round_bush10" parent="YSort/bushes" instance=ExtResource( 16 )]
+position = Vector2( -195.25, 992.126 )
+
+[node name="round_bush11" parent="YSort/bushes" instance=ExtResource( 16 )]
+position = Vector2( -57.1465, 992.126 )
+
+[node name="round_bush12" parent="YSort/bushes" instance=ExtResource( 16 )]
+position = Vector2( -336.529, 992.126 )
+
+[node name="round_bush" parent="YSort/bushes" instance=ExtResource( 16 )]
+
+[node name="round_bush2" parent="YSort/bushes" instance=ExtResource( 16 )]
+position = Vector2( 80.9575, 881.008 )
+
+[node name="round_bush3" parent="YSort/bushes" instance=ExtResource( 16 )]
+position = Vector2( 80.9575, 992.126 )
+
+[node name="round_bush4" parent="YSort/bushes" instance=ExtResource( 16 )]
+position = Vector2( 507.968, 774.652 )
+
+[node name="round_bush5" parent="YSort/bushes" instance=ExtResource( 16 )]
+position = Vector2( 507.968, 881.008 )
+
+[node name="round_bush6" parent="YSort/bushes" instance=ExtResource( 16 )]
+position = Vector2( 507.968, 992.126 )
+
+[node name="sideways_group" type="YSort" parent="YSort/bushes"]
+
+[node name="round_bush8" parent="YSort/bushes/sideways_group" instance=ExtResource( 16 )]
+position = Vector2( 790.526, 992.126 )
+
+[node name="round_bush9" parent="YSort/bushes/sideways_group" instance=ExtResource( 16 )]
+position = Vector2( 928.63, 992.126 )
+
+[node name="round_bush7" parent="YSort/bushes/sideways_group" instance=ExtResource( 16 )]
+position = Vector2( 649.247, 992.126 )
+
+[node name="sideways_group2" type="YSort" parent="YSort/bushes"]
+position = Vector2( -1394.1, -4.48987 )
+
+[node name="round_bush8" parent="YSort/bushes/sideways_group2" instance=ExtResource( 16 )]
+position = Vector2( 790.526, 992.126 )
+
+[node name="round_bush9" parent="YSort/bushes/sideways_group2" instance=ExtResource( 16 )]
+position = Vector2( 928.63, 992.126 )
+
+[node name="round_bush7" parent="YSort/bushes/sideways_group2" instance=ExtResource( 16 )]
+position = Vector2( 649.247, 992.126 )
+
+[node name="sideways_group3" type="YSort" parent="YSort/bushes"]
+position = Vector2( 419.801, -2.24487 )
+
+[node name="round_bush8" parent="YSort/bushes/sideways_group3" instance=ExtResource( 16 )]
+position = Vector2( 790.526, 992.126 )
+
+[node name="round_bush9" parent="YSort/bushes/sideways_group3" instance=ExtResource( 16 )]
+position = Vector2( 928.63, 992.126 )
+
+[node name="round_bush7" parent="YSort/bushes/sideways_group3" instance=ExtResource( 16 )]
+position = Vector2( 649.247, 992.126 )
+
+[node name="trees_left" type="YSort" parent="YSort"]
+
+[node name="creepy_tree" parent="YSort/trees_left" instance=ExtResource( 17 )]
+position = Vector2( -16.5798, 1110.16 )
+
+[node name="creepy_tree2" parent="YSort/trees_left" instance=ExtResource( 17 )]
+position = Vector2( -529.008, 1431.65 )
+
+[node name="creepy_tree3" parent="YSort/trees_left" instance=ExtResource( 17 )]
+position = Vector2( -145.582, 1574.29 )
+
+[node name="creepy_tree4" parent="YSort/trees_left" instance=ExtResource( 17 )]
+position = Vector2( -274.339, 905.177 )
+
+[node name="creepy_tree5" parent="YSort/trees_left" instance=ExtResource( 17 )]
+position = Vector2( -626.884, 1135.36 )
+
+[node name="trees_right" type="YSort" parent="YSort"]
+position = Vector2( 1141.34, -20.6362 )
+
+[node name="creepy_tree" parent="YSort/trees_right" instance=ExtResource( 17 )]
+position = Vector2( 144.69, 1528.46 )
+
+[node name="creepy_tree2" parent="YSort/trees_right" instance=ExtResource( 17 )]
+position = Vector2( 93.3933, 1101.55 )
+
+[node name="creepy_tree3" parent="YSort/trees_right" instance=ExtResource( 17 )]
+position = Vector2( -110.304, 949.369 )
+
+[node name="creepy_tree4" parent="YSort/trees_right" instance=ExtResource( 17 )]
+position = Vector2( -371.225, 930.553 )
+
+[node name="creepy_tree5" parent="YSort/trees_right" instance=ExtResource( 17 )]
+position = Vector2( -526.923, 1610.02 )
+
+[node name="Lamp" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 522.128, 900.15 )
+
+[node name="Lamp2" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 88.413, 894.958 )
+
+[node name="Lamp5" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 842.851, 1067.64 )
+
+[node name="Lamp6" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -255.474, 1062.45 )
+
+[node name="rightpines" type="YSort" parent="YSort"]
+
+[node name="SinglePine" parent="YSort/rightpines" instance=ExtResource( 5 )]
+position = Vector2( 677.083, 732.319 )
+
+[node name="SinglePine2" parent="YSort/rightpines" instance=ExtResource( 5 )]
+position = Vector2( 906.935, 796.464 )
+
+[node name="SinglePine3" parent="YSort/rightpines" instance=ExtResource( 5 )]
+position = Vector2( 1314.97, 764.391 )
+
+[node name="SinglePine4" parent="YSort/rightpines" instance=ExtResource( 5 )]
+position = Vector2( 1147.48, 878.426 )
+
+[node name="SinglePine5" parent="YSort/rightpines" instance=ExtResource( 5 )]
+position = Vector2( 978.207, 1037.01 )
+
+[node name="SinglePine6" parent="YSort/rightpines" instance=ExtResource( 5 )]
+position = Vector2( 707.374, 1110.06 )
+
+[node name="SinglePine7" parent="YSort/rightpines" instance=ExtResource( 5 )]
+position = Vector2( 1060.17, 1220.53 )
+
+[node name="SinglePine8" parent="YSort/rightpines" instance=ExtResource( 5 )]
+position = Vector2( 823.191, 1229.44 )
+
+[node name="SinglePine9" parent="YSort/rightpines" instance=ExtResource( 5 )]
+position = Vector2( 1318.53, 1211.62 )
+
+[node name="SinglePine10" parent="YSort/rightpines" instance=ExtResource( 5 )]
+position = Vector2( 1117.19, 1421.87 )
+
+[node name="SinglePine11" parent="YSort/rightpines" instance=ExtResource( 5 )]
+position = Vector2( 666.392, 1384.46 )
+
+[node name="leftpines" type="YSort" parent="YSort"]
+position = Vector2( -1358.19, 37.7976 )
+
+[node name="SinglePine" parent="YSort/leftpines" instance=ExtResource( 5 )]
+position = Vector2( 677.083, 732.319 )
+
+[node name="SinglePine2" parent="YSort/leftpines" instance=ExtResource( 5 )]
+position = Vector2( 906.935, 796.464 )
+
+[node name="SinglePine3" parent="YSort/leftpines" instance=ExtResource( 5 )]
+position = Vector2( 1314.97, 764.391 )
+
+[node name="SinglePine4" parent="YSort/leftpines" instance=ExtResource( 5 )]
+position = Vector2( 1147.48, 878.426 )
+
+[node name="SinglePine5" parent="YSort/leftpines" instance=ExtResource( 5 )]
+position = Vector2( 978.207, 1037.01 )
+
+[node name="SinglePine6" parent="YSort/leftpines" instance=ExtResource( 5 )]
+position = Vector2( 707.374, 1110.06 )
+
+[node name="SinglePine7" parent="YSort/leftpines" instance=ExtResource( 5 )]
+position = Vector2( 1060.17, 1220.53 )
+
+[node name="SinglePine8" parent="YSort/leftpines" instance=ExtResource( 5 )]
+position = Vector2( 823.191, 1229.44 )
+
+[node name="SinglePine9" parent="YSort/leftpines" instance=ExtResource( 5 )]
+position = Vector2( 1318.53, 1211.62 )
+
+[node name="SinglePine10" parent="YSort/leftpines" instance=ExtResource( 5 )]
+position = Vector2( 1117.19, 1421.87 )
+
+[node name="SinglePine11" parent="YSort/leftpines" instance=ExtResource( 5 )]
+position = Vector2( 666.392, 1384.46 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 6 )]
+position = Vector2( 929.997, 677.082 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -2516.32, -6774.45 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 2859.5, 4974.77 )
+
+[node name="TextureRect" parent="PuppyCamera/CanvasLayer" index="1"]
+visible = true
+anchor_left = -0.000464026
+anchor_right = -0.000463994
+
+[node name="BottomSP" parent="." instance=ExtResource( 8 )]
+position = Vector2( 541.722, 1645.55 )
+
+[node name="TopSP" parent="." instance=ExtResource( 8 )]
+position = Vector2( 855.498, 271.659 )
+
+[node name="vignette_fade" type="Sprite" parent="."]
+position = Vector2( 847.28, 192.288 )
+rotation = 1.5708
+scale = Vector2( 0.80153, 2.77649 )
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[editable path="PuppyCamera"]

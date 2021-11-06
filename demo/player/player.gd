@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 export var SPEED_UP = 6000;
-export var MAX_SPEED = 550;
+export var MAX_SPEED = 500;
 export var SLOW_DOWN = 6000;
 export var TURBO_MAX_SPEED = 1500
 export var TURBO_SPEED_UP = 60000;

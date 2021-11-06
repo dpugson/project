@@ -174,14 +174,14 @@ animations = [ {
 "name": "idledown",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ) ],
-"loop": true,
-"name": "barkdown",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "none",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ) ],
+"loop": true,
+"name": "barkdown",
 "speed": 5.0
 } ]
 
@@ -1845,6 +1845,7 @@ animation = "down"
 
 [node name="CameraOffset" type="Node2D" parent="."]
 position = Vector2( 0, 197.416 )
+
 [connection signal="timeout" from="TurboTimer" to="." method="_on_TurboTimer_timeout"]
 [connection signal="area_entered" from="DoggoPivot/HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="rotated_furniture_clockwise" from="DoggoPivot/LookBox" to="." method="_on_LookBox_rotated_furniture_clockwise"]

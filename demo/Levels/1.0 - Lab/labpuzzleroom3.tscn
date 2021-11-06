@@ -190,7 +190,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 353.096, -752.485 ) ]
+"values": [ Vector2( -1104.55, -1099.54 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("YSort/player:cutscene_mode")
@@ -863,8 +863,8 @@ position = Vector2( 754.036, -623.717 )
 position = Vector2( -33.387, -36.3206 )
 
 [node name="robot" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 355.198, -740.169 )
-animation = "dogup"
+visible = false
+position = Vector2( -1104.55, -1099.54 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/robot"]
 position = Vector2( 366.056, -231.518 )
@@ -1012,6 +1012,7 @@ position = Vector2( 354.088, -760.764 )
 [node name="CollisionShape2D" parent="topTZ" index="0"]
 position = Vector2( 0, 18.657 )
 shape = SubResource( 20 )
+
 [connection signal="seen" from="YSort/Thesis/ThesisSeenBox" to="." method="_on_ThesisSeenBox_seen"]
 [connection signal="seen" from="YSort/computer_console/thick_book/BlueBookSeenBox" to="." method="_on_BlueBookSeenBox_seen"]
 [connection signal="seen" from="YSort/computer_console/ComputerSeenBox" to="." method="_on_ComputerSeenBox_seen"]
@@ -1024,23 +1025,13 @@ shape = SubResource( 20 )
 [connection signal="transition_triggered" from="topTZ" to="." method="_on_topTZ_transition_triggered"]
 
 [editable path="YSort/Thesis/ThesisSeenBox"]
-
 [editable path="YSort/computer_console/thick_book/BlueBookSeenBox"]
-
 [editable path="YSort/computer_console/ComputerSeenBox"]
-
 [editable path="YSort/robot/RobotSeenBox"]
-
 [editable path="YSort/sink/SinkSeenBox"]
-
 [editable path="YSort/counter/lab_counter/chemistry_stuff/ChemistrySeenBox"]
-
 [editable path="YSort/counter/lab_counter/medium_book/RedBookSeenBox"]
-
 [editable path="science_desk/DeskSeenBox"]
-
 [editable path="PuppyCamera"]
-
 [editable path="bottomTZ"]
-
 [editable path="topTZ"]

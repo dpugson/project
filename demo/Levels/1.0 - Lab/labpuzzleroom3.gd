@@ -60,8 +60,9 @@ func _ready():
 		"../../../PuppyCamera", player_position, orientation)
 
 func give_robot_focus():
-	camera.smoothing_speed = 1
-	player.remote_transform.remote_path = ""
+	if player.remote_transform != null:
+		camera.smoothing_speed = 1
+		player.remote_transform.remote_path = ""
 	robot_remote_transform.remote_path = "../../../PuppyCamera"
 
 func give_player_focus():

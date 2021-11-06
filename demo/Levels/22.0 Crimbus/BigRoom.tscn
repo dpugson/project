@@ -164,17 +164,14 @@ rotation = -0.282049
 position = Vector2( 4.27182, 7.5619 )
 rotation = -0.239697
 shape = SubResource( 4 )
+
 [connection signal="transition_triggered" from="HelmTZ" to="." method="_on_HelmTZ_transition_triggered"]
 [connection signal="transition_triggered" from="PantryTZ" to="." method="_on_PantryTZ_transition_triggered"]
 [connection signal="transition_triggered" from="EngineTZ" to="." method="_on_EngineTZ_transition_triggered"]
 [connection signal="transition_triggered" from="TreeTZ" to="." method="_on_TreeTZ_transition_triggered"]
 
 [editable path="PuppyCamera"]
-
 [editable path="HelmTZ"]
-
 [editable path="PantryTZ"]
-
 [editable path="EngineTZ"]
-
 [editable path="TreeTZ"]

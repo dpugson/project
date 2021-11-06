@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/L3_forest/bigpine.png" type="Texture" id=1]
+
+[node name="SinglePine" type="Node2D"]
+position = Vector2( 653.92, 873.081 )
+
+[node name="bigpine" type="Sprite" parent="."]
+position = Vector2( 6.75598, -153.693 )
+texture = ExtResource( 1 )

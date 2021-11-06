@@ -14,7 +14,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1026.76, 119.898 )
 
-[node name="Town" type="Node2D"]
+[node name="Stage" type="Node2D"]
 script = ExtResource( 4 )
 
 [node name="LightSpot" type="Position2D" parent="."]

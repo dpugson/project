@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/L3_forest/garden/round_bush.png" type="Texture" id=1]
+
+[node name="round_bush" type="Node2D"]
+position = Vector2( 80.9575, 774.652 )
+
+[node name="round_bush" type="Sprite" parent="."]
+position = Vector2( 5.28882, 15.5223 )
+texture = ExtResource( 1 )

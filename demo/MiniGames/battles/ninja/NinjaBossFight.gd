@@ -8,6 +8,10 @@ onready var item_registry = ItemRegistry
 const SKELETON_VOICE_PITCH = 0.98
 const SKELETON_SPEECH_RATE = 0.04
 
+const neutral_ninja_face = "res://sprites/L2_lab/ninja_react.png"
+const angry_ninja_face = "res://sprites/L2_lab/ninja_react_angry.png"
+const pain_ninja_react = "res://sprites/L2_lab/ninja_react_pain.png"
+
 var obstacle_map = {
 	"V" : { "scene": preload("res://MiniGames/battles/ninja/VendingMachineObstacle.tscn"), "end_scale" : 7 },
 	"G" : { "scene": preload("res://MiniGames/battles/ninja/GlassesBoxObstacle.tscn"), "end_scale" : 10 },
@@ -57,28 +61,28 @@ var counter = 0
 func get_ninja_attack_dialogue(dialogue):
 	var options = [
 		[
-			"TEXT", "DEADLY NINJA TECHNIQUE- THROWING STAR!!!!!!",
-			SKELETON_SPEECH_RATE, "ninja_attack_dialogue2", null, null, SKELETON_VOICE_PITCH
+			"TEXT", "DEADLY NINJA TECHNIQUE- ULTIMATE DEATH BLOW!!!!!!",
+			SKELETON_SPEECH_RATE, "ninja_attack_dialogue2", null, angry_ninja_face, SKELETON_VOICE_PITCH
 		],
 		[
 			"TEXT", "MEET YOUR DOOM!!!!!!",
-			SKELETON_SPEECH_RATE, "ninja_attack_dialogue2", null, null, SKELETON_VOICE_PITCH
+			SKELETON_SPEECH_RATE, "ninja_attack_dialogue2", null, angry_ninja_face, SKELETON_VOICE_PITCH
 		],
 		[
 			"TEXT", "TAKE THIS!!!!!!!",
-			SKELETON_SPEECH_RATE, "ninja_attack_dialogue2", null, null, SKELETON_VOICE_PITCH
+			SKELETON_SPEECH_RATE, "ninja_attack_dialogue2", null, angry_ninja_face, SKELETON_VOICE_PITCH
 		],
 		[
 			"TEXT", "My aim isn't usually this bad...",
-			SKELETON_SPEECH_RATE, "ninja_attack_dialogue2", null, null, SKELETON_VOICE_PITCH
+			SKELETON_SPEECH_RATE, "ninja_attack_dialogue2", null, neutral_ninja_face, SKELETON_VOICE_PITCH
 		],
 		[
-			"TEXT", "TASTE NINJA STAR!!!!!!",
-			SKELETON_SPEECH_RATE, "ninja_attack_dialogue2", null, null, SKELETON_VOICE_PITCH
+			"TEXT", "TASTE MY JUTSUS!!!!!!",
+			SKELETON_SPEECH_RATE, "ninja_attack_dialogue2", null, angry_ninja_face, SKELETON_VOICE_PITCH
 		],
 		[
 			"TEXT", "STOP BEING SO DIFFICULT TO HIT!!!!!!",
-			SKELETON_SPEECH_RATE, "ninja_attack_dialogue2", null, null, SKELETON_VOICE_PITCH
+			SKELETON_SPEECH_RATE, "ninja_attack_dialogue2", null, angry_ninja_face, SKELETON_VOICE_PITCH
 		],
 	]
 	dialogue["ninja_attack_dialogue"] = options[counter % len(options)]
@@ -92,7 +96,7 @@ func get_ninja_attack_dialogue(dialogue):
 			SKELETON_SPEECH_RATE, "ninja_attack_dialogue3", null, null
 	]
 	dialogue["ninja_attack_dialogue3"] = [
-			"TEXT", "...and misses by " + str(rand_range(5, 30)) + " feet!!",
+			"TEXT", "...and misses by " + str(rand_range(1, 30)) + " feet!!",
 			SKELETON_SPEECH_RATE, null, null, null
 	]
 	counter += 1
@@ -145,7 +149,7 @@ func action_noop(action):
 						],
 						"next2" : [
 							"TEXT", "Fufufufu!!! Foolish puppy... I have learned your tricks!!!",
-							SKELETON_SPEECH_RATE, "ninja_attack_dialogue", null, null, SKELETON_VOICE_PITCH
+							SKELETON_SPEECH_RATE, "ninja_attack_dialogue", null, neutral_ninja_face, SKELETON_VOICE_PITCH
 						],
 					}
 			else:
@@ -153,15 +157,15 @@ func action_noop(action):
 				dialogue = {
 						"begin" : [
 							"TEXT", "OW!!!",
-							SKELETON_SPEECH_RATE, "next3", null, null
+							SKELETON_SPEECH_RATE, "next3", null, pain_ninja_react
 						],
 						"next3" : [
 							"TEXT", "You successfully bite the Ninja! NINJA SUFFERS -5 TO AGILITY",
-							SKELETON_SPEECH_RATE, "next2", null, null
+							SKELETON_SPEECH_RATE, "next2", null, false
 						],
 						"next2" : [
 							"TEXT", "You are proving yourself to be a worthy opponent!",
-							SKELETON_SPEECH_RATE, "ninja_attack_dialogue", null, null, SKELETON_VOICE_PITCH
+							SKELETON_SPEECH_RATE, "ninja_attack_dialogue", null, neutral_ninja_face, SKELETON_VOICE_PITCH
 						],
 					}
 				
@@ -169,7 +173,7 @@ func action_noop(action):
 			dialogue = {
 					"begin" : [
 						"TEXT", "Ninja-technique - IGNORE BARK!",
-						SKELETON_SPEECH_RATE, "increment", null, null, null, SKELETON_VOICE_PITCH
+						SKELETON_SPEECH_RATE, "increment", null, neutral_ninja_face, null
 					],
 					"increment" : [
 						"TEXT", "The ninja ignored your bark... Your attack has no effect.",
@@ -224,15 +228,15 @@ func get_default_item_dialogue(text, item_name):
 	return {
 		"begin" : [
 			"TEXT", text,
-			SKELETON_SPEECH_RATE, "giveme", null, null, SKELETON_VOICE_PITCH
+			SKELETON_SPEECH_RATE, "giveme", null, angry_ninja_face, SKELETON_VOICE_PITCH
 		],
 		"giveme" : [
 			"TEXT", "Don't you know ninjas can use anything as weapon?\nHINT: Items won't help you here!",
-			SKELETON_SPEECH_RATE, "FETCH", null, null, SKELETON_VOICE_PITCH
+			SKELETON_SPEECH_RATE, "FETCH", null, neutral_ninja_face, SKELETON_VOICE_PITCH
 		],
 		"FETCH" : [
 			"TEXT", item_name + " will be your downfall!",
-			SKELETON_SPEECH_RATE, "ninja_attack_dialogue", null, null, SKELETON_VOICE_PITCH
+			SKELETON_SPEECH_RATE, "ninja_attack_dialogue", null, angry_ninja_face, SKELETON_VOICE_PITCH
 		]
 	}
 

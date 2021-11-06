@@ -52,7 +52,7 @@ func create_and_start_timer(time, func_name):
 func give_robot_focus():
 	if player.remote_transform != null:
 		camera.smoothing_speed = 1
-		player.remote_transform.queue_free()
+		player.remote_transform.remote_path = ""
 	print("HI!")
 	robot_remote_transform.remote_path = "../../../PuppyCamera"
 
