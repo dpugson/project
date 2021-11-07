@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/impactMining_003.ogg-0118e4f03a3727c34f7e01d371225a95.oggstr"
+
+[deps]
+
+source_file="res://tunes/foley/impactMining_003.ogg"
+dest_files=[ "res://.import/impactMining_003.ogg-0118e4f03a3727c34f7e01d371225a95.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

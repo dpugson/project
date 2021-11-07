@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=2]
+[gd_scene load_steps=128 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/dog/d0.png" type="Texture" id=2]
@@ -53,6 +53,19 @@
 [ext_resource path="res://sprites/dogbark/head_bark_d1.png" type="Texture" id=51]
 [ext_resource path="res://sprites/dogbark/head_bark_d2.png" type="Texture" id=52]
 [ext_resource path="res://sprites/dogbark/head_bark_d3.png" type="Texture" id=53]
+[ext_resource path="res://sprites/items/hookshot/hookshot_handle_down_fg.png" type="Texture" id=54]
+[ext_resource path="res://sprites/items/hookshot/hookshot_handle_left_fg.png" type="Texture" id=55]
+[ext_resource path="res://sprites/items/hookshot/hookshot_handle_right_fg.png" type="Texture" id=56]
+[ext_resource path="res://sprites/items/hookshot/hookshot_handle_right_bg.png" type="Texture" id=57]
+[ext_resource path="res://sprites/items/hookshot/hookshot_handle_down_bg.png" type="Texture" id=58]
+[ext_resource path="res://sprites/items/hookshot/hookshot_handle_up_bg.png" type="Texture" id=59]
+[ext_resource path="res://sprites/items/hookshot/hookshot_handle_left_bg.png" type="Texture" id=60]
+[ext_resource path="res://sprites/items/hookshot/hookshot_handle_up_fg.png" type="Texture" id=61]
+[ext_resource path="res://sprites/items/hookshot/hookshot_chain.png" type="Texture" id=62]
+[ext_resource path="res://sprites/items/hookshot/hookshot_tip.png" type="Texture" id=63]
+[ext_resource path="res://player/grab_detector.gd" type="Script" id=64]
+[ext_resource path="res://tunes/foley/impactMetal_light_001.ogg" type="AudioStream" id=65]
+[ext_resource path="res://tunes/foley/impactPlate_heavy_003.ogg" type="AudioStream" id=66]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -73,21 +86,6 @@ height = 64.3439
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "left",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 12 ), ExtResource( 7 ), ExtResource( 12 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "right",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "up",
-"speed": 7.0
-}, {
 "frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "down",
@@ -132,6 +130,21 @@ animations = [ {
 "loop": true,
 "name": "swimright",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "left",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 7 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "right",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "up",
+"speed": 7.0
 } ]
 
 [sub_resource type="Animation" id=4]
@@ -169,14 +182,14 @@ tracks/0/keys = {
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ ExtResource( 49 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 47 ) ],
-"loop": true,
-"name": "idledown",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "none",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 49 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 47 ) ],
+"loop": true,
+"name": "idledown",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ) ],
@@ -747,6 +760,90 @@ tracks/6/keys = {
 "update": 1,
 "values": [ 0 ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("grabshot_center:show_behind_parent")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("grabshot_center:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1.87289, 26.9695 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("grabshot_center/grabshot_fg:animation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "down" ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("grabshot_center/grabshot_bg:animation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "down" ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("grabshot_center/chain:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -90.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("grabshot_center/chain:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.529724, 0.529724 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("grabshot_center/chain/grabshot_tip/PlayerGoToPoint:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 66.2165, 0.26519 ) ]
+}
 
 [sub_resource type="Animation" id=12]
 loop = true
@@ -821,6 +918,90 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ "none" ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("grabshot_center:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -90.6476, -31.839 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("grabshot_center/grabshot_fg:animation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "left" ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("grabshot_center/grabshot_bg:animation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "left" ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("grabshot_center:show_behind_parent")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("grabshot_center/chain:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("grabshot_center/chain:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("grabshot_center/chain/grabshot_tip/PlayerGoToPoint:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 129.519, 29.9301 ) ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -897,6 +1078,90 @@ tracks/5/keys = {
 "update": 1,
 "values": [ "none" ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("grabshot_center/grabshot_bg:animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "right" ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("grabshot_center/grabshot_fg:animation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "right" ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("grabshot_center:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 86.5273, -31.4645 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("grabshot_center:show_behind_parent")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("grabshot_center/chain:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 180.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("grabshot_center/chain:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.5892, 4.23785 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("grabshot_center/chain/grabshot_tip/PlayerGoToPoint:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 126.341, -29.1349 ) ]
+}
 
 [sub_resource type="Animation" id=14]
 loop = true
@@ -971,6 +1236,90 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ "none" ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("grabshot_center:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1.49829, -99.6374 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("grabshot_center:show_behind_parent")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("grabshot_center/grabshot_bg:animation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "up" ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("grabshot_center/grabshot_fg:animation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "up" ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("grabshot_center/chain:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2.64868, 2.11893 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("grabshot_center/chain:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("grabshot_center/chain/grabshot_tip/PlayerGoToPoint:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 136.406, -1.05914 ) ]
 }
 
 [sub_resource type="Animation" id=15]
@@ -1662,7 +2011,7 @@ states/walk/node = SubResource( 42 )
 states/walk/position = Vector2( 535.898, 132 )
 transitions = [ "idle", "walk", SubResource( 43 ), "walk", "idle", SubResource( 44 ), "idle", "bark", SubResource( 45 ), "bark", "idle", SubResource( 46 ), "walk", "swim", SubResource( 47 ), "swim", "walk", SubResource( 48 ), "idle", "swim", SubResource( 49 ), "swim", "idle", SubResource( 50 ) ]
 start_node = "idle"
-graph_offset = Vector2( 101.898, 207.126 )
+graph_offset = Vector2( 59.3055, 87.9351 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=52]
 resource_local_to_scene = false
@@ -1680,6 +2029,11 @@ radius = 50.8548
 
 [sub_resource type="SpriteFrames" id=56]
 animations = [ {
+"frames": [ ExtResource( 42 ) ],
+"loop": true,
+"name": "down",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 45 ) ],
 "loop": true,
 "name": "left",
@@ -1694,10 +2048,92 @@ animations = [ {
 "loop": true,
 "name": "up",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 42 ) ],
+} ]
+
+[sub_resource type="Animation" id=60]
+resource_name = "hit"
+step = 0.02
+tracks/0/type = "audio"
+tracks/0/path = NodePath("grabshot_audio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 66 )
+} ],
+"times": PoolRealArray( 0.04 )
+}
+
+[sub_resource type="Animation" id=61]
+resource_name = "launch"
+length = 0.06
+loop = true
+step = 0.02
+tracks/0/type = "audio"
+tracks/0/path = NodePath("grabshot_audio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 65 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="SpriteFrames" id=57]
+animations = [ {
+"frames": [ ExtResource( 58 ) ],
 "loop": true,
 "name": "down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 60 ) ],
+"loop": true,
+"name": "left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 57 ) ],
+"loop": true,
+"name": "right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 59 ) ],
+"loop": true,
+"name": "up",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=58]
+extents = Vector2( 12.2717, 16.1059 )
+
+[sub_resource type="SpriteFrames" id=59]
+animations = [ {
+"frames": [ ExtResource( 54 ) ],
+"loop": true,
+"name": "down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 55 ) ],
+"loop": true,
+"name": "left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 56 ) ],
+"loop": true,
+"name": "right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 61 ) ],
+"loop": true,
+"name": "up",
 "speed": 5.0
 } ]
 
@@ -1716,7 +2152,7 @@ visible = false
 position = Vector2( -1.70408, 66.9613 )
 scale = Vector2( 0.842484, 0.826121 )
 frames = SubResource( 1 )
-animation = "updown"
+animation = "leftright"
 
 [node name="DoggoCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 0.707214, 31.6103 )
@@ -1726,13 +2162,13 @@ shape = SubResource( 2 )
 [node name="DogAnimation" type="AnimatedSprite" parent="."]
 position = Vector2( 3.11467, -16.0672 )
 frames = SubResource( 3 )
-animation = "barkright"
+animation = "right"
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="hat" type="Node2D" parent="DogAnimation"]
-position = Vector2( 36.7426, -7.88833 )
+position = Vector2( 34.7188, -0.671059 )
 
 [node name="Sprite" type="Sprite" parent="DogAnimation/hat"]
 position = Vector2( 1.4436, -56.3144 )
@@ -1780,7 +2216,6 @@ parameters/walk/blend_position = Vector2( 0, 1 )
 
 [node name="HitBoxPivot" type="Position2D" parent="."]
 position = Vector2( 0, -31.7903 )
-rotation = -1.5708
 
 [node name="BarkHitBox" parent="HitBoxPivot" instance=ExtResource( 32 )]
 position = Vector2( 0, 120 )
@@ -1845,6 +2280,60 @@ animation = "down"
 
 [node name="CameraOffset" type="Node2D" parent="."]
 position = Vector2( 0, 197.416 )
+
+[node name="grabshot_center" type="Node2D" parent="."]
+position = Vector2( 86.5273, -31.4645 )
+
+[node name="grabshot_audio" type="AudioStreamPlayer2D" parent="grabshot_center"]
+stream = ExtResource( 66 )
+
+[node name="grabshot_audio_animator" type="AnimationPlayer" parent="grabshot_center"]
+anims/hit = SubResource( 60 )
+anims/launch = SubResource( 61 )
+
+[node name="grabshot_bg" type="AnimatedSprite" parent="grabshot_center"]
+frames = SubResource( 57 )
+animation = "right"
+
+[node name="chain" type="Node2D" parent="grabshot_center"]
+position = Vector2( 1.5892, 4.23785 )
+rotation = 3.14159
+
+[node name="TextureRect" type="TextureRect" parent="grabshot_center/chain"]
+margin_left = -31.8841
+margin_top = -6.17683
+margin_right = -6.88414
+margin_bottom = 11.8232
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource( 62 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="grabshot_tip" type="Sprite" parent="grabshot_center/chain"]
+position = Vector2( -38.6825, 2.12683 )
+texture = ExtResource( 63 )
+
+[node name="grab_detector" type="Area2D" parent="grabshot_center/chain/grabshot_tip"]
+position = Vector2( -1.58728, 0.794594 )
+collision_layer = 0
+script = ExtResource( 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grabshot_center/chain/grabshot_tip/grab_detector"]
+position = Vector2( -0.794586, 0.374573 )
+shape = SubResource( 58 )
+
+[node name="PlayerGoToPoint" type="Position2D" parent="grabshot_center/chain/grabshot_tip"]
+position = Vector2( 126.341, -29.1349 )
+
+[node name="grabshot_fg" type="AnimatedSprite" parent="grabshot_center"]
+frames = SubResource( 59 )
+animation = "right"
+
+[node name="grabshot_timer" type="Timer" parent="grabshot_center"]
 
 [connection signal="timeout" from="TurboTimer" to="." method="_on_TurboTimer_timeout"]
 [connection signal="area_entered" from="DoggoPivot/HurtBox" to="." method="_on_HurtBox_area_entered"]

@@ -2,19 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/leafbold2_r.png-5b9db8f25f7288228d453811787a0f98.stex"
+path="res://.import/hookshot_tip.png-15c568f0cea061faf2e480d6c7c296bb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/L3_forest/leafbold2_r.png"
-dest_files=[ "res://.import/leafbold2_r.png-5b9db8f25f7288228d453811787a0f98.stex" ]
+source_file="res://sprites/items/hookshot/hookshot_tip.png"
+dest_files=[ "res://.import/hookshot_tip.png-15c568f0cea061faf2e480d6c7c296bb.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

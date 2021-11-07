@@ -47,7 +47,7 @@ animations = [ {
 "frames": [ ExtResource( 14 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 16 ), ExtResource( 12 ) ],
 "loop": false,
 "name": "gotcha_grab",
-"speed": 18.0
+"speed": 16.0
 }, {
 "frames": [ ExtResource( 14 ), ExtResource( 16 ), ExtResource( 12 ) ],
 "loop": false,
@@ -80,6 +80,6 @@ animations = [ {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 3.323, -182.765 )
 frames = SubResource( 6 )
-animation = "gotcha_pickup"
-frame = 2
+animation = "gotcha_grab"
+frame = 8
 playing = true

@@ -428,7 +428,7 @@ position = Vector2( 519.083, 630.15 )
 [node name="AnimatedSprite" parent="Robot" instance=ExtResource( 14 )]
 position = Vector2( -1.60675, -118.341 )
 animation = "dogdown"
-frame = 2
+frame = 1
 playing = true
 
 [node name="labdoor" type="Node2D" parent="."]
@@ -447,6 +447,7 @@ shape = SubResource( 14 )
 
 [node name="PostBattleSP" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1650.76, 690.725 )
+
 [connection signal="seen" from="YSort/glasses_box/glassesbox" to="." method="_on_glassesbox_seen"]
 [connection signal="seen" from="YSort/waste_bin/wastebin" to="." method="_on_wastebin_seen"]
 [connection signal="seen" from="YSort/vending_machine/sodamachine" to="." method="_on_sodamachine_seen"]
@@ -457,17 +458,10 @@ position = Vector2( 1650.76, 690.725 )
 [connection signal="seen" from="labdoor/laboratorydoor" to="." method="_on_laboratorydoor_seen"]
 
 [editable path="YSort/waste_bin/wastebin"]
-
 [editable path="YSort/vending_machine/sodamachine"]
-
 [editable path="YSort/wallet/WalletSeenBox"]
-
 [editable path="PuppyCamera"]
-
 [editable path="BathroomTZ"]
-
 [editable path="LabTZ"]
-
 [editable path="BreakRoomTZ"]
-
 [editable path="labdoor/laboratorydoor"]

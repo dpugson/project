@@ -12,13 +12,21 @@ enum {
 	SWIM,
 	TURBO_WARMUP,
 	TURBO_DASHING,
-	MOVING_FURNITURE
+	MOVING_FURNITURE,
+	GRABSHOT_AIMING,
+	GRABSHOT_LAUNCHING,
+	GRABSHOT_RETURNING,
+	GRABSHOT_ZOOMING
 }
 
 var speed = Vector2.DOWN
 var dash_power = 1
 var state = WALK
 var stats = PlayerStats
+# the global positions of the grabshot elements
+# at the point of a grab
+var grab_point = null
+var grab_point_chain = null
 var cutscene_mode: bool = false setget cutscene_mode_set # for cutscenes
 var allow_cutscene_bark: bool = false
 var turbo_input = Vector2.DOWN
@@ -47,15 +55,27 @@ onready var cameraOffset = $CameraOffset
 onready var hatanimator = $DogAnimation/hat/hatanimator
 onready var hat_sprite = $DogAnimation/hat/Sprite
 onready var hat_node = $DogAnimation/hat
+onready var grabshot = $grabshot_center
+onready var grabshot_chain = $grabshot_center/chain/TextureRect
+onready var grabshot_tip = $grabshot_center/chain/grabshot_tip
+onready var grab_detector = $grabshot_center/chain/grabshot_tip/grab_detector
+onready var grabshot_player_goto_point = $grabshot_center/chain/grabshot_tip/PlayerGoToPoint
+onready var grabshot_timer = $grabshot_center/grabshot_timer
+onready var grabshot_audio_player = $grabshot_center/grabshot_audio_animator
 
 func _ready():
+	stats.set_bool("grabshot")
+	
 	stats.connect("out_of_health", self, "queue_free")
 	lookbox.connect("saw_something", self, "set_speed_to_zero")
+	grab_detector.connect("hit", self, "grabshot_set_grab_point")
 	bark_hitbox.knockback_vector = speed
 	bark_hitbox_collision.disabled = true
 	animation_tree.active = true
 	stats.connect("put_on_hat", self, "set_hat")
 	set_hat()
+	
+	grabshot.visible = false
 
 func set_hat():
 	var hat = stats.world_state.get("HAT", null)
@@ -191,6 +211,24 @@ func check_for_turbo_input():
 			return Input.is_action_just_pressed("turbo")
 		else:
 			return false
+
+func check_for_grabshot_input():
+	if cutscene_mode == true:
+		return false
+	else:
+		if stats.check_bool("grabshot"):
+			return Input.is_action_just_pressed("grabshot")
+		else:
+			return false
+			
+func check_for_grabshot_released_input():
+	if cutscene_mode == true:
+		return false
+	else:
+		if stats.check_bool("grabshot"):
+			return Input.is_action_just_released("grabshot")
+		else:
+			return false
 		
 func start_turbo_warmup():
 	animation_state.travel("walk")
@@ -200,6 +238,7 @@ func start_turbo_warmup():
 
 func walk(_delta, input):	
 	if input != Vector2.ZERO:
+		grabshot.visible = false
 		hatanimator.play("bounce")
 		animation_state.travel("walk")
 	else:
@@ -212,6 +251,10 @@ func walk(_delta, input):
 	elif check_for_turbo_input():
 		state = TURBO_WARMUP
 		start_turbo_warmup()
+	elif check_for_grabshot_input():
+		if ![GRABSHOT_AIMING, GRABSHOT_LAUNCHING, GRABSHOT_RETURNING, GRABSHOT_ZOOMING].has(state):
+			state = GRABSHOT_AIMING
+			speed = Vector2.ZERO
 
 func _physics_process(delta):
 	var input = get_input(delta)
@@ -221,22 +264,93 @@ func _physics_process(delta):
 			walk(delta, input)
 			move(delta, input)
 		BARK:
+			grabshot.visible = false
 			bark()
 			speed *= .8
 			move(delta, input)
 		SWIM:
+			grabshot.visible = false
 			animation_state.travel("swim")
 			swim()
 			move(delta, input)
 		TURBO_WARMUP:
+			grabshot.visible = false
 #			if check_for_turbo_input():
 #				turbo_timer.stop()
 #				state = WALK
 			pass
 		TURBO_DASHING:
+			grabshot.visible = false
 #			if check_for_turbo_input():
 #				state = WALK
 			turbo_move(delta, input)
+		GRABSHOT_AIMING:
+			grabshot.visible = true
+			grabshot_wait()
+		GRABSHOT_LAUNCHING:
+			animation_state.travel("idle")
+			grabshot_launch()
+		GRABSHOT_RETURNING:
+			grabshot_retract()
+		GRABSHOT_ZOOMING:
+			grabshot_zoom()
+
+const GRABSHOT_MIN_LEN = 25
+const GRABSHOT_MAX_LEN = 600
+const GRABSHOT_SPEED = 20
+const GRABSHOT_ZOOM_SPEED = 40
+
+func grabshot_wait():
+	if check_for_grabshot_released_input():
+		grab_detector.disabled = false
+		grabshot_audio_player.play("launch")
+		state = GRABSHOT_LAUNCHING
+
+onready var original_chain_rect_position = grabshot_chain.rect_position
+onready var original_chain_size = grabshot_chain.rect_size
+onready var original_grabshot_tip_position = grabshot_tip.position
+func reset_grabshot():
+	grabshot_chain.rect_position = original_chain_rect_position
+	grabshot_chain.rect_size = original_chain_size
+	grabshot_tip.position = original_grabshot_tip_position
+
+func grabshot_launch():
+	if grabshot_chain.rect_size.x >= GRABSHOT_MAX_LEN:
+		state = GRABSHOT_RETURNING
+	else:
+		grabshot_chain.rect_size.x += GRABSHOT_SPEED
+		grabshot_chain.rect_position.x -= GRABSHOT_SPEED
+		grabshot_tip.position.x -= GRABSHOT_SPEED
+
+func grabshot_set_grab_point():
+	grabshot_audio_player.play("hit")
+	grab_detector.disabled = true
+	state = GRABSHOT_ZOOMING
+	grab_point = grabshot_tip.global_position
+	grab_point_chain = grabshot_chain.rect_global_position
+
+func grabshot_retract():
+	if grabshot_chain.rect_size.x <= GRABSHOT_MIN_LEN:
+		grabshot_audio_player.stop()
+		state = WALK
+	else:
+		grabshot_chain.rect_size.x -= GRABSHOT_SPEED
+		grabshot_chain.rect_position.x += GRABSHOT_SPEED
+		grabshot_tip.position.x += GRABSHOT_SPEED
+
+func grabshot_zoom():
+	if self.global_position.distance_to(grabshot_player_goto_point.global_position) <= 10:
+		grabshot_audio_player.stop()
+		reset_grabshot()
+		state = WALK
+		return
+	else:
+		grabshot_chain.rect_size.x -= GRABSHOT_ZOOM_SPEED
+		grabshot_chain.rect_global_position = grab_point_chain
+		grabshot_tip.global_position = grab_point
+		self.global_position = self.global_position.move_toward(
+			grabshot_player_goto_point.global_position,
+			GRABSHOT_ZOOM_SPEED)
 
 func _on_HurtBox_area_entered(_area):
 	stats.health -= 1

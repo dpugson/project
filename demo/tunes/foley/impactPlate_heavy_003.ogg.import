@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/impactPlate_heavy_003.ogg-07dfc36d5b7a8e7929c242c84071fbe7.oggstr"
+
+[deps]
+
+source_file="res://tunes/foley/impactPlate_heavy_003.ogg"
+dest_files=[ "res://.import/impactPlate_heavy_003.ogg-07dfc36d5b7a8e7929c242c84071fbe7.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
