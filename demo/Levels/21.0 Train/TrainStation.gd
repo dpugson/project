@@ -10,6 +10,7 @@ onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 func _ready():
 	var player_position = bottomSP.position
 	var orientation = Vector2.UP
+	Jukebox.play_song("res://tunes/crimbus/crimmas.wav")
 	match stats.spawn_metadata:
 		"bottom":
 			#Jukebox.play_song("res://tunes/lab/background_science.wav")

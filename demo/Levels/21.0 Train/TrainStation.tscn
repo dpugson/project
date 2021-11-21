@@ -187,8 +187,8 @@ collision_layer = 16
 [node name="CollisionShape2D" parent="TrainSummonBox" index="0"]
 position = Vector2( 6.41333, 76.9598 )
 shape = SubResource( 3 )
+
 [connection signal="area_entered" from="TrainSummonBox" to="." method="_on_TrainSummonBox_area_entered"]
 
 [editable path="PuppyCamera"]
-
 [editable path="TrainSummonBox"]

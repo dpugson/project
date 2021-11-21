@@ -21,13 +21,13 @@
 [ext_resource path="res://sprites/leafpile/leaf3.png" type="Texture" id=23]
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=26]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 681.443, 35.5073 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 61.4875, 336.522 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 83.7338, 520.403 )
 
 [node name="OutsideLab02" type="Node2D"]
@@ -204,7 +204,7 @@ position = Vector2( 1790.53, 320.154 )
 
 [node name="nograb" type="CollisionShape2D" parent="BGStuff/sausages/StaticBody2D"]
 position = Vector2( 3, -30 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="island" type="Node2D" parent="BGStuff"]
 modulate = Color( 0.439216, 0.447059, 0.376471, 1 )
@@ -751,14 +751,14 @@ position = Vector2( 2763.2, 852.843 )
 
 [node name="CollisionShape2D" parent="RightTZ" index="0"]
 position = Vector2( 860.098, 284.963 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="LeftTZ" parent="." instance=ExtResource( 26 )]
 position = Vector2( 769.611, 201.061 )
 
 [node name="CollisionShape2D" parent="LeftTZ" index="0"]
 position = Vector2( -525.196, 867.668 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [connection signal="transition_triggered" from="RightTZ" to="." method="_on_RightTZ_transition_triggered"]
 [connection signal="transition_triggered" from="LeftTZ" to="." method="_on_LeftTZ_transition_triggered"]

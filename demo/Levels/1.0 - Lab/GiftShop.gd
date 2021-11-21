@@ -51,7 +51,7 @@ func _ready():
 func drop_off_puppy_talk():
 	var dialogue = {
 		"begin" : [
-			"TEXT", "Ok! I'm gonna get on the phone and make a quick call.", ROBOT_SPEECH_SPEED, 
+			"TEXT", "Ok! I am going to get on the phone and make a quick call.", ROBOT_SPEECH_SPEED, 
 			"c", null, null, ROBOT_PITCH
 		],
 		"c" : [
@@ -81,7 +81,7 @@ func done_with_cutscene():
 var robot_talk_index = 0
 func _on_RobotSeenBox_seen(obj):
 	var choices = [
-		"Hmm mmm... Yup... ok!",
+		"Hmm mmm... Yes... ok...",
 		"Oh, you don't say?",
 		"Um- is there anyone else I can talk to?",
 		"Could you say that again?"

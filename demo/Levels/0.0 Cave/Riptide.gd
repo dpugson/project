@@ -22,5 +22,5 @@ func _input(event):
 		Jukebox.stop()
 
 func transition_away():
-	transition.go_to("res://Levels/1.0 - Lab/Bathroom.tscn", "emerge_cutscene")
+	transition.go_to("res://Levels/0.00 - Recurring/RadioAnnouncement.tscn", "MISSING DOG")
 

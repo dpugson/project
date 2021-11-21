@@ -64,7 +64,7 @@ onready var grabshot_timer = $grabshot_center/grabshot_timer
 onready var grabshot_audio_player = $grabshot_center/grabshot_audio_animator
 
 func _ready():
-	stats.set_bool("grabshot")
+	#stats.set_bool("grabshot")
 	
 	stats.connect("out_of_health", self, "queue_free")
 	lookbox.connect("saw_something", self, "set_speed_to_zero")
@@ -285,10 +285,10 @@ func _physics_process(delta):
 #				state = WALK
 			turbo_move(delta, input)
 		GRABSHOT_AIMING:
+			animation_state.travel("idle")
 			grabshot.visible = true
 			grabshot_wait()
 		GRABSHOT_LAUNCHING:
-			animation_state.travel("idle")
 			grabshot_launch()
 		GRABSHOT_RETURNING:
 			grabshot_retract()

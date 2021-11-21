@@ -332,7 +332,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id=13]
 resource_name = "move_on_out"
-length = 3.0
+length = 2.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/robot:animation")
 tracks/0/interp = 1
@@ -340,7 +340,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2.2 ),
+"times": PoolRealArray( 0, 1.8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "dogleft", "dogup" ]
@@ -352,10 +352,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3, 1.8 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 1.8, 2, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 631.202, -740.169 ), Vector2( 631.202, -740.169 ), Vector2( 355.198, -740.169 ) ]
+"values": [ Vector2( 631.202, -740.169 ), Vector2( 631.202, -740.169 ), Vector2( 355.198, -740.169 ), Vector2( 355.198, -740.169 ), Vector2( 355.198, -774.148 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("YSort/robot:visible")
@@ -388,7 +388,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.3, 1.8 ),
+"times": PoolRealArray( 0, 0.3, 2.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -400,7 +400,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 3 ),
+"times": PoolRealArray( 2.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -863,8 +863,8 @@ position = Vector2( 754.036, -623.717 )
 position = Vector2( -33.387, -36.3206 )
 
 [node name="robot" parent="YSort" instance=ExtResource( 2 )]
-visible = false
-position = Vector2( -1104.55, -1099.54 )
+position = Vector2( 355.198, -774.148 )
+animation = "dogup"
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/robot"]
 position = Vector2( 366.056, -231.518 )

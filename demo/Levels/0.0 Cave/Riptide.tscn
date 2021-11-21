@@ -258,7 +258,6 @@ margin_bottom = 1686.68
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -72.7563, 397.876 )
 frames = SubResource( 1 )
-frame = 3
 playing = true
 
 [node name="Ripples" parent="AnimatedSprite" instance=ExtResource( 5 )]

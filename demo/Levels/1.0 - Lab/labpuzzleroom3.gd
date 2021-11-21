@@ -23,6 +23,7 @@ func _ready():
 	Jukebox.stop()
 	#Jukebox.play_song("res://tunes/lab/background_science.wav")
 	#stats.spawn_metadata = "cutscene"
+	stats.spawn_metadata = "beat_game"
 	match stats.spawn_metadata:
 		"bottom":
 			player_position = bottomSP.global_position
@@ -76,15 +77,15 @@ func dropoff():
 			"begin2", null, null, ROBOT_PITCH
 		],
 		"begin2" : [
-			"TEXT", "I'm sorry I can't play with you right now.", ROBOT_SPEECH_SPEED, 
+			"TEXT", "I am sorry I can't play with you right now.", ROBOT_SPEECH_SPEED, 
 			"2", null, null, ROBOT_PITCH
 		],
 		"2" : [
-			"TEXT", "It's just, I *need* to get this work done...", ROBOT_SPEECH_SPEED, 
+			"TEXT", "It is just, I *need* to get this work done...", ROBOT_SPEECH_SPEED, 
 			"3", null, null, ROBOT_PITCH
 		],
 		"3" : [
-			"TEXT", "You see, I'm working on an important science paper...", ROBOT_SPEECH_SPEED, 
+			"TEXT", "You see, I am working on an important science paper...", ROBOT_SPEECH_SPEED, 
 			"4", null, null, ROBOT_PITCH
 		],
 		"4" : [
@@ -181,7 +182,7 @@ func _on_ThesisSeenBox_seen(obj):
 
 func _on_ChemistrySeenBox_seen(obj):
 	DialogueHelper.showDialogueSimple(self, [
-		"A master piece in blown glass."
+		"A masterpiece in blown glass."
 	], 0.05)
 
 func _on_RedBookSeenBox_seen(obj):
@@ -255,15 +256,15 @@ func laughing():
 			"c4", null, null, ROBOT_PITCH
 		],
 		"c4" : [
-			"TEXT", "My apologies... I don't know what got into me!", ROBOT_SPEECH_SPEED, 
+			"TEXT", "My apologies... I don't know what came over me!", ROBOT_SPEECH_SPEED, 
 			"c5", null, null, ROBOT_PITCH
 		],
 		"c5" : [
-			"TEXT", "You know what! I'm going to take a break!", ROBOT_SPEECH_SPEED, 
+			"TEXT", "You know what! I am going to take a break!", ROBOT_SPEECH_SPEED, 
 			"c6", null, null, ROBOT_PITCH
 		],
 		"c6" : [
-			"TEXT", "Let's figure out how to get you home...", ROBOT_SPEECH_SPEED, 
+			"TEXT", "Let us figure out how to get you home...", ROBOT_SPEECH_SPEED, 
 			null, null, null, ROBOT_PITCH
 		],
 	}

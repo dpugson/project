@@ -9,7 +9,7 @@ export(Array, String, MULTILINE) var description = null
 func _ready():
 	pass # Replace with function body.
 
-func _on_SeenBox_seen(obj):
+func _on_SeenBox_seen(_obj):
 	if description != null:
 		DialogueHelper.showDialogueSimple(
 			self, description, 0.05, null, on_top)

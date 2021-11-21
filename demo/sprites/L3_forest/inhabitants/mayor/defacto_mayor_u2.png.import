@@ -2,19 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/leafbold1_r.png-c923de90196984574885f70d78907ff8.stex"
+path="res://.import/defacto_mayor_u2.png-01f3769e20a3b3d1dd8430636d5f2b51.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/L3_forest/inhabitants/leafbold1_r.png"
-dest_files=[ "res://.import/leafbold1_r.png-c923de90196984574885f70d78907ff8.stex" ]
+source_file="res://sprites/L3_forest/inhabitants/mayor/defacto_mayor_u2.png"
+dest_files=[ "res://.import/defacto_mayor_u2.png-01f3769e20a3b3d1dd8430636d5f2b51.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

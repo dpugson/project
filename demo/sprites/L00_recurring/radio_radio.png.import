@@ -2,19 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/leafbold1_l.png-b98aabc328247f3062c87ab54f6d3ded.stex"
+path="res://.import/radio_radio.png-f83291febaccdf42925a7c97e0a9a833.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/L3_forest/inhabitants/leafbold1_l.png"
-dest_files=[ "res://.import/leafbold1_l.png-b98aabc328247f3062c87ab54f6d3ded.stex" ]
+source_file="res://sprites/L00_recurring/radio_radio.png"
+dest_files=[ "res://.import/radio_radio.png-f83291febaccdf42925a7c97e0a9a833.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

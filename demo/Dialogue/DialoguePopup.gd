@@ -2,6 +2,9 @@ extends CanvasLayer
 
 export var SECONDS_PER_CHAR = 0.05
 
+# DOCUMENTATION OF STRUCTURE
+# type, text, wait time, next (options), action, picture, pitch
+
 enum INPUT_TYPE {
 	NONE,
 	NEXT,
@@ -220,9 +223,6 @@ func wait_for_done():
 	
 func wait_for_choice():
 	waiting_for_input = INPUT_TYPE.CHOICE
-
-# DOCUMENTATION OF STRUCTURE
-# type, text, wait time, next (options), action, picture, pitch
 
 func get_type():
 	return get_row()[0]
