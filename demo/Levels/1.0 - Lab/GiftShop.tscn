@@ -784,8 +784,7 @@ position = Vector2( 1.89209, -155.965 )
 
 [node name="zoompanel" parent="flavor" instance=ExtResource( 27 )]
 position = Vector2( 1001.37, 488.737 )
-description = [ "Zoom panels! You feel a little nauseous
-looking at them." ]
+description = [ "Zoom panels! You feel a little nauseous looking at them." ]
 
 [node name="CollisionShape2D" parent="flavor/zoompanel/SeenBox" index="0"]
 position = Vector2( -27.107, 0 )

@@ -23,7 +23,7 @@ func _ready():
 	Jukebox.stop()
 	#Jukebox.play_song("res://tunes/lab/background_science.wav")
 	#stats.spawn_metadata = "cutscene"
-	stats.spawn_metadata = "beat_game"
+	#stats.spawn_metadata = "beat_game"
 	match stats.spawn_metadata:
 		"bottom":
 			player_position = bottomSP.global_position

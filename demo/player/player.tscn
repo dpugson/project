@@ -2145,6 +2145,7 @@ script = ExtResource( 1 )
 [node name="Ripples" parent="." instance=ExtResource( 40 )]
 visible = false
 position = Vector2( 1.57927, 32.351 )
+frame = 1
 
 [node name="ShadowAnimation" type="AnimatedSprite" parent="."]
 visible = false
