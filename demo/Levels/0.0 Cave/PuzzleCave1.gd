@@ -77,7 +77,7 @@ func opine():
 	DialogueHelper.showDialogue(self, get_dialogue(gilby.VOICE_PITCH))
 
 func _on_UpperTZ_transition_triggered():
-	Transition.go_to("res://Levels/0.0 Cave/PuzzleCave3.tscn", "bottom")
+	Transition.go_to("res://Levels/0.0 Cave/PuzzleCave2.tscn", "bottom")
 
 func _on_LowerTZ_transition_triggered():
 	Transition.go_to("res://Levels/0.0 Cave/Cave03.tscn", "crumbly")

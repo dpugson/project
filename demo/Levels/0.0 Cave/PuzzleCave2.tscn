@@ -124,6 +124,7 @@ shape = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
 [connection signal="pulled" from="YSort/LeftLever" to="." method="_on_LeftLever_pulled"]
 [connection signal="pulled" from="YSort/RightLever" to="." method="_on_RightLever_pulled"]
 [connection signal="destroyed" from="YSort/Door" to="." method="_on_Door_destroyed"]
@@ -132,9 +133,6 @@ one_shot = true
 [connection signal="transition_triggered" from="LowerTZ" to="." method="_on_LowerTZ_transition_triggered"]
 
 [editable path="PuppyCamera"]
-
 [editable path="UpperTZ"]
-
 [editable path="BasementTZ"]
-
 [editable path="LowerTZ"]

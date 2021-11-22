@@ -26,7 +26,7 @@
 [ext_resource path="res://sprites/L3_forest/lab_exterior_upper_left_tree_back-min.png" type="Texture" id=24]
 [ext_resource path="res://world/leaf_pile.tscn" type="PackedScene" id=25]
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=26]
-[ext_resource path="res://sprites/cavestuff/ball.png" type="Texture" id=27]
+[ext_resource path="res://Levels/2.0 - Forest/the_real_ball.tscn" type="PackedScene" id=27]
 [ext_resource path="res://sprites/cavestuff/bone.png" type="Texture" id=28]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -220,18 +220,11 @@ position = Vector2( 1512.04, 844.651 )
 [node name="LeafPile5" parent="BGStuff" instance=ExtResource( 25 )]
 position = Vector2( 1574.73, 736.682 )
 
-[node name="ball" type="Sprite" parent="BGStuff"]
-position = Vector2( 2029.34, 204.547 )
-texture = ExtResource( 27 )
-
-[node name="bone" type="Sprite" parent="BGStuff"]
-position = Vector2( 2168.03, 125.626 )
-texture = ExtResource( 28 )
-
 [node name="YSort" type="YSort" parent="."]
 
 [node name="player" parent="YSort" instance=ExtResource( 12 )]
 position = Vector2( 404.439, 906.347 )
+camera = NodePath("../../PuppyCamera")
 
 [node name="fade" type="Node2D" parent="YSort"]
 position = Vector2( 1153.69, 292.666 )
@@ -307,6 +300,14 @@ texture = ExtResource( 9 )
 [node name="lab_exterior_upper_front_tree-min2" type="Sprite" parent="YSort/puzzle_house"]
 position = Vector2( -241.093, -203.696 )
 texture = ExtResource( 3 )
+
+[node name="the_real_ball" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 2005.35, 240.643 )
+
+[node name="bone" type="Sprite" parent="YSort"]
+visible = false
+position = Vector2( 2168.03, 125.626 )
+texture = ExtResource( 28 )
 
 [node name="FGStuff" type="Node2D" parent="."]
 position = Vector2( 644.2, 716.689 )
@@ -520,7 +521,7 @@ shape = SubResource( 1 )
 position = Vector2( 2940.71, 758.955 )
 
 [node name="CollisionShape2D" parent="RightTZ" index="0"]
-position = Vector2( 342.259, -36.0981 )
+position = Vector2( 414.381, -29.8267 )
 shape = SubResource( 2 )
 
 [node name="TopTZ" parent="." instance=ExtResource( 26 )]

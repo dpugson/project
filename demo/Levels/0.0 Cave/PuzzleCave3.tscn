@@ -103,11 +103,10 @@ position = Vector2( 940.394, 1080.95 )
 [node name="CollisionShape2D" parent="LowerTZ" index="0"]
 position = Vector2( 10.0398, 6.69312 )
 shape = SubResource( 2 )
+
 [connection signal="transition_triggered" from="UpperTZ" to="." method="_on_UpperTZ_transition_triggered"]
 [connection signal="transition_triggered" from="LowerTZ" to="." method="_on_LowerTZ_transition_triggered"]
 
 [editable path="PuppyCamera"]
-
 [editable path="UpperTZ"]
-
 [editable path="LowerTZ"]

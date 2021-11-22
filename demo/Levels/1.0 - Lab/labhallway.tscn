@@ -311,6 +311,12 @@ position = Vector2( 1656.74, 607.557 )
 scale = Vector2( 0.7841, 0.7748 )
 texture = ExtResource( 17 )
 
+[node name="SaveStar" parent="." instance=ExtResource( 16 )]
+position = Vector2( 1125.83, 752.889 )
+save_spot_name = "The Lab - Back Hallway"
+home = "res://Levels/1.0 - Lab/labhallway.tscn"
+flavor_text = "Greetings, Soggy Star!"
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="safety_poster" type="Sprite" parent="YSort"]
@@ -349,12 +355,6 @@ position = Vector2( -0.740601, -30.8197 )
 [node name="CollisionShape2D" parent="YSort/vending_machine/sodamachine" index="0"]
 position = Vector2( -3.52374, 10.5712 )
 shape = SubResource( 2 )
-
-[node name="SaveStar" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 1125.83, 754.078 )
-save_spot_name = "The Lab - Back Hallway"
-home = "res://Levels/1.0 - Lab/labhallway.tscn"
-flavor_text = "Greetings, Soggy Star!"
 
 [node name="wallet" type="Sprite" parent="YSort"]
 show_behind_parent = true
@@ -428,7 +428,6 @@ position = Vector2( 519.083, 630.15 )
 [node name="AnimatedSprite" parent="Robot" instance=ExtResource( 14 )]
 position = Vector2( -1.60675, -118.341 )
 animation = "dogdown"
-frame = 1
 playing = true
 
 [node name="labdoor" type="Node2D" parent="."]

@@ -22,6 +22,13 @@ const ball = {
 	description = "Your greatest treasure."
 }
 
+const real_ball = {
+	type = "2D",
+	image = "res://sprites/cavestuff/ball.png",
+	name = "The Real Ball",
+	description = "The Real Ball"
+}
+
 const memoryofsalt = {
 	type = "Memory",
 	image = null,

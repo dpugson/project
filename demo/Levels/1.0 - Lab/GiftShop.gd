@@ -78,17 +78,27 @@ func done_with_cutscene():
 	stats.set_bool("ROBOT_AT_PHONE")
 
 
-var robot_talk_index = 0
+var ROBOT_TALKED_TO_TIMES = "ROBOT_TALKED_TO_TIMES"
 func _on_RobotSeenBox_seen(obj):
 	var choices = [
-		"Hmm mmm... Yes... ok...",
-		"Oh, you don't say?",
-		"Um- is there anyone else I can talk to?",
-		"Could you say that again?"
+		"Yes, I would like to talk to *indistinct*.",
+		"Yes, I will hold...",
+		"Hello? Hello?",
+		"Is anybody there?",
+		"Hello?",
+		"hello...",
+		"I see...",
+		"I... oh!!!",
+		"Oh no...",
+		"I see......",
+		"I am so sorry...",
+		"Ok. I understand.",
 	]
-	var dialogue = choices[robot_talk_index % len(choices)]
-	robot_talk_index += 1
-	DialogueHelper.showDialogueSimple(self, [dialogue], ROBOT_SPEECH_SPEED, ROBOT_PITCH, false)
+	var times = stats.world_state.get(ROBOT_TALKED_TO_TIMES, -1) + 1
+	stats.world_state[ROBOT_TALKED_TO_TIMES] = times
+	if times < len(choices):
+		var dialogue = choices[times]
+		DialogueHelper.showDialogueSimple(self, [dialogue], ROBOT_SPEECH_SPEED, ROBOT_PITCH, false)
 
 func _on_BottomTZ_transition_triggered():
 	Transition.go_to("res://Levels/1.0 - Lab/labpuzzleroom3.tscn", "top")

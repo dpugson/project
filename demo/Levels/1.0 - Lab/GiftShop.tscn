@@ -434,10 +434,10 @@ tracks/6/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 40.8499, 111.794 )
+extents = Vector2( 40.8499, 71.0132 )
 
 [sub_resource type="RectangleShape2D" id=19]
-extents = Vector2( 31.8624, 108.316 )
+extents = Vector2( 46.6238, 67.721 )
 
 [sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 74.5154, 91.9236 )
@@ -571,6 +571,12 @@ texture = ExtResource( 16 )
 [node name="giftshop-min" type="Sprite" parent="."]
 position = Vector2( 911.987, 428.518 )
 texture = ExtResource( 4 )
+
+[node name="SaveStar" parent="." instance=ExtResource( 29 )]
+position = Vector2( 1216.03, 738.304 )
+save_spot_name = "The Lab - The Gift Shop"
+home = "res://Levels/1.0 - Lab/GiftShop.tscn"
+flavor_text = "Greetings, lick star!"
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -765,7 +771,7 @@ position = Vector2( 842.893, 920.59 )
 description = [ "KACHING! It smells like crisp Gs." ]
 
 [node name="CollisionShape2D" parent="flavor/cash_register_description/SeenBox" index="0"]
-position = Vector2( 0, 51.3882 )
+position = Vector2( 0, -12.1079 )
 shape = SubResource( 18 )
 
 [node name="SmellArrow" parent="flavor/cash_register_description/SeenBox/CollisionShape2D" index="0"]
@@ -776,7 +782,7 @@ position = Vector2( 1131.75, 977.602 )
 description = [ "A delightful assortment of mugs, sadly out of reach." ]
 
 [node name="CollisionShape2D" parent="flavor/mugs/SeenBox" index="0"]
-position = Vector2( -6.82617, -4.55072 )
+position = Vector2( -8.41357, -56.1412 )
 shape = SubResource( 19 )
 
 [node name="SmellArrow" parent="flavor/mugs/SeenBox/CollisionShape2D" index="0"]
@@ -864,12 +870,6 @@ position = Vector2( -6.2345, -139.849 )
 position = Vector2( 1154.46, 195.283 )
 locked_description = [ "Hmm.. The door appears to be fake!", "This is the end of the demo!
 Thanks for playing!" ]
-
-[node name="SaveStar" parent="." instance=ExtResource( 29 )]
-position = Vector2( 1216.03, 738.304 )
-save_spot_name = "The Lab - The Gift Shop"
-home = "res://Levels/1.0 - Lab/GiftShop.tscn"
-flavor_text = "Greetings, lick star!"
 
 [connection signal="seen" from="YSort/Robot/RobotSeenBox" to="." method="_on_RobotSeenBox_seen"]
 [connection signal="transition_triggered" from="BottomTZ" to="." method="_on_BottomTZ_transition_triggered"]
