@@ -1,0 +1,140 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://sprites/L0_train/snowland/snow_tile.png" type="Texture" id=1]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/2.0 - Forest/snowtree.tscn" type="PackedScene" id=3]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/21.0 Train/snowland/SnowTest.gd" type="Script" id=5]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/2.0 - Forest/drift.tscn" type="PackedScene" id=7]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Levels/2.0 - Forest/SinglePine.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 101.19, 1203.33 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 71.0704, 1381.9 )
+
+[node name="SnowTest" type="Node2D"]
+position = Vector2( -2.09241, -4.18497 )
+script = ExtResource( 5 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="BG2" parent="CanvasLayer" instance=ExtResource( 4 )]
+anchor_left = -0.00208333
+anchor_right = -0.00208333
+margin_left = -918.708
+margin_top = -896.513
+margin_right = 3044.29
+margin_bottom = 2153.49
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -928.0
+margin_top = -452.0
+margin_right = 2862.0
+margin_bottom = 2407.0
+texture = ExtResource( 1 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1323.68, 969.66 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -1232, -552.388 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 3363.2, 2422.18 )
+
+[node name="YSort" type="YSort" parent="."]
+position = Vector2( 44, 16 )
+
+[node name="SinglePine" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 687.019, 1090.59 )
+
+[node name="SinglePine2" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 186.931, 975.916 )
+
+[node name="SinglePine3" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 378.047, 864.431 )
+
+[node name="SinglePine4" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1572.52, 851.69 )
+
+[node name="SinglePine5" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1492.89, 698.797 )
+
+[node name="SinglePine6" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1862.38, 883.543 )
+
+[node name="player" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 985.894, 1265.74 )
+camera = NodePath("../../PuppyCamera")
+
+[node name="snowtree" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 480, 660 )
+
+[node name="snowtree2" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 284, 796 )
+
+[node name="snowtree3" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 512, 948 )
+
+[node name="snowtree4" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 1508, 560 )
+
+[node name="snowtree5" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 1696, 752 )
+
+[node name="snowtree6" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 1740, 420 )
+
+[node name="drift" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 350, 1028 )
+scale = Vector2( 1.87449, 1.87449 )
+
+[node name="drift2" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 142, 874 )
+
+[node name="drift5" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 1734.64, 848.518 )
+
+[node name="drift3" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 1458, 676 )
+
+[node name="drift4" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 676, 648 )
+scale = Vector2( 1, 1 )
+
+[node name="TopSpawnPoint" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1247.62, 1170.12 )
+
+[node name="BottomSpawnPoint" parent="." instance=ExtResource( 6 )]
+position = Vector2( 56.3494, 1168.77 )
+
+[node name="LowerTZ" parent="." instance=ExtResource( 8 )]
+position = Vector2( -1589.44, 1112.54 )
+
+[node name="CollisionShape2D" parent="LowerTZ" index="0"]
+position = Vector2( 10.0398, 6.69312 )
+shape = SubResource( 1 )
+
+[node name="UpperTZ" parent="." instance=ExtResource( 8 )]
+position = Vector2( 2969.31, 1448.11 )
+
+[node name="CollisionShape2D" parent="UpperTZ" index="0"]
+position = Vector2( -197.99, -240.416 )
+shape = SubResource( 2 )
+
+[connection signal="transition_triggered" from="LowerTZ" to="." method="_on_LowerTZ_transition_triggered"]
+[connection signal="transition_triggered" from="UpperTZ" to="." method="_on_UpperTZ_transition_triggered"]
+
+[editable path="PuppyCamera"]
+[editable path="LowerTZ"]
+[editable path="UpperTZ"]

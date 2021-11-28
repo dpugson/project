@@ -29,17 +29,17 @@
 [ext_resource path="res://Levels/2.0 - Forest/the_real_ball.tscn" type="PackedScene" id=27]
 [ext_resource path="res://sprites/cavestuff/bone.png" type="Texture" id=28]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 54.5379
 height = 62.868
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 61.4875, 336.522 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 37.8086, 121.57 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 136.339, 39.2026 )
 
 [node name="OutsideLab01" type="Node2D"]
@@ -58,7 +58,7 @@ __meta__ = {
 }
 
 [node name="PuppyCamera" parent="." instance=ExtResource( 13 )]
-position = Vector2( -1592.55, 1314.22 )
+position = Vector2( 402.45, 967.22 )
 
 [node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
 position = Vector2( -1277.02, -2251.29 )
@@ -515,21 +515,21 @@ polygon = PoolVector2Array( -420.096, 1136.03, -415.998, 1433.11, -362.231, 1433
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/StaticBody2D"]
 position = Vector2( 1003.93, 600.306 )
 rotation = 1.5708
-shape = SubResource( 1 )
+shape = SubResource( 6 )
 
 [node name="RightTZ" parent="." instance=ExtResource( 26 )]
 position = Vector2( 2940.71, 758.955 )
 
 [node name="CollisionShape2D" parent="RightTZ" index="0"]
 position = Vector2( 414.381, -29.8267 )
-shape = SubResource( 2 )
+shape = SubResource( 7 )
 
 [node name="TopTZ" parent="." instance=ExtResource( 26 )]
 position = Vector2( 776.083, 198.115 )
 
 [node name="CollisionShape2D" parent="TopTZ" index="0"]
 position = Vector2( 100.868, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 8 )
 
 [node name="PuzzleHouseTZ" parent="." instance=ExtResource( 26 )]
 position = Vector2( 44.2282, 836.701 )
@@ -537,7 +537,7 @@ position = Vector2( 44.2282, 836.701 )
 [node name="CollisionShape2D" parent="PuzzleHouseTZ" index="0"]
 position = Vector2( -19.3949, 2.9873 )
 rotation = 2.35619
-shape = SubResource( 4 )
+shape = SubResource( 9 )
 
 [connection signal="transition_triggered" from="RightTZ" to="." method="_on_RightTZ_transition_triggered"]
 [connection signal="transition_triggered" from="TopTZ" to="." method="_on_TopTZ_transition_triggered"]

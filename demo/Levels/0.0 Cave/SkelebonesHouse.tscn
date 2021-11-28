@@ -440,7 +440,7 @@ texture = ExtResource( 7 )
 margin_left = -864.0
 margin_top = -2614.0
 margin_right = 1942.0
-margin_bottom = 1616.0
+margin_bottom = 2501.0
 
 [node name="skelebones_house" type="Sprite" parent="."]
 visible = false

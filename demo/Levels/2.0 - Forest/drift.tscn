@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/L0_train/snowland/drift_01.png" type="Texture" id=1]
+
+[node name="drift" type="Node2D"]
+
+[node name="drift_01" type="Sprite" parent="."]
+position = Vector2( 63.8425, 0.179001 )
+texture = ExtResource( 1 )

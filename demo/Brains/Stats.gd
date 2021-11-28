@@ -126,6 +126,12 @@ func save_preferences():
 	}, " "))
 	file.close()
 
+func spawn_player_lite(player, position, orientation):
+	player.position = position
+	player.set_blend_positions(orientation)
+	player.turbo_input = orientation
+	player.previous_input = orientation
+
 func spawn_player(player, player_parent, camera_path,
 				position: Vector2, orientation: Vector2,
 				camera_offset = null):

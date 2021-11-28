@@ -464,10 +464,10 @@ extents = Vector2( 59.1652, 52.4553 )
 script = ExtResource( 10 )
 
 [node name="BG" parent="." instance=ExtResource( 1 )]
-margin_left = -2701.18
-margin_top = -4335.2
-margin_right = 5158.82
-margin_bottom = 4791.8
+margin_left = -2719.47
+margin_top = -4412.94
+margin_right = 5140.53
+margin_bottom = 4714.06
 
 [node name="Forest" type="Node2D" parent="."]
 position = Vector2( -12.7515, -6.37573 )
@@ -610,6 +610,7 @@ texture = ExtResource( 6 )
 
 [node name="player" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 554.383, 1232.2 )
+camera = NodePath("../../PuppyCamera")
 
 [node name="topofshelf" type="Node2D" parent="YSort"]
 position = Vector2( 526.191, 711.005 )
@@ -657,6 +658,8 @@ shape = SubResource( 2 )
 
 [node name="SmellArrow" parent="YSort/Robot/RobotSeenBox/CollisionShape2D" index="0"]
 position = Vector2( 1.95178, -238.763 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Robot"]
 
 [node name="giftshop_counterdoorthing" type="Sprite" parent="."]
 position = Vector2( 700.462, 924.355 )

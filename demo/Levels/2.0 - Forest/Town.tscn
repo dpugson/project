@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://sprites/L3_forest/town_floor-min.png" type="Texture" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=8]
 [ext_resource path="res://sprites/L3_forest/town_bridge.png" type="Texture" id=9]
 [ext_resource path="res://sprites/L3_forest/vignette_fade.png" type="Texture" id=11]
-[ext_resource path="res://Levels/2.0 - Forest/shadowed_pines.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Levels/2.0 - Forest/ysortpines.tscn" type="PackedScene" id=13]
 [ext_resource path="res://sprites/leafpiletile2dark.png" type="Texture" id=14]
 [ext_resource path="res://Levels/2.0 - Forest/TownFountain.tscn" type="PackedScene" id=15]
@@ -18,6 +17,7 @@
 [ext_resource path="res://StarBG.tscn" type="PackedScene" id=17]
 
 [node name="Town" type="Node2D"]
+position = Vector2( -2.79663, 0 )
 script = ExtResource( 7 )
 
 [node name="BG" parent="." instance=ExtResource( 4 )]
@@ -125,110 +125,6 @@ color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="bgtrees" type="Node2D" parent="."]
-
-[node name="left" type="Node2D" parent="bgtrees"]
-position = Vector2( -45.8843, -37.5417 )
-
-[node name="shadowed_pines" parent="bgtrees/left" instance=ExtResource( 12 )]
-margin_left = -1348.58
-margin_top = -391.778
-margin_right = 705.417
-margin_bottom = 157.222
-
-[node name="shadowed_pines2" parent="bgtrees/left" instance=ExtResource( 12 )]
-margin_left = -1708.52
-margin_top = -293.269
-margin_right = 345.479
-margin_bottom = 255.731
-
-[node name="shadowed_pines3" parent="bgtrees/left" instance=ExtResource( 12 )]
-margin_left = -1602.43
-margin_top = -149.294
-margin_right = 451.566
-margin_bottom = 399.706
-
-[node name="shadowed_pines4" parent="bgtrees/left" instance=ExtResource( 12 )]
-margin_left = -1935.85
-margin_top = 6.04803
-margin_right = 118.149
-margin_bottom = 555.048
-
-[node name="shadowed_pines5" parent="bgtrees/left" instance=ExtResource( 12 )]
-margin_left = -2064.67
-margin_top = 142.446
-margin_right = -10.6709
-margin_bottom = 691.446
-
-[node name="shadowed_pines6" parent="bgtrees/left" instance=ExtResource( 12 )]
-margin_left = -2178.33
-margin_top = 286.421
-margin_right = -124.336
-margin_bottom = 835.421
-
-[node name="shadowed_pines7" parent="bgtrees/left" instance=ExtResource( 12 )]
-margin_left = -2098.77
-margin_top = 422.819
-margin_right = -44.7705
-margin_bottom = 971.819
-
-[node name="shadowed_pines8" parent="bgtrees/left" instance=ExtResource( 12 )]
-margin_left = -2231.38
-margin_top = 612.26
-margin_right = -177.379
-margin_bottom = 1161.26
-
-[node name="right" type="Node2D" parent="bgtrees"]
-position = Vector2( 4158.79, -37.5417 )
-
-[node name="shadowed_pines" parent="bgtrees/right" instance=ExtResource( 12 )]
-margin_left = -2751.34
-margin_top = -332.387
-margin_right = -697.345
-margin_bottom = 216.613
-
-[node name="shadowed_pines2" parent="bgtrees/right" instance=ExtResource( 12 )]
-margin_left = -2658.78
-margin_top = -182.971
-margin_right = -604.78
-margin_bottom = 366.029
-
-[node name="shadowed_pines3" parent="bgtrees/right" instance=ExtResource( 12 )]
-margin_left = -2555.52
-margin_top = -92.7306
-margin_right = -501.521
-margin_bottom = 456.269
-
-[node name="shadowed_pines4" parent="bgtrees/right" instance=ExtResource( 12 )]
-margin_left = -2425.12
-margin_top = 28.6732
-margin_right = -371.121
-margin_bottom = 577.673
-
-[node name="shadowed_pines5" parent="bgtrees/right" instance=ExtResource( 12 )]
-margin_left = -2313.55
-margin_top = 139.618
-margin_right = -259.548
-margin_bottom = 688.617
-
-[node name="shadowed_pines6" parent="bgtrees/right" instance=ExtResource( 12 )]
-margin_left = -2432.87
-margin_top = 266.624
-margin_right = -378.87
-margin_bottom = 815.624
-
-[node name="shadowed_pines7" parent="bgtrees/right" instance=ExtResource( 12 )]
-margin_left = -2336.53
-margin_top = 426.99
-margin_right = -282.535
-margin_bottom = 975.99
-
-[node name="shadowed_pines8" parent="bgtrees/right" instance=ExtResource( 12 )]
-margin_left = -2231.38
-margin_top = 612.26
-margin_right = -177.379
-margin_bottom = 1161.26
 
 [node name="vignette_fade3" type="Sprite" parent="."]
 position = Vector2( 978.35, 204.473 )

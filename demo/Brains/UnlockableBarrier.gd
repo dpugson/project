@@ -24,7 +24,7 @@ func lock():
 	barrier.disabled = false
 
 
-func _on_SeenBox_seen(obj):
+func _on_SeenBox_seen(_obj):
 	if locked_description != null and barrier.disabled == false:
 		DialogueHelper.showDialogueSimple(
 			self, locked_description, 0.05, null, dialogue_on_top)

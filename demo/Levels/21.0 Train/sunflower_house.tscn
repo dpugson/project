@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/L0_train/sunflower_road/sunflower_house-min.png" type="Texture" id=1]
+
+[node name="house" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -101.594
+margin_top = -270.154
+margin_right = 117.406
+margin_bottom = 109.846
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sunflower_house-min" type="Sprite" parent="."]
+position = Vector2( 114.004, -317.522 )
+texture = ExtResource( 1 )

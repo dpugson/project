@@ -815,6 +815,7 @@ texture = ExtResource( 14 )
 pause_mode = 2
 position = Vector2( 12.2263, -32.6036 )
 frames = SubResource( 3 )
+frame = 2
 playing = true
 
 [node name="fireextinguishstuff" type="Node2D" parent="."]
