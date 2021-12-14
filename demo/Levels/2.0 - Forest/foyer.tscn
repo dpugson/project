@@ -1,0 +1,793 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://sprites/L3_forest/foyer/foyer_back_windows-min.png" type="Texture" id=1]
+[ext_resource path="res://sprites/L3_forest/foyer/foyer_stone_arch-min.png" type="Texture" id=2]
+[ext_resource path="res://sprites/L3_forest/foyer/foyer_stairs_bg-min.png" type="Texture" id=3]
+[ext_resource path="res://sprites/L3_forest/foyer/foyer_chandelier_on-min.png" type="Texture" id=4]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/L3_forest/foyer/foyer_chandelier_off-min.png" type="Texture" id=6]
+[ext_resource path="res://sprites/L3_forest/foyer/foyer_tile-min.png" type="Texture" id=7]
+[ext_resource path="res://sprites/L3_forest/foyer/foyer_cellar_door-min.png" type="Texture" id=8]
+[ext_resource path="res://Levels/2.0 - Forest/foyer.gd" type="Script" id=9]
+[ext_resource path="res://Levels/2.0 - Forest/Candelabra_front.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sprites/L3_forest/foyer/foyer_stairs_right_bannister-min.png" type="Texture" id=11]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sprites/L3_forest/lamp_glow.png" type="Texture" id=13]
+[ext_resource path="res://sprites/L3_forest/vignette_fade.png" type="Texture" id=14]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=15]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=16]
+[ext_resource path="res://sprites/darktree.png" type="Texture" id=17]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=18]
+[ext_resource path="res://sprites/L3_forest/tangle_fg.png" type="Texture" id=19]
+[ext_resource path="res://tunes/mixkiteffects/mixkit-mid-strength-single-thunder-1298.wav" type="AudioStream" id=20]
+[ext_resource path="res://tunes/mixkiteffects/mixkit-strong-close-thunder-explosion-1300.wav" type="AudioStream" id=21]
+[ext_resource path="res://tunes/mixkiteffects/mixkit-rain-loop-1250.wav" type="AudioStream" id=22]
+[ext_resource path="res://tunes/mixkiteffects/mixkit-strong-wind-1156.wav" type="AudioStream" id=23]
+
+[sub_resource type="Curve" id=16]
+min_value = -40.0
+max_value = 40.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.115894, 15.4955 ), 0.0, 0.0, 0, 0, Vector2( 0.168874, -9.36937 ), -507.868, -507.868, 0, 0, Vector2( 0.317881, 4.68468 ), -8.21347, -8.21347, 0, 0, Vector2( 0.418874, -10.8108 ), 0.0, 0.0, 0, 0, Vector2( 0.533113, 18.018 ), 0.0, 0.0, 0, 0, Vector2( 0.705298, -11.1712 ), 189.818, -143.875, 0, 0, Vector2( 0.831126, 39.6396 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.08108 ), 692.946, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=17]
+curve = SubResource( 16 )
+
+[sub_resource type="ParticlesMaterial" id=18]
+emission_shape = 2
+emission_box_extents = Vector3( 300, 1, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 10, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+tangential_accel_curve = SubResource( 17 )
+scale = 2.0
+scale_random = 0.58
+
+[sub_resource type="ParticlesMaterial" id=19]
+emission_shape = 2
+emission_box_extents = Vector3( 300, 1, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 10, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+tangential_accel_curve = SubResource( 17 )
+scale = 4.0
+scale_random = 1.0
+
+[sub_resource type="ParticlesMaterial" id=20]
+emission_shape = 2
+emission_box_extents = Vector3( 300, 1, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 10, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+tangential_accel_curve = SubResource( 17 )
+scale = 6.0
+scale_random = 1.0
+
+[sub_resource type="Animation" id=13]
+resource_name = "misting"
+length = 24.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("mist3:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 8.3, 16.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.337255 ), Color( 1, 1, 1, 0.67451 ), Color( 1, 1, 1, 0.337255 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("mist2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 13.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.337255 ), Color( 1, 1, 1, 0.14902 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("mist:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 20.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.337255 ), Color( 1, 1, 1, 0.572549 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("mist4:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 4.9, 8.8, 16 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.337255 ), Color( 1, 1, 1, 0.596078 ), Color( 1, 1, 1, 0.337255 ), Color( 1, 1, 1, 0.54902 ) ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "lightning"
+length = 20.0
+loop = true
+step = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath("lightning:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5.92, 6, 6.08, 15.8832, 15.9832, 16.1, 16.16, 16.24, 16.32, 18.2, 18.3, 18.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true, false, false, true, false, false, true, false, false, true, false ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("lightning_animator/AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 20 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 21 )
+} ],
+"times": PoolRealArray( 6.64, 16.16 )
+}
+
+[sub_resource type="Curve" id=26]
+min_value = -40.0
+max_value = 40.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.152139, -26.3063 ), 0.0, 0.0, 0, 0, Vector2( 0.328051, 35.3153 ), -89.6431, -89.6431, 0, 0, Vector2( 0.602219, -8.28829 ), 392.243, 392.243, 0, 0, Vector2( 0.784469, 26.6667 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 105.925, 49.1887 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 102.439, 37.0089 )
+
+[sub_resource type="Animation" id=14]
+resource_name = "flicker_slow"
+length = 17.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("foyer_chandelier_off-min:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("lamp_glow:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 7.9, 8.3, 10.4, 13.5, 13.9, 14.1, 14.7, 14.8, 15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.254902 ), Color( 1, 1, 1, 0.254902 ), Color( 1, 1, 1, 0.254902 ), Color( 1, 1, 1, 0.254902 ), Color( 1, 1, 1, 0.254902 ), Color( 1, 1, 1, 0.254902 ), Color( 1, 1, 1, 0.254902 ), Color( 1, 1, 1, 0.254902 ), Color( 1, 1, 1, 0.254902 ), Color( 1, 1, 1, 0.254902 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("foyer_chandelier_on-min:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 7.9, 8.3, 10.4, 13.5, 13.9, 14.1, 14.7, 14.8, 15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.745098, 0.741176, 0.764706, 1 ), Color( 1, 1, 1, 1 ), Color( 0.768627, 0.772549, 0.772549, 1 ), Color( 1, 1, 1, 1 ), Color( 0.768627, 0.772549, 0.772549, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0.890196, 0.882353, 0.890196, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("lamp_glow:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 7.9, 8.3, 10.4, 13.5, 13.9, 14.1, 14.7, 14.8, 15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.16931, 505.697 ), Vector2( 1.16931, 505.697 ), Vector2( 1.16931, 505.697 ), Vector2( 1.16931, 505.697 ), Vector2( 1.16931, 505.697 ), Vector2( 1.16931, 505.697 ), Vector2( 1.16931, 505.697 ), Vector2( 1.16931, 505.697 ), Vector2( 1.16931, 505.697 ), Vector2( 1.16931, 505.697 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("lamp_glow:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 7.9, 8.3, 10.4, 13.5, 13.9, 14.1, 14.7, 14.8, 15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2.35444, 2.35444 ), Vector2( 2.08078, 2.08078 ), Vector2( 2.35444, 2.35444 ), Vector2( 2.08078, 2.08078 ), Vector2( 2.35444, 2.35444 ), Vector2( 2.08078, 2.08078 ), Vector2( 2.35444, 2.35444 ), Vector2( 2.35444, 2.35444 ), Vector2( 2.15, 2.15 ), Vector2( 2.35444, 2.35444 ) ]
+}
+
+[node name="foyer" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="bottomSP" parent="." instance=ExtResource( 18 )]
+position = Vector2( 262.756, -7.39623 )
+
+[node name="topSP" parent="." instance=ExtResource( 18 )]
+position = Vector2( 589.239, -332.254 )
+
+[node name="BG" parent="." instance=ExtResource( 16 )]
+margin_left = -1432.21
+margin_top = -1693.36
+margin_right = 2316.79
+margin_bottom = 1290.64
+
+[node name="outdoors" type="Node2D" parent="."]
+position = Vector2( -1432.21, -1693.36 )
+
+[node name="snowy" type="Node2D" parent="outdoors"]
+visible = false
+
+[node name="sky2" type="ColorRect" parent="outdoors/snowy"]
+margin_left = 1515.21
+margin_top = 542.361
+margin_right = 2123.21
+margin_bottom = 775.361
+color = Color( 0.592157, 0.592157, 0.592157, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="trees2" type="Node2D" parent="outdoors/snowy"]
+position = Vector2( 1432.21, 1693.36 )
+scale = Vector2( 0.789658, 0.789658 )
+
+[node name="snow3" type="Particles2D" parent="outdoors/snowy/trees2"]
+position = Vector2( 420.534, -1439.91 )
+scale = Vector2( 1.26637, 1.26637 )
+amount = 500
+lifetime = 10.0
+preprocess = 5.0
+randomness = 1.0
+process_material = SubResource( 18 )
+
+[node name="darktree4" type="Sprite" parent="outdoors/snowy/trees2"]
+position = Vector2( 755.586, -1289.36 )
+scale = Vector2( 0.435272, 0.435272 )
+texture = ExtResource( 17 )
+
+[node name="darktree5" type="Sprite" parent="outdoors/snowy/trees2"]
+position = Vector2( 530.72, -1300.12 )
+rotation = 3.14159
+scale = Vector2( 0.567, -0.567 )
+texture = ExtResource( 17 )
+
+[node name="mist2" type="ColorRect" parent="outdoors/snowy/trees2"]
+margin_left = 105.0
+margin_top = -1458.0
+margin_right = 865.0
+margin_bottom = -1143.0
+color = Color( 1, 1, 1, 0.113725 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="darktree2" type="Sprite" parent="outdoors/snowy/trees2"]
+position = Vector2( 414.31, -1325.19 )
+scale = Vector2( 0.566655, 0.566655 )
+texture = ExtResource( 17 )
+
+[node name="mist" type="ColorRect" parent="outdoors/snowy/trees2"]
+margin_left = 105.0
+margin_top = -1458.0
+margin_right = 865.0
+margin_bottom = -1143.0
+color = Color( 1, 1, 1, 0.0313726 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="darktree6" type="Sprite" parent="outdoors/snowy/trees2"]
+position = Vector2( 300.337, -1296.06 )
+scale = Vector2( 0.566655, 0.566655 )
+texture = ExtResource( 17 )
+
+[node name="snow2" type="Particles2D" parent="outdoors/snowy/trees2"]
+position = Vector2( 405.311, -1429.16 )
+scale = Vector2( 1.26637, 1.26637 )
+amount = 200
+lifetime = 10.0
+preprocess = 6.0
+randomness = 1.0
+process_material = SubResource( 19 )
+
+[node name="mist5" type="ColorRect" parent="outdoors/snowy/trees2"]
+margin_left = 105.0
+margin_top = -1458.0
+margin_right = 865.0
+margin_bottom = -1143.0
+color = Color( 1, 1, 1, 0.0627451 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="darktree3" type="Sprite" parent="outdoors/snowy/trees2"]
+position = Vector2( 710.491, -1199.37 )
+texture = ExtResource( 17 )
+
+[node name="darktree" type="Sprite" parent="outdoors/snowy/trees2"]
+position = Vector2( 282.584, -1167.51 )
+texture = ExtResource( 17 )
+
+[node name="mist4" type="ColorRect" parent="outdoors/snowy/trees2"]
+margin_left = 105.0
+margin_top = -1458.0
+margin_right = 865.0
+margin_bottom = -1143.0
+color = Color( 1, 1, 1, 0.45098 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="snow" type="Particles2D" parent="outdoors/snowy/trees2"]
+position = Vector2( 496.648, -1447.07 )
+scale = Vector2( 1.26637, 1.26637 )
+amount = 100
+lifetime = 10.0
+preprocess = 7.0
+randomness = 1.0
+process_material = SubResource( 20 )
+
+[node name="mist" type="Node2D" parent="outdoors"]
+visible = false
+
+[node name="sky" type="ColorRect" parent="outdoors/mist"]
+margin_left = 1515.21
+margin_top = 542.361
+margin_right = 2123.21
+margin_bottom = 775.361
+color = Color( 0.760784, 0.717647, 0.717647, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="trees" type="Node2D" parent="outdoors/mist"]
+position = Vector2( 1432.21, 1693.36 )
+scale = Vector2( 0.789658, 0.789658 )
+
+[node name="mistanimator" type="AnimationPlayer" parent="outdoors/mist/trees"]
+autoplay = "misting"
+anims/misting = SubResource( 13 )
+
+[node name="mist3" type="ColorRect" parent="outdoors/mist/trees"]
+margin_left = 105.0
+margin_top = -1458.0
+margin_right = 865.0
+margin_bottom = -1143.0
+color = Color( 1, 1, 1, 0.45811 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="darktree4" type="Sprite" parent="outdoors/mist/trees"]
+position = Vector2( 755.586, -1289.36 )
+scale = Vector2( 0.435272, 0.435272 )
+texture = ExtResource( 17 )
+
+[node name="darktree5" type="Sprite" parent="outdoors/mist/trees"]
+position = Vector2( 530.72, -1300.12 )
+rotation = 3.14159
+scale = Vector2( 0.567, -0.567 )
+texture = ExtResource( 17 )
+
+[node name="mist2" type="ColorRect" parent="outdoors/mist/trees"]
+margin_left = 105.0
+margin_top = -1458.0
+margin_right = 865.0
+margin_bottom = -1143.0
+color = Color( 1, 1, 1, 0.155773 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="darktree2" type="Sprite" parent="outdoors/mist/trees"]
+position = Vector2( 414.31, -1325.19 )
+scale = Vector2( 0.566655, 0.566655 )
+texture = ExtResource( 17 )
+
+[node name="darktree6" type="Sprite" parent="outdoors/mist/trees"]
+position = Vector2( 300.337, -1296.06 )
+scale = Vector2( 0.566655, 0.566655 )
+texture = ExtResource( 17 )
+
+[node name="mist" type="ColorRect" parent="outdoors/mist/trees"]
+margin_left = 105.0
+margin_top = -1458.0
+margin_right = 865.0
+margin_bottom = -1143.0
+color = Color( 1, 1, 1, 0.489224 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="darktree3" type="Sprite" parent="outdoors/mist/trees"]
+position = Vector2( 710.491, -1199.37 )
+texture = ExtResource( 17 )
+
+[node name="darktree" type="Sprite" parent="outdoors/mist/trees"]
+position = Vector2( 282.584, -1167.51 )
+texture = ExtResource( 17 )
+
+[node name="mist4" type="ColorRect" parent="outdoors/mist/trees"]
+margin_left = 105.0
+margin_top = -1458.0
+margin_right = 865.0
+margin_bottom = -1143.0
+color = Color( 1, 1, 1, 0.469751 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rain" type="Node2D" parent="outdoors"]
+
+[node name="sky" type="ColorRect" parent="outdoors/rain"]
+margin_left = 1515.21
+margin_top = 542.361
+margin_right = 2123.21
+margin_bottom = 775.361
+color = Color( 0.290196, 0.466667, 0.690196, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="trees" type="Node2D" parent="outdoors/rain"]
+position = Vector2( 1432.21, 1693.36 )
+scale = Vector2( 0.789658, 0.789658 )
+
+[node name="lightning" type="ColorRect" parent="outdoors/rain/trees"]
+visible = false
+margin_left = 114.072
+margin_top = -1431.31
+margin_right = 949.072
+margin_bottom = -1154.31
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RainAudio" type="AudioStreamPlayer" parent="outdoors/rain/trees"]
+stream = ExtResource( 22 )
+volume_db = -6.029
+
+[node name="WindAudio" type="AudioStreamPlayer" parent="outdoors/rain/trees"]
+stream = ExtResource( 23 )
+volume_db = -11.456
+
+[node name="lightning_animator" type="AnimationPlayer" parent="outdoors/rain/trees"]
+autoplay = "lightning"
+anims/lightning = SubResource( 25 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="outdoors/rain/trees/lightning_animator"]
+stream = ExtResource( 20 )
+
+[node name="vignette_up" type="Sprite" parent="outdoors/rain/trees"]
+position = Vector2( 506.523, -1309.84 )
+rotation = -1.5708
+scale = Vector2( 0.18353, 1 )
+texture = ExtResource( 14 )
+
+[node name="cloudish" type="Sprite" parent="outdoors/rain/trees"]
+modulate = Color( 1, 1, 1, 0.741176 )
+position = Vector2( 331.553, -1440.21 )
+rotation = -4.21679
+scale = Vector2( 0.0441333, 0.19306 )
+texture = ExtResource( 14 )
+
+[node name="cloudish2" type="Sprite" parent="outdoors/rain/trees"]
+modulate = Color( 1, 1, 1, 0.741176 )
+position = Vector2( 538.604, -1412.35 )
+rotation = 1.65527
+scale = Vector2( 0.0441333, 0.19306 )
+texture = ExtResource( 14 )
+
+[node name="darktree4" type="Sprite" parent="outdoors/rain/trees"]
+modulate = Color( 0.188235, 0.172549, 0.176471, 1 )
+position = Vector2( 755.586, -1289.36 )
+scale = Vector2( 0.435272, 0.435272 )
+texture = ExtResource( 17 )
+
+[node name="darktree5" type="Sprite" parent="outdoors/rain/trees"]
+modulate = Color( 0.188235, 0.172549, 0.176471, 1 )
+position = Vector2( 530.72, -1300.12 )
+rotation = 3.14159
+scale = Vector2( 0.567, -0.567 )
+texture = ExtResource( 17 )
+
+[node name="mist2" type="ColorRect" parent="outdoors/rain/trees"]
+visible = false
+margin_left = 105.0
+margin_top = -1458.0
+margin_right = 865.0
+margin_bottom = -1143.0
+color = Color( 0.0784314, 0.0784314, 0.0784314, 0.168627 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="darktree2" type="Sprite" parent="outdoors/rain/trees"]
+modulate = Color( 0.486275, 0.482353, 0.505882, 1 )
+position = Vector2( 414.31, -1325.19 )
+scale = Vector2( 0.566655, 0.566655 )
+texture = ExtResource( 17 )
+
+[node name="darktree6" type="Sprite" parent="outdoors/rain/trees"]
+modulate = Color( 0.486275, 0.482353, 0.505882, 1 )
+position = Vector2( 300.337, -1296.06 )
+scale = Vector2( 0.566655, 0.566655 )
+texture = ExtResource( 17 )
+
+[node name="mist" type="ColorRect" parent="outdoors/rain/trees"]
+margin_left = 105.0
+margin_top = -1458.0
+margin_right = 865.0
+margin_bottom = -1143.0
+color = Color( 0.0862745, 0.0862745, 0.0862745, 0.113725 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="darktree3" type="Sprite" parent="outdoors/rain/trees"]
+modulate = Color( 0.486275, 0.482353, 0.505882, 1 )
+position = Vector2( 710.491, -1199.37 )
+texture = ExtResource( 17 )
+
+[node name="darktree" type="Sprite" parent="outdoors/rain/trees"]
+modulate = Color( 0.486275, 0.482353, 0.505882, 1 )
+position = Vector2( 282.584, -1167.51 )
+texture = ExtResource( 17 )
+
+[node name="tangle_fg" type="Sprite" parent="outdoors/rain/trees"]
+position = Vector2( 578.731, -1874.23 )
+texture = ExtResource( 19 )
+
+[node name="vignette_up2" type="Sprite" parent="outdoors/rain/trees"]
+position = Vector2( 490.06, -1213.6 )
+rotation = -1.5708
+scale = Vector2( 0.108339, 1 )
+texture = ExtResource( 14 )
+
+[node name="mist4" type="ColorRect" parent="outdoors/rain/trees"]
+margin_left = 105.0
+margin_top = -1458.0
+margin_right = 865.0
+margin_bottom = -1143.0
+color = Color( 0.109804, 0.109804, 0.109804, 0.576471 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rainCPU" type="CPUParticles2D" parent="outdoors/rain/trees"]
+position = Vector2( 585.199, -1560.26 )
+amount = 600
+lifetime = 4.0
+preprocess = 7.0
+speed_scale = 2.4
+emission_shape = 2
+emission_rect_extents = Vector2( 400, 1 )
+gravity = Vector2( -20, 98 )
+tangential_accel = -11.08
+tangential_accel_random = 1.0
+tangential_accel_curve = SubResource( 26 )
+angle_random = 1.0
+scale_amount = 6.0
+scale_amount_random = 0.3
+color = Color( 0.423529, 0.427451, 0.439216, 1 )
+
+[node name="BG2" type="Node2D" parent="."]
+modulate = Color( 0.45098, 0.447059, 0.258824, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="BG2"]
+margin_left = -83.4387
+margin_top = -1368.96
+margin_right = 827.561
+margin_bottom = -1141.96
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="BG2"]
+margin_left = -90.0
+margin_top = -450.0
+margin_right = 839.0
+margin_bottom = 329.0
+texture = ExtResource( 7 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="BG2"]
+margin_left = -61.0
+margin_top = -847.135
+margin_right = 861.0
+margin_bottom = -629.135
+texture = ExtResource( 7 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="player" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( 263.056, -631.093 )
+camera = NodePath("../../PuppyCamera")
+
+[node name="ysortbg" type="YSort" parent="YSort"]
+modulate = Color( 0.47451, 0.470588, 0.470588, 1 )
+
+[node name="bannister" type="Node2D" parent="YSort/ysortbg"]
+position = Vector2( 182.434, 4.24261 )
+
+[node name="foyer_stairs_right_bannister-min" type="Sprite" parent="YSort/ysortbg/bannister"]
+position = Vector2( 199.227, -407.27 )
+texture = ExtResource( 11 )
+
+[node name="Stairs" type="Node2D" parent="YSort/ysortbg"]
+position = Vector2( 129.594, -763.161 )
+
+[node name="foyer_stairs_bg-min" type="Sprite" parent="YSort/ysortbg/Stairs"]
+position = Vector2( 252.067, 360.133 )
+texture = ExtResource( 3 )
+
+[node name="foyer_cellar_door-min" type="Sprite" parent="YSort/ysortbg/Stairs"]
+position = Vector2( 132.362, 483.356 )
+texture = ExtResource( 8 )
+
+[node name="arch" type="Node2D" parent="YSort/ysortbg"]
+position = Vector2( -77.2615, -769.7 )
+
+[node name="ColorRect" type="ColorRect" parent="YSort/ysortbg/arch"]
+margin_left = -573.496
+margin_top = -546.015
+margin_right = -4.49585
+margin_bottom = 155.985
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="foyer_stone_arch-min" type="Sprite" parent="YSort/ysortbg/arch"]
+position = Vector2( 487.72, 353.559 )
+texture = ExtResource( 2 )
+
+[node name="back_windows" type="Node2D" parent="YSort/ysortbg"]
+position = Vector2( 285.585, -864.406 )
+
+[node name="foyer_back_windows-min" type="Sprite" parent="YSort/ysortbg/back_windows"]
+position = Vector2( 124.873, 448.265 )
+texture = ExtResource( 1 )
+
+[node name="Candelabra_front" parent="." instance=ExtResource( 10 )]
+position = Vector2( 73.5951, -1063 )
+scale = Vector2( 0.6, 0.6 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 15 )]
+position = Vector2( 386.776, -422.806 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -581.525, -1323.31 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 1610.99, 620.471 )
+
+[node name="bottomTZ" parent="." instance=ExtResource( 5 )]
+position = Vector2( 331.729, 459.901 )
+
+[node name="CollisionShape2D" parent="bottomTZ" index="0"]
+position = Vector2( 2.94629, -11.7848 )
+shape = SubResource( 11 )
+
+[node name="topTZ" parent="." instance=ExtResource( 5 )]
+position = Vector2( 579.039, -571.661 )
+
+[node name="CollisionShape2D" parent="topTZ" index="0"]
+position = Vector2( -5.32361, -9.50943 )
+shape = SubResource( 12 )
+
+[node name="FG" type="Node2D" parent="."]
+position = Vector2( 4.24261, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="chandelier" type="Node2D" parent="FG"]
+position = Vector2( 473.304, -939.474 )
+
+[node name="foyer_chandelier_on-min" type="Sprite" parent="FG/chandelier"]
+modulate = Color( 0.872837, 0.870881, 0.882619, 1 )
+texture = ExtResource( 4 )
+
+[node name="foyer_chandelier_off-min" type="Sprite" parent="FG/chandelier"]
+modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 6 )
+
+[node name="lamp_glow" type="Sprite" parent="FG/chandelier"]
+self_modulate = Color( 1, 1, 1, 0.254902 )
+position = Vector2( 1.16931, 505.697 )
+scale = Vector2( 2.21792, 2.21792 )
+texture = ExtResource( 13 )
+
+[node name="chandelieranimator" type="AnimationPlayer" parent="FG/chandelier"]
+autoplay = "flicker_slow"
+anims/flicker_slow = SubResource( 14 )
+
+[node name="vignette_fade" type="Sprite" parent="FG"]
+position = Vector2( 427.157, 260.379 )
+rotation = -1.5708
+scale = Vector2( 0.223656, 1 )
+texture = ExtResource( 14 )
+
+[node name="BIG_FADE" type="Sprite" parent="FG"]
+modulate = Color( 1, 1, 1, 0.345098 )
+position = Vector2( 427.157, -369.621 )
+rotation = -1.5708
+scale = Vector2( 1.40491, 1 )
+texture = ExtResource( 14 )
+
+[node name="vignette_fade2" type="Sprite" parent="FG"]
+position = Vector2( 797.681, 370.688 )
+rotation = 3.14159
+scale = Vector2( 0.223656, 1 )
+texture = ExtResource( 14 )
+
+[node name="Collisions" type="Node2D" parent="."]
+visible = false
+
+[node name="left" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/left"]
+position = Vector2( 24.4712, -195.367 )
+polygon = PoolVector2Array( 674.246, -649.018, -219.627, -661.631, -203.65, -541.383, 349.329, -558.323, 128.712, -393.567, -100.391, -392.153, -106.553, 579.47, -441.975, -919, 847.396, -821.48, 838.911, -643.289, 833.254, -730.97, 669.205, -736.627 )
+
+[node name="right" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/right"]
+position = Vector2( 400.134, 346.659 )
+polygon = PoolVector2Array( 457.513, -1033.39, 15.2013, -1018.93, -205.114, -832.249, -218.568, -304.166, -195.023, -302.484, -196.705, -507.663, -72.252, -504.299, -72.2522, -695.351, 1.7467, -745.805, 79.7794, -750.213, 78.6887, -818.542, 296.481, -825.269, 299.424, -762.623, 486.521, -661.177, 550.011, -977.892, 455.831, -1188.79 )
+
+[node name="bottom" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/bottom"]
+position = Vector2( 391.648, 1127.31 )
+polygon = PoolVector2Array( 480.865, -1508.29, 487.936, -779.971, -479.387, -785.628, 855.693, -356.143 )
+
+[connection signal="transition_triggered" from="bottomTZ" to="." method="_on_bottomTZ_transition_triggered"]
+[connection signal="transition_triggered" from="topTZ" to="." method="_on_topTZ_transition_triggered"]
+
+[editable path="PuppyCamera"]
+[editable path="bottomTZ"]
+[editable path="topTZ"]

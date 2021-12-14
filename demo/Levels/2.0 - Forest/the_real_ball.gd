@@ -5,6 +5,8 @@ onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 
 const TAKEN = "the_real_ball_taken"
 
+export(bool) var show_top = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if stats.check_bool(TAKEN):
@@ -22,7 +24,7 @@ var dialogue = {
 	],
 	"leave" : [
 		"TEXT",
-		"Yeah... That's better. Forget... Best leave it...", 0.03, null
+		"Yeah... That's better. Best forget...\nBetter to leave it...", 0.03, null
 	],
 	"take" : [
 		"ACTION", "YOU ACQUIRE THE REAL BALL.", 0.03, null, [self, "grab_ball"]
@@ -35,4 +37,4 @@ func grab_ball():
 	self.queue_free()
 
 func _on_SeenBox_seen(obj):
-	DialogueHelper.showDialogue(self, dialogue)
+	DialogueHelper.showDialogue(self, dialogue, show_top)

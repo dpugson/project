@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mixkit-rain-loop-1250.wav-97314580dc75201ca2fd90e20129180f.sample"
+
+[deps]
+
+source_file="res://tunes/mixkiteffects/mixkit-rain-loop-1250.wav"
+dest_files=[ "res://.import/mixkit-rain-loop-1250.wav-97314580dc75201ca2fd90e20129180f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=true
+compress/mode=0
