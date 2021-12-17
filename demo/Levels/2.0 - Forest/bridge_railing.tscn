@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/L3_forest/bridge/bridge_railing-min.png" type="Texture" id=1]
+
+[node name="bridge_railing" type="Node2D"]
+
+[node name="bridge_railing-min" type="Sprite" parent="."]
+position = Vector2( 26.2156, -38.4448 )
+texture = ExtResource( 1 )

@@ -119,6 +119,7 @@ anims/step = SubResource( 6 )
 stream = ExtResource( 5 )
 volume_db = -36.122
 bus = "Effects"
+
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 
 [editable path="HurtBox"]

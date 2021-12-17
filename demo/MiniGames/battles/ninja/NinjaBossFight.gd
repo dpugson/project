@@ -21,6 +21,7 @@ var obstacle_map = {
 
 
 func _ready():
+	stats.health = stats.max_health
 	Jukebox.play_song("res://tunes/lab/ninjasong.wav")
 	battle_menu.init(battle_impl)
 

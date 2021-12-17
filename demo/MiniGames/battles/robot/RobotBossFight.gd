@@ -38,6 +38,7 @@ func _ready():
 	Jukebox.play_song("res://tunes/lab/labrat_lofi.wav")
 	battle_menu.init(battle_impl)
 	set_battle_stage("one")
+	stats.health = stats.max_health
 	#set_battle_stage("four")
 
 func set_battle_stage(stage):

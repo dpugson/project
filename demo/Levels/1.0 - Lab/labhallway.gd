@@ -270,9 +270,11 @@ func wallet_dropped():
 	Jukebox.play_song("res://tunes/lab/background_science.wav")
 
 func _on_glassesbox_seen(_obj):
+	print("hmmm")
 	DialogueHelper.showDialogueSimple(self, [
-		"Safety first! Unfortunately, the safety goggles bin is empty..."
-	], 0.05, null, true)
+		"Safety first!",
+		"Unfortunately, the safety goggles bin is empty..."
+	], 0.05, null, false)
 
 func _on_WalletSeenBox_seen(_obj):
 	var dialogue = {

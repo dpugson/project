@@ -22,7 +22,8 @@ func _ready():
 		"../../../PuppyCamera", player_position, orientation)
 
 func _on_bottomTZ_transition_triggered():
-	Transition.go_to("res://Levels/1.0 - Lab/labhallway.tscn", "lab")
+	Transition.go_to("res://Levels/2.0 - Forest/bridge.tscn", "left")
 
 func _on_topTZ_transition_triggered():
-	Transition.go_to("res://Levels/1.0 - Lab/labpuzzleroom2.tscn", "bottom")
+	pass
+	#Transition.go_to("res://Levels/1.0 - Lab/labpuzzleroom2.tscn", "bottom")

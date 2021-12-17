@@ -147,7 +147,8 @@ func cutscene_over():
 
 func _on_SinkSeenBox_seen(_obj):
 	DialogueHelper.showDialogueSimple(self, [
-		"Drip drip drip."
+		"Drip drip drip.",
+		"Drip drip drip drip drip drip drip drip..."
 	], 0.05, null, true)
 
 
@@ -182,12 +183,14 @@ func _on_ThesisSeenBox_seen(obj):
 
 func _on_ChemistrySeenBox_seen(obj):
 	DialogueHelper.showDialogueSimple(self, [
-		"A masterpiece in blown glass."
+		"A masterpiece in blown glass.",
+		"Loop de loop de loop de loop."
 	], 0.05)
 
 func _on_RedBookSeenBox_seen(obj):
 	DialogueHelper.showDialogueSimple(self, [
-		"The book is filled with complicated equations..."
+		"The book is filled with complicated equations...",
+		"FUN = PUZZLES (???)"
 	], 0.05)
 
 func _on_ComputerSeenBox_seen(obj):

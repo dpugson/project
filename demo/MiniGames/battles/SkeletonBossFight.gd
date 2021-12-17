@@ -297,5 +297,6 @@ var battle_impl = {
 }
 
 func _ready():
+	stats.health = stats.max_health
 	Jukebox.play_song("res://tunes/cave/skeleton_battle_smooth.wav")
 	battle_menu.init(battle_impl)

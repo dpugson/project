@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://sprites/L2_lab/safety_poster.png" type="Texture" id=1]
 [ext_resource path="res://Levels/1.0 - Lab/potted_palm.tscn" type="PackedScene" id=2]
@@ -18,6 +18,9 @@
 [ext_resource path="res://Brains/SaveStar.tscn" type="PackedScene" id=16]
 [ext_resource path="res://sprites/L2_lab/throwup2.png" type="Texture" id=17]
 [ext_resource path="res://sprites/L2_lab/wallet.png" type="Texture" id=18]
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 59.3311, 48.3094 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 52.5469, 67.2289 )
@@ -333,6 +336,10 @@ position = Vector2( 1391.36, 572.721 )
 [node name="glassesbox" parent="YSort/glasses_box" instance=ExtResource( 15 )]
 position = Vector2( 0.751587, 5.90717 )
 
+[node name="CollisionShape2D" parent="YSort/glasses_box/glassesbox" index="0"]
+position = Vector2( -2.37842, 3.56763 )
+shape = SubResource( 15 )
+
 [node name="potted_palm" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 1509.86, 605.359 )
 
@@ -428,6 +435,7 @@ position = Vector2( 519.083, 630.15 )
 [node name="AnimatedSprite" parent="Robot" instance=ExtResource( 14 )]
 position = Vector2( -1.60675, -118.341 )
 animation = "dogdown"
+frame = 2
 playing = true
 
 [node name="labdoor" type="Node2D" parent="."]
@@ -456,6 +464,7 @@ position = Vector2( 1650.76, 690.725 )
 [connection signal="transition_triggered" from="BreakRoomTZ" to="." method="_on_BreakRoomTZ_transition_triggered"]
 [connection signal="seen" from="labdoor/laboratorydoor" to="." method="_on_laboratorydoor_seen"]
 
+[editable path="YSort/glasses_box/glassesbox"]
 [editable path="YSort/waste_bin/wastebin"]
 [editable path="YSort/vending_machine/sodamachine"]
 [editable path="YSort/wallet/WalletSeenBox"]

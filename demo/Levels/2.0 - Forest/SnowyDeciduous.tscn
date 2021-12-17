@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/L3_forest/bridge/bridge_snowy_tree-min.png" type="Texture" id=1]
+
+[node name="SnowyDeciduous" type="Node2D"]
+
+[node name="bridge_snowy_tree-min" type="Sprite" parent="."]
+position = Vector2( -16.6172, -184.695 )
+texture = ExtResource( 1 )

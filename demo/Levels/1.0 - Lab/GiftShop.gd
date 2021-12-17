@@ -18,7 +18,7 @@ func _ready():
 	stats.set_bool("alllabpuzzlesdone")
 	var player_position = player.position
 	var orientation = Vector2.UP
-	stats.spawn_metadata = "cutscene"
+	#stats.spawn_metadata = "cutscene"
 	match stats.spawn_metadata:
 		"The Lab - The Gift Shop":
 			player_position = save_star.position
@@ -128,5 +128,5 @@ func _on_BottomTZ_transition_triggered():
 func _on_topTZ_transition_triggered():
 	Transition.go_to("res://Levels/2.0 - Forest/OutsideLab_01.tscn", "lab")
 
-func _on_RobotPhoneTimer_timeout():
-	initial_cutscene_call()
+#func _on_RobotPhoneTimer_timeout():
+#	initial_cutscene_call()
