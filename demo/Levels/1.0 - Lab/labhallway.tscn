@@ -435,7 +435,7 @@ position = Vector2( 519.083, 630.15 )
 [node name="AnimatedSprite" parent="Robot" instance=ExtResource( 14 )]
 position = Vector2( -1.60675, -118.341 )
 animation = "dogdown"
-frame = 2
+frame = 3
 playing = true
 
 [node name="labdoor" type="Node2D" parent="."]

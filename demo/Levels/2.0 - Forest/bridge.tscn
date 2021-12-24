@@ -19,7 +19,7 @@
 [ext_resource path="res://sprites/L3_forest/bridge/bridge_window-min.png" type="Texture" id=17]
 [ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=18]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "misting"
 length = 24.0
 loop = true
@@ -72,15 +72,15 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0.337255 ), Color( 1, 1, 1, 0.596078 ), Color( 1, 1, 1, 0.337255 ), Color( 1, 1, 1, 0.54902 ) ]
 }
 
-[sub_resource type="Curve" id=1]
+[sub_resource type="Curve" id=2]
 min_value = -80.0
 max_value = 80.0
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.158824, 33.0757 ), -82.4045, -82.4045, 0, 0, Vector2( 0.205882, -38.2757 ), 2058.38, 2058.38, 0, 0, Vector2( 0.335294, -33.9513 ), 0.0, 0.0, 0, 0, Vector2( 0.485294, 33.0757 ), -1639.92, -1639.92, 0, 0, Vector2( 0.752941, -35.3928 ), 0.0, 0.0, 0, 0, Vector2( 0.797059, 40.2829 ), 0.0, 0.0, 0, 0, Vector2( 0.873529, -48.3658 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 105.925, 49.1887 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 102.439, 37.0089 )
 
 [node name="bridge" type="Node2D"]
@@ -123,7 +123,7 @@ scale = Vector2( 0.789658, 0.789658 )
 
 [node name="mistanimator" type="AnimationPlayer" parent="outdoors/mist/trees"]
 autoplay = "misting"
-anims/misting = SubResource( 2 )
+anims/misting = SubResource( 1 )
 
 [node name="mist3" type="ColorRect" parent="outdoors/mist/trees"]
 margin_left = -1189.07
@@ -301,7 +301,7 @@ preprocess = 7.0
 emission_shape = 2
 emission_rect_extents = Vector2( 1000, 1 )
 gravity = Vector2( 0, 30 )
-tangential_accel_curve = SubResource( 1 )
+tangential_accel_curve = SubResource( 2 )
 scale_amount = 4.0
 scale_amount_random = 0.75
 
@@ -452,7 +452,7 @@ lifetime_randomness = 0.5
 emission_shape = 2
 emission_rect_extents = Vector2( 1500, 1 )
 gravity = Vector2( 15, 50 )
-tangential_accel_curve = SubResource( 1 )
+tangential_accel_curve = SubResource( 2 )
 scale_amount = 7.0
 scale_amount_random = 0.75
 
@@ -472,7 +472,7 @@ rotation = -1.60263
 
 [node name="CollisionShape2D" parent="rightTZ" index="0"]
 position = Vector2( 2.94629, -11.7848 )
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 
 [node name="leftTZ" parent="." instance=ExtResource( 5 )]
 position = Vector2( -403.501, -517.96 )
@@ -480,7 +480,7 @@ rotation = 2.39977
 
 [node name="CollisionShape2D" parent="leftTZ" index="0"]
 position = Vector2( -5.32361, -9.50943 )
-shape = SubResource( 6 )
+shape = SubResource( 4 )
 
 [node name="Collisions" type="Node2D" parent="."]
 visible = false
