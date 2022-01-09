@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/L9_GrandHotel/rooms/exterior_balcony_railing-min.png" type="Texture" id=1]
+
+[node name="external_balcony_railing" type="Node2D"]
+
+[node name="exterior_balcony_railing-min" type="Sprite" parent="."]
+position = Vector2( 7.16736, -32.1538 )
+texture = ExtResource( 1 )

@@ -117,6 +117,8 @@ func battle_stuff():
 					"dialogue" : [
 						"Whh-",
 						"But it's so terrible!!!!", "It's rubbish!!!!!",
+						"AND, anyways, I can't turn it in!",
+						"I haven't seen my supervisor over 200 years!",
 						"I SUCK",
 						"AAAAAAAAAAAAHHHH",
 						"AAAGHHHHH",

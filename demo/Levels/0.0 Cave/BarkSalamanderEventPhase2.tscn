@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://effects/Ripples.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/salamanders/Pericles.tscn" type="PackedScene" id=2]
@@ -446,6 +446,10 @@ tracks/5/keys = {
 "values": [ false ]
 }
 
+[sub_resource type="AnimationNodeStateMachinePlayback" id=6]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=7]
+
 [node name="BarkSalamanderEventPhase2" type="YSort"]
 script = ExtResource( 5 )
 
@@ -463,19 +467,33 @@ position = Vector2( -1.56415, 0.782074 )
 [node name="Ripples2" parent="Node2D" instance=ExtResource( 1 )]
 visible = false
 position = Vector2( 124.436, 346.557 )
+frame = 1
 
 [node name="Ripples" parent="Node2D" instance=ExtResource( 1 )]
 visible = false
 position = Vector2( -114.097, 348.904 )
+frame = 1
 
 [node name="Gilby" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( -81.9869, 218.035 )
 
+[node name="Ripples" parent="Node2D/Gilby" index="0"]
+frame = 0
+
+[node name="AnimationTree" parent="Node2D/Gilby/Person" index="2"]
+parameters/playback = SubResource( 6 )
+
 [node name="Pericles" parent="Node2D" instance=ExtResource( 2 )]
 position = Vector2( 49.6841, 231.483 )
 
+[node name="Ripples" parent="Node2D/Pericles" index="0"]
+frame = 0
+
 [node name="AnimatedSprite" parent="Node2D/Pericles" index="1"]
 animation = "left"
+
+[node name="AnimationTree" parent="Node2D/Pericles/Person" index="2"]
+parameters/playback = SubResource( 7 )
 
 [node name="Splash" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( -112.228, 331.004 )
@@ -484,5 +502,10 @@ position = Vector2( -112.228, 331.004 )
 position = Vector2( 123.178, 328.658 )
 
 [editable path="Node2D/Gilby"]
-
+[editable path="Node2D/Gilby/Person"]
+[editable path="Node2D/Gilby/Person/SeenBox"]
+[editable path="Node2D/Gilby/Person/PlayerDetectionZone"]
 [editable path="Node2D/Pericles"]
+[editable path="Node2D/Pericles/Person"]
+[editable path="Node2D/Pericles/Person/SeenBox"]
+[editable path="Node2D/Pericles/Person/PlayerDetectionZone"]

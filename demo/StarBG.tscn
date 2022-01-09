@@ -12,15 +12,14 @@ __meta__ = {
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 __meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
+"_edit_group_": true
 }
 
 [node name="BG" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource( 1 )]
-margin_left = -1677.0
-margin_top = -1270.0
-margin_right = 4185.0
-margin_bottom = 2444.0
+margin_left = -8255.0
+margin_top = -4623.0
+margin_right = 23186.0
+margin_bottom = 29383.0
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.1, 0.1 )

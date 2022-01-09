@@ -4,51 +4,51 @@
 [ext_resource path="res://hitnhurtboxes/SeenBox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Brains/TalkToPerson.gd" type="Script" id=3]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "down"
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "left"
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "right"
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "up"
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=5]
 animation = "down"
 
-[sub_resource type="AnimationNodeAnimation" id=7]
+[sub_resource type="AnimationNodeAnimation" id=6]
 animation = "right"
 
-[sub_resource type="AnimationNodeAnimation" id=8]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "up"
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "left"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=10]
-blend_point_0/node = SubResource( 6 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=9]
+blend_point_0/node = SubResource( 5 )
 blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 7 )
+blend_point_1/node = SubResource( 6 )
 blend_point_1/pos = Vector2( 1.1, 0 )
-blend_point_2/node = SubResource( 8 )
+blend_point_2/node = SubResource( 7 )
 blend_point_2/pos = Vector2( 0, -1 )
-blend_point_3/node = SubResource( 9 )
+blend_point_3/node = SubResource( 8 )
 blend_point_3/pos = Vector2( -1.1, 0 )
 min_space = Vector2( -1.1, -1 )
 max_space = Vector2( 1.1, 1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeStateMachine" id=11]
-states/idle/node = SubResource( 10 )
-states/idle/position = Vector2( 501, 84 )
+[sub_resource type="AnimationNodeStateMachine" id=10]
+states/idle/node = SubResource( 9 )
+states/idle/position = Vector2( 501.5, 84.5 )
 start_node = "idle"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=12]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=11]
 
-[sub_resource type="CircleShape2D" id=13]
+[sub_resource type="CircleShape2D" id=12]
 radius = 743.823
 
 [node name="Person" type="Node2D"]
@@ -58,15 +58,15 @@ script = ExtResource( 3 )
 [node name="SeenBox" parent="." instance=ExtResource( 2 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/down = SubResource( 2 )
-anims/left = SubResource( 3 )
-anims/right = SubResource( 4 )
-anims/up = SubResource( 5 )
+anims/down = SubResource( 1 )
+anims/left = SubResource( 2 )
+anims/right = SubResource( 3 )
+anims/up = SubResource( 4 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 11 )
+tree_root = SubResource( 10 )
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource( 12 )
+parameters/playback = SubResource( 11 )
 parameters/idle/blend_position = Vector2( -0.00152671, -0.283237 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
@@ -79,9 +79,9 @@ rotation = 1.5708
 visible = false
 
 [node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
-shape = SubResource( 13 )
+shape = SubResource( 12 )
+
 [connection signal="seen" from="SeenBox" to="." method="_on_SeenBox_seen"]
 
 [editable path="SeenBox"]
-
 [editable path="PlayerDetectionZone"]

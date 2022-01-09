@@ -1,0 +1,632 @@
+[gd_scene load_steps=47 format=2]
+
+[ext_resource path="res://Levels/9.0 - Grand Hotel/grandhotel_lobby.gd" type="Script" id=1]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=2]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=3]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sprites/L9_GrandHotel/lobby/grandhotel_carpet_tile-min.png" type="Texture" id=5]
+[ext_resource path="res://sprites/L9_GrandHotel/lobby/grandhotel_lobby_desk_cubbies-min.png" type="Texture" id=6]
+[ext_resource path="res://sprites/L9_GrandHotel/lobby/grandhotel_lobby_desk_wall-min.png" type="Texture" id=7]
+[ext_resource path="res://sprites/L9_GrandHotel/lobby/grandhotel_lobby_desk_desk-min.png" type="Texture" id=8]
+[ext_resource path="res://sprites/L3_forest/vignette_fade.png" type="Texture" id=9]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/9.0 - Grand Hotel/LobbyChair.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Levels/9.0 - Grand Hotel/GrandEndTable.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Levels/9.0 - Grand Hotel/GrandLittleLamp.tscn" type="PackedScene" id=13]
+[ext_resource path="res://sprites/L9_GrandHotel/lobby/grandhotel_lobby_letter_short-min.png" type="Texture" id=14]
+[ext_resource path="res://sprites/L9_GrandHotel/lobby/grandhotel_lobby_letter_long-min.png" type="Texture" id=15]
+[ext_resource path="res://sprites/L9_GrandHotel/lobby/grandhotel_bigtable_top-min.png" type="Texture" id=16]
+[ext_resource path="res://sprites/L9_GrandHotel/lobby/grandhotel_bigtable_legs-min.png" type="Texture" id=17]
+[ext_resource path="res://sprites/L9_GrandHotel/lobby/grandhotel_flowervase-min.png" type="Texture" id=18]
+[ext_resource path="res://sprites/L9_GrandHotel/lobby/key_star-min.png" type="Texture" id=19]
+[ext_resource path="res://Levels/9.0 - Grand Hotel/ArtDecoLamp.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Levels/9.0 - Grand Hotel/GrandBell.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Levels/9.0 - Grand Hotel/LedgerBook.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Characters/Leafson.tscn" type="PackedScene" id=23]
+[ext_resource path="res://sprites/L9_GrandHotel/lobby/grandhotel_lobby_desk_sign-min.png" type="Texture" id=24]
+[ext_resource path="res://Characters/Leafert.tscn" type="PackedScene" id=25]
+[ext_resource path="res://sprites/L9_GrandHotel/lobby/key_orange-min.png" type="Texture" id=26]
+[ext_resource path="res://sprites/L9_GrandHotel/lobby/key_heart-min.png" type="Texture" id=27]
+[ext_resource path="res://sprites/leafpiletile2.png" type="Texture" id=28]
+[ext_resource path="res://sprites/L00_recurring/radio_radio.png" type="Texture" id=29]
+[ext_resource path="res://Levels/9.0 - Grand Hotel/RadioTable.tscn" type="PackedScene" id=30]
+[ext_resource path="res://Levels/9.0 - Grand Hotel/TheConcierge.tscn" type="PackedScene" id=31]
+[ext_resource path="res://sprites/L9_GrandHotel/lobby/grandhotel_carpet_tile_red-min.png" type="Texture" id=32]
+[ext_resource path="res://sprites/L9_GrandHotel/hallway/gh_hallway_stairs-min.png" type="Texture" id=33]
+[ext_resource path="res://sprites/L9_GrandHotel/hallway/gh_hallway_wall-min.png" type="Texture" id=34]
+[ext_resource path="res://sprites/L9_GrandHotel/hallway/gh_hallway_window-min.png" type="Texture" id=35]
+[ext_resource path="res://Levels/9.0 - Grand Hotel/hallway_pilaster.tscn" type="PackedScene" id=36]
+[ext_resource path="res://sprites/L9_GrandHotel/hallway/gh_hallway_column-min.png" type="Texture" id=37]
+[ext_resource path="res://effects/outdoors.tscn" type="PackedScene" id=38]
+[ext_resource path="res://Levels/9.0 - Grand Hotel/Pianist.tscn" type="PackedScene" id=39]
+[ext_resource path="res://sprites/L9_GrandHotel/hallway/gh_hallway_chandelier-min.png" type="Texture" id=40]
+[ext_resource path="res://Levels/9.0 - Grand Hotel/SnakePlant.tscn" type="PackedScene" id=41]
+[ext_resource path="res://Levels/9.0 - Grand Hotel/BerryPlant.tscn" type="PackedScene" id=42]
+[ext_resource path="res://Levels/9.0 - Grand Hotel/bannister.tscn" type="PackedScene" id=43]
+[ext_resource path="res://sprites/L9_GrandHotel/hallway/gh_hallway_decorative_thing-min.png" type="Texture" id=44]
+[ext_resource path="res://Levels/9.0 - Grand Hotel/Column.tscn" type="PackedScene" id=45]
+[ext_resource path="res://sprites/L9_GrandHotel/hallway/pianist_top-min.png" type="Texture" id=46]
+
+[node name="GrandHotelLobby" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ -913.058 ]
+}
+
+[node name="topSP" parent="." instance=ExtResource( 2 )]
+position = Vector2( -318.84, -950.731 )
+
+[node name="bottomSP" parent="." instance=ExtResource( 2 )]
+position = Vector2( 111.396, 1350.98 )
+
+[node name="BG" parent="." instance=ExtResource( 3 )]
+margin_left = -1900.0
+margin_top = -5126.28
+margin_right = 3963.0
+margin_bottom = 2591.72
+
+[node name="bgstuff" type="Node2D" parent="."]
+
+[node name="BlueCarpet" type="TextureRect" parent="bgstuff"]
+self_modulate = Color( 0.454902, 0.439216, 0.494118, 1 )
+margin_left = -857.0
+margin_top = -1192.0
+margin_right = 1537.0
+margin_bottom = 1439.0
+texture = ExtResource( 5 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RedCarpet" type="TextureRect" parent="bgstuff"]
+visible = false
+self_modulate = Color( 0.682353, 0.701961, 0.545098, 1 )
+margin_left = -864.0
+margin_top = -1193.0
+margin_right = 1561.0
+margin_bottom = 1437.0
+texture = ExtResource( 32 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Leaves" type="TextureRect" parent="bgstuff"]
+visible = false
+self_modulate = Color( 0.67451, 0.67451, 0.756863, 1 )
+margin_left = -297.0
+margin_top = -1192.0
+margin_right = 998.0
+margin_bottom = 1439.0
+texture = ExtResource( 28 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="grandhotel_lobby_desk_cubbies-min" type="Sprite" parent="bgstuff"]
+position = Vector2( 354.591, -1299.92 )
+texture = ExtResource( 6 )
+
+[node name="grandhotel_lobby_letter_long-min" type="Sprite" parent="bgstuff/grandhotel_lobby_desk_cubbies-min"]
+position = Vector2( -37.1461, -164.59 )
+texture = ExtResource( 15 )
+
+[node name="grandhotel_lobby_letter_long-min2" type="Sprite" parent="bgstuff/grandhotel_lobby_desk_cubbies-min"]
+position = Vector2( -28.8216, -165.185 )
+texture = ExtResource( 15 )
+
+[node name="grandhotel_lobby_letter_short-min" type="Sprite" parent="bgstuff/grandhotel_lobby_desk_cubbies-min"]
+position = Vector2( 51.4498, -240.699 )
+texture = ExtResource( 14 )
+
+[node name="key_orange-min" type="Sprite" parent="bgstuff/grandhotel_lobby_desk_cubbies-min"]
+position = Vector2( -80.0913, -228.585 )
+texture = ExtResource( 26 )
+
+[node name="key_heart-min" type="Sprite" parent="bgstuff/grandhotel_lobby_desk_cubbies-min"]
+position = Vector2( 53.492, -159.254 )
+texture = ExtResource( 27 )
+
+[node name="key_star-min" type="Sprite" parent="bgstuff/grandhotel_lobby_desk_cubbies-min"]
+position = Vector2( -27.8253, -222.893 )
+texture = ExtResource( 19 )
+
+[node name="gh_hallway_stairs-min" type="Sprite" parent="bgstuff"]
+modulate = Color( 0.803922, 0.760784, 0.733333, 1 )
+position = Vector2( -680.405, -1578.2 )
+texture = ExtResource( 33 )
+
+[node name="gh_hallway_stairs-min2" type="Sprite" parent="bgstuff"]
+modulate = Color( 0.803922, 0.760784, 0.733333, 1 )
+position = Vector2( 1377.24, -1578.2 )
+texture = ExtResource( 33 )
+
+[node name="upperfloor" type="Node2D" parent="bgstuff"]
+
+[node name="outdoors" parent="bgstuff/upperfloor" instance=ExtResource( 38 )]
+position = Vector2( -1744.38, -3301 )
+
+[node name="sky2" parent="bgstuff/upperfloor/outdoors/snowy" index="0"]
+margin_left = 1493.21
+margin_top = 376.361
+margin_right = 2993.21
+margin_bottom = 1076.36
+
+[node name="darktree4" parent="bgstuff/upperfloor/outdoors/snowy/trees2" index="0"]
+position = Vector2( 1525.54, -1258.97 )
+
+[node name="cpusnow2" parent="bgstuff/upperfloor/outdoors/snowy/trees2" index="1"]
+position = Vector2( 860.059, -1644.9 )
+emission_rect_extents = Vector2( 1000, 1 )
+
+[node name="darktree5" parent="bgstuff/upperfloor/outdoors/snowy/trees2" index="2"]
+position = Vector2( 1080.33, -1252 )
+
+[node name="mist2" parent="bgstuff/upperfloor/outdoors/snowy/trees2" index="3"]
+margin_left = 77.0
+margin_top = -1668.0
+margin_right = 1787.0
+margin_bottom = -968.0
+
+[node name="darktree2" parent="bgstuff/upperfloor/outdoors/snowy/trees2" index="4"]
+position = Vector2( 1044.96, -1299.86 )
+
+[node name="mist" parent="bgstuff/upperfloor/outdoors/snowy/trees2" index="5"]
+margin_left = 77.0
+margin_top = -1668.0
+margin_right = 1777.0
+margin_bottom = -968.0
+
+[node name="darktree6" parent="bgstuff/upperfloor/outdoors/snowy/trees2" index="6"]
+position = Vector2( 1607.23, -1288.46 )
+
+[node name="mist5" parent="bgstuff/upperfloor/outdoors/snowy/trees2" index="7"]
+margin_left = 77.1398
+margin_top = -1668.22
+margin_right = 1577.14
+margin_bottom = -968.218
+
+[node name="darktree3" parent="bgstuff/upperfloor/outdoors/snowy/trees2" index="8"]
+position = Vector2( 695.295, -1285.48 )
+
+[node name="mist4" parent="bgstuff/upperfloor/outdoors/snowy/trees2" index="10"]
+margin_left = 77.0
+margin_top = -1668.0
+margin_right = 1772.0
+margin_bottom = -968.0
+
+[node name="cpusnow" parent="bgstuff/upperfloor/outdoors/snowy/trees2" index="11"]
+position = Vector2( 880.628, -1669.39 )
+emission_rect_extents = Vector2( 1000, 1 )
+
+[node name="BlueCarpet2" type="TextureRect" parent="bgstuff/upperfloor"]
+self_modulate = Color( 0.454902, 0.439216, 0.494118, 1 )
+margin_left = -1289.0
+margin_top = -2433.0
+margin_right = 2040.0
+margin_bottom = -1981.0
+texture = ExtResource( 5 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RedCarpetHigher" type="TextureRect" parent="bgstuff/upperfloor"]
+visible = false
+self_modulate = Color( 0.756863, 0.713726, 0.588235, 1 )
+margin_left = -1296.0
+margin_top = -2386.0
+margin_right = 2046.0
+margin_bottom = -1989.0
+texture = ExtResource( 32 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wall" type="Node2D" parent="bgstuff/upperfloor"]
+modulate = Color( 0.592157, 0.576471, 0.705882, 1 )
+position = Vector2( 2.82861, 175.362 )
+
+[node name="gh_hallway_wall-min" type="Sprite" parent="bgstuff/upperfloor/Wall"]
+position = Vector2( -490.758, -2878.25 )
+texture = ExtResource( 34 )
+
+[node name="gh_hallway_wall-min6" type="Sprite" parent="bgstuff/upperfloor/Wall"]
+position = Vector2( 1239.24, -2878.25 )
+texture = ExtResource( 34 )
+
+[node name="gh_hallway_window-min" type="Sprite" parent="bgstuff/upperfloor/Wall"]
+position = Vector2( -151.672, -2877.25 )
+texture = ExtResource( 35 )
+
+[node name="gh_hallway_window-min2" type="Sprite" parent="bgstuff/upperfloor/Wall"]
+position = Vector2( 199.641, -2877.25 )
+texture = ExtResource( 35 )
+
+[node name="gh_hallway_window-min3" type="Sprite" parent="bgstuff/upperfloor/Wall"]
+position = Vector2( 539.641, -2877.25 )
+texture = ExtResource( 35 )
+
+[node name="gh_hallway_window-min4" type="Sprite" parent="bgstuff/upperfloor/Wall"]
+position = Vector2( 893.641, -2879.25 )
+texture = ExtResource( 35 )
+
+[node name="gh_hallway_wall-min7" type="Sprite" parent="bgstuff/upperfloor/Wall"]
+position = Vector2( 1567.34, -2878.25 )
+texture = ExtResource( 34 )
+
+[node name="gh_hallway_wall-min8" type="Sprite" parent="bgstuff/upperfloor/Wall"]
+position = Vector2( 1906.75, -2878.25 )
+texture = ExtResource( 34 )
+
+[node name="gh_hallway_wall-min2" type="Sprite" parent="bgstuff/upperfloor/Wall"]
+position = Vector2( -830.17, -2878.25 )
+texture = ExtResource( 34 )
+
+[node name="gh_hallway_wall-min3" type="Sprite" parent="bgstuff/upperfloor/Wall"]
+position = Vector2( -1152.61, -2878.25 )
+texture = ExtResource( 34 )
+
+[node name="hallway_pilaster" parent="bgstuff/upperfloor/Wall" instance=ExtResource( 36 )]
+position = Vector2( -994.782, -2571.27 )
+
+[node name="hallway_pilaster2" parent="bgstuff/upperfloor/Wall" instance=ExtResource( 36 )]
+position = Vector2( -666.348, -2571.27 )
+
+[node name="hallway_pilaster3" parent="bgstuff/upperfloor/Wall" instance=ExtResource( 36 )]
+position = Vector2( -323.082, -2571.27 )
+
+[node name="hallway_pilaster4" parent="bgstuff/upperfloor/Wall" instance=ExtResource( 36 )]
+position = Vector2( 22.3028, -2571.27 )
+
+[node name="hallway_pilaster5" parent="bgstuff/upperfloor/Wall" instance=ExtResource( 36 )]
+position = Vector2( 369.807, -2571.27 )
+
+[node name="hallway_pilaster6" parent="bgstuff/upperfloor/Wall" instance=ExtResource( 36 )]
+position = Vector2( 713.073, -2571.27 )
+
+[node name="hallway_pilaster7" parent="bgstuff/upperfloor/Wall" instance=ExtResource( 36 )]
+position = Vector2( 1064.81, -2571.27 )
+
+[node name="hallway_pilaster8" parent="bgstuff/upperfloor/Wall" instance=ExtResource( 36 )]
+position = Vector2( 1397.49, -2571.27 )
+
+[node name="hallway_pilaster9" parent="bgstuff/upperfloor/Wall" instance=ExtResource( 36 )]
+position = Vector2( 1728.04, -2571.27 )
+
+[node name="Lights" type="Node2D" parent="bgstuff/upperfloor"]
+position = Vector2( 5.65686, 149.907 )
+
+[node name="ArtDecoLamp" parent="bgstuff/upperfloor/Lights" instance=ExtResource( 20 )]
+position = Vector2( -505.845, -2904.84 )
+
+[node name="ArtDecoLamp3" parent="bgstuff/upperfloor/Lights" instance=ExtResource( 20 )]
+position = Vector2( 1224.16, -2904.84 )
+
+[node name="ArtDecoLamp5" parent="bgstuff/upperfloor/Lights" instance=ExtResource( 20 )]
+position = Vector2( 1906.16, -2904.84 )
+
+[node name="ArtDecoLamp6" parent="bgstuff/upperfloor/Lights" instance=ExtResource( 20 )]
+position = Vector2( -1165.79, -2904.84 )
+
+[node name="gh_hallway_decorative_thing-min" type="Sprite" parent="bgstuff/upperfloor/Lights"]
+position = Vector2( -838.681, -2855.33 )
+texture = ExtResource( 44 )
+
+[node name="gh_hallway_decorative_thing-min2" type="Sprite" parent="bgstuff/upperfloor/Lights"]
+position = Vector2( 1561.32, -2855.33 )
+texture = ExtResource( 44 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="player" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( -221.616, -923.057 )
+camera = NodePath("../../PuppyCamera")
+
+[node name="chairgroup" type="YSort" parent="YSort"]
+position = Vector2( 30.4504, 36.7697 )
+
+[node name="LobbyChair" parent="YSort/chairgroup" instance=ExtResource( 11 )]
+position = Vector2( -645.496, -835.35 )
+
+[node name="LobbyChair2" parent="YSort/chairgroup" instance=ExtResource( 11 )]
+position = Vector2( -44.3341, -830.381 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+
+[node name="EndTable" parent="YSort/chairgroup" instance=ExtResource( 12 )]
+position = Vector2( -349.857, -768.307 )
+
+[node name="GrandLittleLamp" parent="YSort/chairgroup/EndTable" instance=ExtResource( 13 )]
+position = Vector2( 1.30841, -57.8414 )
+
+[node name="Leafson" parent="YSort/chairgroup" instance=ExtResource( 23 )]
+position = Vector2( -633.168, -758.538 )
+
+[node name="Leafson2" parent="YSort/chairgroup" instance=ExtResource( 25 )]
+position = Vector2( -59.7427, -774.005 )
+
+[node name="RadioTable2" parent="YSort/chairgroup" instance=ExtResource( 30 )]
+position = Vector2( -596.03, -904.715 )
+
+[node name="radio_radio" type="Sprite" parent="YSort/chairgroup/RadioTable2"]
+position = Vector2( 5.65692, -120.208 )
+texture = ExtResource( 29 )
+
+[node name="chairgroup2" type="YSort" parent="YSort"]
+position = Vector2( 31.7641, 972.979 )
+
+[node name="LobbyChair" parent="YSort/chairgroup2" instance=ExtResource( 11 )]
+position = Vector2( -645.496, -835.35 )
+
+[node name="LobbyChair2" parent="YSort/chairgroup2" instance=ExtResource( 11 )]
+position = Vector2( -44.3341, -830.381 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+
+[node name="EndTable" parent="YSort/chairgroup2" instance=ExtResource( 12 )]
+position = Vector2( -347.028, -768.307 )
+
+[node name="GrandLittleLamp" parent="YSort/chairgroup2/EndTable" instance=ExtResource( 13 )]
+position = Vector2( 1.30841, -57.8414 )
+
+[node name="chairgroup3" type="YSort" parent="YSort"]
+position = Vector2( 1343.38, 972.979 )
+
+[node name="LobbyChair" parent="YSort/chairgroup3" instance=ExtResource( 11 )]
+position = Vector2( -645.496, -835.35 )
+
+[node name="LobbyChair2" parent="YSort/chairgroup3" instance=ExtResource( 11 )]
+position = Vector2( -44.3341, -830.381 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+
+[node name="EndTable" parent="YSort/chairgroup3" instance=ExtResource( 12 )]
+position = Vector2( -347.028, -768.307 )
+
+[node name="GrandLittleLamp" parent="YSort/chairgroup3/EndTable" instance=ExtResource( 13 )]
+position = Vector2( 1.30841, -57.8414 )
+
+[node name="RadioTable4" parent="YSort" instance=ExtResource( 30 )]
+position = Vector2( -620.986, 377.138 )
+
+[node name="SnakePlant3" parent="YSort" instance=ExtResource( 41 )]
+position = Vector2( 1273.76, 120.224 )
+
+[node name="chairgroup4" type="YSort" parent="YSort"]
+position = Vector2( 1343.38, 32.1759 )
+
+[node name="LobbyChair" parent="YSort/chairgroup4" instance=ExtResource( 11 )]
+position = Vector2( -645.496, -835.35 )
+
+[node name="LobbyChair2" parent="YSort/chairgroup4" instance=ExtResource( 11 )]
+position = Vector2( -44.3341, -830.381 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+
+[node name="EndTable" parent="YSort/chairgroup4" instance=ExtResource( 12 )]
+position = Vector2( -347.028, -768.307 )
+
+[node name="GrandLittleLamp" parent="YSort/chairgroup4/EndTable" instance=ExtResource( 13 )]
+position = Vector2( 1.30841, -57.8414 )
+
+[node name="BerryPlant" parent="YSort/chairgroup4" instance=ExtResource( 42 )]
+position = Vector2( -1951.23, 96.524 )
+
+[node name="ConciergeDesk" type="Node2D" parent="YSort"]
+position = Vector2( 353.177, -1281.53 )
+
+[node name="grandhotel_lobby_desk_desk-min" type="Sprite" parent="YSort/ConciergeDesk"]
+position = Vector2( 1.83472, -17.3911 )
+texture = ExtResource( 8 )
+
+[node name="GrandLittleLamp" parent="YSort/ConciergeDesk" instance=ExtResource( 13 )]
+position = Vector2( -119.299, -93.1155 )
+
+[node name="LedgerBook" parent="YSort/ConciergeDesk" instance=ExtResource( 22 )]
+position = Vector2( 3.65149, -112.47 )
+
+[node name="GrandBell" parent="YSort/ConciergeDesk" instance=ExtResource( 21 )]
+position = Vector2( 118.237, -89.6831 )
+
+[node name="BackWall" type="Node2D" parent="YSort"]
+position = Vector2( 767.966, -1191.16 )
+
+[node name="grandhotel_lobby_desk_wall-min" type="Sprite" parent="YSort/BackWall"]
+position = Vector2( -413.375, -108.757 )
+texture = ExtResource( 7 )
+
+[node name="grandhotel_lobby_desk_sign-min" type="Sprite" parent="YSort/BackWall"]
+position = Vector2( -412.282, -90.2427 )
+texture = ExtResource( 24 )
+
+[node name="ArtDecoLamp" parent="YSort/BackWall" instance=ExtResource( 20 )]
+position = Vector2( -990.966, -263.256 )
+
+[node name="ArtDecoLamp4" parent="YSort/BackWall" instance=ExtResource( 20 )]
+position = Vector2( 163.034, -263.256 )
+
+[node name="ArtDecoLamp2" parent="YSort/BackWall" instance=ExtResource( 20 )]
+position = Vector2( -631.966, -248.256 )
+
+[node name="ArtDecoLamp3" parent="YSort/BackWall" instance=ExtResource( 20 )]
+position = Vector2( -186.966, -248.256 )
+
+[node name="gh_hallway_column-min5" type="Sprite" parent="YSort/BackWall"]
+position = Vector2( 353.226, -343.649 )
+scale = Vector2( 1, 1.12518 )
+texture = ExtResource( 37 )
+
+[node name="gh_hallway_column-min6" type="Sprite" parent="YSort/BackWall"]
+position = Vector2( -1170.77, -343.649 )
+scale = Vector2( 1, 1.12518 )
+texture = ExtResource( 37 )
+
+[node name="BigTable" type="Node2D" parent="YSort"]
+position = Vector2( 358.172, 331.453 )
+
+[node name="grandhotel_bigtable_legs-min" type="Sprite" parent="YSort/BigTable"]
+position = Vector2( -12.8061, -586.326 )
+texture = ExtResource( 17 )
+
+[node name="RadioTable" parent="YSort" instance=ExtResource( 30 )]
+position = Vector2( -192.979, -1150.79 )
+
+[node name="GrandLittleLamp" parent="YSort/RadioTable" instance=ExtResource( 13 )]
+position = Vector2( 1.41418, -91.9237 )
+
+[node name="RadioTable3" parent="YSort" instance=ExtResource( 30 )]
+position = Vector2( 911.522, -1150.79 )
+
+[node name="GrandLittleLamp" parent="YSort/RadioTable3" instance=ExtResource( 13 )]
+position = Vector2( 1.41418, -91.9237 )
+
+[node name="TheConcierge" parent="YSort" instance=ExtResource( 31 )]
+position = Vector2( 349.4, -1359.61 )
+
+[node name="SnakePlant" parent="YSort" instance=ExtResource( 41 )]
+position = Vector2( 21.8615, -1133.76 )
+
+[node name="SnakePlant2" parent="YSort" instance=ExtResource( 41 )]
+modulate = Color( 0.898039, 0.788235, 0.913725, 1 )
+position = Vector2( 371.861, -2329.76 )
+
+[node name="Pianist" parent="YSort" instance=ExtResource( 39 )]
+position = Vector2( 1082.73, -244.226 )
+
+[node name="BerryPlant" parent="YSort" instance=ExtResource( 42 )]
+modulate = Color( 0.898039, 0.788235, 0.913725, 1 )
+position = Vector2( -325.565, -2339.87 )
+
+[node name="BerryPlant2" parent="YSort" instance=ExtResource( 42 )]
+position = Vector2( 686.175, -1137.34 )
+
+[node name="BerryPlant4" parent="YSort" instance=ExtResource( 42 )]
+modulate = Color( 0.898039, 0.788235, 0.913725, 1 )
+position = Vector2( 1056.18, -2329.34 )
+
+[node name="bannister" parent="YSort" instance=ExtResource( 43 )]
+modulate = Color( 0.803922, 0.760784, 0.733333, 1 )
+position = Vector2( -798.624, -1205.98 )
+
+[node name="bannister2" parent="YSort" instance=ExtResource( 43 )]
+modulate = Color( 0.803922, 0.760784, 0.733333, 1 )
+position = Vector2( 1259.38, -1205.98 )
+
+[node name="bannister3" parent="YSort" instance=ExtResource( 43 )]
+modulate = Color( 0.803922, 0.760784, 0.733333, 1 )
+position = Vector2( 1495.38, -1205.98 )
+scale = Vector2( -1, 1 )
+
+[node name="bannister4" parent="YSort" instance=ExtResource( 43 )]
+modulate = Color( 0.803922, 0.760784, 0.733333, 1 )
+position = Vector2( -558.624, -1205.98 )
+scale = Vector2( -1, 1 )
+
+[node name="RadioTable2" parent="YSort" instance=ExtResource( 30 )]
+position = Vector2( -921.49, -2117.32 )
+
+[node name="grandhotel_flowervase-min" type="Sprite" parent="YSort/RadioTable2"]
+position = Vector2( 1.49829, -195.468 )
+texture = ExtResource( 18 )
+
+[node name="Columns" type="YSort" parent="YSort"]
+
+[node name="Column" parent="YSort/Columns" instance=ExtResource( 45 )]
+position = Vector2( -865.061, 1396.85 )
+
+[node name="Column2" parent="YSort/Columns" instance=ExtResource( 45 )]
+position = Vector2( -385.643, 1396.85 )
+
+[node name="Column3" parent="YSort/Columns" instance=ExtResource( 45 )]
+position = Vector2( 72.5625, 1396.85 )
+
+[node name="Column4" parent="YSort/Columns" instance=ExtResource( 45 )]
+position = Vector2( 598.65, 1396.85 )
+
+[node name="Column5" parent="YSort/Columns" instance=ExtResource( 45 )]
+position = Vector2( 1062.51, 1396.85 )
+
+[node name="Column6" parent="YSort/Columns" instance=ExtResource( 45 )]
+position = Vector2( 1549, 1396.85 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 10 )]
+position = Vector2( 436.776, -516.806 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -1806.46, -4221.19 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 2017.31, 1139.48 )
+
+[node name="FG" type="Node2D" parent="."]
+position = Vector2( -26.8702, 36.7695 )
+
+[node name="vignette_fade" type="Sprite" parent="FG"]
+position = Vector2( 402.311, -1906.47 )
+rotation = 1.5708
+scale = Vector2( 0.134863, 0.838305 )
+texture = ExtResource( 9 )
+offset = Vector2( 183.841, 18.0739 )
+
+[node name="vignette_fade2" type="Sprite" parent="FG"]
+position = Vector2( 390.437, -1804.47 )
+rotation = 1.5708
+scale = Vector2( 0.134863, 0.679305 )
+texture = ExtResource( 9 )
+offset = Vector2( 183.841, 18.0739 )
+
+[node name="vignette_fade4" type="Sprite" parent="FG"]
+position = Vector2( 482.866, 1327.73 )
+rotation = -1.5708
+scale = Vector2( 0.23382, 1.66333 )
+texture = ExtResource( 9 )
+offset = Vector2( 183.841, 18.0739 )
+
+[node name="grandhotel_bigtable_top-min" type="Sprite" parent="FG"]
+position = Vector2( 370.75, -282.012 )
+texture = ExtResource( 16 )
+
+[node name="grandhotel_flowervase-min" type="Sprite" parent="FG/grandhotel_bigtable_top-min"]
+position = Vector2( 5.62158, -198.165 )
+texture = ExtResource( 18 )
+
+[node name="gh_hallway_chandelier-min" type="Sprite" parent="FG"]
+position = Vector2( -898.104, -1472.16 )
+texture = ExtResource( 40 )
+
+[node name="gh_hallway_chandelier-min2" type="Sprite" parent="FG"]
+position = Vector2( 1638.99, -1472.16 )
+texture = ExtResource( 40 )
+
+[node name="pianist_top-min" type="Sprite" parent="FG"]
+modulate = Color( 0.827451, 0.756863, 0.764706, 1 )
+position = Vector2( 1120.09, -409.85 )
+texture = ExtResource( 46 )
+
+[node name="Collisions" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/StaticBody2D"]
+position = Vector2( -2, 0 )
+polygon = PoolVector2Array( -537.802, -1165.84, 73.3999, -1170.2, 75.7225, -1150.79, 184.617, -1150.79, 187.445, -1183.31, 532.513, -1184.73, 532.513, -1146.55, 637.165, -1150.79, 634.4, -1168.2, 1241.28, -1177.15, 1258.25, -1983.25, -551.944, -1986.08 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Collisions/StaticBody2D"]
+polygon = PoolVector2Array( 1556.45, -1175.17, 1572.85, 1395.23, -869.148, 1383.23, -861.147, -1183.57, -1372.96, 1831.98, 2247.43, 1848.95 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Collisions/StaticBody2D"]
+polygon = PoolVector2Array( -1295.27, -2385.79, -1032.34, -2386.23, -931.966, -2386.4, 2050.46, -2391.45, -6.16724, -3339.04 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Collisions/StaticBody2D"]
+polygon = PoolVector2Array( -1289, -1989.5, -795.289, -1993.73, -1055.92, -1716.16 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Collisions/StaticBody2D"]
+position = Vector2( 2820.29, 10.5946 )
+polygon = PoolVector2Array( -1289, -1989.5, -795.289, -1993.73, -1055.92, -1716.16 )
+
+[editable path="bgstuff/upperfloor/outdoors"]
+[editable path="PuppyCamera"]

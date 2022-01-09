@@ -14,10 +14,10 @@ func _ready():
 	match stats.spawn_metadata:
 		"left":
 			player_position = leftSP.global_position
-			orientation = Vector2.LEFT
+			orientation = Vector2.RIGHT
 		"right":
 			player_position = rightSP.global_position
-			orientation = Vector2.RIGHT
+			orientation = Vector2.LEFT
 	stats.spawn_player(
 		player, null, 
 		"../../../PuppyCamera", player_position, orientation)
@@ -26,4 +26,4 @@ func _on_LeftTZ_transition_triggered():
 	Transition.go_to("res://Levels/2.0 - Forest/OutsideLab_01.tscn", "right")
 
 func _on_RightTZ_transition_triggered():
-	pass # Replace with function body.
+	Transition.go_to("res://Levels/2.0 - Forest/Tangle.tscn", "bottom")

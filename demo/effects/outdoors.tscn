@@ -1,0 +1,468 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://tunes/mixkiteffects/mixkit-rain-loop-1250.wav" type="AudioStream" id=1]
+[ext_resource path="res://tunes/mixkiteffects/mixkit-mid-strength-single-thunder-1298.wav" type="AudioStream" id=2]
+[ext_resource path="res://sprites/darktree.png" type="Texture" id=3]
+[ext_resource path="res://sprites/L3_forest/vignette_fade.png" type="Texture" id=4]
+[ext_resource path="res://sprites/L3_forest/tangle_fg.png" type="Texture" id=5]
+[ext_resource path="res://tunes/mixkiteffects/mixkit-strong-close-thunder-explosion-1300.wav" type="AudioStream" id=6]
+[ext_resource path="res://tunes/mixkiteffects/mixkit-strong-wind-1156.wav" type="AudioStream" id=7]
+
+[sub_resource type="Curve" id=1]
+min_value = -80.0
+max_value = 80.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.158824, 33.0757 ), -82.4045, -82.4045, 0, 0, Vector2( 0.205882, -38.2757 ), 2058.38, 2058.38, 0, 0, Vector2( 0.335294, -33.9513 ), 0.0, 0.0, 0, 0, Vector2( 0.485294, 33.0757 ), -1639.92, -1639.92, 0, 0, Vector2( 0.752941, -35.3928 ), 0.0, 0.0, 0, 0, Vector2( 0.797059, 40.2829 ), 0.0, 0.0, 0, 0, Vector2( 0.873529, -48.3658 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "misting"
+length = 24.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("mist3:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 8.3, 16.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.337255 ), Color( 1, 1, 1, 0.67451 ), Color( 1, 1, 1, 0.337255 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("mist2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 13.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.337255 ), Color( 1, 1, 1, 0.14902 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("mist:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 20.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.337255 ), Color( 1, 1, 1, 0.572549 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("mist4:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 4.9, 8.8, 16 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.337255 ), Color( 1, 1, 1, 0.596078 ), Color( 1, 1, 1, 0.337255 ), Color( 1, 1, 1, 0.54902 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "lightning"
+length = 20.0
+loop = true
+step = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath("lightning:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5.92, 6, 6.08, 15.8832, 15.9832, 16.1, 16.16, 16.24, 16.32, 18.2, 18.3, 18.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true, false, false, true, false, false, true, false, false, true, false ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("lightning_animator/AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 6 )
+} ],
+"times": PoolRealArray( 6.64, 16.16 )
+}
+
+[sub_resource type="Curve" id=4]
+min_value = -40.0
+max_value = 40.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.152139, -26.3063 ), 0.0, 0.0, 0, 0, Vector2( 0.328051, 35.3153 ), -89.6431, -89.6431, 0, 0, Vector2( 0.602219, -8.28829 ), 392.243, 392.243, 0, 0, Vector2( 0.784469, 26.6667 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[node name="outdoors" type="Node2D"]
+position = Vector2( -1432.21, -1693.36 )
+
+[node name="snowy" type="Node2D" parent="."]
+
+[node name="sky2" type="ColorRect" parent="snowy"]
+margin_left = 1515.21
+margin_top = 542.361
+margin_right = 2123.21
+margin_bottom = 775.361
+color = Color( 0.592157, 0.592157, 0.592157, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="trees2" type="Node2D" parent="snowy"]
+position = Vector2( 1432.21, 1693.36 )
+scale = Vector2( 0.789658, 0.789658 )
+
+[node name="darktree4" type="Sprite" parent="snowy/trees2"]
+position = Vector2( 755.586, -1289.36 )
+scale = Vector2( 0.435272, 0.435272 )
+texture = ExtResource( 3 )
+
+[node name="cpusnow2" type="CPUParticles2D" parent="snowy/trees2"]
+position = Vector2( 518.139, -1437.22 )
+scale = Vector2( 1.26637, 1.26637 )
+amount = 500
+lifetime = 5.0
+preprocess = 7.0
+speed_scale = 0.5
+emission_shape = 2
+emission_rect_extents = Vector2( 300, 1 )
+gravity = Vector2( 0, 30 )
+tangential_accel_curve = SubResource( 1 )
+scale_amount = 4.0
+scale_amount_random = 0.75
+
+[node name="darktree5" type="Sprite" parent="snowy/trees2"]
+position = Vector2( 530.72, -1300.12 )
+rotation = 3.14159
+scale = Vector2( 0.567, -0.567 )
+texture = ExtResource( 3 )
+
+[node name="mist2" type="ColorRect" parent="snowy/trees2"]
+margin_left = 105.0
+margin_top = -1458.0
+margin_right = 865.0
+margin_bottom = -1143.0
+color = Color( 1, 1, 1, 0.113725 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="darktree2" type="Sprite" parent="snowy/trees2"]
+position = Vector2( 414.31, -1325.19 )
+scale = Vector2( 0.566655, 0.566655 )
+texture = ExtResource( 3 )
+
+[node name="mist" type="ColorRect" parent="snowy/trees2"]
+margin_left = 105.0
+margin_top = -1458.0
+margin_right = 865.0
+margin_bottom = -1143.0
+color = Color( 1, 1, 1, 0.0313726 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="darktree6" type="Sprite" parent="snowy/trees2"]
+position = Vector2( 300.337, -1296.06 )
+scale = Vector2( 0.566655, 0.566655 )
+texture = ExtResource( 3 )
+
+[node name="mist5" type="ColorRect" parent="snowy/trees2"]
+margin_left = 105.0
+margin_top = -1458.0
+margin_right = 865.0
+margin_bottom = -1143.0
+color = Color( 1, 1, 1, 0.0627451 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="darktree3" type="Sprite" parent="snowy/trees2"]
+position = Vector2( 710.491, -1199.37 )
+texture = ExtResource( 3 )
+
+[node name="darktree" type="Sprite" parent="snowy/trees2"]
+position = Vector2( 282.584, -1167.51 )
+texture = ExtResource( 3 )
+
+[node name="mist4" type="ColorRect" parent="snowy/trees2"]
+margin_left = 105.0
+margin_top = -1458.0
+margin_right = 865.0
+margin_bottom = -1143.0
+color = Color( 1, 1, 1, 0.45098 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cpusnow" type="CPUParticles2D" parent="snowy/trees2"]
+position = Vector2( 496.648, -1447.07 )
+scale = Vector2( 1.26637, 1.26637 )
+amount = 500
+lifetime = 5.0
+preprocess = 7.0
+speed_scale = 0.5
+emission_shape = 2
+emission_rect_extents = Vector2( 300, 1 )
+gravity = Vector2( 0, 30 )
+tangential_accel_curve = SubResource( 1 )
+scale_amount = 5.0
+scale_amount_random = 0.75
+
+[node name="mist" type="Node2D" parent="."]
+visible = false
+
+[node name="sky" type="ColorRect" parent="mist"]
+margin_left = 1515.21
+margin_top = 542.361
+margin_right = 2123.21
+margin_bottom = 775.361
+color = Color( 0.760784, 0.717647, 0.717647, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="trees" type="Node2D" parent="mist"]
+position = Vector2( 1432.21, 1693.36 )
+scale = Vector2( 0.789658, 0.789658 )
+
+[node name="mistanimator" type="AnimationPlayer" parent="mist/trees"]
+autoplay = "misting"
+anims/misting = SubResource( 2 )
+
+[node name="mist3" type="ColorRect" parent="mist/trees"]
+margin_left = 105.0
+margin_top = -1458.0
+margin_right = 865.0
+margin_bottom = -1143.0
+color = Color( 1, 1, 1, 0.511548 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="darktree4" type="Sprite" parent="mist/trees"]
+position = Vector2( 755.586, -1289.36 )
+scale = Vector2( 0.435272, 0.435272 )
+texture = ExtResource( 3 )
+
+[node name="darktree5" type="Sprite" parent="mist/trees"]
+position = Vector2( 530.72, -1300.12 )
+rotation = 3.14159
+scale = Vector2( 0.567, -0.567 )
+texture = ExtResource( 3 )
+
+[node name="mist2" type="ColorRect" parent="mist/trees"]
+margin_left = 105.0
+margin_top = -1458.0
+margin_right = 865.0
+margin_bottom = -1143.0
+color = Color( 1, 1, 1, 0.278746 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="darktree2" type="Sprite" parent="mist/trees"]
+position = Vector2( 414.31, -1325.19 )
+scale = Vector2( 0.566655, 0.566655 )
+texture = ExtResource( 3 )
+
+[node name="darktree6" type="Sprite" parent="mist/trees"]
+position = Vector2( 300.337, -1296.06 )
+scale = Vector2( 0.566655, 0.566655 )
+texture = ExtResource( 3 )
+
+[node name="mist" type="ColorRect" parent="mist/trees"]
+margin_left = 105.0
+margin_top = -1458.0
+margin_right = 865.0
+margin_bottom = -1143.0
+color = Color( 1, 1, 1, 0.386249 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="darktree3" type="Sprite" parent="mist/trees"]
+position = Vector2( 710.491, -1199.37 )
+texture = ExtResource( 3 )
+
+[node name="darktree" type="Sprite" parent="mist/trees"]
+position = Vector2( 282.584, -1167.51 )
+texture = ExtResource( 3 )
+
+[node name="mist4" type="ColorRect" parent="mist/trees"]
+margin_left = 105.0
+margin_top = -1458.0
+margin_right = 865.0
+margin_bottom = -1143.0
+color = Color( 1, 1, 1, 0.563827 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rain" type="Node2D" parent="."]
+visible = false
+
+[node name="sky" type="ColorRect" parent="rain"]
+margin_left = 1515.21
+margin_top = 542.361
+margin_right = 2123.21
+margin_bottom = 775.361
+color = Color( 0.290196, 0.466667, 0.690196, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="trees" type="Node2D" parent="rain"]
+position = Vector2( 1432.21, 1693.36 )
+scale = Vector2( 0.789658, 0.789658 )
+
+[node name="lightning" type="ColorRect" parent="rain/trees"]
+visible = false
+margin_left = 114.072
+margin_top = -1431.31
+margin_right = 949.072
+margin_bottom = -1154.31
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RainAudio" type="AudioStreamPlayer" parent="rain/trees"]
+stream = ExtResource( 1 )
+volume_db = -6.029
+
+[node name="WindAudio" type="AudioStreamPlayer" parent="rain/trees"]
+stream = ExtResource( 7 )
+volume_db = -11.456
+
+[node name="lightning_animator" type="AnimationPlayer" parent="rain/trees"]
+anims/lightning = SubResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="rain/trees/lightning_animator"]
+stream = ExtResource( 6 )
+
+[node name="vignette_up" type="Sprite" parent="rain/trees"]
+position = Vector2( 506.523, -1309.84 )
+rotation = -1.5708
+scale = Vector2( 0.18353, 1 )
+texture = ExtResource( 4 )
+
+[node name="cloudish" type="Sprite" parent="rain/trees"]
+modulate = Color( 1, 1, 1, 0.741176 )
+position = Vector2( 331.553, -1440.21 )
+rotation = -4.21679
+scale = Vector2( 0.0441333, 0.19306 )
+texture = ExtResource( 4 )
+
+[node name="cloudish2" type="Sprite" parent="rain/trees"]
+modulate = Color( 1, 1, 1, 0.741176 )
+position = Vector2( 538.604, -1412.35 )
+rotation = 1.65527
+scale = Vector2( 0.0441333, 0.19306 )
+texture = ExtResource( 4 )
+
+[node name="darktree4" type="Sprite" parent="rain/trees"]
+modulate = Color( 0.188235, 0.172549, 0.176471, 1 )
+position = Vector2( 755.586, -1289.36 )
+scale = Vector2( 0.435272, 0.435272 )
+texture = ExtResource( 3 )
+
+[node name="darktree5" type="Sprite" parent="rain/trees"]
+modulate = Color( 0.188235, 0.172549, 0.176471, 1 )
+position = Vector2( 530.72, -1300.12 )
+rotation = 3.14159
+scale = Vector2( 0.567, -0.567 )
+texture = ExtResource( 3 )
+
+[node name="mist2" type="ColorRect" parent="rain/trees"]
+visible = false
+margin_left = 105.0
+margin_top = -1458.0
+margin_right = 865.0
+margin_bottom = -1143.0
+color = Color( 0.0784314, 0.0784314, 0.0784314, 0.168627 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="darktree2" type="Sprite" parent="rain/trees"]
+modulate = Color( 0.486275, 0.482353, 0.505882, 1 )
+position = Vector2( 414.31, -1325.19 )
+scale = Vector2( 0.566655, 0.566655 )
+texture = ExtResource( 3 )
+
+[node name="darktree6" type="Sprite" parent="rain/trees"]
+modulate = Color( 0.486275, 0.482353, 0.505882, 1 )
+position = Vector2( 300.337, -1296.06 )
+scale = Vector2( 0.566655, 0.566655 )
+texture = ExtResource( 3 )
+
+[node name="mist" type="ColorRect" parent="rain/trees"]
+margin_left = 105.0
+margin_top = -1458.0
+margin_right = 865.0
+margin_bottom = -1143.0
+color = Color( 0.0862745, 0.0862745, 0.0862745, 0.113725 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="darktree3" type="Sprite" parent="rain/trees"]
+modulate = Color( 0.486275, 0.482353, 0.505882, 1 )
+position = Vector2( 710.491, -1199.37 )
+texture = ExtResource( 3 )
+
+[node name="darktree" type="Sprite" parent="rain/trees"]
+modulate = Color( 0.486275, 0.482353, 0.505882, 1 )
+position = Vector2( 282.584, -1167.51 )
+texture = ExtResource( 3 )
+
+[node name="tangle_fg" type="Sprite" parent="rain/trees"]
+position = Vector2( 578.731, -1874.23 )
+texture = ExtResource( 5 )
+
+[node name="vignette_up2" type="Sprite" parent="rain/trees"]
+position = Vector2( 490.06, -1213.6 )
+rotation = -1.5708
+scale = Vector2( 0.108339, 1 )
+texture = ExtResource( 4 )
+
+[node name="mist4" type="ColorRect" parent="rain/trees"]
+margin_left = 105.0
+margin_top = -1458.0
+margin_right = 865.0
+margin_bottom = -1143.0
+color = Color( 0.109804, 0.109804, 0.109804, 0.576471 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rainCPU" type="CPUParticles2D" parent="rain/trees"]
+position = Vector2( 585.199, -1560.26 )
+amount = 600
+lifetime = 4.0
+preprocess = 7.0
+speed_scale = 2.4
+emission_shape = 2
+emission_rect_extents = Vector2( 400, 1 )
+gravity = Vector2( -20, 98 )
+tangential_accel = -11.08
+tangential_accel_random = 1.0
+tangential_accel_curve = SubResource( 4 )
+angle_random = 1.0
+scale_amount = 6.0
+scale_amount_random = 0.3
+color = Color( 0.423529, 0.427451, 0.439216, 1 )

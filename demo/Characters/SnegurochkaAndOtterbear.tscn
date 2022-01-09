@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Characters/SnegurochkaAndOtterbear.gd" type="Script" id=1]
+[ext_resource path="res://Characters/otterbear.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Characters/snegurochka.tscn" type="PackedScene" id=3]
+[ext_resource path="res://hitnhurtboxes/SeenBox.tscn" type="PackedScene" id=4]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 43.6001
+height = 180.8
+
+[node name="SnegurochkaAndOtterbear" type="YSort"]
+script = ExtResource( 1 )
+
+[node name="snegurochka" parent="." instance=ExtResource( 3 )]
+position = Vector2( 72.0002, 4.60007 )
+
+[node name="otterbear" parent="." instance=ExtResource( 2 )]
+position = Vector2( -95.9998, -45.3999 )
+
+[node name="AnimatedSprite" parent="otterbear" index="0"]
+animation = "right"
+frame = 1
+
+[node name="AnimationTree" parent="otterbear/Person" index="2"]
+parameters/playback = SubResource( 1 )
+
+[node name="SeenBox" parent="." instance=ExtResource( 4 )]
+
+[node name="CollisionShape2D" parent="SeenBox" index="0"]
+position = Vector2( 8, 15 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="SmellArrow" parent="SeenBox/CollisionShape2D" index="0"]
+visible = false
+
+[connection signal="seen" from="SeenBox" to="." method="_on_SeenBox_seen"]
+
+[editable path="snegurochka"]
+[editable path="snegurochka/SeenBox"]
+[editable path="otterbear"]
+[editable path="otterbear/Person"]
+[editable path="otterbear/Person/SeenBox"]
+[editable path="otterbear/Person/PlayerDetectionZone"]
+[editable path="SeenBox"]

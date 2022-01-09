@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/L9_GrandHotel/lobby/grandhotel_chair-min.png" type="Texture" id=1]
+[ext_resource path="res://sprites/L9_GrandHotel/lobby/grandhotel_chair_arm-min.png" type="Texture" id=2]
+
+[node name="LobbyChair" type="YSort"]
+position = Vector2( 27.3517, -84.4336 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( -10.6437, 86.2866 )
+
+[node name="grandhotel_chair_arm-min" type="Sprite" parent="Node2D"]
+position = Vector2( -16.8179, -63.9081 )
+texture = ExtResource( 2 )
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2( -19.3406, 259.837 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D2"]
+position = Vector2( 19.3406, -259.837 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D2/StaticBody2D"]
+position = Vector2( 0.840912, 0 )
+polygon = PoolVector2Array( -131.112, -24.8114, -114.463, 179.732, 74.621, 195.192, 73.7683, 133.14, -60.9487, 82.2173, -57.4115, 28.0279, 67.882, 57.4592, 71.0534, -23.6222 )
+
+[node name="Node2D3" type="Node2D" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="grandhotel_chair-min" type="Sprite" parent="Node2D3"]
+position = Vector2( -27.4883, 21.9926 )
+texture = ExtResource( 1 )

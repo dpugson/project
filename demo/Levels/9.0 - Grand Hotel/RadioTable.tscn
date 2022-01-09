@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/L00_recurring/radio_table.png" type="Texture" id=1]
+
+[node name="RadioTable" type="Node2D"]
+position = Vector2( 0, -36.7695 )
+
+[node name="radio_table" type="Sprite" parent="."]
+position = Vector2( -1.77753, 6.32129 )
+texture = ExtResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -95.1157, 55.8188, 2.46509, 9.14972, 95.8032, 44.5051, 9.53613, 110.973 )

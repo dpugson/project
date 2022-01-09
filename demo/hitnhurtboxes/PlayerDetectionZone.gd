@@ -1,5 +1,7 @@
 extends Area2D
 
+onready var collision = $CollisionShape2D
+
 var player = null
 var last_player_seen = null
 
@@ -12,3 +14,6 @@ func _on_PlayerDetectionZone_body_entered(body):
 
 func _on_PlayerDetectionZone_body_exited(_body):
 	player = null
+
+func set_can_talk(boolean: bool):
+	collision.disabled = not boolean

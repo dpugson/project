@@ -79,7 +79,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Control"]
 pause_mode = 2
-position = Vector2( 960.949, 265.589 )
+position = Vector2( 940.165, 260.211 )
 frames = SubResource( 1 )
 frame = 2
 playing = true

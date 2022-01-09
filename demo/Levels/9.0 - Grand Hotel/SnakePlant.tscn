@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/L9_GrandHotel/hallway/snakeplant-min.png" type="Texture" id=1]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 20.5061
+
+[node name="SnakePlant" type="Node2D"]
+
+[node name="snakeplant-min" type="Sprite" parent="."]
+position = Vector2( -1.31937, -155.594 )
+texture = ExtResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="snakeplant-min"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="snakeplant-min/StaticBody2D"]
+position = Vector2( 2.12131, 175.363 )
+rotation = 1.5708
+shape = SubResource( 1 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://sprites/L3_forest/tangle_fg.png" type="Texture" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
@@ -8,23 +8,57 @@
 [ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Characters/ForestFolk/Motorcycle.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sprites/leafpiletile2.png" type="Texture" id=9]
+[ext_resource path="res://world/creepy_tree.tscn" type="PackedScene" id=10]
 [ext_resource path="res://sprites/L3_forest/vignette_fade.png" type="Texture" id=11]
+[ext_resource path="res://Levels/2.0 - Forest/SinglePine.tscn" type="PackedScene" id=12]
+[ext_resource path="res://StarBG.tscn" type="PackedScene" id=13]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=14]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 141.826, 48.0205 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 108.806, 84.1454 )
 
 [node name="Tangle" type="Node2D"]
 script = ExtResource( 5 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -1380.0
-margin_top = -1098.58
-margin_right = 4127.0
-margin_bottom = 3457.42
+margin_left = -5281.0
+margin_top = -2013.0
+margin_right = 6735.0
+margin_bottom = 1935.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="tangle_bg-min" type="Sprite" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = -5213.0
+margin_top = 9380.0
+margin_right = 6984.0
+margin_bottom = 14663.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bgstuff" type="Node2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="bgstuff"]
+modulate = Color( 0.290196, 0.286275, 0.258824, 1 )
+margin_left = -762.0
+margin_top = 9491.0
+margin_right = 1707.0
+margin_bottom = 12226.0
+texture = ExtResource( 9 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tangle_bg-min" type="Sprite" parent="bgstuff"]
 position = Vector2( 546.733, 608.796 )
 texture = ExtResource( 4 )
 
@@ -35,7 +69,514 @@ position = Vector2( 184.132, 1274.51 )
 camera = NodePath("../../PuppyCamera")
 
 [node name="Motorcycle" parent="YSort" instance=ExtResource( 7 )]
+visible = false
 position = Vector2( 548.023, 1084.15 )
+
+[node name="Trees" type="YSort" parent="YSort"]
+position = Vector2( -62.2256, 7291.7 )
+
+[node name="creepy_tree" parent="YSort/Trees" instance=ExtResource( 10 )]
+modulate = Color( 0.854902, 1, 1, 1 )
+position = Vector2( 449.037, 4459.08 )
+
+[node name="creepy_tree2" parent="YSort/Trees" instance=ExtResource( 10 )]
+modulate = Color( 0.854902, 1, 1, 1 )
+position = Vector2( 714.157, 4436.49 )
+
+[node name="creepy_tree3" parent="YSort/Trees" instance=ExtResource( 10 )]
+modulate = Color( 0.854902, 1, 1, 1 )
+position = Vector2( -82.1386, 4509.86 )
+
+[node name="creepy_tree4" parent="YSort/Trees" instance=ExtResource( 10 )]
+modulate = Color( 0.854902, 1, 1, 1 )
+position = Vector2( 180.271, 3836.31 )
+
+[node name="creepy_tree5" parent="YSort/Trees" instance=ExtResource( 10 )]
+modulate = Color( 0.854902, 1, 1, 1 )
+position = Vector2( 70.2705, 3750.31 )
+
+[node name="creepy_tree9" parent="YSort/Trees" instance=ExtResource( 10 )]
+modulate = Color( 0.854902, 1, 1, 1 )
+position = Vector2( 856.271, 4034.31 )
+
+[node name="creepy_tree10" parent="YSort/Trees" instance=ExtResource( 10 )]
+modulate = Color( 0.854902, 1, 1, 1 )
+position = Vector2( 268.271, 4514.31 )
+
+[node name="creepy_tree11" parent="YSort/Trees" instance=ExtResource( 10 )]
+modulate = Color( 0.854902, 1, 1, 1 )
+position = Vector2( 1024.27, 4500.31 )
+
+[node name="creepy_tree12" parent="YSort/Trees" instance=ExtResource( 10 )]
+modulate = Color( 0.854902, 1, 1, 1 )
+position = Vector2( 1054.27, 3854.31 )
+
+[node name="SinglePine" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 76.9909, 3573.79 )
+
+[node name="SinglePine2" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( -7.00909, 3701.79 )
+
+[node name="SinglePine3" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( -3.00909, 3815.79 )
+
+[node name="SinglePine5" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( -35.2345, 4413.79 )
+
+[node name="SinglePine7" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 50.9909, 4329.79 )
+
+[node name="SinglePine9" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 1060.99, 3615.79 )
+
+[node name="SinglePine10" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 1120.99, 3725.79 )
+
+[node name="SinglePine11" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 1074.99, 3837.79 )
+
+[node name="SinglePine12" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 1134.99, 3951.79 )
+
+[node name="SinglePine13" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 1092.99, 4045.79 )
+
+[node name="SinglePine14" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 1150.99, 4127.79 )
+
+[node name="SinglePine15" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 1076.99, 4185.79 )
+
+[node name="SinglePine16" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 1166.99, 4291.79 )
+
+[node name="SinglePine17" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 1080.99, 4347.79 )
+
+[node name="SinglePine18" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 1180.99, 4459.79 )
+
+[node name="SinglePine19" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 1094.99, 4543.79 )
+
+[node name="SinglePine20" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 95.8611, 4481.36 )
+
+[node name="SinglePine21" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( -113.837, 4562.96 )
+
+[node name="SinglePine44" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 333.053, 4421.54 )
+
+[node name="SinglePine45" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 193.047, 4407.4 )
+
+[node name="SinglePine46" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 478.718, 4413.06 )
+
+[node name="SinglePine47" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 624.383, 4413.05 )
+
+[node name="SinglePine50" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 412.251, 4538.92 )
+
+[node name="SinglePine51" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 536.701, 4629.43 )
+
+[node name="SinglePine52" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 242.545, 4650.64 )
+
+[node name="SinglePine53" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 345.783, 4688.82 )
+
+[node name="SinglePine54" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 746.005, 4396.08 )
+
+[node name="SinglePine55" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 881.769, 4439.92 )
+
+[node name="SinglePine56" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 965.208, 4548.82 )
+
+[node name="SinglePine57" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 839.343, 4595.48 )
+
+[node name="SinglePine58" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 710.65, 4595.48 )
+
+[node name="SinglePine59" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 632.868, 4753.88 )
+
+[node name="SinglePine60" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 743.177, 4786.4 )
+
+[node name="SinglePine61" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 895.912, 4760.95 )
+
+[node name="SinglePine62" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 996.321, 4864.19 )
+
+[node name="SinglePine63" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 456.091, 4868.43 )
+
+[node name="SinglePine64" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 143.55, 4868.43 )
+
+[node name="SinglePine65" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 115.266, 4687.41 )
+
+[node name="SinglePine66" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 14.8566, 4674.68 )
+
+[node name="SinglePine48" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1082.59, 4731.26 )
+
+[node name="SinglePine49" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1181.58, 4698.72 )
+
+[node name="SinglePine22" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( -191.009, 4459.79 )
+
+[node name="SinglePine26" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( -197.009, 3875.79 )
+
+[node name="SinglePine27" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( -127.009, 3789.79 )
+
+[node name="SinglePine28" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( -147.009, 3687.79 )
+
+[node name="SinglePine29" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( -69.009, 3653.79 )
+
+[node name="SinglePine30" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( -179.009, 3573.79 )
+
+[node name="SinglePine31" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1190.99, 3567.79 )
+
+[node name="SinglePine32" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1230.99, 3687.79 )
+
+[node name="SinglePine33" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1210.99, 3773.79 )
+
+[node name="SinglePine34" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1318.99, 3833.79 )
+
+[node name="SinglePine35" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1242.99, 3943.79 )
+
+[node name="SinglePine36" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1376.99, 4013.79 )
+
+[node name="SinglePine37" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1292.99, 4081.79 )
+
+[node name="SinglePine38" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1302.99, 4189.79 )
+
+[node name="SinglePine39" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1306.99, 4329.79 )
+
+[node name="SinglePine40" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1430.99, 4395.79 )
+
+[node name="SinglePine41" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1306.99, 4499.79 )
+
+[node name="SinglePine42" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1418.99, 4561.79 )
+
+[node name="SinglePine43" parent="YSort/Trees" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1416.99, 4215.79 )
+
+[node name="Trees2" type="YSort" parent="YSort"]
+position = Vector2( -110.226, 6443.7 )
+
+[node name="creepy_tree" parent="YSort/Trees2" instance=ExtResource( 10 )]
+modulate = Color( 0.854902, 1, 1, 1 )
+position = Vector2( 74.2705, 3944.31 )
+
+[node name="creepy_tree2" parent="YSort/Trees2" instance=ExtResource( 10 )]
+modulate = Color( 0.854902, 1, 1, 1 )
+position = Vector2( 168.271, 4060.31 )
+
+[node name="creepy_tree3" parent="YSort/Trees2" instance=ExtResource( 10 )]
+modulate = Color( 0.854902, 1, 1, 1 )
+position = Vector2( 18.2705, 4156.31 )
+
+[node name="creepy_tree4" parent="YSort/Trees2" instance=ExtResource( 10 )]
+modulate = Color( 0.854902, 1, 1, 1 )
+position = Vector2( 180.271, 3836.31 )
+
+[node name="creepy_tree5" parent="YSort/Trees2" instance=ExtResource( 10 )]
+modulate = Color( 0.854902, 1, 1, 1 )
+position = Vector2( 70.2705, 3750.31 )
+
+[node name="creepy_tree10" parent="YSort/Trees2" instance=ExtResource( 10 )]
+modulate = Color( 0.854902, 1, 1, 1 )
+position = Vector2( 268.271, 4514.31 )
+
+[node name="creepy_tree11" parent="YSort/Trees2" instance=ExtResource( 10 )]
+modulate = Color( 0.854902, 1, 1, 1 )
+position = Vector2( 1024.27, 4500.31 )
+
+[node name="creepy_tree12" parent="YSort/Trees2" instance=ExtResource( 10 )]
+modulate = Color( 0.854902, 1, 1, 1 )
+position = Vector2( 1054.27, 3854.31 )
+
+[node name="SinglePine" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 76.9909, 3573.79 )
+
+[node name="SinglePine2" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( -7.00909, 3701.79 )
+
+[node name="SinglePine3" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( -3.00909, 3815.79 )
+
+[node name="SinglePine4" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( -51.0091, 3925.79 )
+
+[node name="SinglePine5" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 26.9909, 4075.79 )
+
+[node name="SinglePine6" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( -41.0091, 4197.79 )
+
+[node name="SinglePine7" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 50.9909, 4329.79 )
+
+[node name="SinglePine8" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( -67.0091, 4413.79 )
+
+[node name="SinglePine9" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 1060.99, 3615.79 )
+
+[node name="SinglePine10" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 1120.99, 3725.79 )
+
+[node name="SinglePine11" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 1074.99, 3837.79 )
+
+[node name="SinglePine12" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 1134.99, 3951.79 )
+
+[node name="SinglePine13" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 1092.99, 4045.79 )
+
+[node name="SinglePine14" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 1150.99, 4127.79 )
+
+[node name="SinglePine15" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 1076.99, 4185.79 )
+
+[node name="SinglePine16" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 1166.99, 4291.79 )
+
+[node name="SinglePine17" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 1080.99, 4347.79 )
+
+[node name="SinglePine18" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 1180.99, 4459.79 )
+
+[node name="SinglePine19" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 1094.99, 4543.79 )
+
+[node name="SinglePine20" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.478431, 0.47451, 0.458824, 1 )
+position = Vector2( 68.991, 4523.79 )
+
+[node name="SinglePine21" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( -113.837, 4562.96 )
+
+[node name="SinglePine44" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 272.242, 4677.51 )
+
+[node name="SinglePine45" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 218.503, 4594.07 )
+
+[node name="SinglePine47" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 958.137, 4667.61 )
+
+[node name="SinglePine48" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1082.59, 4732.67 )
+
+[node name="SinglePine49" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1181.58, 4698.72 )
+
+[node name="SinglePine22" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( -191.009, 4459.79 )
+
+[node name="SinglePine23" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( -133.009, 4267.79 )
+
+[node name="SinglePine24" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( -219.009, 4149.79 )
+
+[node name="SinglePine25" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( -155.009, 4029.79 )
+
+[node name="SinglePine26" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( -197.009, 3875.79 )
+
+[node name="SinglePine27" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( -127.009, 3789.79 )
+
+[node name="SinglePine28" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( -147.009, 3687.79 )
+
+[node name="SinglePine29" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( -69.009, 3653.79 )
+
+[node name="SinglePine30" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( -179.009, 3573.79 )
+
+[node name="SinglePine31" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1190.99, 3567.79 )
+
+[node name="SinglePine32" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1230.99, 3687.79 )
+
+[node name="SinglePine33" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1210.99, 3773.79 )
+
+[node name="SinglePine34" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1318.99, 3833.79 )
+
+[node name="SinglePine35" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1242.99, 3943.79 )
+
+[node name="SinglePine36" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1376.99, 4013.79 )
+
+[node name="SinglePine37" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1292.99, 4081.79 )
+
+[node name="SinglePine38" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1302.99, 4189.79 )
+
+[node name="SinglePine39" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1306.99, 4329.79 )
+
+[node name="SinglePine40" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1430.99, 4395.79 )
+
+[node name="SinglePine41" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1306.99, 4499.79 )
+
+[node name="SinglePine42" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1418.99, 4561.79 )
+
+[node name="SinglePine43" parent="YSort/Trees2" instance=ExtResource( 12 )]
+modulate = Color( 0.431373, 0.392157, 0.376471, 1 )
+position = Vector2( 1416.99, 4215.79 )
 
 [node name="tangle_fg" type="Sprite" parent="."]
 position = Vector2( 546.733, 608.796 )
@@ -48,24 +589,273 @@ position = Vector2( 929.997, 677.082 )
 position = Vector2( -2516.32, -6774.45 )
 
 [node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
-position = Vector2( 2859.5, 4974.77 )
+position = Vector2( 3350.68, 13742.9 )
 
 [node name="BottomSP" parent="." instance=ExtResource( 8 )]
-position = Vector2( 541.722, 1645.55 )
+position = Vector2( -313.533, 11329.6 )
 
 [node name="TopSP" parent="." instance=ExtResource( 8 )]
-position = Vector2( 855.498, 271.659 )
+position = Vector2( 543.498, 298.659 )
 
-[node name="vignette_fade" type="Sprite" parent="."]
-position = Vector2( 607.895, 1600.88 )
+[node name="FG" type="Node2D" parent="."]
+
+[node name="entrance_vignette_fade" type="Sprite" parent="FG"]
+position = Vector2( 503.306, 12177.3 )
 rotation = -1.5708
-scale = Vector2( 0.268688, 1 )
+scale = Vector2( 0.356746, 1 )
 texture = ExtResource( 11 )
 
-[node name="vignette" type="Sprite" parent="."]
-position = Vector2( 507.617, 530.937 )
+[node name="top_vignette_fade2" type="Sprite" parent="FG"]
+position = Vector2( 566.779, 1506.72 )
+rotation = -1.5708
+scale = Vector2( 0.306888, 1.00141 )
+texture = ExtResource( 11 )
+
+[node name="bottom_top_vignette" type="Sprite" parent="FG"]
+position = Vector2( 732.879, 7727.98 )
+rotation = -1.5708
+scale = Vector2( 1.3682, 6.368 )
+texture = ExtResource( 11 )
+
+[node name="vignette_fade4" type="Sprite" parent="FG"]
+position = Vector2( 814.062, 10280.7 )
+rotation = 1.5708
+scale = Vector2( 1.51035, 6.384 )
+texture = ExtResource( 11 )
+
+[node name="vignette_fade5" type="Sprite" parent="FG"]
+position = Vector2( 678.061, 4148.65 )
+rotation = 1.5708
+scale = Vector2( 2.53119, 6.408 )
+texture = ExtResource( 11 )
+
+[node name="left_entrance_vignette_fade5" type="Sprite" parent="FG"]
+position = Vector2( -253.939, 11017.8 )
+scale = Vector2( 0.622854, 1.82 )
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="right_entrance_vignette_fade6" type="Sprite" parent="FG"]
+position = Vector2( 1210.06, 11043.2 )
+rotation = -3.14159
+scale = Vector2( 0.622854, 1.82 )
+texture = ExtResource( 11 )
+
+[node name="vignette" type="Sprite" parent="FG"]
+position = Vector2( 507.617, 529.523 )
 rotation = 1.5708
 scale = Vector2( 1.44583, 1.14444 )
 texture = ExtResource( 3 )
 
+[node name="StarBG" parent="FG" instance=ExtResource( 13 )]
+margin_left = 62.2251
+margin_top = 4932.78
+margin_right = 62.2251
+margin_bottom = 4932.78
+
+[node name="StarBG2" parent="FG" instance=ExtResource( 13 )]
+margin_left = 62.2251
+margin_top = 4932.78
+margin_right = 62.2251
+margin_bottom = 4932.78
+
+[node name="ParallaxBackground" parent="FG/StarBG2" index="0"]
+rotation = 0.174533
+scale = Vector2( 1, 1 )
+transform = Transform2D( 0.984808, 0.173648, -0.173648, 0.984808, 0, 0 )
+
+[node name="ParallaxLayer" parent="FG/StarBG2/ParallaxBackground" index="0"]
+visible = false
+position = Vector2( -5989.28, -13401.2 )
+
+[node name="Node2D" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer5" index="0"]
+position = Vector2( 759.999, 1118.74 )
+
+[node name="SaveStar7" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="0"]
+position = Vector2( -810.917, 1415.03 )
+
+[node name="SaveStar8" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="1"]
+position = Vector2( -341.163, 1618.59 )
+
+[node name="SaveStar9" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="2"]
+position = Vector2( -1036.01, 1698.84 )
+
+[node name="SaveStar11" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="3"]
+position = Vector2( 349.771, 1659.7 )
+
+[node name="SaveStar13" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="4"]
+position = Vector2( 843.012, 1759.52 )
+
+[node name="SaveStar19" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="5"]
+position = Vector2( -1108.77, 1816.43 )
+
+[node name="SaveStar20" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="6"]
+position = Vector2( -560.72, 1417.14 )
+
+[node name="SaveStar21" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="7"]
+position = Vector2( -615.525, 1916.26 )
+
+[node name="SaveStar23" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="8"]
+position = Vector2( 3.25153, 2786.49 )
+
+[node name="SaveStar24" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="9"]
+position = Vector2( 473.002, 2990.05 )
+
+[node name="SaveStar26" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="10"]
+position = Vector2( 780.302, 2567.27 )
+
+[node name="SaveStar27" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="11"]
+position = Vector2( 1163.93, 3031.16 )
+
+[node name="SaveStar28" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="12"]
+position = Vector2( 94.0016, 3569.56 )
+
+[node name="SaveStar30" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="13"]
+position = Vector2( 700.052, 2620.12 )
+
+[node name="SaveStar31" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="14"]
+position = Vector2( 499.582, 1658.85 )
+
+[node name="SaveStar32" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="15"]
+position = Vector2( -648.637, 2800.1 )
+
+[node name="SaveStar33" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="16"]
+position = Vector2( 274.492, 1942.66 )
+
+[node name="SaveStar40" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="17"]
+position = Vector2( -1055.19, 2976.99 )
+
+[node name="SaveStar42" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="18"]
+position = Vector2( -747.895, 2554.21 )
+
+[node name="SaveStar43" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="19"]
+position = Vector2( -364.262, 3018.1 )
+
+[node name="SaveStar44" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="20"]
+position = Vector2( 183.781, 2618.8 )
+
+[node name="SaveStar45" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="21"]
+position = Vector2( 128.982, 3117.92 )
+
+[node name="SaveStar46" parent="FG/StarBG2/ParallaxBackground/ParallaxLayer3" index="22"]
+position = Vector2( -828.145, 2607.06 )
+
+[node name="StarBG3" parent="FG" instance=ExtResource( 13 )]
+margin_left = 62.2251
+margin_top = 4932.78
+margin_right = 62.2251
+margin_bottom = 4932.78
+
+[node name="ParallaxBackground" parent="FG/StarBG3" index="0"]
+rotation = -0.174533
+scale = Vector2( 1, 1 )
+transform = Transform2D( 0.984808, -0.173648, 0.173648, 0.984808, 0, 0 )
+
+[node name="ParallaxLayer" parent="FG/StarBG3/ParallaxBackground" index="0"]
+visible = false
+position = Vector2( -5989.28, -13401.2 )
+
+[node name="Node2D" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer5" index="0"]
+position = Vector2( -373.663, 1148.62 )
+
+[node name="SaveStar7" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="0"]
+position = Vector2( 1122.92, 1121.76 )
+
+[node name="SaveStar8" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="1"]
+position = Vector2( 1592.67, 1325.32 )
+
+[node name="SaveStar9" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="2"]
+position = Vector2( 897.83, 1405.57 )
+
+[node name="SaveStar11" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="3"]
+position = Vector2( 2283.61, 1366.42 )
+
+[node name="SaveStar13" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="4"]
+position = Vector2( 2776.85, 1466.25 )
+
+[node name="SaveStar19" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="5"]
+position = Vector2( 825.071, 1523.16 )
+
+[node name="SaveStar20" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="6"]
+position = Vector2( 1373.12, 1123.87 )
+
+[node name="SaveStar21" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="7"]
+position = Vector2( 1318.31, 1622.98 )
+
+[node name="SaveStar23" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="8"]
+position = Vector2( 1937.09, 2493.21 )
+
+[node name="SaveStar24" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="9"]
+position = Vector2( 2406.84, 2696.77 )
+
+[node name="SaveStar26" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="10"]
+position = Vector2( 2714.14, 2274 )
+
+[node name="SaveStar27" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="11"]
+position = Vector2( 3097.77, 2737.88 )
+
+[node name="SaveStar28" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="12"]
+position = Vector2( 2027.84, 3276.28 )
+
+[node name="SaveStar30" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="13"]
+position = Vector2( 2633.89, 2326.85 )
+
+[node name="SaveStar31" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="14"]
+position = Vector2( 2433.42, 1365.57 )
+
+[node name="SaveStar32" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="15"]
+position = Vector2( 1285.2, 2506.82 )
+
+[node name="SaveStar33" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="16"]
+position = Vector2( 2208.33, 1649.38 )
+
+[node name="SaveStar40" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="17"]
+position = Vector2( 878.646, 2683.71 )
+
+[node name="SaveStar42" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="18"]
+position = Vector2( 1185.94, 2260.94 )
+
+[node name="SaveStar43" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="19"]
+position = Vector2( 1569.58, 2724.82 )
+
+[node name="SaveStar44" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="20"]
+position = Vector2( 2117.62, 2325.53 )
+
+[node name="SaveStar45" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="21"]
+position = Vector2( 2062.82, 2824.64 )
+
+[node name="SaveStar46" parent="FG/StarBG3/ParallaxBackground/ParallaxLayer3" index="22"]
+position = Vector2( 1105.69, 2313.78 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( -5, -16 )
+polygon = PoolVector2Array( -277.401, 11227.3, -1397.4, 11195.3, -1236.1, -811.243, 2288.12, -799.93, 2673.92, 12202.9, -1072.59, 11685.4, -478.62, 11430.8, -198.864, 11684.7, 1519.35, 11773.8, 652.722, 1534.37, 985.062, 1393.36, 1014.76, 1022.42, 760.203, 779.178, 661.208, 521.791, 630.095, 210.664, 562.213, 46.6154, 457.561, 201.33, 364.223, 731.095, 106.836, 903.629, 85.0565, 1161.43, 156.333, 1428.71, 446.247, 1542 )
+
+[node name="BottomTZ" parent="." instance=ExtResource( 14 )]
+position = Vector2( 504.831, 12205 )
+
+[node name="CollisionShape2D" parent="BottomTZ" index="0"]
+position = Vector2( -992.092, -898.882 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="TopTZ" parent="." instance=ExtResource( 14 )]
+position = Vector2( 552, 158 )
+
+[node name="CollisionShape2D" parent="TopTZ" index="0"]
+position = Vector2( 0, -52 )
+shape = SubResource( 2 )
+
+[connection signal="transition_triggered" from="BottomTZ" to="." method="_on_BottomTZ_transition_triggered"]
+[connection signal="transition_triggered" from="TopTZ" to="." method="_on_TopTZ_transition_triggered"]
+
 [editable path="PuppyCamera"]
+[editable path="FG/StarBG"]
+[editable path="FG/StarBG2"]
+[editable path="FG/StarBG3"]
+[editable path="BottomTZ"]
+[editable path="TopTZ"]

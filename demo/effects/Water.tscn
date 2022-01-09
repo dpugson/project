@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="Water" type="Area2D"]
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

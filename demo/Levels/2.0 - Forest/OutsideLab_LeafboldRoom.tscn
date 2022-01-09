@@ -1,0 +1,768 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://Levels/2.0 - Forest/pines.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/2.0 - Forest/OutsideLab_02.gd" type="Script" id=2]
+[ext_resource path="res://Levels/0.0 Cave/WaveTexture.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/L3_forest/water_sausages_02.png" type="Texture" id=4]
+[ext_resource path="res://sprites/L3_forest/water_sausages_01.png" type="Texture" id=5]
+[ext_resource path="res://sprites/leafpiletile2dark.png" type="Texture" id=6]
+[ext_resource path="res://sprites/leafpile/leaf1.png" type="Texture" id=7]
+[ext_resource path="res://sprites/L3_forest/lab_exterior_right_upper_tree-min.png" type="Texture" id=8]
+[ext_resource path="res://world/creepy_tree.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Levels/2.0 - Forest/watersausage.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/2.0 - Forest/shadowed_pines.tscn" type="PackedScene" id=11]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=14]
+[ext_resource path="res://sprites/L3_forest/tall_creepy_tree_inside.png" type="Texture" id=16]
+[ext_resource path="res://sprites/L3_forest/vignette_fade.png" type="Texture" id=18]
+[ext_resource path="res://sprites/leafpile/leaf0.png" type="Texture" id=20]
+[ext_resource path="res://sprites/leafpile/leaf2.png" type="Texture" id=22]
+[ext_resource path="res://sprites/leafpile/leaf3.png" type="Texture" id=23]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=26]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 681.443, 35.5073 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 61.4875, 336.522 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 83.7338, 520.403 )
+
+[node name="OutsideLab02" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -1315.0
+margin_top = -2341.0
+margin_right = 7990.0
+margin_bottom = 2776.0
+texture = ExtResource( 6 )
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 13 )]
+position = Vector2( -1592.55, 1314.22 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -1277.02, -2251.29 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 7990, 1801.69 )
+
+[node name="BGStuff" type="Node2D" parent="."]
+position = Vector2( -38.8142, -60.4982 )
+
+[node name="WaveTexture" parent="BGStuff" instance=ExtResource( 3 )]
+position = Vector2( 1109.95, 1731.77 )
+
+[node name="TextureRect2" type="TextureRect" parent="BGStuff"]
+margin_left = 13.2251
+margin_top = 889.622
+margin_right = 3721.23
+margin_bottom = 1843.62
+texture = ExtResource( 6 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="leave_shore" type="Node2D" parent="BGStuff"]
+modulate = Color( 0.52549, 0.52549, 0.505882, 1 )
+position = Vector2( -5.15991, 606.852 )
+
+[node name="leaf0" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 1377.97, 295.721 )
+texture = ExtResource( 20 )
+
+[node name="leaf2" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 1484.92, 346.839 )
+texture = ExtResource( 22 )
+
+[node name="leaf3" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 1748.62, 355.354 )
+texture = ExtResource( 22 )
+
+[node name="leaf4" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 2073.12, 305.113 )
+texture = ExtResource( 22 )
+
+[node name="leaf7" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 1634.58, 328.194 )
+texture = ExtResource( 23 )
+
+[node name="leaf8" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 1913.86, 318.961 )
+texture = ExtResource( 23 )
+
+[node name="leaf11" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 2393.94, 404.36 )
+texture = ExtResource( 23 )
+
+[node name="leaf12" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 1833.08, 418.209 )
+texture = ExtResource( 23 )
+
+[node name="leaf13" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 1530.72, 408.976 )
+texture = ExtResource( 23 )
+
+[node name="leaf6" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 2774.77, 228.946 )
+texture = ExtResource( 22 )
+
+[node name="leaf1" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 1987.72, 300.497 )
+texture = ExtResource( 20 )
+
+[node name="leaf14" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 1666.9, 418.208 )
+texture = ExtResource( 20 )
+
+[node name="leaf15" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 2176.98, 309.729 )
+texture = ExtResource( 20 )
+
+[node name="leaf16" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 2340.86, 316.653 )
+texture = ExtResource( 20 )
+
+[node name="leaf23" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 2480.62, 305.472 )
+texture = ExtResource( 20 )
+
+[node name="leaf17" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 2606.29, 312.037 )
+texture = ExtResource( 20 )
+
+[node name="leaf18" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 2472.42, 418.208 )
+texture = ExtResource( 20 )
+
+[node name="leaf19" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 2666.29, 282.032 )
+texture = ExtResource( 20 )
+
+[node name="leaf20" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 2885.56, 272.8 )
+texture = ExtResource( 20 )
+
+[node name="leaf21" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 1643.82, 298.188 )
+texture = ExtResource( 20 )
+
+[node name="leaf22" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 1831.82, 320.476 )
+texture = ExtResource( 20 )
+
+[node name="sausages" type="Node2D" parent="BGStuff"]
+position = Vector2( -5.15991, 606.852 )
+
+[node name="sausages_texture_A" type="TextureRect" parent="BGStuff/sausages"]
+modulate = Color( 0.784314, 0.698039, 0.180392, 1 )
+margin_left = 1272.76
+margin_top = 135.756
+margin_right = 2948.76
+margin_bottom = 289.756
+texture = ExtResource( 4 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sausages_texture_B" type="TextureRect" parent="BGStuff/sausages"]
+modulate = Color( 0.545098, 0.501961, 0.423529, 1 )
+margin_left = 1210.53
+margin_top = 155.775
+margin_right = 2681.53
+margin_bottom = 334.775
+texture = ExtResource( 5 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sausages_texture_A2" type="TextureRect" parent="BGStuff/sausages"]
+modulate = Color( 0.784314, 0.698039, 0.180392, 1 )
+margin_left = 2723.86
+margin_top = 186.031
+margin_right = 4399.86
+margin_bottom = 340.031
+rect_scale = Vector2( -1, 1 )
+texture = ExtResource( 4 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BGStuff/sausages"]
+position = Vector2( 1790.53, 320.154 )
+
+[node name="nograb" type="CollisionShape2D" parent="BGStuff/sausages/StaticBody2D"]
+position = Vector2( 3, -30 )
+shape = SubResource( 1 )
+
+[node name="island" type="Node2D" parent="BGStuff"]
+modulate = Color( 0.439216, 0.447059, 0.376471, 1 )
+position = Vector2( -4.75684, 148.651 )
+
+[node name="leaf0" type="Sprite" parent="BGStuff/island"]
+position = Vector2( 1734.92, 421.341 )
+texture = ExtResource( 20 )
+
+[node name="leaf1" type="Sprite" parent="BGStuff/island"]
+position = Vector2( 1808.65, 467.72 )
+texture = ExtResource( 7 )
+
+[node name="leaf3" type="Sprite" parent="BGStuff/island"]
+position = Vector2( 1915.68, 416.584 )
+texture = ExtResource( 20 )
+
+[node name="leaf4" type="Sprite" parent="BGStuff/island"]
+position = Vector2( 1841.95, 357.124 )
+texture = ExtResource( 20 )
+
+[node name="leaf5" type="Sprite" parent="BGStuff/island"]
+position = Vector2( 1740.87, 345.232 )
+texture = ExtResource( 20 )
+
+[node name="leaf6" type="Sprite" parent="BGStuff/island"]
+position = Vector2( 1687.36, 371.394 )
+texture = ExtResource( 20 )
+
+[node name="leaf7" type="Sprite" parent="BGStuff/island"]
+position = Vector2( 1937.09, 352.124 )
+texture = ExtResource( 20 )
+
+[node name="leaf8" type="Sprite" parent="BGStuff/island"]
+position = Vector2( 1799.09, 460.124 )
+texture = ExtResource( 20 )
+
+[node name="island2" type="Node2D" parent="BGStuff"]
+modulate = Color( 0.439216, 0.447059, 0.376471, 1 )
+position = Vector2( 575.071, 123.195 )
+
+[node name="leaf0" type="Sprite" parent="BGStuff/island2"]
+position = Vector2( 1734.92, 421.341 )
+texture = ExtResource( 20 )
+
+[node name="leaf1" type="Sprite" parent="BGStuff/island2"]
+position = Vector2( 1808.65, 467.72 )
+texture = ExtResource( 7 )
+
+[node name="leaf3" type="Sprite" parent="BGStuff/island2"]
+position = Vector2( 1915.68, 416.584 )
+texture = ExtResource( 20 )
+
+[node name="leaf4" type="Sprite" parent="BGStuff/island2"]
+position = Vector2( 1841.95, 357.124 )
+texture = ExtResource( 20 )
+
+[node name="leaf5" type="Sprite" parent="BGStuff/island2"]
+position = Vector2( 1740.87, 345.232 )
+texture = ExtResource( 20 )
+
+[node name="leaf6" type="Sprite" parent="BGStuff/island2"]
+position = Vector2( 1687.36, 371.394 )
+texture = ExtResource( 20 )
+
+[node name="leaf7" type="Sprite" parent="BGStuff/island2"]
+position = Vector2( 1937.09, 352.124 )
+texture = ExtResource( 20 )
+
+[node name="leaf8" type="Sprite" parent="BGStuff/island2"]
+position = Vector2( 1799.09, 460.124 )
+texture = ExtResource( 20 )
+
+[node name="vignette_fade4" type="Sprite" parent="."]
+position = Vector2( 2686.55, 758.362 )
+rotation = 3.14159
+scale = Vector2( 0.617624, -1 )
+texture = ExtResource( 18 )
+
+[node name="vignette_fade" type="Sprite" parent="."]
+position = Vector2( 725.201, 664.536 )
+scale = Vector2( 0.617624, 1 )
+texture = ExtResource( 18 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="player" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( 544.7, 975.103 )
+
+[node name="fade" type="Node2D" parent="YSort"]
+position = Vector2( 1153.69, 292.666 )
+
+[node name="creepy_tree" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1708.03, 387.492 )
+
+[node name="creepy_tree2" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 2386.21, 457.395 )
+
+[node name="creepy_tree3" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1861.61, 985.434 )
+
+[node name="pinearray" type="Node2D" parent="YSort"]
+position = Vector2( 668.551, 534.565 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="shadowed_pines5" parent="YSort/pinearray" instance=ExtResource( 11 )]
+modulate = Color( 0.313726, 0.392157, 0.643137, 1 )
+margin_left = -3454.96
+margin_top = -459.339
+margin_right = 369.04
+margin_bottom = 89.6605
+
+[node name="shadowed_pines3" parent="YSort/pinearray" instance=ExtResource( 11 )]
+modulate = Color( 0.313726, 0.392157, 0.643137, 1 )
+margin_left = -3328.97
+margin_top = -374.804
+margin_right = 507.03
+margin_bottom = 174.196
+
+[node name="shadowed_pines" parent="YSort/pinearray" instance=ExtResource( 11 )]
+margin_left = -3245.38
+margin_top = -228.54
+margin_right = 586.62
+margin_bottom = 320.46
+
+[node name="CreepyTrees" type="Node2D" parent="YSort/pinearray"]
+position = Vector2( 416.9, 32.662 )
+
+[node name="Trees3" type="TextureRect" parent="YSort/pinearray/CreepyTrees"]
+modulate = Color( 0.588235, 0.564706, 0.592157, 1 )
+margin_left = -2179.71
+margin_top = -676.772
+margin_right = -399.711
+margin_bottom = 445.228
+texture = ExtResource( 16 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pines2" parent="YSort/pinearray" instance=ExtResource( 1 )]
+modulate = Color( 0.839216, 0.862745, 1, 1 )
+margin_left = -3100.07
+margin_top = -176.587
+margin_right = 510.93
+margin_bottom = 372.413
+
+[node name="pinearray2" type="Node2D" parent="YSort"]
+position = Vector2( 3070.03, 584.367 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="shadowed_pines5" parent="YSort/pinearray2" instance=ExtResource( 11 )]
+modulate = Color( 0.313726, 0.392157, 0.643137, 1 )
+margin_left = -3266.96
+margin_top = -479.339
+margin_right = 557.04
+margin_bottom = 69.6605
+
+[node name="shadowed_pines3" parent="YSort/pinearray2" instance=ExtResource( 11 )]
+modulate = Color( 0.313726, 0.392157, 0.643137, 1 )
+margin_left = -3140.97
+margin_top = -394.804
+margin_right = 695.03
+margin_bottom = 154.196
+
+[node name="shadowed_pines" parent="YSort/pinearray2" instance=ExtResource( 11 )]
+margin_left = -3057.38
+margin_top = -248.54
+margin_right = 774.62
+margin_bottom = 300.46
+
+[node name="CreepyTrees" type="Node2D" parent="YSort/pinearray2"]
+position = Vector2( 604.9, 12.662 )
+
+[node name="Trees3" type="TextureRect" parent="YSort/pinearray2/CreepyTrees"]
+modulate = Color( 0.588235, 0.564706, 0.592157, 1 )
+margin_left = -2179.71
+margin_top = -676.772
+margin_right = -399.711
+margin_bottom = 445.228
+texture = ExtResource( 16 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pines2" parent="YSort/pinearray2" instance=ExtResource( 1 )]
+modulate = Color( 0.839216, 0.862745, 1, 1 )
+margin_left = -2912.07
+margin_top = -196.587
+margin_right = 698.931
+margin_bottom = 352.413
+
+[node name="sausages" type="YSort" parent="YSort"]
+
+[node name="watersausage" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1702, 602 )
+
+[node name="watersausage2" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1744.43, 608.364 )
+
+[node name="watersausage3" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1784.73, 608.364 )
+
+[node name="watersausage4" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1822.21, 602.707 )
+
+[node name="watersausage5" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1861.81, 583.615 )
+
+[node name="watersausage6" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1897.16, 567.352 )
+
+[node name="watersausage7" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1927.57, 543.31 )
+
+[node name="watersausage8" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1942.42, 508.662 )
+
+[node name="watersausage9" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1953.73, 476.135 )
+
+[node name="watersausage10" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1953.73, 447.144 )
+
+[node name="watersausage11" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1932.52, 400.475 )
+
+[node name="watersausage12" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1909.18, 384.211 )
+
+[node name="watersausage13" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1875.95, 373.605 )
+
+[node name="watersausage14" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1837.06, 376.433 )
+
+[node name="watersausage15" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1806.65, 375.019 )
+
+[node name="watersausage16" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1775.54, 371.484 )
+
+[node name="watersausage17" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1730.99, 363.705 )
+
+[node name="watersausage18" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1665.23, 366.534 )
+
+[node name="watersausage19" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1690.69, 367.241 )
+
+[node name="watersausage20" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1646.14, 384.211 )
+
+[node name="watersausage21" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1623.51, 397.647 )
+
+[node name="watersausage22" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1605.13, 406.839 )
+
+[node name="watersausage23" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1593.81, 420.981 )
+
+[node name="watersausage24" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1583.91, 446.437 )
+
+[node name="watersausage25" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1583.91, 477.55 )
+
+[node name="watersausage26" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1589.57, 505.834 )
+
+[node name="watersausage27" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1589.85, 550.275 )
+
+[node name="watersausage28" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1618.32, 589.074 )
+
+[node name="watersausage29" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1653.25, 603.994 )
+
+[node name="watersausage30" parent="YSort/sausages" instance=ExtResource( 10 )]
+position = Vector2( 1681.59, 592.687 )
+
+[node name="sausages2" type="YSort" parent="YSort"]
+position = Vector2( 582.656, -26.1629 )
+
+[node name="watersausage" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1702, 617 )
+
+[node name="watersausage2" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1744.43, 608.364 )
+
+[node name="watersausage3" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1784.73, 608.364 )
+
+[node name="watersausage4" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1822.21, 602.707 )
+
+[node name="watersausage5" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1861.81, 583.615 )
+
+[node name="watersausage6" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1897.16, 567.352 )
+
+[node name="watersausage7" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1927.57, 543.31 )
+
+[node name="watersausage8" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1942.42, 508.662 )
+
+[node name="watersausage9" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1953.73, 476.135 )
+
+[node name="watersausage10" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1953.73, 447.144 )
+
+[node name="watersausage11" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1932.52, 400.475 )
+
+[node name="watersausage12" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1909.18, 384.211 )
+
+[node name="watersausage13" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1875.95, 373.605 )
+
+[node name="watersausage14" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1837.06, 376.433 )
+
+[node name="watersausage15" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1806.65, 375.019 )
+
+[node name="watersausage16" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1775.54, 371.484 )
+
+[node name="watersausage17" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1730.99, 363.705 )
+
+[node name="watersausage18" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1665.23, 366.534 )
+
+[node name="watersausage19" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1690.69, 367.241 )
+
+[node name="watersausage20" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1646.14, 384.211 )
+
+[node name="watersausage21" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1623.51, 397.647 )
+
+[node name="watersausage22" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1605.13, 406.839 )
+
+[node name="watersausage23" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1593.81, 420.981 )
+
+[node name="watersausage24" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1583.91, 446.437 )
+
+[node name="watersausage25" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1583.91, 477.55 )
+
+[node name="watersausage26" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1588.57, 525.334 )
+
+[node name="watersausage31" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1582.07, 497.334 )
+
+[node name="watersausage27" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1599.35, 547.275 )
+
+[node name="watersausage28" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1607.32, 580.074 )
+
+[node name="watersausage29" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1629.75, 604.494 )
+
+[node name="watersausage30" parent="YSort/sausages2" instance=ExtResource( 10 )]
+position = Vector2( 1663.59, 614.187 )
+
+[node name="FGStuff" type="Node2D" parent="."]
+position = Vector2( 644.2, 716.689 )
+
+[node name="CreepyTreeGroup" type="Node2D" parent="FGStuff"]
+position = Vector2( 307.269, 230.901 )
+
+[node name="Trees4" type="TextureRect" parent="FGStuff/CreepyTreeGroup"]
+modulate = Color( 0.588235, 0.564706, 0.592157, 1 )
+margin_left = 1833.0
+margin_top = -802.0
+margin_right = 6744.0
+margin_bottom = 320.0
+texture = ExtResource( 16 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Trees5" type="TextureRect" parent="FGStuff/CreepyTreeGroup"]
+modulate = Color( 0.996078, 0.905882, 0.772549, 1 )
+margin_left = 1891.24
+margin_top = -753.804
+margin_right = 6632.24
+margin_bottom = 368.196
+texture = ExtResource( 16 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreepyTreeGroup2" type="Node2D" parent="FGStuff"]
+position = Vector2( -6282.26, 294.663 )
+
+[node name="Trees4" type="TextureRect" parent="FGStuff/CreepyTreeGroup2"]
+modulate = Color( 0.588235, 0.564706, 0.592157, 1 )
+margin_left = 1833.0
+margin_top = -802.0
+margin_right = 6744.0
+margin_bottom = 320.0
+texture = ExtResource( 16 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Trees5" type="TextureRect" parent="FGStuff/CreepyTreeGroup2"]
+modulate = Color( 0.996078, 0.905882, 0.772549, 1 )
+margin_left = 1894.36
+margin_top = -756.924
+margin_right = 6635.36
+margin_bottom = 365.076
+texture = ExtResource( 16 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lab_exterior_right_upper_tree-min" type="Sprite" parent="FGStuff"]
+visible = false
+modulate = Color( 0.529412, 0.435294, 0.384314, 1 )
+position = Vector2( 798.062, -121.755 )
+texture = ExtResource( 8 )
+
+[node name="pines7" parent="FGStuff" instance=ExtResource( 11 )]
+margin_left = 1673.0
+margin_top = 123.0
+margin_right = 6932.0
+margin_bottom = 672.0
+
+[node name="pines2" parent="FGStuff" instance=ExtResource( 11 )]
+margin_left = -1484.45
+margin_top = 429.449
+margin_right = 6944.55
+margin_bottom = 978.449
+
+[node name="pines3" parent="FGStuff" instance=ExtResource( 11 )]
+margin_left = -933.0
+margin_top = 400.0
+margin_right = 6843.0
+margin_bottom = 949.0
+
+[node name="pines4" parent="FGStuff" instance=ExtResource( 11 )]
+margin_left = -1280.0
+margin_top = 536.0
+margin_right = 3092.0
+margin_bottom = 1085.0
+
+[node name="pines5" parent="FGStuff" instance=ExtResource( 11 )]
+modulate = Color( 0.239216, 0.360784, 0.423529, 1 )
+margin_left = -927.553
+margin_top = 638.321
+margin_right = 2979.45
+margin_bottom = 1187.32
+
+[node name="pines6" parent="FGStuff" instance=ExtResource( 11 )]
+modulate = Color( 0.223529, 0.239216, 0.298039, 1 )
+margin_left = -1060.57
+margin_top = 786.687
+margin_right = 2846.43
+margin_bottom = 1335.69
+
+[node name="ColorRect" type="ColorRect" parent="FGStuff"]
+margin_left = -2751.0
+margin_top = -1429.0
+margin_right = -853.0
+margin_bottom = 2188.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="FGStuff"]
+margin_left = 2919.0
+margin_top = -1513.0
+margin_right = 4817.0
+margin_bottom = 2719.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vignette_fade2" type="Sprite" parent="."]
+position = Vector2( 538.239, 1255.61 )
+scale = Vector2( 0.860776, 1.74373 )
+texture = ExtResource( 18 )
+
+[node name="vignette_fade3" type="Sprite" parent="."]
+position = Vector2( 2983.19, 1366.97 )
+rotation = 3.14159
+scale = Vector2( 0.924137, -1.95333 )
+texture = ExtResource( 18 )
+
+[node name="LeftSP" parent="." instance=ExtResource( 14 )]
+position = Vector2( 416.758, 1074.96 )
+
+[node name="RightSP" parent="." instance=ExtResource( 14 )]
+position = Vector2( 3718.66, 1007.42 )
+
+[node name="collisions" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
+position = Vector2( -91.9669, 328.423 )
+polygon = PoolVector2Array( -208.067, 1110.63, 4558.64, 1124.66, 4146.94, 1355.88, -479.801, 1380.32 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
+position = Vector2( -225.089, -565.098 )
+polygon = PoolVector2Array( 1477.42, 1370.7, 1405.27, 1456.84, -568.401, 1432.07 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
+position = Vector2( 2041.55, -1063.91 )
+polygon = PoolVector2Array( 1849.55, 1931.88, 333.394, 1933.73, 264.42, 1852.87 )
+
+[node name="RightTZ" parent="." instance=ExtResource( 26 )]
+position = Vector2( 2763.2, 852.843 )
+
+[node name="CollisionShape2D" parent="RightTZ" index="0"]
+position = Vector2( 860.098, 284.963 )
+shape = SubResource( 2 )
+
+[node name="LeftTZ" parent="." instance=ExtResource( 26 )]
+position = Vector2( 769.611, 201.061 )
+
+[node name="CollisionShape2D" parent="LeftTZ" index="0"]
+position = Vector2( -525.196, 867.668 )
+shape = SubResource( 3 )
+
+[connection signal="transition_triggered" from="RightTZ" to="." method="_on_RightTZ_transition_triggered"]
+[connection signal="transition_triggered" from="LeftTZ" to="." method="_on_LeftTZ_transition_triggered"]
+
+[editable path="PuppyCamera"]
+[editable path="RightTZ"]
+[editable path="LeftTZ"]

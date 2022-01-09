@@ -49,8 +49,8 @@ onready var nextButton = $Panel/MarginContainer/VBoxContainer/PlayerChoicesBotto
 onready var textLabel = $Panel/MarginContainer/VBoxContainer/DialogueHBoxContainer/Text
 onready var playerChoices = $Panel/MarginContainer/VBoxContainer/PlayerChoicesBottom
 onready var panel = $Panel
-onready var portrait = $Panel2/CenterContainer/Portrait
-onready var portrait_panel = $Panel2
+onready var portrait = $Panel/Panel2/CenterContainer/Portrait
+onready var portrait_panel = $Panel/Panel2
 onready var audio = $AudioStreamPlayer
 onready var animation = $AnimationPlayer
 

@@ -22,3 +22,7 @@ func _ready():
 		stats.spawn_player(
 			player, null, 
 			"../../../PuppyCamera", player_position, orientation)
+
+
+func _on_BottomTZ_transition_triggered():
+	Transition.go_to("res://Levels/2.0 - Forest/Tangle.tscn", "top")

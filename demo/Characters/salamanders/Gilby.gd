@@ -46,7 +46,7 @@ func play_splash_appear():
 	animation_player.play("appear")
 	
 func appeared():
-	emit_signal("appeared")
+	animation_player.play("default")
 	
 func set_dialogue(new_dialogue):
 	person.set_dialogue(new_dialogue)

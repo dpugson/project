@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://effects/Ripples.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/salamanders/Pericles.tscn" type="PackedScene" id=2]
@@ -290,6 +290,10 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
+[sub_resource type="AnimationNodeStateMachinePlayback" id=5]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=6]
+
 [node name="BarkSalamanderEventPhase2" type="YSort"]
 script = ExtResource( 5 )
 
@@ -306,15 +310,19 @@ position = Vector2( -1.56415, 0.782074 )
 
 [node name="Ripples2" parent="Node2D" instance=ExtResource( 1 )]
 position = Vector2( 124.436, 346.557 )
-frame = 1
 
 [node name="Ripples" parent="Node2D" instance=ExtResource( 1 )]
 position = Vector2( -114.097, 348.904 )
-frame = 1
 
 [node name="Gilby" parent="Node2D" instance=ExtResource( 3 )]
 visible = false
 position = Vector2( -115.63, 325.476 )
+
+[node name="Ripples" parent="Node2D/Gilby" index="0"]
+frame = 0
+
+[node name="AnimationTree" parent="Node2D/Gilby/Person" index="2"]
+parameters/playback = SubResource( 5 )
 
 [node name="AnimatedSprite" parent="Node2D/Gilby" index="2"]
 animation = "up"
@@ -323,11 +331,11 @@ animation = "up"
 visible = false
 position = Vector2( 121.344, 336.608 )
 
-[node name="Ripples" parent="Node2D/Pericles" index="0"]
-frame = 0
-
 [node name="AnimatedSprite" parent="Node2D/Pericles" index="1"]
 animation = "up"
+
+[node name="AnimationTree" parent="Node2D/Pericles/Person" index="2"]
+parameters/playback = SubResource( 6 )
 
 [node name="Splash" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( -112.228, 331.004 )
@@ -336,5 +344,10 @@ position = Vector2( -112.228, 331.004 )
 position = Vector2( 123.178, 328.658 )
 
 [editable path="Node2D/Gilby"]
-
+[editable path="Node2D/Gilby/Person"]
+[editable path="Node2D/Gilby/Person/SeenBox"]
+[editable path="Node2D/Gilby/Person/PlayerDetectionZone"]
 [editable path="Node2D/Pericles"]
+[editable path="Node2D/Pericles/Person"]
+[editable path="Node2D/Pericles/Person/SeenBox"]
+[editable path="Node2D/Pericles/Person/PlayerDetectionZone"]

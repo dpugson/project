@@ -36,5 +36,5 @@ func grab_ball():
 	stats.inventory_add('real_ball')
 	self.queue_free()
 
-func _on_SeenBox_seen(obj):
+func _on_SeenBox_seen(_obj):
 	DialogueHelper.showDialogue(self, dialogue, show_top)

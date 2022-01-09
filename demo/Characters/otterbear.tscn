@@ -1,0 +1,73 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://sprites/random_npcs/otterbear/otterbear_l0-min.png" type="Texture" id=1]
+[ext_resource path="res://sprites/random_npcs/otterbear/otterbear_r1-min.png" type="Texture" id=2]
+[ext_resource path="res://sprites/random_npcs/otterbear/otterbear_r0-min.png" type="Texture" id=3]
+[ext_resource path="res://sprites/random_npcs/otterbear/otterbear_u1-min.png" type="Texture" id=4]
+[ext_resource path="res://sprites/random_npcs/otterbear/otterbear_d0-min.png" type="Texture" id=5]
+[ext_resource path="res://sprites/random_npcs/otterbear/otterbear_l1-min.png" type="Texture" id=6]
+[ext_resource path="res://sprites/random_npcs/otterbear/otterbear_d1-min.png" type="Texture" id=7]
+[ext_resource path="res://sprites/random_npcs/otterbear/otterbear_u0-min.png" type="Texture" id=8]
+[ext_resource path="res://Characters/otterbear.gd" type="Script" id=9]
+[ext_resource path="res://Brains/TalkToPerson.tscn" type="PackedScene" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "down",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "left",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "right",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "up",
+"speed": 2.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 37.9297, 23.0411 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=3]
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 39.9024
+height = 25.7531
+
+[node name="otterbear" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "down"
+playing = true
+
+[node name="Person" parent="." instance=ExtResource( 10 )]
+
+[node name="CollisionShape2D" parent="Person/SeenBox" index="0"]
+position = Vector2( 1.41418, 71.4178 )
+shape = SubResource( 2 )
+
+[node name="SmellArrow" parent="Person/SeenBox/CollisionShape2D" index="0"]
+position = Vector2( 0.772491, -205.256 )
+
+[node name="AnimationTree" parent="Person" index="2"]
+parameters/playback = SubResource( 3 )
+parameters/idle/blend_position = Vector2( 0.102171, 0.148571 )
+
+[node name="CollisionShape2D" parent="Person/KinematicBody2D" index="0"]
+position = Vector2( 1.41418, 70.6996 )
+shape = SubResource( 4 )
+
+[editable path="Person"]
+[editable path="Person/SeenBox"]
+[editable path="Person/PlayerDetectionZone"]
