@@ -1,0 +1,83 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Characters/RobotAA/Sprites/d0.png" type="Texture" id=1]
+[ext_resource path="res://Characters/RobotAA/Sprites/l0.png" type="Texture" id=2]
+[ext_resource path="res://Characters/RobotAA/Sprites/r0.png" type="Texture" id=3]
+[ext_resource path="res://Characters/RobotAA/Sprites/u0.png" type="Texture" id=4]
+[ext_resource path="res://Brains/TalkToPerson.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Characters/RobotFollower.gd" type="Script" id=6]
+[ext_resource path="res://Characters/RobotAA/Sprites/l2.png" type="Texture" id=7]
+[ext_resource path="res://Characters/RobotAA/Sprites/u1.png" type="Texture" id=8]
+[ext_resource path="res://Characters/RobotAA/Sprites/d1.png" type="Texture" id=9]
+[ext_resource path="res://Characters/RobotAA/Sprites/l1.png" type="Texture" id=10]
+[ext_resource path="res://Characters/RobotAA/Sprites/d2.png" type="Texture" id=11]
+[ext_resource path="res://Characters/RobotAA/Sprites/r2.png" type="Texture" id=12]
+[ext_resource path="res://Characters/RobotAA/Sprites/u2.png" type="Texture" id=13]
+[ext_resource path="res://Characters/RobotAA/Sprites/r1.png" type="Texture" id=14]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 9 ), ExtResource( 1 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 10 ), ExtResource( 2 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 14 ), ExtResource( 3 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "up",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 17.5632
+height = 11.8788
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 58.9332, 27.0733 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=4]
+
+[node name="RobotFollower" type="KinematicBody2D"]
+script = ExtResource( 6 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -1.10501, -93.9267 )
+frames = SubResource( 1 )
+animation = "down"
+frame = 3
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 2.59412, 44.0997 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="Person" parent="." instance=ExtResource( 5 )]
+
+[node name="SeenBox" parent="Person" index="0"]
+position = Vector2( 0, 1.1019 )
+
+[node name="CollisionShape2D" parent="Person/SeenBox" index="0"]
+visible = false
+position = Vector2( 0, 41.8716 )
+shape = SubResource( 3 )
+
+[node name="SmellArrow" parent="Person/SeenBox/CollisionShape2D" index="0"]
+position = Vector2( -5.04926, -263.353 )
+
+[node name="AnimationTree" parent="Person" index="2"]
+parameters/playback = SubResource( 4 )
+
+[editable path="Person"]
+[editable path="Person/SeenBox"]
+[editable path="Person/PlayerDetectionZone"]

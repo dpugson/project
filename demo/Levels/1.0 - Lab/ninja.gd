@@ -82,8 +82,8 @@ func handle_init_state():
 				]
 			}
 
-func get_5_g():
-	stats.G += 5
+func get_g():
+	stats.G += 30
 
 func garbage_mission():
 	stats.world_state[NINJA_STATE_KEY] = "GARBAGE_MISSION"
@@ -107,8 +107,8 @@ func give_out_drink_mission():
 			], null, null, NINJA_PITCH
 		],
 		"ok" : [
-			"TEXT", "You gain 5 G.", NINJA_SPEECH_SPEED, 
-			"4", [self, "get_5_g"], null, null
+			"TEXT", "You gain 30 G.", NINJA_SPEECH_SPEED, 
+			"4", [self, "get_g"], null, null
 		],
 		"4" : [
 			"TEXT", "This never happened...", NINJA_SPEECH_SPEED, 

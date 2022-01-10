@@ -13,14 +13,14 @@ animations = [ {
 "name": "FacingYou",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "FacingWall",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "LookingAtYou",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "FacingWall",
 "speed": 5.0
 } ]
 
@@ -161,6 +161,7 @@ shape = SubResource( 3 )
 autoplay = "default"
 anims/default = SubResource( 4 )
 anims/disappear = SubResource( 5 )
+
 [connection signal="seen" from="SeenBox" to="." method="_on_SeenBox_seen"]
 
 [editable path="SeenBox"]

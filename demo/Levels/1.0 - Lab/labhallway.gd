@@ -186,28 +186,28 @@ func advance_soda_quest_if_relevant():
 var bought_drink_after_ninja_mission
 func buy_yum():
 	print(stats.G)
-	if stats.G < 5:
+	if stats.G < 30:
 		return "You don't have enough G..."
 	else:
-		stats.G -= 5;
+		stats.G -= 30;
 		stats.inventory_add("yum_juice")
 		advance_soda_quest_if_relevant()
 		return "You receive 1 YUM JUICE."
 
 func buy_devil_cola():
-	if stats.G < 5:
+	if stats.G < 30:
 		return "You don't have enough G..."
 	else:
-		stats.G -= 5;
+		stats.G -= 30;
 		stats.inventory_add("devil_cola")
 		advance_soda_quest_if_relevant()
 		return "You receive 1 DEVIL COLA."
 
 func buy_canned_pizza():
-	if stats.G < 5:
+	if stats.G < 30:
 		return "You don't have enough G..."
 	else:
-		stats.G -= 5;
+		stats.G -= 30;
 		stats.inventory_add("canned_pizza")
 		advance_soda_quest_if_relevant()
 		return "You receive 1 CANNED PIZZA."
@@ -220,9 +220,9 @@ func _on_sodamachine_seen(_obj):
 		"begin" : [
 			"ACTION", [self, "get_buy_prompt"],
 			0.03, [
-				["YUM JUICE - 5G", "yum"],
-				["DEVIL COLA - 5G", "devil"],
-				["CANNED PIZZA - 5G", "pizza"],
+				["YUM JUICE - 30G", "yum"],
+				["DEVIL COLA - 30G", "devil"],
+				["CANNED PIZZA - 30G", "pizza"],
 				["NO THANKS", null]
 			]
 		],

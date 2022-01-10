@@ -6,6 +6,7 @@ onready var reset_button = $HBoxContainer/Reset
 onready var start = $HBoxContainer/Start
 onready var current_location = $"Control/Current Location"
 onready var level_lable = $Control/Level
+onready var lab_friend = $Control/ProgressMarkers/labFriend
 
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 
@@ -33,6 +34,8 @@ func progress_markers():
 		$Control/ProgressMarkers/ball.visible = false
 	if not stats.check_bool("GOT_SWIMMING_CERT"):
 		$Control/ProgressMarkers/swimFriends.visible = false
+	if not stats.check_bool("alllabpuzzlesdone"):
+		lab_friend.visible = false
 
 func _on_Start_pressed():
 	Transition.go_to(stats.save_spot_tscn, stats.save_spot_name)

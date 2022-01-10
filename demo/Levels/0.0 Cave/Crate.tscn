@@ -27,6 +27,7 @@ shape = SubResource( 1 )
 [node name="CollisionShape2D" parent="SeenBox" index="0"]
 position = Vector2( 1.5498, -24.0228 )
 shape = SubResource( 2 )
+
 [connection signal="seen" from="SeenBox" to="." method="_on_SeenBox_seen"]
 
 [editable path="SeenBox"]

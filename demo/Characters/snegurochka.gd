@@ -24,7 +24,7 @@ var dialogue = {
 func _ready():
 	pass # Replace with function body.
 
-func _on_SeenBox_seen(obj):
+func _on_SeenBox_seen(_obj):
 	DialogueHelper.showDialogue(self, dialogue)
 
 func set_can_talk(boolean):

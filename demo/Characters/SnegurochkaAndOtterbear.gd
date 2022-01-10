@@ -109,5 +109,5 @@ func _ready():
 	deactivate()
 	ob.person.set_direction2(Vector2.RIGHT)
 
-func _on_SeenBox_seen(obj):
+func _on_SeenBox_seen(_obj):
 	DialogueHelper.showDialogue(self, get_dialogue(), false, null)

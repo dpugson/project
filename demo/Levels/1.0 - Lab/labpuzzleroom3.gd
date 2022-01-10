@@ -20,7 +20,10 @@ var ROBOT_SPEECH_SPEED = 0.05
 func _ready():
 	var player_position = bottomSP.global_position
 	var orientation = Vector2.UP
-	Jukebox.stop()
+	if stats.check_bool("alllabpuzzlesdone"):
+		Jukebox.play_song("res://tunes/lab/background_science.wav")
+	else:
+		Jukebox.stop()
 	#Jukebox.play_song("res://tunes/lab/background_science.wav")
 	#stats.spawn_metadata = "cutscene"
 	#stats.spawn_metadata = "beat_game"
@@ -50,7 +53,6 @@ func _ready():
 			player.visible = false
 			cutscene_animation.play("beat game")
 			give_robot_focus()
-			#Jukebox.play_song("res://tunes/lab/background_science.wav")
 			return
 	if stats.check_bool("ROBOT_POUTING"):
 		cutscene_animation.play("pouting")

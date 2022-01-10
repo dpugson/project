@@ -9,6 +9,11 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "down",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "left",
@@ -22,11 +27,6 @@ animations = [ {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "down",
 "speed": 5.0
 } ]
 
@@ -70,5 +70,5 @@ position = Vector2( -5.04926, -263.353 )
 parameters/playback = SubResource( 4 )
 
 [editable path="Person"]
-
 [editable path="Person/SeenBox"]
+[editable path="Person/PlayerDetectionZone"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Levels/2.0 - Forest/pines.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/L3_forest/forest_01-min.png" type="Texture" id=2]
@@ -26,7 +26,7 @@
 [ext_resource path="res://sprites/L3_forest/lab_exterior_upper_left_tree_back-min.png" type="Texture" id=24]
 [ext_resource path="res://world/leaf_pile.tscn" type="PackedScene" id=25]
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=26]
-[ext_resource path="res://Levels/2.0 - Forest/the_real_ball.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Characters/RobotFollower.tscn" type="PackedScene" id=27]
 [ext_resource path="res://sprites/cavestuff/bone.png" type="Texture" id=28]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -41,6 +41,23 @@ extents = Vector2( 37.8086, 121.57 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 136.339, 39.2026 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "cutscene_leaving_lab"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "admire_beauty"
+} ]
+}
 
 [node name="OutsideLab01" type="Node2D"]
 script = ExtResource( 15 )
@@ -240,7 +257,7 @@ position = Vector2( 1394.76, 299.01 )
 modulate = Color( 0.588235, 0.564706, 0.592157, 1 )
 margin_left = -1547.0
 margin_top = -1062.0
-margin_right = 233.0
+margin_right = 2116.0
 margin_bottom = 60.0
 texture = ExtResource( 16 )
 stretch_mode = 2
@@ -252,7 +269,7 @@ __meta__ = {
 modulate = Color( 0.588235, 0.564706, 0.592157, 1 )
 margin_left = -1498.0
 margin_top = -943.0
-margin_right = 258.0
+margin_right = 1658.0
 margin_bottom = 179.0
 texture = ExtResource( 16 )
 stretch_mode = 2
@@ -267,7 +284,7 @@ texture = ExtResource( 19 )
 [node name="Trees2" type="TextureRect" parent="YSort/CreepyTrees"]
 margin_left = -1584.0
 margin_top = -860.0
-margin_right = 184.0
+margin_right = 1432.0
 margin_bottom = 262.0
 texture = ExtResource( 16 )
 stretch_mode = 2
@@ -301,13 +318,14 @@ texture = ExtResource( 9 )
 position = Vector2( -241.093, -203.696 )
 texture = ExtResource( 3 )
 
-[node name="the_real_ball" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 2005.35, 240.643 )
-
 [node name="bone" type="Sprite" parent="YSort"]
 visible = false
 position = Vector2( 2168.03, 125.626 )
 texture = ExtResource( 28 )
+
+[node name="RobotFollower" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 180.881, 815.38 )
+player_path = NodePath("../player")
 
 [node name="FGStuff" type="Node2D" parent="."]
 position = Vector2( 644.2, 716.689 )
@@ -483,7 +501,7 @@ scale = Vector2( 2.18711, -2.06398 )
 texture = ExtResource( 18 )
 
 [node name="LabSP" parent="." instance=ExtResource( 14 )]
-position = Vector2( 167.67, 854.077 )
+position = Vector2( 300.861, 846.942 )
 
 [node name="RightSP" parent="." instance=ExtResource( 14 )]
 position = Vector2( 3025.84, 815.503 )
@@ -502,7 +520,7 @@ polygon = PoolVector2Array( 1499.71, 867.307, 1667.44, 1211.55, 1396.51, 1210.32
 
 [node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
 position = Vector2( 2137.84, -1535.33 )
-polygon = PoolVector2Array( 2805.95, 2088.29, 420.883, 2058.16, 209.431, 1697.93, 227.449, 1544.06, 39.0332, 1515.74, 410.399, 993.082 )
+polygon = PoolVector2Array( 2805.95, 2088.29, 420.979, 2073.03, -644.55, 2088.49, 410.399, 993.082 )
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
 position = Vector2( 464.083, -893.036 )
@@ -538,6 +556,9 @@ position = Vector2( 44.2282, 836.701 )
 position = Vector2( -19.3949, 2.9873 )
 rotation = 2.35619
 shape = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/cutscene_leaving_lab = SubResource( 5 )
 
 [connection signal="transition_triggered" from="RightTZ" to="." method="_on_RightTZ_transition_triggered"]
 [connection signal="transition_triggered" from="TopTZ" to="." method="_on_TopTZ_transition_triggered"]

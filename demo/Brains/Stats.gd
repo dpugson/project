@@ -175,6 +175,10 @@ func set_bool(stat_name: String, value: bool = true):
 func check_bool(stat_name: String) -> bool:
 	return world_state.get(stat_name, false)
 
+# Return the value or null
+func get(stat_name):
+	return world_state.get(stat_name, null)
+
 func set_max_health(value):
 	max_health = value
 	self.health = clamp(health, 0, max_health)

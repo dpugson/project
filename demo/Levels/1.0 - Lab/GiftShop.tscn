@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://BG.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/L2_lab/giftshop_tile_counter.png" type="Texture" id=2]
@@ -7,7 +7,7 @@
 [ext_resource path="res://sprites/L2_lab/giftshop_right_counter.png" type="Texture" id=5]
 [ext_resource path="res://sprites/L2_lab/giftshop_doll_counter.png" type="Texture" id=6]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://sprites/L2_lab/giftshop_counterdoorthing.png" type="Texture" id=8]
+[ext_resource path="res://sprites/L2_lab/giftshop_counterdoor_up-min.png" type="Texture" id=8]
 [ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/1.0 - Lab/GiftShop.gd" type="Script" id=10]
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=11]
@@ -29,6 +29,9 @@
 [ext_resource path="res://Brains/DescriptionBox.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Brains/UnlockableBarrier.tscn" type="PackedScene" id=28]
 [ext_resource path="res://Brains/SaveStar.tscn" type="PackedScene" id=29]
+[ext_resource path="res://sprites/L2_lab/giftshop_counterdoor_mid-min.png" type="Texture" id=30]
+[ext_resource path="res://sprites/L2_lab/giftshop_counterdoor_low-min.png" type="Texture" id=31]
+[ext_resource path="res://sprites/L2_lab/giftshop_little_overhang-min.png" type="Texture" id=32]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 36.7892
@@ -36,6 +39,24 @@ height = 57.9126
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 49.1028, 44.7618 )
+
+[sub_resource type="SpriteFrames" id=27]
+animations = [ {
+"frames": [ ExtResource( 31 ) ],
+"loop": true,
+"name": "closed",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 30 ), ExtResource( 31 ) ],
+"loop": false,
+"name": "close",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 31 ), ExtResource( 30 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "open",
+"speed": 8.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 122.378, 52.3308 )
@@ -69,6 +90,81 @@ extents = Vector2( 305.144, 79.9691 )
 
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 131.846, 75.843 )
+
+[sub_resource type="Animation" id=29]
+resource_name = "at_door"
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/Robot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1130.38, 269.513 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/Robot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/Robot/RobotSprite:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "down" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("YSort/Robot/RobotSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/Robot/RobotSprite:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("YSort/Robot/RobotSprite:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=14]
 resource_name = "atphone"
@@ -218,6 +314,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("YSort/Robot:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2542.44, 793.998 ) ]
+}
 
 [sub_resource type="Animation" id=16]
 length = 3.0
@@ -344,6 +452,96 @@ tracks/9/keys = {
 "values": [ 0.0 ]
 }
 
+[sub_resource type="Animation" id=28]
+resource_name = "go_to_door"
+length = 11.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/Robot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 4, 4.8, 8, 10.1, 11 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 694.868, 1239.32 ), Vector2( 694.868, 1239.32 ), Vector2( 704.97, 856.56 ), Vector2( 818.339, 859.928 ), Vector2( 818.339, 390.739 ), Vector2( 1130.38, 390.739 ), Vector2( 1130.38, 269.513 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/Robot/RobotSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 4, 4.8, 8, 10.1, 11.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "left", "up", "right", "up", "right", "up", "down" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/Robot/RobotSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 11 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("YSort/Robot/RobotSprite:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5, 11 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/CounterDoor/CounterDoor:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.9, 5.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ "closed", "open", "close" ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("YSort/CounterDoor/CounterDoor:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 11.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "walked_to_door"
+} ]
+}
+
 [sub_resource type="Animation" id=17]
 length = 4.0
 tracks/0/type = "value"
@@ -417,20 +615,6 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, -86.1072 ]
-}
-tracks/6/type = "method"
-tracks/6/path = NodePath(".")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 4 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "start_talking_on_phone"
-} ]
 }
 
 [sub_resource type="RectangleShape2D" id=18]
@@ -609,6 +793,7 @@ position = Vector2( 10.3854, -61.322 )
 texture = ExtResource( 6 )
 
 [node name="player" parent="YSort" instance=ExtResource( 7 )]
+visible = false
 position = Vector2( 554.383, 1232.2 )
 camera = NodePath("../../PuppyCamera")
 
@@ -632,14 +817,14 @@ position = Vector2( 2.01331, -133.525 )
 texture = ExtResource( 25 )
 
 [node name="phone_top" type="Sprite" parent="YSort/phone"]
-position = Vector2( -84.7052, -46.6153 )
-rotation = -1.50285
+position = Vector2( 1.64026, -160.339 )
 texture = ExtResource( 24 )
 
 [node name="Robot" type="Node2D" parent="YSort"]
-position = Vector2( 1267.7, 1104.53 )
+position = Vector2( 2542.44, 793.998 )
 
 [node name="RobotSprite" parent="YSort/Robot" instance=ExtResource( 23 )]
+visible = false
 position = Vector2( 0.976929, -96.2937 )
 animation = "up"
 
@@ -661,10 +846,19 @@ position = Vector2( 1.95178, -238.763 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Robot"]
 
-[node name="giftshop_counterdoorthing" type="Sprite" parent="."]
-position = Vector2( 700.462, 924.355 )
-scale = Vector2( 1.02425, 1 )
-texture = ExtResource( 8 )
+[node name="CounterDoor" type="Node2D" parent="YSort"]
+position = Vector2( 690.519, 1095.31 )
+
+[node name="CounterDoor" type="AnimatedSprite" parent="YSort/CounterDoor"]
+position = Vector2( 221.468, -666.797 )
+frames = SubResource( 27 )
+animation = "close"
+frame = 2
+playing = true
+
+[node name="giftshop_little_overhang-min" type="Sprite" parent="."]
+position = Vector2( 911.987, 428.51 )
+texture = ExtResource( 32 )
 
 [node name="PuppyCamera" parent="." instance=ExtResource( 9 )]
 
@@ -705,7 +899,7 @@ shape = SubResource( 5 )
 position = Vector2( 1047.74, 1042.55 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/rightcounter"]
-position = Vector2( 13.1394, -16.0452 )
+position = Vector2( 13.1394, -17.1676 )
 shape = SubResource( 6 )
 
 [node name="leftcounter" type="StaticBody2D" parent="collisions"]
@@ -762,9 +956,11 @@ shape = SubResource( 13 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
+anims/at_door = SubResource( 29 )
 anims/atphone = SubResource( 14 )
 anims/default = SubResource( 15 )
 anims/dropoff = SubResource( 16 )
+anims/go_to_door = SubResource( 28 )
 anims/gophone = SubResource( 17 )
 
 [node name="flavor" type="Node2D" parent="."]
@@ -871,8 +1067,7 @@ position = Vector2( -6.2345, -139.849 )
 
 [node name="UnlockableBarrier" parent="." instance=ExtResource( 28 )]
 position = Vector2( 1154.46, 195.283 )
-locked_description = [ "Hmm.. The door appears to be fake!", "This is the end of the demo!
-Thanks for playing!" ]
+unlock_var_name = "left_lab"
 
 [connection signal="seen" from="YSort/Robot/RobotSeenBox" to="." method="_on_RobotSeenBox_seen"]
 [connection signal="transition_triggered" from="BottomTZ" to="." method="_on_BottomTZ_transition_triggered"]

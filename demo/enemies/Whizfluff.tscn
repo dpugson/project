@@ -47,7 +47,7 @@ script = ExtResource( 11 )
 position = Vector2( -1.34305, -6.25301 )
 scale = Vector2( 0.876777, 0.876777 )
 frames = SubResource( 1 )
-frame = 6
+frame = 5
 playing = true
 
 [node name="dogshadow" type="Sprite" parent="."]
@@ -91,13 +91,11 @@ shape = SubResource( 5 )
 [node name="CollisionShape2D" parent="SoftCollision" index="0"]
 position = Vector2( -0.783981, 21.9516 )
 shape = SubResource( 6 )
+
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="out_of_health" from="Stats" to="." method="_on_Stats_out_of_health"]
 
 [editable path="HurtBox"]
-
 [editable path="PlayerDetectionZone"]
-
 [editable path="HitBox"]
-
 [editable path="SoftCollision"]

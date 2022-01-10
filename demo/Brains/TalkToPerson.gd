@@ -40,8 +40,8 @@ func init(animated_sprite_input: AnimatedSprite):
 func set_dialogue(new_dialogue):
 	self.dialogue = new_dialogue
 
-func set_dialogue_callback(callback):
-	self.callback = callback
+func set_dialogue_callback(callback_inp):
+	self.callback = callback_inp
 	
 var dialogue = {
 	"begin" : [

@@ -2,19 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/giftshop_counterdoorthing.png-e0d806033b6d72bca1e697563e78e0b3.stex"
+path="res://.import/fallen_robot-min.png-663527d390c00ecfc4bf6c83f21c0e5f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/L2_lab/giftshop_counterdoorthing.png"
-dest_files=[ "res://.import/giftshop_counterdoorthing.png-e0d806033b6d72bca1e697563e78e0b3.stex" ]
+source_file="res://sprites/L3_forest/ancientpuzzle/room1/fallen_robot-min.png"
+dest_files=[ "res://.import/fallen_robot-min.png-663527d390c00ecfc4bf6c83f21c0e5f.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

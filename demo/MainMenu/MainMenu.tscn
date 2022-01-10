@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://MainMenu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://sprites/dog/r1.png" type="Texture" id=2]
@@ -10,10 +10,22 @@
 [ext_resource path="res://sprites/items/swim_certification.png" type="Texture" id=8]
 [ext_resource path="res://Themes/DefaultTheme.tres" type="Theme" id=9]
 [ext_resource path="res://Brains/ControlsInfo.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Characters/RobotAA/Sprites/r0.png" type="Texture" id=11]
+[ext_resource path="res://Characters/RobotAA/Sprites/r2.png" type="Texture" id=12]
+[ext_resource path="res://Characters/RobotAA/Sprites/r1.png" type="Texture" id=13]
+[ext_resource path="res://sprites/L2_lab/thesis.png" type="Texture" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -104,6 +116,19 @@ texture = ExtResource( 5 )
 [node name="swim_certification" type="Sprite" parent="Control/ProgressMarkers/swimFriends"]
 position = Vector2( 817.166, 658.021 )
 texture = ExtResource( 8 )
+
+[node name="labFriend" type="Node2D" parent="Control/ProgressMarkers"]
+
+[node name="thesis" type="Sprite" parent="Control/ProgressMarkers/labFriend"]
+position = Vector2( 926.744, 657.794 )
+texture = ExtResource( 14 )
+
+[node name="robot" type="AnimatedSprite" parent="Control/ProgressMarkers/labFriend"]
+position = Vector2( 782.411, 185.208 )
+scale = Vector2( 0.974111, 0.774899 )
+frames = SubResource( 2 )
+frame = 1
+playing = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_left = 314.73
