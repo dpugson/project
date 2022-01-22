@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Characters/RobotAA/Sprites/holdingdog/d0.png" type="Texture" id=1]
 [ext_resource path="res://Characters/RobotAA/Sprites/holdingdog/d2.png" type="Texture" id=2]
@@ -25,9 +25,20 @@
 [ext_resource path="res://Characters/RobotAA/Sprites/l0.png" type="Texture" id=23]
 [ext_resource path="res://Characters/RobotAA/Sprites/r0.png" type="Texture" id=24]
 [ext_resource path="res://Characters/RobotAA/Sprites/sitting.png" type="Texture" id=25]
+[ext_resource path="res://Levels/1.0 - Lab/RobotSprite.gd" type="Script" id=26]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 13 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "down",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 10 ), ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "dogdown",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 23 ), ExtResource( 18 ), ExtResource( 23 ), ExtResource( 20 ) ],
 "loop": true,
 "name": "left",
@@ -43,10 +54,15 @@ animations = [ {
 "name": "up",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 9 ) ],
 "loop": true,
-"name": "down",
-"speed": 7.0
+"name": "dogright",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 7 ), ExtResource( 12 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "dogup",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 25 ) ],
 "loop": true,
@@ -57,24 +73,10 @@ animations = [ {
 "loop": true,
 "name": "dogleft",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 12 ), ExtResource( 7 ), ExtResource( 12 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "dogup",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 1 ), ExtResource( 10 ), ExtResource( 1 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "dogdown",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "dogright",
-"speed": 5.0
 } ]
 
 [node name="AnimatedSprite" type="AnimatedSprite"]
 position = Vector2( 1.04358, -91.8352 )
 frames = SubResource( 1 )
 animation = "down"
+script = ExtResource( 26 )

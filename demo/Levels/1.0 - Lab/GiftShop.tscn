@@ -40,7 +40,7 @@ height = 57.9126
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 49.1028, 44.7618 )
 
-[sub_resource type="SpriteFrames" id=27]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 31 ) ],
 "loop": true,
@@ -58,40 +58,40 @@ animations = [ {
 "speed": 8.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 122.378, 52.3308 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 100.839, 62.2536 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 160.414, 56.2237 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 289.07, 64.4921 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 73.7007, 62.707 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 44.5999, 410.616 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 194.783, 48.7523 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 58.2828, 34.8185 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 36.5192, 935.686 )
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 305.144, 79.9691 )
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 131.846, 75.843 )
 
-[sub_resource type="Animation" id=29]
+[sub_resource type="Animation" id=15]
 resource_name = "at_door"
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/Robot:position")
@@ -166,8 +166,7 @@ tracks/5/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=14]
-resource_name = "atphone"
+[sub_resource type="Animation" id=16]
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/phone/phone_top:position")
 tracks/0/interp = 1
@@ -241,7 +240,7 @@ tracks/5/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=17]
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/RobotStudent:visible")
 tracks/0/interp = 1
@@ -288,7 +287,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("YSort/phone/phone_top:position")
@@ -326,8 +325,20 @@ tracks/6/keys = {
 "update": 0,
 "values": [ Vector2( 2542.44, 793.998 ) ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("YSort/player:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=18]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/Robot/RobotSprite:visible")
@@ -452,7 +463,7 @@ tracks/9/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=28]
+[sub_resource type="Animation" id=19]
 resource_name = "go_to_door"
 length = 11.6
 tracks/0/type = "value"
@@ -542,7 +553,7 @@ tracks/6/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=20]
 length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/Robot/RobotSprite:animation")
@@ -617,31 +628,31 @@ tracks/5/keys = {
 "values": [ 0.0, 0.0, -86.1072 ]
 }
 
-[sub_resource type="RectangleShape2D" id=18]
+[sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 40.8499, 71.0132 )
 
-[sub_resource type="RectangleShape2D" id=19]
+[sub_resource type="RectangleShape2D" id=22]
 extents = Vector2( 46.6238, 67.721 )
 
-[sub_resource type="RectangleShape2D" id=20]
+[sub_resource type="RectangleShape2D" id=23]
 extents = Vector2( 74.5154, 91.9236 )
 
-[sub_resource type="RectangleShape2D" id=21]
+[sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 48.2776, 87.3529 )
 
-[sub_resource type="RectangleShape2D" id=22]
+[sub_resource type="RectangleShape2D" id=25]
 extents = Vector2( 52.5256, 47.2527 )
 
-[sub_resource type="RectangleShape2D" id=23]
+[sub_resource type="RectangleShape2D" id=26]
 extents = Vector2( 86.5663, 36.0386 )
 
-[sub_resource type="RectangleShape2D" id=24]
+[sub_resource type="RectangleShape2D" id=27]
 extents = Vector2( 29.0406, 208.642 )
 
-[sub_resource type="RectangleShape2D" id=25]
+[sub_resource type="RectangleShape2D" id=28]
 extents = Vector2( 41.5264, 43.8152 )
 
-[sub_resource type="RectangleShape2D" id=26]
+[sub_resource type="RectangleShape2D" id=29]
 extents = Vector2( 59.1652, 52.4553 )
 
 [node name="GiftShop" type="Node2D"]
@@ -793,7 +804,6 @@ position = Vector2( 10.3854, -61.322 )
 texture = ExtResource( 6 )
 
 [node name="player" parent="YSort" instance=ExtResource( 7 )]
-visible = false
 position = Vector2( 554.383, 1232.2 )
 camera = NodePath("../../PuppyCamera")
 
@@ -826,7 +836,6 @@ position = Vector2( 2542.44, 793.998 )
 [node name="RobotSprite" parent="YSort/Robot" instance=ExtResource( 23 )]
 visible = false
 position = Vector2( 0.976929, -96.2937 )
-animation = "up"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="YSort/Robot"]
 
@@ -851,10 +860,13 @@ position = Vector2( 690.519, 1095.31 )
 
 [node name="CounterDoor" type="AnimatedSprite" parent="YSort/CounterDoor"]
 position = Vector2( 221.468, -666.797 )
-frames = SubResource( 27 )
+frames = SubResource( 3 )
 animation = "close"
 frame = 2
 playing = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="giftshop_little_overhang-min" type="Sprite" parent="."]
 position = Vector2( 911.987, 428.51 )
@@ -873,13 +885,13 @@ position = Vector2( 696.993, 1478.82 )
 
 [node name="CollisionShape2D" parent="BottomTZ" index="0"]
 position = Vector2( -7.85291, 2.61768 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="topTZ" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1132.22, 154.744 )
 
 [node name="CollisionShape2D" parent="topTZ" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="BottomSP" parent="." instance=ExtResource( 12 )]
 position = Vector2( 696.004, 1314.95 )
@@ -893,75 +905,75 @@ position = Vector2( 1136.25, 313.202 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/buttoncounter"]
 position = Vector2( 1037.37, 532.515 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="rightcounter" type="StaticBody2D" parent="collisions"]
 position = Vector2( 1047.74, 1042.55 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/rightcounter"]
 position = Vector2( 13.1394, -17.1676 )
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="leftcounter" type="StaticBody2D" parent="collisions"]
 position = Vector2( 545.26, 1027.61 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/leftcounter"]
 position = Vector2( 9.466, 0 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="bookshelf1" type="StaticBody2D" parent="collisions"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/bookshelf1"]
 position = Vector2( 525.159, 368.22 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="bookshelf2" type="StaticBody2D" parent="collisions"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/bookshelf2"]
 position = Vector2( 710.23, 279.643 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="dollshelf" type="StaticBody2D" parent="collisions"]
 position = Vector2( 610.13, 757.896 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/dollshelf"]
 position = Vector2( 3.21429, -10.7144 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="edges" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="edges"]
 position = Vector2( 459.07, 490.218 )
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="edges"]
 position = Vector2( 1378.55, 487.234 )
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="edges"]
 position = Vector2( 1085.17, 1477.16 )
-shape = SubResource( 12 )
+shape = SubResource( 13 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="edges"]
 position = Vector2( 470.379, 1481.28 )
-shape = SubResource( 13 )
+shape = SubResource( 14 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="edges"]
 position = Vector2( 903.971, 177.495 )
-shape = SubResource( 13 )
+shape = SubResource( 14 )
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="edges"]
 position = Vector2( 1364.66, 177.495 )
-shape = SubResource( 13 )
+shape = SubResource( 14 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
-anims/at_door = SubResource( 29 )
-anims/atphone = SubResource( 14 )
-anims/default = SubResource( 15 )
-anims/dropoff = SubResource( 16 )
-anims/go_to_door = SubResource( 28 )
-anims/gophone = SubResource( 17 )
+anims/at_door = SubResource( 15 )
+anims/atphone = SubResource( 16 )
+anims/default = SubResource( 17 )
+anims/dropoff = SubResource( 18 )
+anims/go_to_door = SubResource( 19 )
+anims/gophone = SubResource( 20 )
 
 [node name="flavor" type="Node2D" parent="."]
 
@@ -971,7 +983,7 @@ description = [ "KACHING! It smells like crisp Gs." ]
 
 [node name="CollisionShape2D" parent="flavor/cash_register_description/SeenBox" index="0"]
 position = Vector2( 0, -12.1079 )
-shape = SubResource( 18 )
+shape = SubResource( 21 )
 
 [node name="SmellArrow" parent="flavor/cash_register_description/SeenBox/CollisionShape2D" index="0"]
 position = Vector2( -0.641724, -174.653 )
@@ -982,7 +994,7 @@ description = [ "A delightful assortment of mugs, sadly out of reach." ]
 
 [node name="CollisionShape2D" parent="flavor/mugs/SeenBox" index="0"]
 position = Vector2( -8.41357, -56.1412 )
-shape = SubResource( 19 )
+shape = SubResource( 22 )
 
 [node name="SmellArrow" parent="flavor/mugs/SeenBox/CollisionShape2D" index="0"]
 position = Vector2( 1.89209, -155.965 )
@@ -993,7 +1005,7 @@ description = [ "Zoom panels! You feel a little nauseous looking at them." ]
 
 [node name="CollisionShape2D" parent="flavor/zoompanel/SeenBox" index="0"]
 position = Vector2( -27.107, 0 )
-shape = SubResource( 20 )
+shape = SubResource( 23 )
 
 [node name="SmellArrow" parent="flavor/zoompanel/SeenBox/CollisionShape2D" index="0"]
 position = Vector2( -0.641724, -150.36 )
@@ -1003,7 +1015,7 @@ position = Vector2( 1133.87, 482.22 )
 description = [ "Star buttons! How satisfying to press..." ]
 
 [node name="CollisionShape2D" parent="flavor/starbutton/SeenBox" index="0"]
-shape = SubResource( 21 )
+shape = SubResource( 24 )
 
 [node name="SmellArrow" parent="flavor/starbutton/SeenBox/CollisionShape2D" index="0"]
 position = Vector2( 3.70276, -146.016 )
@@ -1015,7 +1027,7 @@ These look familiar..." ]
 
 [node name="CollisionShape2D" parent="flavor/crates/SeenBox" index="0"]
 position = Vector2( -1.87732, 35.6689 )
-shape = SubResource( 22 )
+shape = SubResource( 25 )
 
 [node name="SmellArrow" parent="flavor/crates/SeenBox/CollisionShape2D" index="0"]
 position = Vector2( -2.85083, -217.335 )
@@ -1027,7 +1039,7 @@ the falls of your puzzled victims..." ]
 
 [node name="CollisionShape2D" parent="flavor/pillows/SeenBox" index="0"]
 position = Vector2( 2.20911, 50.8094 )
-shape = SubResource( 23 )
+shape = SubResource( 26 )
 
 [node name="books" parent="flavor" instance=ExtResource( 27 )]
 position = Vector2( 524.362, 391.234 )
@@ -1036,7 +1048,7 @@ BOX PUZZLES AND YOU: MORE THAN YOU WANT OR NEED TO KNOW!" ]
 
 [node name="CollisionShape2D" parent="flavor/books/SeenBox" index="0"]
 position = Vector2( -2.7168, 149.429 )
-shape = SubResource( 24 )
+shape = SubResource( 27 )
 
 [node name="SmellArrow" parent="flavor/books/SeenBox/CollisionShape2D" index="0"]
 position = Vector2( -3.35864, -253.085 )
@@ -1048,7 +1060,7 @@ It seems to be deeply discounted..." ]
 
 [node name="CollisionShape2D" parent="flavor/doll/SeenBox" index="0"]
 position = Vector2( -8.94226, 0 )
-shape = SubResource( 25 )
+shape = SubResource( 28 )
 
 [node name="SmellArrow" parent="flavor/doll/SeenBox/CollisionShape2D" index="0"]
 position = Vector2( 3.82947, -200.747 )
@@ -1060,7 +1072,7 @@ You tentatively nibble a stapler before deciding better." ]
 
 [node name="CollisionShape2D" parent="flavor/behind_counter/SeenBox" index="0"]
 position = Vector2( -4.19397, 0 )
-shape = SubResource( 26 )
+shape = SubResource( 29 )
 
 [node name="SmellArrow" parent="flavor/behind_counter/SeenBox/CollisionShape2D" index="0"]
 position = Vector2( -6.2345, -139.849 )

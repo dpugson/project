@@ -45,8 +45,8 @@ theme/custom_font="res://Themes/DefaultFont.tres"
 
 wav={
 "compress/mode": 0,
-"edit/loop": false,
-"edit/normalize": false,
+"edit/loop": true,
+"edit/normalize": true,
 "edit/trim": false,
 "force/8_bit": false,
 "force/max_rate": false,

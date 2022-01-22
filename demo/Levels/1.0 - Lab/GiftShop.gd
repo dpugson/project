@@ -19,7 +19,7 @@ func _ready():
 	var player_position = player.position
 	var orientation = Vector2.UP
 	Jukebox.play_song("res://tunes/lab/background_science.wav")
-	stats.spawn_metadata = "cutscene"
+	#stats.spawn_metadata = "cutscene"
 	if stats.check_bool("at_door"):
 		animation.play("at_door")
 	match stats.spawn_metadata:
@@ -68,7 +68,6 @@ func go_to_door():
 
 func done_with_cutscene():
 	player.cutscene_mode = false
-	stats.world_state["ROBOT_SHOP_STATE"] = "initial_phonecall"
 	give_player_focus()
 
 func give_robot_focus():
@@ -82,7 +81,7 @@ func give_player_focus():
 	player.remote_transform.remote_path = "../../../PuppyCamera"
 	robot_remote_transform.remote_path = ""
 
-func _on_RobotSeenBox_seen(obj):
+func _on_RobotSeenBox_seen(_obj):
 	var dialogue = {
 		"begin" : [
 			"TEXT", "GOOD DOG!!!!", ROBOT_SPEECH_SPEED, 
@@ -108,6 +107,7 @@ func _on_RobotSeenBox_seen(obj):
 	DialogueHelper.showDialogue(self, dialogue)
 
 func go_on_walk():
+	stats.set_bool("robot_following")
 	stats.set_bool("left_lab")
 	stats.set_bool("at_door", false)
 	Transition.go_to("res://Levels/2.0 - Forest/OutsideLab_01.tscn", "cutscene_leaving_lab")

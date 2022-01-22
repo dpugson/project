@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Levels/2.0 - Forest/pines.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/L3_forest/forest_01-min.png" type="Texture" id=2]
@@ -28,6 +28,12 @@
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Characters/RobotFollower.tscn" type="PackedScene" id=27]
 [ext_resource path="res://sprites/cavestuff/bone.png" type="Texture" id=28]
+[ext_resource path="res://hitnhurtboxes/PlayerDetectionZone.tscn" type="PackedScene" id=29]
+[ext_resource path="res://hitnhurtboxes/SeenBox.tscn" type="PackedScene" id=30]
+[ext_resource path="res://Brains/SaveStar.tscn" type="PackedScene" id=31]
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 73.767, 44.3026 )
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 54.5379
@@ -237,6 +243,12 @@ position = Vector2( 1512.04, 844.651 )
 [node name="LeafPile5" parent="BGStuff" instance=ExtResource( 25 )]
 position = Vector2( 1574.73, 736.682 )
 
+[node name="SaveStar" parent="BGStuff" instance=ExtResource( 31 )]
+position = Vector2( 404.968, 717.701 )
+save_spot_name = "The Forest - Labside Meadow"
+home = "res://Levels/2.0 - Forest/OutsideLab_01.tscn"
+flavor_text = "Greetings, Crunchy Leaf Star!"
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="player" parent="YSort" instance=ExtResource( 12 )]
@@ -307,6 +319,21 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/shrine_hill"]
+position = Vector2( 239.632, 105.316 )
+
+[node name="ShrineSeenBox" parent="YSort/shrine_hill" instance=ExtResource( 30 )]
+position = Vector2( 235.053, 82.4212 )
+
+[node name="CollisionShape2D" parent="YSort/shrine_hill/ShrineSeenBox" index="0"]
+position = Vector2( 4.57898, 27.4737 )
+shape = SubResource( 7 )
+
+[node name="SmellArrow" parent="YSort/shrine_hill/ShrineSeenBox/CollisionShape2D" index="0"]
+position = Vector2( -5.13666, -157.035 )
+
+[node name="Timer" type="Timer" parent="YSort/shrine_hill/ShrineSeenBox"]
+
 [node name="puzzle_house" type="Node2D" parent="YSort"]
 position = Vector2( 141.321, 685.6 )
 
@@ -324,8 +351,10 @@ position = Vector2( 2168.03, 125.626 )
 texture = ExtResource( 28 )
 
 [node name="RobotFollower" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 180.881, 815.38 )
+position = Vector2( 281.763, 688.558 )
 player_path = NodePath("../player")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/RobotFollower"]
 
 [node name="FGStuff" type="Node2D" parent="."]
 position = Vector2( 644.2, 716.689 )
@@ -501,10 +530,10 @@ scale = Vector2( 2.18711, -2.06398 )
 texture = ExtResource( 18 )
 
 [node name="LabSP" parent="." instance=ExtResource( 14 )]
-position = Vector2( 300.861, 846.942 )
+position = Vector2( 223.038, 832.53 )
 
 [node name="RightSP" parent="." instance=ExtResource( 14 )]
-position = Vector2( 3025.84, 815.503 )
+position = Vector2( 2704.46, 812.621 )
 
 [node name="collisions" type="Node2D" parent="."]
 
@@ -525,6 +554,9 @@ polygon = PoolVector2Array( 2805.95, 2088.29, 420.979, 2073.03, -644.55, 2088.49
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
 position = Vector2( 464.083, -893.036 )
 polygon = PoolVector2Array( -105.255, 1191.94, 1178.75, 1189.81, 1191.44, 1386.39, 1036.51, 1483.39, 24.6879, 1500.46, -116.528, 1378.63, -479.801, 1380.32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
 position = Vector2( 597.564, -730.288 )
@@ -536,10 +568,10 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="RightTZ" parent="." instance=ExtResource( 26 )]
-position = Vector2( 2940.71, 758.955 )
+position = Vector2( 2737.51, 809.396 )
 
 [node name="CollisionShape2D" parent="RightTZ" index="0"]
-position = Vector2( 414.381, -29.8267 )
+position = Vector2( 224.147, -3.88572 )
 shape = SubResource( 2 )
 
 [node name="TopTZ" parent="." instance=ExtResource( 26 )]
@@ -553,18 +585,27 @@ shape = SubResource( 3 )
 position = Vector2( 44.2282, 836.701 )
 
 [node name="CollisionShape2D" parent="PuzzleHouseTZ" index="0"]
-position = Vector2( -19.3949, 2.9873 )
-rotation = 2.35619
+position = Vector2( 9.42847, 7.31079 )
+rotation = 2.24177
 shape = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/cutscene_leaving_lab = SubResource( 5 )
 
+[node name="EventSpots" type="Node2D" parent="."]
+
+[node name="PlayerDetectionZone" parent="EventSpots" instance=ExtResource( 29 )]
+
+[node name="HideSpot" type="Position2D" parent="."]
+position = Vector2( -546.202, -1913.87 )
+
+[connection signal="seen" from="YSort/shrine_hill/ShrineSeenBox" to="." method="_on_ShrineSeenBox_seen"]
 [connection signal="transition_triggered" from="RightTZ" to="." method="_on_RightTZ_transition_triggered"]
 [connection signal="transition_triggered" from="TopTZ" to="." method="_on_TopTZ_transition_triggered"]
 [connection signal="transition_triggered" from="PuzzleHouseTZ" to="." method="_on_PuzzleHouseTZ_transition_triggered"]
 
 [editable path="PuppyCamera"]
+[editable path="YSort/shrine_hill/ShrineSeenBox"]
 [editable path="RightTZ"]
 [editable path="TopTZ"]
 [editable path="PuzzleHouseTZ"]

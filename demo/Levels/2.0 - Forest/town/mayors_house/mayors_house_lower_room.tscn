@@ -1,0 +1,95 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://sprites/L3_forest/town/mayors_room/mayor_house_lower-min.png" type="Texture" id=1]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/2.0 - Forest/town/mayors_house/mayor_sculpture.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/2.0 - Forest/town/mayors_house/mayors_house_lower_room.gd" type="Script" id=7]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=20]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 82.2148, 31.7123 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 92.3055, 34.1028 )
+
+[node name="mayors_house_lower_room" type="Node2D"]
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_vertical_guides_": [ -913.058 ]
+}
+
+[node name="topSP" parent="." instance=ExtResource( 19 )]
+position = Vector2( 573.833, 468.571 )
+
+[node name="bottomSP" parent="." instance=ExtResource( 19 )]
+position = Vector2( 921.407, 965.08 )
+
+[node name="BG" parent="." instance=ExtResource( 2 )]
+margin_left = -1850.9
+margin_top = -3155.62
+margin_right = 3724.1
+margin_bottom = 2452.38
+
+[node name="bgstuff" type="Node2D" parent="."]
+
+[node name="mayor_house_lower-min" type="Sprite" parent="bgstuff"]
+modulate = Color( 0.27451, 0.266667, 0.337255, 1 )
+position = Vector2( 891.272, 552.3 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="topTZ" parent="." instance=ExtResource( 18 )]
+position = Vector2( 869.606, 422.797 )
+
+[node name="CollisionShape2D" parent="topTZ" index="0"]
+position = Vector2( -283.25, -117.614 )
+shape = SubResource( 1 )
+
+[node name="bottomTZ" parent="." instance=ExtResource( 18 )]
+position = Vector2( 859.117, 1466.04 )
+
+[node name="CollisionShape2D" parent="bottomTZ" index="0"]
+position = Vector2( 60, -370 )
+shape = SubResource( 2 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="player" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 910.359, 984.914 )
+camera = NodePath("../../PuppyCamera")
+
+[node name="mayor_sculpture" parent="YSort" instance=ExtResource( 4 )]
+modulate = Color( 0.666667, 0.713726, 0.745098, 1 )
+position = Vector2( 974.611, 767.101 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 20 )]
+position = Vector2( 436.776, -516.806 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -252.995, -297.097 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 2238.35, 1713.98 )
+
+[node name="FG" type="Node2D" parent="."]
+position = Vector2( 4.24261, 0 )
+
+[node name="Collisions" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/StaticBody2D"]
+visible = false
+position = Vector2( -362.957, -195.162 )
+polygon = PoolVector2Array( 1208.87, 1239.45, 1213.12, 1430.37, -485.271, 1522.63, 947.097, -513.919, 2948.95, 1640.36, 1374.34, 1365.31, 1375.75, 1238.03, 1661.42, 1245.11, 1658.59, 798.214, 1053.31, 796.8, 1047.65, 598.81, 955.179, 406.477, 846.285, 605.881, 839.214, 953.778, 1031.55, 952.364, 1037.2, 1243.69 )
+
+[connection signal="transition_triggered" from="topTZ" to="." method="_on_topTZ_transition_triggered"]
+
+[editable path="topTZ"]
+[editable path="bottomTZ"]
+[editable path="PuppyCamera"]

@@ -220,20 +220,20 @@ func _on_sodamachine_seen(_obj):
 		"begin" : [
 			"ACTION", [self, "get_buy_prompt"],
 			0.03, [
-				["YUM JUICE - 30G", "yum"],
-				["DEVIL COLA - 30G", "devil"],
+				#["YUM JUICE - 30G", "yum"],
+				#["DEVIL COLA - 30G", "devil"],
 				["CANNED PIZZA - 30G", "pizza"],
 				["NO THANKS", null]
 			]
 		],
-		"yum" : [
-			"ACTION", [self, "buy_yum"],
-			0.03, null
-		],
-		"devil" : [
-			"ACTION", [self, "buy_devil_cola"],
-			0.03, null
-		],
+		#"yum" : [
+		#	"ACTION", [self, "buy_yum"],
+		#	0.03, null
+		#],
+		#"devil" : [
+		#	"ACTION", [self, "buy_devil_cola"],
+		#	0.03, null
+		#],
 		"pizza" : [
 			"ACTION", [self, "buy_canned_pizza"],
 			0.03, null

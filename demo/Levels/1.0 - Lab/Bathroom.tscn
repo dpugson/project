@@ -958,7 +958,7 @@ shape = SubResource( 13 )
 
 [node name="poster" parent="." instance=ExtResource( 20 )]
 position = Vector2( 1029.5, 418.353 )
-description = [ "There's a button behind this poster...", "CLICK" ]
+description = [ "SCIENCE SAYS IT", "YOU BELIEVE IT!" ]
 
 [node name="CollisionShape2D" parent="poster/SeenBox" index="0"]
 shape = SubResource( 14 )

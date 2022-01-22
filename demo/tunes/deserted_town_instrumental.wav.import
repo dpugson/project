@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/deserted_town_instrumental.wav-5a53e3d56a231110bc713d6457bb83c5.sample"
+
+[deps]
+
+source_file="res://tunes/deserted_town_instrumental.wav"
+dest_files=[ "res://.import/deserted_town_instrumental.wav-5a53e3d56a231110bc713d6457bb83c5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=true
+compress/mode=0

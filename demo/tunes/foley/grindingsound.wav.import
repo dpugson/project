@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/grindingsound.wav-d9e14452035b008a41444e4506670099.sample"
+
+[deps]
+
+source_file="res://tunes/foley/grindingsound.wav"
+dest_files=[ "res://.import/grindingsound.wav-d9e14452035b008a41444e4506670099.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

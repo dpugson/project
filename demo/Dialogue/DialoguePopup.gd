@@ -5,11 +5,19 @@ export var SECONDS_PER_CHAR = 0.05
 # DOCUMENTATION OF STRUCTURE
 # type, text, wait time, next (options), action, picture, pitch
 
+# The core of this is a heavily mangled adaptation of
+# https://github.com/mattmarch/ACVoicebox
+
 enum INPUT_TYPE {
 	NONE,
 	NEXT,
 	DONE,
 	CHOICE
+}
+
+enum VOICE_PAK {
+	ANIMALESE,
+	MWEHMWEH
 }
 
 export var cutscene_mode = false
@@ -34,9 +42,11 @@ var example_action = {
 	"begin": ["ACTION", "Testing...", 0.03, null, [self, "queue_free"]]
 }
 
+
 var dialogue2 = {
-	"begin" : ["TEXT", "Do you like potatoes?", 0.03, [["yes", "1"], ["no", "2", true]], null, "res://Dialogue/talking_heads/dog_neutral.png"],
-	"1" : ["TEXT", "Interesting...", 0.3, "wow", null, false],
+	"voice_pak" : VOICE_PAK.MWEHMWEH,
+	"begin" : ["TEXT", "Do you like potatoes?", 0.03, [["yes", "1"], ["no", "2", true]], null, "res://Dialogue/talking_heads/dog_neutral.png", .9],
+	"1" : ["TEXT", "Interesting...", 0.06, "wow", null, false, 0.7, VOICE_PAK.ANIMALESE],
 	"wow": ["TEXT", "Truly you are a doggo of culture.", 0.03, null],
 	"2" : ["TEXT", "Tell me the truth!!!", 0.03, "begin", null, "res://Dialogue/talking_heads/dog_excited.png"]
 }
@@ -72,7 +82,7 @@ func debugprint(text):
 		print_stack()
 
 func _ready():
-	init(dialogue)
+	init(dialogue2)
 	play_up_sound()
 	portrait_panel.visible = false
 	# warning-ignore:return_value_discarded
@@ -269,6 +279,13 @@ func get_pitch():
 		return null #3
 	else:
 		return row[6]
+
+func get_voice():
+	var row = get_row()
+	if row.size() < 8:
+		return null #3
+	else:
+		return row[7]
 	
 func is_dialogue_at_end(index):
 	return index == null
@@ -374,15 +391,46 @@ const animalese_sounds = {
 	'.': preload('res://tunes/AnimaleseSounds/p.wav')
 }
 
+const mwehs = [
+	preload("res://tunes/dialogue/mayor_sounds/mayor_mweh.wav"),
+	preload("res://tunes/dialogue/mayor_sounds/mayor_mweh.wav"),
+	preload("res://tunes/dialogue/mayor_sounds/mayor_mweh.wav"),
+	preload("res://tunes/dialogue/mayor_sounds/mayor_mweh3.wav"),
+	preload("res://tunes/dialogue/mayor_sounds/mayor_mweh3.wav"),
+	preload("res://tunes/dialogue/mayor_sounds/mayor_mweh3.wav"),
+	preload("res://tunes/dialogue/mayor_sounds/mayor_mweh3.wav"),
+	preload("res://tunes/dialogue/mayor_sounds/mayor_mweh3.wav"),
+	preload("res://tunes/dialogue/mayor_sounds/mayor_mweh3.wav"),
+	preload("res://tunes/dialogue/mayor_sounds/mayor_mweh3.wav"),
+	preload("res://tunes/dialogue/mayor_sounds/mayor_mweh3.wav"),
+]
+
 const PITCH_MULTIPLIER_RANGE := 0.3
+
+func get_sound(character):
+	var voice = dialogue.get("voice_pak", VOICE_PAK.ANIMALESE)
+	var override = get_voice()
+	if override != null:
+		voice = override
+	match voice:
+		VOICE_PAK.MWEHMWEH:
+			return mwehs[rand_range(0, len(mwehs))]
+		VOICE_PAK.ANIMALESE:
+			return animalese_sounds.get(
+				character.to_lower(),
+				null
+			)
+		_:
+			return animalese_sounds.get(
+				character.to_lower(),
+				null
+			)
 
 func render_character_and_continue(character, wait_time):
 	timer.wait_time = wait_time
 	var pitch = get_pitch()
 	if pitch != null:
-		audio.stream = animalese_sounds.get(
-			character.to_lower(), 
-			null)
+		audio.stream = get_sound(character)
 		audio.pitch_scale = pitch + (PITCH_MULTIPLIER_RANGE * randf())
 		audio.play()
 	textLabel.text += character
@@ -391,3 +439,50 @@ func render_character_and_continue(character, wait_time):
 
 func _on_Timer_timeout():
 	emit_signal("print_next_character")
+
+
+#MIT License
+#
+#Copyright (c) 2020 Matt March
+#
+#Permission is hereby granted, free of charge, to any person obtaining a copy
+#of this software and associated documentation files (the "Software"), to deal
+#in the Software without restriction, including without limitation the rights
+#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+#copies of the Software, and to permit persons to whom the Software is
+#furnished to do so, subject to the following conditions:
+#
+#The above copyright notice and this permission notice shall be included in all
+#copies or substantial portions of the Software.
+#
+#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+#SOFTWARE.
+
+# The source of the SOUNDS:
+# https://github.com/equalo-official/animalese-generator
+# MIT License
+
+# Copyright (c) 2020 equalo-official
+
+#Permission is hereby granted, free of charge, to any person obtaining a copy
+#of this software and associated documentation files (the "Software"), to deal
+#in the Software without restriction, including without limitation the rights
+#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+#copies of the Software, and to permit persons to whom the Software is
+#furnished to do so, subject to the following conditions:
+#
+#The above copyright notice and this permission notice shall be included in all
+#copies or substantial portions of the Software.
+#
+#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+#SOFTWARE.

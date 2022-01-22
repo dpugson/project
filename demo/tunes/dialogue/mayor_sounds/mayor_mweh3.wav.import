@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mayor_mweh3.wav-a791be52d6e72e58bc61bc1ca929bf1e.sample"
+
+[deps]
+
+source_file="res://tunes/dialogue/mayor_sounds/mayor_mweh3.wav"
+dest_files=[ "res://.import/mayor_mweh3.wav-a791be52d6e72e58bc61bc1ca929bf1e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=false
+compress/mode=0

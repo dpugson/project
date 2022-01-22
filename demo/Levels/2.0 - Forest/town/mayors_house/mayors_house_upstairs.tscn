@@ -1,0 +1,124 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://sprites/L3_forest/town/mayors_room/mayor_house_upper-min.png" type="Texture" id=1]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/L3_forest/town/mayors_room/mayor_sleeping-min.png" type="Texture" id=4]
+[ext_resource path="res://Levels/2.0 - Forest/town/mayors_house/mayors_house_upstairs.gd" type="Script" id=5]
+[ext_resource path="res://sprites/L3_forest/town/mayors_room/mayor_bed_foot-min.png" type="Texture" id=6]
+[ext_resource path="res://sprites/L3_forest/town/mayors_room/mayor_bed_base-min.png" type="Texture" id=7]
+[ext_resource path="res://sprites/L3_forest/town/mayors_room/mayor_pillow-min.png" type="Texture" id=8]
+[ext_resource path="res://sprites/L3_forest/town/mayors_room/mayor_shelf-min.png" type="Texture" id=9]
+[ext_resource path="res://sprites/L3_forest/town/mayors_room/mayor_alarm_clock-min.png" type="Texture" id=10]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=20]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 92.3055, 34.1028 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 88, 107 )
+
+[node name="mayors_house_upstairs" type="Node2D"]
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_vertical_guides_": [ -913.058 ]
+}
+
+[node name="bottomSP" parent="." instance=ExtResource( 19 )]
+position = Vector2( 1334.36, 813.759 )
+
+[node name="BG" parent="." instance=ExtResource( 2 )]
+margin_left = -1162.18
+margin_top = -3210.78
+margin_right = 4412.82
+margin_bottom = 2397.22
+
+[node name="bgstuff" type="Node2D" parent="."]
+
+[node name="mayor_house_upper-min" type="Sprite" parent="bgstuff"]
+position = Vector2( 964.584, 541.109 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="bottomTZ" parent="." instance=ExtResource( 18 )]
+position = Vector2( 859.117, 1466.04 )
+
+[node name="CollisionShape2D" parent="bottomTZ" index="0"]
+position = Vector2( 474.365, -535.463 )
+shape = SubResource( 2 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="player" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 1328.97, 704.9 )
+camera = NodePath("../../PuppyCamera")
+
+[node name="bedfoot" type="Node2D" parent="YSort"]
+position = Vector2( 626, 780 )
+
+[node name="mayor_bed_foot-min" type="Sprite" parent="YSort/bedfoot"]
+position = Vector2( 4.12256, -45.8508 )
+texture = ExtResource( 6 )
+
+[node name="bed" type="Node2D" parent="YSort"]
+position = Vector2( 635.899, 598.981 )
+
+[node name="mayor_bed_base-min" type="Sprite" parent="YSort/bed"]
+position = Vector2( 4.12262, -18.9807 )
+texture = ExtResource( 7 )
+
+[node name="mayor_pillow-min" type="Sprite" parent="YSort/bed"]
+position = Vector2( 3.90485, -48.3489 )
+texture = ExtResource( 8 )
+
+[node name="mayor_sleeping-min" type="Sprite" parent="YSort/bed"]
+position = Vector2( -0.120056, 50.3158 )
+texture = ExtResource( 4 )
+
+[node name="mayor_bed_foot-min" type="Sprite" parent="YSort/bed"]
+position = Vector2( -5.77686, 135.169 )
+texture = ExtResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/bed"]
+position = Vector2( -9.89941, 181.019 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/bed/StaticBody2D"]
+position = Vector2( 5, -87 )
+shape = SubResource( 3 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 20 )]
+position = Vector2( 436.776, -516.806 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -252.995, -297.097 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 2238.35, 1713.98 )
+
+[node name="FG" type="Node2D" parent="."]
+position = Vector2( 5.24261, 0 )
+
+[node name="mayor_shelf-min" type="Sprite" parent="FG"]
+position = Vector2( 546.757, 362 )
+texture = ExtResource( 9 )
+
+[node name="mayor_alarm_clock-min" type="Sprite" parent="FG"]
+position = Vector2( 545.757, 285 )
+texture = ExtResource( 10 )
+
+[node name="Collisions" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/StaticBody2D"]
+position = Vector2( -362.957, -196.162 )
+polygon = PoolVector2Array( 1605.51, 1061.12, 1601.26, 1739.26, -485.271, 1522.63, 947.097, -513.919, 2948.95, 1640.36, 1799.76, 1338.56, 1787.76, 781.562, 872.957, 777.162, 877.157, 1071.16, 1577.06, 1089.8 )
+
+[connection signal="transition_triggered" from="bottomTZ" to="." method="_on_bottomTZ_transition_triggered"]
+
+[editable path="bottomTZ"]
+[editable path="PuppyCamera"]

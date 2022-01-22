@@ -1,0 +1,1670 @@
+[gd_scene load_steps=36 format=2]
+
+[ext_resource path="res://Levels/2.0 - Forest/pines.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/2.0 - Forest/OutsideLab_AncientPuzzle.gd" type="Script" id=2]
+[ext_resource path="res://world/leaf_pile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/2.0 - Forest/AncientTicTacToe.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Brains/UnlockableBarrier.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/leafpiletile2dark.png" type="Texture" id=6]
+[ext_resource path="res://sprites/L3_forest/ancientpuzzle/room1/ancient_puzzle_trapdoor_fg-min.png" type="Texture" id=7]
+[ext_resource path="res://sprites/L3_forest/ancientpuzzle/room1/ancient_puzzle_trapdoor_door-min.png" type="Texture" id=8]
+[ext_resource path="res://sprites/L3_forest/ancientpuzzle/room1/ancient_puzzle_trapdoor_bg-min.png" type="Texture" id=9]
+[ext_resource path="res://Characters/RobotFollower.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/2.0 - Forest/shadowed_pines.tscn" type="PackedScene" id=11]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Levels/1.0 - Lab/RobotSprite.tscn" type="PackedScene" id=15]
+[ext_resource path="res://sprites/L3_forest/tall_creepy_tree_inside.png" type="Texture" id=16]
+[ext_resource path="res://Levels/2.0 - Forest/SinglePine.tscn" type="PackedScene" id=17]
+[ext_resource path="res://sprites/L3_forest/vignette_fade.png" type="Texture" id=18]
+[ext_resource path="res://Levels/2.0 - Forest/Glower.tscn" type="PackedScene" id=19]
+[ext_resource path="res://sprites/leafpile/leaf0.png" type="Texture" id=20]
+[ext_resource path="res://tunes/forest/door_open.wav" type="AudioStream" id=21]
+[ext_resource path="res://tunes/dialogue/done.wav" type="AudioStream" id=23]
+[ext_resource path="res://tunes/lab/youdidit1.wav" type="AudioStream" id=25]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=26]
+
+[sub_resource type="Animation" id=4]
+resource_name = "CutsceneBegin"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("leave_robot_gorup/RobotForAnimation:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("TicTacToeBoard")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "clear_board"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("TicTacToeBoard")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "up"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("leave_robot_gorup/RobotForAnimation:show_behind_parent")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("leave_robot_gorup/RobotForAnimation:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1415.59, -143.836 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "give_cutscene_focus"
+}, {
+"args": [  ],
+"method": "what_an_astonishing_find"
+} ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("leave_robot_gorup/RobotForAnimation:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("leave_robot_gorup/RobotForAnimation:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("leave_robot_gorup/RobotForAnimation:animation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "up" ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Glows:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Animation_leftdoor:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1319.56, -170.956 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Animation_rightdoor:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1411.76, -168.926 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "PreCutscene"
+tracks/0/type = "value"
+tracks/0/path = NodePath("leave_robot_gorup/RobotForAnimation:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("TicTacToeBoard")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "clear_board"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("TicTacToeBoard")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "up"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "approach"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("leave_robot_gorup/RobotForAnimation:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "up" ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "cutscene_part5"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("leave_robot_gorup/RobotForAnimation:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("leave_robot_gorup/RobotForAnimation:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("leave_robot_gorup/RobotForAnimation:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1415.59, -143.836 ), Vector2( 1415.59, -318.028 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "fall"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Glows:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.572549 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Animation_rightdoor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.5, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1411.76, -168.926 ), Vector2( 1411.76, -168.926 ), Vector2( 1502.57, -168.926 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Animation_leftdoor:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.5, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1319.56, -170.956 ), Vector2( 1319.56, -170.956 ), Vector2( 1220.74, -170.956 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("leave_robot_gorup/RobotForAnimation:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1415.59, -318.028 ), Vector2( 1415.59, -318.028 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 2.8, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop_tunes"
+}, {
+"args": [  ],
+"method": "oh_bother"
+} ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("AnimationPlayer/AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 25 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 21 )
+} ],
+"times": PoolRealArray( 1, 2.5 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("AnimationPlayer/AudioStreamPlayer:volume_db")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0.0, 13.602 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "fall2"
+length = 7.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Glows:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.9, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.572549 ), Color( 1, 1, 1, 0.572549 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Animation_rightdoor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.9, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1502.57, -168.926 ), Vector2( 1502.57, -168.926 ), Vector2( 1411.76, -168.926 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Animation_leftdoor:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.9, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1220.74, -170.956 ), Vector2( 1220.74, -170.956 ), Vector2( 1319.56, -170.956 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("leave_robot_gorup/RobotForAnimation:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.8, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1415.59, -318.028 ), Vector2( 1415.59, -318.028 ), Vector2( 1415.59, 70.5655 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("leave_robot_gorup/RobotForAnimation:show_behind_parent")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("TicTacToeBoard")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 3.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "lower"
+} ]
+}
+tracks/7/type = "audio"
+tracks/7/path = NodePath("AnimationPlayer/AudioStreamPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 23 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 21 )
+} ],
+"times": PoolRealArray( 0.8, 1.9 )
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "lookbackandforth"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("leave_robot_gorup/RobotForAnimation:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1.3, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "up", "left", "right", "up" ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shouldnttouchbut"
+} ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "lookdown"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("leave_robot_gorup/RobotForAnimation:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "up", "down" ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shouldnttouchbut"
+} ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "push_button"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("leave_robot_gorup/RobotForAnimation:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1415.59, -318.028 ), Vector2( 1415.59, -332.718 ), Vector2( 1415.59, -319.364 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_game"
+} ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "spin_around"
+length = 1.5
+tracks/0/type = "method"
+tracks/0/path = NodePath("leave_robot_gorup/RobotForAnimation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.3, 1.4, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "left"
+}, {
+"args": [  ],
+"method": "right"
+}, {
+"args": [  ],
+"method": "up"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_game"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("TicTacToeBoard")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "increment_game"
+} ]
+}
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 61.4875, 336.522 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 83.7338, 520.403 )
+
+[node name="OutsideLabAncientPuzzle" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -1315.0
+margin_top = -2341.0
+margin_right = 7990.0
+margin_bottom = 2776.0
+texture = ExtResource( 6 )
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 13 )]
+position = Vector2( -1592.55, 1314.22 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -153.583, -2103.29 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 7990, 1801.69 )
+
+[node name="BGStuff" type="Node2D" parent="."]
+position = Vector2( -38.8142, -60.4982 )
+
+[node name="piles" type="Node2D" parent="BGStuff"]
+position = Vector2( 0, 94.8115 )
+
+[node name="LeafPile" parent="BGStuff/piles" instance=ExtResource( 3 )]
+position = Vector2( 1035.15, 38.8219 )
+
+[node name="LeafPile2" parent="BGStuff/piles" instance=ExtResource( 3 )]
+position = Vector2( 1667.5, 433.202 )
+
+[node name="LeafPile3" parent="BGStuff/piles" instance=ExtResource( 3 )]
+position = Vector2( 1300.87, 1016.78 )
+
+[node name="LeafPile4" parent="BGStuff/piles" instance=ExtResource( 3 )]
+position = Vector2( 1342.92, 1070.6 )
+
+[node name="LeafPile5" parent="BGStuff/piles" instance=ExtResource( 3 )]
+position = Vector2( 1408.51, 986.512 )
+
+[node name="LeafPile6" parent="BGStuff/piles" instance=ExtResource( 3 )]
+position = Vector2( 1450.55, 1082.37 )
+
+[node name="LeafPile7" parent="BGStuff/piles" instance=ExtResource( 3 )]
+position = Vector2( 1812.14, 1063.87 )
+
+[node name="LeafPile8" parent="BGStuff/piles" instance=ExtResource( 3 )]
+position = Vector2( 1733.09, 495.429 )
+
+[node name="LeafPile9" parent="BGStuff/piles" instance=ExtResource( 3 )]
+position = Vector2( 2012.27, 720.789 )
+
+[node name="LeafPile10" parent="BGStuff/piles" instance=ExtResource( 3 )]
+position = Vector2( 1936.59, 781.333 )
+
+[node name="LeafPile11" parent="BGStuff/piles" instance=ExtResource( 3 )]
+position = Vector2( 2027.41, 806.56 )
+
+[node name="LeafPile12" parent="BGStuff/piles" instance=ExtResource( 3 )]
+position = Vector2( 1146.15, 1205.15 )
+
+[node name="LeafPile13" parent="BGStuff/piles" instance=ExtResource( 3 )]
+position = Vector2( 1756.45, 34.2948 )
+
+[node name="LeafPile14" parent="BGStuff/piles" instance=ExtResource( 3 )]
+position = Vector2( 1671.66, -21.2045 )
+
+[node name="LeafPile15" parent="BGStuff/piles" instance=ExtResource( 3 )]
+position = Vector2( 1632, 54.4762 )
+
+[node name="LeafPile16" parent="BGStuff/piles" instance=ExtResource( 3 )]
+position = Vector2( 1697.59, 118.384 )
+
+[node name="LeafPile17" parent="BGStuff/piles" instance=ExtResource( 3 )]
+position = Vector2( 1800.17, 94.8392 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BGStuff"]
+autoplay = "CutsceneBegin"
+anims/CutsceneBegin = SubResource( 4 )
+anims/PreCutscene = SubResource( 3 )
+anims/approach = SubResource( 6 )
+anims/fall = SubResource( 10 )
+anims/fall2 = SubResource( 11 )
+anims/lookbackandforth = SubResource( 5 )
+anims/lookdown = SubResource( 7 )
+anims/push_button = SubResource( 8 )
+anims/spin_around = SubResource( 9 )
+
+[node name="CutsceneRT" type="RemoteTransform2D" parent="BGStuff/AnimationPlayer"]
+position = Vector2( 1379.07, -273.409 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BGStuff/AnimationPlayer"]
+stream = ExtResource( 21 )
+volume_db = 13.602
+
+[node name="ancient_puzzle_trapdoor_bg-min" type="Sprite" parent="BGStuff"]
+position = Vector2( 1413.19, -167.849 )
+texture = ExtResource( 9 )
+
+[node name="Animation_rightdoor" type="Sprite" parent="BGStuff"]
+position = Vector2( 1411.76, -168.926 )
+texture = ExtResource( 8 )
+
+[node name="Animation_leftdoor" type="Sprite" parent="BGStuff"]
+position = Vector2( 1319.56, -170.956 )
+texture = ExtResource( 8 )
+
+[node name="TicTacToeBoard" parent="BGStuff" instance=ExtResource( 4 )]
+show_behind_parent = true
+position = Vector2( 1420.67, -460.374 )
+
+[node name="UnlockableBarrier" parent="BGStuff/TicTacToeBoard" instance=ExtResource( 5 )]
+position = Vector2( -116.658, 122.235 )
+unlock_var_name = "ROBOT_FELL"
+
+[node name="CollisionShape2D" parent="BGStuff/TicTacToeBoard/UnlockableBarrier/StaticBody2D" index="0"]
+position = Vector2( 102.272, -35.6761 )
+
+[node name="SeenBox" parent="BGStuff/TicTacToeBoard/UnlockableBarrier" index="1"]
+visible = false
+
+[node name="CollisionShape2D" parent="BGStuff/TicTacToeBoard/UnlockableBarrier/SeenBox" index="0"]
+disabled = true
+
+[node name="leave_robot_gorup" type="Node2D" parent="BGStuff"]
+
+[node name="coverleaves" type="Node2D" parent="BGStuff/leave_robot_gorup"]
+modulate = Color( 0.556863, 0.545098, 0.560784, 1 )
+position = Vector2( 0, 25.858 )
+
+[node name="leaf0" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1234.62, -224.554 )
+texture = ExtResource( 20 )
+
+[node name="leaf3" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1252.13, -141.306 )
+texture = ExtResource( 20 )
+
+[node name="leaf4" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1244.4, -213.226 )
+texture = ExtResource( 20 )
+
+[node name="leaf16" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1211.02, -326.733 )
+texture = ExtResource( 20 )
+
+[node name="leaf17" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1256.42, -340.086 )
+texture = ExtResource( 20 )
+
+[node name="leaf5" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1251.29, -144.471 )
+texture = ExtResource( 20 )
+
+[node name="leaf6" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1593.53, -290.985 )
+texture = ExtResource( 20 )
+
+[node name="leaf7" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1696.12, -285.099 )
+texture = ExtResource( 20 )
+
+[node name="leaf8" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1579.31, -212.361 )
+scale = Vector2( 1, 0.995796 )
+texture = ExtResource( 20 )
+
+[node name="leaf9" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1589.23, -254.827 )
+texture = ExtResource( 20 )
+
+[node name="leaf10" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1649.87, -174.101 )
+texture = ExtResource( 20 )
+
+[node name="leaf11" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1295.02, -74.8748 )
+texture = ExtResource( 20 )
+
+[node name="leaf12" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1376.58, -50.4887 )
+texture = ExtResource( 20 )
+
+[node name="leaf20" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1484.22, 50.4188 )
+texture = ExtResource( 20 )
+
+[node name="leaf21" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1413.58, 20.1465 )
+texture = ExtResource( 20 )
+
+[node name="leaf22" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1317.72, 25.1919 )
+texture = ExtResource( 20 )
+
+[node name="leaf23" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1332.86, 116.009 )
+texture = ExtResource( 20 )
+
+[node name="leaf24" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1400.13, 134.508 )
+texture = ExtResource( 20 )
+
+[node name="leaf29" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1470.76, 156.372 )
+texture = ExtResource( 20 )
+
+[node name="leaf30" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1300.9, 174.871 )
+texture = ExtResource( 20 )
+
+[node name="leaf31" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1401.81, 235.416 )
+texture = ExtResource( 20 )
+
+[node name="leaf32" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1464.04, 248.87 )
+texture = ExtResource( 20 )
+
+[node name="leaf25" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1484.22, 183.28 )
+texture = ExtResource( 20 )
+
+[node name="leaf26" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1544.76, 65.555 )
+texture = ExtResource( 20 )
+
+[node name="leaf27" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1576.72, -10.1257 )
+texture = ExtResource( 20 )
+
+[node name="leaf28" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1230.27, 73.9639 )
+texture = ExtResource( 20 )
+
+[node name="leaf13" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1483.38, -65.6249 )
+texture = ExtResource( 20 )
+
+[node name="leaf14" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1561.58, -86.6473 )
+texture = ExtResource( 20 )
+
+[node name="leaf15" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1501.88, -65.6249 )
+texture = ExtResource( 20 )
+
+[node name="leaf19" type="Sprite" parent="BGStuff/leave_robot_gorup/coverleaves"]
+position = Vector2( 1588.49, -184.191 )
+texture = ExtResource( 20 )
+
+[node name="ancient_puzzle_trapdoor_fg-min" type="Sprite" parent="BGStuff/leave_robot_gorup"]
+position = Vector2( 1413.19, -167.849 )
+texture = ExtResource( 7 )
+
+[node name="RobotForAnimation" parent="BGStuff/leave_robot_gorup" instance=ExtResource( 15 )]
+pause_mode = 2
+show_behind_parent = true
+position = Vector2( 1415.59, 70.5655 )
+animation = "up"
+
+[node name="coverleaves2" type="Node2D" parent="BGStuff"]
+modulate = Color( 0.556863, 0.545098, 0.560784, 1 )
+show_behind_parent = true
+position = Vector2( 0, 25.858 )
+
+[node name="leaf19" type="Sprite" parent="BGStuff/coverleaves2"]
+position = Vector2( 1541.75, -352.448 )
+texture = ExtResource( 20 )
+
+[node name="leaf24" type="Sprite" parent="BGStuff/coverleaves2"]
+position = Vector2( 1583.15, -352.448 )
+texture = ExtResource( 20 )
+
+[node name="leaf25" type="Sprite" parent="BGStuff/coverleaves2"]
+position = Vector2( 1508.37, -352.448 )
+texture = ExtResource( 20 )
+
+[node name="leaf20" type="Sprite" parent="BGStuff/coverleaves2"]
+position = Vector2( 1446.94, -355.119 )
+texture = ExtResource( 20 )
+
+[node name="leaf21" type="Sprite" parent="BGStuff/coverleaves2"]
+position = Vector2( 1369.49, -355.119 )
+texture = ExtResource( 20 )
+
+[node name="leaf22" type="Sprite" parent="BGStuff/coverleaves2"]
+position = Vector2( 1292.04, -349.778 )
+texture = ExtResource( 20 )
+
+[node name="leaf23" type="Sprite" parent="BGStuff/coverleaves2"]
+position = Vector2( 1259.99, -323.07 )
+texture = ExtResource( 20 )
+
+[node name="Glows" type="Node2D" parent="BGStuff"]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="Glower" parent="BGStuff/Glows" instance=ExtResource( 19 )]
+position = Vector2( 1520.99, -620.949 )
+
+[node name="Glower2" parent="BGStuff/Glows" instance=ExtResource( 19 )]
+position = Vector2( 1526.33, -543.497 )
+
+[node name="Glower3" parent="BGStuff/Glows" instance=ExtResource( 19 )]
+position = Vector2( 1519.66, -470.052 )
+
+[node name="vignette_fade4" type="Sprite" parent="."]
+position = Vector2( 2686.55, -600.527 )
+rotation = 3.14159
+scale = Vector2( 0.617624, -2.35889 )
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="vignette_fade" type="Sprite" parent="."]
+position = Vector2( 725.201, -418.539 )
+scale = Vector2( 0.617624, 2.08307 )
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="player" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( 544.7, 975.103 )
+
+[node name="fade" type="Node2D" parent="YSort"]
+position = Vector2( 1153.69, 292.666 )
+
+[node name="pinearray" type="Node2D" parent="YSort"]
+position = Vector2( 781.231, 780.107 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="shadowed_pines5" parent="YSort/pinearray" instance=ExtResource( 11 )]
+modulate = Color( 0.313726, 0.392157, 0.643137, 1 )
+margin_left = -3594.55
+margin_top = -716.653
+margin_right = 229.451
+margin_bottom = -167.654
+
+[node name="shadowed_pines3" parent="YSort/pinearray" instance=ExtResource( 11 )]
+modulate = Color( 0.313726, 0.392157, 0.643137, 1 )
+margin_left = -3468.56
+margin_top = -632.118
+margin_right = 367.441
+margin_bottom = -83.1183
+
+[node name="shadowed_pines" parent="YSort/pinearray" instance=ExtResource( 11 )]
+margin_left = -3384.97
+margin_top = -485.854
+margin_right = 447.031
+margin_bottom = 63.1457
+
+[node name="CreepyTrees" type="Node2D" parent="YSort/pinearray"]
+position = Vector2( 277.311, -224.652 )
+
+[node name="Trees3" type="TextureRect" parent="YSort/pinearray/CreepyTrees"]
+modulate = Color( 0.588235, 0.564706, 0.592157, 1 )
+margin_left = -2179.71
+margin_top = -676.772
+margin_right = -399.711
+margin_bottom = 445.228
+texture = ExtResource( 16 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pines2" parent="YSort/pinearray" instance=ExtResource( 1 )]
+modulate = Color( 0.839216, 0.862745, 1, 1 )
+margin_left = -3239.66
+margin_top = -433.901
+margin_right = 371.341
+margin_bottom = 115.099
+
+[node name="pinearray2" type="Node2D" parent="YSort"]
+position = Vector2( 2390.24, -205.449 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CreepyTreeGroup" type="Node2D" parent="YSort/pinearray2"]
+position = Vector2( 1554.9, -525.773 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Trees4" type="TextureRect" parent="YSort/pinearray2/CreepyTreeGroup"]
+modulate = Color( 0.588235, 0.564706, 0.592157, 1 )
+margin_left = 1214.85
+margin_top = -886.498
+margin_right = 6125.85
+margin_bottom = 235.502
+texture = ExtResource( 16 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Trees5" type="TextureRect" parent="YSort/pinearray2/CreepyTreeGroup"]
+modulate = Color( 0.996078, 0.905882, 0.772549, 1 )
+margin_left = 1267.4
+margin_top = -860.136
+margin_right = 6008.4
+margin_bottom = 261.864
+texture = ExtResource( 16 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shadowed_pines5" parent="YSort/pinearray2" instance=ExtResource( 11 )]
+modulate = Color( 0.313726, 0.392157, 0.643137, 1 )
+margin_left = -3539.41
+margin_top = -714.789
+margin_right = 284.589
+margin_bottom = -165.79
+
+[node name="shadowed_pines3" parent="YSort/pinearray2" instance=ExtResource( 11 )]
+modulate = Color( 0.313726, 0.392157, 0.643137, 1 )
+margin_left = -3413.42
+margin_top = -630.254
+margin_right = 422.579
+margin_bottom = -81.2543
+
+[node name="shadowed_pines" parent="YSort/pinearray2" instance=ExtResource( 11 )]
+margin_left = -3329.83
+margin_top = -483.99
+margin_right = 502.169
+margin_bottom = 65.0097
+
+[node name="CreepyTrees" type="Node2D" parent="YSort/pinearray2"]
+position = Vector2( 332.449, -222.788 )
+
+[node name="Trees3" type="TextureRect" parent="YSort/pinearray2/CreepyTrees"]
+modulate = Color( 0.588235, 0.564706, 0.592157, 1 )
+margin_left = -2179.71
+margin_top = -676.772
+margin_right = -399.711
+margin_bottom = 445.228
+texture = ExtResource( 16 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pines2" parent="YSort/pinearray2" instance=ExtResource( 1 )]
+modulate = Color( 0.839216, 0.862745, 1, 1 )
+margin_left = -3184.52
+margin_top = -432.037
+margin_right = 426.48
+margin_bottom = 116.963
+
+[node name="back_pine_wall" type="Node2D" parent="YSort"]
+position = Vector2( 1522.19, -1279.59 )
+
+[node name="shadowed_pines5" parent="YSort/back_pine_wall" instance=ExtResource( 11 )]
+modulate = Color( 0.313726, 0.392157, 0.643137, 1 )
+margin_left = -854.18
+margin_top = -600.625
+margin_right = 2969.82
+margin_bottom = -51.6261
+
+[node name="shadowed_pines3" parent="YSort/back_pine_wall" instance=ExtResource( 11 )]
+modulate = Color( 0.313726, 0.392157, 0.643137, 1 )
+margin_left = -728.19
+margin_top = -516.09
+margin_right = 3107.81
+margin_bottom = 32.9095
+
+[node name="shadowed_pines" parent="YSort/back_pine_wall" instance=ExtResource( 11 )]
+margin_left = -644.6
+margin_top = -369.826
+margin_right = 3187.4
+margin_bottom = 179.174
+
+[node name="pines2" parent="YSort/back_pine_wall" instance=ExtResource( 1 )]
+modulate = Color( 0.839216, 0.862745, 1, 1 )
+margin_left = -499.291
+margin_top = -317.873
+margin_right = 3111.71
+margin_bottom = 231.127
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/back_pine_wall"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/back_pine_wall/StaticBody2D"]
+polygon = PoolVector2Array( -481.203, 188.941, 1880.56, 207.968, 1880.56, 22.4519 )
+
+[node name="PinesAround" type="YSort" parent="YSort"]
+modulate = Color( 0.741176, 0.662745, 0.788235, 1 )
+
+[node name="SinglePine" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 859.099, 417.315 )
+
+[node name="SinglePine2" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 837.235, 324.817 )
+
+[node name="SinglePine3" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 855.735, 168.41 )
+
+[node name="SinglePine4" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 771.645, 163.364 )
+
+[node name="SinglePine5" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 699.328, 296.226 )
+
+[node name="SinglePine6" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 751.464, 318.089 )
+
+[node name="SinglePine7" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 761.555, 47.3207 )
+
+[node name="SinglePine8" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 709.419, 80.9565 )
+
+[node name="SinglePine9" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 682.511, -90.5863 )
+
+[node name="SinglePine10" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 775.009, -154.494 )
+
+[node name="SinglePine11" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 704.374, -218.403 )
+
+[node name="SinglePine12" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 769.964, -326.037 )
+
+[node name="SinglePine13" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 645.511, -334.446 )
+
+[node name="SinglePine14" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 732.964, -443.763 )
+
+[node name="SinglePine15" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 753.146, -554.761 )
+
+[node name="SinglePine16" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 664.011, -494.217 )
+
+[node name="SinglePine17" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 657.284, -576.624 )
+
+[node name="SinglePine18" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 726.237, -653.987 )
+
+[node name="SinglePine19" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 780.055, -684.259 )
+
+[node name="SinglePine20" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 680.829, -739.758 )
+
+[node name="SinglePine21" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 741.373, -791.894 )
+
+[node name="SinglePine22" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 801.918, -864.211 )
+
+[node name="SinglePine23" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 695.965, -897.847 )
+
+[node name="SinglePine24" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 583.285, -650.623 )
+
+[node name="SinglePine25" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 531.149, -467.308 )
+
+[node name="SinglePine26" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 549.649, -331.083 )
+
+[node name="SinglePine27" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 485.741, -169.631 )
+
+[node name="SinglePine28" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 547.967, -90.5863 )
+
+[node name="SinglePine29" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 482.377, 94.4108 )
+
+[node name="SinglePine30" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 563.103, 124.683 )
+
+[node name="SinglePine31" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 442.014, 272.681 )
+
+[node name="SinglePine32" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 442.014, 272.681 )
+
+[node name="SinglePine33" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 336.061, 131.41 )
+
+[node name="SinglePine34" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 403.333, -141.04 )
+
+[node name="SinglePine35" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 327.652, -241.948 )
+
+[node name="SinglePine36" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 416.787, -374.809 )
+
+[node name="SinglePine37" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 374.742, -511.034 )
+
+[node name="SinglePine38" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 490.786, -583.352 )
+
+[node name="SinglePine39" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 436.969, -706.122 )
+
+[node name="SinglePine40" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 436.969, -706.122 )
+
+[node name="SinglePine41" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 521.058, -790.212 )
+
+[node name="SinglePine42" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 470.604, -862.529 )
+
+[node name="SinglePine43" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 584.966, -926.437 )
+
+[node name="SinglePine44" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 846.592, -1107.2 )
+
+[node name="SinglePine45" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 970.269, -1145.25 )
+
+[node name="SinglePine46" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 758.59, -1111.95 )
+
+[node name="SinglePine47" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 872.754, -1180.93 )
+
+[node name="SinglePine48" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 627.777, -1152.39 )
+
+[node name="SinglePine51" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 760.969, -1273.69 )
+
+[node name="SinglePine52" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 689.616, -1333.15 )
+
+[node name="SinglePine53" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 2444.89, -1140.49 )
+
+[node name="SinglePine54" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 2573.32, -1114.33 )
+
+[node name="SinglePine55" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 2687.48, -1085.79 )
+
+[node name="SinglePine56" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 2785, -1023.95 )
+
+[node name="SinglePine57" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 2887.27, -1021.57 )
+
+[node name="SinglePine58" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 2825.43, -1123.85 )
+
+[node name="SinglePine59" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 2739.81, -1204.71 )
+
+[node name="SinglePine60" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 2628.02, -1228.5 )
+
+[node name="SinglePine61" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 2870.62, -1202.33 )
+
+[node name="SinglePine62" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 2972.89, -1088.17 )
+
+[node name="SinglePine63" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 3044.25, -990.654 )
+
+[node name="SinglePine64" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 3096.57, -935.951 )
+
+[node name="SinglePine65" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 530.262, -1166.66 )
+
+[node name="SinglePine66" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 877.51, -1352.17 )
+
+[node name="SinglePine67" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 1013.08, -1335.52 )
+
+[node name="SinglePine69" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 2532.89, -1261.79 )
+
+[node name="SinglePine70" parent="YSort/PinesAround" instance=ExtResource( 17 )]
+position = Vector2( 2701.75, -1316.5 )
+
+[node name="PinesAround2" type="YSort" parent="YSort"]
+modulate = Color( 0.686275, 0.670588, 0.67451, 1 )
+position = Vector2( 2953.55, 938.819 )
+scale = Vector2( -1, 1 )
+
+[node name="SinglePine" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 859.099, 417.315 )
+
+[node name="SinglePine2" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 911.234, 375.271 )
+
+[node name="SinglePine3" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 847.326, 200.364 )
+
+[node name="SinglePine4" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 758.564, 151.472 )
+
+[node name="SinglePine5" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 699.328, 296.226 )
+
+[node name="SinglePine6" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 751.464, 318.089 )
+
+[node name="SinglePine7" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 993.643, 498.041 )
+
+[node name="SinglePine8" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 709.419, 80.9565 )
+
+[node name="SinglePine9" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 682.511, -90.5863 )
+
+[node name="SinglePine10" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 775.009, -154.494 )
+
+[node name="SinglePine11" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 704.374, -218.403 )
+
+[node name="SinglePine12" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 769.964, -326.037 )
+
+[node name="SinglePine13" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 645.511, -334.446 )
+
+[node name="SinglePine14" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 732.964, -443.763 )
+
+[node name="SinglePine15" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 753.146, -554.761 )
+
+[node name="SinglePine16" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 664.011, -494.217 )
+
+[node name="SinglePine17" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 657.284, -576.624 )
+
+[node name="SinglePine18" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 726.237, -653.987 )
+
+[node name="SinglePine19" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 780.055, -684.259 )
+
+[node name="SinglePine20" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 680.829, -739.758 )
+
+[node name="SinglePine21" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 741.373, -791.894 )
+
+[node name="SinglePine22" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 801.918, -864.211 )
+
+[node name="SinglePine23" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 695.965, -897.847 )
+
+[node name="SinglePine24" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 583.285, -650.623 )
+
+[node name="SinglePine25" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 531.149, -467.308 )
+
+[node name="SinglePine26" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 549.649, -331.083 )
+
+[node name="SinglePine27" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 485.741, -169.631 )
+
+[node name="SinglePine28" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 547.967, -90.5863 )
+
+[node name="SinglePine29" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 482.377, 94.4108 )
+
+[node name="SinglePine30" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 563.103, 124.683 )
+
+[node name="SinglePine31" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 442.014, 272.681 )
+
+[node name="SinglePine32" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 442.014, 272.681 )
+
+[node name="SinglePine33" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 336.061, 131.41 )
+
+[node name="SinglePine34" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 403.333, -141.04 )
+
+[node name="SinglePine35" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 327.652, -241.948 )
+
+[node name="SinglePine36" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 416.787, -374.809 )
+
+[node name="SinglePine37" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 374.742, -511.034 )
+
+[node name="SinglePine38" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 490.786, -583.352 )
+
+[node name="SinglePine39" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 436.969, -706.122 )
+
+[node name="SinglePine40" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 436.969, -706.122 )
+
+[node name="SinglePine41" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 521.058, -790.212 )
+
+[node name="SinglePine42" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 470.604, -862.529 )
+
+[node name="SinglePine43" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
+position = Vector2( 584.966, -926.437 )
+
+[node name="SinglePine" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 973.263, -591.132 )
+
+[node name="SinglePine8" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 1106.45, -487.671 )
+
+[node name="SinglePine9" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 1121.91, -611.349 )
+
+[node name="SinglePine10" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 1649.92, -586.376 )
+
+[node name="SinglePine11" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 1659.44, -491.239 )
+
+[node name="SinglePine2" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 935.208, -448.428 )
+
+[node name="SinglePine3" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 866.234, -541.186 )
+
+[node name="SinglePine4" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 1762.9, -403.238 )
+
+[node name="SinglePine5" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 1817.6, -583.997 )
+
+[node name="SinglePine6" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 1910.36, -446.049 )
+
+[node name="SinglePine7" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 1946.03, -512.645 )
+
+[node name="RobotFollower" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 374.112, 1048.99 )
+player_path = NodePath("../player")
+
+[node name="FGStuff" type="Node2D" parent="."]
+position = Vector2( 644.2, 716.689 )
+
+[node name="CreepyTreeGroup2" type="Node2D" parent="FGStuff"]
+position = Vector2( -6282.26, 294.663 )
+
+[node name="Trees4" type="TextureRect" parent="FGStuff/CreepyTreeGroup2"]
+modulate = Color( 0.588235, 0.564706, 0.592157, 1 )
+margin_left = 1833.0
+margin_top = -802.0
+margin_right = 6744.0
+margin_bottom = 320.0
+texture = ExtResource( 16 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Trees5" type="TextureRect" parent="FGStuff/CreepyTreeGroup2"]
+modulate = Color( 0.996078, 0.905882, 0.772549, 1 )
+margin_left = 1894.36
+margin_top = -756.924
+margin_right = 6635.36
+margin_bottom = 365.076
+texture = ExtResource( 16 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pines7" parent="FGStuff" instance=ExtResource( 11 )]
+margin_left = 1662.91
+margin_top = 123.0
+margin_right = 6921.91
+margin_bottom = 672.0
+
+[node name="pines2" parent="FGStuff" instance=ExtResource( 11 )]
+margin_left = -1484.45
+margin_top = 429.449
+margin_right = 6944.55
+margin_bottom = 978.449
+
+[node name="pines3" parent="FGStuff" instance=ExtResource( 11 )]
+margin_left = -942.514
+margin_top = 400.0
+margin_right = 6833.49
+margin_bottom = 949.0
+
+[node name="pines4" parent="FGStuff" instance=ExtResource( 11 )]
+margin_left = -1280.0
+margin_top = 536.0
+margin_right = 3092.0
+margin_bottom = 1085.0
+
+[node name="pines5" parent="FGStuff" instance=ExtResource( 11 )]
+modulate = Color( 0.239216, 0.360784, 0.423529, 1 )
+margin_left = -927.553
+margin_top = 638.321
+margin_right = 2979.45
+margin_bottom = 1187.32
+
+[node name="pines6" parent="FGStuff" instance=ExtResource( 11 )]
+modulate = Color( 0.223529, 0.239216, 0.298039, 1 )
+margin_left = -1060.57
+margin_top = 786.687
+margin_right = 2846.43
+margin_bottom = 1335.69
+
+[node name="ColorRect" type="ColorRect" parent="FGStuff"]
+margin_left = -2751.0
+margin_top = -1429.0
+margin_right = -853.0
+margin_bottom = 2188.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="FGStuff"]
+margin_left = 2424.29
+margin_top = -3135.08
+margin_right = 4322.29
+margin_bottom = 1096.92
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vignette_fade2" type="Sprite" parent="."]
+position = Vector2( 534.875, 342.396 )
+scale = Vector2( 0.860776, 2.65022 )
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="vignette_fade3" type="Sprite" parent="."]
+position = Vector2( 2427.28, 220.77 )
+rotation = 3.14159
+scale = Vector2( 0.924137, -2.89009 )
+texture = ExtResource( 18 )
+
+[node name="LeftSP" parent="." instance=ExtResource( 14 )]
+position = Vector2( 515.984, 1068.23 )
+
+[node name="RightSP" parent="." instance=ExtResource( 14 )]
+position = Vector2( 2270.64, -913.191 )
+
+[node name="collisions" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
+position = Vector2( -91.9669, 328.423 )
+polygon = PoolVector2Array( -208.067, 1110.63, 4558.64, 1124.66, 4146.94, 1355.88, -479.801, 1380.32 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
+position = Vector2( -225.089, -565.098 )
+polygon = PoolVector2Array( 1459.86, 1364.31, 1405.27, 1456.84, -568.401, 1432.07 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
+position = Vector2( 2042.74, -1066.29 )
+polygon = PoolVector2Array( 1849.55, 1931.88, 628.596, 1956.83, 532.271, 1862.89 )
+
+[node name="RightTZ" parent="." instance=ExtResource( 26 )]
+position = Vector2( 2763.2, 852.843 )
+
+[node name="CollisionShape2D" parent="RightTZ" index="0"]
+position = Vector2( -296.975, -1773.55 )
+shape = SubResource( 1 )
+
+[node name="LeftTZ" parent="." instance=ExtResource( 26 )]
+position = Vector2( 769.611, 201.061 )
+
+[node name="CollisionShape2D" parent="LeftTZ" index="0"]
+position = Vector2( -525.196, 867.668 )
+shape = SubResource( 2 )
+
+[connection signal="transition_triggered" from="RightTZ" to="." method="_on_RightTZ_transition_triggered"]
+[connection signal="transition_triggered" from="LeftTZ" to="." method="_on_LeftTZ_transition_triggered"]
+
+[editable path="PuppyCamera"]
+[editable path="BGStuff/TicTacToeBoard"]
+[editable path="BGStuff/TicTacToeBoard/UnlockableBarrier"]
+[editable path="BGStuff/TicTacToeBoard/UnlockableBarrier/SeenBox"]
+[editable path="RightTZ"]
+[editable path="LeftTZ"]

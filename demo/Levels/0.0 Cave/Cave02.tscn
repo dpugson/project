@@ -198,21 +198,15 @@ position = Vector2( 969.445, 347.86 )
 [node name="CollisionShape2D" parent="TopDoor" index="0"]
 position = Vector2( 4.19849, 0 )
 shape = SubResource( 2 )
+
 [connection signal="transition_triggered" from="BottomDoor" to="." method="_on_BottomDoor_transition_triggered"]
 [connection signal="transition_triggered" from="TopDoor" to="." method="_on_TopDoor_transition_triggered"]
 
 [editable path="Drops/PersistentWaterdrop"]
-
 [editable path="Drops/PersistentWaterdrop3"]
-
 [editable path="Drops/PersistentWaterdrop5"]
-
 [editable path="Drops/PersistentWaterdrop6"]
-
 [editable path="Drops/PersistentWaterdrop7"]
-
 [editable path="PuppyCamera"]
-
 [editable path="BottomDoor"]
-
 [editable path="TopDoor"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://sprites/L3_forest/town_floor-min.png" type="Texture" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
@@ -11,21 +11,20 @@
 [ext_resource path="res://sprites/L3_forest/town_bridge.png" type="Texture" id=9]
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=10]
 [ext_resource path="res://sprites/L3_forest/vignette_fade.png" type="Texture" id=11]
-[ext_resource path="res://Characters/SnegurochkaAndOtterbear.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Levels/2.0 - Forest/ysortpines.tscn" type="PackedScene" id=13]
 [ext_resource path="res://sprites/leafpiletile2dark.png" type="Texture" id=14]
 [ext_resource path="res://Levels/2.0 - Forest/TownFountain.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Levels/2.0 - Forest/Lamp.tscn" type="PackedScene" id=16]
 [ext_resource path="res://StarBG.tscn" type="PackedScene" id=17]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 436.826, 113.392 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 409.117, 82.502 )
 
 [node name="Town" type="Node2D"]
-position = Vector2( -2.79663, 0 )
+position = Vector2( -2.79663, -1 )
 script = ExtResource( 7 )
 
 [node name="BG" parent="." instance=ExtResource( 4 )]
@@ -143,10 +142,10 @@ texture = ExtResource( 11 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="TownBG" type="Node2D" parent="YSort"]
-position = Vector2( 941.866, 229.103 )
+position = Vector2( 931.866, 465.103 )
 
 [node name="south_town_crunchy-min" type="Sprite" parent="YSort/TownBG"]
-position = Vector2( -75.6583, 214.316 )
+position = Vector2( -65.6583, -21.684 )
 texture = ExtResource( 3 )
 
 [node name="player" parent="YSort" instance=ExtResource( 2 )]
@@ -476,9 +475,6 @@ position = Vector2( 775.408, -2562.59 )
 [node name="Lamp16" parent="YSort/lamp_corridor" instance=ExtResource( 16 )]
 position = Vector2( 1151.59, -2559.76 )
 
-[node name="SnegurochkaAndOtterbear" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( 729.797, 1018.6 )
-
 [node name="BG3" parent="." instance=ExtResource( 4 )]
 show_behind_parent = false
 margin_left = 2293.0
@@ -571,13 +567,13 @@ texture = ExtResource( 9 )
 position = Vector2( 952.201, -3228 )
 
 [node name="CollisionShape2D" parent="TopTZ" index="0"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="BottomTZ" parent="." instance=ExtResource( 10 )]
 position = Vector2( 916, 1960 )
 
 [node name="CollisionShape2D" parent="BottomTZ" index="0"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [connection signal="transition_triggered" from="BottomTZ" to="." method="_on_BottomTZ_transition_triggered"]
 
