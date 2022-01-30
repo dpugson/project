@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Levels/2.0 - Forest/Glower.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/L3_forest/town/jail/jail_lamp-min.png" type="Texture" id=2]
+
+[node name="jail_lamp_front" type="Node2D"]
+
+[node name="jail_lamp-min" type="Sprite" parent="."]
+position = Vector2( 0.771118, 4.76263 )
+texture = ExtResource( 2 )
+
+[node name="Glower" parent="." instance=ExtResource( 1 )]
+modulate = Color( 0.815686, 0.882353, 1, 0.419608 )
+position = Vector2( 1.41406, 0 )

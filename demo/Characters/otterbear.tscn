@@ -13,11 +13,6 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "down",
-"speed": 2.0
-}, {
 "frames": [ ExtResource( 1 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "left",
@@ -31,6 +26,11 @@ animations = [ {
 "frames": [ ExtResource( 8 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "up",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "down",
 "speed": 2.0
 } ]
 
@@ -49,6 +49,7 @@ script = ExtResource( 9 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="Person" parent="." instance=ExtResource( 10 )]

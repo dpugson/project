@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Levels/2.0 - Forest/pines.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/2.0 - Forest/OutsideLab_02.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Characters/goblins/ThisGuyGoblin.tscn" type="PackedScene" id=15]
 [ext_resource path="res://sprites/L3_forest/tall_creepy_tree_inside.png" type="Texture" id=16]
 [ext_resource path="res://sprites/L3_forest/vignette_fade.png" type="Texture" id=18]
 [ext_resource path="res://sprites/leafpile/leaf0.png" type="Texture" id=20]
@@ -591,6 +592,10 @@ position = Vector2( 1629.75, 604.494 )
 
 [node name="watersausage30" parent="YSort/sausages2" instance=ExtResource( 10 )]
 position = Vector2( 1663.59, 614.187 )
+
+[node name="ThisGuyGoblin" parent="YSort" instance=ExtResource( 15 )]
+position = Vector2( 1444, 1051 )
+MAX_SPEED = 450
 
 [node name="FGStuff" type="Node2D" parent="."]
 position = Vector2( 644.2, 716.689 )

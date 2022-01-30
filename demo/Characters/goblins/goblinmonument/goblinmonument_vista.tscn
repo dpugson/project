@@ -1,0 +1,538 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://Characters/goblins/goblinmonument/goblinmonument_statue.tscn" type="PackedScene" id=1]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/L3_forest/garden/grasstile.png" type="Texture" id=3]
+[ext_resource path="res://Characters/goblins/goblinmonument/goblinmonument_vista.gd" type="Script" id=4]
+[ext_resource path="res://Characters/goblins/goblinmonument/goblinmonument_flowerbush.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Characters/goblins/goblinmonument/goblinmonument_longleaves.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sprites/L3_forest/white_glow.png" type="Texture" id=7]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=8]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Characters/goblins/goblinmonument/singletallcreepytree_branches.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Characters/goblins/goblin_hangout/HangoutBingus.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Characters/goblins/goblinmonument/ThickTreeTrunk.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Levels/2.0 - Forest/SinglePine.tscn" type="PackedScene" id=15]
+[ext_resource path="res://world/creepy_tree.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Characters/goblins/goblinmonument/singletallcreepytree_nobranches.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Characters/goblins/goblin_hangout/hangout_picnic_pair.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Characters/goblins/goblin_hangout/hangout_thisguy.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Characters/goblins/goblin_hangout/hangout_workout_goblin.tscn" type="PackedScene" id=20]
+[ext_resource path="res://sprites/L3_forest/vignette_fade.png" type="Texture" id=21]
+[ext_resource path="res://Characters/goblins/goblin_hangout/hangout_picnic_basket.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Characters/goblins/goblin_hangout/hangout_picnic_blanket.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Characters/goblins/goblin_hangout/hangout_salesgoblin.tscn" type="PackedScene" id=24]
+[ext_resource path="res://sprites/L3_forest/inhabitants/goblinmonument/monumentgoblin_boquet-min.png" type="Texture" id=25]
+[ext_resource path="res://Characters/goblins/goblin_hangout/hangout_picnic_vin.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Characters/goblins/goblin_hangout/hangout_picnic_brie.tscn" type="PackedScene" id=27]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 477.735, 31.7123 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 1407.6, 34.1028 )
+
+[sub_resource type="Curve" id=3]
+min_value = -200.0
+max_value = 200.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.254717, 156.689 ), 0.0, 0.0, 0, 0, Vector2( 0.504717, -126.194 ), 0.0, 0.0, 0, 0, Vector2( 0.764151, 160.293 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[node name="goblinmonument" type="Node2D"]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_vertical_guides_": [ -913.058 ]
+}
+
+[node name="topSP" parent="." instance=ExtResource( 11 )]
+position = Vector2( 913.244, -116.913 )
+
+[node name="bottomSP" parent="." instance=ExtResource( 11 )]
+position = Vector2( 924.349, 1106.58 )
+
+[node name="BG" parent="." instance=ExtResource( 8 )]
+margin_left = -1850.9
+margin_top = -3158.0
+margin_right = 3724.1
+margin_bottom = 2450.0
+
+[node name="bgstuff" type="Node2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="bgstuff"]
+margin_left = -363.0
+margin_top = -538.0
+margin_right = 2393.0
+margin_bottom = 1909.0
+texture = ExtResource( 3 )
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="vignette_fade2" type="Sprite" parent="bgstuff"]
+position = Vector2( 1598.52, 110.653 )
+rotation = -3.89154
+scale = Vector2( 0.706952, 1.08202 )
+texture = ExtResource( 21 )
+
+[node name="vignette_fade4" type="Sprite" parent="bgstuff"]
+position = Vector2( 916.873, -191.989 )
+rotation = 1.5708
+scale = Vector2( 0.706952, 1.08202 )
+texture = ExtResource( 21 )
+
+[node name="vignette_fade3" type="Sprite" parent="bgstuff"]
+position = Vector2( 251.31, 88.2367 )
+rotation = -5.55607
+scale = Vector2( 0.703055, 1.08202 )
+texture = ExtResource( 21 )
+
+[node name="topTZ" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1206.19, -151.374 )
+
+[node name="CollisionShape2D" parent="topTZ" index="0"]
+position = Vector2( -283.25, -117.614 )
+shape = SubResource( 1 )
+
+[node name="bottomTZ" parent="." instance=ExtResource( 2 )]
+position = Vector2( 859.117, 1466.04 )
+
+[node name="CollisionShape2D" parent="bottomTZ" index="0"]
+position = Vector2( 149.923, -137.358 )
+shape = SubResource( 2 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="player" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1421.72, 697.126 )
+MAX_SPEED = 300
+camera = NodePath("../../PuppyCamera")
+
+[node name="goblinmonument_statue" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 933.128, 553.114 )
+
+[node name="AnimatedSprite" parent="YSort/goblinmonument_statue" index="0"]
+animation = "with_bib"
+
+[node name="monumentgoblin_boquet-min" type="Sprite" parent="YSort"]
+visible = false
+position = Vector2( 942.726, 664.21 )
+texture = ExtResource( 25 )
+
+[node name="flora" type="YSort" parent="YSort"]
+
+[node name="Flowers" type="YSort" parent="YSort/flora"]
+
+[node name="flowerbush" parent="YSort/flora/Flowers" instance=ExtResource( 5 )]
+position = Vector2( 801.378, 529.184 )
+
+[node name="flowerbush2" parent="YSort/flora/Flowers" instance=ExtResource( 5 )]
+position = Vector2( 1057.5, 532.923 )
+
+[node name="flowerbush3" parent="YSort/flora/Flowers" instance=ExtResource( 5 )]
+position = Vector2( 814.903, 481.138 )
+
+[node name="flowerbush6" parent="YSort/flora/Flowers" instance=ExtResource( 5 )]
+position = Vector2( 614.974, 613.966 )
+
+[node name="flowerbush7" parent="YSort/flora/Flowers" instance=ExtResource( 5 )]
+position = Vector2( 598.025, 438.422 )
+
+[node name="flowerbush8" parent="YSort/flora/Flowers" instance=ExtResource( 5 )]
+position = Vector2( 1209.4, 432.369 )
+
+[node name="flowerbush9" parent="YSort/flora/Flowers" instance=ExtResource( 5 )]
+position = Vector2( 1190.03, 572.804 )
+
+[node name="flowerbush10" parent="YSort/flora/Flowers" instance=ExtResource( 5 )]
+position = Vector2( 1364.37, 508.64 )
+
+[node name="flowerbush11" parent="YSort/flora/Flowers" instance=ExtResource( 5 )]
+position = Vector2( 463.643, 525.589 )
+
+[node name="flowerbush4" parent="YSort/flora/Flowers" instance=ExtResource( 5 )]
+position = Vector2( 1070.63, 437.169 )
+
+[node name="flowerbush5" parent="YSort/flora/Flowers" instance=ExtResource( 5 )]
+position = Vector2( 743.782, 540.483 )
+
+[node name="flowerbush12" parent="YSort/flora/Flowers" instance=ExtResource( 5 )]
+position = Vector2( 869.858, 457.845 )
+
+[node name="flowerbush13" parent="YSort/flora/Flowers" instance=ExtResource( 5 )]
+position = Vector2( 1012.89, 469.499 )
+
+[node name="longleaves" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 1153.19, 463.013 )
+
+[node name="longleaves4" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 738.542, 371.425 )
+
+[node name="longleaves5" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 1080.88, 486.01 )
+
+[node name="longleaves6" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 1104.16, 435.589 )
+
+[node name="longleaves7" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 1152.59, 510.65 )
+
+[node name="longleaves8" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 1147.74, 580.867 )
+
+[node name="longleaves9" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 1105.37, 360.529 )
+
+[node name="longleaves10" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 814.812, 318.156 )
+
+[node name="longleaves24" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 931.353, 354.178 )
+
+[node name="longleaves25" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 1015.05, 364.772 )
+
+[node name="longleaves26" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 990.683, 335.107 )
+
+[node name="longleaves27" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 963.137, 420.924 )
+
+[node name="longleaves11" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 649.61, 573.358 )
+
+[node name="longleaves12" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 639.268, 537.284 )
+
+[node name="longleaves13" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 668.324, 456.17 )
+
+[node name="longleaves14" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 1215.54, 458.592 )
+
+[node name="longleaves15" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 1270.02, 600.238 )
+
+[node name="longleaves16" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 1279.7, 534.863 )
+
+[node name="longleaves17" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 1267.6, 399.27 )
+
+[node name="longleaves18" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 1199.8, 354.475 )
+
+[node name="longleaves19" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 658.638, 361.739 )
+
+[node name="longleaves20" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 508.517, 457.381 )
+
+[node name="longleaves21" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 546.048, 560.286 )
+
+[node name="longleaves22" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 451.617, 580.867 )
+
+[node name="longleaves23" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 573.893, 412.587 )
+
+[node name="longleaves2" parent="YSort/flora/Flowers" instance=ExtResource( 6 )]
+position = Vector2( 767.958, 557.822 )
+
+[node name="Flowers2" type="YSort" parent="YSort/flora"]
+position = Vector2( -268.761, 506.602 )
+
+[node name="flowerbush2" parent="YSort/flora/Flowers2" instance=ExtResource( 5 )]
+position = Vector2( 1568.86, 245.135 )
+
+[node name="flowerbush3" parent="YSort/flora/Flowers2" instance=ExtResource( 5 )]
+position = Vector2( 768.387, 173.528 )
+
+[node name="flowerbush6" parent="YSort/flora/Flowers2" instance=ExtResource( 5 )]
+position = Vector2( 631.623, 307.151 )
+
+[node name="flowerbush7" parent="YSort/flora/Flowers2" instance=ExtResource( 5 )]
+position = Vector2( 614.674, 131.606 )
+
+[node name="flowerbush8" parent="YSort/flora/Flowers2" instance=ExtResource( 5 )]
+position = Vector2( 1720.76, 144.581 )
+
+[node name="flowerbush9" parent="YSort/flora/Flowers2" instance=ExtResource( 5 )]
+position = Vector2( 1701.39, 285.016 )
+
+[node name="flowerbush10" parent="YSort/flora/Flowers2" instance=ExtResource( 5 )]
+position = Vector2( 1875.73, 220.852 )
+
+[node name="flowerbush11" parent="YSort/flora/Flowers2" instance=ExtResource( 5 )]
+position = Vector2( 480.292, 218.773 )
+
+[node name="flowerbush4" parent="YSort/flora/Flowers2" instance=ExtResource( 5 )]
+position = Vector2( 1527.28, 149.381 )
+
+[node name="longleaves" parent="YSort/flora/Flowers2" instance=ExtResource( 6 )]
+position = Vector2( 1547.1, 214.296 )
+
+[node name="longleaves4" parent="YSort/flora/Flowers2" instance=ExtResource( 6 )]
+position = Vector2( 762.607, 46.5983 )
+
+[node name="longleaves5" parent="YSort/flora/Flowers2" instance=ExtResource( 6 )]
+position = Vector2( 1584.2, 290.807 )
+
+[node name="longleaves6" parent="YSort/flora/Flowers2" instance=ExtResource( 6 )]
+position = Vector2( 1622.94, 129.79 )
+
+[node name="longleaves7" parent="YSort/flora/Flowers2" instance=ExtResource( 6 )]
+position = Vector2( 1671.36, 204.851 )
+
+[node name="longleaves8" parent="YSort/flora/Flowers2" instance=ExtResource( 6 )]
+position = Vector2( 1666.52, 275.068 )
+
+[node name="longleaves9" parent="YSort/flora/Flowers2" instance=ExtResource( 6 )]
+position = Vector2( 1624.15, 54.7297 )
+
+[node name="longleaves10" parent="YSort/flora/Flowers2" instance=ExtResource( 6 )]
+position = Vector2( 838.878, -6.67049 )
+
+[node name="longleaves12" parent="YSort/flora/Flowers2" instance=ExtResource( 6 )]
+position = Vector2( 655.783, 212.457 )
+
+[node name="longleaves13" parent="YSort/flora/Flowers2" instance=ExtResource( 6 )]
+position = Vector2( 692.389, 131.344 )
+
+[node name="longleaves14" parent="YSort/flora/Flowers2" instance=ExtResource( 6 )]
+position = Vector2( 1734.32, 152.792 )
+
+[node name="longleaves15" parent="YSort/flora/Flowers2" instance=ExtResource( 6 )]
+position = Vector2( 1788.8, 294.439 )
+
+[node name="longleaves16" parent="YSort/flora/Flowers2" instance=ExtResource( 6 )]
+position = Vector2( 1798.48, 229.063 )
+
+[node name="longleaves17" parent="YSort/flora/Flowers2" instance=ExtResource( 6 )]
+position = Vector2( 1786.38, 93.47 )
+
+[node name="longleaves18" parent="YSort/flora/Flowers2" instance=ExtResource( 6 )]
+position = Vector2( 1718.58, 48.6764 )
+
+[node name="longleaves19" parent="YSort/flora/Flowers2" instance=ExtResource( 6 )]
+position = Vector2( 682.704, 36.9129 )
+
+[node name="longleaves20" parent="YSort/flora/Flowers2" instance=ExtResource( 6 )]
+position = Vector2( 532.583, 132.554 )
+
+[node name="longleaves21" parent="YSort/flora/Flowers2" instance=ExtResource( 6 )]
+position = Vector2( 570.113, 235.46 )
+
+[node name="longleaves22" parent="YSort/flora/Flowers2" instance=ExtResource( 6 )]
+position = Vector2( 575.576, 275.068 )
+
+[node name="longleaves23" parent="YSort/flora/Flowers2" instance=ExtResource( 6 )]
+position = Vector2( 597.959, 87.76 )
+
+[node name="creepy_tree" parent="YSort/flora" instance=ExtResource( 16 )]
+position = Vector2( 406.262, 223.891 )
+
+[node name="creepy_tree2" parent="YSort/flora" instance=ExtResource( 16 )]
+position = Vector2( 125.402, 467.751 )
+
+[node name="creepy_tree3" parent="YSort/flora" instance=ExtResource( 16 )]
+position = Vector2( 1615.47, 533.341 )
+
+[node name="creepy_tree4" parent="YSort/flora" instance=ExtResource( 16 )]
+position = Vector2( 1201.07, 259.856 )
+
+[node name="CreepyTrees" type="YSort" parent="YSort/flora"]
+modulate = Color( 0.509804, 0.517647, 0.541176, 1 )
+position = Vector2( -8.40918, 21.8633 )
+
+[node name="singletallcreepytree_branches" parent="YSort/flora/CreepyTrees" instance=ExtResource( 12 )]
+position = Vector2( 439.018, 169.592 )
+
+[node name="singletallcreepytree_nobranches" parent="YSort/flora/CreepyTrees" instance=ExtResource( 17 )]
+position = Vector2( 693.101, 67.3202 )
+
+[node name="singletallcreepytree_nobranches2" parent="YSort/flora/CreepyTrees" instance=ExtResource( 17 )]
+position = Vector2( 272.121, 497.813 )
+
+[node name="singletallcreepytree_branches2" parent="YSort/flora/CreepyTrees" instance=ExtResource( 12 )]
+position = Vector2( 208.312, 83.9691 )
+
+[node name="singletallcreepytree_nobranches3" parent="YSort/flora/CreepyTrees" instance=ExtResource( 17 )]
+position = Vector2( 1153.29, -215.192 )
+
+[node name="singletallcreepytree_nobranches4" parent="YSort/flora/CreepyTrees" instance=ExtResource( 17 )]
+position = Vector2( 1402.22, 130.384 )
+
+[node name="singletallcreepytree_nobranches5" parent="YSort/flora/CreepyTrees" instance=ExtResource( 17 )]
+position = Vector2( 1637.67, 463.379 )
+
+[node name="thicktrees" type="YSort" parent="YSort/flora"]
+
+[node name="ThickTreeTrunk" parent="YSort/flora/thicktrees" instance=ExtResource( 14 )]
+position = Vector2( 556.987, 136.295 )
+
+[node name="ThickTreeTrunk2" parent="YSort/flora/thicktrees" instance=ExtResource( 14 )]
+position = Vector2( 638.805, 88.726 )
+
+[node name="ThickTreeTrunk10" parent="YSort/flora/thicktrees" instance=ExtResource( 14 )]
+position = Vector2( -20.0154, 552.517 )
+
+[node name="ThickTreeTrunk11" parent="YSort/flora/thicktrees" instance=ExtResource( 14 )]
+position = Vector2( 1837.53, 814.142 )
+
+[node name="ThickTreeTrunk3" parent="YSort/flora/thicktrees" instance=ExtResource( 14 )]
+position = Vector2( 1238.17, 126.781 )
+
+[node name="ThickTreeTrunk4" parent="YSort/flora/thicktrees" instance=ExtResource( 14 )]
+position = Vector2( 1509.3, 336.081 )
+
+[node name="ThickTreeTrunk5" parent="YSort/flora/thicktrees" instance=ExtResource( 14 )]
+position = Vector2( 653.076, -203.819 )
+
+[node name="ThickTreeTrunk6" parent="YSort/flora/thicktrees" instance=ExtResource( 14 )]
+position = Vector2( 1185.84, -151.494 )
+
+[node name="ThickTreeTrunk7" parent="YSort/flora/thicktrees" instance=ExtResource( 14 )]
+position = Vector2( 1452.22, -151.494 )
+
+[node name="ThickTreeTrunk8" parent="YSort/flora/thicktrees" instance=ExtResource( 14 )]
+position = Vector2( 272.529, 340.838 )
+
+[node name="ThickTreeTrunk9" parent="YSort/flora/thicktrees" instance=ExtResource( 14 )]
+position = Vector2( 391.45, -51.6005 )
+
+[node name="pines10" type="YSort" parent="YSort/flora"]
+position = Vector2( 1874.19, 135.57 )
+scale = Vector2( 1.35548, 1.57857 )
+
+[node name="SinglePine" parent="YSort/flora/pines10" instance=ExtResource( 15 )]
+position = Vector2( 9.73349, 471.682 )
+scale = Vector2( 1.55729, 1.93666 )
+
+[node name="picnic" type="YSort" parent="YSort"]
+
+[node name="HangoutBingus" parent="YSort/picnic" instance=ExtResource( 13 )]
+position = Vector2( 928.74, 654.136 )
+
+[node name="hangout_picnic_pair" parent="YSort/picnic" instance=ExtResource( 18 )]
+position = Vector2( 656.903, 811.763 )
+
+[node name="hangout_picnic_brie" parent="YSort/picnic" instance=ExtResource( 27 )]
+position = Vector2( 648.786, 895.39 )
+
+[node name="hangout_picnic_basket" parent="YSort/picnic" instance=ExtResource( 22 )]
+position = Vector2( 768.659, 946.359 )
+
+[node name="hangout_picnic_vin" parent="YSort/picnic" instance=ExtResource( 26 )]
+position = Vector2( 561.95, 930.313 )
+
+[node name="hangout_salesgoblin" parent="YSort/picnic" instance=ExtResource( 24 )]
+position = Vector2( 1049.93, 604.677 )
+
+[node name="hangout_thisguy" parent="YSort/picnic" instance=ExtResource( 19 )]
+position = Vector2( 676.748, 636.348 )
+
+[node name="hangout_workout_goblin" parent="YSort/picnic" instance=ExtResource( 20 )]
+position = Vector2( 1155.65, 845.365 )
+
+[node name="hangout_picnic_blanket" parent="YSort/picnic" instance=ExtResource( 23 )]
+position = Vector2( 662.333, 628.751 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 10 )]
+position = Vector2( 436.776, -516.806 )
+smoothing_speed = 1.0
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( 18.534, -503.572 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 1913.08, 1175.07 )
+
+[node name="FG" type="Node2D" parent="."]
+position = Vector2( 4.24261, 0 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="FG"]
+modulate = Color( 1, 1, 1, 0.627451 )
+position = Vector2( 1456.46, -281.48 )
+amount = 200
+lifetime = 20.0
+preprocess = 50.0
+speed_scale = 0.2
+texture = ExtResource( 7 )
+emission_shape = 2
+emission_rect_extents = Vector2( 1000, 5 )
+gravity = Vector2( 0, 50 )
+radial_accel = 3.45
+radial_accel_random = 0.98
+tangential_accel_curve = SubResource( 3 )
+scale_amount = 0.1
+scale_amount_random = 0.08
+hue_variation = 0.12
+hue_variation_random = 0.5
+anim_speed_random = 0.86
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="FG"]
+modulate = Color( 1, 1, 1, 0.627451 )
+position = Vector2( 335.671, 1232.29 )
+rotation = 3.14159
+amount = 200
+lifetime = 20.0
+preprocess = 50.0
+speed_scale = 0.2
+texture = ExtResource( 7 )
+emission_shape = 2
+emission_rect_extents = Vector2( 1000, 5 )
+gravity = Vector2( 0, 50 )
+radial_accel = 3.45
+radial_accel_random = 0.98
+tangential_accel_curve = SubResource( 3 )
+scale_amount = 0.1
+scale_amount_random = 0.08
+hue_variation = 0.38
+hue_variation_random = 0.5
+anim_speed_random = 0.86
+
+[node name="vignette_fade" type="Sprite" parent="FG"]
+position = Vector2( 932.004, 1066.56 )
+rotation = -1.5708
+scale = Vector2( 0.323829, 1.08202 )
+texture = ExtResource( 21 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="vignette_fade4" type="Sprite" parent="FG"]
+position = Vector2( -60.7745, 284.976 )
+rotation = -0.200111
+scale = Vector2( 0.323829, 1.08202 )
+texture = ExtResource( 21 )
+
+[node name="vignette_fade5" type="Sprite" parent="FG"]
+position = Vector2( 1941.75, 392.456 )
+rotation = -2.98142
+scale = Vector2( 0.323829, 1.08202 )
+texture = ExtResource( 21 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Collisions" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/StaticBody2D"]
+position = Vector2( -362.957, -195.162 )
+polygon = PoolVector2Array( 591.572, 1418.78, -485.271, 1522.63, 1266.57, -1180.35, 2948.95, 1640.36, 1997.21, 1409.27, 1999.12, 907.901, 1884.95, 615.356, 1645.21, 450.77, 1264.19, -956.776, 979.254, 441.256, 758.061, 605.367, 572.545, 843.208 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="transition_triggered" from="topTZ" to="." method="_on_topTZ_transition_triggered"]
+
+[editable path="topTZ"]
+[editable path="bottomTZ"]
+[editable path="YSort/goblinmonument_statue"]
+[editable path="PuppyCamera"]

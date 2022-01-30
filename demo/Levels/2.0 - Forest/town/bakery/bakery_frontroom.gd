@@ -22,6 +22,16 @@ func _ready():
 		player, null, 
 		"../../../PuppyCamera", player_position, orientation)
 
+onready var otterbear = $YSort/otterbear
+func init_otter():
+	var dialogue = {
+		"begin" : [
+			"TEXT", "I'm excited for these FINE PASTRIES...", 
+			otterbear.SPEED, null, null, otterbear.WORRIED, otterbear.PITCH
+		]
+	}
+	otterbear.set_dialogue(dialogue, [otterbear, "left"])
+
 func _on_topTZ_transition_triggered():
 	Transition.go_to("res://Levels/9.0 - Grand Hotel/hotel_balcony.tscn", "top")
 

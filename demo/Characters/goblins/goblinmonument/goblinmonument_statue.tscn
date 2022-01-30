@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://sprites/L3_forest/inhabitants/goblinmonument/monumentgoblin_monument_bib-min.png" type="Texture" id=1]
+[ext_resource path="res://sprites/L3_forest/inhabitants/goblinmonument/monumentgoblin_monument-min.png" type="Texture" id=2]
+[ext_resource path="res://sprites/L3_forest/inhabitants/goblinmonument/monumentgoblin_pear-min.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "with_bib",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 81.7424, 52.8335 )
+
+[node name="goblinmonument_statue" type="Node2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -203.249 )
+frames = SubResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="AnimatedSprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/StaticBody2D"]
+position = Vector2( -1.10455, 249.642 )
+shape = SubResource( 2 )
+
+[node name="monumentgoblin_pear-min" type="Sprite" parent="AnimatedSprite"]
+position = Vector2( -13.2549, 96.2889 )
+texture = ExtResource( 3 )

@@ -21,3 +21,22 @@ func _ready():
 
 func _on_bottomTZ_transition_triggered():
 	Transition.go_to("res://Levels/2.0 - Forest/town/mayors_house/mayors_house_lower_room.tscn", "top")
+
+
+func _on_SeenBox_seen(obj):
+	var dialogue = {
+		"begin" : [
+			"TEXT", "The old one mumbles in their sleep...", 0.03, 
+			"2", null, null, null
+		],
+		"2" : [
+			"TEXT", "...All gone...", 0.06, 
+			"3", null, null, 0.8, "meh"
+		],
+		"3" : [
+			"TEXT", "...Just me left...", 0.06, 
+			null, null, null, 0.8, "meh"
+		],
+	}
+	DialogueHelper.showDialogue(self, dialogue, false, null)
+

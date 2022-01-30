@@ -10,7 +10,8 @@ onready var camera = $PuppyCamera
 func _ready():
 	var player_position = leftSP.global_position
 	var orientation = Vector2.RIGHT
-	Jukebox.play_song("res://tunes/forest/forest_theme_lofi.wav")
+	#Jukebox.play_song("res://tunes/forest/forest_theme_lofi.wav")
+	Jukebox.play_song("res://tunes/puzzletime.wav")
 	match stats.spawn_metadata:
 		"left":
 			player_position = leftSP.global_position

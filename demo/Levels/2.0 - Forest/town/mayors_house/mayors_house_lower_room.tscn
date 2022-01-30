@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://sprites/L3_forest/town/mayors_room/mayor_house_lower-min.png" type="Texture" id=1]
 [ext_resource path="res://BG.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/2.0 - Forest/town/mayors_house/mayor_sculpture.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Brains/DescriptionBox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/2.0 - Forest/town/mayors_house/mayors_house_lower_room.gd" type="Script" id=7]
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=19]
@@ -14,6 +15,9 @@ extents = Vector2( 82.2148, 31.7123 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 92.3055, 34.1028 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 64.8054, 51.0185 )
 
 [node name="mayors_house_lower_room" type="Node2D"]
 script = ExtResource( 7 )
@@ -67,6 +71,18 @@ camera = NodePath("../../PuppyCamera")
 modulate = Color( 0.666667, 0.713726, 0.745098, 1 )
 position = Vector2( 974.611, 767.101 )
 
+[node name="description_box" parent="YSort/mayor_sculpture" instance=ExtResource( 5 )]
+position = Vector2( 1.41425, 5.65686 )
+description = [ "You wonder: what is this strange object?", "Luckily, looking closer, you find a label.", "A TRUE MASTERPIECE.
+A WORK OF STAGGERING GENIUS." ]
+
+[node name="CollisionShape2D" parent="YSort/mayor_sculpture/description_box/SeenBox" index="0"]
+position = Vector2( 0, 12.7279 )
+shape = SubResource( 3 )
+
+[node name="SmellArrow" parent="YSort/mayor_sculpture/description_box/SeenBox/CollisionShape2D" index="0"]
+position = Vector2( 3.60089, -419.509 )
+
 [node name="PuppyCamera" parent="." instance=ExtResource( 20 )]
 position = Vector2( 436.776, -516.806 )
 
@@ -92,4 +108,6 @@ polygon = PoolVector2Array( 1208.87, 1239.45, 1213.12, 1430.37, -485.271, 1522.6
 
 [editable path="topTZ"]
 [editable path="bottomTZ"]
+[editable path="YSort/mayor_sculpture/description_box"]
+[editable path="YSort/mayor_sculpture/description_box/SeenBox"]
 [editable path="PuppyCamera"]

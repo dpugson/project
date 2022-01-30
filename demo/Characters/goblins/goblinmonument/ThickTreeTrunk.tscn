@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/L3_forest/lab_exterior_upper_front_tree-min.png" type="Texture" id=1]
+
+[node name="ThickTreeTrunk" type="Node2D"]
+
+[node name="lab_exterior_upper_front_tree-min" type="Sprite" parent="."]
+position = Vector2( 13.2823, -445.466 )
+texture = ExtResource( 1 )

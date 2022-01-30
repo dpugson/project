@@ -15,11 +15,6 @@ enum INPUT_TYPE {
 	CHOICE
 }
 
-enum VOICE_PAK {
-	ANIMALESE,
-	MWEHMWEH
-}
-
 export var cutscene_mode = false
 
 var dialogue_index = "begin"
@@ -44,9 +39,9 @@ var example_action = {
 
 
 var dialogue2 = {
-	"voice_pak" : VOICE_PAK.MWEHMWEH,
+	"voice_pak" : "meh",
 	"begin" : ["TEXT", "Do you like potatoes?", 0.03, [["yes", "1"], ["no", "2", true]], null, "res://Dialogue/talking_heads/dog_neutral.png", .9],
-	"1" : ["TEXT", "Interesting...", 0.06, "wow", null, false, 0.7, VOICE_PAK.ANIMALESE],
+	"1" : ["TEXT", "Interesting...", 0.06, "wow", null, false, 0.7, "animalese"],
 	"wow": ["TEXT", "Truly you are a doggo of culture.", 0.03, null],
 	"2" : ["TEXT", "Tell me the truth!!!", 0.03, "begin", null, "res://Dialogue/talking_heads/dog_excited.png"]
 }
@@ -408,14 +403,14 @@ const mwehs = [
 const PITCH_MULTIPLIER_RANGE := 0.3
 
 func get_sound(character):
-	var voice = dialogue.get("voice_pak", VOICE_PAK.ANIMALESE)
+	var voice = dialogue.get("voice_pak", "animalese")
 	var override = get_voice()
 	if override != null:
 		voice = override
 	match voice:
-		VOICE_PAK.MWEHMWEH:
+		"meh":
 			return mwehs[rand_range(0, len(mwehs))]
-		VOICE_PAK.ANIMALESE:
+		"animalese":
 			return animalese_sounds.get(
 				character.to_lower(),
 				null

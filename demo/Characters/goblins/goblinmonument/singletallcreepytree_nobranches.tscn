@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/L3_forest/tall_creepy_tree_edge.png" type="Texture" id=1]
+
+[node name="singletallcreepytree_nobranches" type="Node2D"]
+position = Vector2( 6.72717, 0 )
+
+[node name="tall_creepy_tree_edge" type="Sprite" parent="."]
+position = Vector2( -2.54041, -534.176 )
+texture = ExtResource( 1 )

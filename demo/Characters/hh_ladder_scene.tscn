@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Characters/hh.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/L3_forest/inhabitants/hh/ladder-min.png" type="Texture" id=2]
+[ext_resource path="res://hitnhurtboxes/SeenBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Characters/hh_ladder_scene.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 58.0995, 35.9816 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 76.1996, 27.8816 )
+
+[node name="hh_ladder_scene" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="ladder-min" type="Sprite" parent="."]
+position = Vector2( 1.39166, -176 )
+texture = ExtResource( 2 )
+
+[node name="hh" parent="ladder-min" instance=ExtResource( 1 )]
+position = Vector2( -5.89166, -166 )
+
+[node name="SeenBox" parent="ladder-min" instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" parent="ladder-min/SeenBox" index="0"]
+position = Vector2( 2.5, 152.5 )
+shape = SubResource( 1 )
+
+[node name="SmellArrow" parent="ladder-min/SeenBox/CollisionShape2D" index="0"]
+position = Vector2( -4.14172, -469.589 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ladder-min"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ladder-min/StaticBody2D"]
+position = Vector2( 3, 160.5 )
+shape = SubResource( 2 )
+
+[connection signal="seen" from="ladder-min/SeenBox" to="." method="_on_SeenBox_seen"]
+
+[editable path="ladder-min/SeenBox"]

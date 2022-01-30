@@ -32,24 +32,23 @@
 [ext_resource path="res://hitnhurtboxes/SeenBox.tscn" type="PackedScene" id=30]
 [ext_resource path="res://Brains/SaveStar.tscn" type="PackedScene" id=31]
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 73.767, 44.3026 )
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 54.5379
 height = 62.868
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 61.4875, 336.522 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 37.8086, 121.57 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 136.339, 39.2026 )
 
-[sub_resource type="Animation" id=5]
-resource_name = "cutscene_leaving_lab"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -327,7 +326,7 @@ position = Vector2( 235.053, 82.4212 )
 
 [node name="CollisionShape2D" parent="YSort/shrine_hill/ShrineSeenBox" index="0"]
 position = Vector2( 4.57898, 27.4737 )
-shape = SubResource( 7 )
+shape = SubResource( 1 )
 
 [node name="SmellArrow" parent="YSort/shrine_hill/ShrineSeenBox/CollisionShape2D" index="0"]
 position = Vector2( -5.13666, -157.035 )
@@ -565,21 +564,21 @@ polygon = PoolVector2Array( -420.096, 1136.03, -415.998, 1433.11, -362.231, 1433
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/StaticBody2D"]
 position = Vector2( 1003.93, 600.306 )
 rotation = 1.5708
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="RightTZ" parent="." instance=ExtResource( 26 )]
 position = Vector2( 2737.51, 809.396 )
 
 [node name="CollisionShape2D" parent="RightTZ" index="0"]
 position = Vector2( 224.147, -3.88572 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="TopTZ" parent="." instance=ExtResource( 26 )]
 position = Vector2( 776.083, 198.115 )
 
 [node name="CollisionShape2D" parent="TopTZ" index="0"]
 position = Vector2( 100.868, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="PuzzleHouseTZ" parent="." instance=ExtResource( 26 )]
 position = Vector2( 44.2282, 836.701 )
@@ -587,10 +586,10 @@ position = Vector2( 44.2282, 836.701 )
 [node name="CollisionShape2D" parent="PuzzleHouseTZ" index="0"]
 position = Vector2( 9.42847, 7.31079 )
 rotation = 2.24177
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/cutscene_leaving_lab = SubResource( 5 )
+anims/cutscene_leaving_lab = SubResource( 6 )
 
 [node name="EventSpots" type="Node2D" parent="."]
 

@@ -10,7 +10,7 @@
 [ext_resource path="res://sprites/trees/treetiles/treetiles_br.png" type="Texture" id=8]
 [ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/Demo/ForestDemo.gd" type="Script" id=10]
-[ext_resource path="res://Characters/ForestFolk/PrinceTeacup.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Characters/goblins/ThisGuyGoblin.tscn" type="PackedScene" id=11]
 [ext_resource path="res://sprites/trees/treetiles/treetiles_r.png" type="Texture" id=12]
 [ext_resource path="res://sprites/trees/treetiles/treetiles_l.png" type="Texture" id=13]
 [ext_resource path="res://sprites/trees/treetiles/treetiles_bl.png" type="Texture" id=14]
@@ -283,8 +283,8 @@ position = Vector2( 980.975, 360.488 )
 [node name="Whizfluff4" parent="YSortedThings/enemies" instance=ExtResource( 17 )]
 position = Vector2( 1342.58, 237.653 )
 
-[node name="PrinceTeacup" parent="YSortedThings" instance=ExtResource( 11 )]
-position = Vector2( -106.207, 561.285 )
+[node name="ThisGuyGoblin" parent="YSortedThings" instance=ExtResource( 11 )]
+position = Vector2( -405.768, 687.472 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

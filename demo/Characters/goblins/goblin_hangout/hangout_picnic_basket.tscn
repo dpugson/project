@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/L3_forest/inhabitants/goblin_hangout/goblin_picnic_basket-min.png" type="Texture" id=1]
+
+[node name="hangout_picnic_basket" type="Node2D"]
+position = Vector2( -3.77551, -1.88774 )
+
+[node name="goblin_picnic_basket-min" type="Sprite" parent="."]
+position = Vector2( 5.98932, -48.9802 )
+texture = ExtResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="goblin_picnic_basket-min"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="goblin_picnic_basket-min/StaticBody2D"]
+polygon = PoolVector2Array( -67.0151, 51.9131, 0, 80.2293, 58.5202, 46.2498, -3.77551, 26.4285 )

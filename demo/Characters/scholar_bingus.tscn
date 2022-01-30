@@ -1,0 +1,45 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://sprites/L3_forest/inhabitants/scholar_bingus/scholar_bingus_d1-min.png" type="Texture" id=1]
+[ext_resource path="res://sprites/L3_forest/inhabitants/scholar_bingus/scholar_bingus_d3-min.png" type="Texture" id=2]
+[ext_resource path="res://sprites/L3_forest/inhabitants/scholar_bingus/scholar_bingus_l1-min.png" type="Texture" id=3]
+[ext_resource path="res://sprites/L3_forest/inhabitants/scholar_bingus/scholar_bingus_l2-min.png" type="Texture" id=4]
+[ext_resource path="res://sprites/L3_forest/inhabitants/scholar_bingus/scholar_bingus_r1-min.png" type="Texture" id=5]
+[ext_resource path="res://sprites/L3_forest/inhabitants/scholar_bingus/scholar_bingus_r2-min.png" type="Texture" id=6]
+[ext_resource path="res://sprites/L3_forest/inhabitants/scholar_bingus/scholar_bingus_u2-min.png" type="Texture" id=7]
+[ext_resource path="res://sprites/L3_forest/inhabitants/scholar_bingus/scholar_bingus_u0-min.png" type="Texture" id=8]
+[ext_resource path="res://Characters/scholar_bingus.gd" type="Script" id=9]
+[ext_resource path="res://Brains/TalkToPerson.tscn" type="PackedScene" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "left",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "right",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "up",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "down",
+"speed": 12.0
+} ]
+
+[node name="scholar_bingus" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "down"
+playing = true
+
+[node name="Person" parent="." instance=ExtResource( 10 )]

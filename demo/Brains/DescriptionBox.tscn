@@ -7,6 +7,7 @@
 script = ExtResource( 2 )
 
 [node name="SeenBox" parent="." instance=ExtResource( 1 )]
+
 [connection signal="seen" from="SeenBox" to="." method="_on_SeenBox_seen"]
 
 [editable path="SeenBox"]

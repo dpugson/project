@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sprites/L3_forest/inhabitants/goblin_hangout/goblin_picnic_pair0-min.png" type="Texture" id=1]
+[ext_resource path="res://sprites/L3_forest/inhabitants/goblin_hangout/goblin_picnic_pair1-min.png" type="Texture" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
+
+[node name="hangout_picnic_pair" type="Node2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0.943848, 24.5407 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="AnimatedSprite"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AnimatedSprite/StaticBody2D"]
+polygon = PoolVector2Array( -95.0052, -24.4395, -137.48, 19.9227, -135.592, 47.295, -106.332, 58.6215, -27.0463, 38.8001, -15.7198, 7.65228, 41.8566, 45.4072, 98.489, 11.4278, 162.672, 15.2033, 163.616, -15.9446, 86.2187, -31.9904, 48.4637, -31.0466, -7.22491, -10.2813 )

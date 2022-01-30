@@ -6,6 +6,7 @@ onready var teaShopSpawnPoint = $TeaShopSpawnPoint
 onready var bottomSP = $BottomSP
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 
+
 func _ready():
 	var player_position = player.position
 	var orientation = Vector2.DOWN
