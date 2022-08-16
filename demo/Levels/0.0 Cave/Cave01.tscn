@@ -144,20 +144,13 @@ anims/WalkToBall = SubResource( 5 )
 [node name="player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 908.523, 692.956 )
 
-[node name="ShadowAnimation" parent="player" index="1"]
-animation = "leftright"
-
-[node name="DogAnimation" parent="player" index="3"]
-animation = "right"
-frame = 0
+[node name="Ripples" parent="player" index="0"]
+frame = 1
 
 [node name="AnimationTree" parent="player" index="6"]
 parameters/bark/blend_position = Vector2( 1, 0 )
 parameters/idle/blend_position = Vector2( 1, 0 )
 parameters/walk/blend_position = Vector2( 1, 0 )
-
-[node name="DoggoPivot" parent="player" index="8"]
-rotation = -1.5708
 
 [node name="Tween" type="Tween" parent="player"]
 
@@ -166,15 +159,14 @@ one_shot = true
 
 [node name="DoorSpawnPoint" parent="." instance=ExtResource( 9 )]
 position = Vector2( 921.417, 370.992 )
+
 [connection signal="seen" from="Scratches" to="." method="_on_Scratches_seen"]
 [connection signal="seen" from="LeafPile" to="." method="_on_LeafPile_seen"]
 [connection signal="transition_triggered" from="Door" to="." method="_on_Door_transition_triggered"]
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
 
 [editable path="Scratches"]
-
 [editable path="LeafPile"]
-
 [editable path="Door"]
-
 [editable path="player"]
+[editable path="player/HitBoxPivot/BarkHitBox"]

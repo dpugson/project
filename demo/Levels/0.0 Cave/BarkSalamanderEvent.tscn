@@ -19,6 +19,7 @@ shape = SubResource( 1 )
 
 [node name="popping_zone_center" type="Position2D" parent="."]
 position = Vector2( 575.88, 780.711 )
+
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 
 [editable path="HurtBox"]

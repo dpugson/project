@@ -815,7 +815,7 @@ texture = ExtResource( 14 )
 pause_mode = 2
 position = Vector2( 12.2263, -32.6036 )
 frames = SubResource( 3 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="fireextinguishstuff" type="Node2D" parent="."]
@@ -825,6 +825,7 @@ visible = false
 visible = false
 position = Vector2( 595.385, -674.439 )
 frames = SubResource( 4 )
+frame = 1
 playing = true
 
 [node name="fire_extinguisher_r" type="Sprite" parent="fireextinguishstuff"]

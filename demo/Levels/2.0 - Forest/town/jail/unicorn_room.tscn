@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://sprites/L3_forest/town/unicorn_room/unicorn_room_eye_whites-min.png" type="Texture" id=1]
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=2]
@@ -15,13 +15,13 @@
 [ext_resource path="res://Characters/scholar_bingus.tscn" type="PackedScene" id=13]
 [ext_resource path="res://hitnhurtboxes/hurtbox.tscn" type="PackedScene" id=15]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 92.3055, 34.1028 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 75.6036, 34.3637 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "Creepy"
 length = 6.0
 loop = true
@@ -84,6 +84,93 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.0431373 ), Color( 1, 1, 1, 0.0431373 ), Color( 1, 1, 1, 0.658824 ), Color( 1, 1, 1, 0.658824 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/scholar_bingus:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 911.831, 582.956 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("YSort/scholar_bingus:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("bgstuff/walls/unicorn_room_dark-min:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/scholar_bingus:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/scholar_bingus:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2203.01, 356.682 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("bgstuff/walls/unicorn_room_dark-min:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("bgstuff/walls/unicorn_room_eye_whites-min/unicorn_room_iris-min:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 51.2029, -241.689 ) ]
+}
 
 [node name="unicorn_room" type="Node2D"]
 script = ExtResource( 6 )
@@ -121,7 +208,6 @@ modulate = Color( 1, 1, 1, 0.0431373 )
 texture = ExtResource( 10 )
 
 [node name="unicorn_room_dark-min" type="Sprite" parent="bgstuff/walls"]
-visible = false
 modulate = Color( 0.682353, 0.701961, 0.764706, 1 )
 position = Vector2( -1, 1 )
 texture = ExtResource( 11 )
@@ -134,10 +220,11 @@ MAX_SPEED = 300
 camera = NodePath("../../PuppyCamera")
 
 [node name="scholar_bingus" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 911.831, 582.956 )
+visible = false
+position = Vector2( 2203.01, 356.682 )
 
 [node name="AnimatedSprite" parent="YSort/scholar_bingus" index="0"]
-animation = "left"
+frame = 1
 
 [node name="PuppyCamera" parent="." instance=ExtResource( 9 )]
 position = Vector2( 436.776, -516.806 )
@@ -152,23 +239,22 @@ position = Vector2( 1808.43, 1176.58 )
 position = Vector2( 4.24261, 0 )
 
 [node name="bottomSP" parent="." instance=ExtResource( 3 )]
-position = Vector2( 921.407, 965.08 )
+position = Vector2( 813.407, 987.08 )
 
 [node name="bottomTZ" parent="." instance=ExtResource( 2 )]
 position = Vector2( 859.117, 1466.04 )
 
 [node name="CollisionShape2D" parent="bottomTZ" index="0"]
 position = Vector2( -31.9238, -361.515 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Collisions" type="Node2D" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Collisions"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/StaticBody2D"]
-visible = false
 position = Vector2( -364.371, -195.162 )
-polygon = PoolVector2Array( 1200.05, 1251.73, 1194.03, 1436.28, -485.271, 1522.63, 947.097, -513.919, 2948.95, 1640.36, 1369.39, 1434.86, 1368.04, 1246.07, 1800.79, 1251.73, 1806.45, 775.138, 1753.78, 760.425, 1726.91, 672.744, 1644.88, 613.347, 1478.01, 631.731, 1408.71, 686.886, 1379.05, 779.335, 1333.85, 779.779, 1268.7, 662.844, 1114.55, 638.802, 1016.97, 669.915, 973.133, 780.224, 942.367, 783.623, 832.058, 505.023, 750.034, 758.167, 738.72, 1253.14 )
+polygon = PoolVector2Array( 1122.35, 1389.64, 1124.35, 739.635, 1428.35, 741.635, 1430.35, 1201.64, 1284.35, 1203.64, 1284.35, 1485.64, 2062.35, 1133.64, 1222.35, 221.635, 684.348, 941.635 )
 
 [node name="HurtBox" parent="Collisions" instance=ExtResource( 15 )]
 position = Vector2( 803.273, 565.685 )
@@ -176,12 +262,14 @@ collision_layer = 16
 
 [node name="CollisionShape2D" parent="Collisions/HurtBox" index="0"]
 position = Vector2( 759.433, -93.3381 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Creepy"
-anims/Creepy = SubResource( 4 )
+autoplay = "default"
+anims/Creepy = SubResource( 3 )
+anims/default = SubResource( 4 )
 
+[connection signal="transition_triggered" from="bottomTZ" to="." method="_on_bottomTZ_transition_triggered"]
 [connection signal="area_entered" from="Collisions/HurtBox" to="." method="_on_HurtBox_area_entered"]
 
 [editable path="YSort/scholar_bingus"]

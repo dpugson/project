@@ -107,7 +107,6 @@ shape = SubResource( 2 )
 
 [node name="player" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 1421.72, 697.126 )
-MAX_SPEED = 300
 camera = NodePath("../../PuppyCamera")
 
 [node name="goblinmonument_statue" parent="YSort" instance=ExtResource( 1 )]

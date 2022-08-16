@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://sprites/L3_forest/town/jail/jail_wall-min.png" type="Texture" id=1]
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=2]
@@ -13,8 +13,6 @@
 [ext_resource path="res://Levels/2.0 - Forest/town/jail/jail_aquarium.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Levels/2.0 - Forest/town/jail/jail_stool.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Levels/2.0 - Forest/town/jail/jail_lamp_front.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Characters/goblins/goblin_sous_chef.tscn" type="PackedScene" id=14]
-[ext_resource path="res://hitnhurtboxes/hurtbox.tscn" type="PackedScene" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 82.2148, 31.7123 )
@@ -23,7 +21,40 @@ extents = Vector2( 82.2148, 31.7123 )
 extents = Vector2( 92.3055, 34.1028 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 75.6036, 34.3637 )
+extents = Vector2( 64.077, 10 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 134.356, 10 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 78.5, 10 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "deserted"
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/wall/Offlamps:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/wall/onlamps:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [node name="mayors_house_lower_room" type="Node2D"]
 script = ExtResource( 6 )
@@ -49,7 +80,6 @@ texture = ExtResource( 7 )
 
 [node name="player" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 910.359, 984.914 )
-MAX_SPEED = 300
 camera = NodePath("../../PuppyCamera")
 
 [node name="jail_ledger" parent="YSort" instance=ExtResource( 10 )]
@@ -68,29 +98,42 @@ modulate = Color( 0.564706, 0.631373, 0.917647, 1 )
 position = Vector2( 194.519, -167.489 )
 texture = ExtResource( 1 )
 
-[node name="jail_lamp_front" parent="YSort/wall" instance=ExtResource( 13 )]
+[node name="Offlamps" type="Node2D" parent="YSort/wall"]
+modulate = Color( 0.635294, 0.635294, 0.807843, 1 )
+
+[node name="jail_lamp_front_off" parent="YSort/wall/Offlamps" instance=ExtResource( 13 )]
 position = Vector2( 267.492, -239.331 )
 
-[node name="jail_lamp_front2" parent="YSort/wall" instance=ExtResource( 13 )]
+[node name="Glower" parent="YSort/wall/Offlamps/jail_lamp_front_off" index="1"]
+visible = false
+
+[node name="jail_lamp_front2_off" parent="YSort/wall/Offlamps" instance=ExtResource( 13 )]
+position = Vector2( -111.517, -246.402 )
+
+[node name="Glower" parent="YSort/wall/Offlamps/jail_lamp_front2_off" index="1"]
+visible = false
+
+[node name="onlamps" type="Node2D" parent="YSort/wall"]
+visible = false
+
+[node name="jail_lamp_front" parent="YSort/wall/onlamps" instance=ExtResource( 13 )]
+position = Vector2( 267.492, -239.331 )
+
+[node name="jail_lamp_front2" parent="YSort/wall/onlamps" instance=ExtResource( 13 )]
 position = Vector2( -111.517, -246.402 )
 
 [node name="jail_aquarium" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 506.495, 982.551 )
+position = Vector2( -533.505, 798.551 )
 scale = Vector2( -1, 1 )
 
-[node name="goblin_sous_chef" parent="YSort" instance=ExtResource( 14 )]
-position = Vector2( 678.34, 761.697 )
+[node name="Doors" type="YSort" parent="YSort"]
+modulate = Color( 0.54902, 0.65098, 0.988235, 1 )
 
-[node name="jail_door" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.615686, 0.678431, 0.984314, 1 )
-position = Vector2( 799.962, 570.778 )
+[node name="jail_door" parent="YSort/Doors" instance=ExtResource( 8 )]
+position = Vector2( 795.439, 572.617 )
 
-[node name="AnimatedSprite" parent="YSort/jail_door" index="0"]
-animation = "open"
-
-[node name="jail_door2" parent="YSort" instance=ExtResource( 8 )]
-modulate = Color( 0.615686, 0.678431, 0.984314, 1 )
-position = Vector2( 1197.36, 563.707 )
+[node name="jail_door2" parent="YSort/Doors" instance=ExtResource( 8 )]
+position = Vector2( 1197.08, 566.253 )
 
 [node name="PuppyCamera" parent="." instance=ExtResource( 9 )]
 position = Vector2( 436.776, -516.806 )
@@ -105,16 +148,16 @@ position = Vector2( 1808.43, 1176.58 )
 position = Vector2( 4.24261, 0 )
 
 [node name="topSP" parent="." instance=ExtResource( 3 )]
-position = Vector2( 573.833, 468.571 )
+position = Vector2( 487.833, 626.571 )
 
 [node name="bottomSP" parent="." instance=ExtResource( 3 )]
 position = Vector2( 921.407, 965.08 )
 
 [node name="topTZ" parent="." instance=ExtResource( 2 )]
-position = Vector2( 869.606, 422.797 )
+position = Vector2( 769.606, 634.797 )
 
 [node name="CollisionShape2D" parent="topTZ" index="0"]
-position = Vector2( -283.25, -117.614 )
+position = Vector2( -282.25, -77.614 )
 shape = SubResource( 1 )
 
 [node name="bottomTZ" parent="." instance=ExtResource( 2 )]
@@ -125,6 +168,7 @@ position = Vector2( 60, -334.645 )
 shape = SubResource( 2 )
 
 [node name="Collisions" type="Node2D" parent="."]
+visible = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Collisions"]
 
@@ -132,18 +176,29 @@ shape = SubResource( 2 )
 position = Vector2( -364.371, -195.162 )
 polygon = PoolVector2Array( 1200.05, 1251.73, 1194.03, 1436.28, -485.271, 1522.63, 947.097, -513.919, 2948.95, 1640.36, 1369.39, 1434.86, 1368.04, 1246.07, 1800.79, 1251.73, 1806.45, 775.138, 1753.78, 760.425, 1726.91, 672.744, 1644.88, 613.347, 1478.01, 631.731, 1408.71, 686.886, 1379.05, 779.335, 1333.85, 779.779, 1268.7, 662.844, 1114.55, 638.802, 1016.97, 669.915, 973.133, 780.224, 942.367, 783.623, 832.058, 505.023, 750.034, 758.167, 738.72, 1253.14 )
 
-[node name="HurtBox" parent="Collisions" instance=ExtResource( 15 )]
-position = Vector2( 803.273, 565.685 )
-collision_layer = 16
-
-[node name="CollisionShape2D" parent="Collisions/HurtBox" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2( 667.923, 577.413 )
 shape = SubResource( 3 )
 
-[connection signal="transition_triggered" from="topTZ" to="." method="_on_topTZ_transition_triggered"]
-[connection signal="area_entered" from="Collisions/HurtBox" to="." method="_on_HurtBox_area_entered"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2( 997.144, 575.598 )
+shape = SubResource( 4 )
 
-[editable path="YSort/jail_door"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2( 1340, 570.5 )
+shape = SubResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "deserted"
+anims/deserted = SubResource( 6 )
+
+[connection signal="transition_triggered" from="topTZ" to="." method="_on_topTZ_transition_triggered"]
+[connection signal="transition_triggered" from="bottomTZ" to="." method="_on_bottomTZ_transition_triggered"]
+
+[editable path="YSort/wall/Offlamps/jail_lamp_front_off"]
+[editable path="YSort/wall/Offlamps/jail_lamp_front2_off"]
+[editable path="YSort/wall/onlamps/jail_lamp_front"]
+[editable path="YSort/wall/onlamps/jail_lamp_front2"]
 [editable path="PuppyCamera"]
 [editable path="topTZ"]
 [editable path="bottomTZ"]
-[editable path="Collisions/HurtBox"]

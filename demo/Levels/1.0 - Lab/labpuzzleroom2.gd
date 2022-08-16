@@ -95,7 +95,7 @@ func _on_StarButton_activated(_star):
 	if check_all_star_buttons():
 		freeze_buttons()
 		num_times_activated += 1
-		if (num_times_activated == 2) and (not stats.check_bool("LABPUZZLEROOM2DONE")) and (not stats.check_bool("alllabpuzzlesdone")):
+		if (num_times_activated == 1) and (not stats.check_bool("LABPUZZLEROOM2DONE")) and (not stats.check_bool("alllabpuzzlesdone")):
 			give_robot_focus()
 			cutscene_animation.play("star_win2")
 		else:

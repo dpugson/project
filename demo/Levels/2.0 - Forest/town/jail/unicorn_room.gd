@@ -9,7 +9,7 @@ onready var camera = $PuppyCamera
 func _ready():
 	var player_position = bottomSP.global_position
 	var orientation = Vector2.UP
-	Jukebox.play_song("res://tunes/deserted_town_instrumental.wav")
+	#Jukebox.play_song("res://tunes/deserted_town_instrumental.wav")
 	match stats.spawn_metadata:
 		"bottom":
 			player_position = bottomSP.global_position
@@ -23,3 +23,6 @@ func _on_topTZ_transition_triggered():
 
 func _on_HurtBox_area_entered(_area):
 	pass
+
+func _on_bottomTZ_transition_triggered():
+	Transition.go_to("res://Levels/2.0 - Forest/town/jail/jail.tscn", "top")

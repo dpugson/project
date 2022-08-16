@@ -42,11 +42,6 @@ extents = Vector2( 49.1028, 44.7618 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 31 ) ],
-"loop": true,
-"name": "closed",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 8 ), ExtResource( 30 ), ExtResource( 31 ) ],
 "loop": false,
 "name": "close",
@@ -56,6 +51,11 @@ animations = [ {
 "loop": false,
 "name": "open",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 31 ) ],
+"loop": true,
+"name": "closed",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=4]

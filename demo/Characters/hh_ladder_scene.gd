@@ -14,7 +14,7 @@ var state = "begin"
 func _ready():
 	pass # Replace with function body.
 
-func _on_SeenBox_seen(obj):
+func _on_SeenBox_seen(_obj):
 	var dialogue 
 	match state:
 		"begin":

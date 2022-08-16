@@ -1,0 +1,535 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://sprites/L3265_LagunaDr/lagunadrive_house-min.png" type="Texture" id=1]
+[ext_resource path="res://sprites/L0_train/snowland/snow_tile.png" type="Texture" id=2]
+[ext_resource path="res://sprites/L3_forest/garden/grasstile.png" type="Texture" id=3]
+[ext_resource path="res://Levels/2.0 - Forest/laguna/laguna_snowthing.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sprites/L3265_LagunaDr/lagunadrive_driveway-min.png" type="Texture" id=5]
+[ext_resource path="res://world/creepy_tree.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/2.0 - Forest/laguna/LagunaFence.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/2.0 - Forest/laguna/LagunaFencePost.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Levels/2.0 - Forest/laguna/laguna_drive.gd" type="Script" id=9]
+[ext_resource path="res://Levels/2.0 - Forest/SinglePine.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/2.0 - Forest/Candelabra_front.tscn" type="PackedScene" id=11]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Levels/2.0 - Forest/laguna/LagunaMailbox.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Levels/2.0 - Forest/laguna/LagunaVomitMan.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=15]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=16]
+[ext_resource path="res://sprites/L3_forest/vignette_fade.png" type="Texture" id=17]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=18]
+
+[sub_resource type="Curve" id=2]
+min_value = -80.0
+max_value = 80.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.158824, 33.0757 ), -82.4045, -82.4045, 0, 0, Vector2( 0.205882, -38.2757 ), 2058.38, 2058.38, 0, 0, Vector2( 0.335294, -33.9513 ), 0.0, 0.0, 0, 0, Vector2( 0.485294, 33.0757 ), -1639.92, -1639.92, 0, 0, Vector2( 0.752941, -35.3928 ), 0.0, 0.0, 0, 0, Vector2( 0.797059, 40.2829 ), 0.0, 0.0, 0, 0, Vector2( 0.873529, -48.3658 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[node name="laguna_drive" type="Node2D"]
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_vertical_guides_": [ -913.058 ]
+}
+
+[node name="topSP" parent="." instance=ExtResource( 18 )]
+position = Vector2( -318.84, -950.731 )
+
+[node name="bottomSP" parent="." instance=ExtResource( 18 )]
+position = Vector2( 111.396, 1350.98 )
+
+[node name="BG" parent="." instance=ExtResource( 16 )]
+margin_left = -2434.36
+margin_top = -2991.55
+margin_right = 3140.64
+margin_bottom = 2616.45
+
+[node name="bgstuff" type="Node2D" parent="."]
+
+[node name="Darkness2" type="YSort" parent="bgstuff"]
+visible = false
+modulate = Color( 0.458824, 0.454902, 0.529412, 1 )
+
+[node name="TextureRect" type="TextureRect" parent="bgstuff/Darkness2"]
+modulate = Color( 1, 0.976471, 0.866667, 1 )
+margin_left = -2851.89
+margin_top = -3756.25
+margin_right = 4630.11
+margin_bottom = 3190.75
+texture = ExtResource( 2 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="bgstuff"]
+modulate = Color( 1, 0.976471, 0.866667, 1 )
+margin_left = -2014.35
+margin_top = -2579.0
+margin_right = 2941.65
+margin_bottom = 3238.0
+texture = ExtResource( 3 )
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="lagunadrive_driveway-min" type="Sprite" parent="bgstuff"]
+modulate = Color( 0.92549, 0.803922, 0.717647, 1 )
+position = Vector2( 615.769, -75.4575 )
+scale = Vector2( 0.938531, 0.767857 )
+texture = ExtResource( 5 )
+
+[node name="vignette_fade4" type="Sprite" parent="bgstuff"]
+position = Vector2( 338.164, -1468.71 )
+rotation = 1.5708
+scale = Vector2( 0.845835, 2.03262 )
+texture = ExtResource( 17 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="laguna_snowthing" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( -744.373, -33.436 )
+
+[node name="laguna_snowthing3" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( -875.186, 877.835 )
+
+[node name="laguna_snowthing2" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 1387.34, 49.0095 )
+scale = Vector2( -1, 1 )
+
+[node name="laguna_snowthing4" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 1289.82, 1119.3 )
+scale = Vector2( -1, 1 )
+
+[node name="player" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( 215.862, -525.379 )
+camera = NodePath("../../PuppyCamera")
+
+[node name="creepytrees" type="YSort" parent="YSort"]
+
+[node name="creepy_tree" parent="YSort/creepytrees" instance=ExtResource( 6 )]
+position = Vector2( -672.755, 418.147 )
+
+[node name="creepy_tree2" parent="YSort/creepytrees" instance=ExtResource( 6 )]
+position = Vector2( -763.135, 689.286 )
+
+[node name="creepy_tree3" parent="YSort/creepytrees" instance=ExtResource( 6 )]
+position = Vector2( -544.321, 822.477 )
+
+[node name="creepy_tree4" parent="YSort/creepytrees" instance=ExtResource( 6 )]
+position = Vector2( 1394.09, 287.334 )
+
+[node name="creepy_tree5" parent="YSort/creepytrees" instance=ExtResource( 6 )]
+position = Vector2( 1477.33, -9.96753 )
+
+[node name="creepy_tree6" parent="YSort/creepytrees" instance=ExtResource( 6 )]
+position = Vector2( 1472.57, 774.909 )
+
+[node name="creepy_tree7" parent="YSort/creepytrees" instance=ExtResource( 6 )]
+position = Vector2( 1215.71, 1336.21 )
+
+[node name="creepy_tree8" parent="YSort/creepytrees" instance=ExtResource( 6 )]
+position = Vector2( -996.219, 351.552 )
+
+[node name="creepy_tree13" parent="YSort/creepytrees" instance=ExtResource( 6 )]
+position = Vector2( -929.624, -26.6163 )
+
+[node name="creepy_tree14" parent="YSort/creepytrees" instance=ExtResource( 6 )]
+position = Vector2( -608.538, 42.3577 )
+
+[node name="creepy_tree9" parent="YSort/creepytrees" instance=ExtResource( 6 )]
+position = Vector2( 518.831, 855.775 )
+
+[node name="creepy_tree10" parent="YSort/creepytrees" instance=ExtResource( 6 )]
+position = Vector2( 1168.14, 801.072 )
+
+[node name="creepy_tree11" parent="YSort/creepytrees" instance=ExtResource( 6 )]
+position = Vector2( -208.086, 92.4527 )
+
+[node name="creepy_tree12" parent="YSort/creepytrees" instance=ExtResource( 6 )]
+position = Vector2( -834.486, 546.582 )
+
+[node name="Darkness" type="YSort" parent="YSort"]
+modulate = Color( 0.698039, 0.682353, 0.705882, 1 )
+position = Vector2( -7.13525, 16.6489 )
+
+[node name="LagunaHouse" type="Node2D" parent="YSort/Darkness"]
+modulate = Color( 0.847059, 0.815686, 0.772549, 1 )
+position = Vector2( 259.247, -1082.18 )
+
+[node name="lagunadrive_house-min" type="Sprite" parent="YSort/Darkness/LagunaHouse"]
+position = Vector2( -15.3291, 168.635 )
+texture = ExtResource( 1 )
+
+[node name="Collisions" type="Node2D" parent="YSort/Darkness/LagunaHouse"]
+position = Vector2( -280.653, 1103.58 )
+
+[node name="top" type="StaticBody2D" parent="YSort/Darkness/LagunaHouse/Collisions"]
+position = Vector2( 1.41422, 50.9117 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Darkness/LagunaHouse/Collisions/top"]
+position = Vector2( 467.281, -243.06 )
+polygon = PoolVector2Array( -462.176, -221.849, -650.537, -242.031, -657.265, -706.206, -186.363, -699.478, 1048.07, -255.485, -471.618, -268.578 )
+
+[node name="bottom" type="StaticBody2D" parent="YSort/Darkness/LagunaHouse/Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Darkness/LagunaHouse/Collisions/bottom"]
+position = Vector2( 120.282, -6.31372 )
+polygon = PoolVector2Array( -261.388, -1358.18, -944.569, -1181.31, -931.114, -760.86, -836.934, -757.496, -830.207, -1006.4, -692.3, -1009.77, -702.391, -696.952, -524.121, -690.225, -533.81, -1048.76, -363.66, -1048.98, -206.685, -927.683, -204.306, -849.196, 31.1567, -1113.2 )
+
+[node name="Candelabra_front" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 741.213, -651.598 )
+
+[node name="Candelabra_front2" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 1254.95, -665.868 )
+
+[node name="Candelabra_front3" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( -478.913, -1053.55 )
+
+[node name="NoSnowPines" type="YSort" parent="YSort"]
+
+[node name="SinglePine" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -917.637, -248.966 )
+
+[node name="SinglePine2" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -903.367, -1079.03 )
+
+[node name="SinglePine3" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -981.854, -945.842 )
+
+[node name="SinglePine4" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -881.961, -872.111 )
+
+[node name="SinglePine5" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -993.746, -774.596 )
+
+[node name="SinglePine6" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -862.933, -681.838 )
+
+[node name="SinglePine7" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -1015.15, -558.16 )
+
+[node name="SinglePine8" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -848.663, -424.969 )
+
+[node name="SinglePine9" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -1029.42, -322.697 )
+
+[node name="SinglePine10" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1439.37, -520.105 )
+
+[node name="SinglePine11" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1570.18, -391.671 )
+
+[node name="SinglePine12" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1453.64, -237.074 )
+
+[node name="SinglePine13" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1622.51, -84.8557 )
+
+[node name="SinglePine14" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1456.02, 26.9297 )
+
+[node name="SinglePine15" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1591.59, 124.445 )
+
+[node name="SinglePine16" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1477.43, 260.014 )
+
+[node name="SinglePine17" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1603.48, 359.908 )
+
+[node name="SinglePine18" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1429.86, 526.397 )
+
+[node name="SinglePine19" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1641.54, 621.533 )
+
+[node name="SinglePine20" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1377.53, 676.237 )
+
+[node name="SinglePine21" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1534.51, 795.158 )
+
+[node name="SinglePine22" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1368.02, 861.753 )
+
+[node name="SinglePine23" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1570.18, 985.43 )
+
+[node name="SinglePine24" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1736.67, 883.159 )
+
+[node name="SinglePine25" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1501.21, 1189.97 )
+
+[node name="SinglePine26" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1325.21, 1318.41 )
+
+[node name="SinglePine27" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1151.58, 1318.41 )
+
+[node name="SinglePine28" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1470.29, 1325.54 )
+
+[node name="SinglePine29" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1670.08, 1292.25 )
+
+[node name="SinglePine30" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1244.34, 1458.73 )
+
+[node name="SinglePine31" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1012.58, 2421.16 )
+
+[node name="SinglePine32" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 896.038, 2549.59 )
+
+[node name="SinglePine33" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1048.26, 2566.24 )
+
+[node name="SinglePine34" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 838.956, 2399.75 )
+
+[node name="SinglePine35" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 712.9, 2561.48 )
+
+[node name="SinglePine36" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 632.034, 2428.29 )
+
+[node name="SinglePine37" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 539.276, 2566.24 )
+
+[node name="SinglePine38" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 467.924, 2447.32 )
+
+[node name="SinglePine39" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 339.489, 2532.94 )
+
+[node name="SinglePine40" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 306.191, 2371.21 )
+
+[node name="SinglePine41" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 211.055, 2525.81 )
+
+[node name="SinglePine42" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 111.161, 2411.64 )
+
+[node name="SinglePine43" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -14.8944, 2525.81 )
+
+[node name="SinglePine44" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -114.788, 2447.32 )
+
+[node name="SinglePine45" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -226.573, 2340.29 )
+
+[node name="SinglePine46" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -372.98, 1394.52 )
+
+[node name="SinglePine47" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -456.224, 1292.25 )
+
+[node name="SinglePine48" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -610.821, 1239.92 )
+
+[node name="SinglePine49" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -727.364, 1235.16 )
+
+[node name="SinglePine50" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -622.713, 1411.17 )
+
+[node name="SinglePine75" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -787.529, 1508.71 )
+
+[node name="SinglePine76" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -626.077, 1690.34 )
+
+[node name="SinglePine77" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -457.898, 1683.62 )
+
+[node name="SinglePine78" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -303.173, 1653.34 )
+
+[node name="SinglePine79" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -410.807, 1801.34 )
+
+[node name="SinglePine80" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1109.53, 1703.8 )
+
+[node name="SinglePine81" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1284.44, 1673.53 )
+
+[node name="SinglePine82" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1459.35, 1491.89 )
+
+[node name="SinglePine83" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1624.16, 1491.89 )
+
+[node name="SinglePine84" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1472.8, 1764.34 )
+
+[node name="SinglePine85" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1190.26, 1841.71 )
+
+[node name="SinglePine86" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -945.618, 1401.08 )
+
+[node name="SinglePine87" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -918.709, 1606.25 )
+
+[node name="SinglePine88" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -767.347, 1683.62 )
+
+[node name="SinglePine89" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -1080.16, 1438.07 )
+
+[node name="SinglePine51" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -877.203, 1251.81 )
+
+[node name="SinglePine52" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -965.205, 1180.46 )
+
+[node name="SinglePine53" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -1067.48, 1104.35 )
+
+[node name="SinglePine54" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -1067.48, 1104.35 )
+
+[node name="SinglePine55" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -1069.86, 1292.25 )
+
+[node name="SinglePine56" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -1195.91, 1071.05 )
+
+[node name="SinglePine57" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -1212.56, 892.672 )
+
+[node name="SinglePine58" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -1096.02, 785.644 )
+
+[node name="SinglePine59" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -1184.02, 559.694 )
+
+[node name="SinglePine60" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -689.309, 747.589 )
+
+[node name="SinglePine61" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -763.04, 483.585 )
+
+[node name="SinglePine62" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -939.042, 490.72 )
+
+[node name="SinglePine63" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -1069.86, 376.556 )
+
+[node name="SinglePine64" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -1072.23, 267.149 )
+
+[node name="SinglePine65" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -1160.24, 181.526 )
+
+[node name="SinglePine66" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -1065.1, 10.2805 )
+
+[node name="SinglePine67" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -1148.34, -122.911 )
+
+[node name="SinglePine68" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -1015.15, -87.2345 )
+
+[node name="SinglePine69" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( -772.554, 326.61 )
+
+[node name="SinglePine70" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1384.67, -643.783 )
+
+[node name="SinglePine71" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1529.75, -643.783 )
+
+[node name="SinglePine72" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1420.34, -798.38 )
+
+[node name="SinglePine73" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1513.1, -872.111 )
+
+[node name="SinglePine74" parent="YSort/NoSnowPines" instance=ExtResource( 10 )]
+position = Vector2( 1401.32, -933.95 )
+
+[node name="LagunaVomitMan" parent="YSort" instance=ExtResource( 14 )]
+position = Vector2( -124.083, 500.773 )
+
+[node name="LagunaMailbox" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 786.05, 430.592 )
+
+[node name="Fence" type="YSort" parent="YSort"]
+
+[node name="LagunaFencePost" parent="YSort/Fence" instance=ExtResource( 8 )]
+position = Vector2( 279.81, 1304.62 )
+
+[node name="LagunaFence" parent="YSort/Fence" instance=ExtResource( 7 )]
+position = Vector2( -183.524, 1304.62 )
+
+[node name="LagunaFence3" parent="YSort/Fence" instance=ExtResource( 7 )]
+position = Vector2( 524.511, 1309.66 )
+
+[node name="LagunaFence2" parent="YSort/Fence" instance=ExtResource( 7 )]
+position = Vector2( 898.71, 1316.39 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 15 )]
+position = Vector2( 436.776, -516.806 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -1126.46, -1741.19 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 2017.31, 1139.48 )
+
+[node name="FG" type="Node2D" parent="."]
+position = Vector2( 4.24261, 0 )
+
+[node name="cpusnow" type="CPUParticles2D" parent="FG"]
+position = Vector2( 266.026, -2355.11 )
+scale = Vector2( 0.999999, 0.999999 )
+amount = 5000
+lifetime = 40.0
+preprocess = 12.0
+randomness = 0.5
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_rect_extents = Vector2( 2000, 1 )
+gravity = Vector2( 0, 10 )
+tangential_accel_curve = SubResource( 2 )
+scale_amount = 7.0
+scale_amount_random = 0.75
+
+[node name="cpusnow2" type="CPUParticles2D" parent="FG"]
+position = Vector2( 212.709, -2323.22 )
+scale = Vector2( 0.999999, 0.999999 )
+amount = 1000
+lifetime = 30.0
+preprocess = 7.0
+emission_shape = 2
+emission_rect_extents = Vector2( 2000, 1 )
+gravity = Vector2( 0, 20 )
+tangential_accel_curve = SubResource( 2 )
+scale_amount = 4.0
+scale_amount_random = 0.75
+
+[node name="vignette_fade" type="Sprite" parent="FG"]
+position = Vector2( 407.92, 1476.11 )
+rotation = -1.5708
+scale = Vector2( 0.54977, 2.03262 )
+texture = ExtResource( 17 )
+
+[node name="vignette_fade2" type="Sprite" parent="FG"]
+position = Vector2( -1112.42, -148.503 )
+scale = Vector2( 0.54977, 2.03262 )
+texture = ExtResource( 17 )
+
+[node name="vignette_fade3" type="Sprite" parent="FG"]
+position = Vector2( 1702.9, -47.5948 )
+rotation = 3.14159
+scale = Vector2( 0.54977, 2.03262 )
+texture = ExtResource( 17 )
+
+[editable path="PuppyCamera"]

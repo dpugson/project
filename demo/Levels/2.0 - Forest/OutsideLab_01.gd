@@ -18,12 +18,14 @@ onready var shrine_remote_transform = $YSort/shrine_hill/RemoteTransform2D
 func _ready():
 	var player_position = labSP.global_position
 	var orientation = Vector2.RIGHT
-	Jukebox.play_song("res://tunes/forest/forest_theme_lofi.wav")
+	#Jukebox.play_song("res://tunes/forest/forest_theme_lofi.wav")
+	Jukebox.play_song("res://tunes/puzzletime.wav")
 	#stats.spawn_metadata = "cutscene_leaving_lab"
 	robot.set_dialogue_list([
 		robot.say("It's beautiful outside, isn't it?"),
 		#robot.silent("...\nThe robot seems to be in silent contemplation.")
 	])
+	robot.animated_sprite.frame = 0
 	if not stats.check_bool("robot_following"):
 		# get rid of robot
 		robot.hidden_mode()
@@ -138,8 +140,9 @@ func get_timer(next):
 	return timer
 
 func _on_ShrineSeenBox_seen(_obj):
-	if stats.check_bool("robot_following"):
+	if stats.check_bool("robot_following") && not stats.check_bool("seen_rat_shrine"):
 		# Wait until our friend is near
+		stats.set_bool("seen_rat_shrine")
 		player.cutscene_mode = true
 		var timer = get_timer("robot_shrine_dialogue")
 		self.add_child(timer)
@@ -161,7 +164,7 @@ func wait_for_catchup(timer, next):
 func plain_shrine_dialogue():
 	var dialogue = {
 		"begin" : [
-			"TEXT", "An old wooden shrine dedicated to the Rats.", robot.SPEED, 
+			"TEXT", "An old wooden shrine.", robot.SPEED, 
 			"2", null, null, null
 		],
 		"2" : [
@@ -172,8 +175,8 @@ func plain_shrine_dialogue():
 	DialogueHelper.showDialogue(self, dialogue, false, [self, "free_player"])
 
 func robot_shrine_dialogue():
-	#old_direction = robot.animated_sprite.animation
-	#robot.animated_sprite.animation = "up"
+	old_direction = robot.animated_sprite.animation
+	robot.animated_sprite.animation = "up"
 	var dialogue = {
 		"begin" : [
 			"TEXT", "A charming little shrine, don't you think?", robot.SPEED, 
@@ -192,7 +195,7 @@ func robot_shrine_dialogue():
 			"5", null, null, robot.PITCH
 		],
 		"5" : [
-			"TEXT", "Or should I have said 'rat-er'? Ho ho ho!", robot.SPEED, 
+			"TEXT", "Or should I have said 'rat-er inspi-rat-tional'? Ho ho ho!", robot.SPEED, 
 			null, null, null, robot.PITCH
 		],
 	}

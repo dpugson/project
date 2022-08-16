@@ -13,13 +13,13 @@
 [ext_resource path="res://sprites/L0_train/sunflower_road/cypress_02-min.png" type="Texture" id=11]
 [ext_resource path="res://sprites/L0_train/sunflower_road/cypress_01-min.png" type="Texture" id=12]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 101.19, 752.766 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 28977, 136.173 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 71.0704, 1381.9 )
 
 [node name="SunflowerRoad" type="Node2D"]
@@ -209,7 +209,7 @@ position = Vector2( -9789, 1135.45 )
 
 [node name="CollisionShape2D" parent="LowerTZ" index="0"]
 position = Vector2( -3395.39, 6.69312 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="ParallaxForeground" type="ParallaxBackground" parent="."]
 layer = 1
@@ -232,7 +232,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopCollision"]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="BottomCollision" type="StaticBody2D" parent="."]
 position = Vector2( 658.586, 1352.57 )
@@ -243,7 +243,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomCollision"]
 position = Vector2( 0, -1.68188 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="RightStuff" type="Node2D" parent="."]
 position = Vector2( 576.997, 0 )
@@ -253,7 +253,7 @@ position = Vector2( 8342.88, 1187.07 )
 
 [node name="CollisionShape2D" parent="RightStuff/UpperTZ" index="0"]
 position = Vector2( -147.079, -240.416 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="TopSpawnPoint" parent="RightStuff" instance=ExtResource( 6 )]
 position = Vector2( 7914.22, 1201.23 )

@@ -291,6 +291,7 @@ polygon = PoolVector2Array( 480.865, -1508.29, 487.936, -779.971, -479.387, -785
 [connection signal="transition_triggered" from="bottomTZ" to="." method="_on_bottomTZ_transition_triggered"]
 [connection signal="transition_triggered" from="upperLeftTZ" to="." method="_on_upperLeftTZ_transition_triggered"]
 
+[editable path="outdoors"]
 [editable path="PuppyCamera"]
 [editable path="bottomTZ"]
 [editable path="upperLeftTZ"]

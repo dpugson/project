@@ -26,6 +26,7 @@ ItemRegistry="*res://Items/ItemRegistry.tscn"
 Transition="*res://Brains/Transition.tscn"
 Jukebox="*res://Brains/Jukebox.tscn"
 SceneRegistry="*res://Brains/SceneRegistry.tscn"
+BgJukebox="*res://Brains/BGJukebox.tscn"
 
 [display]
 

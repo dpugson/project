@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://sprites/L3_forest/town_floor-min.png" type="Texture" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
@@ -17,12 +17,25 @@
 [ext_resource path="res://Levels/2.0 - Forest/TownFountain.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Levels/2.0 - Forest/Lamp.tscn" type="PackedScene" id=16]
 [ext_resource path="res://StarBG.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Characters/SnegurochkaAndOtterbear.tscn" type="PackedScene" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 436.826, 113.392 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 409.117, 82.502 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 51.762, 79.1959 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 40.2966, 85.9851 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 60.2966, 99.9851 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 84.2966, 41.9851 )
 
 [node name="Town" type="Node2D"]
 position = Vector2( -2.79663, -1 )
@@ -211,7 +224,7 @@ position = Vector2( -839.023, -1010.4 )
 position = Vector2( -718.862, -1136.87 )
 
 [node name="TownFountain" parent="YSort" instance=ExtResource( 15 )]
-position = Vector2( 909.309, 1004.56 )
+position = Vector2( 933.309, 738.56 )
 
 [node name="Lamp" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 692.373, 1622.34 )
@@ -514,6 +527,9 @@ texture = ExtResource( 11 )
 position = Vector2( 26.6185, -534.978 )
 texture = ExtResource( 9 )
 
+[node name="SnegurochkaAndOtterbear" parent="YSort" instance=ExtResource( 18 )]
+position = Vector2( 917.797, 1138.4 )
+
 [node name="BG3" parent="." instance=ExtResource( 4 )]
 show_behind_parent = false
 margin_left = 2293.0
@@ -563,9 +579,6 @@ position = Vector2( -2516.32, -6774.45 )
 [node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
 position = Vector2( 2859.5, 4974.77 )
 
-[node name="TeaShopSpawnPoint" parent="." instance=ExtResource( 8 )]
-position = Vector2( 493.741, 1051.57 )
-
 [node name="BottomSP" parent="." instance=ExtResource( 8 )]
 position = Vector2( 920.564, 1782.29 )
 
@@ -578,15 +591,85 @@ position = Vector2( 952.201, -3228 )
 [node name="CollisionShape2D" parent="TopTZ" index="0"]
 shape = SubResource( 1 )
 
+[node name="Collisions" type="Node2D" parent="."]
+position = Vector2( 931.866, 465.103 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/StaticBody2D"]
+position = Vector2( 4.82837, 1 )
+polygon = PoolVector2Array( -963.742, 656.515, -603.117, 664.293, -600.571, 625.826, -695.041, 528.811, -543.438, 524.969, -433.13, 276.067, -579.075, 124.346, -373.733, 174.243, -311.507, 55.4496, -240.797, 46.9643, -197.698, -51.503, -117.698, 30.497, -85.6978, 29.497, -153.115, -303.761, -1052.56, -74.658 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/StaticBody2D2"]
+polygon = PoolVector2Array( 176.679, -334.873, 86.1306, 45.497, 129.131, 40.497, 231.269, -116.07, 257.856, 60.4237, 370.144, 114.847, 497.141, 47.9787, 466.31, 222.327, 517.222, 366.577, 741.8, 384.562, 565.305, 476.885, 655.815, 638.106, 1285.42, 638.106 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Collisions/StaticBody2D2"]
+polygon = PoolVector2Array( -804.523, 451.602, -1071.22, 868.647, -813.835, 1270.28, -412.523, 1283.6, -400.523, 1691.6, 347.477, 1731.6, 343.477, 1327.6, 823.825, 1312.71, 1095.35, 922.387, 943.477, 459.602, 2171.48, 1083.6, -20.5235, 2520.4, -1920.52, 872.402 )
+
 [node name="BottomTZ" parent="." instance=ExtResource( 10 )]
 position = Vector2( 916, 1960 )
 
 [node name="CollisionShape2D" parent="BottomTZ" index="0"]
 shape = SubResource( 2 )
 
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="TheaterDoor" parent="Doors" instance=ExtResource( 10 )]
+position = Vector2( 300, 1028 )
+
+[node name="CollisionShape2D" parent="Doors/TheaterDoor" index="0"]
+position = Vector2( -16, -6 )
+rotation = 0.473917
+shape = SubResource( 3 )
+
+[node name="BakeryDoor" parent="Doors" instance=ExtResource( 10 )]
+position = Vector2( 460, 646 )
+
+[node name="CollisionShape2D" parent="Doors/BakeryDoor" index="0"]
+position = Vector2( -12, 10 )
+rotation = 0.538154
+shape = SubResource( 4 )
+
+[node name="PrisonDoor" parent="Doors" instance=ExtResource( 10 )]
+
+[node name="CollisionShape2D" parent="Doors/PrisonDoor" index="0"]
+position = Vector2( 1544, 868 )
+rotation = -0.431694
+shape = SubResource( 5 )
+
+[node name="HomeDoor" parent="Doors" instance=ExtResource( 10 )]
+position = Vector2( 1152, 406 )
+
+[node name="CollisionShape2D" parent="Doors/HomeDoor" index="0"]
+position = Vector2( 0, 38 )
+rotation = 0.355076
+shape = SubResource( 6 )
+
+[node name="TheaterSP" parent="Doors" instance=ExtResource( 8 )]
+position = Vector2( 430, 1074 )
+
+[node name="BakerySP" parent="Doors" instance=ExtResource( 8 )]
+position = Vector2( 562, 712 )
+
+[node name="HomeSP" parent="Doors" instance=ExtResource( 8 )]
+position = Vector2( 1106, 558 )
+
+[node name="PrisonSP" parent="Doors" instance=ExtResource( 8 )]
+position = Vector2( 1398, 914 )
+
 [connection signal="transition_triggered" from="BottomTZ" to="." method="_on_BottomTZ_transition_triggered"]
+[connection signal="transition_triggered" from="Doors/TheaterDoor" to="." method="_on_TheaterDoor_transition_triggered"]
+[connection signal="transition_triggered" from="Doors/BakeryDoor" to="." method="_on_BakeryDoor_transition_triggered"]
+[connection signal="transition_triggered" from="Doors/PrisonDoor" to="." method="_on_PrisonDoor_transition_triggered"]
+[connection signal="transition_triggered" from="Doors/HomeDoor" to="." method="_on_HomeDoor_transition_triggered"]
 
 [editable path="StarBG"]
 [editable path="PuppyCamera"]
 [editable path="TopTZ"]
 [editable path="BottomTZ"]
+[editable path="Doors/TheaterDoor"]
+[editable path="Doors/BakeryDoor"]
+[editable path="Doors/PrisonDoor"]
+[editable path="Doors/HomeDoor"]

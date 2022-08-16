@@ -25,7 +25,7 @@
 [ext_resource path="res://tunes/lab/youdidit1.wav" type="AudioStream" id=25]
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=26]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 resource_name = "CutsceneBegin"
 length = 2.0
 tracks/0/type = "value"
@@ -182,7 +182,7 @@ tracks/11/keys = {
 "values": [ Vector2( 1411.76, -168.926 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "PreCutscene"
 tracks/0/type = "value"
 tracks/0/path = NodePath("leave_robot_gorup/RobotForAnimation:visible")
@@ -225,7 +225,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 resource_name = "approach"
 length = 0.7
 tracks/0/type = "value"
@@ -291,7 +291,7 @@ tracks/4/keys = {
 "values": [ Vector2( 1415.59, -143.836 ), Vector2( 1415.59, -318.028 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=4]
 resource_name = "fall"
 length = 3.5
 tracks/0/type = "value"
@@ -390,7 +390,7 @@ tracks/6/keys = {
 "values": [ 0.0, 13.602 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=5]
 resource_name = "fall2"
 length = 7.4
 tracks/0/type = "value"
@@ -497,8 +497,7 @@ tracks/7/keys = {
 "times": PoolRealArray( 0.8, 1.9 )
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "lookbackandforth"
+[sub_resource type="Animation" id=6]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("leave_robot_gorup/RobotForAnimation:animation")
@@ -639,10 +638,10 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 61.4875, 336.522 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 83.7338, 520.403 )
 
 [node name="OutsideLabAncientPuzzle" type="Node2D"]
@@ -731,12 +730,12 @@ position = Vector2( 1800.17, 94.8392 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BGStuff"]
 autoplay = "CutsceneBegin"
-anims/CutsceneBegin = SubResource( 4 )
-anims/PreCutscene = SubResource( 3 )
-anims/approach = SubResource( 6 )
-anims/fall = SubResource( 10 )
-anims/fall2 = SubResource( 11 )
-anims/lookbackandforth = SubResource( 5 )
+anims/CutsceneBegin = SubResource( 1 )
+anims/PreCutscene = SubResource( 2 )
+anims/approach = SubResource( 3 )
+anims/fall = SubResource( 4 )
+anims/fall2 = SubResource( 5 )
+anims/lookbackandforth = SubResource( 6 )
 anims/lookdown = SubResource( 7 )
 anims/push_button = SubResource( 8 )
 anims/spin_around = SubResource( 9 )
@@ -1650,14 +1649,14 @@ position = Vector2( 2763.2, 852.843 )
 
 [node name="CollisionShape2D" parent="RightTZ" index="0"]
 position = Vector2( -296.975, -1773.55 )
-shape = SubResource( 1 )
+shape = SubResource( 10 )
 
 [node name="LeftTZ" parent="." instance=ExtResource( 26 )]
 position = Vector2( 769.611, 201.061 )
 
 [node name="CollisionShape2D" parent="LeftTZ" index="0"]
 position = Vector2( -525.196, 867.668 )
-shape = SubResource( 2 )
+shape = SubResource( 11 )
 
 [connection signal="transition_triggered" from="RightTZ" to="." method="_on_RightTZ_transition_triggered"]
 [connection signal="transition_triggered" from="LeftTZ" to="." method="_on_LeftTZ_transition_triggered"]

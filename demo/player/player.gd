@@ -64,7 +64,8 @@ onready var grabshot_timer = $grabshot_center/grabshot_timer
 onready var grabshot_audio_player = $grabshot_center/grabshot_audio_animator
 
 func _ready():
-	stats.set_bool("grabshot")
+	stats.set_bool("grabshot", false)
+	grabshot.visible = false
 	
 	stats.connect("out_of_health", self, "queue_free")
 	lookbox.connect("saw_something", self, "set_speed_to_zero")
@@ -75,7 +76,6 @@ func _ready():
 	stats.connect("put_on_hat", self, "set_hat")
 	set_hat()
 	
-	grabshot.visible = false
 
 func set_hat():
 	var hat = stats.world_state.get("HAT", null)

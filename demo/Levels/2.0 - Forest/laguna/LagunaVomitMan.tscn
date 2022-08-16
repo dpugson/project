@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://sprites/cavestuff/salamanders/splash_00.png" type="Texture" id=1]
+[ext_resource path="res://sprites/cavestuff/salamanders/splash_01.png" type="Texture" id=2]
+[ext_resource path="res://sprites/L3265_LagunaDr/lagunadrive_vomit_man_1-min.png" type="Texture" id=3]
+[ext_resource path="res://sprites/L3265_LagunaDr/lagunadrive_vomit_man_0-min.png" type="Texture" id=4]
+[ext_resource path="res://sprites/L3265_LagunaDr/lagunadrive_vomit_man_base-min.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[node name="LagunaVomitMan" type="YSort"]
+
+[node name="Man" type="Node2D" parent="."]
+position = Vector2( -11.7726, -114.362 )
+
+[node name="lagunadrive_vomit_man_base-min" type="Sprite" parent="Man"]
+position = Vector2( 31.1132, -36.1585 )
+texture = ExtResource( 5 )
+
+[node name="Bucket" type="Node2D" parent="."]
+position = Vector2( 100.067, -3.36359 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Bucket"]
+position = Vector2( -79.8851, -147.157 )
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="Bucket/AnimatedSprite"]
+modulate = Color( 0.694118, 1, 0.227451, 1 )
+position = Vector2( 79.6769, 73.7308 )
+frames = SubResource( 2 )
+frame = 1
+playing = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 20.1815, -150.52 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( 0, 0.840897 )
+polygon = PoolVector2Array( -154.484, 58.1372, -125.053, 98.5002, -92.2577, 126.25, -57.7809, 137.181, 3.60452, 132.136, 36.3995, 123.727, 42.2857, 162.408, 49.0129, 173.34, 80.1261, 184.272, 116.285, 177.544, 123.012, 153.999, 65.8308, 144.483, 69.1944, 57.0293 )

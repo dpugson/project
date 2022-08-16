@@ -42,7 +42,7 @@ texture = ExtResource( 1 )
 
 [node name="fire" parent="." instance=ExtResource( 2 )]
 position = Vector2( 322.124, -413.404 )
-frame = 0
+frame = 2
 
 [node name="break_room_fire_fence_thingy" type="Sprite" parent="fire"]
 position = Vector2( 1.4646, 23.9009 )

@@ -25,9 +25,12 @@ func _ready():
 	var spawn_player = true
 	Jukebox.play_song("res://tunes/forest/starswaltz_slow.wav")
 	match stats.spawn_metadata:
-		"door":
+		"backstage":
 			player_position = topSP.position
 			orientation = Vector2.RIGHT
+		"door":
+			player_position = bottomSP.position
+			orientation = Vector2.UP
 		_:
 			player_position = bottomSP.position
 			orientation = Vector2.UP
@@ -51,3 +54,7 @@ func _on_PlayerDetectionZone_body_exited(_body):
 							player.remote_transform.position,
 							Vector2(0, 0), 1.6, Tween.TRANS_CUBIC)
 		tween.start()
+
+
+func _on_DoorTZ_transition_triggered():
+	Transition.go_to("res://Levels/2.0 - Forest/Town.tscn", "theater")

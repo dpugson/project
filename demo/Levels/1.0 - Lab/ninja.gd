@@ -14,7 +14,7 @@ var NINJA_STATE_KEY = "NINJA_STATE_KEY"
 func _ready():
 	back_to_wall()
 	if not stats.world_state.has(NINJA_STATE_KEY):
-		stats.world_state[NINJA_STATE_KEY] = "INIT"
+		stats.world_state[NINJA_STATE_KEY] = "GIVE_DRINK_MISSION"
 
 func look_at_you():
 	animated_sprite.animation = "LookingAtYou"
@@ -27,61 +27,6 @@ func face_outwards():
 
 var num_bothers = 0
 
-func handle_init_state():
-	match num_bothers:
-		0:
-			num_bothers += 1
-			return {
-				"begin" : [
-					"TEXT", "...", NINJA_SPEECH_SPEED, 
-					"begin2", null, null, null
-				], 
-				"begin2" : [
-					"TEXT", "(Have I been detected???)", NINJA_SPEECH_SPEED, 
-					"begin3", null, null, NINJA_PITCH
-				],
-				"begin3" : [
-					"TEXT", "(No... Impossible. My disguise is perfect.)", NINJA_SPEECH_SPEED, 
-					null, null, null, NINJA_PITCH
-				], 
-			}
-		1:
-			num_bothers += 1
-			return {
-				"begin" : [
-					"TEXT", "...", NINJA_SPEECH_SPEED, 
-					null, null, null, null
-				]
-			}
-		2:
-			num_bothers += 1
-			return {
-				"begin" : [
-					"TEXT", "Go away! No one's here!", NINJA_SPEECH_SPEED, 
-					null, [self, "look_at_you"], null, NINJA_PITCH
-				]
-			}
-		3:
-			num_bothers += 1
-			return {
-				"begin" : [
-					"TEXT", "Can't you see I'm very busy?", NINJA_SPEECH_SPEED, 
-					null, [self, "look_at_you"], null, NINJA_PITCH
-				],
-				"2" : [
-					"TEXT", "(The puppy is persistent... Not good.)", NINJA_SPEECH_SPEED, 
-					null, [self, "back_to_wall"], null, NINJA_PITCH
-				]
-			}
-		_:
-			stats.world_state[NINJA_STATE_KEY] = "GIVE_DRINK_MISSION"
-			return {
-				"begin" : [
-					"TEXT", "Shoo!!!", NINJA_SPEECH_SPEED, 
-					null, [self, "look_at_you"], null, NINJA_PITCH
-				]
-			}
-
 func get_g():
 	stats.G += 30
 
@@ -92,6 +37,30 @@ func give_out_drink_mission():
 	stats.world_state[NINJA_STATE_KEY] = "DRINK_MISSION"
 	return {
 		"begin" : [
+			"TEXT", "...", NINJA_SPEECH_SPEED, 
+			"bbbb", null, null, null
+		], 
+		"bbbb" : [
+			"TEXT", "(Have I been detected???)", NINJA_SPEECH_SPEED, 
+			"aa", null, null, NINJA_PITCH
+		],
+		"aa" : [
+			"TEXT", "(No... Impossible. My disguise is perfect.)", NINJA_SPEECH_SPEED, 
+			"hh", null, null, NINJA_PITCH
+		], 
+		"hh" : [
+			"TEXT", "Go away! No one's here!", NINJA_SPEECH_SPEED, 
+			"zz", [self, "look_at_you"], null, NINJA_PITCH
+		],
+		"zz" : [
+			"TEXT", "Can't you see I'm very busy?", NINJA_SPEECH_SPEED, 
+			"zzz", [self, "look_at_you"], null, NINJA_PITCH
+		],
+		"zzz" : [
+			"TEXT", "(The puppy is persistent... Not good.)", NINJA_SPEECH_SPEED, 
+			"bb", [self, "back_to_wall"], null, NINJA_PITCH
+		],
+		"bb" : [
 			"TEXT", "...", NINJA_SPEECH_SPEED, 
 			"begin2", null, null, null
 		],
@@ -221,8 +190,6 @@ func garbage_indignant():
 
 func get_ninja_dialogue():
 	match stats.world_state[NINJA_STATE_KEY]:
-		"INIT":
-			return handle_init_state()
 		"GIVE_DRINK_MISSION":
 			return give_out_drink_mission()
 		"DRINK_MISSION":
@@ -242,3 +209,6 @@ func _on_SeenBox_seen(_obj):
 func disappear(cb):
 	animation.connect("animation_finished", cb[0], cb[1])
 	animation.play("disappear")
+
+func _on_HurtBox_area_entered(area):
+	DialogueHelper.showDialogue(self, get_ninja_dialogue(), false, [self, "back_to_wall"])

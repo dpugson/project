@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://sprites/L3_forest/stage_bg-min-1.png" type="Texture" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
@@ -9,10 +9,14 @@
 [ext_resource path="res://hitnhurtboxes/PlayerDetectionZone.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Characters/TeaParty.tscn" type="PackedScene" id=9]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=10]
 [ext_resource path="res://sprites/L3_forest/vignette_fade.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 1026.76, 119.898 )
+extents = Vector2( 1026.76, 249.844 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 119.474, 48.8398 )
 
 [node name="Stage" type="Node2D"]
 script = ExtResource( 4 )
@@ -67,22 +71,16 @@ camera = NodePath("../../PuppyCamera")
 position = Vector2( 929.997, 677.082 )
 
 [node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
-position = Vector2( -2516.32, -6774.45 )
+position = Vector2( -224.538, -76.1504 )
 
 [node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
-position = Vector2( 2859.5, 4974.77 )
-
-[node name="BottomSP" parent="." instance=ExtResource( 8 )]
-position = Vector2( 189.722, 1373.55 )
-
-[node name="TopSP" parent="." instance=ExtResource( 8 )]
-position = Vector2( 39.4984, 575.659 )
+position = Vector2( 1694.5, 1698.77 )
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 7 )]
 position = Vector2( 679.321, 477.515 )
 
 [node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
-position = Vector2( 0, 414.983 )
+position = Vector2( 4, 330.983 )
 shape = SubResource( 1 )
 
 [node name="Tween" type="Tween" parent="."]
@@ -93,8 +91,36 @@ rotation = -1.5708
 scale = Vector2( 0.268688, 1 )
 texture = ExtResource( 11 )
 
+[node name="BottomSP" parent="." instance=ExtResource( 8 )]
+position = Vector2( 189.722, 1373.55 )
+
+[node name="TopSP" parent="." instance=ExtResource( 8 )]
+position = Vector2( 39.4984, 575.659 )
+
+[node name="DoorTZ" parent="." instance=ExtResource( 10 )]
+position = Vector2( 184.753, 1517.81 )
+
+[node name="CollisionShape2D" parent="DoorTZ" index="0"]
+position = Vector2( 14.2119, 8.5271 )
+shape = SubResource( 2 )
+
+[node name="Collisions" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/StaticBody2D"]
+polygon = PoolVector2Array( -34.4691, 745.237, 480.305, 738.166, 484.547, 845.646, 1126.6, 858.374, 1132.26, 794.734, 1224.18, 794.734, 1235.49, 510.477, 1211.45, 516.134, 1208.62, 687.254, 1091.24, 678.769, 1089.83, 748.065, 526.974, 756.55, 528.388, 641.999, -37.2975, 657.556 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Collisions/StaticBody2D"]
+polygon = PoolVector2Array( 0.886353, 509.77, 1225.6, 532.398, 1214.28, 586.138, 1381.16, 591.795, 1381.16, 1412.04, 326.155, 1403.55, 328.984, 1692.05, 1997.76, 1627, 1669.66, 255.212, -222.559, 159.045, -219.731, 1627, 77.2539, 1677.91, 91.396, 1403.55, -1.94214, 1403.55 )
+
 [connection signal="body_entered" from="PlayerDetectionZone" to="." method="_on_PlayerDetectionZone_body_entered"]
 [connection signal="body_exited" from="PlayerDetectionZone" to="." method="_on_PlayerDetectionZone_body_exited"]
+[connection signal="transition_triggered" from="DoorTZ" to="." method="_on_DoorTZ_transition_triggered"]
 
 [editable path="PuppyCamera"]
 [editable path="PlayerDetectionZone"]
+[editable path="DoorTZ"]

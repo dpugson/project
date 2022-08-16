@@ -1,27 +1,44 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=35 format=2]
 
-[ext_resource path="res://Levels/2.0 - Forest/pines.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/leafpiletile2.png" type="Texture" id=1]
 [ext_resource path="res://Levels/2.0 - Forest/OutsideLab_02.gd" type="Script" id=2]
-[ext_resource path="res://Levels/0.0 Cave/WaveTexture.tscn" type="PackedScene" id=3]
-[ext_resource path="res://sprites/L3_forest/water_sausages_02.png" type="Texture" id=4]
-[ext_resource path="res://sprites/L3_forest/water_sausages_01.png" type="Texture" id=5]
-[ext_resource path="res://sprites/leafpiletile2dark.png" type="Texture" id=6]
-[ext_resource path="res://sprites/leafpile/leaf1.png" type="Texture" id=7]
+[ext_resource path="res://Levels/21.0 Train/parallax_clouds.gd" type="Script" id=3]
+[ext_resource path="res://sprites/L0_train/sunflower_road/cloud_tile_big-min.png" type="Texture" id=4]
+[ext_resource path="res://sprites/L3_forest/tall_creepy_tree_edge.png" type="Texture" id=5]
+[ext_resource path="res://sprites/L3_forest/bigpine.png" type="Texture" id=6]
+[ext_resource path="res://sprites/trees/talltree1.png" type="Texture" id=7]
 [ext_resource path="res://sprites/L3_forest/lab_exterior_right_upper_tree-min.png" type="Texture" id=8]
-[ext_resource path="res://world/creepy_tree.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Levels/2.0 - Forest/watersausage.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sprites/trees/talltree2.png" type="Texture" id=9]
+[ext_resource path="res://Levels/2.0 - Forest/LEAFPILE.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/2.0 - Forest/shadowed_pines.tscn" type="PackedScene" id=11]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=14]
-[ext_resource path="res://effects/Water.tscn" type="PackedScene" id=15]
+[ext_resource path="res://world/Sign.tscn" type="PackedScene" id=15]
 [ext_resource path="res://sprites/L3_forest/tall_creepy_tree_inside.png" type="Texture" id=16]
-[ext_resource path="res://Levels/2.0 - Forest/SinglePine.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Characters/RobotFollower.tscn" type="PackedScene" id=17]
 [ext_resource path="res://sprites/L3_forest/vignette_fade.png" type="Texture" id=18]
+[ext_resource path="res://hitnhurtboxes/PlayerDetectionZone.tscn" type="PackedScene" id=19]
 [ext_resource path="res://sprites/leafpile/leaf0.png" type="Texture" id=20]
-[ext_resource path="res://sprites/leafpile/leaf2.png" type="Texture" id=22]
-[ext_resource path="res://sprites/leafpile/leaf3.png" type="Texture" id=23]
+[ext_resource path="res://Characters/nature/nature_sunrock.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Characters/nature/nature_squirrel.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Characters/nature/nature_squirrel_computer.tscn" type="PackedScene" id=23]
+[ext_resource path="res://sprites/L3_forest/inhabitants/nature/mushroom_5-min.png" type="Texture" id=24]
+[ext_resource path="res://sprites/L3_forest/inhabitants/nature/nature_fairy_0-min.png" type="Texture" id=25]
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=26]
+[ext_resource path="res://sprites/L3_forest/inhabitants/nature/mushroom_3-min.png" type="Texture" id=27]
+[ext_resource path="res://sprites/L3_forest/inhabitants/nature/mushroom_0-min.png" type="Texture" id=28]
+[ext_resource path="res://sprites/L3_forest/inhabitants/nature/mushroom_1-min.png" type="Texture" id=29]
+[ext_resource path="res://sprites/L3_forest/inhabitants/nature/nature_fairy_1-min.png" type="Texture" id=30]
+[ext_resource path="res://sprites/L3_forest/inhabitants/nature/mushroom_4-min.png" type="Texture" id=31]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 25 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 61.4875, 336.522 )
@@ -32,57 +49,56 @@ extents = Vector2( 83.7338, 520.403 )
 [node name="OutsideLab02" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_left = -1315.0
-margin_top = -2341.0
-margin_right = 7990.0
-margin_bottom = 2776.0
-texture = ExtResource( 6 )
-stretch_mode = 2
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
 [node name="PuppyCamera" parent="." instance=ExtResource( 13 )]
 position = Vector2( -1592.55, 1314.22 )
 
 [node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
-position = Vector2( -1277.02, -2251.29 )
+position = Vector2( -1180.46, 527.644 )
 
 [node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
-position = Vector2( 7990, 1801.69 )
+position = Vector2( 7992.38, 2057.93 )
 
 [node name="BGStuff" type="Node2D" parent="."]
 position = Vector2( -38.8142, -60.4982 )
 
-[node name="WaveTexture2" parent="BGStuff" instance=ExtResource( 3 )]
-position = Vector2( 1046.04, 796.693 )
-
-[node name="WaveTexture" parent="BGStuff" instance=ExtResource( 3 )]
-position = Vector2( 1109.95, 1731.77 )
-
-[node name="TextureRect2" type="TextureRect" parent="BGStuff"]
-margin_left = 13.2251
-margin_top = 889.622
-margin_right = 3721.23
-margin_bottom = 1843.62
-texture = ExtResource( 6 )
+[node name="leaf_floor" type="TextureRect" parent="BGStuff"]
+modulate = Color( 0.588235, 0.584314, 0.576471, 1 )
+margin_left = -2780.81
+margin_top = 1133.74
+margin_right = 8031.19
+margin_bottom = 3092.74
+texture = ExtResource( 1 )
 stretch_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="leave_shore" type="Node2D" parent="BGStuff"]
-modulate = Color( 0.52549, 0.52549, 0.505882, 1 )
-position = Vector2( -5.15991, 606.852 )
+modulate = Color( 0.54902, 0.494118, 0.498039, 1 )
+position = Vector2( 1.97534, 860.719 )
 
 [node name="leaf0" type="Sprite" parent="BGStuff/leave_shore"]
 position = Vector2( 1379.16, 295.721 )
 texture = ExtResource( 20 )
 
 [node name="leaf5" type="Sprite" parent="BGStuff/leave_shore"]
-position = Vector2( 1285.21, 295.721 )
+position = Vector2( 1284.37, 295.721 )
+scale = Vector2( 1.00841, 1 )
+texture = ExtResource( 20 )
+
+[node name="leaf32" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 1159.92, 305.812 )
+scale = Vector2( 1.00841, 1 )
+texture = ExtResource( 20 )
+
+[node name="leaf33" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 1159.92, 305.812 )
+scale = Vector2( 1.00841, 1 )
+texture = ExtResource( 20 )
+
+[node name="leaf34" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 1048.92, 305.812 )
+scale = Vector2( 1.00841, 1 )
 texture = ExtResource( 20 )
 
 [node name="leaf9" type="Sprite" parent="BGStuff/leave_shore"]
@@ -94,19 +110,15 @@ position = Vector2( 1549.22, 306.424 )
 texture = ExtResource( 20 )
 
 [node name="leaf24" type="Sprite" parent="BGStuff/leave_shore"]
-position = Vector2( 1724.03, 307.613 )
+position = Vector2( 1748.42, 300.045 )
 texture = ExtResource( 20 )
 
 [node name="leaf25" type="Sprite" parent="BGStuff/leave_shore"]
 position = Vector2( 1857.22, 304.045 )
 texture = ExtResource( 20 )
 
-[node name="leaf26" type="Sprite" parent="BGStuff/leave_shore"]
-position = Vector2( 2092.68, 305.235 )
-texture = ExtResource( 20 )
-
 [node name="leaf27" type="Sprite" parent="BGStuff/leave_shore"]
-position = Vector2( 2260.36, 315.938 )
+position = Vector2( 2250.27, 289.87 )
 texture = ExtResource( 20 )
 
 [node name="leaf28" type="Sprite" parent="BGStuff/leave_shore"]
@@ -125,52 +137,12 @@ texture = ExtResource( 20 )
 position = Vector2( 2420.9, 298.099 )
 texture = ExtResource( 20 )
 
-[node name="leaf2" type="Sprite" parent="BGStuff/leave_shore"]
-position = Vector2( 1509.89, 352.785 )
-texture = ExtResource( 22 )
-
-[node name="leaf3" type="Sprite" parent="BGStuff/leave_shore"]
-position = Vector2( 1748.62, 355.354 )
-texture = ExtResource( 22 )
-
-[node name="leaf4" type="Sprite" parent="BGStuff/leave_shore"]
-position = Vector2( 2073.12, 305.113 )
-texture = ExtResource( 22 )
-
-[node name="leaf7" type="Sprite" parent="BGStuff/leave_shore"]
-position = Vector2( 1634.58, 328.194 )
-texture = ExtResource( 23 )
-
-[node name="leaf8" type="Sprite" parent="BGStuff/leave_shore"]
-position = Vector2( 1913.86, 318.961 )
-texture = ExtResource( 23 )
-
-[node name="leaf11" type="Sprite" parent="BGStuff/leave_shore"]
-position = Vector2( 2393.94, 404.36 )
-texture = ExtResource( 23 )
-
-[node name="leaf12" type="Sprite" parent="BGStuff/leave_shore"]
-position = Vector2( 1833.08, 418.209 )
-texture = ExtResource( 23 )
-
-[node name="leaf13" type="Sprite" parent="BGStuff/leave_shore"]
-position = Vector2( 1530.72, 408.976 )
-texture = ExtResource( 23 )
-
-[node name="leaf6" type="Sprite" parent="BGStuff/leave_shore"]
-position = Vector2( 2774.77, 228.946 )
-texture = ExtResource( 22 )
-
 [node name="leaf1" type="Sprite" parent="BGStuff/leave_shore"]
-position = Vector2( 1987.72, 300.497 )
+position = Vector2( 1980.99, 297.974 )
 texture = ExtResource( 20 )
 
-[node name="leaf14" type="Sprite" parent="BGStuff/leave_shore"]
-position = Vector2( 1666.9, 418.208 )
-texture = ExtResource( 20 )
-
-[node name="leaf15" type="Sprite" parent="BGStuff/leave_shore"]
-position = Vector2( 2176.98, 309.729 )
+[node name="leaf2" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 2085.26, 297.974 )
 texture = ExtResource( 20 )
 
 [node name="leaf16" type="Sprite" parent="BGStuff/leave_shore"]
@@ -197,1152 +169,341 @@ texture = ExtResource( 20 )
 position = Vector2( 2885.56, 272.8 )
 texture = ExtResource( 20 )
 
+[node name="leaf52" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 2769.52, 282.05 )
+texture = ExtResource( 20 )
+
+[node name="leaf53" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 2974.69, 282.891 )
+texture = ExtResource( 20 )
+
+[node name="leaf54" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 3067.19, 284.573 )
+texture = ExtResource( 20 )
+
+[node name="leaf55" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 3171.46, 290.459 )
+texture = ExtResource( 20 )
+
+[node name="leaf56" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 3263.12, 303.072 )
+texture = ExtResource( 20 )
+
+[node name="leaf57" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 3348.05, 292.982 )
+texture = ExtResource( 20 )
+
+[node name="leaf58" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 3432.98, 297.186 )
+texture = ExtResource( 20 )
+
+[node name="leaf59" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 3510.35, 296.345 )
+texture = ExtResource( 20 )
+
+[node name="leaf60" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 3617.14, 300.549 )
+texture = ExtResource( 20 )
+
+[node name="leaf61" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 3710.48, 298.868 )
+texture = ExtResource( 20 )
+
+[node name="leaf62" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 3803.82, 298.868 )
+texture = ExtResource( 20 )
+
+[node name="leaf63" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 3873.61, 298.868 )
+texture = ExtResource( 20 )
+
+[node name="leaf64" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 4067.02, 298.027 )
+texture = ExtResource( 20 )
+
+[node name="leaf66" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 4176.34, 309.799 )
+texture = ExtResource( 20 )
+
+[node name="leaf67" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 4275.56, 307.277 )
+texture = ExtResource( 20 )
+
+[node name="leaf68" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 4389.08, 304.754 )
+texture = ExtResource( 20 )
+
+[node name="leaf69" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 4514.38, 309.799 )
+texture = ExtResource( 20 )
+
+[node name="leaf70" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 4634.63, 306.436 )
+texture = ExtResource( 20 )
+
+[node name="leaf71" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 4757.4, 305.595 )
+texture = ExtResource( 20 )
+
+[node name="leaf72" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 4862.51, 316.527 )
+texture = ExtResource( 20 )
+
+[node name="leaf73" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 4968.46, 313.163 )
+texture = ExtResource( 20 )
+
+[node name="leaf74" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 5088.71, 314.845 )
+texture = ExtResource( 20 )
+
+[node name="leaf75" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 5197.19, 314.845 )
+texture = ExtResource( 20 )
+
+[node name="leaf76" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 5280.43, 314.004 )
+texture = ExtResource( 20 )
+
+[node name="leaf77" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 5393.96, 313.163 )
+texture = ExtResource( 20 )
+
+[node name="leaf78" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 5502.43, 313.163 )
+texture = ExtResource( 20 )
+
+[node name="leaf79" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 5596.61, 299.853 )
+texture = ExtResource( 20 )
+
+[node name="leaf65" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 3972, 301.39 )
+texture = ExtResource( 20 )
+
 [node name="leaf21" type="Sprite" parent="BGStuff/leave_shore"]
-position = Vector2( 1643.82, 298.188 )
+position = Vector2( 1642.98, 293.983 )
 texture = ExtResource( 20 )
 
-[node name="leaf22" type="Sprite" parent="BGStuff/leave_shore"]
-position = Vector2( 1831.82, 320.476 )
+[node name="leaf26" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 981.674, 359.998 )
 texture = ExtResource( 20 )
 
-[node name="sausages" type="Node2D" parent="BGStuff"]
-visible = false
-position = Vector2( -5.15991, 606.852 )
+[node name="leaf35" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 960.651, 291.886 )
+texture = ExtResource( 20 )
 
-[node name="sausages_texture_A" type="TextureRect" parent="BGStuff/sausages"]
-modulate = Color( 0.784314, 0.698039, 0.180392, 1 )
-margin_left = 1272.76
-margin_top = 135.756
-margin_right = 2948.76
-margin_bottom = 289.756
+[node name="leaf36" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 863.948, 291.886 )
+texture = ExtResource( 20 )
+
+[node name="leaf37" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 760.518, 290.204 )
+texture = ExtResource( 20 )
+
+[node name="leaf38" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 660.451, 284.318 )
+texture = ExtResource( 20 )
+
+[node name="leaf39" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 915.243, 283.477 )
+texture = ExtResource( 20 )
+
+[node name="leaf44" type="Sprite" parent="BGStuff/leave_shore"]
+position = Vector2( 2167.34, 307.863 )
+texture = ExtResource( 20 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="BGStuff"]
+layer = -1
+
+[node name="clouds" type="ParallaxLayer" parent="BGStuff/ParallaxBackground"]
+modulate = Color( 0.984314, 0.909804, 0.756863, 1 )
+motion_scale = Vector2( 0.1, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+script = ExtResource( 3 )
+CLOUD_SPEED = 10.0
+
+[node name="TextureRect" type="TextureRect" parent="BGStuff/ParallaxBackground/clouds"]
+margin_left = -2203.0
+margin_top = 435.527
+margin_right = 4247.0
+margin_bottom = 1269.53
 texture = ExtResource( 4 )
 stretch_mode = 2
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="sausages_texture_B" type="TextureRect" parent="BGStuff/sausages"]
-modulate = Color( 0.545098, 0.501961, 0.423529, 1 )
-margin_left = 1210.53
-margin_top = 155.775
-margin_right = 2681.53
-margin_bottom = 334.775
+[node name="flowers4" type="ParallaxLayer" parent="BGStuff/ParallaxBackground"]
+position = Vector2( 116.208, 57.4975 )
+motion_scale = Vector2( 0.2, 0.95 )
+
+[node name="shadowed_pines" parent="BGStuff/ParallaxBackground/flowers4" instance=ExtResource( 11 )]
+modulate = Color( 1, 1, 1, 1 )
+margin_left = -780.747
+margin_top = 713.591
+margin_right = 8567.25
+margin_bottom = 1262.59
+rect_scale = Vector2( 0.40485, 0.40485 )
+
+[node name="shadowed_pines2" parent="BGStuff/ParallaxBackground/flowers4" instance=ExtResource( 11 )]
+modulate = Color( 0.87451, 0.87451, 0.854902, 1 )
+margin_left = -828.315
+margin_top = 740.943
+margin_right = 8519.68
+margin_bottom = 1289.94
+rect_scale = Vector2( 0.40485, 0.40485 )
+
+[node name="shadowed_pines3" parent="BGStuff/ParallaxBackground/flowers4" instance=ExtResource( 11 )]
+modulate = Color( 0.611765, 0.607843, 0.611765, 1 )
+margin_left = -781.936
+margin_top = 763.537
+margin_right = 8566.06
+margin_bottom = 1312.54
+rect_scale = Vector2( 0.40485, 0.40485 )
+
+[node name="shadowed_pines4" parent="BGStuff/ParallaxBackground/flowers4" instance=ExtResource( 11 )]
+modulate = Color( 0.529412, 0.533333, 0.533333, 1 )
+margin_left = -782.777
+margin_top = 761.856
+margin_right = 8565.22
+margin_bottom = 1310.86
+rect_scale = Vector2( 0.40485, 0.40485 )
+
+[node name="shadowed_pines5" parent="BGStuff/ParallaxBackground/flowers4" instance=ExtResource( 11 )]
+modulate = Color( 0.529412, 0.533333, 0.533333, 1 )
+margin_left = -739.051
+margin_top = 810.628
+margin_right = 8608.95
+margin_bottom = 1359.63
+rect_scale = Vector2( 0.40485, 0.40485 )
+
+[node name="shadowed_pines6" parent="BGStuff/ParallaxBackground/flowers4" instance=ExtResource( 11 )]
+modulate = Color( 0.529412, 0.533333, 0.533333, 1 )
+margin_left = -788.663
+margin_top = 855.195
+margin_right = 8559.34
+margin_bottom = 1404.19
+rect_scale = Vector2( 0.40485, 0.40485 )
+
+[node name="flowers2" type="ParallaxLayer" parent="BGStuff/ParallaxBackground"]
+position = Vector2( -4, 8 )
+motion_scale = Vector2( 0.3, 0.99 )
+
+[node name="tall_creepy_tree_inside" type="Sprite" parent="BGStuff/ParallaxBackground/flowers2"]
+position = Vector2( 160.081, 617.586 )
+texture = ExtResource( 16 )
+
+[node name="tall_creepy_tree_edge" type="Sprite" parent="BGStuff/ParallaxBackground/flowers2"]
+position = Vector2( 717.595, 576.382 )
 texture = ExtResource( 5 )
-stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="sausages_texture_A2" type="TextureRect" parent="BGStuff/sausages"]
-modulate = Color( 0.784314, 0.698039, 0.180392, 1 )
-margin_left = 2723.86
-margin_top = 186.031
-margin_right = 4399.86
-margin_bottom = 340.031
-rect_scale = Vector2( -1, 1 )
-texture = ExtResource( 4 )
-stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="bigpine" type="Sprite" parent="BGStuff/ParallaxBackground/flowers2"]
+position = Vector2( 979.931, 812.393 )
+texture = ExtResource( 6 )
 
-[node name="island" type="Node2D" parent="BGStuff"]
-modulate = Color( 0.439216, 0.447059, 0.376471, 1 )
-position = Vector2( -4.75684, 148.651 )
+[node name="talltree2" type="Sprite" parent="BGStuff/ParallaxBackground/flowers2"]
+position = Vector2( 411.509, 685.699 )
+texture = ExtResource( 9 )
 
-[node name="leaf0" type="Sprite" parent="BGStuff/island"]
-position = Vector2( 1734.92, 421.341 )
-texture = ExtResource( 20 )
-
-[node name="leaf1" type="Sprite" parent="BGStuff/island"]
-position = Vector2( 1808.65, 467.72 )
+[node name="talltree1" type="Sprite" parent="BGStuff/ParallaxBackground/flowers2"]
+position = Vector2( 1171.68, 687.381 )
 texture = ExtResource( 7 )
-
-[node name="leaf3" type="Sprite" parent="BGStuff/island"]
-position = Vector2( 1915.68, 416.584 )
-texture = ExtResource( 20 )
-
-[node name="leaf4" type="Sprite" parent="BGStuff/island"]
-position = Vector2( 1841.95, 357.124 )
-texture = ExtResource( 20 )
-
-[node name="leaf9" type="Sprite" parent="BGStuff/island"]
-position = Vector2( 1842.79, 292.375 )
-texture = ExtResource( 20 )
-
-[node name="leaf10" type="Sprite" parent="BGStuff/island"]
-position = Vector2( 1920.99, 259.58 )
-texture = ExtResource( 20 )
-
-[node name="leaf11" type="Sprite" parent="BGStuff/island"]
-position = Vector2( 1828.5, 232.671 )
-texture = ExtResource( 20 )
-
-[node name="leaf12" type="Sprite" parent="BGStuff/island"]
-position = Vector2( 1761.22, 231.83 )
-texture = ExtResource( 20 )
-
-[node name="leaf13" type="Sprite" parent="BGStuff/island"]
-position = Vector2( 1689.75, 269.671 )
-texture = ExtResource( 20 )
-
-[node name="leaf5" type="Sprite" parent="BGStuff/island"]
-position = Vector2( 1740.87, 345.232 )
-texture = ExtResource( 20 )
-
-[node name="leaf6" type="Sprite" parent="BGStuff/island"]
-position = Vector2( 1687.36, 371.394 )
-texture = ExtResource( 20 )
-
-[node name="leaf7" type="Sprite" parent="BGStuff/island"]
-position = Vector2( 1937.09, 352.124 )
-texture = ExtResource( 20 )
-
-[node name="leaf8" type="Sprite" parent="BGStuff/island"]
-position = Vector2( 1799.09, 460.124 )
-texture = ExtResource( 20 )
-
-[node name="island2" type="Node2D" parent="BGStuff"]
-modulate = Color( 0.439216, 0.447059, 0.376471, 1 )
-position = Vector2( 89.4233, -414.75 )
-
-[node name="leaf0" type="Sprite" parent="BGStuff/island2"]
-position = Vector2( 1734.92, 421.341 )
-texture = ExtResource( 20 )
-
-[node name="leaf1" type="Sprite" parent="BGStuff/island2"]
-position = Vector2( 1808.65, 467.72 )
-texture = ExtResource( 7 )
-
-[node name="leaf3" type="Sprite" parent="BGStuff/island2"]
-position = Vector2( 1915.68, 416.584 )
-texture = ExtResource( 20 )
-
-[node name="leaf4" type="Sprite" parent="BGStuff/island2"]
-position = Vector2( 1841.95, 357.124 )
-texture = ExtResource( 20 )
-
-[node name="leaf9" type="Sprite" parent="BGStuff/island2"]
-position = Vector2( 1842.79, 292.375 )
-texture = ExtResource( 20 )
-
-[node name="leaf10" type="Sprite" parent="BGStuff/island2"]
-position = Vector2( 1920.99, 259.58 )
-texture = ExtResource( 20 )
-
-[node name="leaf11" type="Sprite" parent="BGStuff/island2"]
-position = Vector2( 1828.5, 232.671 )
-texture = ExtResource( 20 )
-
-[node name="leaf12" type="Sprite" parent="BGStuff/island2"]
-position = Vector2( 1761.22, 231.83 )
-texture = ExtResource( 20 )
-
-[node name="leaf13" type="Sprite" parent="BGStuff/island2"]
-position = Vector2( 1689.75, 269.671 )
-texture = ExtResource( 20 )
-
-[node name="leaf5" type="Sprite" parent="BGStuff/island2"]
-position = Vector2( 1740.87, 345.232 )
-texture = ExtResource( 20 )
-
-[node name="leaf6" type="Sprite" parent="BGStuff/island2"]
-position = Vector2( 1687.36, 371.394 )
-texture = ExtResource( 20 )
-
-[node name="leaf7" type="Sprite" parent="BGStuff/island2"]
-position = Vector2( 1937.09, 352.124 )
-texture = ExtResource( 20 )
-
-[node name="leaf8" type="Sprite" parent="BGStuff/island2"]
-position = Vector2( 1799.09, 460.124 )
-texture = ExtResource( 20 )
-
-[node name="island3" type="Node2D" parent="BGStuff"]
-modulate = Color( 0.439216, 0.447059, 0.376471, 1 )
-position = Vector2( 84.3779, -919.288 )
-
-[node name="leaf0" type="Sprite" parent="BGStuff/island3"]
-position = Vector2( 1734.92, 421.341 )
-texture = ExtResource( 20 )
-
-[node name="leaf1" type="Sprite" parent="BGStuff/island3"]
-position = Vector2( 1808.65, 467.72 )
-texture = ExtResource( 7 )
-
-[node name="leaf3" type="Sprite" parent="BGStuff/island3"]
-position = Vector2( 1915.68, 416.584 )
-texture = ExtResource( 20 )
-
-[node name="leaf4" type="Sprite" parent="BGStuff/island3"]
-position = Vector2( 1841.95, 357.124 )
-texture = ExtResource( 20 )
-
-[node name="leaf9" type="Sprite" parent="BGStuff/island3"]
-position = Vector2( 1842.79, 292.375 )
-texture = ExtResource( 20 )
-
-[node name="leaf10" type="Sprite" parent="BGStuff/island3"]
-position = Vector2( 1920.99, 259.58 )
-texture = ExtResource( 20 )
-
-[node name="leaf11" type="Sprite" parent="BGStuff/island3"]
-position = Vector2( 1828.5, 232.671 )
-texture = ExtResource( 20 )
-
-[node name="leaf12" type="Sprite" parent="BGStuff/island3"]
-position = Vector2( 1761.22, 231.83 )
-texture = ExtResource( 20 )
-
-[node name="leaf13" type="Sprite" parent="BGStuff/island3"]
-position = Vector2( 1689.75, 269.671 )
-texture = ExtResource( 20 )
-
-[node name="leaf5" type="Sprite" parent="BGStuff/island3"]
-position = Vector2( 1740.87, 345.232 )
-texture = ExtResource( 20 )
-
-[node name="leaf6" type="Sprite" parent="BGStuff/island3"]
-position = Vector2( 1687.36, 371.394 )
-texture = ExtResource( 20 )
-
-[node name="leaf7" type="Sprite" parent="BGStuff/island3"]
-position = Vector2( 1937.09, 352.124 )
-texture = ExtResource( 20 )
-
-[node name="leaf8" type="Sprite" parent="BGStuff/island3"]
-position = Vector2( 1799.09, 460.124 )
-texture = ExtResource( 20 )
-
-[node name="vignette_fade4" type="Sprite" parent="."]
-position = Vector2( 2686.55, -600.527 )
-rotation = 3.14159
-scale = Vector2( 0.617624, -2.35889 )
-texture = ExtResource( 18 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="vignette_fade" type="Sprite" parent="."]
-position = Vector2( 725.201, -418.539 )
-scale = Vector2( 0.617624, 2.08307 )
-texture = ExtResource( 18 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="player" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( 544.7, 975.103 )
+position = Vector2( 535.186, 1248.62 )
+camera = NodePath("../../PuppyCamera")
 
-[node name="fade" type="Node2D" parent="YSort"]
-position = Vector2( 1153.69, 292.666 )
+[node name="Sign" parent="YSort" instance=ExtResource( 15 )]
+position = Vector2( 1708.61, 1395.85 )
+text = "Caution: Leaves"
 
-[node name="creepy_tree" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( 1776.38, 375.416 )
+[node name="LEAFPILE" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1884.21, 1187.17 )
 
-[node name="creepy_tree2" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( 1867.98, -181.826 )
+[node name="RobotFollower" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 390.93, 1245.76 )
+player_path = NodePath("../player")
+MAX_SPEED = 500
 
-[node name="creepy_tree3" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( 1861.61, 985.434 )
+[node name="nature_sunrock" parent="YSort" instance=ExtResource( 21 )]
+position = Vector2( 1306.46, 1241.47 )
 
-[node name="creepy_tree4" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( 1878.43, -701.404 )
+[node name="nature_squirrel" parent="YSort/nature_sunrock" instance=ExtResource( 22 )]
+position = Vector2( 96.504, -94.4231 )
 
-[node name="creepy_tree5" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( 1888.52, -1290.03 )
+[node name="nature_squirrel_computer" parent="YSort/nature_sunrock" instance=ExtResource( 23 )]
+position = Vector2( -30.7411, -77.7743 )
 
-[node name="pinearray" type="Node2D" parent="YSort"]
-position = Vector2( 781.231, 780.107 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="fairy_vignette" type="Node2D" parent="YSort"]
+position = Vector2( 2579.42, 1336.29 )
 
-[node name="shadowed_pines5" parent="YSort/pinearray" instance=ExtResource( 11 )]
-modulate = Color( 0.313726, 0.392157, 0.643137, 1 )
-margin_left = -3594.55
-margin_top = -716.653
-margin_right = 229.451
-margin_bottom = -167.654
+[node name="shrooms" type="YSort" parent="YSort/fairy_vignette"]
 
-[node name="shadowed_pines3" parent="YSort/pinearray" instance=ExtResource( 11 )]
-modulate = Color( 0.313726, 0.392157, 0.643137, 1 )
-margin_left = -3468.56
-margin_top = -632.118
-margin_right = 367.441
-margin_bottom = -83.1183
+[node name="mushroom_0-min" type="Sprite" parent="YSort/fairy_vignette/shrooms"]
+position = Vector2( -33.4458, 16.418 )
+texture = ExtResource( 28 )
 
-[node name="shadowed_pines" parent="YSort/pinearray" instance=ExtResource( 11 )]
-margin_left = -3384.97
-margin_top = -485.854
-margin_right = 447.031
-margin_bottom = 63.1457
+[node name="mushroom_1-min" type="Sprite" parent="YSort/fairy_vignette/shrooms"]
+position = Vector2( 0.789307, 23.714 )
+texture = ExtResource( 29 )
 
-[node name="CreepyTrees" type="Node2D" parent="YSort/pinearray"]
-position = Vector2( 277.311, -224.652 )
+[node name="mushroom_0-min2" type="Sprite" parent="YSort/fairy_vignette/shrooms"]
+position = Vector2( 41.759, 23.714 )
+texture = ExtResource( 28 )
 
-[node name="Trees3" type="TextureRect" parent="YSort/pinearray/CreepyTrees"]
-modulate = Color( 0.588235, 0.564706, 0.592157, 1 )
-margin_left = -2179.71
-margin_top = -676.772
-margin_right = -399.711
-margin_bottom = 445.228
-texture = ExtResource( 16 )
-stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="mushroom_1-min2" type="Sprite" parent="YSort/fairy_vignette/shrooms"]
+position = Vector2( -89.0078, -19.5007 )
+texture = ExtResource( 29 )
 
-[node name="pines2" parent="YSort/pinearray" instance=ExtResource( 1 )]
-modulate = Color( 0.839216, 0.862745, 1, 1 )
-margin_left = -3239.66
-margin_top = -433.901
-margin_right = 371.341
-margin_bottom = 115.099
+[node name="mushroom_3-min" type="Sprite" parent="YSort/fairy_vignette/shrooms"]
+position = Vector2( -63.1912, -11.0823 )
+texture = ExtResource( 27 )
 
-[node name="pinearray2" type="Node2D" parent="YSort"]
-position = Vector2( 3063.3, 801.318 )
-rotation = 3.14159
-scale = Vector2( 1, -1 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="mushroom_5-min" type="Sprite" parent="YSort/fairy_vignette/shrooms"]
+position = Vector2( 91.1475, -26.2356 )
+texture = ExtResource( 24 )
 
-[node name="shadowed_pines5" parent="YSort/pinearray2" instance=ExtResource( 11 )]
-modulate = Color( 0.313726, 0.392157, 0.643137, 1 )
-margin_left = -3539.41
-margin_top = -714.789
-margin_right = 284.589
-margin_bottom = -165.79
+[node name="mushroom_4-min" type="Sprite" parent="YSort/fairy_vignette/shrooms"]
+position = Vector2( -18.8538, -112.104 )
+texture = ExtResource( 31 )
 
-[node name="shadowed_pines3" parent="YSort/pinearray2" instance=ExtResource( 11 )]
-modulate = Color( 0.313726, 0.392157, 0.643137, 1 )
-margin_left = -3413.42
-margin_top = -630.254
-margin_right = 422.579
-margin_bottom = -81.2543
+[node name="mushroom_3-min2" type="Sprite" parent="YSort/fairy_vignette/shrooms"]
+position = Vector2( -48.5991, -91.8995 )
+texture = ExtResource( 27 )
 
-[node name="shadowed_pines" parent="YSort/pinearray2" instance=ExtResource( 11 )]
-margin_left = -3329.83
-margin_top = -483.99
-margin_right = 502.169
-margin_bottom = 65.0097
+[node name="mushroom_1-min3" type="Sprite" parent="YSort/fairy_vignette/shrooms"]
+position = Vector2( -87.324, -68.3279 )
+texture = ExtResource( 29 )
 
-[node name="CreepyTrees" type="Node2D" parent="YSort/pinearray2"]
-position = Vector2( 332.449, -222.788 )
+[node name="mushroom_0-min3" type="Sprite" parent="YSort/fairy_vignette/shrooms"]
+position = Vector2( 35.0242, -84.6035 )
+texture = ExtResource( 28 )
 
-[node name="Trees3" type="TextureRect" parent="YSort/pinearray2/CreepyTrees"]
-modulate = Color( 0.588235, 0.564706, 0.592157, 1 )
-margin_left = -2179.71
-margin_top = -676.772
-margin_right = -399.711
-margin_bottom = 445.228
-texture = ExtResource( 16 )
-stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="mushroom_1-min4" type="Sprite" parent="YSort/fairy_vignette/shrooms"]
+position = Vector2( 62.5247, -62.1543 )
+texture = ExtResource( 29 )
 
-[node name="pines2" parent="YSort/pinearray2" instance=ExtResource( 1 )]
-modulate = Color( 0.839216, 0.862745, 1, 1 )
-margin_left = -3184.52
-margin_top = -432.037
-margin_right = 426.48
-margin_bottom = 116.963
+[node name="mushroom_3-min3" type="Sprite" parent="YSort/fairy_vignette/shrooms"]
+position = Vector2( 75.4329, -7.15369 )
+texture = ExtResource( 27 )
 
-[node name="sausages" type="YSort" parent="YSort"]
-
-[node name="watersausage" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1702, 602 )
-
-[node name="watersausage2" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1744.43, 608.364 )
-
-[node name="watersausage3" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1784.73, 608.364 )
-
-[node name="watersausage4" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1822.21, 602.707 )
-
-[node name="watersausage5" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1861.81, 583.615 )
-
-[node name="watersausage6" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1897.16, 567.352 )
-
-[node name="watersausage7" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1927.57, 543.31 )
-
-[node name="watersausage8" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1942.42, 508.662 )
-
-[node name="watersausage24" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1583.91, 446.437 )
-
-[node name="watersausage31" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1594.61, 410.166 )
-
-[node name="watersausage32" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1591.64, 387.571 )
-
-[node name="watersausage33" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1590.45, 356.652 )
-
-[node name="watersausage34" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1592.23, 326.922 )
-
-[node name="watersausage35" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1596.99, 295.408 )
-
-[node name="watersausage36" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1620.18, 284.705 )
-
-[node name="watersausage37" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1652.88, 276.975 )
-
-[node name="watersausage38" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1683.8, 258.542 )
-
-[node name="watersausage39" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1715.32, 253.191 )
-
-[node name="watersausage40" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1747.43, 253.191 )
-
-[node name="watersausage41" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1783.1, 253.191 )
-
-[node name="watersausage42" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1831.86, 254.38 )
-
-[node name="watersausage43" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1869.32, 268.651 )
-
-[node name="watersausage44" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1897.86, 273.407 )
-
-[node name="watersausage45" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1943.05, 294.813 )
-
-[node name="watersausage46" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1913.92, 284.11 )
-
-[node name="watersausage47" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1954.94, 318.597 )
-
-[node name="watersausage48" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1960.89, 348.328 )
-
-[node name="watersausage49" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1962.08, 378.058 )
-
-[node name="watersausage50" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1963.27, 408.382 )
-
-[node name="watersausage51" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1963.27, 438.707 )
-
-[node name="watersausage52" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1959.11, 465.464 )
-
-[node name="watersausage53" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1954.35, 481.519 )
-
-[node name="watersausage25" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1583.91, 477.55 )
-
-[node name="watersausage26" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1589.57, 505.834 )
-
-[node name="watersausage27" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1589.85, 550.275 )
-
-[node name="watersausage28" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1618.32, 589.074 )
-
-[node name="watersausage29" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1653.25, 603.994 )
-
-[node name="watersausage30" parent="YSort/sausages" instance=ExtResource( 10 )]
-position = Vector2( 1681.59, 592.687 )
-
-[node name="sausages2" type="YSort" parent="YSort"]
-position = Vector2( 89.135, -544.901 )
-
-[node name="watersausage" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1702, 602 )
-
-[node name="watersausage2" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1744.43, 608.364 )
-
-[node name="watersausage3" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1784.73, 608.364 )
-
-[node name="watersausage4" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1822.21, 602.707 )
-
-[node name="watersausage5" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1861.81, 583.615 )
-
-[node name="watersausage6" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1897.16, 567.352 )
-
-[node name="watersausage7" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1927.57, 543.31 )
-
-[node name="watersausage8" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1942.42, 508.662 )
-
-[node name="watersausage24" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1583.91, 446.437 )
-
-[node name="watersausage31" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1594.61, 410.166 )
-
-[node name="watersausage32" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1591.64, 387.571 )
-
-[node name="watersausage33" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1590.45, 356.652 )
-
-[node name="watersausage34" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1592.23, 326.922 )
-
-[node name="watersausage35" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1596.99, 295.408 )
-
-[node name="watersausage36" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1620.18, 284.705 )
-
-[node name="watersausage37" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1652.88, 276.975 )
-
-[node name="watersausage38" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1683.8, 258.542 )
-
-[node name="watersausage39" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1715.32, 253.191 )
-
-[node name="watersausage40" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1747.43, 253.191 )
-
-[node name="watersausage41" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1783.1, 253.191 )
-
-[node name="watersausage42" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1831.86, 254.38 )
-
-[node name="watersausage43" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1869.32, 268.651 )
-
-[node name="watersausage44" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1897.86, 273.407 )
-
-[node name="watersausage45" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1943.05, 294.813 )
-
-[node name="watersausage46" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1913.92, 284.11 )
-
-[node name="watersausage47" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1954.94, 318.597 )
-
-[node name="watersausage48" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1960.89, 348.328 )
-
-[node name="watersausage49" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1962.08, 378.058 )
-
-[node name="watersausage50" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1963.27, 408.382 )
-
-[node name="watersausage51" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1963.27, 438.707 )
-
-[node name="watersausage52" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1959.11, 465.464 )
-
-[node name="watersausage53" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1954.35, 481.519 )
-
-[node name="watersausage25" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1583.91, 477.55 )
-
-[node name="watersausage26" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1589.57, 505.834 )
-
-[node name="watersausage27" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1589.85, 550.275 )
-
-[node name="watersausage28" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1618.32, 589.074 )
-
-[node name="watersausage29" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1653.25, 603.994 )
-
-[node name="watersausage30" parent="YSort/sausages2" instance=ExtResource( 10 )]
-position = Vector2( 1681.59, 592.687 )
-
-[node name="topbank" type="YSort" parent="YSort"]
-position = Vector2( 1806.27, -454.166 )
-
-[node name="watersausage9" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( -449.52, -589.847 )
-
-[node name="watersausage10" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( -399.574, -587.468 )
-
-[node name="watersausage11" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( -370.983, -603.445 )
-
-[node name="watersausage12" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( -348.279, -626.99 )
-
-[node name="watersausage13" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( -323.893, -622.786 )
-
-[node name="watersausage14" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( -286.894, -623.627 )
-
-[node name="watersausage15" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( -254.939, -611.854 )
-
-[node name="watersausage16" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( -214.576, -614.377 )
-
-[node name="watersausage17" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( -185.986, -614.377 )
-
-[node name="watersausage18" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( -162.441, -621.104 )
-
-[node name="watersausage19" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( -123.76, -622.786 )
-
-[node name="watersausage20" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( -89.2828, -622.786 )
-
-[node name="watersausage21" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( -48.079, -622.786 )
-
-[node name="watersausage22" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( -11.9203, -622.786 )
-
-[node name="watersausage23" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( 10.7839, -622.786 )
-
-[node name="watersausage24" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( 53.6697, -622.786 )
-
-[node name="watersausage25" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( 88.9873, -622.786 )
-
-[node name="watersausage26" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( 119.26, -603.445 )
-
-[node name="watersausage27" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( 150.373, -600.082 )
-
-[node name="watersausage28" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( 190.736, -611.013 )
-
-[node name="watersausage29" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( 233.621, -617.741 )
-
-[node name="watersausage30" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( 278.189, -612.695 )
-
-[node name="watersausage31" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( 316.029, -605.968 )
-
-[node name="watersausage32" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( 355.552, -608.491 )
-
-[node name="watersausage33" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( 394.233, -622.786 )
-
-[node name="watersausage34" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( 440.482, -620.263 )
-
-[node name="watersausage35" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( 478.322, -608.491 )
-
-[node name="watersausage36" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( 516.163, -602.604 )
-
-[node name="watersausage37" parent="YSort/topbank" instance=ExtResource( 10 )]
-position = Vector2( 549.799, -602.604 )
-
-[node name="sausages3" type="YSort" parent="YSort"]
-position = Vector2( 104.271, -1056.17 )
-
-[node name="watersausage" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1702, 602 )
-
-[node name="watersausage2" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1744.43, 608.364 )
-
-[node name="watersausage3" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1784.73, 608.364 )
-
-[node name="watersausage4" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1822.21, 602.707 )
-
-[node name="watersausage5" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1861.81, 583.615 )
-
-[node name="watersausage6" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1897.16, 567.352 )
-
-[node name="watersausage7" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1927.57, 543.31 )
-
-[node name="watersausage8" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1942.42, 508.662 )
-
-[node name="watersausage24" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1583.91, 446.437 )
-
-[node name="watersausage31" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1594.61, 410.166 )
-
-[node name="watersausage32" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1591.64, 387.571 )
-
-[node name="watersausage33" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1590.45, 356.652 )
-
-[node name="watersausage34" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1592.23, 326.922 )
-
-[node name="watersausage35" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1596.99, 295.408 )
-
-[node name="watersausage36" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1620.18, 284.705 )
-
-[node name="watersausage37" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1652.88, 276.975 )
-
-[node name="watersausage38" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1683.8, 258.542 )
-
-[node name="watersausage39" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1715.32, 253.191 )
-
-[node name="watersausage40" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1747.43, 253.191 )
-
-[node name="watersausage41" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1783.1, 253.191 )
-
-[node name="watersausage42" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1831.86, 254.38 )
-
-[node name="watersausage43" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1869.32, 268.651 )
-
-[node name="watersausage44" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1897.86, 273.407 )
-
-[node name="watersausage45" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1943.05, 294.813 )
-
-[node name="watersausage46" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1913.92, 284.11 )
-
-[node name="watersausage47" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1954.94, 318.597 )
-
-[node name="watersausage48" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1960.89, 348.328 )
-
-[node name="watersausage49" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1962.08, 378.058 )
-
-[node name="watersausage50" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1963.27, 408.382 )
-
-[node name="watersausage51" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1963.27, 438.707 )
-
-[node name="watersausage52" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1959.11, 465.464 )
-
-[node name="watersausage53" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1954.35, 481.519 )
-
-[node name="watersausage25" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1583.91, 477.55 )
-
-[node name="watersausage26" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1589.57, 505.834 )
-
-[node name="watersausage27" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1589.85, 550.275 )
-
-[node name="watersausage28" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1618.32, 589.074 )
-
-[node name="watersausage29" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1653.25, 603.994 )
-
-[node name="watersausage30" parent="YSort/sausages3" instance=ExtResource( 10 )]
-position = Vector2( 1681.59, 592.687 )
-
-[node name="PinesAround" type="YSort" parent="YSort"]
-modulate = Color( 0.741176, 0.662745, 0.788235, 1 )
-
-[node name="SinglePine" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 859.099, 417.315 )
-
-[node name="SinglePine2" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 837.235, 324.817 )
-
-[node name="SinglePine3" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 855.735, 170.092 )
-
-[node name="SinglePine4" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 771.645, 163.364 )
-
-[node name="SinglePine5" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 699.328, 296.226 )
-
-[node name="SinglePine6" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 751.464, 318.089 )
-
-[node name="SinglePine7" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 761.555, 47.3207 )
-
-[node name="SinglePine8" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 709.419, 80.9565 )
-
-[node name="SinglePine9" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 682.511, -90.5863 )
-
-[node name="SinglePine10" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 775.009, -154.494 )
-
-[node name="SinglePine11" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 704.374, -218.403 )
-
-[node name="SinglePine12" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 769.964, -326.037 )
-
-[node name="SinglePine13" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 645.511, -334.446 )
-
-[node name="SinglePine14" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 732.964, -443.763 )
-
-[node name="SinglePine15" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 753.146, -554.761 )
-
-[node name="SinglePine16" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 664.011, -494.217 )
-
-[node name="SinglePine17" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 657.284, -576.624 )
-
-[node name="SinglePine18" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 726.237, -653.987 )
-
-[node name="SinglePine19" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 780.055, -684.259 )
-
-[node name="SinglePine20" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 680.829, -739.758 )
-
-[node name="SinglePine21" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 741.373, -791.894 )
-
-[node name="SinglePine22" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 801.918, -864.211 )
-
-[node name="SinglePine23" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 695.965, -897.847 )
-
-[node name="SinglePine24" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 583.285, -650.623 )
-
-[node name="SinglePine25" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 531.149, -467.308 )
-
-[node name="SinglePine26" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 549.649, -331.083 )
-
-[node name="SinglePine27" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 485.741, -169.631 )
-
-[node name="SinglePine28" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 547.967, -90.5863 )
-
-[node name="SinglePine29" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 482.377, 94.4108 )
-
-[node name="SinglePine30" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 563.103, 124.683 )
-
-[node name="SinglePine31" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 442.014, 272.681 )
-
-[node name="SinglePine32" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 442.014, 272.681 )
-
-[node name="SinglePine33" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 336.061, 131.41 )
-
-[node name="SinglePine34" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 403.333, -141.04 )
-
-[node name="SinglePine35" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 327.652, -241.948 )
-
-[node name="SinglePine36" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 416.787, -374.809 )
-
-[node name="SinglePine37" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 374.742, -511.034 )
-
-[node name="SinglePine38" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 490.786, -583.352 )
-
-[node name="SinglePine39" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 436.969, -706.122 )
-
-[node name="SinglePine40" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 436.969, -706.122 )
-
-[node name="SinglePine41" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 521.058, -790.212 )
-
-[node name="SinglePine42" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 470.604, -862.529 )
-
-[node name="SinglePine43" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 584.966, -926.437 )
-
-[node name="SinglePine44" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 846.592, -1107.2 )
-
-[node name="SinglePine45" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 970.269, -1145.25 )
-
-[node name="SinglePine46" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 758.59, -1111.95 )
-
-[node name="SinglePine47" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 872.754, -1180.93 )
-
-[node name="SinglePine48" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 627.777, -1152.39 )
-
-[node name="SinglePine49" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 1108.22, -1145.25 )
-
-[node name="SinglePine50" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 1234.27, -1135.74 )
-
-[node name="SinglePine51" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 760.969, -1273.69 )
-
-[node name="SinglePine52" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 689.616, -1333.15 )
-
-[node name="SinglePine53" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 2444.89, -1140.49 )
-
-[node name="SinglePine54" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 2573.32, -1114.33 )
-
-[node name="SinglePine55" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 2687.48, -1085.79 )
-
-[node name="SinglePine56" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 2785, -1023.95 )
-
-[node name="SinglePine57" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 2887.27, -1021.57 )
-
-[node name="SinglePine58" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 2825.43, -1123.85 )
-
-[node name="SinglePine59" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 2739.81, -1204.71 )
-
-[node name="SinglePine60" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 2628.02, -1228.5 )
-
-[node name="SinglePine61" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 2870.62, -1202.33 )
-
-[node name="SinglePine62" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 2972.89, -1088.17 )
-
-[node name="SinglePine63" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 3044.25, -990.654 )
-
-[node name="SinglePine64" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 3096.57, -935.951 )
-
-[node name="SinglePine65" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 530.262, -1166.66 )
-
-[node name="SinglePine66" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 877.51, -1352.17 )
-
-[node name="SinglePine67" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 1013.08, -1335.52 )
-
-[node name="SinglePine68" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 1160.54, -1330.77 )
-
-[node name="SinglePine69" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 2532.89, -1261.79 )
-
-[node name="SinglePine70" parent="YSort/PinesAround" instance=ExtResource( 17 )]
-position = Vector2( 2701.75, -1316.5 )
-
-[node name="PinesAround2" type="YSort" parent="YSort"]
-modulate = Color( 0.686275, 0.670588, 0.67451, 1 )
-position = Vector2( 3612.81, 104.65 )
-scale = Vector2( -1, 1 )
-
-[node name="SinglePine" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 859.099, 417.315 )
-
-[node name="SinglePine2" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 837.235, 324.817 )
-
-[node name="SinglePine4" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 758.564, 151.472 )
-
-[node name="SinglePine5" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 699.328, 296.226 )
-
-[node name="SinglePine6" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 751.464, 318.089 )
-
-[node name="SinglePine7" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 761.555, 47.3207 )
-
-[node name="SinglePine8" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 709.419, 80.9565 )
-
-[node name="SinglePine9" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 682.511, -90.5863 )
-
-[node name="SinglePine10" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 775.009, -154.494 )
-
-[node name="SinglePine11" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 704.374, -218.403 )
-
-[node name="SinglePine12" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 769.964, -326.037 )
-
-[node name="SinglePine13" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 645.511, -334.446 )
-
-[node name="SinglePine14" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 732.964, -443.763 )
-
-[node name="SinglePine15" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 753.146, -554.761 )
-
-[node name="SinglePine16" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 664.011, -494.217 )
-
-[node name="SinglePine17" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 657.284, -576.624 )
-
-[node name="SinglePine18" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 726.237, -653.987 )
-
-[node name="SinglePine19" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 780.055, -684.259 )
-
-[node name="SinglePine20" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 680.829, -739.758 )
-
-[node name="SinglePine21" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 741.373, -791.894 )
-
-[node name="SinglePine22" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 801.918, -864.211 )
-
-[node name="SinglePine23" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 695.965, -897.847 )
-
-[node name="SinglePine24" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 583.285, -650.623 )
-
-[node name="SinglePine25" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 531.149, -467.308 )
-
-[node name="SinglePine26" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 549.649, -331.083 )
-
-[node name="SinglePine27" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 485.741, -169.631 )
-
-[node name="SinglePine28" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 547.967, -90.5863 )
-
-[node name="SinglePine29" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 482.377, 94.4108 )
-
-[node name="SinglePine30" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 563.103, 124.683 )
-
-[node name="SinglePine31" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 442.014, 272.681 )
-
-[node name="SinglePine32" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 442.014, 272.681 )
-
-[node name="SinglePine33" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 336.061, 131.41 )
-
-[node name="SinglePine34" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 403.333, -141.04 )
-
-[node name="SinglePine35" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 327.652, -241.948 )
-
-[node name="SinglePine36" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 416.787, -374.809 )
-
-[node name="SinglePine37" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 374.742, -511.034 )
-
-[node name="SinglePine38" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 490.786, -583.352 )
-
-[node name="SinglePine39" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 436.969, -706.122 )
-
-[node name="SinglePine40" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 436.969, -706.122 )
-
-[node name="SinglePine41" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 521.058, -790.212 )
-
-[node name="SinglePine42" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 470.604, -862.529 )
-
-[node name="SinglePine43" parent="YSort/PinesAround2" instance=ExtResource( 17 )]
-position = Vector2( 584.966, -926.437 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/fairy_vignette"]
+position = Vector2( 20.7656, -154.339 )
+frames = SubResource( 3 )
+playing = true
 
 [node name="FGStuff" type="Node2D" parent="."]
-position = Vector2( 644.2, 716.689 )
+position = Vector2( 646.578, 972.934 )
 
 [node name="CreepyTreeGroup" type="Node2D" parent="FGStuff"]
 position = Vector2( 307.269, 230.901 )
 
 [node name="Trees4" type="TextureRect" parent="FGStuff/CreepyTreeGroup"]
+visible = false
 modulate = Color( 0.588235, 0.564706, 0.592157, 1 )
 margin_left = 1833.0
 margin_top = -802.0
@@ -1355,7 +516,7 @@ __meta__ = {
 }
 
 [node name="Trees5" type="TextureRect" parent="FGStuff/CreepyTreeGroup"]
-modulate = Color( 0.996078, 0.905882, 0.772549, 1 )
+modulate = Color( 0.996078, 0.976471, 0.721569, 1 )
 margin_left = 1892.92
 margin_top = -755.486
 margin_right = 6633.92
@@ -1400,10 +561,10 @@ position = Vector2( 798.062, -121.755 )
 texture = ExtResource( 8 )
 
 [node name="pines7" parent="FGStuff" instance=ExtResource( 11 )]
-margin_left = 1673.0
-margin_top = 119.636
+margin_left = 2183.0
+margin_top = 120.0
 margin_right = 6932.0
-margin_bottom = 668.636
+margin_bottom = 669.0
 
 [node name="pines2" parent="FGStuff" instance=ExtResource( 11 )]
 margin_left = -1484.45
@@ -1420,27 +581,27 @@ margin_bottom = 949.0
 [node name="pines4" parent="FGStuff" instance=ExtResource( 11 )]
 margin_left = -1280.0
 margin_top = 536.0
-margin_right = 3092.0
+margin_right = 6341.0
 margin_bottom = 1085.0
 
 [node name="pines5" parent="FGStuff" instance=ExtResource( 11 )]
 modulate = Color( 0.239216, 0.360784, 0.423529, 1 )
-margin_left = -927.553
-margin_top = 638.321
-margin_right = 2979.45
-margin_bottom = 1187.32
+margin_left = -928.0
+margin_top = 638.0
+margin_right = 6753.0
+margin_bottom = 1187.0
 
 [node name="pines6" parent="FGStuff" instance=ExtResource( 11 )]
 modulate = Color( 0.223529, 0.239216, 0.298039, 1 )
-margin_left = -1060.57
-margin_top = 786.687
-margin_right = 2846.43
-margin_bottom = 1335.69
+margin_left = -1061.0
+margin_top = 787.0
+margin_right = 6001.0
+margin_bottom = 1336.0
 
 [node name="ColorRect" type="ColorRect" parent="FGStuff"]
 margin_left = -2751.0
 margin_top = -1429.0
-margin_right = -853.0
+margin_right = -513.0
 margin_bottom = 2188.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
@@ -1448,88 +609,68 @@ __meta__ = {
 }
 
 [node name="ColorRect2" type="ColorRect" parent="FGStuff"]
-margin_left = 2919.0
-margin_top = -1513.0
-margin_right = 4817.0
-margin_bottom = 2719.0
+margin_left = 5192.78
+margin_top = -1661.0
+margin_right = 7090.78
+margin_bottom = 2571.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="vignette_fade2" type="Sprite" parent="."]
-position = Vector2( 534.875, 342.396 )
-scale = Vector2( 0.860776, 2.65022 )
+position = Vector2( 407.755, 1310.04 )
+scale = Vector2( 0.303682, 1.92705 )
 texture = ExtResource( 18 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="vignette_fade3" type="Sprite" parent="."]
-position = Vector2( 3229.15, 339.831 )
+position = Vector2( 5365.73, 1421.83 )
 rotation = 3.14159
-scale = Vector2( 0.924137, -2.89009 )
+scale = Vector2( 0.536974, -2.29474 )
 texture = ExtResource( 18 )
 
 [node name="LeftSP" parent="." instance=ExtResource( 14 )]
-position = Vector2( 416.758, 1074.96 )
+position = Vector2( 521.93, 1317.58 )
 
 [node name="RightSP" parent="." instance=ExtResource( 14 )]
-position = Vector2( 3427.71, 1010.78 )
+position = Vector2( 5307.15, 1332.58 )
 
 [node name="collisions" type="Node2D" parent="."]
+position = Vector2( 2.37842, 256.245 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="collisions"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
-position = Vector2( -91.9669, 328.423 )
-polygon = PoolVector2Array( -208.067, 1110.63, 4558.64, 1124.66, 4146.94, 1355.88, -479.801, 1380.32 )
+position = Vector2( -91.9669, 321.696 )
+polygon = PoolVector2Array( -208.067, 1110.63, 6469.5, 1108.44, 4146.94, 1355.88, -479.801, 1380.32 )
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
-position = Vector2( -225.089, -565.098 )
-polygon = PoolVector2Array( 1459.86, 1364.31, 1405.27, 1456.84, -568.401, 1432.07 )
+position = Vector2( -258.735, -573.912 )
+polygon = PoolVector2Array( 2159.68, 1168.63, 5964.4, 1412.05, 3372.03, 1357.92, 3113.03, 1332.7, 2875.9, 1371.38, 2148.69, 1369.02, -70.6005, 1353.55 )
 
-[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
-position = Vector2( 2042.74, -1066.29 )
-polygon = PoolVector2Array( 1849.55, 1931.88, 628.596, 1956.83, 532.271, 1862.89 )
-
-[node name="Water" parent="collisions" instance=ExtResource( 15 )]
-
-[node name="CollisionPolygon2D" parent="collisions/Water" index="0"]
-polygon = PoolVector2Array( 2838.25, 746.99, 2828.55, 345.056, 1979.46, 454.463, 1939.02, 549.6, 1827.24, 623.33, 1677.4, 635.223, 1579.88, 597.168, 1558.48, 459.22, 863.979, 430.679, 864.33, 713.354 )
-
-[node name="Water2" parent="collisions" instance=ExtResource( 15 )]
-
-[node name="CollisionPolygon2D" parent="collisions/Water2" index="0"]
-position = Vector2( 0.00012207, 1.68183 )
-polygon = PoolVector2Array( 1550.39, 471.587, 1584.89, 301.154, 1746.3, 221.884, 1968.3, 262.247, 1973.75, 459.695, 2892.04, 380.996, 2824.1, -1066.02, 2040.28, -254.4, 2053.73, -8.85816, 1885.97, 87.6971, 1734.61, 55.743, 1660.19, -40.8122, 1671.96, -256.082, 1832.41, -340.424, 2499.41, -158.538, 2320.13, -555.104, 1786.39, -423.861, 782.399, -1127.91, 808.299, 419.677 )
-
-[node name="Water3" parent="collisions" instance=ExtResource( 15 )]
-
-[node name="CollisionPolygon2D" parent="collisions/Water3" index="0"]
-position = Vector2( -6.72729, -85.7715 )
-polygon = PoolVector2Array( 859.762, -949.638, 2795.51, -937.865, 2701.28, -627.358, 2065.84, -386.589, 2077.34, -595.404, 2050.43, -714.812, 1890.66, -748.448, 1712.33, -713.53, 1670.28, -632.804, 1680.71, -357.998 )
+[node name="PlayerDetectionZone" parent="collisions" instance=ExtResource( 19 )]
+position = Vector2( 1446.34, 965.349 )
 
 [node name="RightTZ" parent="." instance=ExtResource( 26 )]
-position = Vector2( 2763.2, 852.843 )
+position = Vector2( 2765.58, 1109.09 )
 
 [node name="CollisionShape2D" parent="RightTZ" index="0"]
-position = Vector2( 860.098, 284.963 )
+position = Vector2( 2763.89, 217.692 )
 shape = SubResource( 1 )
 
 [node name="LeftTZ" parent="." instance=ExtResource( 26 )]
-position = Vector2( 769.611, 201.061 )
+position = Vector2( 771.99, 457.306 )
 
 [node name="CollisionShape2D" parent="LeftTZ" index="0"]
 position = Vector2( -525.196, 867.668 )
 shape = SubResource( 2 )
 
+[node name="HideSpot" type="Position2D" parent="."]
+position = Vector2( 1915.94, -1093.16 )
+
 [connection signal="transition_triggered" from="RightTZ" to="." method="_on_RightTZ_transition_triggered"]
 [connection signal="transition_triggered" from="LeftTZ" to="." method="_on_LeftTZ_transition_triggered"]
 
 [editable path="PuppyCamera"]
-[editable path="collisions/Water"]
-[editable path="collisions/Water2"]
-[editable path="collisions/Water3"]
 [editable path="RightTZ"]
 [editable path="LeftTZ"]

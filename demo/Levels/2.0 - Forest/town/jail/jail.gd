@@ -6,17 +6,16 @@ onready var topSP = $topSP
 onready var bottomSP = $bottomSP
 onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 onready var camera = $PuppyCamera
-onready var jail_door = $YSort/jail_door
 
 func _ready():
 	var player_position = bottomSP.global_position
 	var orientation = Vector2.UP
-	Jukebox.play_song("res://tunes/deserted_town_instrumental.wav")
+	#Jukebox.play_song("res://tunes/deserted_town_instrumental.wav")
 	match stats.spawn_metadata:
 		"top":
 			player_position = topSP.global_position
 			orientation = Vector2.DOWN
-		"bottom":
+		"door":
 			player_position = bottomSP.global_position
 			orientation = Vector2.UP
 	stats.spawn_player(
@@ -24,8 +23,7 @@ func _ready():
 		"../../../PuppyCamera", player_position, orientation)
 
 func _on_topTZ_transition_triggered():
-	Transition.go_to("res://Levels/2.0 - Forest/town/mayors_house/mayors_house_upstairs.tscn", "bottom")
+	Transition.go_to("res://Levels/2.0 - Forest/town/jail/unicorn_room.tscn", "bottom")
 
-
-func _on_HurtBox_area_entered(area):
-	jail_door.close()
+func _on_bottomTZ_transition_triggered():
+	Transition.go_to("res://Levels/2.0 - Forest/Town.tscn", "prison")
