@@ -54,8 +54,8 @@ onready var nextButton = $Panel/MarginContainer/VBoxContainer/PlayerChoicesBotto
 onready var textLabel = $Panel/MarginContainer/VBoxContainer/DialogueHBoxContainer/Text
 onready var playerChoices = $Panel/MarginContainer/VBoxContainer/PlayerChoicesBottom
 onready var panel = $Panel
-onready var portrait = $Panel/Panel2/CenterContainer/Portrait
-onready var portrait_panel = $Panel/Panel2
+onready var portrait = $Panel2/CenterContainer/Portrait
+onready var portrait_panel = $Panel2
 onready var audio = $AudioStreamPlayer
 onready var animation = $AnimationPlayer
 
@@ -79,6 +79,7 @@ func debugprint(text):
 func _ready():
 	init(dialogue2)
 	play_up_sound()
+	#top_mode()
 	portrait_panel.visible = false
 	# warning-ignore:return_value_discarded
 	self.connect("print_next_character", self, "print_next_character")
@@ -89,20 +90,20 @@ func bottom_mode():
 	panel.margin_right = 1820
 	panel.margin_left = 95
 	panel.margin_top = 640
-#	portrait_panel.margin_left = 95
-#	portrait_panel.margin_top = 322
-#	portrait_panel.margin_right = 390
-#	portrait_panel.margin_bottom = 603
+	portrait_panel.margin_left = 1432
+	portrait_panel.margin_top = 323
+	portrait_panel.margin_right = 1773
+	portrait_panel.margin_bottom = 596
 	
 func top_mode():
 	panel.margin_bottom = 450
 	panel.margin_right = 1820
 	panel.margin_left = 95
 	panel.margin_top = 70
-#	portrait_panel.margin_left = 95
-#	portrait_panel.margin_top = 725
-#	portrait_panel.margin_right = 390
-#	portrait_panel.margin_bottom = 1006
+	portrait_panel.margin_left = 1432
+	portrait_panel.margin_top = 500
+	portrait_panel.margin_right = 1773
+	portrait_panel.margin_bottom = 773
 
 # Set up with the specified text, which should be an array
 # of two element array pairs [tag, content].

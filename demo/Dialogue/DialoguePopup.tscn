@@ -66,6 +66,35 @@ tracks/2/keys = {
 pause_mode = 2
 script = ExtResource( 1 )
 
+[node name="Panel2" type="Panel" parent="."]
+margin_left = 1432.99
+margin_top = 323.0
+margin_right = 1773.99
+margin_bottom = 596.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel2"]
+margin_right = 335.0
+margin_bottom = 261.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Portrait" type="TextureRect" parent="Panel2/CenterContainer"]
+margin_right = 335.0
+margin_bottom = 261.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Panel" type="Panel" parent="."]
 margin_left = 96.5952
 margin_top = 628.19
@@ -124,36 +153,6 @@ margin_right = 40.0
 margin_bottom = 104.0
 disabled = true
 toggle_mode = true
-
-[node name="Panel2" type="Panel" parent="Panel"]
-visible = false
-margin_left = 1336.39
-margin_top = -305.052
-margin_right = 1677.39
-margin_bottom = -32.052
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CenterContainer" type="CenterContainer" parent="Panel/Panel2"]
-margin_right = 335.0
-margin_bottom = 261.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Portrait" type="TextureRect" parent="Panel/Panel2/CenterContainer"]
-margin_right = 335.0
-margin_bottom = 261.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource( 3 )
-flip_h = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
