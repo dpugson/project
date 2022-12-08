@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://tunes/mixkiteffects/mixkit-rain-loop-1250.wav" type="AudioStream" id=1]
 [ext_resource path="res://tunes/mixkiteffects/mixkit-mid-strength-single-thunder-1298.wav" type="AudioStream" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://sprites/L3_forest/tangle_fg.png" type="Texture" id=5]
 [ext_resource path="res://tunes/mixkiteffects/mixkit-strong-close-thunder-explosion-1300.wav" type="AudioStream" id=6]
 [ext_resource path="res://tunes/mixkiteffects/mixkit-strong-wind-1156.wav" type="AudioStream" id=7]
+[ext_resource path="res://sprites/L3_forest/foyer/foyer_vignette_fade_white-min.png" type="Texture" id=8]
 
 [sub_resource type="Curve" id=1]
 min_value = -80.0
@@ -111,6 +112,7 @@ _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.152139, -26.3063 ), 0.0, 0
 position = Vector2( -1432.21, -1693.36 )
 
 [node name="snowy" type="Node2D" parent="."]
+visible = false
 
 [node name="sky2" type="ColorRect" parent="snowy"]
 margin_left = 1515.21
@@ -466,3 +468,68 @@ angle_random = 1.0
 scale_amount = 6.0
 scale_amount_random = 0.3
 color = Color( 0.423529, 0.427451, 0.439216, 1 )
+
+[node name="fall" type="Node2D" parent="."]
+
+[node name="sky" type="ColorRect" parent="fall"]
+margin_left = 1515.21
+margin_top = 542.361
+margin_right = 2123.21
+margin_bottom = 775.361
+color = Color( 0.960784, 0.576471, 0.298039, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="trees" type="Node2D" parent="fall"]
+position = Vector2( 1432.21, 1693.36 )
+scale = Vector2( 0.789658, 0.789658 )
+
+[node name="foyer_vignette_fade_white-min" type="Sprite" parent="fall/trees"]
+modulate = Color( 0.133333, 0.298039, 0.309804, 0.847059 )
+position = Vector2( 487.436, -1370.67 )
+rotation = -4.6992
+scale = Vector2( 0.18353, 0.394925 )
+texture = ExtResource( 8 )
+
+[node name="foyer_vignette_fade_white-min2" type="Sprite" parent="fall/trees"]
+modulate = Color( 0.509804, 0.215686, 0.141176, 0.984314 )
+position = Vector2( 484.6, -1302.28 )
+rotation = -1.5708
+scale = Vector2( 0.18353, 0.394925 )
+texture = ExtResource( 8 )
+
+[node name="Node2D" type="Node2D" parent="fall/trees"]
+modulate = Color( 0.819608, 0.843137, 0.764706, 1 )
+
+[node name="darktree4" type="Sprite" parent="fall/trees/Node2D"]
+position = Vector2( 755.586, -1289.36 )
+scale = Vector2( 0.435272, 0.435272 )
+texture = ExtResource( 3 )
+
+[node name="darktree5" type="Sprite" parent="fall/trees/Node2D"]
+position = Vector2( 530.72, -1301.23 )
+rotation = 3.14159
+scale = Vector2( 0.567, -0.567 )
+texture = ExtResource( 3 )
+
+[node name="darktree2" type="Sprite" parent="fall/trees/Node2D"]
+position = Vector2( 415.417, -1325.19 )
+scale = Vector2( 0.566655, 0.566655 )
+texture = ExtResource( 3 )
+
+[node name="darktree6" type="Sprite" parent="fall/trees/Node2D"]
+position = Vector2( 300.337, -1296.06 )
+scale = Vector2( 0.566655, 0.566655 )
+texture = ExtResource( 3 )
+
+[node name="Node2D2" type="Node2D" parent="fall/trees"]
+modulate = Color( 0.792157, 0.792157, 0.803922, 1 )
+
+[node name="darktree3" type="Sprite" parent="fall/trees/Node2D2"]
+position = Vector2( 710.491, -1199.37 )
+texture = ExtResource( 3 )
+
+[node name="darktree" type="Sprite" parent="fall/trees/Node2D2"]
+position = Vector2( 282.584, -1167.51 )
+texture = ExtResource( 3 )

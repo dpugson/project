@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://sprites/L3_forest/mansion/small_courtyard/mansion_small_courtyard_fountain_fg-min.png" type="Texture" id=1]
+[ext_resource path="res://sprites/L3_forest/mansion/small_courtyard/mansion_small_courtyard_fountain_bg-min.png" type="Texture" id=2]
+[ext_resource path="res://effects/Ripples.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/L3_forest/mansion/small_courtyard/mansion_small_courtyard_fountain_water_0-min.png" type="Texture" id=4]
+[ext_resource path="res://sprites/L3_forest/mansion/small_courtyard/mansion_small_courtyard_fountain_water3-min.png" type="Texture" id=5]
+[ext_resource path="res://sprites/L3_forest/mansion/small_courtyard/mansion_small_courtyard_fountain_water_2-min.png" type="Texture" id=6]
+[ext_resource path="res://sprites/L3_forest/mansion/small_courtyard/mansion_small_courtyard_fountain_water_1-min.png" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "on",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 65.9345
+
+[node name="Fountain" type="Node2D"]
+position = Vector2( -0.318619, -3.57036 )
+
+[node name="mansion_small_courtyard_fountain_bg-min" type="Sprite" parent="."]
+position = Vector2( 3.68225, -57.5015 )
+texture = ExtResource( 2 )
+
+[node name="Ripples" parent="mansion_small_courtyard_fountain_bg-min" instance=ExtResource( 3 )]
+modulate = Color( 0.784314, 0.847059, 1, 1 )
+position = Vector2( -7.50064, 47.766 )
+scale = Vector2( 0.645872, 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="mansion_small_courtyard_fountain_bg-min"]
+frames = SubResource( 1 )
+animation = "on"
+frame = 2
+playing = true
+
+[node name="mansion_small_courtyard_fountain_fg-min" type="Sprite" parent="."]
+position = Vector2( 3.50798, -56.9151 )
+texture = ExtResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 0, 17.9805 )
+shape = SubResource( 2 )
