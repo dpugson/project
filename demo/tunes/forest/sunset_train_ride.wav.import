@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sunset_train_ride.wav-99d8d6e1a10a7989d2a59651547f2944.sample"
+
+[deps]
+
+source_file="res://tunes/forest/sunset_train_ride.wav"
+dest_files=[ "res://.import/sunset_train_ride.wav-99d8d6e1a10a7989d2a59651547f2944.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=true
+compress/mode=0

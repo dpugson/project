@@ -1,0 +1,979 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://Levels/2.0 - Forest/SinglePine.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Characters/goblins/goblinmonument/ThickTreeTrunkWithCollision.tscn" type="PackedScene" id=2]
+[ext_resource path="res://BG.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/2.0 - Forest/forest rooms/funicularTrackRamp.tscn" type="PackedScene" id=4]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/2.0 - Forest/forest rooms/funicular_base_station.gd" type="Script" id=6]
+[ext_resource path="res://sprites/leafpiletile2dark.png" type="Texture" id=7]
+[ext_resource path="res://sprites/L3_forest/tall_creepy_tree_inside.png" type="Texture" id=8]
+[ext_resource path="res://sprites/L3_forest/vignette_fade.png" type="Texture" id=9]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=10]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=11]
+[ext_resource path="res://sprites/L3_forest/foyer/foyer_vignette_fade_white-min.png" type="Texture" id=12]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=13]
+[ext_resource path="res://sprites/L3_forest/funicular_base_station/funicular_base_station_car_fg-min.png" type="Texture" id=14]
+[ext_resource path="res://sprites/L3_forest/funicular_base_station/funicular_base_station_car_bg-min.png" type="Texture" id=15]
+[ext_resource path="res://Levels/2.0 - Forest/forest rooms/funicularWheel.tscn" type="PackedScene" id=16]
+[ext_resource path="res://sprites/L3_forest/funicular_base_station/funicular_base_station_car_steps-min.png" type="Texture" id=17]
+[ext_resource path="res://Characters/nature/nature_sunrock.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Characters/goblins/goblinmonument/goblinmonument_longleaves.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Characters/goblins/goblinmonument/goblinmonument_flowerbush.tscn" type="PackedScene" id=20]
+[ext_resource path="res://world/leaf_pile.tscn" type="PackedScene" id=21]
+[ext_resource path="res://world/creepy_tree.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Characters/teacups/LadTeacupSprite.tscn" type="PackedScene" id=23]
+[ext_resource path="res://sprites/leafpile/leaf2.png" type="Texture" id=24]
+[ext_resource path="res://sprites/leafpile/leaf3.png" type="Texture" id=25]
+[ext_resource path="res://sprites/leafpile/leaf4.png" type="Texture" id=26]
+[ext_resource path="res://sprites/leafpile/leaf0.png" type="Texture" id=27]
+[ext_resource path="res://sprites/L3_forest/funicular_base_station/funicular_base_station_car_shadow-min.png" type="Texture" id=28]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 97.3441, 49.1887 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 102.439, 37.0089 )
+
+[node name="funicular_base_station" type="Node2D"]
+modulate = Color( 0.843137, 0.85098, 1, 1 )
+script = ExtResource( 6 )
+
+[node name="leftSP" parent="." instance=ExtResource( 10 )]
+position = Vector2( 54.9928, -320.464 )
+
+[node name="rightSP" parent="." instance=ExtResource( 10 )]
+position = Vector2( 658.602, -288.376 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -50
+
+[node name="BG" parent="CanvasLayer" instance=ExtResource( 3 )]
+anchor_left = 0.00239131
+anchor_top = 0.00469925
+anchor_right = 0.00239156
+anchor_bottom = 0.00469925
+margin_left = -4765.57
+margin_top = -5698.09
+margin_right = 9569.43
+margin_bottom = 4595.91
+
+[node name="BG" type="Node2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="BG"]
+margin_left = -963.0
+margin_top = -1056.0
+margin_right = 2298.0
+margin_bottom = 2776.0
+texture = ExtResource( 7 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vignette_fade" type="Sprite" parent="BG"]
+position = Vector2( 1408.99, -428.13 )
+rotation = 1.5708
+scale = Vector2( 0.175322, 1.28858 )
+texture = ExtResource( 9 )
+
+[node name="ColorRect" type="ColorRect" parent="BG/vignette_fade"]
+margin_left = -4034.0
+margin_top = -895.0
+margin_right = -629.0
+margin_bottom = 717.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="foyer_vignette_fade_white-min2" type="Sprite" parent="BG"]
+modulate = Color( 0.647059, 0.0509804, 0.0509804, 1 )
+position = Vector2( 1130.93, -1743.89 )
+rotation = -1.9908
+scale = Vector2( 0.564166, 1.35692 )
+texture = ExtResource( 12 )
+
+[node name="vignette_fade3" type="Sprite" parent="BG"]
+position = Vector2( 673.707, -511.318 )
+rotation = 1.5708
+scale = Vector2( 0.381796, 1.98744 )
+texture = ExtResource( 9 )
+
+[node name="foyer_vignette_fade_white-min" type="Sprite" parent="BG"]
+modulate = Color( 0.921569, 0.584314, 0.360784, 0.878431 )
+position = Vector2( 1173.54, -1531.86 )
+rotation = 1.17464
+scale = Vector2( 0.638137, 1.35692 )
+texture = ExtResource( 12 )
+
+[node name="Trees2" type="YSort" parent="BG"]
+modulate = Color( 0.564706, 0.513726, 0.694118, 1 )
+position = Vector2( 136.261, -119.126 )
+
+[node name="YSort" type="YSort" parent="BG/Trees2"]
+modulate = Color( 0.733333, 0.682353, 0.666667, 1 )
+
+[node name="SinglePine" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 626.048, -774.872 )
+
+[node name="SinglePine15" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 468.191, -666.346 )
+
+[node name="SinglePine16" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 566.851, -850.512 )
+
+[node name="SinglePine17" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 727.997, -804.47 )
+
+[node name="SinglePine18" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 918.74, -1074.14 )
+
+[node name="SinglePine19" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1168.68, -1284.62 )
+
+[node name="SinglePine20" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1583.05, -1518.11 )
+
+[node name="SinglePine21" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 353.087, -607.15 )
+
+[node name="SinglePine22" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 425.438, -827.491 )
+
+[node name="SinglePine23" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 241.272, -564.397 )
+
+[node name="SinglePine5" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1208.14, -903.131 )
+
+[node name="SinglePine6" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1310.09, -1222.13 )
+
+[node name="SinglePine7" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1333.11, -988.636 )
+
+[node name="SinglePine8" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1507.41, -1268.17 )
+
+[node name="SinglePine9" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1484.39, -1228.71 )
+
+[node name="SinglePine24" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 166.941, -622.345 )
+
+[node name="SinglePine25" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 63.91, -624.034 )
+
+[node name="SinglePine26" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 246.278, -826.042 )
+
+[node name="SinglePine27" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 347.282, -868.127 )
+
+[node name="SinglePine28" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 495.983, -948.088 )
+
+[node name="SinglePine29" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 655.906, -1050.49 )
+
+[node name="SinglePine30" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 735.867, -1007.01 )
+
+[node name="SinglePine31" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1246.85, -1337.34 )
+
+[node name="SinglePine10" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1435.06, -1429.32 )
+
+[node name="SinglePine11" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1629.09, -1261.6 )
+
+[node name="SinglePine12" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1731.04, -1472.07 )
+
+[node name="SinglePine13" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1823.13, -1360.26 )
+
+[node name="SinglePine14" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1763.93, -1034.68 )
+
+[node name="SinglePine2" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 806.925, -1011.66 )
+
+[node name="SinglePine3" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 991.091, -959.038 )
+
+[node name="SinglePine4" parent="BG/Trees2/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1093.04, -1074.14 )
+
+[node name="vignette_fade4" type="Sprite" parent="BG"]
+position = Vector2( 263.841, -1558.49 )
+scale = Vector2( 0.370679, 0.895649 )
+texture = ExtResource( 9 )
+
+[node name="ColorRect2" type="ColorRect" parent="BG"]
+margin_left = -1213.0
+margin_top = -2249.0
+margin_right = 5.0
+margin_bottom = -637.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Trees" type="YSort" parent="BG"]
+
+[node name="YSort" type="YSort" parent="BG/Trees"]
+modulate = Color( 0.733333, 0.682353, 0.666667, 1 )
+
+[node name="SinglePine" parent="BG/Trees/YSort" instance=ExtResource( 1 )]
+position = Vector2( 626.048, -774.872 )
+
+[node name="SinglePine15" parent="BG/Trees/YSort" instance=ExtResource( 1 )]
+position = Vector2( 468.191, -666.346 )
+
+[node name="SinglePine16" parent="BG/Trees/YSort" instance=ExtResource( 1 )]
+position = Vector2( 566.851, -850.512 )
+
+[node name="SinglePine17" parent="BG/Trees/YSort" instance=ExtResource( 1 )]
+position = Vector2( 727.997, -804.47 )
+
+[node name="SinglePine18" parent="BG/Trees/YSort" instance=ExtResource( 1 )]
+position = Vector2( 918.74, -1074.14 )
+
+[node name="SinglePine19" parent="BG/Trees/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1168.68, -1284.62 )
+
+[node name="SinglePine20" parent="BG/Trees/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1583.05, -1518.11 )
+
+[node name="SinglePine21" parent="BG/Trees/YSort" instance=ExtResource( 1 )]
+position = Vector2( 353.087, -607.15 )
+
+[node name="SinglePine22" parent="BG/Trees/YSort" instance=ExtResource( 1 )]
+position = Vector2( 425.438, -827.491 )
+
+[node name="SinglePine23" parent="BG/Trees/YSort" instance=ExtResource( 1 )]
+position = Vector2( 241.272, -564.397 )
+
+[node name="SinglePine5" parent="BG/Trees/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1208.14, -903.131 )
+
+[node name="SinglePine6" parent="BG/Trees/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1310.09, -1222.13 )
+
+[node name="SinglePine7" parent="BG/Trees/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1333.11, -988.636 )
+
+[node name="SinglePine8" parent="BG/Trees/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1507.41, -1268.17 )
+
+[node name="SinglePine9" parent="BG/Trees/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1484.39, -1228.71 )
+
+[node name="SinglePine11" parent="BG/Trees/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1629.09, -1261.6 )
+
+[node name="SinglePine12" parent="BG/Trees/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1731.04, -1472.07 )
+
+[node name="SinglePine13" parent="BG/Trees/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1823.13, -1360.26 )
+
+[node name="SinglePine14" parent="BG/Trees/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1763.93, -1034.68 )
+
+[node name="SinglePine2" parent="BG/Trees/YSort" instance=ExtResource( 1 )]
+position = Vector2( 806.925, -1011.66 )
+
+[node name="SinglePine3" parent="BG/Trees/YSort" instance=ExtResource( 1 )]
+position = Vector2( 991.091, -959.038 )
+
+[node name="SinglePine4" parent="BG/Trees/YSort" instance=ExtResource( 1 )]
+position = Vector2( 1093.04, -1074.14 )
+
+[node name="vignette_fade2" type="Sprite" parent="BG"]
+modulate = Color( 1, 1, 1, 0.466667 )
+position = Vector2( 1410.4, -955.947 )
+rotation = -1.5708
+scale = Vector2( 0.47365, 1.30551 )
+texture = ExtResource( 9 )
+
+[node name="CreepyTrees2" type="Node2D" parent="BG"]
+position = Vector2( 800.705, -801.708 )
+
+[node name="Trees3" type="TextureRect" parent="BG/CreepyTrees2"]
+modulate = Color( 0.588235, 0.564706, 0.592157, 1 )
+margin_left = -1547.0
+margin_top = -1062.0
+margin_right = -525.0
+margin_bottom = 60.0
+texture = ExtResource( 8 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Trees" type="TextureRect" parent="BG/CreepyTrees2"]
+modulate = Color( 0.588235, 0.564706, 0.592157, 1 )
+margin_left = -1520.0
+margin_top = -943.0
+margin_right = -578.0
+margin_bottom = 179.0
+texture = ExtResource( 8 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Trees2" type="TextureRect" parent="BG/CreepyTrees2"]
+margin_left = -1584.0
+margin_top = -858.587
+margin_right = -649.0
+margin_bottom = 263.413
+texture = ExtResource( 8 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeafPile" parent="BG" instance=ExtResource( 21 )]
+position = Vector2( -252.223, -267.163 )
+
+[node name="LeafPile2" parent="BG" instance=ExtResource( 21 )]
+position = Vector2( -115.603, -195.748 )
+
+[node name="LeafPile3" parent="BG" instance=ExtResource( 21 )]
+position = Vector2( -162.178, -267.163 )
+
+[node name="LeafPile4" parent="BG" instance=ExtResource( 21 )]
+position = Vector2( 514.714, -90.1776 )
+
+[node name="LeafPile5" parent="BG" instance=ExtResource( 21 )]
+position = Vector2( 791.059, -115.018 )
+
+[node name="LeafPile6" parent="BG" instance=ExtResource( 21 )]
+position = Vector2( 728.959, -28.0775 )
+
+[node name="LeafPile7" parent="BG" instance=ExtResource( 21 )]
+position = Vector2( 805.032, -28.0775 )
+
+[node name="LeafPile8" parent="BG" instance=ExtResource( 21 )]
+position = Vector2( 805.032, 43.3376 )
+
+[node name="LeafPile9" parent="BG" instance=ExtResource( 21 )]
+position = Vector2( 885.762, 43.3376 )
+
+[node name="LeafPile10" parent="BG" instance=ExtResource( 21 )]
+position = Vector2( 964.94, -24.9725 )
+
+[node name="LeafPile11" parent="BG" instance=ExtResource( 21 )]
+position = Vector2( 935.442, -76.2051 )
+
+[node name="LeafPile12" parent="BG" instance=ExtResource( 21 )]
+position = Vector2( 1011.51, -91.7301 )
+
+[node name="LeafPile13" parent="BG" instance=ExtResource( 21 )]
+position = Vector2( 995.99, 61.9677 )
+
+[node name="LeafPile14" parent="BG" instance=ExtResource( 21 )]
+position = Vector2( 1041.01, -20.3149 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="player" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 307.638, -321.904 )
+MAX_SPEED = 300
+camera = NodePath("../../PuppyCamera")
+
+[node name="funicularTrackRamp" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 57.5034, -398.398 )
+
+[node name="nature_sunrock" parent="YSort/funicularTrackRamp" instance=ExtResource( 18 )]
+position = Vector2( -155.897, -26.5141 )
+
+[node name="funicularTrain" type="Node2D" parent="YSort/funicularTrackRamp"]
+position = Vector2( 1.33698, -217.534 )
+
+[node name="funicular_base_station_car_steps-min" type="Sprite" parent="YSort/funicularTrackRamp/funicularTrain"]
+position = Vector2( -57.9488, -12.807 )
+texture = ExtResource( 17 )
+
+[node name="funicular_base_station_car_shadow-min" type="Sprite" parent="YSort/funicularTrackRamp/funicularTrain"]
+position = Vector2( 318.752, -28.7897 )
+texture = ExtResource( 28 )
+
+[node name="funicularWheel" parent="YSort/funicularTrackRamp/funicularTrain" instance=ExtResource( 16 )]
+position = Vector2( 14.1556, 152.061 )
+
+[node name="funicularWheel2" parent="YSort/funicularTrackRamp/funicularTrain" instance=ExtResource( 16 )]
+position = Vector2( 59.3136, 126.803 )
+
+[node name="funicularWheel3" parent="YSort/funicularTrackRamp/funicularTrain" instance=ExtResource( 16 )]
+position = Vector2( 103.706, 100.78 )
+
+[node name="funicularWheel4" parent="YSort/funicularTrackRamp/funicularTrain" instance=ExtResource( 16 )]
+position = Vector2( 522.375, -131.133 )
+
+[node name="funicularWheel5" parent="YSort/funicularTrackRamp/funicularTrain" instance=ExtResource( 16 )]
+position = Vector2( 567.533, -156.391 )
+
+[node name="funicularWheel6" parent="YSort/funicularTrackRamp/funicularTrain" instance=ExtResource( 16 )]
+position = Vector2( 609.629, -185.476 )
+
+[node name="funicular_base_station_car_bg-min" type="Sprite" parent="YSort/funicularTrackRamp/funicularTrain"]
+position = Vector2( 270.931, -293.269 )
+texture = ExtResource( 15 )
+
+[node name="funicular_base_station_car_fg-min" type="Sprite" parent="YSort/funicularTrackRamp/funicularTrain"]
+position = Vector2( 274.674, -280.168 )
+texture = ExtResource( 14 )
+
+[node name="Trees" type="YSort" parent="YSort"]
+
+[node name="SinglePine" parent="YSort/Trees" instance=ExtResource( 1 )]
+position = Vector2( 1347.5, -280.487 )
+
+[node name="SinglePine2" parent="YSort/Trees" instance=ExtResource( 1 )]
+position = Vector2( 1491.45, -360.928 )
+scale = Vector2( 1.82337, 2.21938 )
+
+[node name="SinglePine3" parent="YSort/Trees" instance=ExtResource( 1 )]
+position = Vector2( 1605.76, -293.188 )
+scale = Vector2( 1.56717, 1.64767 )
+
+[node name="SinglePine9" parent="YSort/Trees" instance=ExtResource( 1 )]
+position = Vector2( -715.194, -520.687 )
+scale = Vector2( 1.56717, 1.64767 )
+
+[node name="SinglePine10" parent="YSort/Trees" instance=ExtResource( 1 )]
+position = Vector2( -876.052, -130.031 )
+scale = Vector2( 1.56717, 1.64767 )
+
+[node name="SinglePine11" parent="YSort/Trees" instance=ExtResource( 1 )]
+position = Vector2( -568.124, -352.935 )
+scale = Vector2( 1.56717, 1.64767 )
+
+[node name="SinglePine12" parent="YSort/Trees" instance=ExtResource( 1 )]
+position = Vector2( -933.502, -504.601 )
+scale = Vector2( 1.56717, 1.64767 )
+
+[node name="SinglePine4" parent="YSort/Trees" instance=ExtResource( 1 )]
+position = Vector2( 1495.68, -117.487 )
+scale = Vector2( 1.2895, 1.55283 )
+
+[node name="SinglePine5" parent="YSort/Trees" instance=ExtResource( 1 )]
+position = Vector2( 1737.01, -405.382 )
+scale = Vector2( 1.67801, 1.76136 )
+
+[node name="ThickTreeTrunkWithCollision" parent="YSort/Trees" instance=ExtResource( 2 )]
+position = Vector2( 1441.65, -196.923 )
+
+[node name="ThickTreeTrunkWithCollision2" parent="YSort/Trees" instance=ExtResource( 2 )]
+position = Vector2( 1652.53, -52.7946 )
+
+[node name="ThickTreeTrunkWithCollision5" parent="YSort/Trees" instance=ExtResource( 2 )]
+position = Vector2( -532.849, -528.475 )
+
+[node name="ThickTreeTrunkWithCollision6" parent="YSort/Trees" instance=ExtResource( 2 )]
+position = Vector2( -801.712, -211.355 )
+
+[node name="ThickTreeTrunkWithCollision3" parent="YSort/Trees" instance=ExtResource( 2 )]
+position = Vector2( 1864.21, -408.429 )
+
+[node name="ThickTreeTrunkWithCollision4" parent="YSort/Trees" instance=ExtResource( 2 )]
+position = Vector2( 1811.29, -211.56 )
+
+[node name="SinglePine6" parent="YSort/Trees" instance=ExtResource( 1 )]
+position = Vector2( 1063.25, -668.432 )
+
+[node name="SinglePine7" parent="YSort/Trees" instance=ExtResource( 1 )]
+position = Vector2( 1205.72, -736.398 )
+scale = Vector2( 1.61464, 1.58582 )
+
+[node name="SinglePine8" parent="YSort/Trees" instance=ExtResource( 1 )]
+position = Vector2( 838.439, -714.179 )
+
+[node name="creepy_tree" parent="YSort/Trees" instance=ExtResource( 22 )]
+position = Vector2( -649.154, -171.958 )
+
+[node name="creepy_tree2" parent="YSort/Trees" instance=ExtResource( 22 )]
+position = Vector2( -825.437, 54.1832 )
+
+[node name="creepy_tree3" parent="YSort/Trees" instance=ExtResource( 22 )]
+position = Vector2( 883.975, -40.1906 )
+
+[node name="Flowers" type="YSort" parent="YSort"]
+modulate = Color( 0.611765, 0.560784, 0.682353, 1 )
+
+[node name="flowerbush2" parent="YSort/Flowers" instance=ExtResource( 20 )]
+position = Vector2( 887.913, -410.636 )
+
+[node name="flowerbush3" parent="YSort/Flowers" instance=ExtResource( 20 )]
+position = Vector2( 575.53, -469.453 )
+
+[node name="flowerbush4" parent="YSort/Flowers" instance=ExtResource( 20 )]
+position = Vector2( 1107.5, -426.321 )
+
+[node name="flowerbush5" parent="YSort/Flowers" instance=ExtResource( 20 )]
+position = Vector2( 1180.69, -478.603 )
+
+[node name="longleaves" parent="YSort/Flowers" instance=ExtResource( 19 )]
+position = Vector2( 762.756, -484.901 )
+
+[node name="longleaves2" parent="YSort/Flowers" instance=ExtResource( 19 )]
+position = Vector2( 828.108, -547.639 )
+
+[node name="longleaves3" parent="YSort/Flowers" instance=ExtResource( 19 )]
+position = Vector2( 1099.97, -577.701 )
+
+[node name="longleaves4" parent="YSort/Flowers" instance=ExtResource( 19 )]
+position = Vector2( 1208.46, -641.746 )
+
+[node name="longleaves6" parent="YSort/Flowers" instance=ExtResource( 19 )]
+position = Vector2( 486.97, -439.155 )
+
+[node name="Flowers2" type="YSort" parent="YSort"]
+position = Vector2( -99.3352, 165.994 )
+
+[node name="flowerbush3" parent="YSort/Flowers2" instance=ExtResource( 20 )]
+position = Vector2( 618.662, -469.453 )
+
+[node name="flowerbush4" parent="YSort/Flowers2" instance=ExtResource( 20 )]
+position = Vector2( 1107.5, -426.321 )
+
+[node name="longleaves" parent="YSort/Flowers2" instance=ExtResource( 19 )]
+position = Vector2( 762.756, -484.901 )
+
+[node name="longleaves2" parent="YSort/Flowers2" instance=ExtResource( 19 )]
+position = Vector2( 828.108, -547.639 )
+
+[node name="longleaves3" parent="YSort/Flowers2" instance=ExtResource( 19 )]
+position = Vector2( 1326.09, -499.279 )
+
+[node name="longleaves4" parent="YSort/Flowers2" instance=ExtResource( 19 )]
+position = Vector2( 1259.43, -363.347 )
+
+[node name="longleaves6" parent="YSort/Flowers2" instance=ExtResource( 19 )]
+position = Vector2( 456.908, -556.789 )
+
+[node name="LadTeacupSprite" parent="YSort" instance=ExtResource( 23 )]
+position = Vector2( 113.547, -381.115 )
+
+[node name="AnimatedSprite" parent="YSort/LadTeacupSprite" index="0"]
+position = Vector2( 39.0618, -51.0808 )
+animation = "_neutral"
+playing = false
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 13 )]
+position = Vector2( 386.776, -422.806 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -616.864, -2230.92 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 1352.79, -91.1756 )
+
+[node name="leftTZ" parent="." instance=ExtResource( 11 )]
+position = Vector2( 786.659, -204.743 )
+
+[node name="CollisionShape2D" parent="leftTZ" index="0"]
+position = Vector2( 573.07, -167.703 )
+shape = SubResource( 1 )
+
+[node name="rightTZ" parent="." instance=ExtResource( 11 )]
+position = Vector2( -43.0199, -225.839 )
+rotation = -1.57053
+
+[node name="CollisionShape2D" parent="rightTZ" index="0"]
+position = Vector2( 121.285, -268.113 )
+shape = SubResource( 2 )
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="FG" type="Node2D" parent="."]
+
+[node name="leaves" type="Node2D" parent="FG"]
+position = Vector2( -44.8512, -388.712 )
+
+[node name="leaf2" type="Sprite" parent="FG/leaves"]
+position = Vector2( -648.348, -979.426 )
+texture = ExtResource( 24 )
+
+[node name="leaf3" type="Sprite" parent="FG/leaves"]
+position = Vector2( -496.337, -1048.93 )
+texture = ExtResource( 25 )
+
+[node name="leaf4" type="Sprite" parent="FG/leaves"]
+position = Vector2( -608.961, -1097.59 )
+texture = ExtResource( 24 )
+
+[node name="leaf0" type="Sprite" parent="FG/leaves"]
+position = Vector2( -388.857, -1097.59 )
+texture = ExtResource( 27 )
+
+[node name="leaf5" type="Sprite" parent="FG/leaves"]
+position = Vector2( -328.618, -1065.15 )
+texture = ExtResource( 26 )
+
+[node name="leaf6" type="Sprite" parent="FG/leaves"]
+position = Vector2( -495.434, -1153.19 )
+texture = ExtResource( 25 )
+
+[node name="leaf7" type="Sprite" parent="FG/leaves"]
+position = Vector2( -481.533, -914.553 )
+texture = ExtResource( 25 )
+
+[node name="leaf8" type="Sprite" parent="FG/leaves"]
+position = Vector2( -664.566, -872.849 )
+texture = ExtResource( 26 )
+
+[node name="leaf9" type="Sprite" parent="FG/leaves"]
+position = Vector2( -729.439, -838.096 )
+texture = ExtResource( 25 )
+
+[node name="leaves2" type="Node2D" parent="FG"]
+position = Vector2( -203.939, -317.652 )
+
+[node name="leaf2" type="Sprite" parent="FG/leaves2"]
+position = Vector2( -648.348, -979.426 )
+texture = ExtResource( 24 )
+
+[node name="leaf3" type="Sprite" parent="FG/leaves2"]
+position = Vector2( -496.337, -1048.93 )
+texture = ExtResource( 25 )
+
+[node name="leaf4" type="Sprite" parent="FG/leaves2"]
+position = Vector2( -608.961, -1097.59 )
+texture = ExtResource( 24 )
+
+[node name="leaf0" type="Sprite" parent="FG/leaves2"]
+position = Vector2( -388.857, -1097.59 )
+texture = ExtResource( 27 )
+
+[node name="leaf5" type="Sprite" parent="FG/leaves2"]
+position = Vector2( -328.618, -1065.15 )
+texture = ExtResource( 26 )
+
+[node name="leaf6" type="Sprite" parent="FG/leaves2"]
+position = Vector2( -495.434, -1153.19 )
+texture = ExtResource( 25 )
+
+[node name="leaf7" type="Sprite" parent="FG/leaves2"]
+position = Vector2( -481.533, -914.553 )
+texture = ExtResource( 25 )
+
+[node name="leaf8" type="Sprite" parent="FG/leaves2"]
+position = Vector2( -664.566, -872.849 )
+texture = ExtResource( 26 )
+
+[node name="leaf9" type="Sprite" parent="FG/leaves2"]
+position = Vector2( -729.439, -838.096 )
+texture = ExtResource( 25 )
+
+[node name="leaves3" type="Node2D" parent="FG"]
+position = Vector2( -233.635, -496.891 )
+
+[node name="leaf2" type="Sprite" parent="FG/leaves3"]
+position = Vector2( -648.348, -979.426 )
+texture = ExtResource( 24 )
+
+[node name="leaf3" type="Sprite" parent="FG/leaves3"]
+position = Vector2( -496.337, -1048.93 )
+texture = ExtResource( 25 )
+
+[node name="leaf4" type="Sprite" parent="FG/leaves3"]
+position = Vector2( -608.961, -1097.59 )
+texture = ExtResource( 24 )
+
+[node name="leaf0" type="Sprite" parent="FG/leaves3"]
+position = Vector2( -388.857, -1097.59 )
+texture = ExtResource( 27 )
+
+[node name="leaf5" type="Sprite" parent="FG/leaves3"]
+position = Vector2( -328.618, -1065.15 )
+texture = ExtResource( 26 )
+
+[node name="leaf6" type="Sprite" parent="FG/leaves3"]
+position = Vector2( -495.434, -1153.19 )
+texture = ExtResource( 25 )
+
+[node name="leaf7" type="Sprite" parent="FG/leaves3"]
+position = Vector2( -481.533, -914.553 )
+texture = ExtResource( 25 )
+
+[node name="leaf8" type="Sprite" parent="FG/leaves3"]
+position = Vector2( -664.566, -872.849 )
+texture = ExtResource( 26 )
+
+[node name="leaf9" type="Sprite" parent="FG/leaves3"]
+position = Vector2( -729.439, -838.096 )
+texture = ExtResource( 25 )
+
+[node name="leaves4" type="Node2D" parent="FG"]
+position = Vector2( 48.4803, -640.07 )
+
+[node name="leaf2" type="Sprite" parent="FG/leaves4"]
+position = Vector2( -648.348, -979.426 )
+texture = ExtResource( 24 )
+
+[node name="leaf3" type="Sprite" parent="FG/leaves4"]
+position = Vector2( -496.337, -1048.93 )
+texture = ExtResource( 25 )
+
+[node name="leaf4" type="Sprite" parent="FG/leaves4"]
+position = Vector2( -608.961, -1097.59 )
+texture = ExtResource( 24 )
+
+[node name="leaf0" type="Sprite" parent="FG/leaves4"]
+position = Vector2( -388.857, -1097.59 )
+texture = ExtResource( 27 )
+
+[node name="leaf5" type="Sprite" parent="FG/leaves4"]
+position = Vector2( -328.618, -1065.15 )
+texture = ExtResource( 26 )
+
+[node name="leaf6" type="Sprite" parent="FG/leaves4"]
+position = Vector2( -495.434, -1153.19 )
+texture = ExtResource( 25 )
+
+[node name="leaf7" type="Sprite" parent="FG/leaves4"]
+position = Vector2( -481.533, -914.553 )
+texture = ExtResource( 25 )
+
+[node name="leaf8" type="Sprite" parent="FG/leaves4"]
+position = Vector2( -664.566, -872.849 )
+texture = ExtResource( 26 )
+
+[node name="leaf9" type="Sprite" parent="FG/leaves4"]
+position = Vector2( -729.439, -838.096 )
+texture = ExtResource( 25 )
+
+[node name="leaves5" type="Node2D" parent="FG"]
+position = Vector2( 814.455, -348.143 )
+scale = Vector2( -1, 1 )
+
+[node name="leaf2" type="Sprite" parent="FG/leaves5"]
+position = Vector2( -648.348, -979.426 )
+texture = ExtResource( 24 )
+
+[node name="leaf3" type="Sprite" parent="FG/leaves5"]
+position = Vector2( -496.337, -1048.93 )
+texture = ExtResource( 25 )
+
+[node name="leaf4" type="Sprite" parent="FG/leaves5"]
+position = Vector2( -608.961, -1097.59 )
+texture = ExtResource( 24 )
+
+[node name="leaf0" type="Sprite" parent="FG/leaves5"]
+position = Vector2( -388.857, -1097.59 )
+texture = ExtResource( 27 )
+
+[node name="leaf5" type="Sprite" parent="FG/leaves5"]
+position = Vector2( -328.618, -1065.15 )
+texture = ExtResource( 26 )
+
+[node name="leaf6" type="Sprite" parent="FG/leaves5"]
+position = Vector2( -495.434, -1153.19 )
+texture = ExtResource( 25 )
+
+[node name="leaf7" type="Sprite" parent="FG/leaves5"]
+position = Vector2( -481.533, -914.553 )
+texture = ExtResource( 25 )
+
+[node name="leaf8" type="Sprite" parent="FG/leaves5"]
+position = Vector2( -664.566, -872.849 )
+texture = ExtResource( 26 )
+
+[node name="leaf9" type="Sprite" parent="FG/leaves5"]
+position = Vector2( -729.439, -838.096 )
+texture = ExtResource( 25 )
+
+[node name="leaves6" type="Node2D" parent="FG"]
+position = Vector2( 980.506, -449.916 )
+scale = Vector2( -1, 1 )
+
+[node name="leaf2" type="Sprite" parent="FG/leaves6"]
+position = Vector2( -648.348, -979.426 )
+texture = ExtResource( 24 )
+
+[node name="leaf3" type="Sprite" parent="FG/leaves6"]
+position = Vector2( -496.337, -1048.93 )
+texture = ExtResource( 25 )
+
+[node name="leaf4" type="Sprite" parent="FG/leaves6"]
+position = Vector2( -608.961, -1097.59 )
+texture = ExtResource( 24 )
+
+[node name="leaf0" type="Sprite" parent="FG/leaves6"]
+position = Vector2( -388.857, -1097.59 )
+texture = ExtResource( 27 )
+
+[node name="leaf5" type="Sprite" parent="FG/leaves6"]
+position = Vector2( -328.618, -1065.15 )
+texture = ExtResource( 26 )
+
+[node name="leaf6" type="Sprite" parent="FG/leaves6"]
+position = Vector2( -495.434, -1153.19 )
+texture = ExtResource( 25 )
+
+[node name="leaf7" type="Sprite" parent="FG/leaves6"]
+position = Vector2( -481.533, -914.553 )
+texture = ExtResource( 25 )
+
+[node name="leaf8" type="Sprite" parent="FG/leaves6"]
+position = Vector2( -664.566, -872.849 )
+texture = ExtResource( 26 )
+
+[node name="leaf9" type="Sprite" parent="FG/leaves6"]
+position = Vector2( -729.439, -838.096 )
+texture = ExtResource( 25 )
+
+[node name="leaves7" type="Node2D" parent="FG"]
+position = Vector2( 1111.74, -254.405 )
+scale = Vector2( -1, 1 )
+
+[node name="leaf2" type="Sprite" parent="FG/leaves7"]
+position = Vector2( -648.348, -979.426 )
+texture = ExtResource( 24 )
+
+[node name="leaf3" type="Sprite" parent="FG/leaves7"]
+position = Vector2( -496.337, -1048.93 )
+texture = ExtResource( 25 )
+
+[node name="leaf4" type="Sprite" parent="FG/leaves7"]
+position = Vector2( -608.961, -1097.59 )
+texture = ExtResource( 24 )
+
+[node name="leaf0" type="Sprite" parent="FG/leaves7"]
+position = Vector2( -388.857, -1097.59 )
+texture = ExtResource( 27 )
+
+[node name="leaf5" type="Sprite" parent="FG/leaves7"]
+position = Vector2( -328.618, -1065.15 )
+texture = ExtResource( 26 )
+
+[node name="leaf6" type="Sprite" parent="FG/leaves7"]
+position = Vector2( -495.434, -1153.19 )
+texture = ExtResource( 25 )
+
+[node name="leaf7" type="Sprite" parent="FG/leaves7"]
+position = Vector2( -481.533, -914.553 )
+texture = ExtResource( 25 )
+
+[node name="leaf8" type="Sprite" parent="FG/leaves7"]
+position = Vector2( -664.566, -872.849 )
+texture = ExtResource( 26 )
+
+[node name="leaf9" type="Sprite" parent="FG/leaves7"]
+position = Vector2( -729.439, -838.096 )
+texture = ExtResource( 25 )
+
+[node name="leaves8" type="Node2D" parent="FG"]
+position = Vector2( 1285.82, -412.421 )
+scale = Vector2( -1, 1 )
+
+[node name="leaf2" type="Sprite" parent="FG/leaves8"]
+position = Vector2( -648.348, -979.426 )
+texture = ExtResource( 24 )
+
+[node name="leaf3" type="Sprite" parent="FG/leaves8"]
+position = Vector2( -496.337, -1048.93 )
+texture = ExtResource( 25 )
+
+[node name="leaf4" type="Sprite" parent="FG/leaves8"]
+position = Vector2( -608.961, -1097.59 )
+texture = ExtResource( 24 )
+
+[node name="leaf0" type="Sprite" parent="FG/leaves8"]
+position = Vector2( -388.857, -1097.59 )
+texture = ExtResource( 27 )
+
+[node name="leaf5" type="Sprite" parent="FG/leaves8"]
+position = Vector2( -328.618, -1065.15 )
+texture = ExtResource( 26 )
+
+[node name="leaf6" type="Sprite" parent="FG/leaves8"]
+position = Vector2( -495.434, -1153.19 )
+texture = ExtResource( 25 )
+
+[node name="leaf7" type="Sprite" parent="FG/leaves8"]
+position = Vector2( -481.533, -914.553 )
+texture = ExtResource( 25 )
+
+[node name="leaf8" type="Sprite" parent="FG/leaves8"]
+position = Vector2( -664.566, -872.849 )
+texture = ExtResource( 26 )
+
+[node name="leaf9" type="Sprite" parent="FG/leaves8"]
+position = Vector2( -729.439, -838.096 )
+texture = ExtResource( 25 )
+
+[node name="leaves9" type="Node2D" parent="FG"]
+position = Vector2( 1285.82, -412.421 )
+scale = Vector2( -1, 1 )
+
+[node name="leaf2" type="Sprite" parent="FG/leaves9"]
+position = Vector2( -648.348, -979.426 )
+texture = ExtResource( 24 )
+
+[node name="leaf3" type="Sprite" parent="FG/leaves9"]
+position = Vector2( -496.337, -1048.93 )
+texture = ExtResource( 25 )
+
+[node name="leaf4" type="Sprite" parent="FG/leaves9"]
+position = Vector2( -608.961, -1097.59 )
+texture = ExtResource( 24 )
+
+[node name="leaf0" type="Sprite" parent="FG/leaves9"]
+position = Vector2( -388.857, -1097.59 )
+texture = ExtResource( 27 )
+
+[node name="leaf5" type="Sprite" parent="FG/leaves9"]
+position = Vector2( -328.618, -1065.15 )
+texture = ExtResource( 26 )
+
+[node name="leaf6" type="Sprite" parent="FG/leaves9"]
+position = Vector2( -495.434, -1153.19 )
+texture = ExtResource( 25 )
+
+[node name="leaf7" type="Sprite" parent="FG/leaves9"]
+position = Vector2( -481.533, -914.553 )
+texture = ExtResource( 25 )
+
+[node name="leaf8" type="Sprite" parent="FG/leaves9"]
+position = Vector2( -664.566, -872.849 )
+texture = ExtResource( 26 )
+
+[node name="leaf9" type="Sprite" parent="FG/leaves9"]
+position = Vector2( -729.439, -838.096 )
+texture = ExtResource( 25 )
+
+[node name="Collisions" type="Node2D" parent="."]
+visible = false
+
+[node name="left" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/left"]
+position = Vector2( 0, -0.428955 )
+polygon = PoolVector2Array( -473.999, -354.604, -80.1091, -353.114, -85.7354, -445.292, 88.4259, -444.434, 87.1044, -393.204, 167.586, -392.886, 166.836, -407.362, 387.403, -405.126, 393.364, -392.458, 464.155, -391.713, 469.951, -445.121, 635.532, -448.982, -154.083, -765.808 )
+
+[node name="right" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/right"]
+polygon = PoolVector2Array( 558.56, -683.911, 550.444, -386.499, 629.554, -385.365, 629.554, -402.738, 851.488, -399.911, 851.488, -384.263, 928.346, -386.351, 931.778, -445.549, 1090.07, -445.12, 1089.94, -332.847, 1516.17, -327.929 )
+
+[node name="bottom" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/bottom"]
+position = Vector2( -0.745148, 0 )
+polygon = PoolVector2Array( -507.531, -382.027, -219.006, -277.705, -116.174, -180.835, 1067.58, -190.522, 1494.56, -382.773, 1065.74, 195.397, 157.698, 383.615, -349.484, 14.363, -349.484, 14.363 )
+
+[connection signal="transition_triggered" from="leftTZ" to="." method="_on_leftTZ_transition_triggered"]
+[connection signal="transition_triggered" from="rightTZ" to="." method="_on_rightTZ_transition_triggered"]
+
+[editable path="YSort/LadTeacupSprite"]
+[editable path="PuppyCamera"]
+[editable path="leftTZ"]
+[editable path="rightTZ"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/L3_forest/mansion/flower_hall/mansion_flower_hallway_flower_2-min.png" type="Texture" id=1]
+[ext_resource path="res://Characters/goblins/goblinmonument/crunchyplantflowerbase.tscn" type="PackedScene" id=2]
+
+[node name="bluebell" type="Node2D"]
+
+[node name="flowerbush" parent="." instance=ExtResource( 2 )]
+position = Vector2( -0.00244141, 1.65988 )
+
+[node name="mansion_flower_hallway_flower_2-min" type="Sprite" parent="flowerbush/flower_container" index="0"]
+position = Vector2( -5.77451, 53.2637 )
+texture = ExtResource( 1 )
+
+[editable path="flowerbush"]
+[editable path="flowerbush/PlayerDetectionZone"]

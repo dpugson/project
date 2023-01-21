@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/rocks_n_hidin_sapling_1-min.png-53a3acd738864e7d3f446f32fe06443e.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://sprites/L3_forest/rocks_n_hidin/rocks_n_hidin_sapling_1-min.png"
+dest_files=[ "res://.import/rocks_n_hidin_sapling_1-min.png-53a3acd738864e7d3f446f32fe06443e.stex" ]
+
+[params]
+
+compress/mode=1
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

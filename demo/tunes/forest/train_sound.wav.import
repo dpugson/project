@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/train_sound.wav-ba0cff37c6428923f1cfe4219b46d96d.sample"
+
+[deps]
+
+source_file="res://tunes/forest/train_sound.wav"
+dest_files=[ "res://.import/train_sound.wav-ba0cff37c6428923f1cfe4219b46d96d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=false
+compress/mode=0

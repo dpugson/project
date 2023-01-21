@@ -1,0 +1,220 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://sprites/L3_forest/funicular_base_station/funicular_base_station_track_2-min.png" type="Texture" id=1]
+[ext_resource path="res://sprites/L3_forest/funicular_base_station/funicular_base_station_vines_1-min.png" type="Texture" id=2]
+[ext_resource path="res://sprites/L3_forest/funicular_base_station/funicular_base_station_track_0-min.png" type="Texture" id=3]
+[ext_resource path="res://sprites/L3_forest/funicular_base_station/funicular_base_station_vines_0-min.png" type="Texture" id=4]
+[ext_resource path="res://sprites/L3_forest/funicular_base_station/funicular_base_station_vines_2-min.png" type="Texture" id=5]
+[ext_resource path="res://sprites/L3_forest/funicular_base_station/funicular_base_station_track_1-min.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 188.873, 57.9471 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 68.8385, 54.5909 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 70.9092, 51.7651 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 65.5754, 48.9627 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 68.7789, 52.3406 )
+
+[node name="funicularTrackRamp" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 14.46, -121.109 )
+rotation = 0.00139956
+
+[node name="ramp" type="Node2D" parent="Node2D"]
+modulate = Color( 0.65098, 0.737255, 0.862745, 1 )
+
+[node name="funicular_base_station_track_0-min" type="Sprite" parent="Node2D/ramp"]
+position = Vector2( 153.523, -18.1257 )
+texture = ExtResource( 3 )
+
+[node name="funicular_base_station_track_0-min2" type="Sprite" parent="Node2D/ramp"]
+position = Vector2( 465.2, -186.937 )
+texture = ExtResource( 3 )
+
+[node name="funicular_base_station_track_0-min3" type="Sprite" parent="Node2D/ramp"]
+position = Vector2( 775.043, -352.236 )
+texture = ExtResource( 3 )
+
+[node name="funicular_base_station_track_0-min4" type="Sprite" parent="Node2D/ramp"]
+position = Vector2( 1084.84, -521.187 )
+texture = ExtResource( 3 )
+
+[node name="funicular_base_station_track_0-min6" type="Sprite" parent="Node2D/ramp"]
+position = Vector2( 1703.84, -860.81 )
+texture = ExtResource( 3 )
+
+[node name="funicular_base_station_track_0-min5" type="Sprite" parent="Node2D/ramp"]
+position = Vector2( 1394.09, -688.167 )
+texture = ExtResource( 3 )
+
+[node name="funicular_base_station_track_1-min" type="Sprite" parent="Node2D/ramp"]
+position = Vector2( 458.127, 24.8771 )
+texture = ExtResource( 6 )
+
+[node name="funicular_base_station_track_1-min2" type="Sprite" parent="Node2D/ramp"]
+position = Vector2( 773.482, -147.134 )
+texture = ExtResource( 6 )
+
+[node name="funicular_base_station_track_1-min3" type="Sprite" parent="Node2D/ramp"]
+position = Vector2( 1092.42, -315.562 )
+texture = ExtResource( 6 )
+
+[node name="funicular_base_station_track_1-min4" type="Sprite" parent="Node2D/ramp"]
+position = Vector2( 1413.15, -489.366 )
+texture = ExtResource( 6 )
+
+[node name="funicular_base_station_track_1-min5" type="Sprite" parent="Node2D/ramp"]
+position = Vector2( 1700.45, -654.023 )
+texture = ExtResource( 6 )
+
+[node name="funicular_base_station_track_2-min" type="Sprite" parent="Node2D/ramp"]
+position = Vector2( 773.482, 22.2524 )
+texture = ExtResource( 1 )
+
+[node name="funicular_base_station_track_2-min2" type="Sprite" parent="Node2D/ramp"]
+position = Vector2( 1088.84, -156.926 )
+texture = ExtResource( 1 )
+
+[node name="funicular_base_station_track_2-min3" type="Sprite" parent="Node2D/ramp"]
+position = Vector2( 1088.84, 15.0853 )
+texture = ExtResource( 1 )
+
+[node name="funicular_base_station_track_2-min4" type="Sprite" parent="Node2D/ramp"]
+position = Vector2( 1411.36, -307.436 )
+texture = ExtResource( 1 )
+
+[node name="funicular_base_station_track_2-min5" type="Sprite" parent="Node2D/ramp"]
+position = Vector2( 1411.36, -151.551 )
+texture = ExtResource( 1 )
+
+[node name="funicular_base_station_track_2-min6" type="Sprite" parent="Node2D/ramp"]
+position = Vector2( 1411.36, 9.70997 )
+texture = ExtResource( 1 )
+
+[node name="funicular_base_station_track_2-min7" type="Sprite" parent="Node2D/ramp"]
+position = Vector2( 1697.62, -489.182 )
+texture = ExtResource( 1 )
+
+[node name="funicular_base_station_track_2-min8" type="Sprite" parent="Node2D/ramp"]
+position = Vector2( 1701.38, -324.782 )
+texture = ExtResource( 1 )
+
+[node name="funicular_base_station_track_2-min9" type="Sprite" parent="Node2D/ramp"]
+position = Vector2( 1701.91, -167.647 )
+texture = ExtResource( 1 )
+
+[node name="funicular_base_station_track_2-min10" type="Sprite" parent="Node2D/ramp"]
+position = Vector2( 1703.66, 6.47861 )
+texture = ExtResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
+rotation = -0.00139956
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+position = Vector2( 179.422, 62.1394 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Node2D"]
+position = Vector2( 533.529, 1.7699 )
+rotation = -0.00139956
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D2"]
+position = Vector2( 707.643, 55.6322 )
+shape = SubResource( 2 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Node2D"]
+position = Vector2( 854.397, 0.062517 )
+rotation = -0.00139956
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D3"]
+position = Vector2( -246.977, 64.5143 )
+shape = SubResource( 3 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Node2D"]
+position = Vector2( 1175.26, -2.90319 )
+rotation = -0.00139956
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D4"]
+position = Vector2( -252.761, 64.7183 )
+shape = SubResource( 4 )
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Node2D"]
+position = Vector2( 1493.63, 4.20114 )
+rotation = -0.00139956
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D5"]
+position = Vector2( 60.9244, 43.5815 )
+shape = SubResource( 5 )
+
+[node name="Vines" type="Node2D" parent="Node2D"]
+modulate = Color( 0.301961, 0.368627, 0.376471, 1 )
+
+[node name="funicular_base_station_vines_0-min" type="Sprite" parent="Node2D/Vines"]
+position = Vector2( 607.417, -73.0913 )
+texture = ExtResource( 4 )
+
+[node name="funicular_base_station_vines_0-min2" type="Sprite" parent="Node2D/Vines"]
+position = Vector2( 929.939, -80.2585 )
+texture = ExtResource( 4 )
+
+[node name="funicular_base_station_vines_0-min3" type="Sprite" parent="Node2D/Vines"]
+position = Vector2( 1243.5, -409.947 )
+texture = ExtResource( 4 )
+
+[node name="funicular_base_station_vines_0-min4" type="Sprite" parent="Node2D/Vines"]
+position = Vector2( 1247.09, -87.4257 )
+texture = ExtResource( 4 )
+
+[node name="funicular_base_station_vines_0-min5" type="Sprite" parent="Node2D/Vines"]
+position = Vector2( 1557.06, -99.9681 )
+texture = ExtResource( 4 )
+
+[node name="funicular_base_station_vines_1-min2" type="Sprite" parent="Node2D/Vines"]
+position = Vector2( 863.643, -268.396 )
+texture = ExtResource( 2 )
+
+[node name="funicular_base_station_vines_2-min" type="Sprite" parent="Node2D/Vines"]
+position = Vector2( 992.651, -354.402 )
+texture = ExtResource( 5 )
+
+[node name="funicular_base_station_vines_2-min2" type="Sprite" parent="Node2D/Vines"]
+position = Vector2( 460.49, -85.6339 )
+texture = ExtResource( 5 )
+
+[node name="funicular_base_station_vines_1-min3" type="Sprite" parent="Node2D/Vines"]
+position = Vector2( 1399.39, -569.416 )
+texture = ExtResource( 2 )
+
+[node name="funicular_base_station_vines_1-min4" type="Sprite" parent="Node2D/Vines"]
+position = Vector2( 1531.98, -614.211 )
+texture = ExtResource( 2 )
+
+[node name="funicular_base_station_vines_1-min5" type="Sprite" parent="Node2D/Vines"]
+position = Vector2( 1741.5, -696.927 )
+texture = ExtResource( 2 )
+
+[node name="funicular_base_station_vines_2-min3" type="Sprite" parent="Node2D/Vines"]
+position = Vector2( 1555.27, -316.774 )
+texture = ExtResource( 5 )
+
+[node name="funicular_base_station_vines_2-min4" type="Sprite" parent="Node2D/Vines"]
+position = Vector2( 707.757, -232.56 )
+texture = ExtResource( 5 )
+
+[node name="funicular_base_station_vines_1-min6" type="Sprite" parent="Node2D/Vines"]
+position = Vector2( 1548.11, -490.578 )
+rotation = 0.749993
+texture = ExtResource( 2 )
+
+[node name="funicular_base_station_vines_1-min" type="Sprite" parent="Node2D/Vines"]
+position = Vector2( 284.213, 0.930206 )
+rotation = -0.515054
+texture = ExtResource( 2 )

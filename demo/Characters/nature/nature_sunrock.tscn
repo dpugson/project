@@ -5,10 +5,10 @@
 [node name="nature_sunrock" type="Node2D"]
 
 [node name="nature_sunrock-min" type="Sprite" parent="."]
-position = Vector2( 12.7261, -36.5132 )
+position = Vector2( 12.7261, -37.1801 )
 texture = ExtResource( 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="nature_sunrock-min"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="nature_sunrock-min/StaticBody2D"]
-polygon = PoolVector2Array( 132.002, 38.6493, 77.2984, 73.7308, 35.0816, 78.4877, -90.9743, 77.8931, -132.597, 61.2441, -111.785, 36.2709, -8.91904, 25.568 )
+polygon = PoolVector2Array( 132.002, 38.6493, 94.0138, 69.6293, 35.0816, 78.4877, -90.9743, 77.8931, -132.597, 61.2441, -118.74, 22.2765, -8.02822, 4.26915, 99.3493, 11.6055 )

@@ -34,7 +34,7 @@ scale = Vector2( 0.645872, 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="mansion_small_courtyard_fountain_bg-min"]
 frames = SubResource( 1 )
 animation = "on"
-frame = 2
+frame = 4
 playing = true
 
 [node name="mansion_small_courtyard_fountain_fg-min" type="Sprite" parent="."]
