@@ -69,14 +69,14 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 15 ) ],
-"loop": true,
-"name": "updown",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "leftright",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "updown",
 "speed": 5.0
 } ]
 
@@ -86,21 +86,6 @@ height = 64.3439
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "left",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 12 ), ExtResource( 7 ), ExtResource( 12 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "right",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "up",
-"speed": 7.0
-}, {
 "frames": [ ExtResource( 36 ) ],
 "loop": true,
 "name": "swimdown",
@@ -145,6 +130,21 @@ animations = [ {
 "loop": true,
 "name": "swimright",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "left",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 7 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "right",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "up",
+"speed": 7.0
 } ]
 
 [sub_resource type="Animation" id=4]
@@ -2029,6 +2029,11 @@ radius = 50.8548
 
 [sub_resource type="SpriteFrames" id=56]
 animations = [ {
+"frames": [ ExtResource( 42 ) ],
+"loop": true,
+"name": "down",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 45 ) ],
 "loop": true,
 "name": "left",
@@ -2042,11 +2047,6 @@ animations = [ {
 "frames": [ ExtResource( 44 ) ],
 "loop": true,
 "name": "up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 42 ) ],
-"loop": true,
-"name": "down",
 "speed": 5.0
 } ]
 
@@ -2090,6 +2090,11 @@ tracks/0/keys = {
 
 [sub_resource type="SpriteFrames" id=59]
 animations = [ {
+"frames": [ ExtResource( 58 ) ],
+"loop": true,
+"name": "down",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 60 ) ],
 "loop": true,
 "name": "left",
@@ -2104,11 +2109,6 @@ animations = [ {
 "loop": true,
 "name": "up",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 58 ) ],
-"loop": true,
-"name": "down",
-"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=60]
@@ -2116,6 +2116,11 @@ extents = Vector2( 12.2717, 16.1059 )
 
 [sub_resource type="SpriteFrames" id=61]
 animations = [ {
+"frames": [ ExtResource( 54 ) ],
+"loop": true,
+"name": "down",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 55 ) ],
 "loop": true,
 "name": "left",
@@ -2129,11 +2134,6 @@ animations = [ {
 "frames": [ ExtResource( 61 ) ],
 "loop": true,
 "name": "up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 54 ) ],
-"loop": true,
-"name": "down",
 "speed": 5.0
 } ]
 

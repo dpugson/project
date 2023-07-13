@@ -7,13 +7,13 @@ radius = 48.7299
 height = 94.019
 
 [node name="SinglePine" type="Node2D"]
-position = Vector2( 653.92, 873.081 )
 
 [node name="bigpine" type="Sprite" parent="."]
-position = Vector2( 6.75598, -153.693 )
+position = Vector2( 8.33472, -175.796 )
 texture = ExtResource( 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 1.57874, -22.1025 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( -4.10413, 58.0615 )

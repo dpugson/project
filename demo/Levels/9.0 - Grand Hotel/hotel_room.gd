@@ -10,7 +10,9 @@ onready var camera = $PuppyCamera
 func _ready():
 	var player_position = topSP.global_position
 	var orientation = Vector2.DOWN
-	Jukebox.play_song("res://tunes/forest/sunny_morning.wav")
+	player.cutscene_mode = true
+	player.visible = false
+	#Jukebox.play_song("res://tunes/forest/sunny_morning.wav")
 	match stats.spawn_metadata:
 		"top":
 			player_position = topSP.global_position

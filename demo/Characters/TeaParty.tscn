@@ -36,7 +36,7 @@ tracks/0/keys = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 5.15445, 82.97 )
 frames = SubResource( 1 )
-frame = 3
+frame = 1
 
 [node name="tea_pot" type="Sprite" parent="."]
 position = Vector2( -3.19193, 66.489 )

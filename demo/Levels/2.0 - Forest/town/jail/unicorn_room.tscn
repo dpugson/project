@@ -197,17 +197,17 @@ position = Vector2( 51.2029, -241.689 )
 texture = ExtResource( 12 )
 
 [node name="unicorn_room_bright-min" type="Sprite" parent="bgstuff/walls"]
-visible = false
 texture = ExtResource( 8 )
 
 [node name="unicorn_room_floor_lit-min" type="Sprite" parent="bgstuff/walls"]
 texture = ExtResource( 7 )
 
 [node name="unicorn_room_wall_lit-min" type="Sprite" parent="bgstuff/walls"]
-modulate = Color( 1, 1, 1, 0.0431373 )
+modulate = Color( 1, 1, 1, 0.658824 )
 texture = ExtResource( 10 )
 
 [node name="unicorn_room_dark-min" type="Sprite" parent="bgstuff/walls"]
+visible = false
 modulate = Color( 0.682353, 0.701961, 0.764706, 1 )
 position = Vector2( -1, 1 )
 texture = ExtResource( 11 )
@@ -221,9 +221,10 @@ camera = NodePath("../../PuppyCamera")
 
 [node name="scholar_bingus" parent="YSort" instance=ExtResource( 13 )]
 visible = false
-position = Vector2( 2203.01, 356.682 )
+position = Vector2( 911.831, 582.956 )
 
 [node name="AnimatedSprite" parent="YSort/scholar_bingus" index="0"]
+animation = "up"
 frame = 1
 
 [node name="PuppyCamera" parent="." instance=ExtResource( 9 )]
@@ -265,7 +266,6 @@ position = Vector2( 759.433, -93.3381 )
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "default"
 anims/Creepy = SubResource( 3 )
 anims/default = SubResource( 4 )
 

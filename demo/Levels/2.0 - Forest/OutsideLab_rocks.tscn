@@ -1,0 +1,411 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://Levels/2.0 - Forest/Boulder2.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/2.0 - Forest/OutsideLab_rocks.gd" type="Script" id=2]
+[ext_resource path="res://Levels/2.0 - Forest/Boulder1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/2.0 - Forest/Boulder4.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/2.0 - Forest/Boulder3.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/leafpiletile2dark.png" type="Texture" id=6]
+[ext_resource path="res://Characters/goblins/goblinmonument/goblinmonument_longleaves.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/L3_forest/rocks_n_hidin/rocks_n_hidin_sapling_0-min.png" type="Texture" id=8]
+[ext_resource path="res://Characters/goblins/goblinmonument/goblinmonument_flowerbush.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Levels/2.0 - Forest/creepy_tree_line.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sprites/L3_forest/rocks_n_hidin/rocks_n_hidin_sapling_1-min.png" type="Texture" id=11]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Characters/goblins/goblinmonument/ThickTreeTrunkWithCollision.tscn" type="PackedScene" id=15]
+[ext_resource path="res://sprites/L3_forest/mansion/flower_hall/mansion_flower_hallway_flower_2-min.png" type="Texture" id=16]
+[ext_resource path="res://Levels/2.0 - Forest/SinglePine.tscn" type="PackedScene" id=17]
+[ext_resource path="res://sprites/L3_forest/vignette_fade.png" type="Texture" id=18]
+[ext_resource path="res://Characters/goblins/goblinmonument/ThickTreeTrunk.tscn" type="PackedScene" id=19]
+[ext_resource path="res://sprites/L4_AncientTemple/refectory_light_beams.png" type="Texture" id=20]
+[ext_resource path="res://Levels/2.0 - Forest/rocks_n_hidin_trunk.tscn" type="PackedScene" id=21]
+[ext_resource path="res://sprites/L3_forest/white_glow.png" type="Texture" id=22]
+[ext_resource path="res://Characters/goblins/goblinmonument/singletallcreepytree_branches.tscn" type="PackedScene" id=25]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=26]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 61.4875, 336.522 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 83.7338, 520.403 )
+
+[sub_resource type="Curve" id=3]
+min_value = -200.0
+max_value = 200.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.254717, 156.689 ), 0.0, 0.0, 0, 0, Vector2( 0.504717, -126.194 ), 0.0, 0.0, 0, 0, Vector2( 0.764151, 160.293 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[node name="OutsideLabRocks" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -1315.0
+margin_top = -2341.0
+margin_right = 7990.0
+margin_bottom = 2776.0
+texture = ExtResource( 6 )
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 13 )]
+position = Vector2( -1592.55, 1314.22 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -1277.02, -2251.29 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 7990, 1801.69 )
+
+[node name="BGStuff" type="Node2D" parent="."]
+position = Vector2( -38.8142, -60.4982 )
+
+[node name="vignette_fade3" type="Sprite" parent="."]
+position = Vector2( 1308.32, -325.078 )
+rotation = 1.5708
+texture = ExtResource( 18 )
+
+[node name="vignette_fade" type="Sprite" parent="."]
+position = Vector2( 941.675, -920.134 )
+scale = Vector2( 0.617624, 2.08307 )
+texture = ExtResource( 18 )
+
+[node name="ColorRect" type="ColorRect" parent="vignette_fade"]
+margin_left = -5519.0
+margin_top = -1062.0
+margin_right = -710.0
+margin_bottom = 1007.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vignette_fade2" type="Sprite" parent="."]
+position = Vector2( 1578.16, -906.221 )
+rotation = 3.14159
+scale = Vector2( 0.617624, 2.08307 )
+texture = ExtResource( 18 )
+
+[node name="ColorRect" type="ColorRect" parent="vignette_fade2"]
+anchor_left = -0.0040568
+anchor_top = 0.00115479
+anchor_right = -0.0040568
+anchor_bottom = 0.00115479
+margin_left = -5519.0
+margin_top = -1062.0
+margin_right = -710.0
+margin_bottom = 1007.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="player" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( 720.885, 949.108 )
+camera = NodePath("../../PuppyCamera")
+
+[node name="fade" type="Node2D" parent="YSort"]
+position = Vector2( 1153.69, 292.666 )
+
+[node name="Boulder1" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 979.608, 566.316 )
+
+[node name="rocks_n_hidin_sapling_0-min" type="Sprite" parent="YSort/Boulder1"]
+position = Vector2( 31.1633, -448.969 )
+texture = ExtResource( 8 )
+
+[node name="rocks_n_hidin_sapling_1-min" type="Sprite" parent="YSort/Boulder1"]
+position = Vector2( 227.579, -371.673 )
+texture = ExtResource( 11 )
+
+[node name="Boulder2" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 1577.81, 833.962 )
+
+[node name="Boulder7" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 1409.07, -148.836 )
+
+[node name="Boulder4" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 1201.82, 344.001 )
+
+[node name="Boulder3" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 1516.61, 454.373 )
+
+[node name="mansion_flower_hallway_flower_2-min" type="Sprite" parent="YSort/Boulder3"]
+position = Vector2( 4.70105, -237.671 )
+texture = ExtResource( 16 )
+
+[node name="flowerbush" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1466.6, 604.946 )
+
+[node name="flowerbush2" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 1416.31, 559.062 )
+
+[node name="flowerbush3" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 958.359, 720.536 )
+
+[node name="longleaves" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 1032.48, 654.358 )
+
+[node name="longleaves2" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 845.415, 727.595 )
+
+[node name="longleaves3" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 1507.19, 861.716 )
+
+[node name="ThickTreeTrunkWithCollision" parent="YSort" instance=ExtResource( 15 )]
+position = Vector2( 925.711, 398.47 )
+
+[node name="ThickTreeTrunkWithCollision2" parent="YSort" instance=ExtResource( 15 )]
+position = Vector2( 1060.71, 337.116 )
+
+[node name="ThickTreeTrunkWithCollision4" parent="YSort" instance=ExtResource( 15 )]
+position = Vector2( 870.696, 55.4422 )
+
+[node name="ThickTreeTrunkWithCollision3" parent="YSort" instance=ExtResource( 15 )]
+position = Vector2( 1532.78, 375.529 )
+
+[node name="Boulder5" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 1483.4, 150.201 )
+scale = Vector2( -1, 1 )
+
+[node name="Boulder6" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 944.647, 13.8354 )
+
+[node name="CreepyTreeWall" type="YSort" parent="YSort"]
+position = Vector2( 269.362, -238.978 )
+
+[node name="CreepyTreeLine" parent="YSort/CreepyTreeWall" instance=ExtResource( 10 )]
+position = Vector2( -560.131, 1091.4 )
+
+[node name="CreepyTreeLine2" parent="YSort/CreepyTreeWall" instance=ExtResource( 10 )]
+position = Vector2( -618.117, 885.099 )
+
+[node name="CreepyTreeLine3" parent="YSort/CreepyTreeWall" instance=ExtResource( 10 )]
+modulate = Color( 0.623529, 0.619608, 0.623529, 1 )
+position = Vector2( -501.537, 595.147 )
+
+[node name="CreepyTreeWall2" type="YSort" parent="YSort"]
+position = Vector2( 2316.99, -187.787 )
+scale = Vector2( -1, 1 )
+
+[node name="CreepyTreeLine" parent="YSort/CreepyTreeWall2" instance=ExtResource( 10 )]
+position = Vector2( -560.131, 1091.4 )
+
+[node name="CreepyTreeLine2" parent="YSort/CreepyTreeWall2" instance=ExtResource( 10 )]
+position = Vector2( -618.117, 885.099 )
+
+[node name="CreepyTreeLine3" parent="YSort/CreepyTreeWall2" instance=ExtResource( 10 )]
+modulate = Color( 0.623529, 0.619608, 0.623529, 1 )
+position = Vector2( -501.537, 595.147 )
+
+[node name="SinglePine" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 785.649, 394.583 )
+
+[node name="SinglePine2" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 620.523, 678.452 )
+
+[node name="SinglePine3" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 609.391, 370.463 )
+
+[node name="SinglePine4" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 739.265, 151.893 )
+
+[node name="SinglePine5" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 729.988, 825.115 )
+
+[node name="refectory_light_beams" type="Sprite" parent="YSort/SinglePine5"]
+modulate = Color( 0.67451, 0.564706, 0.352941, 0.196078 )
+position = Vector2( 543.076, -999.235 )
+texture = ExtResource( 20 )
+
+[node name="SinglePine6" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 1692.92, 915.937 )
+
+[node name="SinglePine7" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 1772.7, 847.289 )
+
+[node name="SinglePine12" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 1926.27, 924.957 )
+
+[node name="SinglePine13" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 1956.28, 686.656 )
+
+[node name="SinglePine14" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 1938.62, 443.059 )
+
+[node name="SinglePine8" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 1691.06, 626.502 )
+
+[node name="SinglePine9" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 1659.52, 381.595 )
+
+[node name="SinglePine10" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 1772.7, 351.91 )
+
+[node name="SinglePine11" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 1750.43, 138.544 )
+
+[node name="singletallcreepytree_branches" parent="YSort" instance=ExtResource( 25 )]
+position = Vector2( 1743.14, 712.269 )
+
+[node name="ThickTreeTrunk" parent="YSort" instance=ExtResource( 19 )]
+position = Vector2( 1852.37, 741.954 )
+
+[node name="rocks_n_hidin_trunk" parent="YSort" instance=ExtResource( 21 )]
+position = Vector2( 1724.64, 484.994 )
+
+[node name="rocks_n_hidin_trunk2" parent="YSort" instance=ExtResource( 21 )]
+modulate = Color( 0.666667, 0.588235, 0.490196, 1 )
+position = Vector2( 893.107, 885.067 )
+scale = Vector2( -1, 1 )
+
+[node name="singletallcreepytree_branches2" parent="YSort" instance=ExtResource( 25 )]
+position = Vector2( 1404.43, -60.2986 )
+
+[node name="LeftSP" parent="." instance=ExtResource( 14 )]
+position = Vector2( 1263.47, 674.592 )
+
+[node name="RightSP" parent="." instance=ExtResource( 14 )]
+position = Vector2( 3427.71, 1010.78 )
+
+[node name="collisions" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
+position = Vector2( -91.9669, 328.423 )
+polygon = PoolVector2Array( -208.067, 1110.63, 4558.64, 1124.66, 4146.94, 1355.88, -479.801, 1380.32 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
+position = Vector2( -225.089, -565.098 )
+polygon = PoolVector2Array( 502.008, -2045.52, 607.735, 2165.92, -568.401, 1432.07 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="collisions/StaticBody2D"]
+position = Vector2( 2042.74, -1066.29 )
+polygon = PoolVector2Array( 1849.55, 1931.88, 1235.64, 2719.98, 1265.01, -1268.26 )
+
+[node name="RightTZ" parent="." instance=ExtResource( 26 )]
+position = Vector2( 2763.2, 852.843 )
+
+[node name="CollisionShape2D" parent="RightTZ" index="0"]
+position = Vector2( 860.098, 284.963 )
+shape = SubResource( 1 )
+
+[node name="LeftTZ" parent="." instance=ExtResource( 26 )]
+position = Vector2( 769.611, 201.061 )
+
+[node name="CollisionShape2D" parent="LeftTZ" index="0"]
+position = Vector2( -525.196, 867.668 )
+shape = SubResource( 2 )
+
+[node name="FG" type="Node2D" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="FG"]
+modulate = Color( 1, 1, 1, 0.627451 )
+position = Vector2( 1456.46, -281.48 )
+amount = 200
+lifetime = 20.0
+preprocess = 50.0
+speed_scale = 0.2
+texture = ExtResource( 22 )
+emission_shape = 2
+emission_rect_extents = Vector2( 1000, 5 )
+gravity = Vector2( 0, 50 )
+radial_accel = 3.45
+radial_accel_random = 0.98
+tangential_accel_curve = SubResource( 3 )
+scale_amount = 0.1
+scale_amount_random = 0.08
+hue_variation = 0.12
+hue_variation_random = 0.5
+anim_speed_random = 0.86
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="FG"]
+modulate = Color( 1, 1, 1, 0.627451 )
+position = Vector2( 335.671, 1232.29 )
+rotation = 3.14159
+amount = 200
+lifetime = 20.0
+preprocess = 50.0
+speed_scale = 0.2
+texture = ExtResource( 22 )
+emission_shape = 2
+emission_rect_extents = Vector2( 1000, 5 )
+gravity = Vector2( 0, 50 )
+radial_accel = 3.45
+radial_accel_random = 0.98
+tangential_accel_curve = SubResource( 3 )
+scale_amount = 0.1
+scale_amount_random = 0.08
+hue_variation = 0.38
+hue_variation_random = 0.5
+anim_speed_random = 0.86
+
+[node name="vignette_fade4" type="Sprite" parent="FG"]
+position = Vector2( 701.457, -901.476 )
+scale = Vector2( 0.617624, 2.08307 )
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="FG/vignette_fade4"]
+margin_left = -5519.0
+margin_top = -1062.0
+margin_right = -710.0
+margin_bottom = 1007.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vignette_fade6" type="Sprite" parent="FG"]
+position = Vector2( 1308.32, -325.078 )
+rotation = 1.5708
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="vignette_fade7" type="Sprite" parent="FG"]
+position = Vector2( 1281.65, 860.037 )
+rotation = -1.5708
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="vignette_fade5" type="Sprite" parent="FG"]
+position = Vector2( 1874.35, -934.207 )
+rotation = -3.14159
+scale = Vector2( 0.617624, 2.08307 )
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="FG/vignette_fade5"]
+anchor_left = -0.0040568
+anchor_top = 0.00115479
+anchor_right = -0.0040568
+anchor_bottom = 0.00115479
+margin_left = -5519.0
+margin_top = -1062.0
+margin_right = -710.0
+margin_bottom = 1007.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="transition_triggered" from="RightTZ" to="." method="_on_RightTZ_transition_triggered"]
+[connection signal="transition_triggered" from="LeftTZ" to="." method="_on_LeftTZ_transition_triggered"]
+
+[editable path="PuppyCamera"]
+[editable path="RightTZ"]
+[editable path="LeftTZ"]

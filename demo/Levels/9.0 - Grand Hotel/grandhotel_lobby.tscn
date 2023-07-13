@@ -148,6 +148,9 @@ texture = ExtResource( 33 )
 [node name="outdoors" parent="bgstuff/upperfloor" instance=ExtResource( 38 )]
 position = Vector2( -1744.38, -3301 )
 
+[node name="snowy" parent="bgstuff/upperfloor/outdoors" index="0"]
+visible = true
+
 [node name="sky2" parent="bgstuff/upperfloor/outdoors/snowy" index="0"]
 margin_left = 1493.21
 margin_top = 376.361
@@ -200,6 +203,9 @@ margin_bottom = -968.0
 [node name="cpusnow" parent="bgstuff/upperfloor/outdoors/snowy/trees2" index="11"]
 position = Vector2( 880.628, -1669.39 )
 emission_rect_extents = Vector2( 1000, 1 )
+
+[node name="fall" parent="bgstuff/upperfloor/outdoors" index="3"]
+visible = false
 
 [node name="BlueCarpet2" type="TextureRect" parent="bgstuff/upperfloor"]
 self_modulate = Color( 0.454902, 0.439216, 0.494118, 1 )

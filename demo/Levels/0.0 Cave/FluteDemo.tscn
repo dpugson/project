@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://BG.tscn" type="PackedScene" id=1]
+[ext_resource path="res://player/flute_doggo.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/cavestuff/cave_01.png" type="Texture" id=3]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=4]
+
+[node name="ShakubearCave" type="Node2D"]
+
+[node name="BG" parent="." instance=ExtResource( 1 )]
+margin_left = -1319.34
+margin_top = -952.974
+margin_right = 1502.66
+margin_bottom = 1152.03
+
+[node name="cave_01" type="Sprite" parent="."]
+modulate = Color( 0.396078, 0.435294, 0.541176, 1 )
+position = Vector2( 8.14294, -154.689 )
+texture = ExtResource( 3 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 4 )]
+position = Vector2( 44.9158, -20.9967 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -1257.6, -926.404 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 1473.26, 1119.69 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="flute_doggo" parent="." instance=ExtResource( 2 )]
+position = Vector2( 6.44141, -15.9064 )
+
+[editable path="PuppyCamera"]

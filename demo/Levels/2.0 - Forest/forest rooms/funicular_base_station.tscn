@@ -951,23 +951,23 @@ position = Vector2( -729.439, -838.096 )
 texture = ExtResource( 25 )
 
 [node name="Collisions" type="Node2D" parent="."]
-visible = false
 
 [node name="left" type="StaticBody2D" parent="Collisions"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/left"]
-position = Vector2( 0, -0.428955 )
-polygon = PoolVector2Array( -473.999, -354.604, -80.1091, -353.114, -85.7354, -445.292, 88.4259, -444.434, 87.1044, -393.204, 167.586, -392.886, 166.836, -407.362, 387.403, -405.126, 393.364, -392.458, 464.155, -391.713, 469.951, -445.121, 635.532, -448.982, -154.083, -765.808 )
+position = Vector2( -596.487, -129.318 )
+polygon = PoolVector2Array( -473.999, -354.604, -511.546, 185.938, -248.194, 197.051, -219.05, 26.5859, -36.6335, -37.3648, 106.993, -367.602, 166.836, -407.362, 387.403, -405.126, 393.364, -392.458, 464.155, -391.713, 469.951, -445.121, 635.532, -448.982, -154.083, -765.808 )
 
 [node name="right" type="StaticBody2D" parent="Collisions"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/right"]
-polygon = PoolVector2Array( 558.56, -683.911, 550.444, -386.499, 629.554, -385.365, 629.554, -402.738, 851.488, -399.911, 851.488, -384.263, 928.346, -386.351, 931.778, -445.549, 1090.07, -445.12, 1089.94, -332.847, 1516.17, -327.929 )
+position = Vector2( -605.479, -44.9614 )
+polygon = PoolVector2Array( 558.56, -683.911, 550.444, -386.499, 629.554, -385.365, 629.554, -402.738, 1782.79, -414.203, 2281.6, 111.876, 2620.12, -270.496, 2218.56, -592.566 )
 
 [node name="bottom" type="StaticBody2D" parent="Collisions"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/bottom"]
-position = Vector2( -0.745148, 0 )
+position = Vector2( -102.657, 758.347 )
 polygon = PoolVector2Array( -507.531, -382.027, -219.006, -277.705, -116.174, -180.835, 1067.58, -190.522, 1494.56, -382.773, 1065.74, 195.397, 157.698, 383.615, -349.484, 14.363, -349.484, 14.363 )
 
 [connection signal="transition_triggered" from="leftTZ" to="." method="_on_leftTZ_transition_triggered"]

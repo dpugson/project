@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://sprites/L9_GrandHotel/rooms/room_bg-min.png" type="Texture" id=1]
 [ext_resource path="res://Levels/9.0 - Grand Hotel/hotel_room_bed.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Levels/9.0 - Grand Hotel/hotel_room_wardrobe.tscn" type="PackedScene" id=5]
 [ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Brains/DescriptionBox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://player/Banjo.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Levels/9.0 - Grand Hotel/hotel_room.gd" type="Script" id=9]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=15]
@@ -68,6 +69,9 @@ camera = NodePath("../../PuppyCamera")
 [node name="hotel_room_bed" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 751.614, 776.11 )
 
+[node name="Banjo" parent="YSort/hotel_room_bed" instance=ExtResource( 8 )]
+position = Vector2( 6.83203, -259.515 )
+
 [node name="hotel_room_wardrobe" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 1111.92, 534.256 )
 
@@ -113,6 +117,7 @@ __meta__ = {
 }
 
 [node name="Collisions" type="Node2D" parent="."]
+visible = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Collisions"]
 
