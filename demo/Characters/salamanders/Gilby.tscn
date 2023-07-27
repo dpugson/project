@@ -163,7 +163,6 @@ script = ExtResource( 4 )
 
 [node name="Ripples" parent="." instance=ExtResource( 1 )]
 position = Vector2( 2.02501, 22.0321 )
-frame = 1
 
 [node name="Person" parent="." instance=ExtResource( 3 )]
 

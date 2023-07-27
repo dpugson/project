@@ -82,11 +82,10 @@ margin_left = -758.034
 margin_top = -660.062
 margin_right = 2063.97
 margin_bottom = 1444.94
+
 [connection signal="transition_triggered" from="UpperTZ" to="." method="_on_UpperTZ_transition_triggered"]
 [connection signal="transition_triggered" from="LowerTZ" to="." method="_on_LowerTZ_transition_triggered"]
 
 [editable path="PuppyCamera"]
-
 [editable path="UpperTZ"]
-
 [editable path="LowerTZ"]
