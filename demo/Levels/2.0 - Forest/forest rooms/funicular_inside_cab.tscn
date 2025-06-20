@@ -46,13 +46,12 @@ tracks/1/keys = {
 "values": [ Vector2( 1037.52, -1093.63 ), Vector2( -410.834, -402.235 ), Vector2( 725.644, 761.125 ), Vector2( 1822.27, -1383.22 ) ]
 }
 
-[sub_resource type="Curve" id=8]
+[sub_resource type="Curve" id=2]
 min_value = -80.0
 max_value = 80.0
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.158824, 33.0757 ), -82.4045, -82.4045, 0, 0, Vector2( 0.205882, -38.2757 ), 2058.38, 2058.38, 0, 0, Vector2( 0.335294, -33.9513 ), 0.0, 0.0, 0, 0, Vector2( 0.485294, 33.0757 ), -1639.92, -1639.92, 0, 0, Vector2( 0.752941, -35.3928 ), 0.0, 0.0, 0, 0, Vector2( 0.797059, 40.2829 ), 0.0, 0.0, 0, 0, Vector2( 0.873529, -48.3658 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="Animation" id=2]
-resource_name = "default"
+[sub_resource type="Animation" id=3]
 length = 16.0
 loop = true
 step = 1.0
@@ -81,19 +80,14 @@ tracks/1/keys = {
 "values": [ Vector2( -527.932, -149.017 ), Vector2( -118.145, 311.39 ), Vector2( 1407.71, -582.909 ), Vector2( 1128.96, -1083.8 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 97.3441, 49.1887 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 102.439, 37.0089 )
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "default",
-"speed": 0.5
-}, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
 "name": "looking_out",
@@ -103,15 +97,15 @@ animations = [ {
 "loop": true,
 "name": "focused",
 "speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=6]
-animations = [ {
-"frames": [ ExtResource( 8 ) ],
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "default",
-"speed": 0.7
-}, {
+"speed": 0.5
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
 "frames": [ ExtResource( 9 ) ],
 "loop": true,
 "name": "ashamed",
@@ -121,10 +115,14 @@ animations = [ {
 "loop": true,
 "name": "lookout",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 0.7
 } ]
 
-[sub_resource type="Animation" id=7]
-resource_name = "Going"
+[sub_resource type="Animation" id=8]
 length = 6.25
 loop = true
 step = 0.05
@@ -506,7 +504,7 @@ speed_scale = 0.5
 emission_shape = 2
 emission_rect_extents = Vector2( 300, 1 )
 gravity = Vector2( 0, 30 )
-tangential_accel_curve = SubResource( 8 )
+tangential_accel_curve = SubResource( 2 )
 scale_amount = 4.0
 scale_amount_random = 0.75
 
@@ -674,7 +672,7 @@ position = Vector2( 1093.04, -1074.14 )
 [node name="front_trees_animator" type="AnimationPlayer" parent="BG/FrontTreesOutside"]
 autoplay = "default"
 playback_speed = 0.4
-anims/default = SubResource( 2 )
+anims/default = SubResource( 3 )
 
 [node name="snow_vignette3" type="Sprite" parent="BG"]
 self_modulate = Color( 1, 1, 1, 0.290196 )
@@ -693,7 +691,7 @@ speed_scale = 0.5
 emission_shape = 2
 emission_rect_extents = Vector2( 300, 1 )
 gravity = Vector2( 0, 30 )
-tangential_accel_curve = SubResource( 8 )
+tangential_accel_curve = SubResource( 2 )
 scale_amount = 5.0
 scale_amount_random = 0.75
 
@@ -765,7 +763,7 @@ position = Vector2( 786.659, -204.743 )
 
 [node name="CollisionShape2D" parent="leftTZ" index="0"]
 position = Vector2( 573.07, -167.703 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="rightTZ" parent="." instance=ExtResource( 11 )]
 position = Vector2( -43.0199, -225.839 )
@@ -773,7 +771,7 @@ rotation = -1.57053
 
 [node name="CollisionShape2D" parent="rightTZ" index="0"]
 position = Vector2( 121.285, -268.113 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
@@ -784,7 +782,7 @@ position = Vector2( -116.175, -428.996 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="FG/SittingDoggo"]
 position = Vector2( 8.79337, -35.1735 )
-frames = SubResource( 5 )
+frames = SubResource( 6 )
 playing = true
 
 [node name="SittingLadTeacup" type="Node2D" parent="FG"]
@@ -792,12 +790,12 @@ position = Vector2( 161.012, -426.759 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="FG/SittingLadTeacup"]
 position = Vector2( 4.6897, -34.3908 )
-frames = SubResource( 6 )
+frames = SubResource( 7 )
 playing = true
 
 [node name="FGAnimationPlayer" type="AnimationPlayer" parent="FG"]
 autoplay = "Going"
-anims/Going = SubResource( 7 )
+anims/Going = SubResource( 8 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="FG"]
 stream = ExtResource( 15 )

@@ -96,7 +96,6 @@ margin_bottom = 10032.6
 texture = ExtResource( 14 )
 stretch_mode = 2
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -485,13 +484,13 @@ position = Vector2( 767.752, -2058.27 )
 position = Vector2( 1143.93, -2055.44 )
 
 [node name="Lamp15" parent="YSort/lamp_corridor" instance=ExtResource( 16 )]
-position = Vector2( 775.408, -2562.59 )
+position = Vector2( 777.501, -2562.59 )
 
 [node name="Lamp16" parent="YSort/lamp_corridor" instance=ExtResource( 16 )]
 position = Vector2( 1151.59, -2559.76 )
 
 [node name="hh_ladder_scene" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( 932.297, 513 )
+position = Vector2( 1135.3, 552.29 )
 
 [node name="Bridge" type="Node2D" parent="YSort"]
 position = Vector2( 936.209, 462.448 )
@@ -583,12 +582,13 @@ position = Vector2( 2859.5, 4974.77 )
 position = Vector2( 920.564, 1782.29 )
 
 [node name="TopSP" parent="." instance=ExtResource( 8 )]
-position = Vector2( 943.61, 344.633 )
+position = Vector2( 934.46, 472.736 )
 
 [node name="TopTZ" parent="." instance=ExtResource( 10 )]
 position = Vector2( 952.201, -3228 )
 
 [node name="CollisionShape2D" parent="TopTZ" index="0"]
+position = Vector2( -22.2724, 3493.06 )
 shape = SubResource( 1 )
 
 [node name="Collisions" type="Node2D" parent="."]
@@ -659,6 +659,7 @@ position = Vector2( 1106, 558 )
 [node name="PrisonSP" parent="Doors" instance=ExtResource( 8 )]
 position = Vector2( 1398, 914 )
 
+[connection signal="transition_triggered" from="TopTZ" to="." method="_on_TopTZ_transition_triggered"]
 [connection signal="transition_triggered" from="BottomTZ" to="." method="_on_BottomTZ_transition_triggered"]
 [connection signal="transition_triggered" from="Doors/TheaterDoor" to="." method="_on_TheaterDoor_transition_triggered"]
 [connection signal="transition_triggered" from="Doors/BakeryDoor" to="." method="_on_BakeryDoor_transition_triggered"]

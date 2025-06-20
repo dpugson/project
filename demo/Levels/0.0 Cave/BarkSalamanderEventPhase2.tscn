@@ -477,9 +477,6 @@ frame = 1
 [node name="Gilby" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( -81.9869, 218.035 )
 
-[node name="Ripples" parent="Node2D/Gilby" index="0"]
-frame = 0
-
 [node name="AnimationTree" parent="Node2D/Gilby/Person" index="2"]
 parameters/playback = SubResource( 6 )
 

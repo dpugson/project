@@ -1,0 +1,98 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/laundry_dryer_drum_0-min.png" type="Texture" id=1]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/laundry_dryer_drum_1-min.png" type="Texture" id=2]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/laundry_dryer_fg-min.png" type="Texture" id=3]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/laundry_dryer_clothes_2-min.png" type="Texture" id=4]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/laundry_dryer_clothes_0-min.png" type="Texture" id=5]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/laundry_dryer_clothes_1-min.png" type="Texture" id=6]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/dryer.gd" type="Script" id=7]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/laundry_dryer_door_closed-min.png" type="Texture" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "shake"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 0 ), Vector2( 1.5, 0 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 99.6262, 41.9171 )
+
+[node name="dryer" type="Node2D"]
+pause_mode = 2
+position = Vector2( -6.33487, -59.7288 )
+script = ExtResource( 7 )
+
+[node name="holder" type="Node2D" parent="."]
+position = Vector2( 6.3349, -69.6836 )
+
+[node name="shaker" type="AnimationPlayer" parent="holder"]
+autoplay = "shake"
+anims/default = SubResource( 1 )
+anims/shake = SubResource( 2 )
+
+[node name="Node2D" type="Node2D" parent="holder"]
+position = Vector2( 0.177707, 0 )
+
+[node name="drum" type="AnimatedSprite" parent="holder/Node2D"]
+frames = SubResource( 6 )
+playing = true
+
+[node name="clothes" type="AnimatedSprite" parent="holder/Node2D/drum"]
+frames = SubResource( 7 )
+frame = 2
+playing = true
+
+[node name="laundry_dryer_fg-min" type="Sprite" parent="holder/Node2D"]
+texture = ExtResource( 3 )
+
+[node name="laundry_dryer_door_closed-min" type="Sprite" parent="holder/Node2D/laundry_dryer_fg-min"]
+texture = ExtResource( 8 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="holder/Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="holder/Node2D/StaticBody2D"]
+position = Vector2( -1.80999, 102.263 )
+shape = SubResource( 5 )

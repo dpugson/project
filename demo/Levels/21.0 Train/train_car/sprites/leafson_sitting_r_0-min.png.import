@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/leafson_sitting_r_0-min.png-5ef7cc0018c71b012b9aa3a4ec48b5ec.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Levels/21.0 Train/train_car/sprites/leafson_sitting_r_0-min.png"
+dest_files=[ "res://.import/leafson_sitting_r_0-min.png-5ef7cc0018c71b012b9aa3a4ec48b5ec.stex" ]
+
+[params]
+
+compress/mode=1
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

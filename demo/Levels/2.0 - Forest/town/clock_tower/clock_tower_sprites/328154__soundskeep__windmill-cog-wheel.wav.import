@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/328154__soundskeep__windmill-cog-wheel.wav-207c5a16d20334bf23fdf99ad1290271.sample"
+
+[deps]
+
+source_file="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/328154__soundskeep__windmill-cog-wheel.wav"
+dest_files=[ "res://.import/328154__soundskeep__windmill-cog-wheel.wav-207c5a16d20334bf23fdf99ad1290271.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=true
+compress/mode=0

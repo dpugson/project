@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Levels/21.0 Train/train_car/sprites/train_chandelier-min.png" type="Texture" id=2]
+[ext_resource path="res://Levels/2.0 - Forest/Glower.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "swing"
+length = 4.0
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("holder:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -2.0, 2.0 ]
+}
+
+[node name="chandelier" type="Node2D"]
+
+[node name="holder" type="Node2D" parent="."]
+rotation = -0.0296492
+
+[node name="train_chandelier-min" type="Sprite" parent="holder"]
+position = Vector2( -2.14795, 146.702 )
+texture = ExtResource( 2 )
+
+[node name="Glower" parent="holder/train_chandelier-min" instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0.486275 )
+position = Vector2( -6.8764, 76.9109 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "swing"
+anims/swing = SubResource( 1 )

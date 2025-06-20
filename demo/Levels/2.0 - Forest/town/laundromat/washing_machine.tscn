@@ -1,0 +1,101 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/washing_machine_clothes_0-min.png" type="Texture" id=1]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/washing_machine_fg-min.png" type="Texture" id=2]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/washing_machine_clothes_1-min.png" type="Texture" id=3]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/washing_machine_drum_0-min.png" type="Texture" id=4]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/washing_machine_drum_1-min.png" type="Texture" id=5]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/washing_machine_clothes_2-min.png" type="Texture" id=6]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/washing_machine.gd" type="Script" id=7]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/washing_machine_door_closed-min.png" type="Texture" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "shake"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 0 ), Vector2( 1, 0 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 73.9705, 48.5579 )
+
+[node name="washing_machine" type="Node2D"]
+pause_mode = 2
+position = Vector2( 1.81, -3.61992 )
+script = ExtResource( 7 )
+
+[node name="holder" type="Node2D" parent="."]
+position = Vector2( 0.904968, -86.8781 )
+
+[node name="shaker" type="AnimationPlayer" parent="holder"]
+autoplay = "shake"
+anims/default = SubResource( 1 )
+anims/shake = SubResource( 2 )
+
+[node name="Node2D" type="Node2D" parent="holder"]
+position = Vector2( 0.721172, 0 )
+
+[node name="drum" type="AnimatedSprite" parent="holder/Node2D"]
+position = Vector2( 10.1089, -67.0638 )
+frames = SubResource( 3 )
+frame = 1
+playing = true
+
+[node name="clothes" type="AnimatedSprite" parent="holder/Node2D/drum"]
+frames = SubResource( 4 )
+frame = 2
+playing = true
+
+[node name="washing_machine_fg-min" type="Sprite" parent="holder/Node2D"]
+position = Vector2( 10.1089, -67.0638 )
+texture = ExtResource( 2 )
+
+[node name="washing_machine_door_closed-min" type="Sprite" parent="holder/Node2D/washing_machine_fg-min"]
+texture = ExtResource( 8 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="holder/Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="holder/Node2D/StaticBody2D"]
+position = Vector2( -3.61993, 52.4889 )
+shape = SubResource( 5 )

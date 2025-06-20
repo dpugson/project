@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://Characters/RobotAA/Sprites/l0.png" type="Texture" id=1]
 [ext_resource path="res://Characters/RobotAA/Sprites/r1.png" type="Texture" id=2]
@@ -27,9 +27,56 @@
 [ext_resource path="res://Characters/RobotAA/RobotAA.gd" type="Script" id=25]
 [ext_resource path="res://Brains/WalkingThing.tscn" type="PackedScene" id=26]
 [ext_resource path="res://sprites/dogshadowfront.png" type="Texture" id=27]
+[ext_resource path="res://Characters/RobotAA/Sprites/witheveryone/robot_with_passengers_r2-min.png" type="Texture" id=28]
+[ext_resource path="res://Characters/RobotAA/Sprites/witheveryone/robot_with_passengers_r0-min.png" type="Texture" id=29]
+[ext_resource path="res://Characters/RobotAA/Sprites/witheveryone/robot_with_passengers_d0-min.png" type="Texture" id=30]
+[ext_resource path="res://Characters/RobotAA/Sprites/witheveryone/robot_with_passengers_d1-min.png" type="Texture" id=31]
+[ext_resource path="res://Characters/RobotAA/Sprites/witheveryone/robot_with_passengers_l2-min.png" type="Texture" id=32]
+[ext_resource path="res://Characters/RobotAA/Sprites/witheveryone/robot_with_passengers_l0-min.png" type="Texture" id=33]
+[ext_resource path="res://Characters/RobotAA/Sprites/witheveryone/robot_with_passengers_r1-min.png" type="Texture" id=34]
+[ext_resource path="res://Characters/RobotAA/Sprites/witheveryone/robot_with_passengers_u0-min.png" type="Texture" id=35]
+[ext_resource path="res://Characters/RobotAA/Sprites/witheveryone/robot_with_passengers_d2-min.png" type="Texture" id=36]
+[ext_resource path="res://Characters/RobotAA/Sprites/witheveryone/robot_with_passengers_u1-min.png" type="Texture" id=37]
+[ext_resource path="res://Characters/RobotAA/Sprites/witheveryone/robot_with_passengers_u2-min.png" type="Texture" id=38]
+[ext_resource path="res://Characters/RobotAA/Sprites/witheveryone/robot_with_passengers_l1-min.png" type="Texture" id=39]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "dogleft",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 19 ), ExtResource( 13 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "dogup",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 15 ), ExtResource( 24 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "dogdown",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "dogright",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 33 ), ExtResource( 39 ), ExtResource( 33 ), ExtResource( 32 ) ],
+"loop": true,
+"name": "everyoneleft",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 29 ), ExtResource( 34 ), ExtResource( 29 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "everyoneright",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "down",
+"speed": 7.0
+}, {
 "frames": [ ExtResource( 1 ), ExtResource( 7 ), ExtResource( 1 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "left",
@@ -45,29 +92,14 @@ animations = [ {
 "name": "up",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 35 ), ExtResource( 37 ), ExtResource( 35 ), ExtResource( 38 ) ],
 "loop": true,
-"name": "down",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 13 ), ExtResource( 19 ), ExtResource( 13 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "dogup",
+"name": "everyoneup",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 24 ), ExtResource( 15 ), ExtResource( 24 ), ExtResource( 23 ) ],
+"frames": [ ExtResource( 30 ), ExtResource( 31 ), ExtResource( 30 ), ExtResource( 36 ) ],
 "loop": true,
-"name": "dogdown",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "dogleft",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "dogright",
+"name": "everyonedown",
 "speed": 5.0
 } ]
 
@@ -517,7 +549,7 @@ texture = ExtResource( 27 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "right"
+animation = "down"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/dog_down = SubResource( 2 )
@@ -551,4 +583,5 @@ MAX_SPEED = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1.54828, 130.055 )
 shape = SubResource( 35 )
+
 [connection signal="timeout" from="WalkInCirclesTimer" to="." method="_on_WalkInCirclesTimer_timeout"]

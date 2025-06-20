@@ -102,7 +102,7 @@ margin_right = 2316.79
 margin_bottom = 1290.64
 
 [node name="outdoors" type="Node2D" parent="."]
-position = Vector2( -1432.21, -1693.36 )
+position = Vector2( -1476.21, -1937.36 )
 
 [node name="mist" type="Node2D" parent="outdoors"]
 position = Vector2( -40.8582, 646.52 )
@@ -130,7 +130,7 @@ margin_left = -1189.07
 margin_top = -2864.94
 margin_right = 2804.93
 margin_bottom = -113.938
-color = Color( 1, 1, 1, 0.536762 )
+color = Color( 1, 1, 1, 0.337255 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -157,7 +157,7 @@ margin_left = -1357.49
 margin_top = -2880.64
 margin_right = 2994.51
 margin_bottom = -45.6428
-color = Color( 1, 1, 1, 0.270282 )
+color = Color( 1, 1, 1, 0.337255 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -200,14 +200,14 @@ margin_left = -1139.0
 margin_top = -2848.0
 margin_right = 2805.0
 margin_bottom = -223.0
-color = Color( 1, 1, 1, 0.393337 )
+color = Color( 1, 1, 1, 0.337255 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="arcade_back" type="Node2D" parent="outdoors/mist/trees"]
-position = Vector2( 191.042, -1007.72 )
+position = Vector2( 201.173, -718.987 )
 scale = Vector2( 1.26637, 1.26637 )
 
 [node name="bridge_big_arch-min" type="Sprite" parent="outdoors/mist/trees/arcade_back"]
@@ -251,7 +251,7 @@ position = Vector2( 568.581, -364.137 )
 scale = Vector2( 1.26637, 1.26637 )
 
 [node name="BridgeSnowyPine9" parent="outdoors/mist/trees" instance=ExtResource( 7 )]
-position = Vector2( 1049.09, -354.575 )
+position = Vector2( 1031.36, -448.286 )
 scale = Vector2( 1.26637, 1.26637 )
 
 [node name="BridgeSnowyPine10" parent="outdoors/mist/trees" instance=ExtResource( 7 )]
@@ -263,7 +263,7 @@ position = Vector2( 1429.19, -545.822 )
 scale = Vector2( 1.26637, 1.26637 )
 
 [node name="vignette_fade" type="Sprite" parent="outdoors/mist/trees"]
-position = Vector2( 694.424, -2079.36 )
+position = Vector2( 666.564, -1499.36 )
 rotation = 1.5708
 scale = Vector2( 0.417085, 1.2568 )
 texture = ExtResource( 14 )
@@ -273,14 +273,14 @@ margin_left = -1347.19
 margin_top = -3009.35
 margin_right = 3026.81
 margin_bottom = 5.65234
-color = Color( 1, 1, 1, 0.595417 )
+color = Color( 1, 1, 1, 0.337255 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="BridgeSnowyPine13" parent="outdoors/mist/trees" instance=ExtResource( 7 )]
-position = Vector2( 1106.53, -397.654 )
+position = Vector2( 1172.38, -116.52 )
 scale = Vector2( 1.26637, 1.26637 )
 
 [node name="SnowyDeciduous7" parent="outdoors/mist/trees" instance=ExtResource( 8 )]
@@ -288,7 +288,7 @@ position = Vector2( 628.265, -611.357 )
 scale = Vector2( 1.26637, 1.26637 )
 
 [node name="bridge_big_wall_side-min2" type="Sprite" parent="outdoors/mist/trees"]
-position = Vector2( -502.062, -720.072 )
+position = Vector2( -436.61, -720.072 )
 scale = Vector2( 1.26637, 1.26637 )
 texture = ExtResource( 1 )
 
@@ -306,10 +306,10 @@ scale_amount = 4.0
 scale_amount_random = 0.75
 
 [node name="TextureRect2" type="TextureRect" parent="outdoors/mist/trees"]
-margin_left = -551.0
-margin_top = -1513.0
-margin_right = 1867.0
-margin_bottom = -1333.0
+margin_left = -543.402
+margin_top = -1191.34
+margin_right = 1874.6
+margin_bottom = -1011.34
 texture = ExtResource( 3 )
 stretch_mode = 2
 __meta__ = {
@@ -317,7 +317,7 @@ __meta__ = {
 }
 
 [node name="arcade_front" type="Node2D" parent="outdoors/mist/trees"]
-position = Vector2( 60.6962, -858.315 )
+position = Vector2( 75.8927, -559.451 )
 rotation = 0.00765606
 scale = Vector2( 1.26637, 1.26637 )
 
@@ -354,15 +354,15 @@ position = Vector2( 1265.83, -90.7715 )
 texture = ExtResource( 10 )
 
 [node name="SnowyDeciduous8" parent="outdoors/mist/trees" instance=ExtResource( 8 )]
-position = Vector2( -132.148, -570.742 )
+position = Vector2( -96.6896, -271.878 )
 scale = Vector2( 1.26637, 1.26637 )
 
 [node name="SnowyDeciduous9" parent="outdoors/mist/trees" instance=ExtResource( 8 )]
-position = Vector2( 1307.45, -482.742 )
+position = Vector2( 1472.08, -363.703 )
 scale = Vector2( 1.26637, 1.26637 )
 
 [node name="BridgeSnowyPine14" parent="outdoors/mist/trees" instance=ExtResource( 7 )]
-position = Vector2( 72.0523, -348.387 )
+position = Vector2( 130.305, -115.375 )
 scale = Vector2( 1.26637, 1.26637 )
 
 [node name="BG2" type="Node2D" parent="."]

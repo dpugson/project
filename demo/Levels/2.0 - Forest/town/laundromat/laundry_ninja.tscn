@@ -1,0 +1,53 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/laundry_sitting_ninja_default_0-min.png" type="Texture" id=1]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/laundry_sitting_ninja_look_at_you_0-min.png" type="Texture" id=2]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/laundry_sitting_ninja_put_bag_away_0-min.png" type="Texture" id=3]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/laundry_sitting_ninja_grab_bag-min.png" type="Texture" id=4]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/laundry_sitting_ninja_put_bag_away_1-min.png" type="Texture" id=5]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/laundry_sitting_ninja_look_at_you_1-min.png" type="Texture" id=6]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/laundry_sitting_ninja_default_1-min.png" type="Texture" id=7]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/laundry_chair-min.png" type="Texture" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ],
+"loop": false,
+"name": "put_bag_away",
+"speed": 1.5
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "look_at_u",
+"speed": 2.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 39.2961
+height = 93.9083
+
+[node name="laundry_ninja" type="Node2D"]
+pause_mode = 2
+
+[node name="holder" type="Node2D" parent="."]
+position = Vector2( 143.86, -132.87 )
+
+[node name="laundry_chair-min" type="Sprite" parent="holder"]
+position = Vector2( -167.068, 67.2687 )
+texture = ExtResource( 8 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="holder"]
+frames = SubResource( 1 )
+playing = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="holder"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="holder/StaticBody2D"]
+position = Vector2( -102.9, 127.875 )
+rotation = 1.5708
+shape = SubResource( 2 )

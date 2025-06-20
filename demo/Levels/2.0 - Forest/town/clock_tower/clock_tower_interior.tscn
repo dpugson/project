@@ -1,0 +1,271 @@
+[gd_scene load_steps=38 format=2]
+
+[ext_resource path="res://BG.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_interior_bg-min.png" type="Texture" id=4]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_interior_post_0-min.png" type="Texture" id=6]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_interior_railing-min.png" type="Texture" id=7]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_interior_beams-min.png" type="Texture" id=8]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_interior_top_front-min.png" type="Texture" id=9]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_interior.gd" type="Script" id=10]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_interior_post_1-min.png" type="Texture" id=11]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/328154__soundskeep__windmill-cog-wheel.wav" type="AudioStream" id=12]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_moon_gear_0-min.png" type="Texture" id=13]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_moon_gear_2-min.png" type="Texture" id=14]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_moon_gear_3-min.png" type="Texture" id=15]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_star_gear_1-min.png" type="Texture" id=16]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_moon_gear_1-min.png" type="Texture" id=17]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_star_gear_0-min.png" type="Texture" id=19]
+[ext_resource path="res://hitnhurtboxes/SeenBox.tscn" type="PackedScene" id=20]
+[ext_resource path="res://sprites/L3_forest/town/mayors_room/mayor_pillow-min.png" type="Texture" id=21]
+[ext_resource path="res://sprites/L3_forest/town/mayors_room/mayor_bed_base-min.png" type="Texture" id=22]
+[ext_resource path="res://sprites/L3_forest/town/mayors_room/mayor_sleeping-min.png" type="Texture" id=23]
+[ext_resource path="res://sprites/L3_forest/town/mayors_room/mayor_bed_foot-min.png" type="Texture" id=24]
+[ext_resource path="res://Brains/DescriptionBox.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_interior_counterweight-min.png" type="Texture" id=26]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 68.912, 77.1108 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 3.91223, 40.2795 )
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 35.2037
+height = 0.0
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 38.8372, 269.711 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 79.9007, 107 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 90.968, 111.05 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 19 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 29.5653, 36.9109 )
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ ExtResource( 13 ), ExtResource( 17 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 1052.91, 103.786 )
+
+[node name="clock_tower_interior" type="Node2D"]
+script = ExtResource( 10 )
+
+[node name="BG" parent="." instance=ExtResource( 1 )]
+margin_left = -2935.69
+margin_top = -1884.47
+margin_right = 5845.31
+margin_bottom = 2937.53
+
+[node name="BG_STUFF" type="Node2D" parent="."]
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="player" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 632.856, 710.744 )
+camera = NodePath("../../PuppyCamera")
+
+[node name="bg" type="YSort" parent="YSort"]
+position = Vector2( 938.977, 321.101 )
+
+[node name="bg" type="Node2D" parent="YSort/bg"]
+position = Vector2( 0, -733.515 )
+
+[node name="clock_tower_interior_bg-min" type="Sprite" parent="YSort/bg/bg"]
+position = Vector2( 0, 733.515 )
+texture = ExtResource( 4 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/bg"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/bg/StaticBody2D"]
+position = Vector2( -922.416, -1513.09 )
+polygon = PoolVector2Array( 1323.71, 1284.56, 1135.15, 1285.77, 649.325, 1279.09, 650.592, 2091.47, 740.017, 2260.15, 848.656, 2094.67, 1179.51, 2100, 1167.93, 1475.15, 1133.61, 1190.23, 1974.46, 1300.45, 908.014, 2604.32, -93.2383, 1144.77 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/bg/StaticBody2D"]
+position = Vector2( 11.9786, -84.4437 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="YSort/bg/StaticBody2D"]
+position = Vector2( -145.948, -137.653 )
+shape = SubResource( 2 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="YSort/bg/StaticBody2D"]
+position = Vector2( 1.14825, -2.43829 )
+polygon = PoolVector2Array( 48.8618, 215.346, 48.7328, 370.287, 75.8249, 378.673, 88.6265, -91.0913, -282.686, -92.0975, -282.178, 212.25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/bg/StaticBody2D"]
+position = Vector2( -6.84625, 351.12 )
+shape = SubResource( 3 )
+
+[node name="pillar_holder" type="Node2D" parent="YSort/bg"]
+position = Vector2( -6.43591, 330.805 )
+
+[node name="pillar" type="AnimatedSprite" parent="YSort/bg/pillar_holder"]
+pause_mode = 2
+position = Vector2( 4.59949, -331.856 )
+frames = SubResource( 4 )
+frame = 1
+playing = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="description_box" parent="YSort/bg/pillar_holder" instance=ExtResource( 25 )]
+description = [ "Wow! What a big neat stick. It's going \"KACHUNK KACHUNK\".", "You wish you could chew on it, but your snout is too short." ]
+
+[node name="CollisionShape2D" parent="YSort/bg/pillar_holder/description_box/SeenBox" index="0"]
+position = Vector2( 1.83643, -226.085 )
+shape = SubResource( 5 )
+
+[node name="bed" type="Node2D" parent="YSort"]
+position = Vector2( 741.351, 504.794 )
+scale = Vector2( 0.65, 0.7 )
+
+[node name="mayor_bed_base-min" type="Sprite" parent="YSort/bed"]
+position = Vector2( 4.12262, -18.9807 )
+texture = ExtResource( 22 )
+
+[node name="mayor_pillow-min" type="Sprite" parent="YSort/bed"]
+position = Vector2( 3.90485, -48.3489 )
+texture = ExtResource( 21 )
+
+[node name="mayor_sleeping-min" type="Sprite" parent="YSort/bed"]
+position = Vector2( -0.120056, 50.3158 )
+texture = ExtResource( 23 )
+
+[node name="mayor_bed_foot-min" type="Sprite" parent="YSort/bed"]
+position = Vector2( -5.77686, 135.169 )
+texture = ExtResource( 24 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/bed"]
+position = Vector2( -9.89941, 181.019 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/bed/StaticBody2D"]
+position = Vector2( 5.88696, -106.712 )
+shape = SubResource( 6 )
+
+[node name="SeenBox" parent="YSort/bed" instance=ExtResource( 20 )]
+
+[node name="CollisionShape2D" parent="YSort/bed/SeenBox" index="0"]
+position = Vector2( -3.54822, 64.8158 )
+shape = SubResource( 7 )
+
+[node name="SmellArrow" parent="YSort/bed/SeenBox/CollisionShape2D" index="0"]
+position = Vector2( 12.0862, -242.025 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 2 )]
+position = Vector2( 929.997, 677.082 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( 6.14894, -400.408 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 1873.26, 976.097 )
+
+[node name="FG" type="Node2D" parent="."]
+
+[node name="top" type="Node2D" parent="FG"]
+position = Vector2( 1104.34, 225.648 )
+
+[node name="clock_tower_interior_top_front-min" type="Sprite" parent="FG/top"]
+position = Vector2( -165.362, 95.4526 )
+texture = ExtResource( 9 )
+
+[node name="railing" type="Node2D" parent="FG"]
+position = Vector2( 937.633, 251.192 )
+
+[node name="clock_tower_interior_railing-min" type="Sprite" parent="FG/railing"]
+position = Vector2( 1.34439, 69.9089 )
+texture = ExtResource( 7 )
+
+[node name="star_gear" type="AnimatedSprite" parent="FG"]
+pause_mode = 2
+position = Vector2( 844.751, 25.5376 )
+frames = SubResource( 8 )
+playing = true
+
+[node name="star_gear2" type="AnimatedSprite" parent="FG"]
+pause_mode = 2
+position = Vector2( 813.112, -79.0672 )
+frames = SubResource( 8 )
+frame = 1
+playing = true
+
+[node name="clock_tower_interior_counterweight-min" type="Sprite" parent="FG"]
+position = Vector2( 795.831, 36.9299 )
+texture = ExtResource( 26 )
+
+[node name="description_box" parent="FG/clock_tower_interior_counterweight-min" instance=ExtResource( 25 )]
+on_top = true
+description = [ "A heavy counterweight! Its placement is pretty ominous.", "Luckily it doesn't seem to be animated, so it seems safe." ]
+
+[node name="CollisionShape2D" parent="FG/clock_tower_interior_counterweight-min/description_box/SeenBox" index="0"]
+position = Vector2( -1.8363, 112.018 )
+shape = SubResource( 9 )
+
+[node name="MoonGear" type="AnimatedSprite" parent="FG"]
+pause_mode = 2
+position = Vector2( 924.195, -28.318 )
+frames = SubResource( 10 )
+frame = 1
+playing = true
+
+[node name="clock_tower_interior_beams-min" type="Sprite" parent="FG"]
+position = Vector2( 938.977, 321.101 )
+texture = ExtResource( 8 )
+
+[node name="BottomSP" parent="." instance=ExtResource( 5 )]
+position = Vector2( 766.555, 794.573 )
+
+[node name="BottomTZ" parent="." instance=ExtResource( 18 )]
+position = Vector2( -14.5952, -1055.74 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomTZ"]
+position = Vector2( 927.761, 2093.4 )
+shape = SubResource( 11 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 12 )
+pitch_scale = 0.87
+autoplay = true
+bus = "Effects"
+
+[connection signal="seen" from="YSort/bed/SeenBox" to="." method="_on_SeenBox_seen"]
+[connection signal="transition_triggered" from="BottomTZ" to="." method="_on_BottomTZ_transition_triggered"]
+
+[editable path="YSort/bg/pillar_holder/description_box"]
+[editable path="YSort/bg/pillar_holder/description_box/SeenBox"]
+[editable path="YSort/bed/SeenBox"]
+[editable path="PuppyCamera"]
+[editable path="FG/clock_tower_interior_counterweight-min/description_box"]
+[editable path="FG/clock_tower_interior_counterweight-min/description_box/SeenBox"]
+[editable path="BottomTZ"]

@@ -1,0 +1,430 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://BG.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_exterior.gd" type="Script" id=4]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_exterior_left_wall_front-min.png" type="Texture" id=6]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_exterior_walls_back-min.png" type="Texture" id=7]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_exterior_tower_base-min.png" type="Texture" id=8]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_exterior_right_wall_front-min.png" type="Texture" id=9]
+[ext_resource path="res://hitnhurtboxes/PlayerDetectionZone.tscn" type="PackedScene" id=10]
+[ext_resource path="res://StarBG.tscn" type="PackedScene" id=11]
+[ext_resource path="res://world/creepy_tree.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sprites/L3_forest/vignette_fade.png" type="Texture" id=13]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_exterior_hand-min.png" type="Texture" id=14]
+[ext_resource path="res://sprites/L3_forest/foyer/foyer_vignette_fade_white-min.png" type="Texture" id=15]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_fish_d-min.png" type="Texture" id=16]
+[ext_resource path="res://Levels/2.0 - Forest/Lamp.tscn" type="PackedScene" id=17]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_moon_r-min.png" type="Texture" id=19]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_moon_u-min.png" type="Texture" id=20]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_moon_l-min.png" type="Texture" id=21]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_fish_r-min.png" type="Texture" id=22]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_fish_l-min.png" type="Texture" id=23]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_fish_u-min.png" type="Texture" id=24]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_exterior_arches-min.png" type="Texture" id=25]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_moon_d-min.png" type="Texture" id=26]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_exterior_outer_track_fg-min.png" type="Texture" id=27]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_sun_l-min.png" type="Texture" id=28]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_exterior_inner_track-min.png" type="Texture" id=29]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_exterior_outer_track_bg-min.png" type="Texture" id=30]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_sun_r-min.png" type="Texture" id=31]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_sun_d-min.png" type="Texture" id=32]
+[ext_resource path="res://Levels/2.0 - Forest/town/clock_tower/clock_tower_sprites/clock_tower_sun_u-min.png" type="Texture" id=33]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 26 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 16 ), ExtResource( 22 ), ExtResource( 24 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 32 ), ExtResource( 31 ), ExtResource( 33 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
+
+[sub_resource type="Animation" id=6]
+resource_name = "on"
+length = 4.0
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("sun_holder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 14.0877, -158.572 ), Vector2( 84.4902, -190.086 ), Vector2( 92.579, -245.469 ), Vector2( 60.5234, -275.492 ), Vector2( -15.8706, -272.695 ), Vector2( -61.4076, -261.32 ), Vector2( -84.176, -217.125 ), Vector2( -48.2258, -172.184 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("fish_holder:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 63.5345, -276.124 ), Vector2( 35.4582, -288.779 ), Vector2( 0.621704, -277.615 ), Vector2( -34.2316, -279.423 ), Vector2( -59.8945, -275.378 ), Vector2( -74.9008, -258.504 ), Vector2( -82.6628, -230.623 ), Vector2( -74.4336, -196.274 ), Vector2( -51.506, -183.631 ), Vector2( -31.659, -170.374 ), Vector2( 12.006, -167.967 ), Vector2( 40.5664, -170.98 ), Vector2( 73.1212, -184.377 ), Vector2( 88.1276, -205.469 ), Vector2( 94.6913, -241.812 ), Vector2( 81.1373, -263.506 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("moon_holder:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -84.1254, -220.551 ), Vector2( -56.5637, -175.051 ), Vector2( 6.94818, -154.912 ), Vector2( 75.2534, -175.051 ), Vector2( 96.8237, -222.789 ), Vector2( 63.2703, -269.781 ), Vector2( 5.15088, -266.052 ), Vector2( -58.3611, -263.814 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 499.837, 739.528 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 1052.91, 103.786 )
+
+[node name="clock_tower_exterior" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="BG" parent="." instance=ExtResource( 1 )]
+visible = false
+margin_left = -2935.69
+margin_top = -1884.47
+margin_right = 5845.31
+margin_bottom = 2937.53
+
+[node name="BG_STUFF" type="Node2D" parent="."]
+
+[node name="black_rect" type="ColorRect" parent="BG_STUFF"]
+visible = false
+margin_left = -485.112
+margin_top = -1541.93
+margin_right = 2594.89
+margin_bottom = -278.932
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bottom_sky_fade" type="Sprite" parent="BG_STUFF"]
+position = Vector2( 534.019, -119.338 )
+rotation = -1.5708
+scale = Vector2( 0.436359, 2.40378 )
+texture = ExtResource( 13 )
+
+[node name="gold_sky" type="Sprite" parent="BG_STUFF"]
+visible = false
+modulate = Color( 0.960784, 0.72549, 0.219608, 1 )
+position = Vector2( 857.051, -483.964 )
+rotation = 1.5708
+scale = Vector2( 1, 1 )
+texture = ExtResource( 15 )
+
+[node name="StarBG" parent="BG_STUFF" instance=ExtResource( 11 )]
+
+[node name="ParallaxBackground" parent="BG_STUFF/StarBG" index="0"]
+scale = Vector2( 0.7, 0.7 )
+transform = Transform2D( 0.7, 0, 0, 0.7, 0, 0 )
+
+[node name="floor_rect" type="ColorRect" parent="BG_STUFF"]
+margin_left = -1465.0
+margin_top = 256.0
+margin_right = 3718.0
+margin_bottom = 3099.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="road_rect" type="ColorRect" parent="BG_STUFF"]
+margin_left = 768.0
+margin_top = 339.0
+margin_right = 1085.0
+margin_bottom = 1861.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="road_fade" type="Sprite" parent="BG_STUFF"]
+position = Vector2( 1130.8, 807.09 )
+scale = Vector2( 0.367724, 1.09382 )
+texture = ExtResource( 13 )
+offset = Vector2( 740.142, 530.119 )
+
+[node name="road_fade2" type="Sprite" parent="BG_STUFF"]
+position = Vector2( 431.674, 1385.35 )
+rotation = 3.14159
+scale = Vector2( 0.380582, 1.12223 )
+texture = ExtResource( 13 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="tower" type="YSort" parent="YSort"]
+position = Vector2( 924.837, 258.954 )
+scale = Vector2( 0.993578, 0.79812 )
+
+[node name="toweritself" type="Node2D" parent="YSort/tower"]
+position = Vector2( -4.9325, 41.9259 )
+
+[node name="clock_tower_exterior_tower_base-min" type="Sprite" parent="YSort/tower/toweritself"]
+position = Vector2( -4.73492, -350.943 )
+texture = ExtResource( 8 )
+
+[node name="clock_tower_exterior_left_wall_front-min" type="Sprite" parent="YSort/tower/toweritself/clock_tower_exterior_tower_base-min"]
+texture = ExtResource( 6 )
+
+[node name="clock_tower_exterior_walls_back-min" type="Sprite" parent="YSort/tower/toweritself/clock_tower_exterior_tower_base-min"]
+texture = ExtResource( 7 )
+
+[node name="clock_tower_exterior_right_wall_front-min" type="Sprite" parent="YSort/tower/toweritself/clock_tower_exterior_tower_base-min"]
+position = Vector2( 0, 4.76837e-05 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 9 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/tower/toweritself/clock_tower_exterior_tower_base-min"]
+visible = false
+position = Vector2( 5.9187, 438.679 )
+scale = Vector2( 1.25, 1.25 )
+
+[node name="walls" type="CollisionPolygon2D" parent="YSort/tower/toweritself/clock_tower_exterior_tower_base-min/StaticBody2D"]
+position = Vector2( -915.571, -360.111 )
+polygon = PoolVector2Array( 484.315, 726.699, 545.769, 722.264, 544.852, 550.576, 595.262, 475.948, 705.048, 428.897, 1163.8, 418.441, 1244.83, 451.115, 1291.97, 533.281, 1289.45, 707.85, 1348.24, 715.612, 1343.85, 7.92138, 470.943, 27.6911 )
+
+[node name="tower" type="CollisionPolygon2D" parent="YSort/tower/toweritself/clock_tower_exterior_tower_base-min/StaticBody2D"]
+position = Vector2( -919.705, -288.892 )
+polygon = PoolVector2Array( 759.885, 249.72, 764.447, 455.021, 791.522, 441.967, 851.13, 342.486, 919.563, 447.418, 1100.53, 451.98, 1102.05, 251.241 )
+
+[node name="hand" type="Node2D" parent="YSort/tower/toweritself/clock_tower_exterior_tower_base-min"]
+position = Vector2( 18.9187, -238.738 )
+rotation = -1.0479
+scale = Vector2( 1, 1 )
+
+[node name="clock_tower_exterior_hand-min" type="Sprite" parent="YSort/tower/toweritself/clock_tower_exterior_tower_base-min/hand"]
+position = Vector2( -17.0237, -24.9327 )
+texture = ExtResource( 14 )
+
+[node name="clock_tower_exterior_outer_track_bg-min" type="Sprite" parent="YSort/tower/toweritself/clock_tower_exterior_tower_base-min"]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 30 )
+
+[node name="Automaton" type="YSort" parent="YSort/tower/toweritself/clock_tower_exterior_tower_base-min"]
+position = Vector2( 4.73492, 350.943 )
+scale = Vector2( 1, 1 )
+
+[node name="wall_base" type="Node2D" parent="YSort/tower/toweritself/clock_tower_exterior_tower_base-min/Automaton"]
+position = Vector2( 5.1438, -219 )
+
+[node name="clock_tower_exterior_arches-min" type="Sprite" parent="YSort/tower/toweritself/clock_tower_exterior_tower_base-min/Automaton/wall_base"]
+position = Vector2( -9.87872, -131.943 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 25 )
+
+[node name="moon_holder" type="Node2D" parent="YSort/tower/toweritself/clock_tower_exterior_tower_base-min/Automaton"]
+position = Vector2( 63.2703, -269.781 )
+
+[node name="Moon" type="AnimatedSprite" parent="YSort/tower/toweritself/clock_tower_exterior_tower_base-min/Automaton/moon_holder"]
+position = Vector2( 6.56189, -22.641 )
+scale = Vector2( 1, 1 )
+frames = SubResource( 3 )
+frame = 1
+playing = true
+
+[node name="fish_holder" type="Node2D" parent="YSort/tower/toweritself/clock_tower_exterior_tower_base-min/Automaton"]
+position = Vector2( 12.006, -167.967 )
+
+[node name="fish" type="AnimatedSprite" parent="YSort/tower/toweritself/clock_tower_exterior_tower_base-min/Automaton/fish_holder"]
+position = Vector2( 7.29486, -14.7573 )
+scale = Vector2( 0.7, 1 )
+frames = SubResource( 4 )
+frame = 3
+playing = true
+
+[node name="sun_holder" type="Node2D" parent="YSort/tower/toweritself/clock_tower_exterior_tower_base-min/Automaton"]
+position = Vector2( -61.4076, -261.32 )
+
+[node name="sun" type="AnimatedSprite" parent="YSort/tower/toweritself/clock_tower_exterior_tower_base-min/Automaton/sun_holder"]
+position = Vector2( 5.47137, -17.0276 )
+scale = Vector2( 1, 1 )
+frames = SubResource( 5 )
+frame = 1
+playing = true
+
+[node name="inner_track_holder" type="Node2D" parent="YSort/tower/toweritself/clock_tower_exterior_tower_base-min/Automaton"]
+position = Vector2( 4.04181, -230.198 )
+
+[node name="clock_tower_exterior_inner_track-min" type="Sprite" parent="YSort/tower/toweritself/clock_tower_exterior_tower_base-min/Automaton/inner_track_holder"]
+position = Vector2( -8.77679, -120.745 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 29 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="YSort/tower/toweritself/clock_tower_exterior_tower_base-min/Automaton"]
+autoplay = "on"
+anims/on = SubResource( 6 )
+
+[node name="clock_tower_exterior_outer_track_fg-min" type="Sprite" parent="YSort/tower/toweritself/clock_tower_exterior_tower_base-min"]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 27 )
+
+[node name="player" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 632.856, 710.744 )
+camera = NodePath("../../PuppyCamera")
+
+[node name="Lamps" type="YSort" parent="YSort"]
+
+[node name="Lamp" parent="YSort/Lamps" instance=ExtResource( 17 )]
+position = Vector2( 672.671, 537.574 )
+
+[node name="Lamp2" parent="YSort/Lamps" instance=ExtResource( 17 )]
+position = Vector2( 1187.73, 537.574 )
+
+[node name="Lamps2" type="YSort" parent="YSort"]
+position = Vector2( 0, 593.864 )
+
+[node name="Lamp" parent="YSort/Lamps2" instance=ExtResource( 17 )]
+position = Vector2( 672.671, 537.574 )
+
+[node name="Lamp2" parent="YSort/Lamps2" instance=ExtResource( 17 )]
+position = Vector2( 1187.73, 537.574 )
+
+[node name="Lamps3" type="YSort" parent="YSort"]
+position = Vector2( 0, 1126.54 )
+
+[node name="Lamp" parent="YSort/Lamps3" instance=ExtResource( 17 )]
+position = Vector2( 672.671, 537.574 )
+
+[node name="Lamp2" parent="YSort/Lamps3" instance=ExtResource( 17 )]
+position = Vector2( 1187.73, 537.574 )
+
+[node name="trees" type="YSort" parent="YSort"]
+
+[node name="creepy_tree" parent="YSort/trees" instance=ExtResource( 12 )]
+position = Vector2( 628.97, 290.42 )
+
+[node name="creepy_tree2" parent="YSort/trees" instance=ExtResource( 12 )]
+position = Vector2( 290.828, 425.279 )
+
+[node name="creepy_tree3" parent="YSort/trees" instance=ExtResource( 12 )]
+position = Vector2( 1232.41, 273.444 )
+
+[node name="creepy_tree4" parent="YSort/trees" instance=ExtResource( 12 )]
+position = Vector2( 1554.11, 400.829 )
+
+[node name="creepy_tree5" parent="YSort/trees" instance=ExtResource( 12 )]
+position = Vector2( 1690.36, 780.846 )
+
+[node name="creepy_tree6" parent="YSort/trees" instance=ExtResource( 12 )]
+position = Vector2( 1498.13, 1022.95 )
+
+[node name="creepy_tree7" parent="YSort/trees" instance=ExtResource( 12 )]
+position = Vector2( 176.303, 777.848 )
+
+[node name="creepy_tree8" parent="YSort/trees" instance=ExtResource( 12 )]
+position = Vector2( 371.901, 966.788 )
+
+[node name="creepy_tree9" parent="YSort/trees" instance=ExtResource( 12 )]
+position = Vector2( 251.257, 1422.45 )
+
+[node name="creepy_tree10" parent="YSort/trees" instance=ExtResource( 12 )]
+position = Vector2( 1690.36, 1437.44 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 2 )]
+position = Vector2( 929.997, 677.082 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -23.5554, -519.225 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 1885.99, 1824.79 )
+
+[node name="BottomSP" parent="." instance=ExtResource( 5 )]
+position = Vector2( 931.971, 1753.01 )
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource( 10 )]
+visible = false
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+position = Vector2( 914.849, 493.076 )
+shape = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Collisions" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/StaticBody2D"]
+position = Vector2( -1.30695, 1.30695 )
+polygon = PoolVector2Array( 528.82, 543.911, -300.243, 561.398, -254.832, 2104.22, 2145.64, 2081.45, 2171.62, 631.332, 1330, 529.534, 3662.45, 377.888, 836.442, 4567.77, -1629, 357.953 )
+
+[node name="FG_STUFF" type="Node2D" parent="."]
+
+[node name="top_sky_fade" type="Sprite" parent="FG_STUFF"]
+position = Vector2( 938.938, -662.212 )
+rotation = 1.5708
+scale = Vector2( 0.746607, 1.27307 )
+texture = ExtResource( 13 )
+
+[node name="foyer_vignette_fade_white-min" type="Sprite" parent="FG_STUFF"]
+visible = false
+modulate = Color( 0.960784, 0.72549, 0.219608, 1 )
+position = Vector2( 1506.62, -1065.83 )
+rotation = 1.17518
+scale = Vector2( 0.826933, 5.00581 )
+texture = ExtResource( 15 )
+
+[node name="vignette_fade_bottom" type="Sprite" parent="FG_STUFF"]
+position = Vector2( 903.223, 1750.78 )
+rotation = -1.5708
+scale = Vector2( 0.57697, 1.27307 )
+texture = ExtResource( 13 )
+
+[node name="side_sky_fade" type="Sprite" parent="FG_STUFF"]
+position = Vector2( -173.982, -1428.64 )
+scale = Vector2( 0.354399, 1.09382 )
+texture = ExtResource( 13 )
+offset = Vector2( 740.142, 530.119 )
+
+[node name="side_back_fade" type="Sprite" parent="FG_STUFF"]
+position = Vector2( 1830.64, -886.227 )
+rotation = 3.14159
+scale = Vector2( 0.520805, 1.12223 )
+texture = ExtResource( 13 )
+
+[node name="BottomTZ" parent="." instance=ExtResource( 18 )]
+
+[node name="CollisionShape2D" parent="BottomTZ" index="0"]
+position = Vector2( 927.761, 2093.4 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="PlayerDetectionZone" to="." method="_on_PlayerDetectionZone_body_entered"]
+[connection signal="body_exited" from="PlayerDetectionZone" to="." method="_on_PlayerDetectionZone_body_exited"]
+[connection signal="transition_triggered" from="BottomTZ" to="." method="_on_BottomTZ_transition_triggered"]
+
+[editable path="BG_STUFF/StarBG"]
+[editable path="PuppyCamera"]
+[editable path="PlayerDetectionZone"]
+[editable path="BottomTZ"]

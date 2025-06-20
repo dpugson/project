@@ -1,0 +1,381 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://BG.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/21.0 Train/train_car_with_phone/sprites/train_stairs_fg-min.png" type="Texture" id=4]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/21.0 Train/train_car_with_phone/sprites/train_stairs_bg-min.png" type="Texture" id=6]
+[ext_resource path="res://Levels/21.0 Train/train_car/sprites/cosmos_strip-min.png" type="Texture" id=7]
+[ext_resource path="res://Levels/21.0 Train/train_car/train_chandelier.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Levels/21.0 Train/train_car_with_phone/sprites/stained_glass_lamp_light-min.png" type="Texture" id=9]
+[ext_resource path="res://Levels/21.0 Train/train_car_with_phone/train_car_with_phone.gd" type="Script" id=10]
+[ext_resource path="res://Levels/21.0 Train/train_car_with_phone/sprites/stained_glass_lamp-min.png" type="Texture" id=11]
+[ext_resource path="res://Levels/21.0 Train/train_car/sprites/train_car_bg-min.png" type="Texture" id=12]
+[ext_resource path="res://Levels/21.0 Train/train_car/cosmos_loop2.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Levels/2.0 - Forest/Glower.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Levels/21.0 Train/train_car_with_phone/sprites/payphone_bg-min.png" type="Texture" id=15]
+[ext_resource path="res://Levels/21.0 Train/train_car_with_phone/sprites/side_table-min.png" type="Texture" id=16]
+[ext_resource path="res://Levels/21.0 Train/train_car_with_phone/sprites/payphone_fg-min.png" type="Texture" id=17]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Levels/21.0 Train/train_car_with_phone/sprites/train_stairs_fg_fg-min.png" type="Texture" id=19]
+[ext_resource path="res://Levels/21.0 Train/train_car_with_phone/sprites/train_stairs_fg_side_panel-min.png" type="Texture" id=20]
+[ext_resource path="res://Levels/21.0 Train/train_car_with_phone/sprites/stair_side_panel_thingy-min.png" type="Texture" id=21]
+[ext_resource path="res://Levels/21.0 Train/train_car_with_phone/sprites/angled_grand_hotel_lamp-min.png" type="Texture" id=22]
+
+[sub_resource type="Animation" id=1]
+resource_name = "slide"
+length = 15.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -2105.97, 0 ), Vector2( -2105.97, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.2, 3.5, 4.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.00857657 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "slide"
+length = 11.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("cosmos_strip-min2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 11 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 4000, 600 ), Vector2( 1070, 600 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("cosmos_strip-min:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 4.9, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1070, 600 ), Vector2( 4000, 600 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("cosmos_strip-min:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 4.8, 4.9, 5, 5.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.0091743 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "unhooked",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 45.7216, 27.5141 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 211.885, 106.863 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 76.6577, 178.774 )
+
+[node name="train_car_with_phone" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 10 )
+
+[node name="Control" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="BG" parent="Control" instance=ExtResource( 1 )]
+margin_left = -2933.17
+margin_top = -1959.67
+margin_right = 5847.83
+margin_bottom = 2862.33
+
+[node name="BG_STUFF" type="Node2D" parent="."]
+
+[node name="cosmos" type="Node2D" parent="BG_STUFF"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="BG_STUFF/cosmos"]
+layer = -1
+offset = Vector2( -600, 0 )
+transform = Transform2D( 1, 0, 0, 1, -600, 0 )
+
+[node name="back" type="ParallaxLayer" parent="BG_STUFF/cosmos/ParallaxBackground"]
+motion_scale = Vector2( 0.1, 1 )
+
+[node name="cosmos_strip-min" type="Sprite" parent="BG_STUFF/cosmos/ParallaxBackground/back"]
+modulate = Color( 1, 1, 1, 0.568627 )
+position = Vector2( 175.514, 526.391 )
+scale = Vector2( 0.881945, 0.728625 )
+texture = ExtResource( 7 )
+
+[node name="cosmos_strip-min2" type="Sprite" parent="BG_STUFF/cosmos/ParallaxBackground/back"]
+modulate = Color( 1, 1, 1, 0.568627 )
+position = Vector2( 1778.21, 526.391 )
+scale = Vector2( 0.881945, 0.728625 )
+texture = ExtResource( 7 )
+
+[node name="mediumback" type="ParallaxLayer" parent="BG_STUFF/cosmos/ParallaxBackground"]
+motion_scale = Vector2( 0.2, 1 )
+
+[node name="cosmos_holder" type="Node2D" parent="BG_STUFF/cosmos/ParallaxBackground/mediumback"]
+position = Vector2( -1221.46, 0 )
+
+[node name="cosmos_strip-min" type="Sprite" parent="BG_STUFF/cosmos/ParallaxBackground/mediumback/cosmos_holder"]
+modulate = Color( 1, 1, 1, 0.631373 )
+position = Vector2( 1986.32, 525.302 )
+scale = Vector2( 0.957069, 0.957069 )
+texture = ExtResource( 7 )
+
+[node name="cosmos_strip-min2" type="Sprite" parent="BG_STUFF/cosmos/ParallaxBackground/mediumback/cosmos_holder"]
+modulate = Color( 1, 1, 1, 0.631373 )
+position = Vector2( 394.326, 553.515 )
+scale = Vector2( 0.957069, 0.957069 )
+texture = ExtResource( 7 )
+
+[node name="cosmos_slider" type="AnimationPlayer" parent="BG_STUFF/cosmos/ParallaxBackground/mediumback/cosmos_holder"]
+autoplay = "slide"
+anims/slide = SubResource( 1 )
+
+[node name="mediumfront" type="ParallaxLayer" parent="BG_STUFF/cosmos/ParallaxBackground"]
+motion_scale = Vector2( 0.3, 1 )
+
+[node name="cosmos_loop2" parent="BG_STUFF/cosmos/ParallaxBackground/mediumfront" instance=ExtResource( 13 )]
+
+[node name="cosmos_strip-min" parent="BG_STUFF/cosmos/ParallaxBackground/mediumfront/cosmos_loop2" index="0"]
+position = Vector2( 3553.66, 600 )
+
+[node name="cosmos_strip-min2" parent="BG_STUFF/cosmos/ParallaxBackground/mediumfront/cosmos_loop2" index="1"]
+position = Vector2( 2225.9, 600 )
+
+[node name="cosmos_slider2" parent="BG_STUFF/cosmos/ParallaxBackground/mediumfront/cosmos_loop2" index="2"]
+playback_speed = 0.1
+
+[node name="front" type="ParallaxLayer" parent="BG_STUFF/cosmos/ParallaxBackground"]
+motion_scale = Vector2( 0.4, 1 )
+
+[node name="cosmos_loop3" parent="BG_STUFF/cosmos/ParallaxBackground/front" instance=ExtResource( 13 )]
+modulate = Color( 1, 1, 1, 0.482353 )
+
+[node name="cosmos_strip-min" parent="BG_STUFF/cosmos/ParallaxBackground/front/cosmos_loop3" index="0"]
+position = Vector2( 3013.87, 600 )
+
+[node name="cosmos_strip-min2" parent="BG_STUFF/cosmos/ParallaxBackground/front/cosmos_loop3" index="1"]
+position = Vector2( 1691.02, 600 )
+
+[node name="cosmos_slider2" parent="BG_STUFF/cosmos/ParallaxBackground/front/cosmos_loop3" index="2"]
+playback_speed = 0.5
+anims/slide = SubResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="BG_STUFF"]
+margin_left = -980.0
+margin_top = -809.0
+margin_right = 3568.0
+margin_bottom = 400.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect4" type="ColorRect" parent="BG_STUFF"]
+margin_left = -1345.0
+margin_top = 908.0
+margin_right = 3197.0
+margin_bottom = 2070.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="BG_STUFF"]
+margin_left = 1758.0
+margin_top = -28.0
+margin_right = 4786.0
+margin_bottom = 1619.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="BG_STUFF"]
+margin_left = -2613.0
+margin_top = -67.0
+margin_right = 131.0
+margin_bottom = 1580.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="train_car_bg-min" type="Sprite" parent="BG_STUFF"]
+position = Vector2( 947.294, 659.341 )
+texture = ExtResource( 12 )
+
+[node name="train_stairs_bg-min" type="Sprite" parent="BG_STUFF"]
+position = Vector2( 1409.36, 552.82 )
+texture = ExtResource( 6 )
+
+[node name="train_stairs_fg-min" type="Sprite" parent="BG_STUFF"]
+position = Vector2( 1404.53, 563.318 )
+texture = ExtResource( 4 )
+
+[node name="train_stairs_fg_side_panel-min" type="Sprite" parent="BG_STUFF"]
+position = Vector2( 1404.55, 558.735 )
+texture = ExtResource( 20 )
+
+[node name="YSort" type="YSort" parent="."]
+position = Vector2( -18.8771, -7.47388 )
+
+[node name="player" parent="YSort" instance=ExtResource( 3 )]
+pause_mode = 1
+position = Vector2( 872.113, 914.399 )
+camera = NodePath("../../PuppyCamera")
+
+[node name="stairwall" type="Node2D" parent="YSort"]
+position = Vector2( 1442.24, 855.229 )
+
+[node name="train_stairs_fg_fg-min" type="Sprite" parent="YSort/stairwall"]
+position = Vector2( -18.6002, -284.721 )
+texture = ExtResource( 19 )
+
+[node name="side_table-min" type="Sprite" parent="YSort"]
+position = Vector2( 1107.71, 788.911 )
+texture = ExtResource( 16 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/side_table-min"]
+position = Vector2( -9.1543, -92.2464 )
+frames = SubResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/side_table-min"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/side_table-min/StaticBody2D"]
+position = Vector2( 0, 45.4716 )
+shape = SubResource( 4 )
+
+[node name="Node2D" type="Node2D" parent="YSort"]
+position = Vector2( 1732.79, 623.473 )
+
+[node name="stair_side_panel_thingy-min" type="Sprite" parent="YSort/Node2D"]
+position = Vector2( 60.9637, -114.936 )
+texture = ExtResource( 21 )
+
+[node name="angled_grand_hotel_lamp-min" type="Sprite" parent="YSort/Node2D/stair_side_panel_thingy-min"]
+position = Vector2( -11.5, -38.7274 )
+texture = ExtResource( 22 )
+
+[node name="Glower" parent="YSort/Node2D/stair_side_panel_thingy-min/angled_grand_hotel_lamp-min" instance=ExtResource( 14 )]
+modulate = Color( 1, 1, 1, 0.643137 )
+position = Vector2( 1.65271, -5.78458 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 2 )]
+position = Vector2( 929.997, 642.035 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -1920.3, 118.699 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 4005.67, 1182.25 )
+
+[node name="RightSP" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1835.67, 918.066 )
+
+[node name="FG" type="Node2D" parent="."]
+
+[node name="train_chandelier-min" parent="FG" instance=ExtResource( 8 )]
+position = Vector2( 1091.11, 289.952 )
+
+[node name="holder" parent="FG/train_chandelier-min" index="0"]
+rotation = 0.0
+
+[node name="stained_glass_lamp-min" type="Sprite" parent="FG/train_chandelier-min/holder" index="0"]
+position = Vector2( -7.49475, 118.966 )
+rotation = 0.0296492
+texture = ExtResource( 11 )
+
+[node name="stained_glass_lamp_light-min" type="Sprite" parent="FG/train_chandelier-min/holder/stained_glass_lamp-min"]
+modulate = Color( 1, 1, 1, 0.486275 )
+show_behind_parent = true
+position = Vector2( 6.03784, 283.469 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="train_chandelier-min" parent="FG/train_chandelier-min/holder" index="1"]
+visible = false
+
+[node name="AnimationPlayer" parent="FG/train_chandelier-min" index="1"]
+playback_speed = 0.7
+
+[node name="Glower" parent="FG/train_chandelier-min" instance=ExtResource( 14 )]
+modulate = Color( 1, 1, 1, 0.27451 )
+position = Vector2( -12.2498, 191.314 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 947.294, 659.341 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( 2.98242, -2.98254 )
+polygon = PoolVector2Array( -1160.48, 200.379, -891.615, 218.979, -795.231, 114.14, 263.897, 117.423, 342.518, 207.099, 607.862, 202.185, 548.664, -59.324, 655.266, -84.9415, 851.115, -241.125, 844.504, -84.9415, 753.604, -18.8318, 896.214, 201.079, 1121.01, 193.164, 1129.07, -734.719, -1197.68, -251.106, -1194.3, 433.73, 1158.42, 432.039, 1280.9, 313.478, -1143.71, 332.273 )
+
+[node name="BottomTZ" parent="." instance=ExtResource( 18 )]
+
+[node name="CollisionShape2D" parent="BottomTZ" index="0"]
+position = Vector2( 736.986, 1231.79 )
+shape = SubResource( 5 )
+
+[node name="StairsTZ" parent="." instance=ExtResource( 18 )]
+
+[node name="CollisionShape2D" parent="StairsTZ" index="0"]
+position = Vector2( 1821.01, 466.2 )
+shape = SubResource( 6 )
+
+[node name="StairsSP" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1653.23, 579.329 )
+
+[connection signal="transition_triggered" from="BottomTZ" to="." method="_on_BottomTZ_transition_triggered"]
+[connection signal="transition_triggered" from="StairsTZ" to="." method="_on_StairsTZ_transition_triggered"]
+
+[editable path="BG_STUFF/cosmos/ParallaxBackground/mediumfront/cosmos_loop2"]
+[editable path="BG_STUFF/cosmos/ParallaxBackground/front/cosmos_loop3"]
+[editable path="PuppyCamera"]
+[editable path="FG/train_chandelier-min"]
+[editable path="BottomTZ"]
+[editable path="StairsTZ"]

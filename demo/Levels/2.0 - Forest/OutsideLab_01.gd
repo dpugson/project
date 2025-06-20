@@ -26,10 +26,6 @@ func _ready():
 		#robot.silent("...\nThe robot seems to be in silent contemplation.")
 	])
 	robot.animated_sprite.frame = 0
-	if not stats.check_bool("robot_following"):
-		# get rid of robot
-		robot.hidden_mode()
-		robot.global_position = hide_spot.global_position
 	match stats.spawn_metadata:
 		"The Forest - Labside Meadow":
 			player_position = savestar.global_position
@@ -48,6 +44,10 @@ func _ready():
 			robot_position.x -= 200
 			robot.global_position = player_position
 			orientation = Vector2.DOWN
+	if not stats.check_bool("robot_following"):
+		# get rid of robot
+		robot.hidden_mode()
+		robot.global_position = hide_spot.global_position
 	stats.spawn_player(
 		player, null, 
 		"../../../PuppyCamera", player_position, orientation)

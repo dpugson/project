@@ -1,0 +1,229 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://BG.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/laundry_bg-min.png" type="Texture" id=4]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/LC_Crimbus/archway.png" type="Texture" id=6]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/washing_machine.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/dryer.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/laundry_clothes_rack-min.png" type="Texture" id=9]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/laundromat.gd" type="Script" id=10]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/laundry_sounds.wav" type="AudioStream" id=11]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/laundry_desk-min.png" type="Texture" id=12]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/laundry_ninja.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/star_plant-min.png" type="Texture" id=14]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/basket-min.png" type="Texture" id=15]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/bleach-min.png" type="Texture" id=16]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/sprites/detergent-min.png" type="Texture" id=17]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Levels/2.0 - Forest/town/laundromat/register.wav" type="AudioStream" id=19]
+[ext_resource path="res://hitnhurtboxes/SeenBox.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Brains/DescriptionBox.tscn" type="PackedScene" id=25]
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 180.961, 196.043 )
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 73.8049, 47.5415 )
+
+[sub_resource type="CapsuleShape2D" id=12]
+radius = 7.74725
+height = 82.278
+
+[sub_resource type="CapsuleShape2D" id=13]
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 94.9312, 77.0798 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 211.885, 106.863 )
+
+[node name="laundromat" type="Node2D"]
+script = ExtResource( 10 )
+
+[node name="BG" parent="." instance=ExtResource( 1 )]
+margin_left = -2933.17
+margin_top = -1956.29
+margin_right = 5847.83
+margin_bottom = 2865.71
+
+[node name="BG_STUFF" type="Node2D" parent="."]
+
+[node name="laundry_bg-min" type="Sprite" parent="BG_STUFF"]
+position = Vector2( 922.724, 455.439 )
+texture = ExtResource( 4 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BG_STUFF/laundry_bg-min"]
+position = Vector2( 16.2529, -134.338 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BG_STUFF/laundry_bg-min/StaticBody2D"]
+position = Vector2( -923.676, -1512.39 )
+polygon = PoolVector2Array( 533.809, 1633.24, 524.913, 2179.3, 599.015, 2183.49, 728.344, 2450.54, 859.072, 2182.1, 1278.8, 2179.23, 1281.79, 1638.63, 988.138, 1631.65, 1974.46, 1300.45, 897.015, 2951.79, -472.162, 1142.6, 1101.26, 1629.67 )
+
+[node name="weapons_desc" parent="BG_STUFF" instance=ExtResource( 25 )]
+description = [ "FORBIDDEN STICKS! DO NOT CHEW!" ]
+
+[node name="CollisionShape2D" parent="BG_STUFF/weapons_desc/SeenBox" index="0"]
+position = Vector2( 924.16, 237.489 )
+shape = SubResource( 15 )
+
+[node name="SmellArrow" parent="BG_STUFF/weapons_desc/SeenBox/CollisionShape2D" index="0"]
+position = Vector2( -1.53119, -292.32 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="player" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 632.856, 710.744 )
+camera = NodePath("../../PuppyCamera")
+
+[node name="washing_machine" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 629.275, 861.76 )
+
+[node name="description_box" parent="YSort/washing_machine" instance=ExtResource( 25 )]
+on_top = true
+description = [ "The socks look so chewy... You wish you could chew them." ]
+
+[node name="CollisionShape2D" parent="YSort/washing_machine/description_box/SeenBox" index="0"]
+position = Vector2( -3.55792, -41.8051 )
+shape = SubResource( 16 )
+
+[node name="SmellArrow" parent="YSort/washing_machine/description_box/SeenBox/CollisionShape2D" index="0"]
+position = Vector2( 1.13721, -221.162 )
+
+[node name="washing_machine2" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 792.575, 863.696 )
+
+[node name="dryer" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 639.81, 482.548 )
+
+[node name="clothes" parent="YSort/dryer/holder/Node2D/drum" index="0"]
+frame = 0
+
+[node name="basket-min" type="Sprite" parent="YSort/dryer/holder/Node2D" index="3"]
+position = Vector2( -13.3867, -134.729 )
+texture = ExtResource( 15 )
+
+[node name="star_plant-min" type="Sprite" parent="YSort/dryer/holder/Node2D" index="4"]
+position = Vector2( 82.6904, -124.508 )
+texture = ExtResource( 14 )
+
+[node name="dryer2" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 1200.75, 485.694 )
+
+[node name="clothes" parent="YSort/dryer2/holder/Node2D/drum" index="0"]
+frame = 0
+
+[node name="detergent-min" type="Sprite" parent="YSort/dryer2/holder/Node2D" index="3"]
+position = Vector2( -3.9917, -139.919 )
+texture = ExtResource( 17 )
+
+[node name="bleach-min" type="Sprite" parent="YSort/dryer2/holder/Node2D" index="4"]
+position = Vector2( 54.2678, -141.964 )
+texture = ExtResource( 16 )
+
+[node name="clothes_rack" type="Node2D" parent="YSort"]
+position = Vector2( 954.959, 516.257 )
+
+[node name="laundry_clothes_rack-min" type="Sprite" parent="YSort/clothes_rack"]
+position = Vector2( 18.8994, -136.683 )
+texture = ExtResource( 9 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/clothes_rack"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/clothes_rack/StaticBody2D"]
+position = Vector2( -91.998, -25.7594 )
+shape = SubResource( 12 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/clothes_rack/StaticBody2D"]
+position = Vector2( 136.683, -20.5024 )
+shape = SubResource( 12 )
+
+[node name="laundry_ninja" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 1121.28, 908.448 )
+
+[node name="desk" type="Node2D" parent="YSort"]
+position = Vector2( 1147.88, 761.258 )
+
+[node name="laundry_desk-min" type="Sprite" parent="YSort/desk"]
+position = Vector2( 63.1982, -94.6831 )
+texture = ExtResource( 12 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/desk/laundry_desk-min"]
+position = Vector2( -62.3087, 87.5803 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/desk/laundry_desk-min/StaticBody2D"]
+position = Vector2( 0, 21.9786 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/desk/laundry_desk-min/StaticBody2D"]
+position = Vector2( 1.99805, -80.921 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="YSort/desk/laundry_desk-min/StaticBody2D"]
+position = Vector2( 1.99805, -80.921 )
+shape = SubResource( 13 )
+
+[node name="RegisterSeenBox" parent="YSort/desk" instance=ExtResource( 20 )]
+
+[node name="CollisionShape2D" parent="YSort/desk/RegisterSeenBox" index="0"]
+position = Vector2( 69.3789, -31.1315 )
+shape = SubResource( 17 )
+
+[node name="SmellArrow" parent="YSort/desk/RegisterSeenBox/CollisionShape2D" index="0"]
+position = Vector2( 0.247802, -211.378 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 2 )]
+position = Vector2( 929.997, 677.082 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( 1.97328, -122.733 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 1923.37, 1030.38 )
+
+[node name="BottomSP" parent="." instance=ExtResource( 5 )]
+position = Vector2( 743.471, 935.084 )
+
+[node name="archway" type="Sprite" parent="BottomSP"]
+position = Vector2( -4.69971, 15.4868 )
+texture = ExtResource( 6 )
+
+[node name="laundry_sounds" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 11 )
+pitch_scale = 0.75
+autoplay = true
+bus = "Effects"
+
+[node name="laundry_sounds2" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 11 )
+pitch_scale = 0.54
+autoplay = true
+bus = "Effects"
+
+[node name="register" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 19 )
+bus = "Effects"
+
+[node name="BottomTZ" parent="." instance=ExtResource( 18 )]
+
+[node name="CollisionShape2D" parent="BottomTZ" index="0"]
+position = Vector2( 736.986, 1231.79 )
+shape = SubResource( 14 )
+
+[connection signal="seen" from="YSort/desk/RegisterSeenBox" to="." method="_on_RegisterSeenBox_seen"]
+[connection signal="transition_triggered" from="BottomTZ" to="." method="_on_BottomTZ_transition_triggered"]
+
+[editable path="BG_STUFF/weapons_desc"]
+[editable path="BG_STUFF/weapons_desc/SeenBox"]
+[editable path="YSort/washing_machine/description_box"]
+[editable path="YSort/washing_machine/description_box/SeenBox"]
+[editable path="YSort/dryer"]
+[editable path="YSort/dryer2"]
+[editable path="YSort/desk/RegisterSeenBox"]
+[editable path="PuppyCamera"]
+[editable path="BottomTZ"]

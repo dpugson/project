@@ -1,0 +1,478 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://BG.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Cameras/PuppyCamera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/21.0 Train/train_car/sprites/train_cafe_barrier-min.png" type="Texture" id=4]
+[ext_resource path="res://Brains/SpawnPoint.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/21.0 Train/train_car/sprites/train_cafe_bakery_v-min.png" type="Texture" id=6]
+[ext_resource path="res://Levels/21.0 Train/train_car/sprites/cosmos_strip-min.png" type="Texture" id=7]
+[ext_resource path="res://Levels/21.0 Train/train_car/train_chandelier.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Levels/21.0 Train/train_car/sprites/train_cafe_bakery_h-min.png" type="Texture" id=9]
+[ext_resource path="res://Levels/21.0 Train/train_car/train_car.gd" type="Script" id=10]
+[ext_resource path="res://Levels/21.0 Train/train_car/sprites/train_car_bg-min.png" type="Texture" id=12]
+[ext_resource path="res://Levels/21.0 Train/train_car/cosmos_loop2.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Levels/21.0 Train/train_car/train_conductor.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Levels/21.0 Train/train_car/sprites/train_chaise_bg-min.png" type="Texture" id=15]
+[ext_resource path="res://Levels/21.0 Train/train_car/sprites/train_chaise_fg-min.png" type="Texture" id=16]
+[ext_resource path="res://Levels/21.0 Train/train_car/sprites/train_table-min.png" type="Texture" id=17]
+[ext_resource path="res://hitnhurtboxes/TransitionZone.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Levels/21.0 Train/train_car/sprites/train_coffee_cup-min.png" type="Texture" id=19]
+[ext_resource path="res://hitnhurtboxes/SeenBox.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Levels/21.0 Train/train_car/sprites/leafson_sitting_r_1-min.png" type="Texture" id=21]
+[ext_resource path="res://Levels/21.0 Train/train_car/sprites/leafert_sitting_l_0-min.png" type="Texture" id=22]
+[ext_resource path="res://Levels/21.0 Train/train_car/sprites/leafson_sitting_r_0-min.png" type="Texture" id=23]
+[ext_resource path="res://Levels/21.0 Train/train_car/sprites/leafert_sitting_l_1-min.png" type="Texture" id=24]
+[ext_resource path="res://Levels/21.0 Train/train_car/sprites/bakery_tea_tower-min.png" type="Texture" id=25]
+
+[sub_resource type="Animation" id=1]
+resource_name = "slide"
+length = 15.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../cosmos_holder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -2105.97, 0 ), Vector2( -2105.97, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../cosmos_holder:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.2, 3.5, 4.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.00857657 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "slide"
+length = 11.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("cosmos_strip-min2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 11 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 4000, 600 ), Vector2( 1070, 600 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("cosmos_strip-min:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 4.9, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1070, 600 ), Vector2( 4000, 600 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("cosmos_strip-min:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 4.8, 4.9, 5, 5.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.0091743 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 25.0436
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 28.2522
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 262.055, 51.5793 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 54.4476, 95.4902 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 130.546, 109.172 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 22 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "default",
+"speed": 18.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 94.941, 80.0055 )
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ ExtResource( 23 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 103.453, 77.4386 )
+
+[sub_resource type="CapsuleShape2D" id=12]
+height = 6.05676
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 48.5008, 43.6007 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 211.885, 106.863 )
+
+[node name="train_car" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 10 )
+
+[node name="Control" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="BG" parent="Control" instance=ExtResource( 1 )]
+margin_left = -2933.17
+margin_top = -1959.67
+margin_right = 5847.83
+margin_bottom = 2862.33
+
+[node name="BG_STUFF" type="Node2D" parent="."]
+
+[node name="cosmos" type="Node2D" parent="BG_STUFF"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="BG_STUFF/cosmos"]
+layer = -1
+
+[node name="back" type="ParallaxLayer" parent="BG_STUFF/cosmos/ParallaxBackground"]
+motion_scale = Vector2( 0.1, 1 )
+
+[node name="cosmos_strip-min" type="Sprite" parent="BG_STUFF/cosmos/ParallaxBackground/back"]
+modulate = Color( 1, 1, 1, 0.568627 )
+position = Vector2( 175.514, 526.391 )
+scale = Vector2( 0.881945, 0.728625 )
+texture = ExtResource( 7 )
+
+[node name="cosmos_strip-min2" type="Sprite" parent="BG_STUFF/cosmos/ParallaxBackground/back"]
+modulate = Color( 1, 1, 1, 0.568627 )
+position = Vector2( 1778.21, 526.391 )
+scale = Vector2( 0.881945, 0.728625 )
+texture = ExtResource( 7 )
+
+[node name="mediumback" type="ParallaxLayer" parent="BG_STUFF/cosmos/ParallaxBackground"]
+motion_scale = Vector2( 0.2, 1 )
+
+[node name="cosmos_holder" type="Node2D" parent="BG_STUFF/cosmos/ParallaxBackground/mediumback"]
+position = Vector2( -1221.46, 0 )
+
+[node name="cosmos_strip-min" type="Sprite" parent="BG_STUFF/cosmos/ParallaxBackground/mediumback/cosmos_holder"]
+modulate = Color( 1, 1, 1, 0.631373 )
+position = Vector2( 1986.32, 525.302 )
+scale = Vector2( 0.957069, 0.957069 )
+texture = ExtResource( 7 )
+
+[node name="cosmos_slider" type="AnimationPlayer" parent="BG_STUFF/cosmos/ParallaxBackground/mediumback/cosmos_holder"]
+autoplay = "slide"
+anims/slide = SubResource( 1 )
+
+[node name="mediumfront" type="ParallaxLayer" parent="BG_STUFF/cosmos/ParallaxBackground"]
+motion_scale = Vector2( 0.3, 1 )
+
+[node name="cosmos_loop2" parent="BG_STUFF/cosmos/ParallaxBackground/mediumfront" instance=ExtResource( 13 )]
+
+[node name="cosmos_strip-min" parent="BG_STUFF/cosmos/ParallaxBackground/mediumfront/cosmos_loop2" index="0"]
+position = Vector2( 3553.66, 600 )
+
+[node name="cosmos_strip-min2" parent="BG_STUFF/cosmos/ParallaxBackground/mediumfront/cosmos_loop2" index="1"]
+position = Vector2( 2225.9, 600 )
+
+[node name="cosmos_slider2" parent="BG_STUFF/cosmos/ParallaxBackground/mediumfront/cosmos_loop2" index="2"]
+playback_speed = 0.1
+
+[node name="front" type="ParallaxLayer" parent="BG_STUFF/cosmos/ParallaxBackground"]
+motion_scale = Vector2( 0.4, 1 )
+
+[node name="cosmos_loop3" parent="BG_STUFF/cosmos/ParallaxBackground/front" instance=ExtResource( 13 )]
+modulate = Color( 1, 1, 1, 0.482353 )
+
+[node name="cosmos_strip-min" parent="BG_STUFF/cosmos/ParallaxBackground/front/cosmos_loop3" index="0"]
+position = Vector2( 3013.87, 600 )
+
+[node name="cosmos_strip-min2" parent="BG_STUFF/cosmos/ParallaxBackground/front/cosmos_loop3" index="1"]
+position = Vector2( 1691.02, 600 )
+
+[node name="cosmos_slider2" parent="BG_STUFF/cosmos/ParallaxBackground/front/cosmos_loop3" index="2"]
+playback_speed = 0.5
+anims/slide = SubResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="BG_STUFF"]
+margin_left = -980.0
+margin_top = -809.0
+margin_right = 3568.0
+margin_bottom = 400.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect4" type="ColorRect" parent="BG_STUFF"]
+margin_left = -1345.0
+margin_top = 908.0
+margin_right = 3197.0
+margin_bottom = 2070.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="BG_STUFF"]
+margin_left = 1758.0
+margin_top = -28.0
+margin_right = 4786.0
+margin_bottom = 1619.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="BG_STUFF"]
+margin_left = -2613.0
+margin_top = -67.0
+margin_right = 131.0
+margin_bottom = 1580.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="train_car_bg-min" type="Sprite" parent="BG_STUFF"]
+position = Vector2( 947.294, 659.341 )
+texture = ExtResource( 12 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BG_STUFF/train_car_bg-min"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BG_STUFF/train_car_bg-min/StaticBody2D"]
+polygon = PoolVector2Array( -1160.48, 200.379, -891.615, 218.979, -795.231, 114.14, 828.085, 98.9215, 887.268, 202.07, 1095.26, 200.379, 1129.07, -734.719, -1197.68, -251.106, -1194.3, 433.73, 1158.42, 432.039, 977.493, 317.054, -1143.71, 332.273 )
+
+[node name="YSort" type="YSort" parent="."]
+position = Vector2( -18.8771, -7.47388 )
+
+[node name="player" parent="YSort" instance=ExtResource( 3 )]
+pause_mode = 1
+position = Vector2( 872.113, 914.399 )
+camera = NodePath("../../PuppyCamera")
+
+[node name="train_cafe_barrier-min" type="Sprite" parent="YSort"]
+position = Vector2( 734.456, 749.072 )
+texture = ExtResource( 4 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/train_cafe_barrier-min"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/train_cafe_barrier-min/StaticBody2D"]
+position = Vector2( -20.6592, 35.7758 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/train_cafe_barrier-min/StaticBody2D"]
+position = Vector2( 21.1631, 126.475 )
+shape = SubResource( 4 )
+
+[node name="counter_h" type="Node2D" parent="YSort"]
+position = Vector2( 850.141, 810.04 )
+
+[node name="train_cafe_bakery_h-min" type="Sprite" parent="YSort/counter_h"]
+position = Vector2( 265.818, -94.2735 )
+texture = ExtResource( 9 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/counter_h/train_cafe_bakery_h-min"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/counter_h/train_cafe_bakery_h-min/StaticBody2D"]
+position = Vector2( -55.519, 134.592 )
+shape = SubResource( 5 )
+
+[node name="counter_v" type="Node2D" parent="YSort"]
+position = Vector2( 1373.78, 874.481 )
+
+[node name="train_cafe_bakery_v-min" type="Sprite" parent="YSort/counter_v"]
+position = Vector2( -256.311, -160.228 )
+texture = ExtResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/counter_v/train_cafe_bakery_v-min"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/counter_v/train_cafe_bakery_v-min/StaticBody2D"]
+position = Vector2( 258.248, 86.6432 )
+shape = SubResource( 6 )
+
+[node name="barrier" type="Node2D" parent="YSort"]
+position = Vector2( 712.795, 766.931 )
+
+[node name="train_conductor" parent="YSort" instance=ExtResource( 14 )]
+position = Vector2( 1273.38, 782.78 )
+
+[node name="SeenBox" parent="YSort/train_conductor" instance=ExtResource( 20 )]
+
+[node name="CollisionShape2D" parent="YSort/train_conductor/SeenBox" index="0"]
+position = Vector2( 0.841187, -14.3004 )
+shape = SubResource( 7 )
+
+[node name="SmellArrow" parent="YSort/train_conductor/SeenBox/CollisionShape2D" index="0"]
+position = Vector2( -4.00647, -337.053 )
+
+[node name="Seating" type="YSort" parent="YSort"]
+position = Vector2( 394.873, 806.478 )
+
+[node name="Chair" type="Node2D" parent="YSort/Seating"]
+position = Vector2( 187.397, -8.92371 )
+
+[node name="train_chaise_bg-min" type="Sprite" parent="YSort/Seating/Chair"]
+position = Vector2( 25.6215, -39.9832 )
+texture = ExtResource( 15 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Seating/Chair"]
+position = Vector2( 19.2227, -107.17 )
+frames = SubResource( 8 )
+frame = 1
+playing = true
+
+[node name="LeafbertSeenBox" parent="YSort/Seating/Chair/AnimatedSprite" instance=ExtResource( 20 )]
+
+[node name="CollisionShape2D" parent="YSort/Seating/Chair/AnimatedSprite/LeafbertSeenBox" index="0"]
+position = Vector2( 3.93097, 113.342 )
+shape = SubResource( 9 )
+
+[node name="SmellArrow" parent="YSort/Seating/Chair/AnimatedSprite/LeafbertSeenBox/CollisionShape2D" index="0"]
+position = Vector2( -4.57263, -265.671 )
+
+[node name="train_chaise_fg-min" type="Sprite" parent="YSort/Seating/Chair"]
+position = Vector2( 25.6215, -39.9832 )
+texture = ExtResource( 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/Seating/Chair"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Seating/Chair/StaticBody2D"]
+polygon = PoolVector2Array( -67.6725, 15.1299, -17.7879, 87.1854, 107.175, 82.6505, 63.8414, 12.1066 )
+
+[node name="Chair2" type="Node2D" parent="YSort/Seating"]
+position = Vector2( -146.125, -18.9628 )
+scale = Vector2( -1, 1 )
+
+[node name="train_chaise_bg-min" type="Sprite" parent="YSort/Seating/Chair2"]
+position = Vector2( 25.6215, -39.9832 )
+texture = ExtResource( 15 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Seating/Chair2"]
+position = Vector2( 6.3988, -114.111 )
+frames = SubResource( 10 )
+frame = 1
+playing = true
+flip_h = true
+
+[node name="LeafsonSeenBox" parent="YSort/Seating/Chair2/AnimatedSprite" instance=ExtResource( 20 )]
+
+[node name="CollisionShape2D" parent="YSort/Seating/Chair2/AnimatedSprite/LeafsonSeenBox" index="0"]
+position = Vector2( 25.5511, 127.755 )
+shape = SubResource( 11 )
+
+[node name="SmellArrow" parent="YSort/Seating/Chair2/AnimatedSprite/LeafsonSeenBox/CollisionShape2D" index="0"]
+position = Vector2( -20.2964, -265.016 )
+
+[node name="train_chaise_fg-min" type="Sprite" parent="YSort/Seating/Chair2"]
+position = Vector2( 25.6215, -39.9832 )
+texture = ExtResource( 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/Seating/Chair2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Seating/Chair2/StaticBody2D"]
+polygon = PoolVector2Array( -66.8159, 16.0992, -8.86917, 88.6585, 109.04, 82.6119, 51.597, 10.5565 )
+
+[node name="table" type="Node2D" parent="YSort/Seating"]
+position = Vector2( 16.5488, 37.2347 )
+
+[node name="train_table-min" type="Sprite" parent="YSort/Seating/table"]
+position = Vector2( 0.0129395, -69.3958 )
+texture = ExtResource( 17 )
+
+[node name="bakery_tea_tower-min" type="Sprite" parent="YSort/Seating/table/train_table-min"]
+position = Vector2( 0.916595, -116.335 )
+texture = ExtResource( 25 )
+
+[node name="train_coffee_cup-min" type="Sprite" parent="YSort/Seating/table/train_table-min"]
+position = Vector2( -72.0895, -61.1472 )
+texture = ExtResource( 19 )
+
+[node name="train_coffee_cup-min2" type="Sprite" parent="YSort/Seating/table/train_table-min"]
+position = Vector2( 60.5534, -49.1625 )
+scale = Vector2( -1, 1 )
+texture = ExtResource( 19 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/Seating/table/train_table-min"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Seating/table/train_table-min/StaticBody2D"]
+position = Vector2( 0, 89.1876 )
+shape = SubResource( 12 )
+
+[node name="TableSeenBox" parent="YSort/Seating/table" instance=ExtResource( 20 )]
+
+[node name="CollisionShape2D" parent="YSort/Seating/table/TableSeenBox" index="0"]
+position = Vector2( 0, 11.1377 )
+shape = SubResource( 13 )
+
+[node name="PuppyCamera" parent="." instance=ExtResource( 2 )]
+position = Vector2( 929.997, 642.035 )
+
+[node name="UpperLeft" parent="PuppyCamera/Limits" index="0"]
+position = Vector2( -1920.3, 118.699 )
+
+[node name="BottomRight" parent="PuppyCamera/Limits" index="1"]
+position = Vector2( 4005.67, 1182.25 )
+
+[node name="RightSP" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1794.45, 893.011 )
+
+[node name="FG" type="Node2D" parent="."]
+
+[node name="train_chandelier-min" parent="FG" instance=ExtResource( 8 )]
+position = Vector2( 327.666, 246.684 )
+
+[node name="train_chandelier-min2" parent="FG" instance=ExtResource( 8 )]
+position = Vector2( 937.151, 248.143 )
+
+[node name="train_chandelier-min3" parent="FG" instance=ExtResource( 8 )]
+position = Vector2( 1588.75, 253.127 )
+
+[node name="BottomTZ" parent="." instance=ExtResource( 18 )]
+
+[node name="CollisionShape2D" parent="BottomTZ" index="0"]
+position = Vector2( 736.986, 1231.79 )
+shape = SubResource( 14 )
+
+[connection signal="seen" from="YSort/train_conductor/SeenBox" to="." method="_on_SeenBox_seen"]
+[connection signal="seen" from="YSort/Seating/Chair/AnimatedSprite/LeafbertSeenBox" to="." method="_on_LeafbertSeenBox_seen"]
+[connection signal="seen" from="YSort/Seating/Chair2/AnimatedSprite/LeafsonSeenBox" to="." method="_on_LeafsonSeenBox_seen"]
+[connection signal="seen" from="YSort/Seating/table/TableSeenBox" to="." method="_on_TableSeenBox_seen"]
+[connection signal="transition_triggered" from="BottomTZ" to="." method="_on_BottomTZ_transition_triggered"]
+
+[editable path="BG_STUFF/cosmos/ParallaxBackground/mediumfront/cosmos_loop2"]
+[editable path="BG_STUFF/cosmos/ParallaxBackground/front/cosmos_loop3"]
+[editable path="YSort/train_conductor/SeenBox"]
+[editable path="YSort/Seating/Chair/AnimatedSprite/LeafbertSeenBox"]
+[editable path="YSort/Seating/Chair2/AnimatedSprite/LeafsonSeenBox"]
+[editable path="YSort/Seating/table/TableSeenBox"]
+[editable path="PuppyCamera"]
+[editable path="BottomTZ"]

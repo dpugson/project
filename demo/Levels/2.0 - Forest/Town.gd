@@ -8,6 +8,7 @@ onready var DialogueHelper = preload("res://Dialogue/DialogueHelper.gd")
 onready var theaterSP = $Doors/TheaterSP
 onready var prisonSP = $Doors/PrisonSP
 onready var bottomSP = $BottomSP
+onready var topSP = $TopSP
 
 func _ready():
 	var player_position = player.position
@@ -21,6 +22,9 @@ func _ready():
 		"prison":
 			player_position = prisonSP.position
 			orientation = Vector2.LEFT
+		"gate":
+			player_position = topSP.position
+			orientation = Vector2.DOWN
 		_:
 			player_position = bottomSP.position
 			orientation = Vector2.UP
@@ -44,3 +48,6 @@ func _on_PrisonDoor_transition_triggered():
 
 func _on_HomeDoor_transition_triggered():
 	pass # Replace with function body.
+
+func _on_TopTZ_transition_triggered():
+	Transition.go_to("res://Levels/2.0 - Forest/town/clock_tower/clock_tower_exterior.tscn", "bottom")
