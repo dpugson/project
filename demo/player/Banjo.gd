@@ -34,14 +34,14 @@ func _input(event):
 		play_with_pitch(1.26)
 	elif event.is_action_pressed("music_down"):
 		play_with_pitch(1.32)
+		#play_with_pitch(1.9)
 	elif event.is_action_pressed("music_right"):
 		play_with_pitch(1.5)
-	elif event.is_action_pressed("bark"):
-		play_with_pitch(1.9)
-	elif event.is_action_pressed("look"):
-		play_with_pitch(2)
-	elif event.is_action_released(""):
-		audioplayer.stop()
+		#play_with_pitch(2)
+	#elif event.is_action_pressed("bark"):
+	#	play_with_pitch(1.9)
+	#elif event.is_action_pressed("look"):
+	#	play_with_pitch(2)
 	
 	if event.is_action_pressed("sing_low"):
 		sing_with_pitch(0.75)

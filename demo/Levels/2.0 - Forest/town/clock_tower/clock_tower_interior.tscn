@@ -132,7 +132,6 @@ position = Vector2( -6.43591, 330.805 )
 pause_mode = 2
 position = Vector2( 4.59949, -331.856 )
 frames = SubResource( 4 )
-frame = 1
 playing = true
 __meta__ = {
 "_edit_lock_": true
@@ -210,13 +209,13 @@ texture = ExtResource( 7 )
 pause_mode = 2
 position = Vector2( 844.751, 25.5376 )
 frames = SubResource( 8 )
+frame = 1
 playing = true
 
 [node name="star_gear2" type="AnimatedSprite" parent="FG"]
 pause_mode = 2
 position = Vector2( 813.112, -79.0672 )
 frames = SubResource( 8 )
-frame = 1
 playing = true
 
 [node name="clock_tower_interior_counterweight-min" type="Sprite" parent="FG"]
@@ -235,7 +234,7 @@ shape = SubResource( 9 )
 pause_mode = 2
 position = Vector2( 924.195, -28.318 )
 frames = SubResource( 10 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="clock_tower_interior_beams-min" type="Sprite" parent="FG"]

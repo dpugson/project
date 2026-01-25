@@ -64,7 +64,7 @@ onready var grabshot_timer = $grabshot_center/grabshot_timer
 onready var grabshot_audio_player = $grabshot_center/grabshot_audio_animator
 
 func _ready():
-	stats.set_bool("grabshot", false)
+	stats.set_bool("grabshot", true)
 	grabshot.visible = false
 	
 	stats.connect("out_of_health", self, "queue_free")
@@ -275,14 +275,15 @@ func _physics_process(delta):
 			move(delta, input)
 		TURBO_WARMUP:
 			grabshot.visible = false
-#			if check_for_turbo_input():
-#				turbo_timer.stop()
-#				state = WALK
+			if check_for_turbo_input() or input != Vector2.ZERO:
+				turbo_timer.stop()
+				state = WALK
 			pass
 		TURBO_DASHING:
 			grabshot.visible = false
-#			if check_for_turbo_input():
-#				state = WALK
+			if check_for_turbo_input() or input != Vector2.ZERO:
+				turbo_timer.stop()
+				state = WALK
 			turbo_move(delta, input)
 		GRABSHOT_AIMING:
 			animation_state.travel("idle")
