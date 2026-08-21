@@ -9,8 +9,7 @@ onready var exit_button = $List/Button
 onready var g_label = $G_panel/Label
 onready var scroll_container = $List/MarginContainer/VBoxContainer/ScrollContainer
 onready var hatsprite = $Panel/Node2D/hatsprite
-
-var item_click_handler = null
+onready var equippedsprite = $Equipped/Node2D/EquippedSprite
 
 func _input(event):
 	if event.is_action_pressed("menu") or event.is_action_pressed("ui_cancel") or event.is_action_pressed("realmenu"):
@@ -25,7 +24,10 @@ func display_item(item_data: Dictionary):
 		item_picture.texture = picture
 	else:
 		item_picture.texture = null
-	item_description.text = item_data['description'] + "\n\nClick to wear as hat."
+	if item_data.get('equippable', false):
+		item_description.text = item_data['description'] + "\n\nClick to equip."
+	else:
+		item_description.text = item_data['description'] + "\n\nClick to wear as hat."
 
 func undisplay_item():
 	item_picture.texture = null
@@ -67,6 +69,7 @@ func make_overworld_mode():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_hat_sprite()
+	update_equip_sprite()
 	exit_button.grab_focus()
 	g_label.text = str(stats.G) + " G"
 	var first = true
@@ -104,6 +107,7 @@ func close_menu():
 	queue_free()
 
 func handle_item_pressed(label, item, prev):
+	var item_click_handler = null
 	if item_click_handler != null:
 		item_click_handler[0].call_deferred(item_click_handler[1], self, label, item, prev)
 	else:
@@ -117,7 +121,20 @@ func update_hat_sprite():
 	else:
 		hatsprite.texture = null
 
+func update_equip_sprite():
+	var equipped = stats.get_equipped()
+	if equipped != null:
+		var equipped_item = ItemRegistry.get(equipped)
+		equippedsprite.texture = load(equipped_item.image)
+	else:
+		equippedsprite.texture = null
+
 func toggle_equip(item):
-	stats.put_on_hat(item["image"])
-	update_hat_sprite()
+	var equippable = item.get("equippable", null)
+	if equippable != null:
+		stats.toggle_equip(equippable)
+		update_equip_sprite()
+	else:
+		stats.put_on_hat(item["image"])
+		update_hat_sprite()
 	

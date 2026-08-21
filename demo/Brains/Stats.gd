@@ -151,6 +151,17 @@ func spawn_player(player, player_parent, camera_path,
 		player.turbo_input = orientation
 		player.previous_input = orientation
 
+func get_equipped():
+	return world_state.get("EQUIPPED", null)
+
+func toggle_equip(item_name):
+	if world_state.get("EQUIPPED", null) == null:
+		print("EQUIPPING " + item_name)
+		world_state["EQUIPPED"] = item_name
+	else:
+		print("UNEQUIPPING " + item_name)
+		world_state["EQUIPPED"] = null
+
 func inventory_add(item_name):
 	var count = inventory.get(item_name, 0)
 	inventory[item_name] = count + 1

@@ -584,6 +584,7 @@ bus = "Effects"
 [node name="MusicAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 bus = "Music"
+
 [connection signal="value_changed" from="Settings/Panel/MainVolume" to="." method="_on_MainVolume_value_changed"]
 [connection signal="value_changed" from="Settings/Panel/MusicVolume" to="." method="_on_MusicVolume_value_changed"]
 [connection signal="value_changed" from="Settings/Panel/EffectsVolume" to="." method="_on_EffectsVolume_value_changed"]

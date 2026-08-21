@@ -80,6 +80,8 @@ scroll_horizontal_enabled = false
 [node name="ItemsList" type="VBoxContainer" parent="List/MarginContainer/VBoxContainer/ScrollContainer"]
 
 [node name="Button" type="Button" parent="List"]
+anchor_top = -4.88438e-09
+anchor_bottom = -4.88438e-09
 margin_left = 2.83325
 margin_top = -139.535
 margin_right = 274.833
@@ -126,10 +128,12 @@ margin_bottom = 75.0
 autowrap = true
 
 [node name="G_panel" type="Panel" parent="."]
-margin_left = 996.0
-margin_top = 715.0
-margin_right = 1305.0
-margin_bottom = 815.0
+anchor_top = -0.00240569
+anchor_bottom = -0.00240569
+margin_left = 609.797
+margin_top = 44.8304
+margin_right = 918.797
+margin_bottom = 144.83
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -144,6 +148,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Equipped" type="Panel" parent="."]
+anchor_top = -0.00240569
+anchor_bottom = -0.00240569
+margin_left = 1134.56
+margin_top = 804.393
+margin_right = 1330.56
+margin_bottom = 923.393
+rect_pivot_offset = Vector2( 137.409, 33.8249 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" type="Node2D" parent="Equipped"]
+position = Vector2( 97.4302, 61.0562 )
+
+[node name="EquippedSprite" type="Sprite" parent="Equipped/Node2D"]
+
+[node name="Label" type="Label" parent="Equipped"]
+margin_left = -140.299
+margin_top = 20.7851
+margin_right = 83.7007
+margin_bottom = 157.785
+text = "ITEM"
+
 [node name="Panel" type="Panel" parent="."]
 margin_left = 1383.57
 margin_top = 720.549
@@ -154,19 +182,20 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Panel"]
-position = Vector2( 187.217, 136.761 )
+position = Vector2( 211.899, 136.761 )
 frames = SubResource( 1 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="Node2D" type="Node2D" parent="Panel"]
 position = Vector2( -46.311, -2.3548 )
 
 [node name="hatsprite" type="Sprite" parent="Panel/Node2D"]
-position = Vector2( 183.301, 74.9659 )
+position = Vector2( 207.983, 74.9659 )
 texture = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/Node2D"]
 autoplay = "bounce_item"
 anims/bounce_item = SubResource( 2 )
+
 [connection signal="pressed" from="List/Button" to="." method="_on_Button_pressed"]

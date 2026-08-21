@@ -1,4 +1,5 @@
 extends Node
+onready var stats = PlayerStats
 
 const bone = {
 	type = "2D",
@@ -20,6 +21,14 @@ const ball = {
 	image = "res://sprites/cavestuff/ball.png",
 	name = "Your Ball",
 	description = "Your greatest treasure."
+}
+
+const grabshot = {
+	type = "2D",
+	image = "res://sprites/items/hookshot/hookshot_item_icon.png",
+	name = "Grabshot",
+	description = "Nyoom!",
+	equippable = "grabshot",
 }
 
 const real_ball = {

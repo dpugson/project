@@ -63,9 +63,21 @@ onready var grabshot_player_goto_point = $grabshot_center/chain/grabshot_tip/Pla
 onready var grabshot_timer = $grabshot_center/grabshot_timer
 onready var grabshot_audio_player = $grabshot_center/grabshot_audio_animator
 
+onready var item_map = {
+	"grabshot": grabshot,
+}
+
+func set_item_visible(val):
+	var equipped = stats.get_equipped()
+	if equipped != null:
+		item_map[equipped] = val
+
 func _ready():
 	stats.set_bool("grabshot", true)
-	grabshot.visible = false
+	if stats.inventory_get("grabshot") == 0:
+		stats.inventory_add("grabshot")
+	for value in item_map.values():
+		value.visible = false
 	
 	stats.connect("out_of_health", self, "queue_free")
 	lookbox.connect("saw_something", self, "set_speed_to_zero")
